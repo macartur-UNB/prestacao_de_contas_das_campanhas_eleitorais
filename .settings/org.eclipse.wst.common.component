@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="prestacao_de_contas_das_campanhas_eleitorais">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="prestacao_de_contas_das_campanhas_eleitorais"/>
+        <property name="java-output-path" value="/prestacao_de_contas_das_campanhas_eleitorais/build/classes"/>
+    </wb-module>
+</project-modules>
