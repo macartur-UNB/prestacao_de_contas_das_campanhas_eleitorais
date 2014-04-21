@@ -6,4 +6,6 @@ target/
 bin
 *~
 /build
+
 .classpath
+src/dao/ConexaoMySQL.java

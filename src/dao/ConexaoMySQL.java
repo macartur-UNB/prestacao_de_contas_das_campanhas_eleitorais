@@ -11,7 +11,7 @@ public class ConexaoMySQL {
 	private static final String MY_SQL = "jdbc:mysql://";
 	
 	private static final String NOME_SERVIDOR = "localhost";
-	private static final String NOME_BANCO = "gpp";
+	private static final String NOME_BANCO = "gppp";
 	private static final String USUARIO = "root";
 	private static final String SENHA = "root";
 
