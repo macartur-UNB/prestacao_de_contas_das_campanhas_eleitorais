@@ -29,8 +29,7 @@ public class LeitorCSV {
 		ignorarLinhas(leitorArquivo, linhaInicial);
 		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) && (i <= linhaFinal) && (!linha.isEmpty()); i++ ) {
 			System.out.println("lendo linha: " + i);
-			
-			linha = removerAspas(linha);			
+			linha = removerAspas(linha);
 			campo = linha.split(divisao);
 			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
 		}		

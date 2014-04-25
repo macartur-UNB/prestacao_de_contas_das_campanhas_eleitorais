@@ -50,6 +50,65 @@ public class CandidatoParse {
 		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, new CadastrarCandidatos(), linhaInicial);
 	}
 	
+	public LinkedList<Candidato> getListaCandidatosUnicos(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
+		LinkedList<Candidato> listaCandidatos = getListaCandidatos(arquivo, divisao, linhaInicial, linhaFinal);
+		
+		if(listaCandidatos.size() <= 1)
+			return listaCandidatos;
+		
+		LinkedList<Candidato> candidatosRemovidos = new LinkedList<>();
+		
+		Iterator<Candidato> iterador = listaCandidatos.iterator();
+		Candidato candidatoAnterior = iterador.next();
+		Candidato candidatoAtual;
+		while(iterador.hasNext()) {
+			candidatoAtual = iterador.next();
+			
+			if(candidatoAtual.equals(candidatoAnterior)) {
+				candidatosRemovidos.add(candidatoAtual);
+			}
+			
+			candidatoAnterior = candidatoAtual;
+		}
+		
+		for(Candidato candidatoRemovido : candidatosRemovidos) {
+			listaCandidatos.remove(candidatoRemovido);
+		}
+		
+		return listaCandidatos;
+	}
+	
+	public LinkedList<Candidato> getListaCandidatosUnicos(String arquivo, String divisao, int linhaInicial) throws IOException {
+		int numeroLinhas = this.leitorCSV.getNumeroLinhas(arquivo);
+		return getListaCandidatosUnicos(arquivo, divisao, linhaInicial, numeroLinhas);
+	}
+	
+	public LinkedList<Candidato> getListaCandidatos(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
+		LinkedList<Candidato> listaCandidatos = new LinkedList<>();
+		LinkedList<String[]> listaCampos = (LinkedList<String[]>) this.leitorCSV.getCamposCSV(arquivo, divisao, linhaInicial, linhaFinal);
+		
+		Candidato candidato;
+		for(String campo[] : listaCampos) {
+			candidato = criarCandidato(campo);
+			listaCandidatos.add(candidato);
+		}
+		
+		return listaCandidatos;
+	}
+	
+	public LinkedList<Candidato> getListaCandidatos(String arquivo, String divisao, int linhaInicial) throws IOException {
+		int numeroLinhas = this.leitorCSV.getNumeroLinhas(arquivo);
+		return getListaCandidatos(arquivo, divisao, linhaInicial, numeroLinhas);
+	}
+
+	public LeitorCSV getLeitorCSV() {
+		return leitorCSV;
+	}
+
+	public void setLeitorCSV(LeitorCSV leitorCSV) {
+		this.leitorCSV = leitorCSV;
+	}
+	
 
 	public int getIndiceNome() {
 		return indiceNome;
@@ -141,7 +200,6 @@ public class CandidatoParse {
 //		if(this.indicePartido > INDICE_INVALIDO)
 //			candidato.setPartido(campo[this.indicePartido]);
 //		else
-			candidato.setPartido(null);
 			
 		if(this.indiceNumero > INDICE_INVALIDO)
 			candidato.setNumero(campo[this.indiceNumero]);
@@ -158,6 +216,12 @@ public class CandidatoParse {
 		else
 			candidato.setCargo(null);
 			
+	}
+	
+	private Candidato criarCandidato(String campo[]) {
+		Candidato candidato = new Candidato();
+		criarCandidato(campo, candidato);
+		return candidato;
 	}
 	
 	private class CadastrarCandidatos implements ExecutorLeitorCSV{
