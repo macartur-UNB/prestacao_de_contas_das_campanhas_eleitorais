@@ -45,7 +45,7 @@ public class CandidatoDAO {
 
 		instrucaoSQL.setString(1, candidato.getNome());
 		instrucaoSQL.setString(2, candidato.getCargo());
-		instrucaoSQL.setString(3, candidato.getPartido().getNome());
+		instrucaoSQL.setString(3, candidato.getPartido().getSigla());
 		instrucaoSQL.setString(4, candidato.getNumero());
 		instrucaoSQL.setInt(5, candidato.getAno());
 		
@@ -71,7 +71,7 @@ public class CandidatoDAO {
 			Candidato candidato = new Candidato();
 			candidato.setNome(resultadoSQL.getString(NOME));
 			candidato.setCpf(resultadoSQL.getString(CPF));
-			partido.setNome(resultadoSQL.getString(PARTIDO));
+			partido.setSigla(resultadoSQL.getString(PARTIDO));
 			candidato.setPartido(partido);
 			candidato.setNumero(resultadoSQL.getString(NUMERO));
 			candidato.setAno(resultadoSQL.getInt(ANO));
