@@ -19,7 +19,7 @@ public class Candidato {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Candidato) )
+		if( !(object instanceof Candidato) || object == null )
 			return false;
 		
 		Candidato outroCandidato = (Candidato) object;

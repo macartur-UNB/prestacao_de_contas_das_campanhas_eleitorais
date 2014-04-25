@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import dao.CandidatoDAO;
+import parse.LeitorCSV.ExecutorLeitorCSV;
 import model.Candidato;
 
 public class CandidatoParse {
@@ -11,6 +13,7 @@ public class CandidatoParse {
 	public static final int INDICE_INVALIDO = -1;
 	
 	private LeitorCSV leitorCSV;
+	private CandidatoDAO candidatoDAO;
 	
 	private int ano;
 	
@@ -25,6 +28,7 @@ public class CandidatoParse {
 	
 	public CandidatoParse() {
 		this.leitorCSV = new LeitorCSV();
+		this.candidatoDAO = new CandidatoDAO();
 		
 		this.ano = 0;
 		
@@ -38,11 +42,16 @@ public class CandidatoParse {
 		this.indiceDespesa = INDICE_INVALIDO;
 	}
 	
+	public void cadastrarCandidatos(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
+		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, new CadastrarCandidatos(), linhaInicial, linhaFinal);
+	}
 	
+	public void cadastrarCandidatos(String arquivo, String divisao, int linhaInicial) throws IOException {
+		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, new CadastrarCandidatos(), linhaInicial);
+	}
 	
-	public LinkedList<Candidato> getListaCandidatosUnicos(String arquivo, String divisao, int linhaInicial) throws IOException
-	{
-		LinkedList<Candidato> listaCandidatos = getListaCandidatos(arquivo, divisao, linhaInicial);
+	public LinkedList<Candidato> getListaCandidatosUnicos(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
+		LinkedList<Candidato> listaCandidatos = getListaCandidatos(arquivo, divisao, linhaInicial, linhaFinal);
 		
 		if(listaCandidatos.size() <= 1)
 			return listaCandidatos;
@@ -69,44 +78,27 @@ public class CandidatoParse {
 		return listaCandidatos;
 	}
 	
-	public LinkedList<Candidato> getListaCandidatos(String arquivo, String divisao, int linhaInicial) throws IOException {
+	public LinkedList<Candidato> getListaCandidatosUnicos(String arquivo, String divisao, int linhaInicial) throws IOException {
+		int numeroLinhas = this.leitorCSV.getNumeroLinhas(arquivo);
+		return getListaCandidatosUnicos(arquivo, divisao, linhaInicial, numeroLinhas);
+	}
+	
+	public LinkedList<Candidato> getListaCandidatos(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
 		LinkedList<Candidato> listaCandidatos = new LinkedList<>();
-		LinkedList<String[]> listaCampos = (LinkedList<String[]>) this.leitorCSV.getCamposCSV(arquivo, divisao, linhaInicial);
+		LinkedList<String[]> listaCampos = (LinkedList<String[]>) this.leitorCSV.getCamposCSV(arquivo, divisao, linhaInicial, linhaFinal);
 		
+		Candidato candidato;
 		for(String campo[] : listaCampos) {
-			Candidato candidato = new Candidato();
-			
-			if(this.indiceNome > INDICE_INVALIDO)
-				candidato.setNome(campo[this.indiceNome]);
-			
-			if(this.indiceCPF > INDICE_INVALIDO)
-				candidato.setCpf(campo[this.indiceCPF]);
-				
-			if(this.indicePartido > INDICE_INVALIDO)
-				candidato.setPartido(campo[this.indicePartido]);
-				
-			if(this.indiceNumero > INDICE_INVALIDO)
-				candidato.setNumero(campo[this.indiceNumero]);
-				
-			if(this.ano > INDICE_INVALIDO)
-				candidato.setAno(this.ano);
-				
-			if(this.indiceCargoPleiteado > INDICE_INVALIDO)
-				candidato.setCargoPleiteado(campo[this.indiceCargoPleiteado]);
-				
-			if(this.indiceDominio > INDICE_INVALIDO)
-				candidato.setDominio(campo[this.indiceDominio]);
-				
-			if(this.indiceArrecadacao > INDICE_INVALIDO)
-				candidato.setArrecadacao(Integer.getInteger(campo[this.indiceArrecadacao]));
-				
-			if(this.indiceDespesa > INDICE_INVALIDO)
-				candidato.setDespesa(Integer.getInteger(campo[this.indiceDespesa]));
-			
+			candidato = criarCandidato(campo);
 			listaCandidatos.add(candidato);
 		}
 		
 		return listaCandidatos;
+	}
+	
+	public LinkedList<Candidato> getListaCandidatos(String arquivo, String divisao, int linhaInicial) throws IOException {
+		int numeroLinhas = this.leitorCSV.getNumeroLinhas(arquivo);
+		return getListaCandidatos(arquivo, divisao, linhaInicial, numeroLinhas);
 	}
 
 	public LeitorCSV getLeitorCSV() {
@@ -191,6 +183,88 @@ public class CandidatoParse {
 
 	public static int getIndiceInvalido() {
 		return INDICE_INVALIDO;
+	}
+	
+	private void criarCandidato(String campo[], Candidato candidato) {		
+		if(this.indiceNome > INDICE_INVALIDO)
+			candidato.setNome(campo[this.indiceNome]);
+		else
+			candidato.setNome(null);
+		
+		if(this.indiceCPF > INDICE_INVALIDO)
+			candidato.setCpf(campo[this.indiceCPF]);
+		else
+			candidato.setCpf(null);
+			
+		if(this.indicePartido > INDICE_INVALIDO)
+			candidato.setPartido(campo[this.indicePartido]);
+		else
+			candidato.setPartido(null);
+			
+		if(this.indiceNumero > INDICE_INVALIDO)
+			candidato.setNumero(campo[this.indiceNumero]);
+		else
+			candidato.setNumero(null);
+			
+		if(this.ano > INDICE_INVALIDO)
+			candidato.setAno(this.ano);
+		else
+			candidato.setAno(null);
+			
+		if(this.indiceCargoPleiteado > INDICE_INVALIDO)
+			candidato.setCargoPleiteado(campo[this.indiceCargoPleiteado]);
+		else
+			candidato.setCargoPleiteado(null);
+			
+		if(this.indiceDominio > INDICE_INVALIDO)
+			candidato.setDominio(campo[this.indiceDominio]);
+		else
+			candidato.setDominio(null);
+			
+		if(this.indiceArrecadacao > INDICE_INVALIDO)
+			candidato.setArrecadacao(Integer.getInteger(campo[this.indiceArrecadacao]));
+		else
+			candidato.setArrecadacao(null);
+			
+		if(this.indiceDespesa > INDICE_INVALIDO)
+			candidato.setDespesa(Integer.getInteger(campo[this.indiceDespesa]));
+		else
+			candidato.setDespesa(null);
+	}
+	
+	private Candidato criarCandidato(String campo[]) {
+		Candidato candidato = new Candidato();
+		criarCandidato(campo, candidato);
+		return candidato;
+	}
+	
+	private class CadastrarCandidatos implements ExecutorLeitorCSV{
+
+		private Candidato candidato;
+		private Candidato candidatoAnterior;
+		
+		public CadastrarCandidatos() {
+			this.candidato = new Candidato();
+			this.candidatoAnterior = new Candidato();
+		}
+		
+		@Override
+		public void executarMetodoPorLinhaDoArquivo(String[] campo) {
+			try{
+				criarCandidato(campo, this.candidato);
+				
+				if(!this.candidato.equals(this.candidatoAnterior)) {
+					candidatoDAO.cadastrarCandidato(this.candidato);
+				}
+				
+			} catch(Exception e) {
+				
+			}
+			
+			this.candidatoAnterior.setNome(this.candidato.getNome());
+			this.candidatoAnterior.setAno(this.candidato.getAno());
+		}
+		
 	}
 	
 }

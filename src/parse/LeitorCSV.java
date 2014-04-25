@@ -13,8 +13,32 @@ import java.util.List;
 
 public class LeitorCSV {
 	
+	public interface ExecutorLeitorCSV {
+		public void executarMetodoPorLinhaDoArquivo(String campo[]);
+	}
+	
 	public LeitorCSV() {
 		
+	}
+	
+	public void executarMetodoPorLinhaLida(String arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial, int linhaFinal) throws IOException {
+		String campo[];
+		String linha;
+		BufferedReader leitorArquivo = new BufferedReader(new FileReader(arquivo));
+		
+		ignorarLinhas(leitorArquivo, linhaInicial);
+		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) && (i <= linhaFinal) && (!linha.isEmpty()); i++ ) {
+			System.out.println("lendo linha: " + i);
+			campo = linha.split(divisao);
+			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
+		}		
+		
+		leitorArquivo.close();
+	}
+	
+	public void executarMetodoPorLinhaLida(String arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial) throws IOException {
+		int numeroLinhas = getNumeroLinhas(arquivo);
+		executarMetodoPorLinhaLida(arquivo, divisao, executorLeitorCSV, linhaInicial, numeroLinhas);
 	}
 	
 	public LinkedList<String[]> getCamposCSV(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {

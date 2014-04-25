@@ -20,20 +20,10 @@ public class CandidatoDAO {
 	public static final String ARRECADACAO = "arrecadacao";
 	public static final String DESPESA = "despesa";
 	
-	private static CandidatoDAO instancia;
-	
 	private ConexaoMySQL conexaoMySQL;
 	
-	private CandidatoDAO() {
+	public CandidatoDAO() {
 		this.conexaoMySQL = ConexaoMySQL.getInstancia();
-	}
-	
-	public static CandidatoDAO getInstancia() {
-		if(instancia == null) {
-			instancia = new CandidatoDAO();
-		}
-		
-		return instancia;
 	}
 	
 	public void cadastrarCandidato(Candidato candidato) throws SQLException {
