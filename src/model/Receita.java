@@ -1,9 +1,3 @@
-/** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  01/05/2014
- * 
- *  COMENTARIOS: 
-**/
-
 package model;
 
 public class Receita extends MovimentacaoFinanceira {
@@ -23,7 +17,5 @@ public class Receita extends MovimentacaoFinanceira {
 	public void setDoador(Doador doador) {
 		this.doador = doador;
 	}
-	
-	
 	
 }
