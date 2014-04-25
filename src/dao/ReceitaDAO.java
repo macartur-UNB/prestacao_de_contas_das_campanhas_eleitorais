@@ -17,9 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import model.Despesa;
 import model.Doador;
-import model.Fornecedor;
 import model.Receita;
 
 /*****************************************************************************/
@@ -123,5 +121,3 @@ public class ReceitaDAO {
 	
 	
 }
-
-/*****************************************************************************/
