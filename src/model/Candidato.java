@@ -1,6 +1,6 @@
 package model;
 
-public class Candidato {
+public class Candidato extends Entidade{
 
 	private String nome;
 	private String cpf;
