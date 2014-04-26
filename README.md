@@ -4,7 +4,6 @@ Prestacao de Contas das Campanhas Eleitorais
 Membros do Grupo
 
 - Augusto S. Modesto
-- Filipe Jardim de Magalhães Vieira
 - Jonathan Henrique Maia de Moraes
 - Luciano Prestes Cavalcanti
 - Macártur de Sousa Carvalho
