@@ -6,6 +6,8 @@ public class Partido {
 	
 	private String sigla;
 	ArrayList<Candidato> candidatos;
+	ArrayList<Receita> arrecadacao;
+	ArrayList<Despesa> gasto;
 	
 	public Partido() {
 		
