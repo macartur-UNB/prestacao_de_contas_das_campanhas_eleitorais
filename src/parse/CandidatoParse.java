@@ -1,12 +1,10 @@
 package parse;
 
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
 
-import dao.CandidatoDAO;
-import parse.LeitorCSV.ExecutorLeitorCSV;
 import model.Candidato;
+import parse.LeitorCSV.ExecutorLeitorCSV;
+import dao.CandidatoDAO;
 
 public class CandidatoParse {
 	
