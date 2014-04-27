@@ -32,6 +32,12 @@ CREATE  TABLE t_receita (
   PRIMARY KEY (id) 
 );
 
+CREATE TABLE t_partido (
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  sigla MEDIUMTEXT NOT NULL ,
+  numero MEDIUMTEXT NOT NULL ,
+  PRIMARY KEY(id)
+ );
 
 CREATE  TABLE t_despesa (
   id INT NOT NULL ,
