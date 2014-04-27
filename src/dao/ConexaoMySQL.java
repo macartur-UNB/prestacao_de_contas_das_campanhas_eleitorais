@@ -12,7 +12,7 @@ public class ConexaoMySQL {
 	private static final String NOME_BANCO = "gpp";
 	private static final String USUARIO = "root";
 	private static final String SENHA = "root";
-	
+
 	private static ConexaoMySQL instancia;
 	
 	private Connection conexao;
