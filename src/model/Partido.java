@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Partido {
 	
-	private int numeroPartido;
+	private String numeroPartido;
 	private String sigla;
 	ArrayList<Candidato> candidatos;
 	ArrayList<Receita> arrecadacao;
@@ -24,11 +24,11 @@ public class Partido {
 		return ( this.sigla.equals(outroPartido.getSigla()));
 	}
 	
-	public int getNumeroPartido() {
+	public String getNumeroPartido() {
 		return numeroPartido;
 	}
 	
-	public void setNumeroPartido(int numeroPartido) {
+	public void setNumeroPartido(String numeroPartido) {
 		this.numeroPartido = numeroPartido;
 	}
 	
