@@ -1,6 +1,8 @@
 package parse;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 import model.Candidato;
 import parse.LeitorCSV.ExecutorLeitorCSV;
