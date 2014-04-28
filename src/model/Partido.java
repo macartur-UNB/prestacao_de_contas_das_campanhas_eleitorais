@@ -1,5 +1,5 @@
 package model;
 
-public class Partido extends Entidade{
+public class Partido extends Pessoa{
 
 }
