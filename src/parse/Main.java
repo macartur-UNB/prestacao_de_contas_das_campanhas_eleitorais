@@ -3,8 +3,6 @@ package parse;
 import java.io.File;
 import java.io.IOException;
 
-import parse.cadastro.CadastrarCandidatos;
-
 public class Main {
 	
 	public static void main(String[] args) {		
@@ -17,8 +15,11 @@ public class Main {
 
 			System.out.println("cadastrando candidatos");
 			
-			CadastrarCandidatos cadastrarCandidatos;
-			cadastrarCandidatos = new CadastrarCandidatos(arquivoCSV, ano, linhaInicial, linhaFinal);
+			CandidatoIndicesParse candidatoIndicesParse;
+			candidatoIndicesParse = getCandidatoIndicesParse2004();
+			
+			CandidatoParse cadastrarCandidatos;
+			cadastrarCandidatos = new CandidatoParse(arquivoCSV, candidatoIndicesParse, linhaInicial, linhaFinal);
 			cadastrarCandidatos.cadastrar();
 			
 		} catch(Exception e) {
@@ -28,47 +29,15 @@ public class Main {
 		System.out.println("\nOk!");
 	}
 	
-	public interface CadastrarCandidato {
-		public void cadastrar();
-	}
-	
-	public static class CadastrarCandidatos2004 implements CadastrarCandidato {
+	public static CandidatoIndicesParse getCandidatoIndicesParse2004() {
+		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
+		candidatoIndicesParse.setIndiceNome(0);
+		candidatoIndicesParse.setIndiceCargoPleiteado(1);
+		candidatoIndicesParse.setIndicePartido(8);
+		candidatoIndicesParse.setIndiceNumero(3);
+		candidatoIndicesParse.setAno(2004);
 		
-		private CandidatoParse candidatoParse;
-		private String arquivoCSV;
-		private String divisao;
-		private int linhaInicial;
-		private int linhaFinal;
-		
-		public CadastrarCandidatos2004(String arquivoCSV, String divisao, int linhaInicial, int linhaFinal) {
-			this.candidatoParse = new CandidatoParse();
-			
-			this.arquivoCSV = arquivoCSV;
-			this.divisao = divisao;
-			this.linhaInicial = linhaInicial;
-			this.linhaFinal = linhaFinal;
-			
-			iniciarCandidato(candidatoParse);
-		}
-		
-		@Override
-		public void cadastrar() {
-			try {
-				this.candidatoParse.cadastrarCandidatos(this.arquivoCSV, this.divisao,
-						this.linhaInicial, this.linhaFinal);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		private void iniciarCandidato(CandidatoParse candidatoParse) {
-			candidatoParse.setIndiceNome(0);
-			candidatoParse.setIndiceCargoPleiteado(1);
-			candidatoParse.setIndicePartido(8);
-			candidatoParse.setIndiceNumero(3);
-			candidatoParse.setAno(2004);
-		}
-		
+		return candidatoIndicesParse;
 	}
 
 }

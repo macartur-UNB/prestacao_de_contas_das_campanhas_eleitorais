@@ -15,41 +15,50 @@
 			<td> <input type="file" name="arquivo" size="50" /> </td>
 		</tr>
 			<td> Tipo do Arquivo: </td>
-			<td> <input type="radio" name="tipo_arquivo" value="despesa" checked /> Despesa </td>
+			<td> <input type="radio" name="arquivo_tipo" value="despesa" checked /> Despesa </td>
 		</tr>
 		<tr>
 			<td> </td>
-			<td> <input type="radio" name="tipo_arquivo" value="receita" /> Receita </td>
+			<td> <input type="radio" name="arquivo_tipo" value="receita" /> Receita </td>
 		</tr>
 		<tr>
-			<td> </td>
-			<td>  <p align="right"> <input type="submit" value="carregar" /> </p> </td>
+			<td> Linha Inicial: </td>
+			<td> <input type="number" name="arquivo_linha_inicial" value="1" /> </td>
+		</tr>
+		<tr>
+			<td> Linha Final: </td>
+			<td> <input type="number" name="arquivo_linha_final" value="0" /> Preencha '0' para ler até o fim </td>
 		</tr>
 	</table>
 	
 	<br />
 	
+	
 	Indique o numero da coluna no arquivo de acordo com o dado:
 	<table>
 		<tr>
 			<td> Nome do Candidato: </td>
-			<td> <input type="number" name="candidato_nome" /> </td>
-		</tr>
-		<tr>
-			<td> Cargo do Candidato: </td>
-			<td> <input type="number" name="candidato_cargo" /> </td>
+			<td> <input type="number" name="indice_candidato_nome" /> </td>
 		</tr>
 		<tr>
 			<td> Partido do Candidato: </td>
-			<td> <input type="number" name="candidato_partido" /> </td>
+			<td> <input type="number" name="indice_candidato_partido" /> </td>
+		</tr>
+		<tr>
+			<td> Cargo do Candidato: </td>
+			<td> <input type="number" name="indice_candidato_cargo" /> </td>
 		</tr>
 		<tr>
 			<td> Numero do Candidato: </td>
-			<td> <input type="number" name="candidato_numero" /> </td>
+			<td> <input type="number" name="indice_candidato_numero" /> </td>
 		</tr>
 		<tr>
-			<td> Ano: </td>
-			<td> <input type="number" name="dado_ano" /> </td>
+			<td> Ano (Não é o índice, o ano mesmo): </td>
+			<td> <input type="number" name="indice_dado_ano" /> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td>  <p align="right"> <input type="submit" value="carregar" /> </p> </td>
 		</tr>
 	</table>
 </form>
