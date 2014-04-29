@@ -24,7 +24,7 @@ public class PartidoDAO {
 		this.conexaoMySQL.iniciarConexao();
 		
 		String comandoSQL = "INSERT INTO t_partido (sigla, numero)"
-				          + "VALUES(?,?,?,?,?)";
+				          + "VALUES(?,?)";
 		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
 
 		instrucaoSQL.setString(1, partido.getSigla());
