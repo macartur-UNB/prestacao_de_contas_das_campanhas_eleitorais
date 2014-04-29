@@ -1,14 +1,9 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Partido {
 	
 	private String numeroPartido;
 	private String sigla;
-	ArrayList<Candidato> candidatos;
-	ArrayList<Receita> arrecadacao;
-	ArrayList<Despesa> gasto;
 	
 	public Partido() {
 		
