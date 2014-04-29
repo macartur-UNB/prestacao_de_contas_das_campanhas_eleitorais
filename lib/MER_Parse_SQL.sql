@@ -25,6 +25,9 @@ CREATE  TABLE t_receita (
   tipo VARCHAR(45) NULL ,
   especie VARCHAR(45) NULL ,
   descricao VARCHAR(45) NULL ,
+  reciboEleitoral VARCHAR(45) NULL ,
+  nomeDoador VARCHAR(45) NULL ,
+  cadastroDoador VARCHAR(45) NULL ,
   PRIMARY KEY (id) 
 );
 
