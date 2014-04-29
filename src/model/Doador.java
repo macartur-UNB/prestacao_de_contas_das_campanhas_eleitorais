@@ -2,6 +2,8 @@ package model;
 
 public class Doador /* extends Pessoa */ {
 	
+	private String nome; /*P = Pessoa*/
+	private Boolean pessoaJuridica; /*P*/
 	private Integer cadastroNacional;
 
 	public Doador() {
@@ -14,9 +16,29 @@ public class Doador /* extends Pessoa */ {
 		
 		Doador outroDoador = (Doador) object;
 		
-		return (this.cadastroNacional.equals(outroDoador.getCadastroNacional()));
+		return (/*P*/this.nome.equals(outroDoador.getNome()) &&
+				/*P*/this.pessoaJuridica.equals(outroDoador.getPessoaJuridica()) &&
+				this.cadastroNacional.equals(outroDoador.getCadastroNacional()));
 	}
 
+	// INICIO P
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Boolean getPessoaJuridica() {
+		return pessoaJuridica;
+	}
+
+	public void setPessoaJuridica(Boolean pessoaJuridica) {
+		this.pessoaJuridica = pessoaJuridica;
+	}
+	// FIM P
+	
 	public Integer getCadastroNacional() {
 		return cadastroNacional;
 	}

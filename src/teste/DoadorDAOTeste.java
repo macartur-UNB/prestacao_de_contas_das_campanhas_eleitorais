@@ -1,35 +1,43 @@
 package teste;
 
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+
 import java.sql.SQLException;
+
+import model.Doador;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.ConexaoMySQL;
+import dao.DoadorDAO;
 
 public class DoadorDAOTeste {
 	
-	private ConexaoMySQL conexaoMySQL;
+	private DoadorDAO mockDoadorDAO;
 
 	@Before
 	public void setUp() {
-		this.conexaoMySQL = ConexaoMySQL.getInstancia();
+		this.mockDoadorDAO = mock(DoadorDAO.class);
 	}
 
 	@Test
-	public void NaoDeveLancarExcecaoAoIniciarAConexao() throws SQLException {
-		this.conexaoMySQL.iniciarConexao();
-	}
-	
-	@Test (expected = NullPointerException.class)
-	public void DeveLancarExcecaoAoEncerrarUmaConexaoQueNaoFoiIniciada() throws SQLException {
-		this.conexaoMySQL.encerrarConexao();
-	}
-	
-	@Test
-	public void NaoDeveLancarExcecaoAoEncerrarUmaConexaoQueFoiIniciada() throws SQLException {
-		this.conexaoMySQL.iniciarConexao();
-		this.conexaoMySQL.encerrarConexao();
+	public void naoDeveLancarExcecaoAoCadastrarUmDoadorNaoExistente() throws SQLException {
+		Doador doador = new Doador();
+		doador.setNome("Jose");
+		doador.setCadastroNacional(012345);
+		
+		this.mockDoadorDAO.cadastrarDoador(doador);
 	}
 
+	@Test (expected = SQLException.class)
+	public void deveLancarExcecaoAoCadastrarUmDoadorExistente() throws SQLException {
+		Doador doador = new Doador();
+		doador.setNome("Jose");
+		doador.setCadastroNacional(012345);
+		
+		doThrow(new SQLException()).when(this.mockDoadorDAO).cadastrarDoador(doador);
+		
+		this.mockDoadorDAO.cadastrarDoador(doador);
+	}
 }
