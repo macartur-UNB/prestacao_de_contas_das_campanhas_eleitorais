@@ -1,13 +1,22 @@
 package parse.view;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.FileItemIterator;
+import org.apache.tomcat.util.http.fileupload.FileItemStream;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import parse.CandidatoIndicesParse;
 import parse.CandidatoParse;
@@ -73,6 +82,36 @@ public class CarregarParse extends HttpServlet {
 		} catch (Exception e) {
 			saida.println("ERROR CarregarParse: " + e.getMessage());
 		}
+		
+		
+		
+		
+		try {
+			//Testes UPLOAD
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+			
+			ServletContext servletContext = this.getServletConfig().getServletContext();
+			File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+			factory.setRepository(repository);
+			
+			ServletFileUpload upload = new ServletFileUpload(factory);
+			
+			FileItemIterator items = upload.getItemIterator(request);
+			
+			while(items.hasNext()) {
+				FileItemStream item = items.next();
+				System.out.println("item: " + item.getName());
+//				if(!item.isFormField()) {
+//					InputStream inputStream = item.openStream();
+//				}
+			}
+		
+		} catch(Exception e) {
+			saida.println("ERROR teste upload: " + e.getMessage());
+		}
+		
+		
+		
 		
 	}
 	
