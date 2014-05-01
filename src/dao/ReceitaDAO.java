@@ -13,8 +13,13 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
+import model.Despesa;
+import model.Doador;
+import model.Fornecedor;
 import model.Receita;
 
 /*****************************************************************************/
@@ -55,8 +60,17 @@ public class ReceitaDAO {
 		PreparedStatement instrucaoSQL = 
 				this.conexaoMySQL.prepararInstrucao(comandoSQL);
 
-		// incluir os demais campos (metodos get herdados de movimentacao 
-		// financeira)
+		instrucaoSQL.setString(1, receita.getEmNomeDe().getNome());
+		//instrucaoSQL.setString(2, receita.getEmNomeDe().getAno()); (decidir se e candidato ou partido)
+		instrucaoSQL.setString(3, receita.getHoraRegistro());
+		//instrucaoSQL.setString(4, receita.getEntregaEmConjunto()); (formatacao)
+		instrucaoSQL.setString(5, receita.getNumeroDocumento());
+		//instrucaoSQL.setString(6, receita.getData()); (formatacao)
+		//instrucaoSQL.setString(7, receita.getValor()); (transformar em String)
+		instrucaoSQL.setString(8, receita.getFonte());
+		instrucaoSQL.setString(9, receita.getTipo());
+		instrucaoSQL.setString(10, receita.getEspecie());
+		instrucaoSQL.setString(11, receita.getDescricao());
 		instrucaoSQL.setString(12, receita.getReciboEleitoral());
 		instrucaoSQL.setString(13, receita.getDoador().getNome());
 		instrucaoSQL.setString(14, receita.getDoador().getCadastroNacional());
@@ -65,6 +79,48 @@ public class ReceitaDAO {
 		
 		this.conexaoMySQL.encerrarConexao();
 	}
+	
+	public LinkedList<Receita> getListaReceitas() throws SQLException {
+		this.conexaoMySQL.iniciarConexao();
+		
+		String comandoSQL = "SELECT * FROM t_receita";
+		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
+		
+		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+		
+		LinkedList<Receita> listaReceitas = new LinkedList<>();
+		
+		while(resultadoSQL.next()) {
+			Receita receita = new Receita();
+			//receita.setEmNomeDe(...)
+			receita.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
+			if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
+				receita.setEntregaEmConjunto(true);
+			} else {
+				receita.setEntregaEmConjunto(false);
+			}
+			receita.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
+			//receita.setData(data) verificar formatacao
+			receita.setValor(resultadoSQL.getFloat(VALOR));
+			receita.setFonte(resultadoSQL.getString(FONTE));
+			receita.setTipo(resultadoSQL.getString(TIPO));
+			receita.setEspecie(resultadoSQL.getString(ESPECIE));
+			receita.setDescricao(resultadoSQL.getString(DESCRICAO));
+			receita.setReciboEleitoral(resultadoSQL.getString(RECIBOELEITORAL));
+			Doador doador = new Doador();
+			doador.setNome(resultadoSQL.getString(NOMEDOADOR));
+			doador.setCadastroNacional("CADASTRODOADOR");
+			receita.setDoador(doador);
+			
+			if(receita != null)
+				listaReceitas.add(receita);
+		}
+		
+		this.conexaoMySQL.encerrarConexao();
+		
+		return listaReceitas;
+	}
+	
 	
 }
 

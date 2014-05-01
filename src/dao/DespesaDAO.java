@@ -13,9 +13,13 @@
 package dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 import model.Despesa;
+import model.Fornecedor;
+
 
 /*****************************************************************************/
 public class DespesaDAO {
@@ -55,8 +59,17 @@ public class DespesaDAO {
 		PreparedStatement instrucaoSQL = 
 				this.conexaoMySQL.prepararInstrucao(comandoSQL);
 
-		// incluir os demais campos (metodos get herdados de movimentacao 
-		// financeira)
+		instrucaoSQL.setString(1, despesa.getEmNomeDe().getNome());
+		//instrucaoSQL.setString(2, despesa.getEmNomeDe().getAno()); (decidir se e candidato ou partido)
+		instrucaoSQL.setString(3, despesa.getHoraRegistro());
+		//instrucaoSQL.setString(4, despesa.getEntregaEmConjunto()); (formatacao)
+		instrucaoSQL.setString(5, despesa.getNumeroDocumento());
+		//instrucaoSQL.setString(6, despesa.getData()); (formatacao)
+		//instrucaoSQL.setString(7, despesa.getValor()); (transformar em String)
+		instrucaoSQL.setString(8, despesa.getFonte());
+		instrucaoSQL.setString(9, despesa.getTipo());
+		instrucaoSQL.setString(10, despesa.getEspecie());
+		instrucaoSQL.setString(11, despesa.getDescricao());
 		instrucaoSQL.setString(12, despesa.getTipoDocumento());
 		instrucaoSQL.setString(13, despesa.getFornecedor().getNome());
 		instrucaoSQL.setString(14, despesa.getFornecedor().getCadastroNacional());
@@ -64,6 +77,47 @@ public class DespesaDAO {
 		instrucaoSQL.execute();
 		
 		this.conexaoMySQL.encerrarConexao();
+	}
+	
+	public LinkedList<Despesa> getListaDespesas() throws SQLException {
+		this.conexaoMySQL.iniciarConexao();
+		
+		String comandoSQL = "SELECT * FROM t_despesa";
+		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
+		
+		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+		
+		LinkedList<Despesa> listaDespesas = new LinkedList<>();
+		
+		while(resultadoSQL.next()) {
+			Despesa despesa = new Despesa();
+			//despesa.setEmNomeDe(...)
+			despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
+			if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
+				despesa.setEntregaEmConjunto(true);
+			} else {
+				despesa.setEntregaEmConjunto(false);
+			}
+			despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
+			//despesa.setData(data) verificar formatacao
+			despesa.setValor(resultadoSQL.getFloat(VALOR));
+			despesa.setFonte(resultadoSQL.getString(FONTE));
+			despesa.setTipo(resultadoSQL.getString(TIPO));
+			despesa.setEspecie(resultadoSQL.getString(ESPECIE));
+			despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
+			despesa.setTipoDocumento(resultadoSQL.getString(TIPODOC));
+			Fornecedor fornecedor = new Fornecedor();
+			fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
+			fornecedor.setCadastroNacional("CADASTROFORNECEDOR");
+			despesa.setFornecedor(fornecedor);
+			
+			if(despesa != null)
+				listaDespesas.add(despesa);
+		}
+		
+		this.conexaoMySQL.encerrarConexao();
+		
+		return listaDespesas;
 	}
 	
 }
