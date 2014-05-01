@@ -138,9 +138,9 @@ public class CandidatoParse {
 		else
 			candidato.setCpf(null);
 			
-		if(this.indicePartido > INDICE_INVALIDO)
-			candidato.setPartido(campo[this.indicePartido]);
-		else
+//		if(this.indicePartido > INDICE_INVALIDO)
+//			candidato.setPartido(campo[this.indicePartido]);
+//		else
 			candidato.setPartido(null);
 			
 		if(this.indiceNumero > INDICE_INVALIDO)
@@ -154,24 +154,10 @@ public class CandidatoParse {
 			candidato.setAno(null);
 			
 		if(this.indiceCargoPleiteado > INDICE_INVALIDO)
-			candidato.setCargoPleiteado(campo[this.indiceCargoPleiteado]);
+			candidato.setCargo(campo[this.indiceCargoPleiteado]);
 		else
-			candidato.setCargoPleiteado(null);
+			candidato.setCargo(null);
 			
-		if(this.indiceDominio > INDICE_INVALIDO)
-			candidato.setDominio(campo[this.indiceDominio]);
-		else
-			candidato.setDominio(null);
-			
-		if(this.indiceArrecadacao > INDICE_INVALIDO)
-			candidato.setArrecadacao(Integer.getInteger(campo[this.indiceArrecadacao]));
-		else
-			candidato.setArrecadacao(null);
-			
-		if(this.indiceDespesa > INDICE_INVALIDO)
-			candidato.setDespesa(Integer.getInteger(campo[this.indiceDespesa]));
-		else
-			candidato.setDespesa(null);
 	}
 	
 	private class CadastrarCandidatos implements ExecutorLeitorCSV{
