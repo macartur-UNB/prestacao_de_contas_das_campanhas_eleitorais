@@ -1,3 +1,8 @@
+/** CRIADO POR:          Rafael Valenca
+ *  ULTIMA MODIFICACAO:  01/05/2014
+ * 
+ *  COMENTARIOS: 
+**/
 package model;
 
 public class Despesa extends MovimentacaoFinanceira {

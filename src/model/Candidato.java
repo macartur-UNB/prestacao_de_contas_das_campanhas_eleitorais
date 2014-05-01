@@ -1,17 +1,21 @@
+/** CRIADO POR:          
+ *  ULTIMA MODIFICACAO:  01/05/2014 (Rafael)
+ * 
+ *  COMENTARIOS:
+ *  (Rafael): Adequei os atributos a modelagem UML.
+**/
+
 package model;
 
 public class Candidato extends Pessoa{
 
-	private String nome;
-	private String cpf;
-	private String partido;
-	private String numero;
 	private Integer ano;
-	private String cargoPleiteado;
-	private String resultadoEleicao;
-	private String dominio;
-	private Integer arrecadacao;
-	private Integer despesa;
+	private String  cpf;
+	private String  cargo;
+	private Partido partido;
+	private String numero;
+	private String  uf;
+	private Boolean foiEleito;
 	
 	public Candidato() {
 		
@@ -24,17 +28,10 @@ public class Candidato extends Pessoa{
 		
 		Candidato outroCandidato = (Candidato) object;
 		
-		return ( this.nome.equals(outroCandidato.getNome()) &&
+		return ( this.getNome().equals(outroCandidato.getNome()) &&
 				 this.ano.equals(outroCandidato.getAno()) );
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	public String getCpf() {
 		return cpf;
@@ -44,11 +41,11 @@ public class Candidato extends Pessoa{
 		this.cpf = cpf;
 	}
 
-	public String getPartido() {
+	public Partido getPartido() {
 		return partido;
 	}
 
-	public void setPartido(String partido) {
+	public void setPartido(Partido partido) {
 		this.partido = partido;
 	}
 
@@ -68,44 +65,29 @@ public class Candidato extends Pessoa{
 		this.ano = ano;
 	}
 
-	public String getCargoPleiteado() {
-		return cargoPleiteado;
+	public String getCargo() {
+		return cargo;
 	}
 
-	public void setCargoPleiteado(String cargoPleiteado) {
-		this.cargoPleiteado = cargoPleiteado;
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 
-	public String getResultadoEleicao() {
-		return resultadoEleicao;
+
+	public String getUf() {
+		return uf;
 	}
 
-	public void setResultadoEleicao(String resultadoEleicao) {
-		this.resultadoEleicao = resultadoEleicao;
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	
+	public Boolean getFoiEleito() {
+		return foiEleito;
 	}
 
-	public String getDominio() {
-		return dominio;
+	public void setFoiEleito(Boolean foiEleito) {
+		this.foiEleito = foiEleito;
 	}
-
-	public void setDominio(String dominio) {
-		this.dominio = dominio;
-	}
-
-	public Integer getArrecadacao() {
-		return arrecadacao;
-	}
-
-	public void setArrecadacao(Integer arrecadacao) {
-		this.arrecadacao = arrecadacao;
-	}
-
-	public Integer getDespesa() {
-		return despesa;
-	}
-
-	public void setDespesa(Integer despesa) {
-		this.despesa = despesa;
-	}	
 	
 }

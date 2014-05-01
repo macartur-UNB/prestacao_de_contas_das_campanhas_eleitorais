@@ -1,3 +1,10 @@
+/** CRIADO POR:          
+ *  ULTIMA MODIFICACAO:  01/05/2014 (Rafael)
+ * 
+ *  COMENTARIOS:
+ *  (Rafael): Adequei os atributos a modelagem UML.
+**/
+
 package dao;
 
 import java.sql.PreparedStatement;
@@ -6,6 +13,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import model.Candidato;
+import model.Partido;
 
 public class CandidatoDAO {
 	
@@ -36,8 +44,8 @@ public class CandidatoDAO {
 		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
 
 		instrucaoSQL.setString(1, candidato.getNome());
-		instrucaoSQL.setString(2, candidato.getCargoPleiteado());
-		instrucaoSQL.setString(3, candidato.getPartido());
+		instrucaoSQL.setString(2, candidato.getCargo());
+		instrucaoSQL.setString(3, candidato.getPartido().getNome());
 		instrucaoSQL.setString(4, candidato.getNumero());
 		instrucaoSQL.setInt(5, candidato.getAno());
 		
@@ -56,18 +64,25 @@ public class CandidatoDAO {
 		
 		LinkedList<Candidato> listaCandidatos = new LinkedList<>();
 		
+		Partido partido = new Partido();
+		
+		
 		while(resultadoSQL.next()) {
 			Candidato candidato = new Candidato();
 			candidato.setNome(resultadoSQL.getString(NOME));
 			candidato.setCpf(resultadoSQL.getString(CPF));
-			candidato.setPartido(resultadoSQL.getString(PARTIDO));
+			partido.setNome(resultadoSQL.getString(PARTIDO));
+			candidato.setPartido(partido);
 			candidato.setNumero(resultadoSQL.getString(NUMERO));
 			candidato.setAno(resultadoSQL.getInt(ANO));
-			candidato.setCargoPleiteado(resultadoSQL.getString(CARGO));
-			candidato.setResultadoEleicao(resultadoSQL.getString(RESULTADO));
-			candidato.setDominio(resultadoSQL.getString(DOMINIO));
-			candidato.setArrecadacao(resultadoSQL.getInt(ARRECADACAO));
-			candidato.setDespesa(resultadoSQL.getInt(DESPESA));
+			candidato.setCargo(resultadoSQL.getString(CARGO));
+			if(resultadoSQL.getString(RESULTADO).equals("Eleito")){
+				candidato.setFoiEleito(true);
+			} else {
+				candidato.setFoiEleito(false);
+			}
+			
+			candidato.setUf(resultadoSQL.getString(DOMINIO));
 			
 			if(candidato != null)
 				listaCandidatos.add(candidato);
