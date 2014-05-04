@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="carregarParse" method="POST">
+<form action="carregarParse" method="POST" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td> Arquivo do Parse: </td>

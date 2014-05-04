@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<%
-	Candidato candidato = new Candidato();
-	candidato.setNome("Jose");
-	out.println("Nome do Candidato: " + candidato.getNome());
-%>
+<form method="POST" action="carregarParse" enctype="multipart/form-data">  
+    <input type="file" name="arquivo">  
+    <input type="hidden" name="teste" value="blablabla">  
+    <input type="submit">  
+</form>  
 
 </body>
 </html>
