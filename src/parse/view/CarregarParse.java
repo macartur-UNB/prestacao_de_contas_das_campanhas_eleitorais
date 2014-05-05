@@ -1,6 +1,11 @@
 package parse.view;
 
+import java.awt.event.ItemEvent;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
@@ -10,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
@@ -49,9 +55,20 @@ public class CarregarParse extends HttpServlet {
 				
 				while(it.hasNext()) {
 					FileItem fileItem = it.next();
-					saida.println("FileItem: " + fileItem.getName());
+					if(!fileItem.isFormField()) {
+						saida.println("FileItem: " + fileItem.getName());
+						
+						InputStream inputStream = fileItem.getInputStream();
+						BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+						String linha;
+						while( (linha = bufferedReader.readLine()) != null) {
+							saida.println(linha);
+						}
+					}
 				}
 			}
+			
+			
 		
 		} catch(Exception e) {
 			saida.println("ERROR teste upload: " + e.getMessage());
