@@ -2,6 +2,8 @@ package parse;
 
 import java.io.IOException;
 
+import org.apache.commons.fileupload.FileItem;
+
 import dao.CandidatoDAO;
 import model.Candidato;
 import parse.LeitorCSV.ExecutorLeitorCSV;
@@ -14,13 +16,13 @@ public class CandidatoParse {
 	private CandidatoDAO candidatoDAO;
 	private CandidatoIndicesParse candidatoParse;
 	
-	private String arquivoCSV;
+	private FileItem arquivoCSV;
 	private String divisao;
 	private int linhaInicial;
 	private int linhaFinal;
 	
 	
-	public CandidatoParse(String arquivoCSV, CandidatoIndicesParse candidatoParse, int linhaInicial, int linhaFinal) throws Exception {
+	public CandidatoParse(FileItem arquivoCSV, CandidatoIndicesParse candidatoParse, int linhaInicial, int linhaFinal) throws Exception {
 		this.leitorCSV = new LeitorCSV();
 		this.candidatoDAO = new CandidatoDAO();
 		this.candidatoParse = candidatoParse;
@@ -31,7 +33,7 @@ public class CandidatoParse {
 		this.linhaFinal = linhaFinal;
 	}
 	
-	public CandidatoParse(String arquivoCSV, CandidatoIndicesParse candidatoParse, int linhaInicial) throws Exception {
+	public CandidatoParse(FileItem arquivoCSV, CandidatoIndicesParse candidatoParse, int linhaInicial) throws Exception {
 		this(arquivoCSV, candidatoParse, linhaInicial, FIM_DO_ARQUIVO);
 	}
 	
@@ -49,11 +51,11 @@ public class CandidatoParse {
 		}
 	}
 	
-	private void cadastrarCandidatos(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
+	private void cadastrarCandidatos(FileItem arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
 		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, new CadastrarCandidatos(), linhaInicial, linhaFinal);
 	}
 	
-	private void cadastrarCandidatos(String arquivo, String divisao, int linhaInicial) throws IOException {
+	private void cadastrarCandidatos(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
 		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, new CadastrarCandidatos(), linhaInicial);
 	}
 	

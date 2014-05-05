@@ -34,33 +34,6 @@
 	<br />
 	
 	
-	Indique o numero da coluna no arquivo de acordo com o dado:
-	<table>
-		<tr>
-			<td> Nome do Candidato: </td>
-			<td> <input type="number" name="indice_candidato_nome" /> </td>
-		</tr>
-		<tr>
-			<td> Partido do Candidato: </td>
-			<td> <input type="number" name="indice_candidato_partido" /> </td>
-		</tr>
-		<tr>
-			<td> Cargo do Candidato: </td>
-			<td> <input type="number" name="indice_candidato_cargo" /> </td>
-		</tr>
-		<tr>
-			<td> Numero do Candidato: </td>
-			<td> <input type="number" name="indice_candidato_numero" /> </td>
-		</tr>
-		<tr>
-			<td> Ano (Não é o índice, o ano mesmo): </td>
-			<td> <input type="number" name="indice_dado_ano" /> </td>
-		</tr>
-		<tr>
-			<td> </td>
-			<td>  <p align="right"> <input type="submit" value="carregar" /> </p> </td>
-		</tr>
-	</table>
 </form>
 
 </body>

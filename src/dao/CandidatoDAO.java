@@ -36,9 +36,9 @@ public class CandidatoDAO {
 	
 	public void cadastrarCandidato(Candidato candidato) throws SQLException {
 		validarSeCandidatoNaoExiste(candidato);
-		
+
 		this.conexaoMySQL.iniciarConexao();
-		
+
 		String comandoSQL = "INSERT INTO t_candidato (nome, cargo_pleiteado, partido, numero, ano)"
 				          + "VALUES(?,?,?,?,?)";
 		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
@@ -48,9 +48,9 @@ public class CandidatoDAO {
 		instrucaoSQL.setString(3, candidato.getPartido().getSigla());
 		instrucaoSQL.setString(4, candidato.getNumero());
 		instrucaoSQL.setInt(5, candidato.getAno());
-		
+
 		instrucaoSQL.execute();
-		
+
 		this.conexaoMySQL.encerrarConexao();
 	}
 	

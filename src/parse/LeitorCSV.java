@@ -6,10 +6,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
 
 public class LeitorCSV {
 	
@@ -21,10 +24,10 @@ public class LeitorCSV {
 		
 	}
 	
-	public void executarMetodoPorLinhaLida(String arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial, int linhaFinal) throws IOException {
+	public void executarMetodoPorLinhaLida(FileItem arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial, int linhaFinal) throws IOException {
 		String campo[];
 		String linha;
-		BufferedReader leitorArquivo = new BufferedReader(new FileReader(arquivo));
+		BufferedReader leitorArquivo = new BufferedReader(new InputStreamReader(arquivo.getInputStream()));
 		
 		ignorarLinhas(leitorArquivo, linhaInicial);
 		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) && (i <= linhaFinal) && (!linha.isEmpty()); i++ ) {
@@ -37,16 +40,16 @@ public class LeitorCSV {
 		leitorArquivo.close();
 	}
 	
-	public void executarMetodoPorLinhaLida(String arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial) throws IOException {
+	public void executarMetodoPorLinhaLida(FileItem arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial) throws IOException {
 		int numeroLinhas = getNumeroLinhas(arquivo);
 		executarMetodoPorLinhaLida(arquivo, divisao, executorLeitorCSV, linhaInicial, numeroLinhas);
 	}
 	
-	public LinkedList<String[]> getCamposCSV(String arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
+	public LinkedList<String[]> getCamposCSV(FileItem arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
 		LinkedList<String[]> listaCampos;
 		BufferedReader leitorArquivo;
 		
-		leitorArquivo = new BufferedReader(new FileReader(arquivo));
+		leitorArquivo = new BufferedReader(new InputStreamReader(arquivo.getInputStream()));
 		
 		ignorarLinhas(leitorArquivo, linhaInicial);
 		listaCampos = (LinkedList<String[]>) lerLinhas(leitorArquivo, divisao, linhaInicial, linhaFinal);
@@ -56,23 +59,22 @@ public class LeitorCSV {
 		return listaCampos;
 	}
 	
-	public List<String[]> getCamposCSV(String arquivo, String divisao, int linhaInicial) throws IOException {
+	public List<String[]> getCamposCSV(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
 		int numeroLinhas;
 		numeroLinhas = getNumeroLinhas(arquivo);
 		return getCamposCSV(arquivo, divisao, linhaInicial, numeroLinhas);
 	}
 	
-	public List<String[]> getCamposCSV(String arquivo, String divisao) throws IOException {
+	public List<String[]> getCamposCSV(FileItem arquivo, String divisao) throws IOException {
 		return getCamposCSV(arquivo, divisao, 1);
 	}
 	
-	public int getNumeroLinhas(String arquivo) throws IOException {
+	public int getNumeroLinhas(FileItem arquivo) throws IOException {
 		int numeroLinhas;
 		
-		File arquivoLeitura = new File(arquivo);
-		long tamanhoArquivo = arquivoLeitura.length();
-		FileInputStream fileInputStream = new FileInputStream(arquivoLeitura);
-		DataInputStream dataInputStream = new DataInputStream(fileInputStream);
+		long tamanhoArquivo = arquivo.getSize();
+		InputStream inputStream = arquivo.getInputStream();
+		DataInputStream dataInputStream = new DataInputStream(inputStream);
 		
 		LineNumberReader lineRead = new LineNumberReader(new InputStreamReader(dataInputStream));
 		lineRead.skip(tamanhoArquivo);
@@ -81,7 +83,7 @@ public class LeitorCSV {
 		
 		lineRead.close();
 		dataInputStream.close();
-		fileInputStream.close();
+		inputStream.close();
 		
 		return numeroLinhas;
 	}
