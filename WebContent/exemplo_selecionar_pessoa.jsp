@@ -15,7 +15,7 @@
 <jsp:useBean id="controle" class="parse.exemplo.ExemploPessoaControle"/>
 
 <h4> Lista de Pessoas: </h4>
-<c:forEach var="pessoa" items="${controle.lista}">
+<c:forEach var="pessoa" items="${controle.listaOrdenadaIdade}">
 	<c:url var="pessoaUrl" value="/selecionarPessoa">
 		<c:param name="nome" value="${pessoa.nome}"></c:param>
 		<c:param name="idade" value="${pessoa.idade}"></c:param>
