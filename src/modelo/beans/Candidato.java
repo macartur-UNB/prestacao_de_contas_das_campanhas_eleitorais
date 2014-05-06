@@ -7,7 +7,7 @@
 
 package modelo.beans;
 
-public class Candidato extends Pessoa{
+public class Candidato extends Pessoa {
 
 	public static final String STRING_VAZIO = "";
 	public static final Integer INTEGER_VAZIO = 0;
