@@ -15,11 +15,11 @@ public class Candidato extends Pessoa{
 	public static final Partido PARTIDO_VAZIO = new Partido();
 	
 	private Integer ano;
-	private String  cpf;
-	private String  cargo;
+	private String cpf;
+	private String cargo;
 	private Partido partido;
 	private String numero;
-	private String  uf;
+	private String uf;
 	private Boolean foiEleito;
 	
 	public Candidato() {

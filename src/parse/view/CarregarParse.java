@@ -17,7 +17,7 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import parse.LeitorCSV;
+import parse.Parse;
 import parse.cadastro.PartidoCadastroParse;
 
 @WebServlet("/carregarParse")
@@ -54,6 +54,7 @@ public class CarregarParse extends HttpServlet {
 				FileItem arquivo = null;
 				String tipoArquivo = "";
 				String ano = "";
+				String divisao = "\";\"";
 				int linhaInicial = 1;
 				
 				
@@ -94,11 +95,9 @@ public class CarregarParse extends HttpServlet {
 					}
 				}
 
-				PartidoCadastroParse cadastroPartidoParse = new PartidoCadastroParse(tipoArquivo, ano);
-				LeitorCSV leitorCSV = new LeitorCSV();
+				Parse parse = new Parse(tipoArquivo, ano);
+				parse.executarParse(arquivo, divisao, linhaInicial);
 				
-				leitorCSV.executarMetodoPorLinhaLida(arquivo, "\";\"", cadastroPartidoParse, linhaInicial);
-				cadastroPartidoParse.finalizarCadastros();
 				
 				saida.println("Parse Realizado com Sucesso!");
 			}
