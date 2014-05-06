@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class MovimentacaoFinanceira {
 
-	private Pessoa emNomeDe; //Classe ainda não criada
+	private Pessoa emNomeDe;
 	private String horaRegistro;
 	private boolean entregaEmConjunto;
 	private String numeroDocumento;

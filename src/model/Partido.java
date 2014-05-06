@@ -14,7 +14,7 @@ public class Partido {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Partido) )
+		if( !(object instanceof Partido) || object == null )
 			return false;
 		
 		Partido outroPartido = (Partido) object;

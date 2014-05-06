@@ -8,12 +8,15 @@ public class Despesa extends MovimentacaoFinanceira {
 	public String getTipoDocumento() {
 		return tipoDocumento;
 	}
+	
 	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
+	
 	public Fornecedor getFornecedor() {
 		return fornecedor;
 	}
+	
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
 	}

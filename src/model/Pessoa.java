@@ -5,7 +5,9 @@ public abstract class Pessoa {
 	private String nome;
 	protected Boolean pessoaJuridica;
 
-	public Pessoa() {}
+	public Pessoa() {
+		
+	}
 
 	public String getNome() {
 		return nome;
@@ -22,6 +24,5 @@ public abstract class Pessoa {
 	public void setPessoaJuridica(Boolean pessoaJuridica) {
 		this.pessoaJuridica = pessoaJuridica;
 	}
-	
 	
 }
