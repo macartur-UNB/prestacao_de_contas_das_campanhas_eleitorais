@@ -8,8 +8,8 @@ public class Partido {
 	private String sigla;
 	
 	public Partido() {
-		this.sigla = "";
-		this.numeroPartido = "";
+		this.sigla = CAMPO_VAZIO;
+		this.numeroPartido = CAMPO_VAZIO;
 	}
 	
 	@Override

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import model.Candidato;
@@ -32,8 +33,52 @@ public class CandidatoDAO {
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
 	
+	private PartidoDAO partidoDAO;
+	
 	public CandidatoDAO() {
-		
+		this.partidoDAO = new PartidoDAO();
+	}
+	
+	public void cadastrarCandidatos(ArrayList<Candidato> listaCandidatos) throws SQLException {
+		try {
+			ArrayList<Candidato> listaCandidatosNaoCadastrados = new ArrayList<>();
+			ArrayList<Candidato> listaCandidatosAtualizaveis = new ArrayList<>();
+			ArrayList<Candidato> listaCandidatosCadastrados = new ArrayList<>();
+			for(Candidato candidato : listaCandidatos) {
+				if(!listaCandidatosCadastrados.contains(candidato)) {
+					listaCandidatosNaoCadastrados.add(candidato);
+				} else {
+					listaCandidatosAtualizaveis.add(candidato);
+				}
+			}
+			
+			this.conexao = new ConexaoBancoDados().getConexao();
+			
+			String comandoSQL = "INSERT INTO t_candidato (nome, cargo_pleiteado, "
+					+ "partido, numero, ano)"
+			        + "VALUES(?,?,?,?,?)";
+			
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
+			
+			this.conexao.setAutoCommit(false);
+			
+			for(Candidato candidato : listaCandidatosNaoCadastrados) {
+				this.instrucaoSQL.setString(1, candidato.getNome());
+				this.instrucaoSQL.setString(2, candidato.getCargo());
+				this.instrucaoSQL.setString(3, candidato.getPartido().getSigla());
+				this.instrucaoSQL.setString(4, candidato.getNumero());
+				this.instrucaoSQL.setInt(5, candidato.getAno());
+			}
+			
+			this.instrucaoSQL.executeBatch();
+			
+			this.conexao.commit();
+			
+		} catch(Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			fecharConexao();
+		}
 	}
 		
 	public LinkedList<Candidato> getListaCandidatos() throws SQLException {
@@ -74,7 +119,24 @@ public class CandidatoDAO {
 			this.conexao.close();
 		}
 		
+		ArrayList<Partido> listaPartidos = new ArrayList<>(this.partidoDAO.getListaPartidos());
+		for(Candidato candidato : listaCandidatos) {
+			for(Partido partido : listaPartidos) {
+				if(candidato.getPartido().getSigla().equals(partido.getSigla())) {
+					candidato.setPartido(partido);
+				}
+			}
+		}
+		
 		return listaCandidatos;
 	}
-		
+	
+	private void fecharConexao() throws SQLException {
+		if(this.instrucaoSQL != null) {
+			this.instrucaoSQL.close();
+		}
+		if(this.conexao != null) {
+			this.conexao.close();
+		}
+	}
 }

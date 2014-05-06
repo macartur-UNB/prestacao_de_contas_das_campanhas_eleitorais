@@ -1,8 +1,10 @@
-package parse;
+package parse.cadastro;
 
 import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.PartidoParse;
+import parse.indices.PartidoIndicesParse;
 
-public class CadastroPartidoParse implements ExecutorLeitorCSV{
+public class PartidoCadastroParse implements ExecutorLeitorCSV{
 	
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
@@ -17,7 +19,7 @@ public class CadastroPartidoParse implements ExecutorLeitorCSV{
 	private PartidoIndicesParse partidoIndicesParse;
 	private PartidoParse partidoParse;
 	
-	public CadastroPartidoParse(String tipoArquivo, String ano) {
+	public PartidoCadastroParse(String tipoArquivo, String ano) {
 		this.linhasLidas = 0;
 		
 		this.partidoIndicesParse = getPartidoIndicesParse(tipoArquivo, ano);
