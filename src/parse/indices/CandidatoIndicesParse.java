@@ -1,14 +1,12 @@
 package parse.indices;
 
-
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
-
 
 public class CandidatoIndicesParse {
 
 	public static final int INDICE_INVALIDO = -1;
-	
+
 	private int ano;
 	private int indiceNome;
 	private int indiceCpf;
@@ -18,7 +16,7 @@ public class CandidatoIndicesParse {
 	private int indiceUf;
 	private int indiceFoiEleito;
 	private int indiceResultadoUltimaEleicao;
-	
+
 	public CandidatoIndicesParse(int ano) {
 		this.ano = ano;
 		this.indiceNome = INDICE_INVALIDO;
@@ -30,10 +28,10 @@ public class CandidatoIndicesParse {
 		this.indiceFoiEleito = INDICE_INVALIDO;
 		this.indiceResultadoUltimaEleicao = INDICE_INVALIDO;
 	}
-	
+
 	public void iniciarCandidato(Candidato candidato, String campo[]) {
 		reiniciarCandidato(candidato);
-		
+
 		candidato.setAno(ano);
 		if(indiceValido(this.indiceNome)) {
 			candidato.setNome(campo[this.indiceNome]);
@@ -65,13 +63,13 @@ public class CandidatoIndicesParse {
 		}
 		candidato.setPessoaJuridica(false);
 	}
-	
+
 	public Candidato iniciarCandidato(String campo[]) {
 		Candidato candidato = new Candidato();
 		iniciarCandidato(candidato, campo);
 		return candidato;
 	}
-	
+
 	private void reiniciarCandidato(Candidato candidato) {
 		candidato.setNome(Candidato.STRING_VAZIO);
 		candidato.setAno(Candidato.INTEGER_VAZIO);
@@ -156,11 +154,7 @@ public class CandidatoIndicesParse {
 	public int getIndiceFoiEleito() {
 		return indiceFoiEleito;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> Parse funcionando para o Candidato, 2002 a 2008
-	
 	public int getIndiceResultadoUltimaEleicao() {
 		return indiceResultadoUltimaEleicao;
 	}
@@ -168,5 +162,5 @@ public class CandidatoIndicesParse {
 	public void setIndiceResultadoUltimaEleicao(int indiceResultadoUltimaEleicao) {
 		this.indiceResultadoUltimaEleicao = indiceResultadoUltimaEleicao;
 	}
-	
+
 }

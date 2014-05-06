@@ -31,14 +31,12 @@ public class CandidatoDAO {
 	
 	public static final String NOME = "nome";
 	public static final String CPF = "cpf";
-	public static final String PARTIDO = "partido";
+	public static final String UF = "uf";
+	public static final String PARTIDO = "partido_sigla";
 	public static final String NUMERO = "numero";
 	public static final String ANO = "ano";
 	public static final String CARGO = "cargo_pleiteado";
 	public static final String RESULTADO = "resultado_eleicao";
-	public static final String DOMINIO = "dominio";
-	public static final String ARRECADACAO = "arrecadacao";
-	public static final String DESPESA = "despesa";
 	
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
@@ -62,8 +60,8 @@ public class CandidatoDAO {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
 			String comandoSQL = "INSERT INTO t_candidato (nome, cargo_pleiteado, "
-					+ "partido, numero, ano, cpf)"
-			        + "VALUES(?,?,?,?,?,?)";
+					+ "partido_sigla, numero, ano, cpf, uf, resultado_eleicao)"
+			        + "VALUES(?,?,?,?,?,?,?,?)";
 			
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			
@@ -76,6 +74,8 @@ public class CandidatoDAO {
 				this.instrucaoSQL.setString(4, candidato.getNumero());
 				this.instrucaoSQL.setInt(5, candidato.getAno());
 				this.instrucaoSQL.setString(6, candidato.getCpf());
+				this.instrucaoSQL.setString(7, candidato.getUf());
+				this.instrucaoSQL.setInt(8, candidato.getResultadoUltimaEleicao());
 				this.instrucaoSQL.addBatch();
 			}
 			
@@ -84,7 +84,7 @@ public class CandidatoDAO {
 			this.conexao.commit();
 			
 		} catch(Exception e) {
-			throw new SQLException(e.getMessage());
+			throw new SQLException("Candidato - " + e.getMessage());
 		} finally {
 			fecharConexao();
 		}
@@ -109,8 +109,8 @@ public class CandidatoDAO {
 				candidato.setNumero(resultadoSQL.getString(NUMERO));
 				candidato.setAno(resultadoSQL.getInt(ANO));
 				candidato.setCargo(resultadoSQL.getString(CARGO));
-				
-				candidato.setUf(resultadoSQL.getString(DOMINIO));
+				candidato.setUf(resultadoSQL.getString(UF));
+				candidato.setResultadoUltimaEleicao(resultadoSQL.getInt(RESULTADO));
 				
 				if(candidato != null)
 					listaCandidatos.add(candidato);
