@@ -1,9 +1,7 @@
 package parse.indices;
 
-
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
-
 
 public class CandidatoIndicesParse {
 
@@ -19,10 +17,14 @@ public class CandidatoIndicesParse {
 	private int indiceFoiEleito;
 	private int indiceResultadoUltimaEleicao;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 	
 >>>>>>> Alterado o MER para conter as chaves estrangeiras
+=======
+
+>>>>>>> Renomeando os nomes dos pacotes para adequar ao doc de arquitetura
 	public CandidatoIndicesParse(int ano) {
 		this.ano = ano;
 		this.indiceNome = INDICE_INVALIDO;
@@ -162,11 +164,14 @@ public class CandidatoIndicesParse {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 	
 >>>>>>> Alterado o MER para conter as chaves estrangeiras
+=======
+>>>>>>> Renomeando os nomes dos pacotes para adequar ao doc de arquitetura
 	public int getIndiceResultadoUltimaEleicao() {
 		return indiceResultadoUltimaEleicao;
 	}
@@ -175,9 +180,14 @@ public class CandidatoIndicesParse {
 		this.indiceResultadoUltimaEleicao = indiceResultadoUltimaEleicao;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 	
 >>>>>>> Alterado o MER para conter as chaves estrangeiras
 }
 
+=======
+
+}
+>>>>>>> Renomeando os nomes dos pacotes para adequar ao doc de arquitetura

@@ -36,7 +36,6 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 	public static final String ANO = "ano";
 	public static final String CARGO = "cargo_pleiteado";
 	public static final String RESULTADO = "resultado_eleicao";
-
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
 
@@ -66,7 +65,6 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 			String comandoSQL = "INSERT INTO t_candidato (nome, cargo_pleiteado, "
 					+ "partido_sigla, numero, ano, cpf, uf, resultado_eleicao)"
 			        + "VALUES(?,?,?,?,?,?,?,?)";
-
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 
 			this.conexao.setAutoCommit(false);
@@ -115,7 +113,11 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 				candidato.setCargo(resultadoSQL.getString(CARGO));
 				candidato.setUf(resultadoSQL.getString(UF));
 				candidato.setResultadoUltimaEleicao(resultadoSQL.getInt(RESULTADO));
+<<<<<<< HEAD
 
+=======
+				
+>>>>>>> Renomeando os nomes dos pacotes para adequar ao doc de arquitetura
 				if(candidato != null)
 					listaCandidatos.add(candidato);
 			}

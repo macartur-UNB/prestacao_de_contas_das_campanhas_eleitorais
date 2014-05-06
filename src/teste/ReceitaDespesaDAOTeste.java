@@ -20,7 +20,6 @@ import modelo.dao.ReceitaDAO;
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class ReceitaDespesaDAOTeste {
 
 	private ReceitaDAO mockReceitaDAO;

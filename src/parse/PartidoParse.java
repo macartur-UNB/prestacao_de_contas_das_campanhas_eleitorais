@@ -7,7 +7,6 @@ import modelo.beans.Partido;
 import modelo.dao.PartidoDAO;
 import parse.indices.PartidoIndicesParse;
 
-
 public class PartidoParse {
 
 	private PartidoIndicesParse partidoIndicesParse;
