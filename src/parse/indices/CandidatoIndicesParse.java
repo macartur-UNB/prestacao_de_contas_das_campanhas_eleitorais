@@ -1,7 +1,9 @@
 package parse.indices;
 
+
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
+
 
 public class CandidatoIndicesParse {
 
@@ -147,5 +149,6 @@ public class CandidatoIndicesParse {
 	public int getIndiceFoiEleito() {
 		return indiceFoiEleito;
 	}
+
 	
 }

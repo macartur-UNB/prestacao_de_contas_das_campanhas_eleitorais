@@ -3,8 +3,10 @@ package parse;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
+
 import parse.indices.CandidatoIndicesParse;
 
 public class CandidatoParse {
@@ -20,17 +22,21 @@ public class CandidatoParse {
 	}
 	
 	public void addCandidato(String campo[]) {
+
 		Candidato candidato = new Candidato();
 		candidato.setNome(campo[this.candidatoIndicesParse.getIndiceNome()]);
 		candidato.setAno(this.candidatoIndicesParse.getAno());
 		
 		if(!this.listaCandidatos.contains(candidato)) {
 			this.candidatoIndicesParse.iniciarCandidato(candidato, campo);
+
 			this.listaCandidatos.add(candidato);
 		}
 	}
 	
+
 	public void cadastrarCandidatos() throws SQLException {		
+
 		this.candidatoDAO.cadastrarCandidatos(listaCandidatos);
 	}
 	
