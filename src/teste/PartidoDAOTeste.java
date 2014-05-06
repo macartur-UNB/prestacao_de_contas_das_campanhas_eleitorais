@@ -21,24 +21,4 @@ public class PartidoDAOTeste {
 		this.mockPartidoDAO = mock(PartidoDAO.class);
 	}
 
-	@Test
-	public void naoDeveLancarExcecaoAoCadastrarUmPartidoNaoExistente() throws SQLException {
-		Partido partido = new Partido();
-		partido.setSigla("PT");
-		partido.setNumeroPartido("13");
-		
-		this.mockPartidoDAO.cadastrarPartido(partido);
-	}
-	
-	@Test (expected = SQLException.class)
-	public void deveLancarExcecaoAoCadastrarUmPartidoExistente() throws SQLException {
-		Partido partido = new Partido();
-		partido.setSigla("PT");
-		partido.setNumeroPartido("13");
-		
-		doThrow(new SQLException()).when(this.mockPartidoDAO).cadastrarPartido(partido);
-		
-		this.mockPartidoDAO.cadastrarPartido(partido);
-	}
-
 }

@@ -21,24 +21,6 @@ public class CandidatoDAOTeste {
 		this.mockCandidatoDAO = mock(CandidatoDAO.class);
 	}
 
-	@Test
-	public void naoDeveLancarExcecaoAoCadastrarUmCandidatoNaoExistente() throws SQLException {
-		Candidato candidato = new Candidato();
-		candidato.setNome("Jose");
-		candidato.setAno(2002);
-		
-		this.mockCandidatoDAO.cadastrarCandidato(candidato);
-	}
 	
-	@Test (expected = SQLException.class)
-	public void deveLancarExcecaoAoCadastrarUmCandidatoExistente() throws SQLException {
-		Candidato candidato = new Candidato();
-		candidato.setNome("Jose");
-		candidato.setAno(2002);
-		
-		doThrow(new SQLException()).when(this.mockCandidatoDAO).cadastrarCandidato(candidato);
-		
-		this.mockCandidatoDAO.cadastrarCandidato(candidato);
-	}
 	
 }

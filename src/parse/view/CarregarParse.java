@@ -2,22 +2,23 @@ package parse.view;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import parse.CandidatoIndicesParse;
-import parse.CandidatoParse;
+import parse.CadastroPartidoParse;
+import parse.LeitorCSV;
 
 @WebServlet("/carregarParse")
 public class CarregarParse extends HttpServlet {
@@ -35,6 +36,12 @@ public class CarregarParse extends HttpServlet {
 		
 		PrintWriter saida = response.getWriter();
 		
+		Part part = request.getPart("arquivo_linha_inicial");
+		if(part != null) {
+			Scanner scanner = new Scanner(part.getInputStream());
+			saida.println("linha inicial: " + scanner.nextLine());
+			scanner.close();
+		}
 		
 		try {
 			boolean isMultpart = ServletFileUpload.isMultipartContent(request);			
@@ -43,44 +50,65 @@ public class CarregarParse extends HttpServlet {
 				ServletFileUpload upload = new ServletFileUpload(factory);
 				
 				List<FileItem> fields = upload.parseRequest(request);
-				Iterator<FileItem> it = fields.iterator();
 				
-				while(it.hasNext()) {
-					FileItem fileItem = it.next();
+				FileItem arquivo = null;
+				String tipoArquivo = "";
+				String ano = "";
+				int linhaInicial = 1;
+				
+				
+				for(FileItem fileItem : fields) {
 					if(!fileItem.isFormField()) {
-						
-						String ano = "2004";		
-						int linhaInicial = 2;
-						int linhaFinal = 10;
-						
-						CandidatoIndicesParse candidatoIndicesParse;
-						candidatoIndicesParse = getCandidatoIndicesParse2004();
-						
-						CandidatoParse cadastrarCandidatos;
-						cadastrarCandidatos = new CandidatoParse(fileItem, candidatoIndicesParse, linhaInicial, linhaFinal);
-						cadastrarCandidatos.cadastrar();
+						arquivo = fileItem;
+					} else {
+						if(fileItem.getFieldName().equals("arquivo_tipo")) {
+							if(fileItem.getString().equals("despesa")) {
+								tipoArquivo = CadastroPartidoParse.DESPESA;
+							} else {
+								tipoArquivo = CadastroPartidoParse.RECEITA;
+							}
+						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
+							linhaInicial = Integer.parseInt(fileItem.getString());
+						} else if(fileItem.getFieldName().equals("arquivo_ano")) {
+							switch (fileItem.getString()) {
+							case "2002":
+								ano = CadastroPartidoParse.ANO_2002;
+								break;
+								
+							case "2004":
+								ano = CadastroPartidoParse.ANO_2004;
+								break;
+								
+							case "2006":
+								ano = CadastroPartidoParse.ANO_2006;
+								break;
+								
+							case "2008":
+								ano = CadastroPartidoParse.ANO_2008;
+								break;
+
+							default:
+								break;
+							}
+						}
 					}
 				}
+
+				CadastroPartidoParse cadastroPartidoParse = new CadastroPartidoParse(tipoArquivo, ano);
+				LeitorCSV leitorCSV = new LeitorCSV();
+				
+				leitorCSV.executarMetodoPorLinhaLida(arquivo, "\";\"", cadastroPartidoParse, linhaInicial);
+				cadastroPartidoParse.finalizarCadastros();
+				
+				saida.println("Parse Realizado com Sucesso!");
 			}
-			
-			
 		
 		} catch(Exception e) {
 			saida.println("ERROR teste upload: " + e.getMessage());
 		}
 		
-		
 	}
 	
-	public static CandidatoIndicesParse getCandidatoIndicesParse2004() {
-		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
-		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceCargoPleiteado(1);
-		candidatoIndicesParse.setIndicePartido(8);
-		candidatoIndicesParse.setIndiceNumero(3);
-		candidatoIndicesParse.setAno(2004);
-		
-		return candidatoIndicesParse;
-	}
 	
+		
 }

@@ -1,8 +1,10 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import model.Partido;
@@ -12,61 +14,132 @@ public class PartidoDAO {
 	private static final String SIGLA_PARTIDO = "sigla";
 	private static final String NUMERO_PARTIDO = "numero";
 	
-	private ConexaoMySQL conexaoMySQL;
+	private Connection conexao;
+	private PreparedStatement instrucaoSQL;
 	
 	public PartidoDAO() {
-		this.conexaoMySQL = ConexaoMySQL.getInstancia();
+		
 	}
 	
-	public void cadastrarPartido(Partido partido) throws SQLException {
-		validarSePartidoNaoExiste(partido);
-		
-		this.conexaoMySQL.iniciarConexao();
-		
-		String comandoSQL = "INSERT INTO t_partido (sigla, numero)"
-				          + "VALUES(?,?)";
-		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
-
-		instrucaoSQL.setString(1, partido.getSigla());
-		instrucaoSQL.setString(2, partido.getNumeroPartido());
-		
-		instrucaoSQL.execute();
-		
-		this.conexaoMySQL.encerrarConexao();
+	public void cadastrarPartidos(ArrayList<Partido> listaPartidos) throws SQLException {
+		try {
+			ArrayList<Partido> listaPartidosNaoCadastrados = new ArrayList<>();
+			ArrayList<Partido> listaPartidosAtualizaveis = new ArrayList<>();
+			LinkedList<Partido> listaPartidosCadastrados = getListaPartidos();
+			for(Partido partido : listaPartidos) {
+				if(!listaPartidosCadastrados.contains(partido)) {
+					listaPartidosNaoCadastrados.add(partido);
+				} else {
+					listaPartidosAtualizaveis.add(partido);
+				}
+			}
+			
+			this.conexao = new ConexaoBancoDados().getConexao();
+			
+			String comandoSQL = "INSERT INTO t_partido (sigla, numero)"
+			          + "VALUES(?,?)";
+			
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
+			
+			this.conexao.setAutoCommit(false);
+			
+			for(Partido partido : listaPartidosNaoCadastrados) {
+				instrucaoSQL.setString(1, partido.getSigla());
+				instrucaoSQL.setString(2, partido.getNumeroPartido());
+				instrucaoSQL.addBatch();
+			}
+			
+			instrucaoSQL.executeBatch();
+			
+			comandoSQL = "UPDATE t_partido SET numero=? WHERE sigla=?";
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+			for(Partido partido : listaPartidosAtualizaveis) {
+				for(Partido partidoCadastrado : listaPartidosCadastrados) {
+					if(partido.getSigla().equals(partidoCadastrado.getSigla())) {
+						if(partidoCadastrado.getNumeroPartido().equals(Partido.CAMPO_VAZIO)) {
+							instrucaoSQL.setString(1, partido.getNumeroPartido());
+							instrucaoSQL.setString(2, partido.getSigla());
+							instrucaoSQL.addBatch();
+						}
+					}
+				}
+			}
+			
+			instrucaoSQL.executeBatch();
+			
+			this.conexao.commit();
+			
+		} catch(Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			fecharConexao();
+		}		
 	}
 	
 	public LinkedList<Partido> getListaPartidos() throws SQLException {
-		this.conexaoMySQL.iniciarConexao();
-		
-		String comandoSQL = "SELECT * FROM t_partido";
-		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
-		
-		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-		
 		LinkedList<Partido> listaPartidos = new LinkedList<>();
-		
-		while(resultadoSQL.next()) {
-			Partido partido = new Partido();
-			partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
-			partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			if(partido != null)
-				listaPartidos.add(partido);
+			String comandoSQL = "SELECT * FROM t_partido";
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+			
+			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
+			while(resultadoSQL.next()) {
+				Partido partido = new Partido();
+				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
+				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
+				
+				if(partido != null)
+					listaPartidos.add(partido);
+			}
+			
+		} catch(Exception e) {
+			System.out.println("ERRO: " + e.getMessage());
+			throw new SQLException(e.getMessage());
+		} finally {
+			fecharConexao();
 		}
-		
-		this.conexaoMySQL.encerrarConexao();
 		
 		return listaPartidos;
 	}
 	
-	private void validarSePartidoNaoExiste(Partido partido) throws SQLException {
-		LinkedList<Partido> listaPartidos = getListaPartidos();
-		
-		for(Partido partidoLista : listaPartidos) {
-			if(partidoLista.equals(partido)) {
-				throw new SQLException("Partido " + partido.getSigla() + " já existe");
+	private Partido getPartido(String sigla) throws SQLException {
+		Partido partido = new Partido();
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+			
+			String comandoSQL = "SELECT * FROM t_partido WHERE sigla LIKE '" + sigla + "'";
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
+			
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			
+			if(resultadoSQL.next()) {
+				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
+				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
 			}
+			
+			instrucaoSQL.close();
+			
+		} catch(Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			fecharConexao();
 		}
+		
+		return partido;		
 	}
 	
+	private boolean partidoExiste(Partido partido) throws SQLException {
+		return partido.equals(getPartido(partido.getSigla()));
+	}
+	
+	private void fecharConexao() throws SQLException {
+		if(this.instrucaoSQL != null) {
+			this.instrucaoSQL.close();
+		}
+		if(this.conexao != null) {
+			this.conexao.close();
+		}
+	}
 }

@@ -1,35 +1,34 @@
 package teste;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.ConexaoMySQL;
+import dao.ConexaoBancoDados;
 
-public class ConexaoMySQLTeste {
+public class ConexaoBancoDadosTeste {
 
-	private ConexaoMySQL conexaoMySQL;
-	
-	@Before
-	public void setUp() {
-		this.conexaoMySQL = ConexaoMySQL.getInstancia();
-	}
+	private Connection conexao;
 	
 	@Test
 	public void NaoDeveLancarExcecaoAoIniciarAConexao() throws SQLException {
-		this.conexaoMySQL.iniciarConexao();
+		this.conexao = new ConexaoBancoDados().getConexao();
+		PreparedStatement preparedStatement = null;
+		
 	}
 	
 	@Test (expected = NullPointerException.class)
 	public void DeveLancarExecaoAoEncerrarUmaConexaoQueNaoFoiIniciada() throws SQLException {
-		this.conexaoMySQL.encerrarConexao();
+		this.conexao.close();
 	}
 
 	@Test
 	public void NaoDeveLancarExcecaoAoEncerrarUmaConexaoQueFoiIniciada() throws SQLException {
-		this.conexaoMySQL.iniciarConexao();
-		this.conexaoMySQL.encerrarConexao();
+		this.conexao = new ConexaoBancoDados().getConexao();
+		this.conexao.close();
 	}
 	
 }

@@ -2,11 +2,14 @@ package model;
 
 public class Partido {
 	
+	public static final String CAMPO_VAZIO = "";
+	
 	private String numeroPartido;
 	private String sigla;
 	
 	public Partido() {
-		
+		this.sigla = "";
+		this.numeroPartido = "";
 	}
 	
 	@Override
@@ -15,7 +18,7 @@ public class Partido {
 			return false;
 		
 		Partido outroPartido = (Partido) object;
-		return ( this.sigla.equals(outroPartido.getSigla()));
+		return this.sigla.equals(outroPartido.getSigla());
 	}
 	
 	public String getNumeroPartido() {

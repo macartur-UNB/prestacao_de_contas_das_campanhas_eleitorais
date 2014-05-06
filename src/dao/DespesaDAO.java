@@ -12,6 +12,7 @@
 /*****************************************************************************/
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,82 +41,55 @@ public class DespesaDAO {
 	public static final String NOMEFORNECEDOR     = "nomeFornecedor";
 	public static final String CADASTROFORNECEDOR = "cadastroFornecedor";
 	
-	private ConexaoMySQL conexaoMySQL;
+	private Connection conexao;
+	private PreparedStatement instrucaoSQL;
 	
 	/**** Construtores *******************************************************/
 	public DespesaDAO() {
-		this.conexaoMySQL = ConexaoMySQL.getInstancia();
-	}
-	
-	/**** Metodos ************************************************************/
-	public void cadastrarDespesa(Despesa despesa) throws SQLException {
-		
-		this.conexaoMySQL.iniciarConexao();
-		
-		String comandoSQL = "INSERT INTO t_despesa (emNomeDe,ano,horaRegistro,"
-				+ "entregaEmConjunto,numeroDoc,data,valor,fonte,tipo,especie,"
-				+ "descricao,tipoDoc,nomeFornecedor,cadastroFornecedor)"
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement instrucaoSQL = 
-				this.conexaoMySQL.prepararInstrucao(comandoSQL);
 
-		instrucaoSQL.setString(1, despesa.getEmNomeDe().getNome());
-		//instrucaoSQL.setString(2, despesa.getEmNomeDe().getAno()); (decidir se e candidato ou partido)
-		instrucaoSQL.setString(3, despesa.getHoraRegistro());
-		//instrucaoSQL.setString(4, despesa.getEntregaEmConjunto()); (formatacao)
-		instrucaoSQL.setString(5, despesa.getNumeroDocumento());
-		//instrucaoSQL.setString(6, despesa.getData()); (formatacao)
-		//instrucaoSQL.setString(7, despesa.getValor()); (transformar em String)
-		instrucaoSQL.setString(8, despesa.getFonte());
-		instrucaoSQL.setString(9, despesa.getTipo());
-		instrucaoSQL.setString(10, despesa.getEspecie());
-		instrucaoSQL.setString(11, despesa.getDescricao());
-		instrucaoSQL.setString(12, despesa.getTipoDocumento());
-		instrucaoSQL.setString(13, despesa.getFornecedor().getNome());
-		instrucaoSQL.setString(14, despesa.getFornecedor().getCadastroNacional());
-		
-		instrucaoSQL.execute();
-		
-		this.conexaoMySQL.encerrarConexao();
 	}
 	
 	public LinkedList<Despesa> getListaDespesas() throws SQLException {
-		this.conexaoMySQL.iniciarConexao();
-		
-		String comandoSQL = "SELECT * FROM t_despesa";
-		PreparedStatement instrucaoSQL = this.conexaoMySQL.prepararInstrucao(comandoSQL);
-		
-		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-		
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
-		
-		while(resultadoSQL.next()) {
-			Despesa despesa = new Despesa();
-			//despesa.setEmNomeDe(...)
-			despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
-			if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
-				despesa.setEntregaEmConjunto(true);
-			} else {
-				despesa.setEntregaEmConjunto(false);
-			}
-			despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
-			//despesa.setData(data) verificar formatacao
-			despesa.setValor(resultadoSQL.getFloat(VALOR));
-			despesa.setFonte(resultadoSQL.getString(FONTE));
-			despesa.setTipo(resultadoSQL.getString(TIPO));
-			despesa.setEspecie(resultadoSQL.getString(ESPECIE));
-			despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
-			despesa.setTipoDocumento(resultadoSQL.getString(TIPODOC));
-			Fornecedor fornecedor = new Fornecedor();
-			fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
-			fornecedor.setCadastroNacional("CADASTROFORNECEDOR");
-			despesa.setFornecedor(fornecedor);
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = "SELECT * FROM t_despesa";
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			
-			if(despesa != null)
-				listaDespesas.add(despesa);
+			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
+			
+			while(resultadoSQL.next()) {
+				Despesa despesa = new Despesa();
+				//despesa.setEmNomeDe(...)
+				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
+				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
+					despesa.setEntregaEmConjunto(true);
+				} else {
+					despesa.setEntregaEmConjunto(false);
+				}
+				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
+				//despesa.setData(data) verificar formatacao
+				despesa.setValor(resultadoSQL.getFloat(VALOR));
+				despesa.setFonte(resultadoSQL.getString(FONTE));
+				despesa.setTipo(resultadoSQL.getString(TIPO));
+				despesa.setEspecie(resultadoSQL.getString(ESPECIE));
+				despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
+				despesa.setTipoDocumento(resultadoSQL.getString(TIPODOC));
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
+				fornecedor.setCadastroNacional("CADASTROFORNECEDOR");
+				despesa.setFornecedor(fornecedor);
+				
+				if(despesa != null)
+					listaDespesas.add(despesa);
+			}
+		} catch(Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			this.instrucaoSQL.close();
+			this.conexao.close();
 		}
-		
-		this.conexaoMySQL.encerrarConexao();
 		
 		return listaDespesas;
 	}

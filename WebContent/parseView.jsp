@@ -21,19 +21,34 @@
 			<td> </td>
 			<td> <input type="radio" name="arquivo_tipo" value="receita" /> Receita </td>
 		</tr>
+		
 		<tr>
 			<td> Linha Inicial: </td>
 			<td> <input type="number" name="arquivo_linha_inicial" value="1" /> </td>
 		</tr>
+		
+		</tr>
+			<td> Ano: </td>
+			<td> <input type="radio" name="arquivo_ano" value="2002" checked /> 2002 </td>
+		</tr>
 		<tr>
-			<td> Linha Final: </td>
-			<td> <input type="number" name="arquivo_linha_final" value="0" /> Preencha '0' para ler até o fim </td>
+			<td> </td>
+			<td> <input type="radio" name="arquivo_ano" value="2004" /> 2004 </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> <input type="radio" name="arquivo_ano" value="2006" /> 2006 </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> <input type="radio" name="arquivo_ano" value="2008" /> 2008 </td>
+		</tr>
+		
+		<tr>
+			<td> </td>
+			<td>  <p align="right"> <input type="submit" value="carregar" /> </p> </td>
 		</tr>
 	</table>
-	
-	<br />
-	
-	
 </form>
 
 </body>

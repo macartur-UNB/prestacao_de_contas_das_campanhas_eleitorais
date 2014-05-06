@@ -34,26 +34,5 @@ public class ReceitaDespesaDAOTeste {
 		this.mockDespesaDAO = mock(DespesaDAO.class);
 	}
 
-	@Test
-	public void naoDeveLancarExcecaoAoCadastrarUmaReceita() throws SQLException {
-		Receita receita = new Receita();
-		Doador doador = new Doador();
-		doador.setNome("Jose");
-		receita.setDoador(doador);
-		receita.setDescricao("Doacao de pessoa fisica.");
-		
-		this.mockReceitaDAO.cadastrarReceita(receita);
-	}
-	
-	@Test
-	public void naoDeveLancarExcecaoAoCadastrarUmaDespesa() throws SQLException {
-		Despesa despesa = new Despesa();
-		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setNome("Jose");
-		despesa.setFornecedor(fornecedor);
-		despesa.setDescricao("Impressao de panfletos.");
-		
-		this.mockDespesaDAO.cadastrarDespesa(despesa);
-	}
 
 }

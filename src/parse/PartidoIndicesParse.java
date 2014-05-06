@@ -16,7 +16,7 @@ public class PartidoIndicesParse {
 	
 	public void iniciarPartido(Partido partido, String campo[]) {
 		reiniciarPartido(partido);
-		
+				
 		if(indiceValido(this.indiceSigla)) {
 			partido.setSigla(campo[this.indiceSigla]);
 		}
@@ -25,9 +25,15 @@ public class PartidoIndicesParse {
 		}
 	}
 	
+	public Partido iniciarPartido(String campo[]) {
+		Partido partido = new Partido();
+		iniciarPartido(partido, campo);
+		return partido;
+	}
+	
 	private void reiniciarPartido(Partido partido) {
-		partido.setSigla(null);
-		partido.setNumeroPartido(null);
+		partido.setSigla(Partido.CAMPO_VAZIO);
+		partido.setNumeroPartido(Partido.CAMPO_VAZIO);
 	}
 	
 	private boolean indiceValido(int indice) {
