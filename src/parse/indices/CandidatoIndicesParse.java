@@ -149,6 +149,9 @@ public class CandidatoIndicesParse {
 	public int getIndiceFoiEleito() {
 		return indiceFoiEleito;
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 	
 }

@@ -34,7 +34,6 @@ public class CandidatoParse {
 		}
 	}
 	
-
 	public void cadastrarCandidatos() throws SQLException {		
 
 		this.candidatoDAO.cadastrarCandidatos(listaCandidatos);

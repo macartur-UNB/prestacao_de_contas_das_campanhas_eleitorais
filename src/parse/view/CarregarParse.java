@@ -97,6 +97,10 @@ public class CarregarParse extends HttpServlet {
 
 				Parse parse = new Parse(tipoArquivo, ano);
 				parse.executarParse(arquivo, divisao, linhaInicial);
+<<<<<<< HEAD
+=======
+				
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 				
 				saida.println("Parse Realizado com Sucesso!");
 			}

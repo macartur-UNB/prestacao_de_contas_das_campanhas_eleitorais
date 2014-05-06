@@ -1,9 +1,13 @@
 package parse.cadastro;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import parse.CandidatoParse;
 =======
 >>>>>>> Implementando Parse do Candidato
+=======
+import parse.CandidatoParse;
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 import parse.LeitorCSV.ExecutorLeitorCSV;
 import parse.indices.CandidatoIndicesParse;
 
@@ -20,6 +24,7 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 	private int linhasLidas;
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private CandidatoIndicesParse candidatoIndicesParse;
 	private CandidatoParse candidatoParse;
 		
@@ -32,12 +37,25 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 	public CandidatoCadastroParse(String tipoArquivo, String ano) {
 		this.linhasLidas = 0;
 >>>>>>> Implementando Parse do Candidato
+=======
+	private CandidatoIndicesParse candidatoIndicesParse;
+	private CandidatoParse candidatoParse;
+		
+	public CandidatoCadastroParse(String tipoArquivo, String ano) {
+		this.linhasLidas = 0;
+		
+		this.candidatoIndicesParse = getCandidatoIndicesParse(tipoArquivo, Integer.valueOf(ano));
+		this.candidatoParse = new CandidatoParse(candidatoIndicesParse);
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 	}
 	
 	
 	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 		try {
 			this.candidatoParse.addCandidato(campo);
 			this.linhasLidas++;
@@ -60,9 +78,12 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 		} catch(Exception e) {
 			System.out.println("ERRO: " + e.getMessage());
 		}
+<<<<<<< HEAD
 =======
 		
 >>>>>>> Implementando Parse do Candidato
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 	}
 	
 	private CandidatoIndicesParse getCandidatoIndicesParse(String tipoArquivo, Integer ano) {
@@ -71,6 +92,9 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 			case ANO_2002:
 				return getCandidatoIndicesParseDespesa2002();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 
 			case ANO_2004:
 				return getCandidatoIndicesParseDespesa2004();
@@ -80,13 +104,19 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 
 			case ANO_2008:
 				return getCandidatoIndicesParseDespesa2008();
+<<<<<<< HEAD
 =======
 >>>>>>> Implementando Parse do Candidato
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 	
 			default:
 				return null;
 			}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 		} else {
 			switch (ano) {
 			case ANO_2002:
@@ -104,8 +134,11 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 			default:
 				break;
 			}
+<<<<<<< HEAD
 =======
 >>>>>>> Implementando Parse do Candidato
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 		}
 		return null;
 	}
@@ -121,6 +154,9 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 		return candidatoIndicesParse;
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 	
 	private CandidatoIndicesParse getCandidatoIndicesParseReceita2002() {
 		return getCandidatoIndicesParseDespesa2002();
@@ -177,6 +213,9 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 		
 		return candidatoIndicesParse;
 	}
+<<<<<<< HEAD
 =======
 >>>>>>> Implementando Parse do Candidato
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
 }

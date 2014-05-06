@@ -12,12 +12,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
 
 public class CandidatoDAO {
+	
+	private enum Comparacao implements Comparator<Candidato> {
+		NOME {
+			@Override
+			public int compare(Candidato c1, Candidato c2) {
+				return c1.getNome().compareToIgnoreCase(c2.getNome());
+			}
+		};
+	}
 	
 	public static final String NOME = "nome";
 	public static final String CPF = "cpf";
@@ -42,21 +52,18 @@ public class CandidatoDAO {
 	public void cadastrarCandidatos(ArrayList<Candidato> listaCandidatos) throws SQLException {
 		try {
 			ArrayList<Candidato> listaCandidatosNaoCadastrados = new ArrayList<>();
-			ArrayList<Candidato> listaCandidatosAtualizaveis = new ArrayList<>();
-			ArrayList<Candidato> listaCandidatosCadastrados = new ArrayList<>();
+			ArrayList<Candidato> listaCandidatosCadastrados = getListaCandidatos();
 			for(Candidato candidato : listaCandidatos) {
-				if(!listaCandidatosCadastrados.contains(candidato)) {
+				if(Collections.binarySearch(listaCandidatosCadastrados, candidato, Comparacao.NOME) < 0) {
 					listaCandidatosNaoCadastrados.add(candidato);
-				} else {
-					listaCandidatosAtualizaveis.add(candidato);
 				}
 			}
 			
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
 			String comandoSQL = "INSERT INTO t_candidato (nome, cargo_pleiteado, "
-					+ "partido, numero, ano)"
-			        + "VALUES(?,?,?,?,?)";
+					+ "partido, numero, ano, cpf)"
+			        + "VALUES(?,?,?,?,?,?)";
 			
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			
@@ -68,6 +75,8 @@ public class CandidatoDAO {
 				this.instrucaoSQL.setString(3, candidato.getPartido().getSigla());
 				this.instrucaoSQL.setString(4, candidato.getNumero());
 				this.instrucaoSQL.setInt(5, candidato.getAno());
+				this.instrucaoSQL.setString(6, candidato.getCpf());
+				this.instrucaoSQL.addBatch();
 			}
 			
 			this.instrucaoSQL.executeBatch();
@@ -81,15 +90,14 @@ public class CandidatoDAO {
 		}
 	}
 		
-	public LinkedList<Candidato> getListaCandidatos() throws SQLException {
-		LinkedList<Candidato> listaCandidatos = new LinkedList<>();
+	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
+		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_candidato";
+			String comandoSQL = "SELECT * FROM t_candidato ORDER BY nome ASC";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
-						
+			ResultSet resultadoSQL = this.instrucaoSQL.executeQuery();
 			
 			while(resultadoSQL.next()) {
 				Candidato candidato = new Candidato();
@@ -101,11 +109,6 @@ public class CandidatoDAO {
 				candidato.setNumero(resultadoSQL.getString(NUMERO));
 				candidato.setAno(resultadoSQL.getInt(ANO));
 				candidato.setCargo(resultadoSQL.getString(CARGO));
-				if(resultadoSQL.getString(RESULTADO).equals("Eleito")){
-					candidato.setFoiEleito(true);
-				} else {
-					candidato.setFoiEleito(false);
-				}
 				
 				candidato.setUf(resultadoSQL.getString(DOMINIO));
 				
@@ -113,10 +116,10 @@ public class CandidatoDAO {
 					listaCandidatos.add(candidato);
 			}
 		} catch(Exception e) {
+			System.out.println("ERRO: " + e.getMessage());
 			throw new SQLException(e.getMessage());
 		} finally {
-			this.instrucaoSQL.close();
-			this.conexao.close();
+			fecharConexao();
 		}
 		
 		ArrayList<Partido> listaPartidos = new ArrayList<>(this.partidoDAO.getListaPartidos());
