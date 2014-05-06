@@ -1,4 +1,4 @@
-package dao;
+package modelo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-import model.Partido;
+import modelo.beans.Partido;
 
 public class PartidoDAO {
 	

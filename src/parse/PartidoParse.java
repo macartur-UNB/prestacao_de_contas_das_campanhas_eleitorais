@@ -3,9 +3,9 @@ package parse;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.beans.Partido;
+import modelo.dao.PartidoDAO;
 import parse.indices.PartidoIndicesParse;
-import dao.PartidoDAO;
-import model.Partido;
 
 public class PartidoParse {
 

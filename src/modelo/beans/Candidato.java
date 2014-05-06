@@ -5,7 +5,7 @@
  *  (Rafael): Adequei os atributos a modelagem UML.
 **/
 
-package model;
+package modelo.beans;
 
 public class Candidato extends Pessoa{
 

@@ -1,10 +1,10 @@
-package controler;
+package controle;
 
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import model.Partido;
-import dao.PartidoDAO;
+import modelo.beans.Partido;
+import modelo.dao.PartidoDAO;
 
 public class PartidoControler {
 	

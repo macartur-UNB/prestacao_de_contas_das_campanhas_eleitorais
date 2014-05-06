@@ -8,19 +8,10 @@
 package teste;
 
 import static org.mockito.Mockito.mock;
-
-import java.sql.SQLException;
-
-import model.Despesa;
-import model.Doador;
-import model.Fornecedor;
-import model.Receita;
+import modelo.dao.DespesaDAO;
+import modelo.dao.ReceitaDAO;
 
 import org.junit.Before;
-import org.junit.Test;
-
-import dao.DespesaDAO;
-import dao.ReceitaDAO;
 
 
 public class ReceitaDespesaDAOTeste {

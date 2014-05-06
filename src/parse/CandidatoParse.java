@@ -2,11 +2,9 @@ package parse;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-import dao.CandidatoDAO;
-import model.Candidato;
+import modelo.beans.Candidato;
+import modelo.dao.CandidatoDAO;
 import parse.indices.CandidatoIndicesParse;
 
 public class CandidatoParse {

@@ -1,13 +1,11 @@
 package teste;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.junit.Before;
-import org.junit.Test;
+import modelo.dao.ConexaoBancoDados;
 
-import dao.ConexaoBancoDados;
+import org.junit.Test;
 
 public class ConexaoBancoDadosTeste {
 
@@ -16,7 +14,6 @@ public class ConexaoBancoDadosTeste {
 	@Test
 	public void NaoDeveLancarExcecaoAoIniciarAConexao() throws SQLException {
 		this.conexao = new ConexaoBancoDados().getConexao();
-		PreparedStatement preparedStatement = null;
 		
 	}
 	

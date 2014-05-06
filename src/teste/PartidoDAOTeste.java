@@ -1,16 +1,9 @@
 package teste;
 
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
-
-import java.sql.SQLException;
-
-import model.Partido;
+import modelo.dao.PartidoDAO;
 
 import org.junit.Before;
-import org.junit.Test;
-
-import dao.PartidoDAO;
 
 public class PartidoDAOTeste {
 	
