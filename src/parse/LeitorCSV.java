@@ -2,9 +2,6 @@ package parse;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,15 +24,20 @@ public class LeitorCSV {
 	public void executarMetodoPorLinhaLida(FileItem arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial) throws IOException {
 		String campo[];
 		String linha;
+		int totalLinhas = getNumeroLinhas(arquivo);
+		System.out.println("lendo linha: Iniciou");
 		BufferedReader leitorArquivo = new BufferedReader(new InputStreamReader(arquivo.getInputStream()));
 		
 		ignorarLinhas(leitorArquivo, linhaInicial);
 		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) && (!linha.isEmpty()); i++ ) {
-			System.out.println("lendo linha: " + i);
+			if(i % 1000 == 0) {
+				System.out.println("lendo linha: " + i + " / " + totalLinhas);
+			}
 			linha = removerAspas(linha);
 			campo = linha.split(divisao);
 			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
-		}		
+		}
+		System.out.println("lendo linha: Terminou");
 		
 		leitorArquivo.close();
 	}

@@ -9,11 +9,11 @@ public class CandidatoIndicesParse {
 	
 	private int ano;
 	private int indiceNome;
-	private int  indiceCpf;
-	private int  indiceCargo;
+	private int indiceCpf;
+	private int indiceCargo;
 	private int indicePartidoSigla;
 	private int indiceNumero;
-	private int  indiceUf;
+	private int indiceUf;
 	private int indiceFoiEleito;
 	
 	public CandidatoIndicesParse(int ano) {
@@ -110,6 +110,42 @@ public class CandidatoIndicesParse {
 
 	public void setIndiceNome(int indiceNome) {
 		this.indiceNome = indiceNome;
+	}
+
+	public static int getIndiceInvalido() {
+		return INDICE_INVALIDO;
+	}
+
+	public int getAno() {
+		return ano;
+	}
+
+	public int getIndiceNome() {
+		return indiceNome;
+	}
+
+	public int getIndiceCpf() {
+		return indiceCpf;
+	}
+
+	public int getIndiceCargo() {
+		return indiceCargo;
+	}
+
+	public int getIndicePartidoSigla() {
+		return indicePartidoSigla;
+	}
+
+	public int getIndiceNumero() {
+		return indiceNumero;
+	}
+
+	public int getIndiceUf() {
+		return indiceUf;
+	}
+
+	public int getIndiceFoiEleito() {
+		return indiceFoiEleito;
 	}
 	
 }

@@ -1,7 +1,7 @@
 package controler;
 
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 import model.Candidato;
 import dao.CandidatoDAO;
@@ -14,7 +14,7 @@ public class CandidatoControler {
 		this.candidatoDAO = new CandidatoDAO();
 	}
 	
-	public LinkedList<Candidato> getListaCandidatos() throws SQLException {
+	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
 		return this.candidatoDAO.getListaCandidatos();
 	}
 	

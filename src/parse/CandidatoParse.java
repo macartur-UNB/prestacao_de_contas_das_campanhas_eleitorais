@@ -2,6 +2,8 @@ package parse;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import dao.CandidatoDAO;
 import model.Candidato;
@@ -20,13 +22,17 @@ public class CandidatoParse {
 	}
 	
 	public void addCandidato(String campo[]) {
-		Candidato candidato = this.candidatoIndicesParse.iniciarCandidato(campo);
+		Candidato candidato = new Candidato();
+		candidato.setNome(campo[this.candidatoIndicesParse.getIndiceNome()]);
+		candidato.setAno(this.candidatoIndicesParse.getAno());
+		
 		if(!this.listaCandidatos.contains(candidato)) {
+			this.candidatoIndicesParse.iniciarCandidato(candidato, campo);
 			this.listaCandidatos.add(candidato);
 		}
 	}
 	
-	public void cadastrarCandidatos() throws SQLException {
+	public void cadastrarCandidatos() throws SQLException {		
 		this.candidatoDAO.cadastrarCandidatos(listaCandidatos);
 	}
 	
