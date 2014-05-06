@@ -9,16 +9,27 @@ package model;
 
 public class Candidato extends Pessoa{
 
+	public static final String STRING_VAZIO = "";
+	public static final Integer INTEGER_VAZIO = 0;
+	public static final Boolean BOOLEAN_VAZIO = false;
+	public static final Partido PARTIDO_VAZIO = new Partido();
+	
 	private Integer ano;
-	private String  cpf;
-	private String  cargo;
+	private String cpf;
+	private String cargo;
 	private Partido partido;
 	private String numero;
-	private String  uf;
+	private String uf;
 	private Boolean foiEleito;
 	
 	public Candidato() {
-		
+		this.ano = INTEGER_VAZIO;
+		this.cpf = STRING_VAZIO;
+		this.cargo = STRING_VAZIO;
+		this.partido = PARTIDO_VAZIO;
+		this.numero = STRING_VAZIO;
+		this.uf = STRING_VAZIO;
+		this.foiEleito = BOOLEAN_VAZIO;
 	}
 	
 	@Override

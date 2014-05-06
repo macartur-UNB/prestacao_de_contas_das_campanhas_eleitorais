@@ -3,6 +3,7 @@ package parse;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import parse.indices.PartidoIndicesParse;
 import dao.PartidoDAO;
 import model.Partido;
 

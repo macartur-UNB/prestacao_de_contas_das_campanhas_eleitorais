@@ -5,11 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 import model.Partido;
 
 public class PartidoDAO {
+	
+	private enum Comparacao implements Comparator<Partido> {
+		NOME {
+			@Override
+			public int compare(Partido p1, Partido p2) {
+				return p1.getSigla().compareToIgnoreCase(p2.getSigla());
+			}
+		};
+	}
 	
 	private static final String SIGLA_PARTIDO = "sigla";
 	private static final String NUMERO_PARTIDO = "numero";
@@ -27,7 +38,7 @@ public class PartidoDAO {
 			ArrayList<Partido> listaPartidosAtualizaveis = new ArrayList<>();
 			LinkedList<Partido> listaPartidosCadastrados = getListaPartidos();
 			for(Partido partido : listaPartidos) {
-				if(!listaPartidosCadastrados.contains(partido)) {
+				if(Collections.binarySearch(listaPartidosCadastrados, partido, Comparacao.NOME) < 0) {
 					listaPartidosNaoCadastrados.add(partido);
 				} else {
 					listaPartidosAtualizaveis.add(partido);
@@ -81,7 +92,7 @@ public class PartidoDAO {
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_partido";
+			String comandoSQL = "SELECT * FROM t_partido ORDER BY sigla ASC";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 			
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
