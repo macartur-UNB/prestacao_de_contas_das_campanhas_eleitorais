@@ -1,4 +1,4 @@
-package model;
+package modelo.beans;
 
 import java.util.Calendar;
 

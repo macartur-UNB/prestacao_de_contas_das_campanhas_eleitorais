@@ -5,7 +5,7 @@
  *  (Rafael): Adequei os atributos a modelagem UML.
 **/
 
-package dao;
+package modelo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import model.Candidato;
-import model.Partido;
+import modelo.beans.Candidato;
+import modelo.beans.Partido;
 
 public class CandidatoDAO {
 	

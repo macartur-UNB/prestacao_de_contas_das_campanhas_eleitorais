@@ -5,12 +5,11 @@ import static org.mockito.Mockito.mock;
 
 import java.sql.SQLException;
 
-import model.Candidato;
+import modelo.beans.Candidato;
+import modelo.dao.CandidatoDAO;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import dao.CandidatoDAO;
 
 public class CandidatoDAOTeste {
 	

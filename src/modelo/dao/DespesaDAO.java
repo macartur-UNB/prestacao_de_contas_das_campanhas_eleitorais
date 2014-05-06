@@ -10,7 +10,7 @@
 **/
 
 /*****************************************************************************/
-package dao;
+package modelo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,8 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import model.Despesa;
-import model.Fornecedor;
+import modelo.beans.Despesa;
+import modelo.beans.Fornecedor;
 
 
 /*****************************************************************************/

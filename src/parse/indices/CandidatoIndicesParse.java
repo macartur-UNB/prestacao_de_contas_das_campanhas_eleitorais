@@ -1,7 +1,7 @@
 package parse.indices;
 
-import model.Candidato;
-import model.Partido;
+import modelo.beans.Candidato;
+import modelo.beans.Partido;
 
 public class CandidatoIndicesParse {
 

@@ -1,4 +1,4 @@
-package model;
+package modelo.beans;
 
 public class Candidato extends Pessoa{
 

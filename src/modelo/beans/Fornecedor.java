@@ -1,7 +1,7 @@
-package model;
+package modelo.beans;
 
-public class Doador extends Pessoa {
-	
+public class Fornecedor extends Pessoa {
+
 	private String cadastroNacional;
 
 	public String getCadastroNacional() {
@@ -12,6 +12,4 @@ public class Doador extends Pessoa {
 		this.cadastroNacional = cadastroNacional;
 	}
 	
-	
-
 }

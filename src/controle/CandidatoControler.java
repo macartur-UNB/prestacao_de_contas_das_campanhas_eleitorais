@@ -1,10 +1,10 @@
-package controler;
+package controle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import model.Candidato;
-import dao.CandidatoDAO;
+import modelo.beans.Candidato;
+import modelo.dao.CandidatoDAO;
 
 public class CandidatoControler {
 
