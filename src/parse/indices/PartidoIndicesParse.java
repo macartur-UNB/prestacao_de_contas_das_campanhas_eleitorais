@@ -1,4 +1,4 @@
-package parse;
+package parse.indices;
 
 import model.Partido;
 

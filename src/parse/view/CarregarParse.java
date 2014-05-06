@@ -17,8 +17,8 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import parse.CadastroPartidoParse;
 import parse.LeitorCSV;
+import parse.cadastro.PartidoCadastroParse;
 
 @WebServlet("/carregarParse")
 public class CarregarParse extends HttpServlet {
@@ -63,28 +63,28 @@ public class CarregarParse extends HttpServlet {
 					} else {
 						if(fileItem.getFieldName().equals("arquivo_tipo")) {
 							if(fileItem.getString().equals("despesa")) {
-								tipoArquivo = CadastroPartidoParse.DESPESA;
+								tipoArquivo = PartidoCadastroParse.DESPESA;
 							} else {
-								tipoArquivo = CadastroPartidoParse.RECEITA;
+								tipoArquivo = PartidoCadastroParse.RECEITA;
 							}
 						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
 							linhaInicial = Integer.parseInt(fileItem.getString());
 						} else if(fileItem.getFieldName().equals("arquivo_ano")) {
 							switch (fileItem.getString()) {
 							case "2002":
-								ano = CadastroPartidoParse.ANO_2002;
+								ano = PartidoCadastroParse.ANO_2002;
 								break;
 								
 							case "2004":
-								ano = CadastroPartidoParse.ANO_2004;
+								ano = PartidoCadastroParse.ANO_2004;
 								break;
 								
 							case "2006":
-								ano = CadastroPartidoParse.ANO_2006;
+								ano = PartidoCadastroParse.ANO_2006;
 								break;
 								
 							case "2008":
-								ano = CadastroPartidoParse.ANO_2008;
+								ano = PartidoCadastroParse.ANO_2008;
 								break;
 
 							default:
@@ -94,7 +94,7 @@ public class CarregarParse extends HttpServlet {
 					}
 				}
 
-				CadastroPartidoParse cadastroPartidoParse = new CadastroPartidoParse(tipoArquivo, ano);
+				PartidoCadastroParse cadastroPartidoParse = new PartidoCadastroParse(tipoArquivo, ano);
 				LeitorCSV leitorCSV = new LeitorCSV();
 				
 				leitorCSV.executarMetodoPorLinhaLida(arquivo, "\";\"", cadastroPartidoParse, linhaInicial);
