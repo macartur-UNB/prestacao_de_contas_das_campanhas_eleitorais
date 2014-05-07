@@ -1,5 +1,5 @@
 /** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  01/05/2014
+ *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
  * 
  *  COMENTARIOS: Nao verifiquei o cadastro de receitas repetidas porque esse
  *  nao eh um problema critico como no caso de Candidato e Partido.
