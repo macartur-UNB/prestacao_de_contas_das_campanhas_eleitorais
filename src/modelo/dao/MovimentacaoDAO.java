@@ -1,5 +1,10 @@
 /** CRIADO POR:          Rafael Valenca
+<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 
+=======
+ *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
+ * 
+>>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
  *  COMENTARIOS: 
  *  (06/05/14) Rafael
  *  - Cada receita deve estar em nome de um Candidato ou Partido.
