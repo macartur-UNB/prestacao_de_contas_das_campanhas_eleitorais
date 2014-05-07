@@ -1,5 +1,5 @@
 /** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  01/05/2014
+ *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
  * 
  *  COMENTARIOS: 
  *  - Cada receita deve estar em nome de um Candidato ou Partido.
@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import modelo.beans.Doador;
+import modelo.beans.Pessoa;
 import modelo.beans.Receita;
 
 /*****************************************************************************/
@@ -48,19 +49,21 @@ public class ReceitaDAO {
 		
 	}
 	
-	public LinkedList<Receita> getListaReceitas() throws SQLException {
+	public LinkedList<Receita> getListaReceitas(Pessoa pessoa) throws SQLException {
 		LinkedList<Receita> listaReceitas = new LinkedList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_receita";
+			String comandoSQL = "SELECT * FROM t_receita WHERE emNomeDe = " +
+			     "\"" + pessoa.getNome() + "\"";
+			
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
 			
 			while(resultadoSQL.next()) {
 				Receita receita = new Receita();
-				//receita.setEmNomeDe(...)
+				receita.setEmNomeDe(pessoa);
 				receita.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
 				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
 					receita.setEntregaEmConjunto(true);
