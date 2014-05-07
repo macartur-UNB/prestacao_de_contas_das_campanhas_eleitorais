@@ -1,4 +1,6 @@
 /** CRIADO POR:          Rafael Valenca
+ *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
+ * 
  *  COMENTARIOS: 
  *  (06/05/14) Rafael
  *  - Cada receita deve estar em nome de um Candidato ou Partido.
