@@ -1,5 +1,5 @@
 /** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  01/05/2014
+ *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
  * 
  *  COMENTARIOS: 
  *  - Cada despesa deve estar em nome de um Candidato ou Partido.
@@ -20,6 +20,7 @@ import java.util.LinkedList;
 
 import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
+import modelo.beans.Pessoa;
 
 
 /*****************************************************************************/
@@ -49,19 +50,21 @@ public class DespesaDAO {
 
 	}
 	
-	public LinkedList<Despesa> getListaDespesas() throws SQLException {
+	public LinkedList<Despesa> getListaDespesas(Pessoa pessoa) throws SQLException {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
-			String comandoSQL = "SELECT * FROM t_despesa";
+			String comandoSQL = "SELECT * FROM t_despesa WHERE emNomeDe = " +
+			     "\"" + pessoa.getNome() + "\"";
+			
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
 			
 			while(resultadoSQL.next()) {
 				Despesa despesa = new Despesa();
-				//despesa.setEmNomeDe(...)
+				despesa.setEmNomeDe(pessoa);
 				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
 				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
 					despesa.setEntregaEmConjunto(true);
