@@ -1,5 +1,6 @@
 /** CRIADO POR:          Rafael Valenca
 <<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
+<<<<<<< HEAD
 <<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 <<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 <<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
@@ -16,6 +17,13 @@
 =======
 
 >>>>>>> Criada pagina de requisicao de Relatorio de Movimetacoes Financeiras; Uni ReceitaDAO e DespesaDAO em uma unica classe MovimentacaoDAO:src/modelo/dao/MovimentacaoDAO.java
+=======
+
+=======
+ *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
+ * 
+>>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
+>>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa
  *  COMENTARIOS: 
  *  (06/05/14) Rafael
  *  - Cada receita deve estar em nome de um Candidato ou Partido.
