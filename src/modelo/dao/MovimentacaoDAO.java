@@ -1,8 +1,11 @@
 /** CRIADO POR:          Rafael Valenca
 <<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 <<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
+<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 
 =======
+=======
+>>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
  *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
  * 
 >>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
