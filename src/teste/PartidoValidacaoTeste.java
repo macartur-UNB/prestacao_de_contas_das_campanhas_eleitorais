@@ -1,6 +1,5 @@
 package teste;
 
-import static org.junit.Assert.*;
 import modelo.beans.Partido;
 import static org.junit.Assert.*;
 
@@ -50,4 +49,5 @@ public class PartidoValidacaoTeste {
 		
 		this.partidoValidacao.numeroNaoNulo(partido);
 	}
+
 }
