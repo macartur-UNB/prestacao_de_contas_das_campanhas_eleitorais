@@ -46,5 +46,4 @@ public class PartidoValidacaoTeste {
 		
 		this.partidoValidacao.numeroNaoNulo(partido);
 	}
-
 }
