@@ -18,6 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import modelo.beans.Candidato;
 import modelo.beans.Doador;
 import modelo.beans.Pessoa;
 import modelo.beans.Receita;
