@@ -142,10 +142,6 @@ public class PartidoDAO {
 		return partido;		
 	}
 	
-	private boolean partidoExiste(Partido partido) throws SQLException {
-		return partido.equals(getPartido(partido.getSigla()));
-	}
-	
 	private void fecharConexao() throws SQLException {
 		if(this.instrucaoSQL != null) {
 			this.instrucaoSQL.close();
