@@ -1,5 +1,6 @@
 package teste;
 
+import static org.junit.Assert.*;
 import modelo.beans.Partido;
 
 import org.junit.Before;
