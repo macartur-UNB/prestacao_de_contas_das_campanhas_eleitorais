@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <web-app version="3.0" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
@@ -25,4 +26,5 @@
   	<exception-type>404</exception-type>
   	<location>/404.html</location>
   </error-page>
+
 </web-app>

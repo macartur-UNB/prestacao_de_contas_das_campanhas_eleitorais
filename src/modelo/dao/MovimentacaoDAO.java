@@ -32,7 +32,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 import modelo.beans.Despesa;
+=======
+import modelo.beans.Candidato;
+>>>>>>> Criacao da servlet:src/modelo/dao/ReceitaDAO.java
 import modelo.beans.Doador;
 import modelo.beans.Fornecedor;
 import modelo.beans.Pessoa;
