@@ -25,5 +25,4 @@ public class ReceitaDespesaDAOTeste {
 		this.mockDespesaDAO = mock(DespesaDAO.class);
 	}
 
-
 }
