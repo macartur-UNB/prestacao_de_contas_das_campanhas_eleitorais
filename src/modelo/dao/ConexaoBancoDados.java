@@ -1,3 +1,10 @@
+/** CRIADO POR:          
+ *  ULTIMA MODIFICACAO:  08/05/2014 (Rafael)
+ * 
+ *  COMENTARIOS: 
+ *  - Removi codigo em duplicidade.
+**/
+
 package modelo.dao;
 
 import java.sql.Connection;
@@ -18,12 +25,7 @@ public class ConexaoBancoDados {
 	
 	public Connection getConexao() throws SQLException {
 		Connection conexao = null;
-		try {
-			conexao = DriverManager.getConnection(MY_SQL + NOME_SERVIDOR + "/" + NOME_BANCO, USUARIO, SENHA);
-			return conexao;
-		} catch(Exception e) {
-			
-		}
+
 		try {
 			conexao = DriverManager.getConnection(MY_SQL + NOME_SERVIDOR + "/" + NOME_BANCO, USUARIO, SENHA);
 			return conexao;
