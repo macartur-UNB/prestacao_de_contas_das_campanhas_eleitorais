@@ -1,29 +1,4 @@
-/** CRIADO POR:          Rafael Valenca
-<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
-<<<<<<< HEAD
-<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
-<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
-<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
-
-=======
-=======
->>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
- *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
- * 
->>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
-=======
-
->>>>>>> Criada pagina de requisicao de Relatorio de Movimetacoes Financeiras; Uni ReceitaDAO e DespesaDAO em uma unica classe MovimentacaoDAO:src/modelo/dao/MovimentacaoDAO.java
-=======
-
->>>>>>> Criada pagina de requisicao de Relatorio de Movimetacoes Financeiras; Uni ReceitaDAO e DespesaDAO em uma unica classe MovimentacaoDAO:src/modelo/dao/MovimentacaoDAO.java
-=======
-
-=======
- *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
- * 
->>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa:src/modelo/dao/ReceitaDAO.java
->>>>>>> get ListaDespesa e Receita recebem como argumento uma Pessoa
+/**
  *  COMENTARIOS: 
  *  (06/05/14) Rafael
  *  - Cada receita deve estar em nome de um Candidato ou Partido.
@@ -67,35 +42,35 @@ public class MovimentacaoDAO {
 	public static final String TIPO            = "tipo";
 	public static final String ESPECIE         = "especie";
 	public static final String DESCRICAO       = "descricao";
-	
+
 	public static final String RECIBOELEITORAL = "reciboEleitoral";
 	public static final String NOMEDOADOR      = "nomeDoador";
 	public static final String CADASTRODOADOR  = "cadastroDoador";
-	
+
 	public static final String TIPODOC            = "tipoDoc";
 	public static final String NOMEFORNECEDOR     = "nomeFornecedor";
 	public static final String CADASTROFORNECEDOR = "cadastroFornecedor";
-	
+
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
-	
+
 	/**** Construtores *******************************************************/
 	public MovimentacaoDAO() {
-		
+
 	}
-	
+
 	public LinkedList<Receita> getListaReceitas(Pessoa pessoa) throws SQLException {
 		LinkedList<Receita> listaReceitas = new LinkedList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
-			
+
 			String comandoSQL = "SELECT * FROM t_receita WHERE emNomeDe = " +
 			     "\"" + pessoa.getNome() + "\"";
-			
+
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-			
+
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
-			
+
 			while(resultadoSQL.next()) {
 				Receita receita = new Receita();
 				receita.setEmNomeDe(pessoa);
@@ -117,7 +92,7 @@ public class MovimentacaoDAO {
 				doador.setNome(resultadoSQL.getString(NOMEDOADOR));
 				doador.setCadastroNacional("CADASTRODOADOR");
 				receita.setDoador(doador);
-				
+
 				if(receita != null)
 					listaReceitas.add(receita);
 			}
@@ -127,10 +102,10 @@ public class MovimentacaoDAO {
 			this.instrucaoSQL.close();
 			this.conexao.close();
 		}
-		
+
 		return listaReceitas;
 	}
-	
+
 	public LinkedList<Despesa> getListaDespesas(Pessoa pessoa) throws SQLException {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
 		try {
@@ -138,11 +113,11 @@ public class MovimentacaoDAO {
 
 			String comandoSQL = "SELECT * FROM t_despesa WHERE emNomeDe = " +
 			     "\"" + pessoa.getNome() + "\"";
-			
+
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-			
+
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
-			
+
 			while(resultadoSQL.next()) {
 				Despesa despesa = new Despesa();
 				despesa.setEmNomeDe(pessoa);
@@ -164,7 +139,7 @@ public class MovimentacaoDAO {
 				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
 				fornecedor.setCadastroNacional("CADASTROFORNECEDOR");
 				despesa.setFornecedor(fornecedor);
-				
+
 				if(despesa != null)
 					listaDespesas.add(despesa);
 			}
@@ -174,9 +149,9 @@ public class MovimentacaoDAO {
 			this.instrucaoSQL.close();
 			this.conexao.close();
 		}
-		
+
 		return listaDespesas;
 	}
-	
-	
+
+
 }
