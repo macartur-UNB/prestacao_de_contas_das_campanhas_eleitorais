@@ -19,6 +19,7 @@ public class SelecionarPartido extends HttpServlet {
 			throws ServletException, IOException {
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_partido.jsp");
+
 		requestDispatcher.forward(request, response);
 	}
 
