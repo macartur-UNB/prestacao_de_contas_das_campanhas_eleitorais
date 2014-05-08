@@ -1,6 +1,5 @@
 package teste;
 
-import static org.junit.Assert.*;
 import modelo.beans.Partido;
 
 import org.junit.Before;
@@ -32,6 +31,20 @@ public class PartidoValidacaoTeste {
 		partido.setSigla("PT");
 		
 		this.partidoValidacao.siglaNaoNula(partido);
+	}
+	
+	@Test (expected = PartidoExcecao.class)
+	public void lancaExcecaoSeNumeroPartidoEhNulo() throws PartidoExcecao {
+		partido.setNumeroPartido(null);
+		
+		this.partidoValidacao.numeroNaoNulo(partido);
+	}
+	
+	@Test
+	public void naoLancaExcecaoSeNumeroPartidoNaoEhNulo() throws PartidoExcecao {
+		partido.setNumeroPartido("13");
+		
+		this.partidoValidacao.numeroNaoNulo(partido);
 	}
 
 }
