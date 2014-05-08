@@ -2,6 +2,7 @@ package teste;
 
 import modelo.beans.Partido;
 import static org.junit.Assert.*;
+
 import modelo.beans.Partido;
 
 import org.junit.Before;
@@ -47,6 +48,6 @@ public class PartidoValidacaoTeste {
 		partido.setNumeroPartido("13");
 		
 		this.partidoValidacao.numeroNaoNulo(partido);
-}
+	}
 
 }
