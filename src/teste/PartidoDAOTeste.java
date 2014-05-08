@@ -13,7 +13,6 @@ import org.junit.Test;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-
 public class PartidoDAOTeste {
 	
 	private PartidoDAO mockPartidoDAO;
