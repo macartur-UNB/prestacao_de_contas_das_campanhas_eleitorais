@@ -1,4 +1,6 @@
-<%@page import="controle.PartidoControle" %>
+<%@ page import="modelo.beans.Partido" %>
+<%@ page import="controle.PartidoControle" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -6,9 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <title>Visualização do Partido</title>
-
 </head>
 <body>
 
@@ -18,7 +18,9 @@ PartidoControle partidoControle = new PartidoControle();
 
 String sigla = request.getParameter("sigla");
 
+
 partido = partidoControle.getPartido(sigla);
+
 
 out.println("Partido: " + partido.getSigla());
 out.println("Número do Partido: " + partido.getNumeroPartido());
