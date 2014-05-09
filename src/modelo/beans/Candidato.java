@@ -21,6 +21,7 @@ public class Candidato extends Pessoa {
 	private String numero;
 	private String uf;
 	private Boolean foiEleito;
+	private Integer resultadoUltimaEleicao;
 	
 	public Candidato() {
 		this.ano = INTEGER_VAZIO;
@@ -30,6 +31,7 @@ public class Candidato extends Pessoa {
 		this.numero = STRING_VAZIO;
 		this.uf = STRING_VAZIO;
 		this.foiEleito = BOOLEAN_VAZIO;
+		this.resultadoUltimaEleicao = INTEGER_VAZIO;
 	}
 	
 	@Override
@@ -99,6 +101,14 @@ public class Candidato extends Pessoa {
 
 	public void setFoiEleito(Boolean foiEleito) {
 		this.foiEleito = foiEleito;
+	}
+
+	public Integer getResultadoUltimaEleicao() {
+		return resultadoUltimaEleicao;
+	}
+
+	public void setResultadoUltimaEleicao(Integer resultadoUltimaEleicao) {
+		this.resultadoUltimaEleicao = resultadoUltimaEleicao;
 	}
 	
 }

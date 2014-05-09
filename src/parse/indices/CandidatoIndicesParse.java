@@ -17,6 +17,7 @@ public class CandidatoIndicesParse {
 	private int indiceNumero;
 	private int indiceUf;
 	private int indiceFoiEleito;
+	private int indiceResultadoUltimaEleicao;
 	
 	public CandidatoIndicesParse(int ano) {
 		this.ano = ano;
@@ -27,6 +28,7 @@ public class CandidatoIndicesParse {
 		this.indiceNumero = INDICE_INVALIDO;
 		this.indiceUf = INDICE_INVALIDO;
 		this.indiceFoiEleito = INDICE_INVALIDO;
+		this.indiceResultadoUltimaEleicao = INDICE_INVALIDO;
 	}
 	
 	public void iniciarCandidato(Candidato candidato, String campo[]) {
@@ -57,6 +59,10 @@ public class CandidatoIndicesParse {
 			boolean foiEleito = campo[this.indiceFoiEleito].equals("1") || campo[this.indiceFoiEleito].equals("true");
 			candidato.setFoiEleito(foiEleito);
 		}
+		if(indiceValido(this.indiceResultadoUltimaEleicao)) {
+			Integer resultadoUltimaEleicao = Integer.valueOf(campo[this.indiceResultadoUltimaEleicao]);
+			candidato.setResultadoUltimaEleicao(resultadoUltimaEleicao);
+		}
 		candidato.setPessoaJuridica(false);
 	}
 	
@@ -76,8 +82,9 @@ public class CandidatoIndicesParse {
 		candidato.setUf(Candidato.STRING_VAZIO);
 		candidato.setFoiEleito(Candidato.BOOLEAN_VAZIO);
 		candidato.setPessoaJuridica(Candidato.BOOLEAN_VAZIO);
+		candidato.setResultadoUltimaEleicao(Candidato.INTEGER_VAZIO);
 	}
-	
+
 	private boolean indiceValido(int indice) {
 		return indice > INDICE_INVALIDO;
 	}
@@ -153,5 +160,13 @@ public class CandidatoIndicesParse {
 
 =======
 >>>>>>> Parse funcionando para o Candidato, 2002 a 2008
+	
+	public int getIndiceResultadoUltimaEleicao() {
+		return indiceResultadoUltimaEleicao;
+	}
+
+	public void setIndiceResultadoUltimaEleicao(int indiceResultadoUltimaEleicao) {
+		this.indiceResultadoUltimaEleicao = indiceResultadoUltimaEleicao;
+	}
 	
 }
