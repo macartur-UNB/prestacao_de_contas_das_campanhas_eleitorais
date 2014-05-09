@@ -83,6 +83,7 @@ CREATE TABLE t_despesaP (
   FOREIGN KEY (partido_sigla) REFERENCES t_partido(sigla)
 );
 
+
 CREATE  TABLE t_receitaC (
   id                INTEGER UNSIGNED NOT NULL ,
   candidato_nome    VARCHAR(255) NOT NULL ,

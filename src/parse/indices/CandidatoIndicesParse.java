@@ -18,7 +18,11 @@ public class CandidatoIndicesParse {
 	private int indiceUf;
 	private int indiceFoiEleito;
 	private int indiceResultadoUltimaEleicao;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> Alterado o MER para conter as chaves estrangeiras
 	public CandidatoIndicesParse(int ano) {
 		this.ano = ano;
 		this.indiceNome = INDICE_INVALIDO;
@@ -157,6 +161,12 @@ public class CandidatoIndicesParse {
 		return indiceFoiEleito;
 	}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> Parse funcionando para o Candidato, 2002 a 2008
+	
+>>>>>>> Alterado o MER para conter as chaves estrangeiras
 	public int getIndiceResultadoUltimaEleicao() {
 		return indiceResultadoUltimaEleicao;
 	}
@@ -164,6 +174,10 @@ public class CandidatoIndicesParse {
 	public void setIndiceResultadoUltimaEleicao(int indiceResultadoUltimaEleicao) {
 		this.indiceResultadoUltimaEleicao = indiceResultadoUltimaEleicao;
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> Alterado o MER para conter as chaves estrangeiras
 }
 
