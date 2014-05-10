@@ -1,3 +1,4 @@
+
 /** CRIADO POR:          
  *  ULTIMA MODIFICACAO:  01/05/2014 (Rafael)
  * 
@@ -102,3 +103,4 @@ public class Candidato extends Pessoa {
 	}
 	
 }
+
