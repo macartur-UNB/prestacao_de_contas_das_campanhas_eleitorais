@@ -18,7 +18,7 @@ public class SelecionarReceitasEDespesas extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/selecionar_receitas_despesas.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
 		requestDispatcher.forward(request, response);
 	}
 }
