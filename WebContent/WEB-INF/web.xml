@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <web-app version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" >
     <display-name>Application Name</display-name>
     
@@ -22,6 +21,7 @@
   	<exception-type>404</exception-type>
   	<location>/404.html</location>
   </error-page>
+<<<<<<< HEAD
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -41,4 +41,6 @@
   	<location>/404.html</location>
   </error-page>
 
+=======
+>>>>>>> Adicionei pagina 404.html e erro.html com referencia em web.xml
 </web-app>
