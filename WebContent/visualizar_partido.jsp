@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 <%@ page import="modelo.beans.Partido" %>
 <%@ page import="controle.PartidoControle" %>
 <%@ page import="java.util.LinkedList" %>
-=======
-<%@page import="controle.PartidoControler" %>
-<%@page import="java.util.LinkedList" %>
->>>>>>> Modificações dos arquivos JSP
+<%@page import="controle.PartidoControle" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -13,11 +9,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
 <title>Visualização do Partido</title>
-=======
-<title>Visualização dos Partidos</title>
->>>>>>> Modificações dos arquivos JSP
+
 </head>
 <body>
 
