@@ -18,7 +18,7 @@ public class SelecionarPartido extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_pessoa.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_partido.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
