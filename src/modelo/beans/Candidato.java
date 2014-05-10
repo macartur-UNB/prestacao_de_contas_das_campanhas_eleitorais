@@ -1,8 +1,7 @@
 /** CRIADO POR:          
- *  ULTIMA MODIFICACAO:  01/05/2014 (Rafael)
  * 
  *  COMENTARIOS:
- *  (Rafael): Adequei os atributos a modelagem UML.
+ *  Rafael: (01/05/14) Adequei os atributos a modelagem UML.
 **/
 
 package modelo.beans;
@@ -112,3 +111,5 @@ public class Candidato extends Pessoa {
 	}
 	
 }
+
+
