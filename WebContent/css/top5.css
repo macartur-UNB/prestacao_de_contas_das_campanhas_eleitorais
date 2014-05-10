@@ -1,0 +1,15 @@
+/*TOP 5*/
+#top5 h3 { /* A SER IMPLEMENTADO */
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #666666;
+	padding-left: 6px;
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 5px;
+}
+
+#em_construcao{
+	border: 20px outset #DC1D20;
+	width: 505px;
+	height: 285px;
+}
