@@ -11,21 +11,17 @@
 </head>
 <body>
 
-<h1>Visualizar Receitas e Despesas</h1>
-<p>Essa funcionalidade estará dentro do perfil de um Candidato ou Partido.</p>
-
-<form action="requisitarMovimentacoesCandidato">
+<h1>Visualizar as receitas e despesas de um candidato ou Partido</h1>
+<p>Essa funcionalidade estara dentro do perfil de um candidato ou Partido</p>
+<form action="requisitarMovimentacoes">
 	<table>
+	<tr> 
+		<td>Tipo:</td>
+		<td><input type="radio" name="tabela" value="t_candidato" checked /> Candidato </td>
+	</tr>	
 	<tr>
-		<td></td>
-		<td> <input type="radio" name="tabela" 
-		onclick="link_requisitar_movimentacoes" value="candidato" checked /> 
-		Candidato</td>
-	</tr>
-	<tr>
-		<td></td>
-		<td> <input type="radio" name="tabela" value="partido"
-		 onclick="link_requisitar_movimentacoes"/> Partido</td>
+		<td> </td>
+		<td> <input type="radio" name="tabela" value="t_partido" /> Partido </td>
 	</tr>
     <tr>
     	<td>Nome: </td>
