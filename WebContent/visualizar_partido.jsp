@@ -1,6 +1,4 @@
-<%@ page import="modelo.beans.Partido" %>
-<%@ page import="controle.PartidoControle" %>
-<%@ page import="java.util.LinkedList" %>
+<%@page import="controle.PartidoControle" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -8,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Visualização do Partido</title>
 
 </head>

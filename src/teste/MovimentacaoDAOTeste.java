@@ -7,8 +7,6 @@
 
 package teste;
 
-import static org.mockito.Mockito.mock;
-
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -23,34 +21,35 @@ import org.junit.Test;
 
 public class MovimentacaoDAOTeste {
 
-	private MovimentacaoDAO mockMovimentacaoDAO;
+	private MovimentacaoDAO dao;
+	private LinkedList<Receita> listaReceitas;
+	private LinkedList<Despesa> listaDespesas;
+	
 
 	@Before
 	public void setUp() throws Exception {
-		this.mockMovimentacaoDAO = mock(MovimentacaoDAO.class);
-		
+		this.dao = new MovimentacaoDAO();
 	}
 
 	@Test
 	public void obterListaReceitas() throws SQLException {
 		Candidato candidato = new Candidato();
-		candidato.setNome("Rafael Valenca");
-		LinkedList<Receita> listaReceitas = mockMovimentacaoDAO.getListaReceitas(candidato);
-		System.out.println(listaReceitas.size());
-		//for(Receita receita:listaReceitas)
-		//{
-		//	System.out.println(receita);
-		//}
+		candidato.setNome("WLADIMIR SILVA FURTADO");
+		candidato.setAno(2014);
+		
+		listaReceitas = dao.getListaReceitas(candidato);
+		System.out.println(listaReceitas);
 
 	}
 
 	@Test
 	public void obterListaDespesas() throws SQLException {
 		Candidato candidato = new Candidato();
-		candidato.setNome("Rafael Valenca");
-		LinkedList<Despesa> listaDespesas = mockMovimentacaoDAO.getListaDespesas(candidato);
-		System.out.println(listaDespesas.size());
-
+		candidato.setNome("WLADIMIR SILVA FURTADO");
+		candidato.setAno(2014);
+		
+		listaDespesas = dao.getListaDespesas(candidato);
+		System.out.println(listaDespesas);
 
 	}
 

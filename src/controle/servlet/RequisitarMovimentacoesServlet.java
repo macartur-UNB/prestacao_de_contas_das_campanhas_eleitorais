@@ -28,6 +28,10 @@ import modelo.dao.MovimentacaoDAO;
 
 public class RequisitarMovimentacoesServlet extends HttpServlet {
 
+	private MovimentacaoDAO dao;
+	private LinkedList<Receita> listaReceitas;
+	private LinkedList<Despesa> listaDespesas;
+	
 	private static final long serialVersionUID = 2421786756015460808L;
 
 	@Override
@@ -52,18 +56,37 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 		}
 		
 		//Buscar dados no BD
-		MovimentacaoDAO dao = new MovimentacaoDAO();
-
-		LinkedList<Receita> listaReceitas;
-		LinkedList<Despesa> listaDespesas;
 		
-		try{
+		try {
+			dao = new MovimentacaoDAO();
+			System.out.println("Conexao BD foi estabelecida");
 			listaReceitas = dao.getListaReceitas(candidato);
 			listaDespesas = dao.getListaDespesas(candidato);
-		} catch (SQLException e){
+			
+			//Mostrar na tela o resultado
+			
+			out.println("<html>");
+			out.println("<body>");
+			
+			out.println("<h1>Resultado da busca:</h1>");
+			out.println("<p> Candidato: "+ candidato.getNome() + 
+						", " + candidato.getAno() + "</p>");
+			out.println("<br />");
+			
+			out.println("<h2> Receitas: </h2>");
+			out.println(listaReceitas);
+			
+			out.println("<h2> Despesas: </h2>");
+			out.println(listaDespesas);
+			
+			out.println("</body>");
+			out.println("</html>");
+		} catch (Exception e) {
+			System.out.println("Erro no acesso ao BD");
 			throw new ServletException(e);
 		}
 		
+
 		//Mostrar na tela o resultado
 		
 		out.println("<html>");
@@ -122,6 +145,6 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 
 		out.println("</body>");
 		out.println("</html>");
-		
+	
 	}
 }
