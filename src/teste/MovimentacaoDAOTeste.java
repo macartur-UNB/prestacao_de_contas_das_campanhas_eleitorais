@@ -20,6 +20,7 @@ import modelo.dao.MovimentacaoDAO;
 import org.junit.Before;
 import org.junit.Test;
 
+
 public class MovimentacaoDAOTeste {
 
 	private MovimentacaoDAO mockMovimentacaoDAO;
