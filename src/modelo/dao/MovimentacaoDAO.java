@@ -1,12 +1,14 @@
 /** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  06/05/2014 (Luciano)
- * 
+
  *  COMENTARIOS: 
+ *  (06/05/14) Rafael
  *  - Cada receita deve estar em nome de um Candidato ou Partido.
  *  Portanto, deve ter atributos emNomeDe e Ano (para definir exatamente
  *  qual eh o candidato).
  *  - numeroDoc: Numero do documento
  *  - cadastroDoador: CPF ou CNPJ do doador.
+ *  (10/05/14)
+ *  - Uni ReceitaDAO e DespesaDAO na mesma classe.
 **/
 
 /*****************************************************************************/
@@ -19,12 +21,14 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import modelo.beans.Candidato;
+import modelo.beans.Despesa;
 import modelo.beans.Doador;
+import modelo.beans.Fornecedor;
 import modelo.beans.Pessoa;
 import modelo.beans.Receita;
 
 /*****************************************************************************/
-public class ReceitaDAO {
+public class MovimentacaoDAO {
 
 	/**** Atributos **********************************************************/
 	public static final String EMNOMEDE        = "emNomeDe";
@@ -38,15 +42,20 @@ public class ReceitaDAO {
 	public static final String TIPO            = "tipo";
 	public static final String ESPECIE         = "especie";
 	public static final String DESCRICAO       = "descricao";
+	
 	public static final String RECIBOELEITORAL = "reciboEleitoral";
 	public static final String NOMEDOADOR      = "nomeDoador";
 	public static final String CADASTRODOADOR  = "cadastroDoador";
+	
+	public static final String TIPODOC            = "tipoDoc";
+	public static final String NOMEFORNECEDOR     = "nomeFornecedor";
+	public static final String CADASTROFORNECEDOR = "cadastroFornecedor";
 	
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
 	
 	/**** Construtores *******************************************************/
-	public ReceitaDAO() {
+	public MovimentacaoDAO() {
 		
 	}
 	
@@ -95,6 +104,53 @@ public class ReceitaDAO {
 		}
 		
 		return listaReceitas;
+	}
+	
+	public LinkedList<Despesa> getListaDespesas(Pessoa pessoa) throws SQLException {
+		LinkedList<Despesa> listaDespesas = new LinkedList<>();
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = "SELECT * FROM t_despesa WHERE emNomeDe = " +
+			     "\"" + pessoa.getNome() + "\"";
+			
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
+			
+			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
+			
+			while(resultadoSQL.next()) {
+				Despesa despesa = new Despesa();
+				despesa.setEmNomeDe(pessoa);
+				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
+				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
+					despesa.setEntregaEmConjunto(true);
+				} else {
+					despesa.setEntregaEmConjunto(false);
+				}
+				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
+				//despesa.setData(data) verificar formatacao
+				despesa.setValor(resultadoSQL.getFloat(VALOR));
+				despesa.setFonte(resultadoSQL.getString(FONTE));
+				despesa.setTipo(resultadoSQL.getString(TIPO));
+				despesa.setEspecie(resultadoSQL.getString(ESPECIE));
+				despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
+				despesa.setTipoDocumento(resultadoSQL.getString(TIPODOC));
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
+				fornecedor.setCadastroNacional("CADASTROFORNECEDOR");
+				despesa.setFornecedor(fornecedor);
+				
+				if(despesa != null)
+					listaDespesas.add(despesa);
+			}
+		} catch(Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			this.instrucaoSQL.close();
+			this.conexao.close();
+		}
+		
+		return listaDespesas;
 	}
 	
 	
