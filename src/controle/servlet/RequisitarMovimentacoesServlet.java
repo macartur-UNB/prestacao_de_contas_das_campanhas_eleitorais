@@ -6,8 +6,6 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,21 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/requisitarMovimentacoes")
-
 public class RequisitarMovimentacoesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 2421786756015460808L;
 
 	@Override
+
 	protected void service(HttpServletRequest request, 
 						   HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		RequestDispatcher requestDispatcher = request
-			.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
-		requestDispatcher.forward(request, response);
 
-	}
 
 		RequestDispatcher requestDispatcher;
 		if(request.getParameter("tabela").equals("candidato"))
@@ -48,5 +41,6 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 		} else {
 			return;
 		}
-		
+
 	}	
+}
