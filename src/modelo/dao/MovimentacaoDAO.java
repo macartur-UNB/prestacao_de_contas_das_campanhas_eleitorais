@@ -31,7 +31,9 @@ import modelo.beans.Receita;
 public class MovimentacaoDAO {
 
 	/**** Atributos **********************************************************/
-	public static final String EMNOMEDE        = "emNomeDe";
+	public static final String CANDIDATONOME   = "candidato_nome";
+	public static final String PARTIDOSIGLA   = "partido_sigla";
+	
 	public static final String ANO             = "ano";
 	public static final String HORAREGISTRO    = "horaRegistro";
 	public static final String ENTREGACONJUNTO = "entregaEmConjunto";
@@ -54,35 +56,43 @@ public class MovimentacaoDAO {
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
 
-	/**** Construtores *******************************************************/
-	public MovimentacaoDAO() {
-
+	/**** Construtores 
+	 * @throws SQLException **********************************************/
+	public MovimentacaoDAO() throws SQLException {
+		this.conexao = new ConexaoBancoDados().getConexao();
 	}
 
-	public LinkedList<Receita> getListaReceitas(Pessoa pessoa) throws SQLException {
+	public LinkedList<Receita> getListaReceitas(Candidato candidato) throws SQLException {
 		LinkedList<Receita> listaReceitas = new LinkedList<>();
+		
+		this.conexao = new ConexaoBancoDados().getConexao();
+		
 		try {
-			this.conexao = new ConexaoBancoDados().getConexao();
 
-			String comandoSQL = "SELECT * FROM t_receita WHERE emNomeDe = " +
-			     "\"" + pessoa.getNome() + "\"";
-
-			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-
-			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
-
+			String comandoSQL = "SELECT * FROM t_receitaC "
+							  + "WHERE candidato_nome "
+							  + " = \"" + candidato.getNome() + "\" "
+							  + "AND ano = "
+							  + candidato.getAno();
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);	
+			System.out.println(comandoSQL);
+			
+			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
+			
 			while(resultadoSQL.next()) {
+				
 				Receita receita = new Receita();
-				receita.setEmNomeDe(pessoa);
+				receita.setEmNomeDe(candidato);
+				
 				receita.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
-				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
+				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("S")){
 					receita.setEntregaEmConjunto(true);
 				} else {
 					receita.setEntregaEmConjunto(false);
 				}
 				receita.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
 				//receita.setData(data) verificar formatacao
-				receita.setValor(resultadoSQL.getFloat(VALOR));
+				//receita.setValor(resultadoSQL.getFloat(VALOR)); verificar formatacao
 				receita.setFonte(resultadoSQL.getString(FONTE));
 				receita.setTipo(resultadoSQL.getString(TIPO));
 				receita.setEspecie(resultadoSQL.getString(ESPECIE));
@@ -92,11 +102,14 @@ public class MovimentacaoDAO {
 				doador.setNome(resultadoSQL.getString(NOMEDOADOR));
 				doador.setCadastroNacional("CADASTRODOADOR");
 				receita.setDoador(doador);
+				
 
 				if(receita != null)
 					listaReceitas.add(receita);
 			}
+			
 		} catch(Exception e) {
+			System.out.println("Um erro aconteceu");
 			throw new SQLException(e.getMessage());
 		} finally {
 			this.instrucaoSQL.close();
@@ -106,30 +119,40 @@ public class MovimentacaoDAO {
 		return listaReceitas;
 	}
 
-	public LinkedList<Despesa> getListaDespesas(Pessoa pessoa) throws SQLException {
+	public LinkedList<Despesa> getListaDespesas(Candidato candidato) throws SQLException {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
+		
+		this.conexao = new ConexaoBancoDados().getConexao();
+		
 		try {
-			this.conexao = new ConexaoBancoDados().getConexao();
 
-			String comandoSQL = "SELECT * FROM t_despesa WHERE emNomeDe = " +
-			     "\"" + pessoa.getNome() + "\"";
-
-			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-
-			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
-
+			String comandoSQL = "SELECT * FROM t_despesaC "
+							  + "WHERE candidato_nome "
+							  + " = \"" + candidato.getNome() + "\" "
+							  + "AND ano = "
+							  + candidato.getAno();
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);	
+			System.out.println(comandoSQL);
+			
+			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
 			while(resultadoSQL.next()) {
+				
 				Despesa despesa = new Despesa();
-				despesa.setEmNomeDe(pessoa);
+				despesa.setEmNomeDe(candidato);
 				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
-				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("Sim")){
+				String SN = resultadoSQL.getString(ENTREGACONJUNTO);
+				if(resultadoSQL.getString(ENTREGACONJUNTO)==null){
+					SN = "N";
+				}
+				if(SN.equals("S")) {
 					despesa.setEntregaEmConjunto(true);
-				} else {
+				} else{
 					despesa.setEntregaEmConjunto(false);
 				}
+				
 				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
 				//despesa.setData(data) verificar formatacao
-				despesa.setValor(resultadoSQL.getFloat(VALOR));
+				//despesa.setValor(resultadoSQL.getFloat(VALOR)); verificar formatacao
 				despesa.setFonte(resultadoSQL.getString(FONTE));
 				despesa.setTipo(resultadoSQL.getString(TIPO));
 				despesa.setEspecie(resultadoSQL.getString(ESPECIE));
@@ -137,13 +160,15 @@ public class MovimentacaoDAO {
 				despesa.setTipoDocumento(resultadoSQL.getString(TIPODOC));
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
-				fornecedor.setCadastroNacional("CADASTROFORNECEDOR");
+				fornecedor.setCadastroNacional(resultadoSQL.getString(CADASTROFORNECEDOR));
 				despesa.setFornecedor(fornecedor);
-
-				if(despesa != null)
-					listaDespesas.add(despesa);
+				
+				
+				if(despesa != null) listaDespesas.add(despesa);
+		
 			}
 		} catch(Exception e) {
+			System.out.println("Um erro aconteceu");
 			throw new SQLException(e.getMessage());
 		} finally {
 			this.instrucaoSQL.close();
