@@ -43,7 +43,7 @@ CREATE TABLE t_doador (
   PRIMARY KEY(id)
 );
 
-CREATE TABLE t_receitaP (
+CREATE  TABLE t_receitaP (
   id                INTEGER UNSIGNED NOT NULL ,
   partido_sigla     VARCHAR(20) NOT NULL ,
   ano               VARCHAR(45) NULL ,
@@ -83,7 +83,7 @@ CREATE TABLE t_despesaP (
   FOREIGN KEY (partido_sigla) REFERENCES t_partido(sigla)
 );
 
-CREATE TABLE t_receitaC (
+CREATE  TABLE t_receitaC (
   id                INTEGER UNSIGNED NOT NULL ,
   candidato_nome    VARCHAR(255) NOT NULL ,
   ano               VARCHAR(45) NULL ,
@@ -103,7 +103,7 @@ CREATE TABLE t_receitaC (
   FOREIGN KEY (candidato_nome) REFERENCES t_candidato(nome)
 );
 
-CREATE TABLE t_despesaC (
+CREATE  TABLE t_despesaC (
   id                 INTEGER UNSIGNED NOT NULL ,
   candidato_nome     VARCHAR(255) NOT NULL ,
   ano                VARCHAR(45) NULL ,
