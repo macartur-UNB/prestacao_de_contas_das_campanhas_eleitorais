@@ -1,3 +1,9 @@
+/** CRIADO POR:          
+ * 
+ *  COMENTARIOS:
+ *  Rafael: (01/05/14) Adequei os atributos a modelagem UML.
+**/
+
 package modelo.beans;
 
 public class Candidato extends Pessoa{
@@ -15,7 +21,7 @@ public class Candidato extends Pessoa{
 	private String uf;
 	private Boolean foiEleito;
 	private Integer resultadoUltimaEleicao;
-
+	
 	public Candidato() {
 		this.ano = INTEGER_VAZIO;
 		this.cpf = STRING_VAZIO;
