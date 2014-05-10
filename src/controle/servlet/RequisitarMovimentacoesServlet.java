@@ -26,6 +26,10 @@ import modelo.dao.MovimentacaoDAO;
 @WebServlet("/requisitarMovimentacoesCandidato")
 public class RequisitarMovimentacoesServlet extends HttpServlet {
 
+	private MovimentacaoDAO dao;
+	private LinkedList<Receita> listaReceitas;
+	private LinkedList<Despesa> listaDespesas;
+	
 	private static final long serialVersionUID = 2421786756015460808L;
 
 	@Override
@@ -48,6 +52,5 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 		} else {
 			return;
 		}
-		
 	}
 }
