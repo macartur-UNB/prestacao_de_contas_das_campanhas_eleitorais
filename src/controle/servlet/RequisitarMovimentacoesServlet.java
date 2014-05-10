@@ -6,9 +6,6 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,62 +14,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.beans.Candidato;
-import modelo.beans.Despesa;
-import modelo.beans.Receita;
-import modelo.dao.MovimentacaoDAO;
 
 @WebServlet("/requisitarMovimentacoesCandidato")
+
 public class RequisitarMovimentacoesServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 2421786756015460808L;
 
 	@Override
+
 	protected void service(HttpServletRequest request, 
 						   HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		//buscando o Writer
-		PrintWriter out = response.getWriter();
-		
-		//pegando os parametros do request
-		Candidato candidato = new Candidato();
-		candidato.setNome(request.getParameter("nome"));
-		
-		try{
-			int ano = Integer.parseInt(request.getParameter("ano"));
-			candidato.setAno(ano);
-		} catch (NumberFormatException e)
+
+		RequestDispatcher requestDispatcher;
+		if(request.getParameter("tabela").equals("candidato"))
 		{
-			out.println("Erro na obtenção do ano.");
+			requestDispatcher = request
+				.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
+			requestDispatcher.forward(request,response);
+		} else if(request.getParameter("tabela").equals("partido"))
+		{
+			requestDispatcher = request
+			    .getRequestDispatcher("/visualizar_movimentacoes_partido.jsp");
+			requestDispatcher.forward(request,response);
+		} else {
 			return;
 		}
-		
-		//Buscar dados no BD
-		MovimentacaoDAO dao = new MovimentacaoDAO();
 
-		LinkedList<Receita> listaReceitas;
-		LinkedList<Despesa> listaDespesas;
-		
-		try{
-			listaReceitas = dao.getListaReceitas(candidato);
-			listaDespesas = dao.getListaDespesas(candidato);
-		} catch (SQLException e){
-			throw new ServletException(e);
-		}
-		
-		//Mostrar na tela o resultado
-		
-		out.println("<html>");
-		out.println("<body>");
-		
-		out.println("<h1>Resultado da busca:</h1>");
-		out.println("<p> Candidato: "+ candidato.getNome() + 
-					", " + candidato.getAno() + "</p>");
-		out.println("<br />");
-		//out.println(listaReceitas);
-		out.println("</body>");
-		out.println("</html>");
-		
-	}
+	}	
 }
