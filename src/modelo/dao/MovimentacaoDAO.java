@@ -20,10 +20,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 import modelo.beans.Candidato;
-<<<<<<< HEAD:src/modelo/dao/MovimentacaoDAO.java
 import modelo.beans.Despesa;
-=======
->>>>>>> Criacao da servlet:src/modelo/dao/ReceitaDAO.java
+import modelo.beans.Despesa;
 import modelo.beans.Doador;
 import modelo.beans.Fornecedor;
 import modelo.beans.Pessoa;
