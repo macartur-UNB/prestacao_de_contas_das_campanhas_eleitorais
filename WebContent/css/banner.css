@@ -1,0 +1,105 @@
+/*BANNER*/
+#banner {
+	width: 960px; /*Largura do painel*/
+	height: 263px; /*Altura do painel*/
+	margin: 0 auto 20px auto;
+	padding: 0px;
+	clear: both; /*EU ACHO: Cresce de acordo com o conteudo!*/
+	background: url(../img/fundo_banner.png) center;
+}
+
+#fundo_banner { /*PAGE*/
+	/*border:1px solid green;*/
+	position: relative;
+	width: 932px;
+	margin: 0px auto 0px auto;
+	height: 250px;
+	overflow: hidden;
+	clear: both;
+}
+
+.imagem_fundo_verde {
+	width: 100%;
+	height: auto;
+	position: absolute;
+	z-index: 10;
+	left: 2px;
+	top: 0px; /*Altera a localização da imagem*/
+}
+
+#lista li{
+	/*border: 1px solid yellow;*/
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: -5px;
+	opacity: 0px;
+	overflow: visible;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#imagem_central{
+	/*border: 1px solid blue;*/ /*Apenas para desenvolvimento*/
+	position: absolute;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+	margin: 12px 0px 0px;
+	width: 932px;
+	height: 218px;
+}
+
+
+.conteudo_banner{
+	width: 805px;
+	margin: -18px auto 0px auto; /*Altera posição do texto*/
+	position: relative;
+	z-index: 2000;
+}
+
+.conteudo_banner h2{
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:23px;
+	font-weight:normal;
+	color:#fff;
+	padding-bottom:0px;
+}
+
+.texto_banner{
+	width: 560px;
+	height: auto;
+	float: left;
+}
+
+.texto_banner p{
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:13px;
+	color:#fff;
+	line-height:20px;
+}
+
+.mais_banner a{
+	font-weight:bold;
+	color:#fff;
+	text-decoration:none;
+	margin:0px 0px 0px 0px;
+}
+
+
+.mais_banner a:hover{
+	text-decoration:underline;
+}
+
+
+.eleicoes_banner{ /*imagem lateral*/
+	margin: 30px 0px 0px 0px;
+	width:220px;
+	height:171px;
+	float:right;
+}
+
+.eleicoes_banner img{
+	position:absolute;
+}
