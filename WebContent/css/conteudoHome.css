@@ -1,0 +1,144 @@
+/*CONTEUDOHOME*/
+div#introducao {
+	/*border: 1px solid red; /* Colocado as bordas apenas para testes*/
+	width: auto;
+	height: 300px;
+}
+div#informativos {
+	/*border: 1px solid blue; /* Colocado as bordas apenas para testes*/
+	background: #F1E8E8;
+	width: auto;
+	height: 400px;
+}
+div#conteudo {
+	/*border: 1px solid yellow; /* Colocado as bordas apenas para testes*/
+	background: #ffffff;
+	width: auto;
+	height: 300px;
+}
+
+
+/*TEMA de cada titulo de MENU, para este é o SERVIÇOS*/
+#informativos h3 { /* Serviçoes */
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	color: #666666;
+	padding-left: 6px;
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 5px;
+}
+
+/*TEMA cara os titulos de cada BOX da DIV INFORMAÇOES*/
+#informativos h1 { /* Título de cada BOX */
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+/*Conjunto das TRÊS box da INFORMAÇÔES*/
+#box_servicos {
+	/*border: 1px solid #2C907F; /*Apenas para trabalho*/
+	width: 940px;
+	height: 300px;
+	margin: 0 auto; /* Ajusta a DIV para o centro da DIV informações*/
+	margin-top: 30px; /* Abaixa em 30 pixel a DIV abaixo do menu Serviços*/
+}
+#box_servicos_1 {
+	/*border: 1px solid #C96D6E; /*Apenas para trabalho*/
+	width: 280px;
+	height: 290px;
+	margin: 3px 10px ; /* Ajusta a DIV para o centro da DIV informações*/
+	background:url(../img/Layout_FW_box_r2_c2.png) no-repeat;
+	float: left;
+}
+#box_servicos_2 {
+	/*border: 1px solid #C96D6E; /*Apenas para trabalho*/
+	width: 280px;
+	height: 290px;
+	margin: 3px 30px ; /* Ajusta a DIV para o centro da DIV informações*/
+	background:url(../img/Layout_FW_box_r2_c2.png) no-repeat;
+	float: left;
+}
+#box_servicos_3 {
+	/*border: 1px solid #C96D6E; /*Apenas para trabalho*/
+	width: 280px;
+	height: 290px;
+	margin: 3px 10px ; /* Ajusta a DIV para o centro da DIV informações*/
+	background:url(../img/Layout_FW_box_r2_c2.png) no-repeat;
+	float: right;
+}
+
+/*EFEITO do titulo do Conjunto das TRÊS box da INFORMAÇÔES*/
+#efeito_box1{
+	/*border: 1px solid #29DF54; /*Apenas para trabalho*/
+	width: 269px; /*Largura do EFEITO do titulo*/
+	height: 35px; /*Altura do EFEITO do titulo*/
+	margin: 38px 0px 0px 0px; /*Posicao do EFEITO do titulo*/
+	padding-top: 0.5px;
+	padding-left: 0px;
+	transition: all 0.9s;
+}
+#efeito_box1:hover{
+	background: #E11619;
+	transition: all 0.9s;
+}
+
+/*EFEITO do titulo do Conjunto das TRÊS box da INFORMAÇÔES*/
+#efeito_box2{
+	/*border: 1px solid #29DF54; /*Apenas para trabalho*/
+	width: 269px; /*Largura do EFEITO do titulo*/
+	height: 35px; /*Altura do EFEITO do titulo*/
+	margin: 38px 0px 0px 0px;  /*Posicao do EFEITO do titulo*/
+	padding-top: 0.5px;
+	padding-left: 0px;
+	transition: all 0.9s;
+}
+#efeito_box2:hover{
+	background: #1F76EC;
+	transition: all 0.9s;
+}
+
+/*EFEITO do titulo do Conjunto das TRÊS box da INFORMAÇÔES*/
+#efeito_box3{
+	/*border: 1px solid #29DF54; /*Apenas para trabalho*/
+	width: 269px; /*Largura do EFEITO do titulo*/
+	height: 35px; /*Altura do EFEITO do titulo*/
+	margin: 38px 0px 0px 0px;/*Posicao do EFEITO do titulo*/
+	padding-top: 0.5px;
+	padding-left: 0px;
+	transition: all 0.9s;
+}
+#efeito_box3:hover{
+	background: #0B8B0E;
+	transition: all 0.9s;
+}
+
+/*CONTEUDO de cada uma das TRÊS box da INFORMAÇÔES*/
+#conteudo_box {
+	/*border: 1px solid blue; /*Apenas para trabalho*/
+	width: 200px; /*Largura da CAIXA onde se escreve*/
+	height: 160px; /*Altura da CAIXA onde se escreve*/
+	margin: 20px 10px 0px 36px; /*Posicao da CAIXA de TEXTO*/
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 13px;
+	color: #666;
+	line-height: 19px;
+	text-align: justify;
+}
+#saiba_mais_box a{
+	/*border: 1px solid red; /*Apenas para trabalho*/
+	width: 200px; /*Largura da CAIXA onde se escreve*/
+	height: 20px; /*Altura da CAIXA onde se escreve*/
+	margin: 10px 0px 0px 28px; /*Posicao da CAIXA de TEXTO*/
+	font-family: Tahoma, Geneva, sans-serif;
+	text-decoration:none;
+	font-size: 13px;
+	text-decoration:none;
+	color:#999;
+	padding: 5px;
+}
+#saiba_mais_box a:hover {
+	color: #FB9F0A;
+	text-decoration:none;
+}
