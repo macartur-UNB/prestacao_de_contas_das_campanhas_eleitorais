@@ -81,7 +81,7 @@ public class PartidoDAO {
 			this.conexao.commit();
 			
 		} catch(Exception e) {
-			throw new SQLException(e.getMessage());
+			throw new SQLException("Partido - " + e.getMessage());
 		} finally {
 			fecharConexao();
 		}		

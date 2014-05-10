@@ -6,7 +6,7 @@ import modelo.beans.Partido;
 public class CandidatoIndicesParse {
 
 	public static final int INDICE_INVALIDO = -1;
-	
+
 	private int ano;
 	private int indiceNome;
 	private int indiceCpf;
@@ -15,7 +15,8 @@ public class CandidatoIndicesParse {
 	private int indiceNumero;
 	private int indiceUf;
 	private int indiceFoiEleito;
-	
+	private int indiceResultadoUltimaEleicao;
+
 	public CandidatoIndicesParse(int ano) {
 		this.ano = ano;
 		this.indiceNome = INDICE_INVALIDO;
@@ -25,11 +26,12 @@ public class CandidatoIndicesParse {
 		this.indiceNumero = INDICE_INVALIDO;
 		this.indiceUf = INDICE_INVALIDO;
 		this.indiceFoiEleito = INDICE_INVALIDO;
+		this.indiceResultadoUltimaEleicao = INDICE_INVALIDO;
 	}
-	
+
 	public void iniciarCandidato(Candidato candidato, String campo[]) {
 		reiniciarCandidato(candidato);
-		
+
 		candidato.setAno(ano);
 		if(indiceValido(this.indiceNome)) {
 			candidato.setNome(campo[this.indiceNome]);
@@ -55,15 +57,19 @@ public class CandidatoIndicesParse {
 			boolean foiEleito = campo[this.indiceFoiEleito].equals("1") || campo[this.indiceFoiEleito].equals("true");
 			candidato.setFoiEleito(foiEleito);
 		}
+		if(indiceValido(this.indiceResultadoUltimaEleicao)) {
+			Integer resultadoUltimaEleicao = Integer.valueOf(campo[this.indiceResultadoUltimaEleicao]);
+			candidato.setResultadoUltimaEleicao(resultadoUltimaEleicao);
+		}
 		candidato.setPessoaJuridica(false);
 	}
-	
+
 	public Candidato iniciarCandidato(String campo[]) {
 		Candidato candidato = new Candidato();
 		iniciarCandidato(candidato, campo);
 		return candidato;
 	}
-	
+
 	private void reiniciarCandidato(Candidato candidato) {
 		candidato.setNome(Candidato.STRING_VAZIO);
 		candidato.setAno(Candidato.INTEGER_VAZIO);
@@ -74,8 +80,9 @@ public class CandidatoIndicesParse {
 		candidato.setUf(Candidato.STRING_VAZIO);
 		candidato.setFoiEleito(Candidato.BOOLEAN_VAZIO);
 		candidato.setPessoaJuridica(Candidato.BOOLEAN_VAZIO);
+		candidato.setResultadoUltimaEleicao(Candidato.INTEGER_VAZIO);
 	}
-	
+
 	private boolean indiceValido(int indice) {
 		return indice > INDICE_INVALIDO;
 	}
@@ -147,5 +154,13 @@ public class CandidatoIndicesParse {
 	public int getIndiceFoiEleito() {
 		return indiceFoiEleito;
 	}
-	
+
+	public int getIndiceResultadoUltimaEleicao() {
+		return indiceResultadoUltimaEleicao;
+	}
+
+	public void setIndiceResultadoUltimaEleicao(int indiceResultadoUltimaEleicao) {
+		this.indiceResultadoUltimaEleicao = indiceResultadoUltimaEleicao;
+	}
+
 }

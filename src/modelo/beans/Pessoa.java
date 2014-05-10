@@ -25,4 +25,5 @@ public abstract class Pessoa {
 		this.pessoaJuridica = pessoaJuridica;
 	}
 	
+	
 }

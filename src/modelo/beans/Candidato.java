@@ -1,10 +1,3 @@
-/** CRIADO POR:          
- *  ULTIMA MODIFICACAO:  01/05/2014 (Rafael)
- * 
- *  COMENTARIOS:
- *  (Rafael): Adequei os atributos a modelagem UML.
-**/
-
 package modelo.beans;
 
 public class Candidato extends Pessoa{
@@ -13,7 +6,7 @@ public class Candidato extends Pessoa{
 	public static final Integer INTEGER_VAZIO = 0;
 	public static final Boolean BOOLEAN_VAZIO = false;
 	public static final Partido PARTIDO_VAZIO = new Partido();
-	
+
 	private Integer ano;
 	private String cpf;
 	private String cargo;
@@ -21,7 +14,8 @@ public class Candidato extends Pessoa{
 	private String numero;
 	private String uf;
 	private Boolean foiEleito;
-	
+	private Integer resultadoUltimaEleicao;
+
 	public Candidato() {
 		this.ano = INTEGER_VAZIO;
 		this.cpf = STRING_VAZIO;
@@ -30,15 +24,16 @@ public class Candidato extends Pessoa{
 		this.numero = STRING_VAZIO;
 		this.uf = STRING_VAZIO;
 		this.foiEleito = BOOLEAN_VAZIO;
+		this.resultadoUltimaEleicao = INTEGER_VAZIO;
 	}
-	
+
 	@Override
 	public boolean equals(Object object) {
 		if( !(object instanceof Candidato) || object == null )
 			return false;
-		
+
 		Candidato outroCandidato = (Candidato) object;
-		
+
 		return ( this.getNome().equals(outroCandidato.getNome()) &&
 				 this.ano.equals(outroCandidato.getAno()) );
 	}
@@ -92,7 +87,7 @@ public class Candidato extends Pessoa{
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	
+
 	public Boolean getFoiEleito() {
 		return foiEleito;
 	}
@@ -100,5 +95,13 @@ public class Candidato extends Pessoa{
 	public void setFoiEleito(Boolean foiEleito) {
 		this.foiEleito = foiEleito;
 	}
-	
+
+	public Integer getResultadoUltimaEleicao() {
+		return resultadoUltimaEleicao;
+	}
+
+	public void setResultadoUltimaEleicao(Integer resultadoUltimaEleicao) {
+		this.resultadoUltimaEleicao = resultadoUltimaEleicao;
+	}
+
 }
