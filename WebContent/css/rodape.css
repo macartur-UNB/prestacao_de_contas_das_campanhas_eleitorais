@@ -1,0 +1,32 @@
+/*RODAPE*/
+#centro_rodape{
+	width:970px;
+	height:67px;
+	margin:20px auto 0 auto;
+	position:relative;
+}
+
+#centro_rodape img{
+	float:left;
+}
+
+#redes_sociais{
+	float:left;
+	margin:35px 0px 0px 50px;
+}
+
+#redes_sociais a img{
+	margin-right:10px;
+}
+
+#dado_rodape{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #fff;
+	width: 425;
+	height: auto;
+	float: right;
+	margin-top: 10px;
+	text-align: right;
+	margin-left: 50px;
+}
