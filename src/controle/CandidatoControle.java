@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
 
-public class CandidatoControler {
+public class CandidatoControle {
 
 	private CandidatoDAO candidatoDAO;
 	
-	public CandidatoControler() {
+	public CandidatoControle() {
 		this.candidatoDAO = new CandidatoDAO();
 	}
 	
