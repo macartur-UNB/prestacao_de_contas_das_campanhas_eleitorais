@@ -1,0 +1,83 @@
+/*MENU*/
+#menu ul {
+	width: 578px;
+	height: auto;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+#menu ul li {
+	float: left;
+	display: inline;
+	padding: 35px 5px;
+	margin-top: 10px;
+	margin-left: 0px;
+}
+
+#menu ul li a {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	background: #0C6;
+	padding: 35px 20px 10px 20px;
+	border-right: 1px solid #555555;
+}
+
+#menu ul li a.home {
+	background: url(../img/home.png) no-repeat top center;
+	border-left: 1px solid #555555;
+}
+
+#menu ul li a.candidatos {
+	background: url(../img/home.png) no-repeat top center;
+}
+#menu ul li a.partidos {
+	background: url(../img/home.png) no-repeat top center;
+}
+#menu ul li a.pesquisar {
+	background: url(../img/home.png) no-repeat top center;
+}
+
+#menu ul li a.home:hover{
+	background:url(../img/home2.png) no-repeat top center;
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-o-transition:0.5s;
+	transition:0.5s;
+	color:#FD8711;
+}
+
+#menu ul li a.partidos:hover{
+	background:url(../img/home2.png) no-repeat top center;
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-o-transition:0.5s;
+	transition:0.5s;
+	color:#FD8711;
+}
+
+#menu ul li a.candidatos:hover{
+	background:url(../img/home2.png) no-repeat top center;
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-o-transition:0.5s;
+	transition:0.5s;
+	color:#FD8711;
+}
+
+#menu ul li a.pesquisar:hover{
+	background:url(../img/home2.png) no-repeat top center;
+	-webkit-transition:0.5s;
+	-moz-transition:0.5s;
+	-o-transition:0.5s;
+	transition:0.5s;
+	color:#FD8711;
+}
+
+
