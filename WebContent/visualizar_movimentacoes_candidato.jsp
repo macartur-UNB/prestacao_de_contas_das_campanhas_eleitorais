@@ -1,7 +1,6 @@
 <%@page import="modelo.beans.Candidato"%>
 <%@page import="modelo.beans.Receita"%>
 <%@page import="modelo.beans.Despesa"%>
-<%@page import="modelo.dao.MovimentacaoDAO"%>
 <%@page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -40,14 +39,11 @@ out.println("</tr><tr><td> Ano: </td><td>" +  candidato.getAno() + "</td>");
 out.println("</tr></table>");
 
 //Buscar dados no BD
-MovimentacaoDAO dao;
 LinkedList<Receita> listaReceitas;
 LinkedList<Despesa> listaDespesas;
 try {
-	dao = new MovimentacaoDAO();
-	System.out.println("Conexao BD foi estabelecida");
-	listaReceitas = dao.getListaReceitas(candidato);
-	listaDespesas = dao.getListaDespesas(candidato);
+	listaReceitas = candidato.getListaReceitas();
+	listaDespesas = candidato.getListaDespesas();
 } catch(Exception e){
 	System.out.println("Erro no acesso ao BD");
 	throw new ServletException(e);
