@@ -4,7 +4,7 @@
  *  Rafael: (01/05/14) Adequei os atributos a modelagem UML.
  *  Rafael: (10/05/14) Transferi os metodos de MovimentacaoDAO pra ca. Com
  *  isso, esses metodos se tornam metodos sem parametros e podem mais 
- *  facilmente serem usados atraves de taglibs.
+ *  facilmente serem usados atraves de tags na view.
 **/
 
 package modelo.beans;
@@ -21,8 +21,6 @@ public class Candidato extends Pessoa{
 
 	/**** Atributos Static Final *******************************************/
 	public static final String CANDIDATONOME   = "candidato_nome";
-	public static final String PARTIDOSIGLA    = "partido_sigla";
-	
 	public static final String ANO             = "ano";
 	public static final String HORAREGISTRO    = "horaRegistro";
 	public static final String ENTREGACONJUNTO = "entregaEmConjunto";
