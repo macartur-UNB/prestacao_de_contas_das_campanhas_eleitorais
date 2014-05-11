@@ -13,22 +13,18 @@ import java.util.LinkedList;
 import modelo.beans.Candidato;
 import modelo.beans.Despesa;
 import modelo.beans.Receita;
-import modelo.dao.MovimentacaoDAO;
 
 import org.junit.Before;
 import org.junit.Test;
 
-
 public class MovimentacaoDAOTeste {
 
-	private MovimentacaoDAO dao;
 	private LinkedList<Receita> listaReceitas;
 	private LinkedList<Despesa> listaDespesas;
 	
 
 	@Before
 	public void setUp() throws Exception {
-		this.dao = new MovimentacaoDAO();
 	}
 
 	@Test
@@ -37,7 +33,7 @@ public class MovimentacaoDAOTeste {
 		candidato.setNome("WLADIMIR SILVA FURTADO");
 		candidato.setAno(2014);
 		
-		listaReceitas = dao.getListaReceitas(candidato);
+		listaReceitas = candidato.getListaReceitas();
 		System.out.println(listaReceitas);
 
 	}
@@ -48,7 +44,7 @@ public class MovimentacaoDAOTeste {
 		candidato.setNome("WLADIMIR SILVA FURTADO");
 		candidato.setAno(2014);
 		
-		listaDespesas = dao.getListaDespesas(candidato);
+		listaDespesas = candidato.getListaDespesas();
 		System.out.println(listaDespesas);
 
 	}
