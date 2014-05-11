@@ -24,7 +24,7 @@ import parse.cadastro.PartidoCadastroParse;
 public class CarregarParse extends HttpServlet {
 
 	private static final long serialVersionUID = 5625867877274809499L;
-	
+
 	@Override
 	public void init() throws ServletException {
 		super.init();
@@ -33,31 +33,31 @@ public class CarregarParse extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		PrintWriter saida = response.getWriter();
-		
+
 		Part part = request.getPart("arquivo_linha_inicial");
 		if(part != null) {
 			Scanner scanner = new Scanner(part.getInputStream());
 			saida.println("linha inicial: " + scanner.nextLine());
 			scanner.close();
 		}
-		
+
 		try {
 			boolean isMultpart = ServletFileUpload.isMultipartContent(request);			
 			if(isMultpart) {
 				FileItemFactory factory = new DiskFileItemFactory();
 				ServletFileUpload upload = new ServletFileUpload(factory);
-				
+
 				List<FileItem> fields = upload.parseRequest(request);
-				
+
 				FileItem arquivo = null;
 				String tipoArquivo = "";
 				String ano = "";
 				String divisao = "\";\"";
 				int linhaInicial = 1;
-				
-				
+
+
 				for(FileItem fileItem : fields) {
 					if(!fileItem.isFormField()) {
 						arquivo = fileItem;
@@ -75,15 +75,15 @@ public class CarregarParse extends HttpServlet {
 							case "2002":
 								ano = PartidoCadastroParse.ANO_2002;
 								break;
-								
+
 							case "2004":
 								ano = PartidoCadastroParse.ANO_2004;
 								break;
-								
+
 							case "2006":
 								ano = PartidoCadastroParse.ANO_2006;
 								break;
-								
+
 							case "2008":
 								ano = PartidoCadastroParse.ANO_2008;
 								break;
@@ -97,17 +97,17 @@ public class CarregarParse extends HttpServlet {
 
 				Parse parse = new Parse(tipoArquivo, ano);
 				parse.executarParse(arquivo, divisao, linhaInicial);
-				
-				
+
+
 				saida.println("Parse Realizado com Sucesso!");
 			}
-		
+
 		} catch(Exception e) {
 			saida.println("ERROR teste upload: " + e.getMessage());
 		}
-		
+
 	}
-	
-	
-		
+
+
+
 }

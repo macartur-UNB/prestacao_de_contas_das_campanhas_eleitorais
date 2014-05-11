@@ -18,7 +18,7 @@ public class ConexaoBancoDadosTeste {
 	}
 	
 	@Test (expected = NullPointerException.class)
-	public void DeveLancarExecaoAoEncerrarUmaConexaoQueNaoFoiIniciada() throws SQLException {
+	public void DeveLancarExcecaoAoEncerrarUmaConexaoQueNaoFoiIniciada() throws SQLException {
 		this.conexao.close();
 	}
 

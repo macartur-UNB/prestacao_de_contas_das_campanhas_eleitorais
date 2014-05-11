@@ -1,9 +1,17 @@
+/** CRIADO POR:          Rafael Valenca
+ *  ULTIMA MODIFICACAO:  01/05/2014
+ * 
+ *  COMENTARIOS: 
+**/
+
 package modelo.beans;
 
 public class Receita extends MovimentacaoFinanceira {
 
 	private String reciboEleitoral;
 	private Doador doador;
+	
+	public Receita() {}
 	
 	public String getReciboEleitoral() {
 		return reciboEleitoral;

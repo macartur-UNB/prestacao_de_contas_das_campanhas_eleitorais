@@ -18,6 +18,5 @@ public class CandidatoControle {
 		return this.candidatoDAO.getListaCandidatos();
 	}
 	
-	
-	
+
 }

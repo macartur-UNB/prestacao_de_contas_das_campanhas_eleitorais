@@ -1,13 +1,17 @@
-/** CRIADO POR:          
- * 
- *  COMENTARIOS:
- *  Rafael: (01/05/14) Adequei os atributos a modelagem UML.
- *  Rafael: (10/05/14) Transferi os metodos de MovimentacaoDAO pra ca. Com
- *  isso, esses metodos se tornam metodos sem parametros e podem mais 
- *  facilmente serem usados atraves de tags na view.
+/**
+ *  COMENTARIOS: 
+ *  (06/05/14) Rafael
+ *  - Cada receita deve estar em nome de um Candidato ou Partido.
+ *  Portanto, deve ter atributos emNomeDe e Ano (para definir exatamente
+ *  qual eh o candidato).
+ *  - numeroDoc: Numero do documento
+ *  - cadastroDoador: CPF ou CNPJ do doador.
+ *  (10/05/14)
+ *  - Uni ReceitaDAO e DespesaDAO na mesma classe.
 **/
 
-package modelo.beans;
+/*****************************************************************************/
+package modelo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,12 +19,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import modelo.dao.ConexaoBancoDados;
+import modelo.beans.Despesa;
+import modelo.beans.Candidato;
+import modelo.beans.Doador;
+import modelo.beans.Fornecedor;
+import modelo.beans.Receita;
 
-public class Candidato extends Pessoa{
+/*****************************************************************************/
+public class MovimentacaoDAO {
 
-	/**** Atributos Static Final *******************************************/
+	/**** Atributos **********************************************************/
 	public static final String CANDIDATONOME   = "candidato_nome";
+	public static final String PARTIDOSIGLA   = "partido_sigla";
+	
 	public static final String ANO             = "ano";
 	public static final String HORAREGISTRO    = "horaRegistro";
 	public static final String ENTREGACONJUNTO = "entregaEmConjunto";
@@ -40,122 +51,28 @@ public class Candidato extends Pessoa{
 	public static final String NOMEFORNECEDOR     = "nomeFornecedor";
 	public static final String CADASTROFORNECEDOR = "cadastroFornecedor";
 
-	public static final String STRING_VAZIO = "";
-	public static final Integer INTEGER_VAZIO = 0;
-	public static final Boolean BOOLEAN_VAZIO = false;
-	public static final Partido PARTIDO_VAZIO = new Partido();
-	
-	/**** Atributos de Classe *******************************************/
-	
-	private Integer ano;
-	private String cpf;
-	private String cargo;
-	private Partido partido;
-	private String numero;
-	private String uf;
-	private Boolean foiEleito;
-	private Integer resultadoUltimaEleicao;
-	
-	public Candidato() {
-		this.ano = INTEGER_VAZIO;
-		this.cpf = STRING_VAZIO;
-		this.cargo = STRING_VAZIO;
-		this.partido = PARTIDO_VAZIO;
-		this.numero = STRING_VAZIO;
-		this.uf = STRING_VAZIO;
-		this.foiEleito = BOOLEAN_VAZIO;
-		this.resultadoUltimaEleicao = INTEGER_VAZIO;
+	private Connection conexao;
+	private PreparedStatement instrucaoSQL;
+
+	/**** Construtores 
+	 * @throws SQLException **********************************************/
+	public MovimentacaoDAO() throws SQLException {
+		this.conexao = new ConexaoBancoDados().getConexao();
 	}
 
-	@Override
-	public boolean equals(Object object) {
-		if( !(object instanceof Candidato) || object == null )
-			return false;
-
-		Candidato outroCandidato = (Candidato) object;
-
-		return ( this.getNome().equals(outroCandidato.getNome()) &&
-				 this.ano.equals(outroCandidato.getAno()) );
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public Partido getPartido() {
-		return partido;
-	}
-
-	public void setPartido(Partido partido) {
-		this.partido = partido;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public Integer getAno() {
-		return ano;
-	}
-
-	public void setAno(Integer ano) {
-		this.ano = ano;
-	}
-
-	public String getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
-	}
-
-
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
-
-	public Boolean getFoiEleito() {
-		return foiEleito;
-	}
-
-	public void setFoiEleito(Boolean foiEleito) {
-		this.foiEleito = foiEleito;
-	}
-
-	public Integer getResultadoUltimaEleicao() {
-		return resultadoUltimaEleicao;
-	}
-
-	public void setResultadoUltimaEleicao(Integer resultadoUltimaEleicao) {
-		this.resultadoUltimaEleicao = resultadoUltimaEleicao;
-	}
-	
-	public LinkedList<Receita> getListaReceitas() throws SQLException {
+	public LinkedList<Receita> getListaReceitas(Candidato candidato) throws SQLException {
 		LinkedList<Receita> listaReceitas = new LinkedList<>();
 		
-		Connection conexao = new ConexaoBancoDados().getConexao();
+		this.conexao = new ConexaoBancoDados().getConexao();
 		
 		try {
 
 			String comandoSQL = "SELECT * FROM t_receitaC "
 							  + "WHERE candidato_nome "
-							  + " = \"" + this.getNome() + "\" "
+							  + " = \"" + candidato.getNome() + "\" "
 							  + "AND ano = "
-							  + this.getAno();
-			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);	
+							  + candidato.getAno();
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);	
 			System.out.println(comandoSQL);
 			
 			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
@@ -163,7 +80,7 @@ public class Candidato extends Pessoa{
 			while(resultadoSQL.next()) {
 				
 				Receita receita = new Receita();
-				receita.setEmNomeDe(this);
+				receita.setEmNomeDe(candidato);
 				
 				receita.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
 				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("S")){
@@ -188,38 +105,38 @@ public class Candidato extends Pessoa{
 				if(receita != null)
 					listaReceitas.add(receita);
 			}
-			instrucaoSQL.close();
 			
 		} catch(Exception e) {
 			System.out.println("Um erro aconteceu");
 			throw new SQLException(e.getMessage());
 		} finally {
-			conexao.close();
+			this.instrucaoSQL.close();
+			this.conexao.close();
 		}
 
 		return listaReceitas;
 	}
 
-	public LinkedList<Despesa> getListaDespesas() throws SQLException {
+	public LinkedList<Despesa> getListaDespesas(Candidato candidato) throws SQLException {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
 		
-		Connection conexao = new ConexaoBancoDados().getConexao();
+		this.conexao = new ConexaoBancoDados().getConexao();
 		
 		try {
 
 			String comandoSQL = "SELECT * FROM t_despesaC "
 							  + "WHERE candidato_nome "
-							  + " = \"" + this.getNome() + "\" "
+							  + " = \"" + candidato.getNome() + "\" "
 							  + "AND ano = "
-							  + this.getAno();
-			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);	
+							  + candidato.getAno();
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);	
 			System.out.println(comandoSQL);
 			
 			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
 			while(resultadoSQL.next()) {
 				
 				Despesa despesa = new Despesa();
-				despesa.setEmNomeDe(this);
+				despesa.setEmNomeDe(candidato);
 				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
 				String SN = resultadoSQL.getString(ENTREGACONJUNTO);
 				if(resultadoSQL.getString(ENTREGACONJUNTO)==null){
@@ -248,15 +165,16 @@ public class Candidato extends Pessoa{
 				if(despesa != null) listaDespesas.add(despesa);
 		
 			}
-			instrucaoSQL.close();
 		} catch(Exception e) {
 			System.out.println("Um erro aconteceu");
 			throw new SQLException(e.getMessage());
-		} finally {	
-			conexao.close();
+		} finally {
+			this.instrucaoSQL.close();
+			this.conexao.close();
 		}
 
 		return listaDespesas;
 	}
+
 
 }
