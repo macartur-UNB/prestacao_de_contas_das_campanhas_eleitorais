@@ -102,12 +102,10 @@ public class PartidoDAO {
 				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
 				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
 				
-				if(partido != null)
-					listaPartidos.add(partido);
+				listaPartidos.add(partido);
 			}
 			
 		} catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
 			throw new SQLException(e.getMessage());
 		} finally {
 			fecharConexao();

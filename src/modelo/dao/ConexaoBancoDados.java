@@ -7,6 +7,10 @@
 
 package modelo.dao;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,22 +19,18 @@ import java.sql.Statement;
 
 public class ConexaoBancoDados {
 	
-	private String localBanco;	
-	private String nomeSevidor;
-	private String nomeBanco;
-	private String usuario;
-	private String senha;
+	private static String localBanco = "jdbc:mysql://";	
+	private static String nomeSevidor = "localhost";
+	private static String nomeBanco = "gpp";
+	private static String usuario = "root";
+	private static String senha = "root";
 	
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
 	private Statement afirmacao;
 	
 	public ConexaoBancoDados() {
-		this.localBanco = "jdbc:mysql://";	
-		this.nomeSevidor = "localhost";
-		this.nomeBanco = "gpp";
-		this.usuario = "root";
-		this.senha = "root";
+		
 	}
 	
 	public Connection getConexao() throws SQLException {
@@ -49,14 +49,35 @@ public class ConexaoBancoDados {
 		}
 	}
 	
-	public void criarBanco() throws SQLException {
+	public void criarBanco(String nomeNovoBanco) throws SQLException {
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+			this.afirmacao = this.conexao.createStatement();
+
+			String comandoSQL = "create database if not exists " + nomeNovoBanco;
+			
+			this.afirmacao.executeUpdate(comandoSQL);
+		} catch(Exception e) {
+			throw new SQLException("ConexaoBancoDados - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
+	}
+	
+	public void alterarBanco(String nomeBancoAtual) {
+		nomeBanco = nomeBancoAtual;
+	}
+	
+	public void importarSQL(String arquivoSQL) throws SQLException {
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			this.afirmacao = this.conexao.createStatement();
 			
-			String comandoSQL = "create database " + nomeBanco;
-			
-			this.afirmacao.executeUpdate(comandoSQL);
+			String comando[] = getLinhasArquivo(arquivoSQL);
+			for(String linha : comando) {
+				this.afirmacao.execute(linha);
+			}
+						
 		} catch(Exception e) {
 			throw new SQLException("ConexaoBancoDados - " + e.getMessage());
 		} finally {
@@ -69,7 +90,7 @@ public class ConexaoBancoDados {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			this.afirmacao = this.conexao.createStatement();
 			
-			String comandoSQL = "drop database " + nomeBanco;
+			String comandoSQL = "drop database if exists " + nomeBanco;
 			
 			this.afirmacao.executeUpdate(comandoSQL);
 		} catch(Exception e) {
@@ -79,54 +100,36 @@ public class ConexaoBancoDados {
 		}
 	}
 
+	public void setLocalBanco(String novoLocalBanco) {
+		localBanco = novoLocalBanco;
+	}
+	
+	public String getLocalBanco() {
+		return localBanco;
+	}
+	
 	private void fecharConexao() throws SQLException {
-		if(this.instrucaoSQL != null) {
-			this.instrucaoSQL.close();
-		}
 		if(this.conexao != null) {
 			this.conexao.close();
 		}
 	}
 	
-
-	public String getLocalBanco() {
-		return localBanco;
-	}
-
-	public void setLocalBanco(String localBanco) {
-		this.localBanco = localBanco;
-	}
-
-	public String getNomeSevidor() {
-		return nomeSevidor;
-	}
-
-	public void setNomeSevidor(String nomeSevidor) {
-		this.nomeSevidor = nomeSevidor;
-	}
-
-	public String getNomeBanco() {
-		return nomeBanco;
-	}
-
-	public void setNomeBanco(String nomeBanco) {
-		this.nomeBanco = nomeBanco;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	private String[] getLinhasArquivo(String arquivo) throws IOException {
+		File file = new File(arquivo);
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+		String linhaComando = "";
+		String comando[];
+		String linhaLida;
+		
+		while( (linhaLida = bufferedReader.readLine()) != null ) {
+			if(!linhaLida.isEmpty()) {
+				linhaComando += linhaLida;
+			}
+		}
+		
+		comando = linhaComando.split(";");
+		bufferedReader.close();
+		return comando;
 	}
 	
 }
