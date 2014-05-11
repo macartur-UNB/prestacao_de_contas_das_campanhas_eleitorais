@@ -22,5 +22,7 @@ public class SelecionarPartido extends HttpServlet {
 
 		requestDispatcher.forward(request, response);
 	}
+	
+	
 
 }
