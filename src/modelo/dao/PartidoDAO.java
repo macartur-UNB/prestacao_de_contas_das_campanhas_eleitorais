@@ -115,7 +115,7 @@ public class PartidoDAO {
 		return listaPartidos;
 	}
 	
-	private Partido getPartido(String sigla) throws SQLException {
+	public Partido getPartido(String sigla) throws SQLException {
 		Partido partido = new Partido();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();

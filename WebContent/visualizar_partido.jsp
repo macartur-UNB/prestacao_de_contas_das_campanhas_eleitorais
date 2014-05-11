@@ -13,17 +13,15 @@
 <body>
 
 <%
-LinkedList<Partido> partidos;
+Partido partido;
 PartidoControle partidoControle = new PartidoControle();
 
 String sigla = request.getParameter("sigla");
 
-partidos = partidoControle.getListaPartidos();
+partido = partidoControle.getPartido(sigla);
 
-for(Partido partido : partidos) {
-	out.println("Partido: " + partido.getSigla());
-}
-
+out.println("Partido: " + partido.getSigla());
+out.println("Número do Partido: " + partido.getNumeroPartido());
 %>
 
 </body>
