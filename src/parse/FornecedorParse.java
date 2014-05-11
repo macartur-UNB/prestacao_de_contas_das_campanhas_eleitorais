@@ -28,7 +28,7 @@ public class FornecedorParse {
 	
 	public void cadastrarFornecedores() throws SQLException {
 		System.out.println("cadastrarFornecedores()");
-		this.fornecedorDAO.cadastrarFornecedores(listaFornecedores);
+		this.fornecedorDAO.cadastrarLista(listaFornecedores);
 	}
 	
 	public void resetar() {
