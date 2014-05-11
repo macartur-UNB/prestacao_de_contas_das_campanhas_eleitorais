@@ -14,11 +14,7 @@
 <h1>Visualizar Receitas e Despesas</h1>
 <p>Essa funcionalidade estará dentro do perfil de um Candidato ou Partido.</p>
 
-<<<<<<< HEAD
-<form action="requisitarMovimentacoesCandidato">
-=======
 <form action="requisitarMovimentacoes">
->>>>>>> 8f2324d06d64464ae5decb3ff03d5c47e09d7032
 	<table>
 	<tr>
 		<td></td>
