@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 <%@ page import="modelo.beans.Partido" %>
 <%@ page import="controle.PartidoControle" %>
-=======
-<%@page import="controle.PartidoControle"%>
 <%@page import="modelo.dao.PartidoDAO" %>
->>>>>>> Servlet Requisicao de receitas e despesas de candidato
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

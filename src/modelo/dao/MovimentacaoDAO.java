@@ -21,10 +21,8 @@ import java.util.LinkedList;
 
 import modelo.beans.Despesa;
 import modelo.beans.Candidato;
-import modelo.beans.Despesa;
 import modelo.beans.Doador;
 import modelo.beans.Fornecedor;
-import modelo.beans.Pessoa;
 import modelo.beans.Receita;
 
 /*****************************************************************************/
