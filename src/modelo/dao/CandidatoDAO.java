@@ -1,8 +1,3 @@
-/** CRIADO POR:          
- * 
- *  COMENTARIOS:
- *  (Rafael): Adequei os atributos a modelagem UML.
-**/
 
 package modelo.dao;
 

@@ -17,12 +17,19 @@ import java.util.LinkedList;
 
 import modelo.dao.ConexaoBancoDados;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.LinkedList;
+
+import modelo.dao.ConexaoBancoDados;
+
 public class Candidato extends Pessoa{
 
 	/**** Atributos Static Final *******************************************/
 	public static final String CANDIDATONOME   = "candidato_nome";
 	public static final String PARTIDOSIGLA    = "partido_sigla";
-	
 	public static final String ANO             = "ano";
 	public static final String HORAREGISTRO    = "horaRegistro";
 	public static final String ENTREGACONJUNTO = "entregaEmConjunto";

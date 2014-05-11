@@ -21,10 +21,8 @@ import java.util.LinkedList;
 
 import modelo.beans.Despesa;
 import modelo.beans.Candidato;
-import modelo.beans.Despesa;
 import modelo.beans.Doador;
 import modelo.beans.Fornecedor;
-import modelo.beans.Pessoa;
 import modelo.beans.Receita;
 
 /*****************************************************************************/
@@ -33,7 +31,7 @@ public class MovimentacaoDAO {
 	/**** Atributos **********************************************************/
 	public static final String CANDIDATONOME   = "candidato_nome";
 	public static final String PARTIDOSIGLA   = "partido_sigla";
-	
+
 	public static final String ANO             = "ano";
 	public static final String HORAREGISTRO    = "horaRegistro";
 	public static final String ENTREGACONJUNTO = "entregaEmConjunto";
@@ -64,9 +62,9 @@ public class MovimentacaoDAO {
 
 	public LinkedList<Receita> getListaReceitas(Candidato candidato) throws SQLException {
 		LinkedList<Receita> listaReceitas = new LinkedList<>();
-		
+
 		this.conexao = new ConexaoBancoDados().getConexao();
-		
+
 		try {
 
 			String comandoSQL = "SELECT * FROM t_receitaC "
@@ -76,14 +74,14 @@ public class MovimentacaoDAO {
 							  + candidato.getAno();
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);	
 			System.out.println(comandoSQL);
-			
+
 			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
-			
+
 			while(resultadoSQL.next()) {
-				
+
 				Receita receita = new Receita();
 				receita.setEmNomeDe(candidato);
-				
+
 				receita.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
 				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("S")){
 					receita.setEntregaEmConjunto(true);
@@ -102,12 +100,12 @@ public class MovimentacaoDAO {
 				doador.setNome(resultadoSQL.getString(NOMEDOADOR));
 				doador.setCadastroNacional("CADASTRODOADOR");
 				receita.setDoador(doador);
-				
+
 
 				if(receita != null)
 					listaReceitas.add(receita);
 			}
-			
+
 		} catch(Exception e) {
 			System.out.println("Um erro aconteceu");
 			throw new SQLException(e.getMessage());
@@ -121,9 +119,9 @@ public class MovimentacaoDAO {
 
 	public LinkedList<Despesa> getListaDespesas(Candidato candidato) throws SQLException {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
-		
+
 		this.conexao = new ConexaoBancoDados().getConexao();
-		
+
 		try {
 
 			String comandoSQL = "SELECT * FROM t_despesaC "
@@ -133,10 +131,10 @@ public class MovimentacaoDAO {
 							  + candidato.getAno();
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);	
 			System.out.println(comandoSQL);
-			
+
 			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
 			while(resultadoSQL.next()) {
-				
+
 				Despesa despesa = new Despesa();
 				despesa.setEmNomeDe(candidato);
 				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
@@ -149,7 +147,7 @@ public class MovimentacaoDAO {
 				} else{
 					despesa.setEntregaEmConjunto(false);
 				}
-				
+
 				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
 				//despesa.setData(data) verificar formatacao
 				//despesa.setValor(resultadoSQL.getFloat(VALOR)); verificar formatacao
@@ -162,10 +160,10 @@ public class MovimentacaoDAO {
 				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
 				fornecedor.setCadastroNacional(resultadoSQL.getString(CADASTROFORNECEDOR));
 				despesa.setFornecedor(fornecedor);
-				
-				
+
+
 				if(despesa != null) listaDespesas.add(despesa);
-		
+
 			}
 		} catch(Exception e) {
 			System.out.println("Um erro aconteceu");

@@ -41,10 +41,6 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 		} else {
 			return;
 		}
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> Pagina de visualizacao de receitas e despesas agora também para partidos.Falta filtrar por ano, devido a ausencia desse filtro no BD
 	}	
 }
