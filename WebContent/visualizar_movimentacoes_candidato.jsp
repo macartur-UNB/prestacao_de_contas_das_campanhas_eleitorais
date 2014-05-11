@@ -16,39 +16,23 @@
 
 <body>
 
-<!-- Pegando os parametros do candidato -->
-<%
-// Busca os dados do request
-Candidato candidato = new Candidato();
-candidato.setNome(request.getParameter("nome"));
+<!-- Pegando os parametros do Candidato -->
+<jsp:useBean id="candidato" class="modelo.beans.Candidato" />
+<jsp:setProperty name="candidato" property="nome" value="${param.nome}" /> 
+<jsp:setProperty name="candidato" property="ano" value="${param.ano}" /> 
 
-try{
-	int ano = Integer.parseInt(request.getParameter("ano"));
-	candidato.setAno(ano);
-} catch (NumberFormatException e)
-{
-	out.println("Erro na obtenção do ano.");
-	return;
-}
-
-//Mostrar na tela os dados do Candidato
-out.println("<h1>Resultado da busca:</h1>");
-out.println("<table><tr>");
-out.println("<td> Candidato: </td><td>"    + candidato.getNome() + "</td>");
-out.println("</tr><tr><td> Ano: </td><td>" +  candidato.getAno() + "</td>");
-out.println("</tr></table>");
-
-//Buscar dados no BD
-LinkedList<Receita> listaReceitas;
-LinkedList<Despesa> listaDespesas;
-try {
-	listaReceitas = candidato.getListaReceitas();
-	listaDespesas = candidato.getListaDespesas();
-} catch(Exception e){
-	System.out.println("Erro no acesso ao BD");
-	throw new ServletException(e);
-}			
-%>
+<!-- Mostrar na tela os dados do Candidato -->
+<h1>Resultado da busca:</h1>
+<table>
+<tr>
+	<td> Candidato: </td>
+	<td>${candidato.nome}</td>
+</tr>
+<tr>
+	<td> Ano: </td>
+	<td>${candidato.ano}</td>
+</tr>
+</table>
 
 <!-- Tabela de receitas -->
 <h2> Receitas: </h2>
@@ -69,28 +53,23 @@ try {
 	<th>Cadastro do Doador</th>	
 </tr>
 <!-- Elementos da tabela -->
-<%
-for(Receita receita:listaReceitas)
-{
-out.println("<tr>");
-	out.println("<td>"+receita.getHoraRegistro()+"</td>");
-	//out.println("<td>"+receita.isEntregaEmConjunto()+"</td>");
-	out.println("<td>"+receita.getNumeroDocumento()+"</td>");
-	out.println("<td>"+receita.getData()+"</td>");
-	out.println("<td>"+receita.getValor()+"</td>");
-	out.println("<td>"+receita.getFonte()+"</td>");
-	out.println("<td>"+receita.getTipo()+"</td>");
-	out.println("<td>"+receita.getEspecie()+"</td>");
-	out.println("<td>"+receita.getDescricao()+"</td>");
-	out.println("<td>"+receita.getReciboEleitoral()+"</td>");
-	out.println("<td>"+receita.getDoador().getNome()+"</td>");
-	out.println("<td>"+receita.getDoador().getCadastroNacional()
-			+"</td>");
-
-out.println("</tr>");	
-}
-%>
+<c:forEach var="receita" items="${candidato.listaReceitas}">
+	<tr>
+		<td>${receita.horaRegistro}</td>
+		<td>${receita.numeroDocumento}</td>
+		<td>${receita.data}</td>
+		<td>${receita.valor}</td>
+		<td>${receita.fonte}</td>
+		<td>${receita.tipo}</td>
+		<td>${receita.especie}</td>
+		<td>${receita.descricao}</td>
+		<td>${receita.reciboEleitoral}</td>
+		<td>${receita.doador.nome}</td>
+		<td>${receita.doador.cadastroNacional}</td>
+	</tr>
+</c:forEach>
 </table>
+
 
 <!-- Tabela de despesas -->
 <h2> Despesas: </h2>
@@ -111,27 +90,21 @@ out.println("</tr>");
 	<th>Cadastro do Fornecedor</th>	
 </tr>
 <!-- Elementos da tabela -->
-<%
-for(Despesa despesa:listaDespesas)
-{
-	out.println("<tr>");
-	out.println("<td>"+despesa.getHoraRegistro()+"</td>");
-	//out.println("<td>"+despesa.isEntregaEmConjunto()+"</td>");
-	out.println("<td>"+despesa.getNumeroDocumento()+"</td>");
-	out.println("<td>"+despesa.getData()+"</td>");
-	out.println("<td>"+despesa.getValor()+"</td>");
-	out.println("<td>"+despesa.getFonte()+"</td>");
-	out.println("<td>"+despesa.getTipo()+"</td>");
-	out.println("<td>"+despesa.getEspecie()+"</td>");
-	out.println("<td>"+despesa.getDescricao()+"</td>");
-	out.println("<td>"+despesa.getTipoDocumento()+"</td>");
-	out.println("<td>"+despesa.getFornecedor().getNome()+"</td>");
-	out.println("<td>"+despesa.getFornecedor().getCadastroNacional()
-			+"</td>");
-	out.println("<tr>");
-}
-%>
+<c:forEach var="despesa" items="${candidato.listaDespesas}">
+	<tr>
+		<td>${despesa.horaRegistro}</td>
+		<td>${despesa.numeroDocumento}</td>
+		<td>${despesa.data}</td>
+		<td>${despesa.valor}</td>
+		<td>${despesa.fonte}</td>
+		<td>${despesa.tipo}</td>
+		<td>${despesa.especie}</td>
+		<td>${despesa.descricao}</td>
+		<td>${despesa.tipoDocumento}</td>
+		<td>${despesa.fornecedor.nome}</td>
+		<td>${despesa.fornecedor.cadastroNacional}</td>
+	</tr>
+</c:forEach>
 </table>
-
 </body>
 </html>
