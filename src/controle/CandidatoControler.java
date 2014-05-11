@@ -15,7 +15,7 @@ public class CandidatoControler {
 	}
 	
 	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
-		return this.candidatoDAO.getListaCandidatos();
+		return this.candidatoDAO.getLista();
 	}
 	
 	
