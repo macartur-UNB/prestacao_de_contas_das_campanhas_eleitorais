@@ -42,11 +42,25 @@ ol, ul {
 #menu ul li a.candidatos {
 	background: url(../img/candidato.png) no-repeat top center;
 }
+
+#menu ul li a.candidatosstatic {
+	background: url(../img/candidato_3.png) no-repeat top center;
+}
+
 #menu ul li a.partidos {
 	background: url(../img/partido.png) no-repeat top center;
 }
+
+#menu ul li a.partidosstatic {
+	background: url(../img/partido_3.png) no-repeat top center;
+}
+
 #menu ul li a.pesquisar {
 	background: url(../img/pesquisar.png) no-repeat top center;
+}
+
+#menu ul li a.pesquisarstatic {
+	background: url(../img/pesquisar_3.png) no-repeat top center;
 }
 
 #menu ul li a.home:hover{
