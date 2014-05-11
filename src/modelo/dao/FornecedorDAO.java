@@ -33,10 +33,12 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor>{
 	protected String getSqlInsert() {
 		return SQL_INSERT;
 	}
+	
 	@Override
 	protected String getSqlSelect() {
 		return SQL_SELECT;
 	}
+	
 	@Override
 	protected void adicionarListaNoBatch(ArrayList<Fornecedor> lista, PreparedStatement instrucaoSQL) throws SQLException {
 		for(Fornecedor fornecedor : lista) {
@@ -45,6 +47,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor>{
 			instrucaoSQL.addBatch();
 		}
 	}
+	
 	@Override
 	protected void adicionarResultSetNaLista(ArrayList<Fornecedor> lista, ResultSet resultadoSQL) throws SQLException {
 		while(resultadoSQL.next()) {
@@ -54,6 +57,6 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor>{
 			
 			lista.add(fornecedor);
 		}
-	}	
+	}
 	
 }

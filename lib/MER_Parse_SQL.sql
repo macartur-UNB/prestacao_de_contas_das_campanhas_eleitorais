@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS t_despesaC;
 DROP TABLE IF EXISTS t_receitaC;
 DROP TABLE IF EXISTS t_despesaP;
 DROP TABLE IF EXISTS t_receitaP;
+DROP TABLE IF EXISTS t_doador;
 DROP TABLE IF EXISTS t_fornecedor;
 DROP TABLE IF EXISTS t_candidato;
 DROP TABLE IF EXISTS t_partido;
@@ -29,6 +30,13 @@ CREATE TABLE t_candidato (
 );
 
 CREATE TABLE t_fornecedor (
+  id                INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome              VARCHAR(255) NOT NULL,
+  cadastro_nacional VARCHAR(255) NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE t_doador (
   id                INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome              VARCHAR(255) NOT NULL,
   cadastro_nacional VARCHAR(255) NULL,
