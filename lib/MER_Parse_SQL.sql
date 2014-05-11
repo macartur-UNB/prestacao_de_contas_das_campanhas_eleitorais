@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS t_despesaC;
+DROP TABLE IF EXISTS t_receitaC;
+DROP TABLE IF EXISTS t_despesaP;
+DROP TABLE IF EXISTS t_receitaP;
+DROP TABLE IF EXISTS t_fornecedor;
+DROP TABLE IF EXISTS t_candidato;
+DROP TABLE IF EXISTS t_partido;
+
 CREATE TABLE t_partido (
   numero      VARCHAR(20) NOT NULL ,
   sigla       VARCHAR(20) NOT NULL ,
@@ -19,7 +27,15 @@ CREATE TABLE t_candidato (
   PRIMARY KEY(nome),
   FOREIGN KEY(partido_sigla) REFERENCES t_partido(sigla)
 );
-CREATE  TABLE t_receitaP (
+
+CREATE TABLE t_fornecedor (
+  id                INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome              VARCHAR(255) NOT NULL,
+  cadastro_nacional VARCHAR(255) NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE t_receitaP (
   id                INTEGER UNSIGNED NOT NULL ,
   partido_sigla     VARCHAR(20) NOT NULL ,
   ano               VARCHAR(45) NULL ,
@@ -39,7 +55,7 @@ CREATE  TABLE t_receitaP (
   FOREIGN KEY (partido_sigla) REFERENCES t_partido(sigla)
 );
 
-CREATE  TABLE t_despesaP (
+CREATE TABLE t_despesaP (
   id                 INTEGER UNSIGNED NOT NULL ,
   partido_sigla      VARCHAR(20) NOT NULL ,
   ano                VARCHAR(45) NULL ,
@@ -59,7 +75,7 @@ CREATE  TABLE t_despesaP (
   FOREIGN KEY (partido_sigla) REFERENCES t_partido(sigla)
 );
 
-CREATE  TABLE t_receitaC (
+CREATE TABLE t_receitaC (
   id                INTEGER UNSIGNED NOT NULL ,
   candidato_nome    VARCHAR(255) NOT NULL ,
   ano               VARCHAR(45) NULL ,
@@ -79,7 +95,7 @@ CREATE  TABLE t_receitaC (
   FOREIGN KEY (candidato_nome) REFERENCES t_candidato(nome)
 );
 
-CREATE  TABLE t_despesaC (
+CREATE TABLE t_despesaC (
   id                 INTEGER UNSIGNED NOT NULL ,
   candidato_nome     VARCHAR(255) NOT NULL ,
   ano                VARCHAR(45) NULL ,

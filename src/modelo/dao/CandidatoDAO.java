@@ -51,6 +51,7 @@ public class CandidatoDAO {
 		try {
 			ArrayList<Candidato> listaCandidatosNaoCadastrados = new ArrayList<>();
 			ArrayList<Candidato> listaCandidatosCadastrados = getListaCandidatos();
+			Collections.sort(listaCandidatosCadastrados, Comparacao.NOME);
 			for(Candidato candidato : listaCandidatos) {
 				if(Collections.binarySearch(listaCandidatosCadastrados, candidato, Comparacao.NOME) < 0) {
 					listaCandidatosNaoCadastrados.add(candidato);
@@ -95,7 +96,7 @@ public class CandidatoDAO {
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_candidato ORDER BY nome ASC";
+			String comandoSQL = "SELECT * FROM t_candidato";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			ResultSet resultadoSQL = this.instrucaoSQL.executeQuery();
 			

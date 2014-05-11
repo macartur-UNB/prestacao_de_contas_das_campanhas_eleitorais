@@ -17,6 +17,7 @@ public class Candidato extends Pessoa{
 	private Integer resultadoUltimaEleicao;
 	
 	public Candidato() {
+		this.setNome(STRING_VAZIO);
 		this.ano = INTEGER_VAZIO;
 		this.cpf = STRING_VAZIO;
 		this.cargo = STRING_VAZIO;
@@ -34,7 +35,7 @@ public class Candidato extends Pessoa{
 		
 		Candidato outroCandidato = (Candidato) object;
 		
-		return ( this.getNome().equals(outroCandidato.getNome()) &&
+		return ( this.getNome().equalsIgnoreCase(outroCandidato.getNome()) &&
 				 this.ano.equals(outroCandidato.getAno()) );
 	}
 

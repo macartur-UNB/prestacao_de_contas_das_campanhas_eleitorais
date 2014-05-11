@@ -18,7 +18,7 @@ public class Partido {
 			return false;
 		
 		Partido outroPartido = (Partido) object;
-		return this.sigla.equals(outroPartido.getSigla());
+		return this.sigla.equalsIgnoreCase(outroPartido.getSigla());
 	}
 	
 	public String getNumeroPartido() {
