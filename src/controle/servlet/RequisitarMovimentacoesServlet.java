@@ -27,10 +27,20 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 						   HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		RequestDispatcher requestDispatcher = request
-			.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
-		requestDispatcher.forward(request, response);
-
+		RequestDispatcher requestDispatcher;
+		if(request.getParameter("tabela").equals("candidato"))
+		{
+			requestDispatcher = request
+				.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
+			requestDispatcher.forward(request,response);
+		} else if(request.getParameter("tabela").equals("partido"))
+		{
+			requestDispatcher = request
+			    .getRequestDispatcher("/visualizar_movimentacoes_partido.jsp");
+			requestDispatcher.forward(request,response);
+		} else {
+			return;
+		}
 		
-	}
+	}	
 }
