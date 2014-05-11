@@ -21,5 +21,7 @@ public class SelecionarPartido extends HttpServlet {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_partido.jsp");
 		requestDispatcher.forward(request, response);
 	}
+	
+	
 
 }
