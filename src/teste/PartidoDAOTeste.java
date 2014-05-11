@@ -6,45 +6,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Partido;
-import modelo.dao.ConexaoBancoDados;
 import modelo.dao.PartidoDAO;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
-public class PartidoDAOTeste {
+public class PartidoDAOTeste extends TemplateTeste {
 	
-	private static final String NOME_BANCO_OFICIAL = "gpp";
-	private static final String LOCAL_BANCO_OFICIAL = "jdbc:mysql://";
-	
-	private static final String NOME_BANCO_TESTES = "banco_de_testes";
-	private static final String LOCAL_BANCO_ERROR = "Erro na Conexao";
-	
-	private ConexaoBancoDados conexaoBancoDados;
 	private PartidoDAO partidoDAO;
 
-	@Before
-	public void setUp() throws Exception {
-		String diretorioSQL = new File("./lib/").getCanonicalPath();
-		String arquivoSQL = diretorioSQL + "/MER_Parse_SQL.sql";		
-		this.conexaoBancoDados = new ConexaoBancoDados();
-		this.conexaoBancoDados.alterarBanco(NOME_BANCO_OFICIAL);
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_OFICIAL);
-		this.conexaoBancoDados.criarBanco(NOME_BANCO_TESTES);
-		this.conexaoBancoDados.alterarBanco(NOME_BANCO_TESTES);
-		this.conexaoBancoDados.importarSQL(arquivoSQL);
+	@Override
+	public void beforeTest() {
 		this.partidoDAO = new PartidoDAO();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		if(!this.conexaoBancoDados.getLocalBanco().equals(LOCAL_BANCO_ERROR)) {
-			this.conexaoBancoDados.deletarBanco();
-		}
+	@Override
+	public void afterTest() {
+		
 	}
-	
 
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmPartidoInexistente() throws Exception {
@@ -148,6 +127,7 @@ public class PartidoDAOTeste {
 		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
 		this.partidoDAO.getPartido("Sigla");
 	}
+
 }
 
 

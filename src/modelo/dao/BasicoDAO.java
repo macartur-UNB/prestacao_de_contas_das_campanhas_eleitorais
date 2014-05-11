@@ -27,9 +27,7 @@ public abstract class BasicoDAO<O> {
 			ArrayList<O> listaNaoCadastrados = getListaNaoCadastrados(lista);
 			
 			this.conexao = new ConexaoBancoDados().getConexao();
-			String comandoSQL = getSqlInsert();
-			
-			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+			this.instrucaoSQL = getInstrucaoSQL(getSqlInsert());
 			this.conexao.setAutoCommit(false);
 			
 			adicionarListaNoBatch(listaNaoCadastrados, instrucaoSQL);
@@ -85,6 +83,10 @@ public abstract class BasicoDAO<O> {
 		if(this.conexao != null) {
 			this.conexao.close();
 		}
+	}
+	
+	protected PreparedStatement getInstrucaoSQL(String comandoSQL) throws SQLException {		
+		return this.conexao.prepareStatement(comandoSQL);
 	}
 	
 	public Connection getConexao() {

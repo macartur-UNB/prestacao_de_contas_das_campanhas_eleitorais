@@ -13,7 +13,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -26,7 +25,6 @@ public class ConexaoBancoDados {
 	private static String senha = "macartur";
 	
 	private Connection conexao;
-	private PreparedStatement instrucaoSQL;
 	private Statement afirmacao;
 	
 	public ConexaoBancoDados() {
@@ -109,18 +107,15 @@ public class ConexaoBancoDados {
 	}
 	
 	private String[] getLinhasArquivo(String arquivo) throws IOException {
-		File file = new File(arquivo);
-		BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(arquivo)));
 		String linhaComando = "";
 		String comando[];
 		String linhaLida;
-		
 		while( (linhaLida = bufferedReader.readLine()) != null ) {
 			if(!linhaLida.isEmpty()) {
 				linhaComando += linhaLida;
 			}
 		}
-		
 		comando = linhaComando.split(";");
 		bufferedReader.close();
 		return comando;
