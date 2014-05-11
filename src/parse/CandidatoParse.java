@@ -37,8 +37,12 @@ public class CandidatoParse {
 =======
 
 	public void cadastrarCandidatos() throws SQLException {		
+<<<<<<< HEAD
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
 >>>>>>> Renomeando os nomes dos pacotes para adequar ao doc de arquitetura
+=======
+		this.candidatoDAO.cadastrarCandidatos(listaCandidatos);
+>>>>>>> ajustando conflitos
 	}
 
 	public void resetar() {
