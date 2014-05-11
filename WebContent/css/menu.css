@@ -34,18 +34,23 @@ ol, ul {
 	border-left: 1px solid #555555;
 }
 
+#menu ul li a.homestatic {
+	background: url(../img/home_3.png) no-repeat top center;
+	border-left: 1px solid #555555;
+}
+
 #menu ul li a.candidatos {
-	background: url(../img/home.png) no-repeat top center;
+	background: url(../img/candidato.png) no-repeat top center;
 }
 #menu ul li a.partidos {
-	background: url(../img/home.png) no-repeat top center;
+	background: url(../img/partido.png) no-repeat top center;
 }
 #menu ul li a.pesquisar {
-	background: url(../img/home.png) no-repeat top center;
+	background: url(../img/pesquisar.png) no-repeat top center;
 }
 
 #menu ul li a.home:hover{
-	background:url(../img/home2.png) no-repeat top center;
+	background:url(../img/home_2.png) no-repeat top center;
 	-webkit-transition:0.5s;
 	-moz-transition:0.5s;
 	-o-transition:0.5s;
@@ -54,7 +59,7 @@ ol, ul {
 }
 
 #menu ul li a.partidos:hover{
-	background:url(../img/home2.png) no-repeat top center;
+	background:url(../img/partido_2.png) no-repeat top center;
 	-webkit-transition:0.5s;
 	-moz-transition:0.5s;
 	-o-transition:0.5s;
@@ -63,7 +68,7 @@ ol, ul {
 }
 
 #menu ul li a.candidatos:hover{
-	background:url(../img/home2.png) no-repeat top center;
+	background:url(../img/candidato_2.png) no-repeat top center;
 	-webkit-transition:0.5s;
 	-moz-transition:0.5s;
 	-o-transition:0.5s;
@@ -72,7 +77,7 @@ ol, ul {
 }
 
 #menu ul li a.pesquisar:hover{
-	background:url(../img/home2.png) no-repeat top center;
+	background:url(../img/pesquisar_2.png) no-repeat top center;
 	-webkit-transition:0.5s;
 	-moz-transition:0.5s;
 	-o-transition:0.5s;
