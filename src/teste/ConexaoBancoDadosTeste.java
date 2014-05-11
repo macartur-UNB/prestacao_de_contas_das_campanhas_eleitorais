@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import jdk.nashorn.internal.objects.annotations.Setter;
 import modelo.dao.ConexaoBancoDados;
 
 import org.junit.Before;
