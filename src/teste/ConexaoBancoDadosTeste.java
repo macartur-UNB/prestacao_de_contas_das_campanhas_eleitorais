@@ -1,31 +1,26 @@
 package teste;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import modelo.dao.ConexaoBancoDados;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class ConexaoBancoDadosTeste {
-
-	private Connection conexao;
 	
+	private static final String NOME_BANCO = "banco_de_testes";
+	
+	private ConexaoBancoDados conexaoBancoDados;
+
 	@Test
-	public void NaoDeveLancarExcecaoAoIniciarAConexao() throws SQLException {
-		this.conexao = new ConexaoBancoDados().getConexao();
+	public void naoDeveLancarExcecaoAoCriarEDeletarOBancoDeTestes() throws SQLException {
+		this.conexaoBancoDados = new ConexaoBancoDados();
+		this.conexaoBancoDados.setNomeBanco(NOME_BANCO);
 		
-	}
-	
-	@Test (expected = NullPointerException.class)
-	public void DeveLancarExcecaoAoEncerrarUmaConexaoQueNaoFoiIniciada() throws SQLException {
-		this.conexao.close();
+		this.conexaoBancoDados.criarBanco();
+		this.conexaoBancoDados.deletarBanco();
 	}
 
-	@Test
-	public void NaoDeveLancarExcecaoAoEncerrarUmaConexaoQueFoiIniciada() throws SQLException {
-		this.conexao = new ConexaoBancoDados().getConexao();
-		this.conexao.close();
-	}
-	
 }

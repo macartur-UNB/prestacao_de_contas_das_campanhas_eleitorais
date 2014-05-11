@@ -9,22 +9,22 @@ import java.util.Collections;
 import java.util.Comparator;
 
 
-public abstract class BasicoDAO<E> {
+public abstract class BasicoDAO<O> {
 
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
 	
-	private Comparator<E> comparador;
+	private Comparator<O> comparador;
 	private String nomeTabela;
 	
-	public BasicoDAO(String nomeTabela, Comparator<E> comparador) {
+	public BasicoDAO(String nomeTabela, Comparator<O> comparador) {
 		this.nomeTabela = nomeTabela;
 		this.comparador = comparador;
 	}
 	
-	public void cadastrarLista(ArrayList<E> lista) throws SQLException {
+	public void cadastrarLista(ArrayList<O> lista) throws SQLException {
 		try {
-			ArrayList<E> listaNaoCadastrados = getListaNaoCadastrados(lista);
+			ArrayList<O> listaNaoCadastrados = getListaNaoCadastrados(lista);
 			
 			this.conexao = new ConexaoBancoDados().getConexao();
 			String comandoSQL = getSqlInsert();
@@ -43,8 +43,8 @@ public abstract class BasicoDAO<E> {
 		}
 	}
 	
-	public ArrayList<E> getLista() throws SQLException {
-		ArrayList<E> lista = new ArrayList<>();
+	public ArrayList<O> getLista() throws SQLException {
+		ArrayList<O> lista = new ArrayList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
@@ -60,11 +60,11 @@ public abstract class BasicoDAO<E> {
 		return lista;
 	}
 	
-	protected ArrayList<E> getListaNaoCadastrados(ArrayList<E> lista) throws SQLException {
-		ArrayList<E> listaNaoCadastrados = new ArrayList<>();
-		ArrayList<E> listaCadastrados = getLista();
+	protected ArrayList<O> getListaNaoCadastrados(ArrayList<O> lista) throws SQLException {
+		ArrayList<O> listaNaoCadastrados = new ArrayList<>();
+		ArrayList<O> listaCadastrados = getLista();
 		Collections.sort(listaCadastrados, this.comparador);
-		for(E objeto : lista) {
+		for(O objeto : lista) {
 			if(Collections.binarySearch(listaCadastrados, objeto, this.comparador) < 0) {
 				listaNaoCadastrados.add(objeto);
 			}
@@ -75,8 +75,8 @@ public abstract class BasicoDAO<E> {
 	
 	protected abstract String getSqlInsert();
 	protected abstract String getSqlSelect();
-	protected abstract void adicionarListaNoBatch(ArrayList<E> lista, PreparedStatement instrucaoSQL) throws SQLException ;
-	protected abstract void adicionarResultSetNaLista(ArrayList<E> lista, ResultSet resultadoSQL) throws SQLException ;
+	protected abstract void adicionarListaNoBatch(ArrayList<O> lista, PreparedStatement instrucaoSQL) throws SQLException ;
+	protected abstract void adicionarResultSetNaLista(ArrayList<O> lista, ResultSet resultadoSQL) throws SQLException ;
 	
 	protected void fecharConexao() throws SQLException {
 		if(this.instrucaoSQL != null) {
