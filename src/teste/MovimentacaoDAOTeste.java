@@ -12,6 +12,7 @@ import java.util.LinkedList;
 
 import modelo.beans.Candidato;
 import modelo.beans.Despesa;
+import modelo.beans.Partido;
 import modelo.beans.Receita;
 
 import org.junit.Before;
@@ -28,7 +29,7 @@ public class MovimentacaoDAOTeste {
 	}
 
 	@Test
-	public void obterListaReceitas() throws SQLException {
+	public void obterListaCandidato() throws SQLException {
 		Candidato candidato = new Candidato();
 		candidato.setNome("WLADIMIR SILVA FURTADO");
 		candidato.setAno(2014);
@@ -36,17 +37,21 @@ public class MovimentacaoDAOTeste {
 		listaReceitas = candidato.getListaReceitas();
 		System.out.println(listaReceitas);
 
-	}
-
-	@Test
-	public void obterListaDespesas() throws SQLException {
-		Candidato candidato = new Candidato();
-		candidato.setNome("WLADIMIR SILVA FURTADO");
-		candidato.setAno(2014);
-		
 		listaDespesas = candidato.getListaDespesas();
 		System.out.println(listaDespesas);
 
+	}
+	
+	@Test
+	public void obterListaPartido() throws SQLException {
+		Partido partido = new Partido();
+		partido.setNome("PT");
+		
+		listaReceitas = partido.getListaReceitas(2008);
+		System.out.println(listaReceitas);
+
+		listaDespesas = partido.getListaDespesas(2008);
+		System.out.println(listaDespesas);
 	}
 
 }

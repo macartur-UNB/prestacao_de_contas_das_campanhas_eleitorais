@@ -26,9 +26,28 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 						   HttpServletResponse response)
 			throws ServletException, IOException {
 		
+<<<<<<< HEAD
 		RequestDispatcher requestDispatcher = request
 			.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
 		requestDispatcher.forward(request, response);
 
 	}
+=======
+		RequestDispatcher requestDispatcher;
+		if(request.getParameter("tabela").equals("candidato"))
+		{
+			requestDispatcher = request
+				.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
+			requestDispatcher.forward(request,response);
+		} else if(request.getParameter("tabela").equals("partido"))
+		{
+			requestDispatcher = request
+			    .getRequestDispatcher("/visualizar_movimentacoes_partido.jsp");
+			requestDispatcher.forward(request,response);
+		} else {
+			return;
+		}
+		
+	}	
+>>>>>>> Pagina de visualizacao de receitas e despesas agora também para partidos.Falta filtrar por ano, devido a ausencia desse filtro no BD
 }
