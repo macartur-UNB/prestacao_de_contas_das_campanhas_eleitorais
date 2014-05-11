@@ -19,7 +19,7 @@ import modelo.beans.Candidato;
 import modelo.beans.Partido;
 
 public class CandidatoDAO {
-	
+
 	private enum Comparacao implements Comparator<Candidato> {
 		NOME {
 			@Override
@@ -28,25 +28,27 @@ public class CandidatoDAO {
 			}
 		};
 	}
-	
+
 	public static final String NOME = "nome";
 	public static final String CPF = "cpf";
-	public static final String UF = "uf";
-	public static final String PARTIDO = "partido_sigla";
+	public static final String PARTIDO = "partido";
 	public static final String NUMERO = "numero";
 	public static final String ANO = "ano";
 	public static final String CARGO = "cargo_pleiteado";
 	public static final String RESULTADO = "resultado_eleicao";
-	
+	public static final String DOMINIO = "dominio";
+	public static final String ARRECADACAO = "arrecadacao";
+	public static final String DESPESA = "despesa";
+
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
-	
+
 	private PartidoDAO partidoDAO;
-	
+
 	public CandidatoDAO() {
 		this.partidoDAO = new PartidoDAO();
 	}
-	
+
 	public void cadastrarCandidatos(ArrayList<Candidato> listaCandidatos) throws SQLException {
 		try {
 			ArrayList<Candidato> listaCandidatosNaoCadastrados = new ArrayList<>();
@@ -56,17 +58,17 @@ public class CandidatoDAO {
 					listaCandidatosNaoCadastrados.add(candidato);
 				}
 			}
-			
+
 			this.conexao = new ConexaoBancoDados().getConexao();
-			
+
 			String comandoSQL = "INSERT INTO t_candidato (nome, cargo_pleiteado, "
-					+ "partido_sigla, numero, ano, cpf, uf, resultado_eleicao)"
-			        + "VALUES(?,?,?,?,?,?,?,?)";
-			
+					+ "partido, numero, ano, cpf)"
+			        + "VALUES(?,?,?,?,?,?)";
+
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-			
+
 			this.conexao.setAutoCommit(false);
-			
+
 			for(Candidato candidato : listaCandidatosNaoCadastrados) {
 				this.instrucaoSQL.setString(1, candidato.getNome());
 				this.instrucaoSQL.setString(2, candidato.getCargo());
@@ -74,31 +76,29 @@ public class CandidatoDAO {
 				this.instrucaoSQL.setString(4, candidato.getNumero());
 				this.instrucaoSQL.setInt(5, candidato.getAno());
 				this.instrucaoSQL.setString(6, candidato.getCpf());
-				this.instrucaoSQL.setString(7, candidato.getUf());
-				this.instrucaoSQL.setInt(8, candidato.getResultadoUltimaEleicao());
 				this.instrucaoSQL.addBatch();
 			}
-			
+
 			this.instrucaoSQL.executeBatch();
-			
+
 			this.conexao.commit();
-			
+
 		} catch(Exception e) {
-			throw new SQLException("Candidato - " + e.getMessage());
+			throw new SQLException(e.getMessage());
 		} finally {
 			fecharConexao();
 		}
 	}
-		
+
 	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
 		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
-			
+
 			String comandoSQL = "SELECT * FROM t_candidato ORDER BY nome ASC";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			ResultSet resultadoSQL = this.instrucaoSQL.executeQuery();
-			
+
 			while(resultadoSQL.next()) {
 				Candidato candidato = new Candidato();
 				Partido partido = new Partido();
@@ -109,9 +109,9 @@ public class CandidatoDAO {
 				candidato.setNumero(resultadoSQL.getString(NUMERO));
 				candidato.setAno(resultadoSQL.getInt(ANO));
 				candidato.setCargo(resultadoSQL.getString(CARGO));
-				candidato.setUf(resultadoSQL.getString(UF));
-				candidato.setResultadoUltimaEleicao(resultadoSQL.getInt(RESULTADO));
-				
+
+				candidato.setUf(resultadoSQL.getString(DOMINIO));
+
 				if(candidato != null)
 					listaCandidatos.add(candidato);
 			}
@@ -121,7 +121,7 @@ public class CandidatoDAO {
 		} finally {
 			fecharConexao();
 		}
-		
+
 		ArrayList<Partido> listaPartidos = new ArrayList<>(this.partidoDAO.getListaPartidos());
 		for(Candidato candidato : listaCandidatos) {
 			for(Partido partido : listaPartidos) {
@@ -130,10 +130,10 @@ public class CandidatoDAO {
 				}
 			}
 		}
-		
+
 		return listaCandidatos;
 	}
-	
+
 	private void fecharConexao() throws SQLException {
 		if(this.instrucaoSQL != null) {
 			this.instrucaoSQL.close();
