@@ -17,5 +17,9 @@ public class PartidoControle {
 	public LinkedList<Partido> getListaPartidos() throws SQLException {
 		return this.partidoDAO.getListaPartidos();
 	}
+	
+	public Partido getPartido(String sigla) throws SQLException {
+		return this.partidoDAO.getPartido(sigla);
+	}
 
 }
