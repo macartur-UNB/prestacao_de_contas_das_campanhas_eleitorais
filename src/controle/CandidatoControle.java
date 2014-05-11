@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
 
-public class CandidatoControler {
+public class CandidatoControle {
 
 	private CandidatoDAO candidatoDAO;
 	
-	public CandidatoControler() {
+	public CandidatoControle() {
 		this.candidatoDAO = new CandidatoDAO();
 	}
 	
 	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
-		return this.candidatoDAO.getListaCandidatos();
+		return this.candidatoDAO.getLista();
 	}
 	
 	

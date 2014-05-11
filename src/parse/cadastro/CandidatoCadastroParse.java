@@ -47,6 +47,7 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 	public void finalizarCadastros() {
 		try {
 			this.candidatoParse.cadastrarCandidatos();
+			this.candidatoParse.resetar();
 			this.linhasLidas = 0;
 		} catch(Exception e) {
 			System.out.println("ERRO: " + e.getMessage());

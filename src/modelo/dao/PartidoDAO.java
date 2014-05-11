@@ -37,6 +37,7 @@ public class PartidoDAO {
 			ArrayList<Partido> listaPartidosNaoCadastrados = new ArrayList<>();
 			ArrayList<Partido> listaPartidosAtualizaveis = new ArrayList<>();
 			LinkedList<Partido> listaPartidosCadastrados = getListaPartidos();
+			Collections.sort(listaPartidosCadastrados, Comparacao.NOME);
 			for(Partido partido : listaPartidos) {
 				if(Collections.binarySearch(listaPartidosCadastrados, partido, Comparacao.NOME) < 0) {
 					listaPartidosNaoCadastrados.add(partido);
@@ -92,7 +93,7 @@ public class PartidoDAO {
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_partido ORDER BY sigla ASC";
+			String comandoSQL = "SELECT * FROM t_partido";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 			
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();

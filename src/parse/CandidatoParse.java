@@ -31,7 +31,7 @@ public class CandidatoParse {
 	}
 	
 	public void cadastrarCandidatos() throws SQLException {		
-		this.candidatoDAO.cadastrarCandidatos(listaCandidatos);
+		this.candidatoDAO.cadastrarLista(listaCandidatos);
 	}
 	
 	public void resetar() {

@@ -6,11 +6,11 @@ import java.util.LinkedList;
 import modelo.beans.Partido;
 import modelo.dao.PartidoDAO;
 
-public class PartidoControler {
+public class PartidoControle {
 	
 	private PartidoDAO partidoDAO;
 	
-	public PartidoControler() {
+	public PartidoControle() {
 		this.partidoDAO = new PartidoDAO();
 	}
 	
