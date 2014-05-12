@@ -1,4 +1,3 @@
-
 package modelo.dao;
 
 import java.sql.Connection;
@@ -11,7 +10,7 @@ import java.util.Comparator;
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
 
-public class CandidatoDAO extends BasicoDAO<Candidato>{
+public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 	private enum Comparacao implements Comparator<Candidato> {
 		NOME {
@@ -34,7 +33,10 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 	private static final String SQL_SELECT = "SELECT * FROM t_candidato";
 	private static final String SQL_INSERT = "INSERT INTO t_candidato (nome, cargo_pleiteado, "
 			+ "partido_sigla, numero, ano, cpf, uf, resultado_eleicao)"
-	        + "VALUES(?,?,?,?,?,?,?,?)";
+			+ "VALUES(?,?,?,?,?,?,?,?)";
+
+	private Connection conexao;
+	private PreparedStatement instrucaoSQL;
 
 	public CandidatoDAO() {
 		super(NOME_TABELA, Comparacao.NOME);
@@ -53,7 +55,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 	@Override
 	protected void adicionarListaNoBatch(ArrayList<Candidato> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
-		for(Candidato candidato : lista) {
+		for (Candidato candidato : lista) {
 			instrucaoSQL.setString(1, candidato.getNome());
 			instrucaoSQL.setString(2, candidato.getCargo());
 			instrucaoSQL.setString(3, candidato.getPartido().getSigla());
@@ -69,7 +71,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 	@Override
 	protected void adicionarResultSetNaLista(ArrayList<Candidato> lista,
 			ResultSet resultadoSQL) throws SQLException {
-		while(resultadoSQL.next()) {
+		while (resultadoSQL.next()) {
 			Candidato candidato = new Candidato();
 			Partido partido = new Partido();
 			candidato.setNome(resultadoSQL.getString(NOME));
@@ -115,5 +117,30 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 
 	}
 
+
+	public Candidato getCandidato(String nome) throws SQLException {
+		Candidato candidato = new Candidato();
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = "SELECT * FROM t_candidato";
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			if (resultadoSQL.next()) {
+				candidato.setNome(resultadoSQL.getString(NOME));
+			}
+
+			instrucaoSQL.close();
+
+		} catch (Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			fecharConexao();
+		}
+
+		return candidato;
+	}
 
 }
