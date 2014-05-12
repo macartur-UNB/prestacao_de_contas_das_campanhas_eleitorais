@@ -14,12 +14,12 @@ public class PartidoDAOTeste extends TemplateTeste {
 	private PartidoDAO partidoDAO;
 
 	@Override
-	public void beforeTest() {
+	public void beforeTest() throws Exception {
 		this.partidoDAO = new PartidoDAO();
 	}
 
 	@Override
-	public void afterTest() {
+	public void afterTest() throws Exception {
 		
 	}
 

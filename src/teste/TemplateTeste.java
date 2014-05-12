@@ -40,7 +40,7 @@ public abstract class TemplateTeste {
 		afterTest();
 	}
 	
-	public abstract void beforeTest();
-	public abstract void afterTest();
+	public abstract void beforeTest() throws Exception;
+	public abstract void afterTest() throws Exception;
 
 }

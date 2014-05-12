@@ -53,6 +53,8 @@ public abstract class BasicoDAO<O> {
 			adicionarResultSetNaLista(lista, resultadoSQL);			
 		} catch(Exception e) {
 			throw new SQLException(nomeTabela + e.getMessage());
+		} finally {
+			fecharConexao();
 		}
 		
 		return lista;
@@ -87,22 +89,6 @@ public abstract class BasicoDAO<O> {
 	
 	protected PreparedStatement getInstrucaoSQL(String comandoSQL) throws SQLException {		
 		return this.conexao.prepareStatement(comandoSQL);
-	}
-	
-	public Connection getConexao() {
-		return conexao;
-	}
-
-	public void setConexao(Connection conexao) {
-		this.conexao = conexao;
-	}
-
-	public PreparedStatement getInstrucaoSQL() {
-		return instrucaoSQL;
-	}
-
-	public void setInstrucaoSQL(PreparedStatement instrucaoSQL) {
-		this.instrucaoSQL = instrucaoSQL;
 	}
 	
 }
