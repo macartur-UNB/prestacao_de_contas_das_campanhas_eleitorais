@@ -1,4 +1,4 @@
-package teste;
+package teste.modelo.dao;
 
 import java.io.File;
 import java.io.IOException;

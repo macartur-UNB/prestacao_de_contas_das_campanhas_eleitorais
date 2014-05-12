@@ -1,4 +1,4 @@
-package teste;
+package teste.modelo.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import modelo.dao.PartidoDAO;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import teste.TemplateTeste;
 
 public class CandidatoDAOTeste extends TemplateTeste {
 
