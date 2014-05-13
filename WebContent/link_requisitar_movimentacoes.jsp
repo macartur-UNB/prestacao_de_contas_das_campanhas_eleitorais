@@ -59,12 +59,19 @@
 <form action="requisitarMovimentacoes">
 	<table>
 	
-
-    <tr>
-    	<td>Ano:</td>
-    	<td><input type="text" name="ano" /></td>
-    </tr>
-    <tr>
+<table>
+						<tr>
+							<td>Ano:</td>
+							<td><select name="ano">
+									<option value="2002">2002</option>
+									<option value="2004">2004</option>
+									<option value="2006">2006</option>
+									<option value="2008">2008</option>
+									<option value="2010">2010</option>
+									<option value="2012">2012</option>
+							</select></td>
+						</tr>
+						    <tr>
     	<td></td>
 							<td><br><input type="submit" value="Buscar"/></td>
     </tr>
