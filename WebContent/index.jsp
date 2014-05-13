@@ -84,7 +84,18 @@
 	<div id="informativos">
         	<br>
 			<h3><center>Informações</center></h3>
-            <div id="box_servicos">
+            <div id="box_servicos"><!-- BOX 1 -->
+            <div id="box_servicos_1"> 
+            	<div id="efeito_box1">
+                	<h1><center>Quem Somos</center></h1>
+                    <div id="conteudo_box">
+                       	Somos alunos do curso de Engenharia de Software da Universidade de Brasília. Com o objetivo de contruir um <i>website</i> para conclusão da disciplina de Métodos de Engenharia de Software, aplicando, na práticas, os fundamentos da Engenharia de Software.
+                    </div><br>
+     				<div id="saiba_mais_box">
+                    	<a href="informacoes.html">Clique aqui para saber mais (+)</a>
+                	</div>
+                </div>
+            </div>
 
 </body>
 </html>
