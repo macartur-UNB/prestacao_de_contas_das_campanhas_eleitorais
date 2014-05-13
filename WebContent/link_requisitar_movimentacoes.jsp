@@ -52,10 +52,9 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p></p>
-	
+	<h4>Para visualizar Receitas e Despesas deste candidato:</h4>
+				<p>Selecione o ano desejado e click em Buscar:</p>
 
-<h1>Visualizar Receitas e Despesas</h1>
-<p>Essa funcionalidade estará dentro do perfil de um Candidato ou Partido.</p>
 
 <form action="requisitarMovimentacoes">
 	<table>
