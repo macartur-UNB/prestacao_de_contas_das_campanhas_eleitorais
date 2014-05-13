@@ -58,28 +58,15 @@
 
 <form action="requisitarMovimentacoes">
 	<table>
-	<tr>
-		<td></td>
-		<td> <input type="radio" name="tabela" 
-		onclick="link_requisitar_movimentacoes" value="candidato" checked /> 
-		Candidato</td>
-	</tr>
-	<tr>
-		<td></td>
-		<td> <input type="radio" name="tabela" value="partido"
-		 onclick="link_requisitar_movimentacoes"/> Partido</td>
-	</tr>
-    <tr>
-    	<td>Nome: </td>
-    	<td><input type="text" name="nome" /></td>
-    </tr>
+	
+
     <tr>
     	<td>Ano:</td>
     	<td><input type="text" name="ano" /></td>
     </tr>
     <tr>
     	<td></td>
-    	<td><input type="submit" value="Buscar" /></td>
+							<td><br><input type="submit" value="Buscar"/></td>
     </tr>
     </table>
 </form>
