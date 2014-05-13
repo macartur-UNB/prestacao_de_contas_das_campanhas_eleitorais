@@ -177,7 +177,7 @@
 	<!-- RODAPE -->
 	<div id="rodape">
 		<div id="centro_rodape">
-			<a href="index.html"> <img src="img/logo.png" width="257"
+			<a href="index.jsp"> <img src="img/logo.png" width="257"
 				height="58" alt="Logo" title="CampanhasOn"></a>
 			<div id="redes_sociais">
 				<a href="index.jsp"><img src="img/facebook.png" width="32"
