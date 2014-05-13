@@ -76,12 +76,12 @@
 										Partidos.
 									</p>
 									<p class="mais_banner">
-										<a href="informacoes.html">Clique aqui para obter mais
+										<a href="informacoes.jsp">Clique aqui para obter mais
 											informações</a>
 									</p>
 								</div>
 								<div class="eleicoes_banner">
-									<a href="informacoes.html"><img src="img/banner.png"
+									<a href="informacoes.jsp"><img src="img/banner.png"
 										width="220" height="171" alt="banner" title="Eleições Limpas"></a>
 								</div>
 							</div>
@@ -112,7 +112,7 @@
 						</div>
 						<br>
 						<div id="saiba_mais_box">
-							<a href="informacoes.html">Clique aqui para saber mais (+)</a>
+							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
 						</div>
 					</div>
 				</div>
@@ -129,7 +129,7 @@
 							Despesas.</div>
 						<br>
 						<div id="saiba_mais_box">
-							<a href="informacoes.html">Clique aqui para saber mais (+)</a>
+							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
 						</div>
 					</div>
 				</div>
@@ -148,7 +148,7 @@
 						</div>
 						<br>
 						<div id="saiba_mais_box">
-							<a href="informacoes.html">Clique aqui para saber mais (+)</a>
+							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
 						</div>
 					</div>
 				</div>
