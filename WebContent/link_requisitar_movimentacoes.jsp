@@ -7,7 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Pagina de Perfil</title>
+<title>Candidato - Campanhas-ON</title>
+<link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
+<link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/conteudoInformacoes.css" rel="stylesheet"
+	type="text/css" media="all">
 </head>
 <body>
 
