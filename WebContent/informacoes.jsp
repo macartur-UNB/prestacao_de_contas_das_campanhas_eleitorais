@@ -40,7 +40,7 @@
 	</div>
 	<!-- FIM CABECALHO e MENU -->
 
-	!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
 			<h3>Informações</h3>
