@@ -43,6 +43,16 @@
 		</div>
 	</div>
 	<!-- FIM CABECALHO e MENU -->
+	
+	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<div id="pagina">
+		<div class="titulo_topo">
+			<h3>Informações</h3>
+		</div>
+		<div id="conteudo_informacoes">
+			<div class="informacoes">
+				<p></p>
+	
 
 <h1>Visualizar Receitas e Despesas</h1>
 <p>Essa funcionalidade estará dentro do perfil de um Candidato ou Partido.</p>
