@@ -1,12 +1,6 @@
-<%@page import="controle.servlet.RequisitarMovimentacoesServlet"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Candidato - Campanhas-ON</title>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
@@ -17,13 +11,14 @@
 </head>
 <body>
 
-<!-- CABECALHO e MENU -->
+
+	<!-- CABECALHO e MENU -->
 	<div id="topo">
 		<div id="cabecalho">
 			<div id="logo">
 				<a href="index.jsp"> <img src="img/logo.png" width="257"
 					height="58" alt="Logo" title="CampanhasOn">
-				</a> <span class="titulo">Informe-se J√Å!</span>
+				</a> <span class="titulo">Informe-se J¡!</span>
 			</div>
 
 			<!-- MENU -->
@@ -43,23 +38,20 @@
 		</div>
 	</div>
 	<!-- FIM CABECALHO e MENU -->
-	
-	<!-- CONTEUDO DA PAGINA DE INFORMA√á√ïES -->
+
+	<!-- CONTEUDO DA PAGINA DE INFORMA«’ES -->
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Informa√ß√µes</h3>
+			<h3>InformaÁıes</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p></p>
-	<h4>Para visualizar Receitas e Despesas deste candidato:</h4>
+				<h4>Para visualizar Receitas e Despesas deste candidato:</h4>
 				<p>Selecione o ano desejado e click em Buscar:</p>
 
-
-<form action="requisitarMovimentacoes">
-	<table>
-	
-<table>
+				<form action="requisitarMovimentacoes">
+					<table>
 						<tr>
 							<td>Ano:</td>
 							<td><select name="ano">
@@ -71,14 +63,21 @@
 									<option value="2012">2012</option>
 							</select></td>
 						</tr>
-						    <tr>
-    	<td></td>
-							<td><br><input type="submit" value="Buscar"/></td>
-    </tr>
-    </table>
-</form>
+						<tr>
+							<td></td>
+							<td><br>
+							<input type="submit" value="Buscar" /></td>
+						</tr>
+					</table>
+				</form>
+				<br> <br>
+			</div>
+		</div>
+		<!-- content  -->
+	</div>
+	<!-- FIM CONTEUDO-->
 
-<!-- RODAPE -->
+	<!-- RODAPE -->
 	<div id="rodape">
 		<div id="centro_rodape">
 			<a href="index.jsp"> <img src="img/logo.png" width="257"
@@ -93,7 +92,7 @@
 					title="GitHub"></a>
 			</div>
 			<div id="dado_rodape">
-				Universidade de Bras√≠lia <br> Faculdade do Gama - FGA <br>
+				Universidade de BrasÌlia <br> Faculdade do Gama - FGA <br>
 				Projeto: Campanhas-On / MDS
 			</div>
 		</div>
@@ -101,36 +100,3 @@
 	<!-- FIM RODAPE -->
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
