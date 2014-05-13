@@ -129,22 +129,3 @@ public class PartidoDAOTeste extends TemplateTeste {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
