@@ -18,11 +18,10 @@ PartidoControle partidoControle = new PartidoControle();
 
 String sigla = request.getParameter("sigla");
 
-
 partido = partidoControle.getPartido(sigla);
 
-
 out.println("Partido: " + partido.getSigla());
+out.println("\n");
 out.println("Número do Partido: " + partido.getNumeroPartido());
 %>
 
