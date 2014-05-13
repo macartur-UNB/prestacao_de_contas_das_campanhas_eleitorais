@@ -45,6 +45,38 @@
 </div>
 <!-- FIM CABECALHO e MENU -->
 
+!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+<div id="pagina">
+	<div class="titulo_topo">
+		<h3>Informações</h3>
+    </div>
+    <div id="conteudo_informacoes">
+		<div class="informacoes"> 
+    		<h4>-- Quem Somos?</h4><p></p>
+    		<p>Estudante da Engenharia de Software nós, Augusto Modesto, Jonathan Morais, Matheus Ferraz, Rafael Valença e Yuri Loiola estudamos na Universidade de Brasília.
+			Esse projeto visa, além de trazer a sensação de cidadania para nós, torna informações de difícil acesso, como dados de partidos, candidatos, receitas e despesas, mais acessível a população.
+			Para isso, fora necessário estudar os diversos métodos de desenvolvimento de um software, para que atendesse as exigências de um projeto de qualidade.</p>
+			<p>
+			Esse projeto faz parte da disciplina de Métodos de Desenvolvimento de Software, que tem como objetivo, ensinar ao aluno, os diversos tipos de desenvolvimento de software de forma teórica e prática.
+			Foram feitos levantamentos de requisitos, pesquisas e estudo para que fosse possível cria um produto possibilitasse conforto ao usuário durante a navegação, confiabilidade nas informações, rapidez nas informações.
+			Essa é apenas a primeira release, portanto, o website ainda estará em desenvolvimento, mas para as próximas versões, novas funcionalidades estarão sendo implementadas.</p>
+			<h4>-- O que é o Projeto?</h4><p></p>
+			<p>Atualmente, estamos desempenhando nossos esforços para criação de website que supra uma carência, dos cidadãos de bem, que existe a anos. Informações acerca de seus candidatos e partidos políticos.</p>
+			<p>
+			Sabe-se que não é fácil ter acesso a esse tipo de informação, tornando a pesquisa cansativa e, muitas das vezes, ineficiente.
+			Logo, utilizamos das informações disponibilizadas segundo a lei nº 12.527/2011, no qual é possível a obtenção de informações de cunho publico tais como estatísticas da polícia, informações sobre localidade, gastos com o governo entre diversos outros.
+			No entanto, essas informações na maioria das vezes, estão de forma praticamente ilegível, o que torna o esforço na procura em vão. É nesse contexto que o projeto Campanhas-ON surge.</p>
+			<p>Com o objetivo de fazer com que informação desse tipo sejam mais acessíveis aos usuários do sistema. Nós limitamos o desenvolvimento desde projeto apenas para informações de gastos e despesas de partidos e candidatos.
+			A partir desses dados, faremos uma série de comparações a fim de gerar gráficos, planilhas, listas entre outros, para que você possa ter acesso a essas informações de maneira mais fácil e objetiva.</p>
+			<h4>-- O que Você pode fazer com isso?</h4><p></p>
+			<p>Você como leitor poderá verificar de maneira mais acessível os dados de seus candidatos de interesse além de ter noção do fluxo de movimentação de despesas
+			receitas. Lembre-se também, que estão disponíveis alguns dados pessoais e partidários de seus candidatos.</p>
+			<p>Não deixe de tomar conhecimento, com poucos clicks é possível ter um universo de informações.</p>
+ 			<br><br>
+		</div>    
+	</div><!-- content  -->
+</div>
+<!-- FIM CONTEUDO-->
 
 </body>
 </html>
