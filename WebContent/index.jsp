@@ -14,6 +14,15 @@
 	<link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
+<!-- CABECALHO e MENU -->
+<div id="topo">
+	<div id="cabecalho">
+		<div id="logo">
+			<a href="index.html">
+            	<img src="img/logo.png" width="257" height="58" alt="Logo" title="CampanhasOn">
+            </a>
+             <span class="titulo">Informe-se JÁ!</span>
+     	</div>
 
 </body>
 </html>
