@@ -96,6 +96,30 @@
                 	</div>
                 </div>
             </div>
+            <!-- BOX 2 -->
+         	<div id="box_servicos_2"> 
+            	<div id="efeito_box2">
+                	<h1><center>O que é o Projeto</center></h1>
+                    <div id="conteudo_box">
+                       	O Campanhas-ON é a materialização da Engenharia de Software no que desrespeito ao nosso curso. Visamos alcaçar com esse projeto, todos os cidadãos de bem no qual visam ter conhecimento de seus Candidatos e Partidos, Receitas e Despesas.
+                    </div><br>
+     				<div id="saiba_mais_box">
+                    	<a href="informacoes.html">Clique aqui para saber mais (+)</a>
+                	</div>
+                </div>
+            </div>
+            <!-- BOX 3 -->
+            <div id="box_servicos_3"> 
+            	<div id="efeito_box3">
+                	<h1><center>O que fazer com ISSO</center></h1>
+                    <div id="conteudo_box">
+                       	Utilize esse <i>website</i> para suprir sua necessidade de informações acerca de seus Candidatos. Aqui será possível verificar essa informações além de muitas outra. Você também poderá comparar gastos de candidatos de sua preferência. <b>Fique por DENTRO!</b>
+                    </div><br>
+     				<div id="saiba_mais_box">
+                    	<a href="informacoes.html">Clique aqui para saber mais (+)</a>
+                	</div>
+                </div>
+            </div>
 
 </body>
 </html>
