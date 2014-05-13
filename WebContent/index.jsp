@@ -18,14 +18,14 @@
 	<div id="topo">
 		<div id="cabecalho">
 			<div id="logo">
-				<a href="index.html"> <img src="img/logo.png" width="257"
+				<a href="index.jsp"> <img src="img/logo.png" width="257"
 					height="58" alt="Logo" title="CampanhasOn">
 				</a> <span class="titulo">Informe-se JÁ!</span>
 			</div>
 			<!-- MENU -->
 			<div id="menu">
 				<ul>
-					<li><a href="index.html" class="homestatic" title>Home</a></li>
+					<li><a href="index.jsp" class="homestatic" title>Home</a></li>
 					<li><a href="candidatos.html" class="candidatos" title>Candidatos</a>
 					</li>
 					<li><a href="partidos.html" class="partidos" title>Partidos</a>
@@ -180,9 +180,9 @@
 			<a href="index.html"> <img src="img/logo.png" width="257"
 				height="58" alt="Logo" title="CampanhasOn"></a>
 			<div id="redes_sociais">
-				<a href="index.html"><img src="img/facebook.png" width="32"
+				<a href="index.jsp"><img src="img/facebook.png" width="32"
 					height="32" alt="Facebook" title="Facebook"></a> <a
-					href="index.html"><img src="img/twitter.png" width="32"
+					href="index.jsp"><img src="img/twitter.png" width="32"
 					height="32" alt="Twitter" title="Twitter"></a> <a
 					href="https://github.com/macartur/prestacao_de_contas_das_campanhas_eleitorais"><img
 					src="img/github.png" width="32" height="32" alt="GitHub"
