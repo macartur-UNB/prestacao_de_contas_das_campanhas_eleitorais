@@ -23,6 +23,25 @@
             </a>
              <span class="titulo">Informe-se JÁ!</span>
      	</div>
+     	<!-- MENU -->
+        <div id="menu">
+        <ul>
+        	<li>
+            	<a href="index.html" class= "homestatic" title>Home</a>
+          	</li>
+            <li>
+            	<a href="candidatos.html" class= "candidatos" title>Candidatos</a>
+          	</li>
+            <li>
+            	<a href="partidos.html" class= "partidos" title>Partidos</a>
+          	</li>
+            <li>
+            	<a href="pesquisar.html" class= "pesquisar" title>Pesquisar</a>
+          	</li>
+        </ul>
+        </div>
+        <!-- FIM MENU -->
+        
 
 </body>
 </html>
