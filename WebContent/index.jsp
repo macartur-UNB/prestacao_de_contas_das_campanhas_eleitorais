@@ -45,7 +45,10 @@
 </div>
 <!-- FIM CABECALHO e MENU -->
 
-
+<!-- PAGINA CENTRAL, BANNER, INFORMACOES e TOP5 -->
+<!-- PAGINA CENTRAL -->
+<div id="pagina">
+	
 
 </body>
 </html>
