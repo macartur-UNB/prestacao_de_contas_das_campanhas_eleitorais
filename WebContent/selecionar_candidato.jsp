@@ -1,7 +1,5 @@
 <%@ page import="modelo.beans.Candidato"%>
 <%@ page import="controle.CandidatoControle"%>	
-<%@ page import="modelo.dao.CandidatoDAO"%>
-<%@ page import="modelo.dao.BasicoDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
