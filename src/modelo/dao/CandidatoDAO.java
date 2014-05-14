@@ -126,7 +126,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
-			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '" + nome + "'";
+			String comandoSQL = "SELECT * FROM t_candidato WHERE nome = '" + nome + "'";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
@@ -139,7 +139,9 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 				candidato.setNumero(resultadoSQL.getString(NUMERO));
 				candidato.setCargo(resultadoSQL.getString(CARGO));
 				//candidato.setFoiEleito(resultado.getSQL(RESULTADO);
-				//candidato.setPartido(resultadoSQL.getString(PARTIDO));
+				Partido partido = new Partido();
+				partido.setSigla(resultadoSQL.getString(PARTIDO));
+				candidato.setPartido(partido);
 				candidato.setPessoaJuridica(false);
 				candidato.setUf(resultadoSQL.getString(UF));
 

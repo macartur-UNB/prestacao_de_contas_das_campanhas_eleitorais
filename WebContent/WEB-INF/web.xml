@@ -25,6 +25,6 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" >
   
   <error-page>
   	<error-code>404</error-code>
-  	<location>/404.html</location>
+  	<location>/erro-404.html</location>
   </error-page>
 </web-app>

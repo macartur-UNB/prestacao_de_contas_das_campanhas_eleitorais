@@ -11,17 +11,10 @@
 </head>
 <body>
 
-<h1>Visualizar Candidatos</h1>
-<p>Essa funcionalidade retorna, provisoriamente, o nome do candidato.</p>
+<h1>Busca de Candidatos</h1>
 
 <form action="SelecionarCandidato">
 	<table>
-	<tr>
-		<td></td>
-		<td> <input type="radio" name="tabela" 
-		onclick="link_requisitar_candidato" value="candidato" checked /> 
-		Candidato</td>
-	</tr>
     <tr>
     	<td>Nome: </td>
     	<td><input type="text" name="nome" /></td>

@@ -1,5 +1,7 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page import="modelo.beans.Candidato" %>
 <%@ page import="controle.CandidatoControle" %>
+<%@ page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -11,17 +13,60 @@
 </head>
 <body>
 <%
-Candidato candidato;
 CandidatoControle candidatoControle = new CandidatoControle();
 
 String nome = request.getParameter("nome");
+String cpf = request.getParameter("cpf");
 
-
-candidato = candidatoControle.getCandidato(nome);
-
-
-out.println("Candidato: " + candidato.getNome());
+LinkedList<Candidato> listaCandidato = candidatoControle.getCandidato(nome);
 %>
+
+<!-- Identificacao do candidato -->
+<table>
+	<tr>
+		<td> Nome: </td>
+		<td> <% out.println(nome); %></td>
+	</tr>
+	<tr>
+		<td> CPF: </td>
+		<td> <% out.println(cpf); %> </td>
+	</tr>
+</table>
+
+<!-- Anos em que ele concorreu -->
+
+<%
+String ano;
+for(Candidato candidato:listaCandidato){
+	ano = candidato.getAno().toString();
+	out.println("<table border=\"2\" width=\"600\"><tbody>");
+		out.println("<tr>");
+			out.println("<td rowspan=\"2\">");
+				nome.replaceAll(" ","+");
+				out.println("<a href=\"requisitarMovimentacoes"
+					+ "?tabela=candidato&nome=" + nome + "&ano="
+				    + ano + "\">" + ano + "</a>");
+			out.println("</td>");
+			out.println("<td>");
+				out.println("Partido: " +candidato.getPartido().getSigla());
+			out.println("</td>");
+			out.println("<td>");
+				out.println("Cargo Pleiteado: " +candidato.getCargo());
+			out.println("</td>");
+		out.println("</tr>");
+		out.println("<tr>");
+			out.println("<td>");
+				out.println("UF: " + candidato.getUf());
+			out.println("</td>");
+			out.println("<td>");
+				out.println("Número: " +candidato.getNumero());
+			out.println("</td>");
+		out.println("</tr>");
+	out.println("</tbody></table>");
+}
+%>
+
+
 
 </body>
 </html>

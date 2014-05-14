@@ -19,7 +19,7 @@ public class CandidatoControle {
 		return this.candidatoDAO.getLista();
 	}
 
-	public LinkedList<Candidato> getCandidato(String nome) throws SQLException {
+	public LinkedList<Candidato> getCandidato(String nome) {
 		return this.candidatoDAO.getCandidato(nome);
 	}
 
