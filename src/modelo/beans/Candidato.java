@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import modelo.dao.CandidatoDAO;
 import modelo.dao.ConexaoBancoDados;
 
 import java.sql.Connection;
@@ -152,28 +153,17 @@ public class Candidato extends Pessoa{
 		this.resultadoUltimaEleicao = resultadoUltimaEleicao;
 	}
 	
-	public LinkedList<Receita> getListaReceitas() throws SQLException {
+	public LinkedList<Receita> getListaReceitas() {
 		LinkedList<Receita> listaReceitas = new LinkedList<>();
-		
-		Connection conexao = new ConexaoBancoDados().getConexao();
-		
-		try {
+		CandidatoDAO dao = new CandidatoDAO();
+		ResultSet resultadoSQL = dao.selectSQL(this, "t_receitaC");		
 
-			String comandoSQL = "SELECT * FROM t_receitaC "
-							  + "WHERE candidato_nome "
-							  + " = \"" + this.getNome() + "\" "
-							  + "AND ano = "
-							  + this.getAno();
-			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);	
-			System.out.println(comandoSQL);
-			
-			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
-			
+		try {			
 			while(resultadoSQL.next()) {
-				
+
 				Receita receita = new Receita();
 				receita.setEmNomeDe(this);
-				
+
 				receita.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
 				if(resultadoSQL.getString(ENTREGACONJUNTO).equals("S")){
 					receita.setEntregaEmConjunto(true);
@@ -192,41 +182,27 @@ public class Candidato extends Pessoa{
 				doador.setNome(resultadoSQL.getString(NOMEDOADOR));
 				doador.setCadastroNacional("CADASTRODOADOR");
 				receita.setDoador(doador);
-				
 
-				if(receita != null)
-					listaReceitas.add(receita);
-			}
-			instrucaoSQL.close();
-			
-		} catch(Exception e) {
+
+				if(receita != null)	listaReceitas.add(receita);
+			};
+
+		} catch(SQLException e) {
 			System.out.println("Um erro aconteceu");
-			throw new SQLException(e.getMessage());
-		} finally {
-			conexao.close();
+			e.getMessage();
 		}
 
 		return listaReceitas;
+
 	}
 
-	public LinkedList<Despesa> getListaDespesas() throws SQLException {
+	public LinkedList<Despesa> getListaDespesas() {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
-		
-		Connection conexao = new ConexaoBancoDados().getConexao();
-		
-		try {
+		CandidatoDAO dao = new CandidatoDAO();
+		ResultSet resultadoSQL = dao.selectSQL(this, "t_despesaC");
 
-			String comandoSQL = "SELECT * FROM t_despesaC "
-							  + "WHERE candidato_nome "
-							  + " = \"" + this.getNome() + "\" "
-							  + "AND ano = "
-							  + this.getAno();
-			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);	
-			System.out.println(comandoSQL);
-			
-			ResultSet resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
+		try	{
 			while(resultadoSQL.next()) {
-				
 				Despesa despesa = new Despesa();
 				despesa.setEmNomeDe(this);
 				despesa.setHoraRegistro(resultadoSQL.getString(HORAREGISTRO));
@@ -239,7 +215,7 @@ public class Candidato extends Pessoa{
 				} else{
 					despesa.setEntregaEmConjunto(false);
 				}
-				
+
 				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
 				//despesa.setData(data) verificar formatacao
 				//despesa.setValor(resultadoSQL.getFloat(VALOR)); verificar formatacao
@@ -252,20 +228,29 @@ public class Candidato extends Pessoa{
 				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
 				fornecedor.setCadastroNacional(resultadoSQL.getString(CADASTROFORNECEDOR));
 				despesa.setFornecedor(fornecedor);
-				
-				
+
 				if(despesa != null) listaDespesas.add(despesa);
-		
 			}
-			instrucaoSQL.close();
-		} catch(Exception e) {
+		} catch(SQLException e) {	
 			System.out.println("Um erro aconteceu");
-			throw new SQLException(e.getMessage());
-		} finally {	
-			conexao.close();
+			e.getMessage();
 		}
 
 		return listaDespesas;
+
 	}
 
+	public boolean existe() {
+
+		CandidatoDAO dao = new CandidatoDAO();
+		ResultSet result = dao.selectSQL(this,"t_candidato");
+		try{
+			if(result.next()) return true;
+			else return false;
+
+		}catch(SQLException e){
+			return false;
+		}
+
+	}
 }

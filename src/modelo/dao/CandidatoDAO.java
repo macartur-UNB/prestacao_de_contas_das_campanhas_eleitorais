@@ -1,6 +1,7 @@
 
 package modelo.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -83,5 +84,36 @@ public class CandidatoDAO extends BasicoDAO<Candidato>{
 			lista.add(candidato);
 		}
 	}
+	
+	public ResultSet selectSQL(Candidato candidato, String tabela)
+	{
+		ResultSet resultadoSQL;
+		String campoNome = "candidato_nome";
+		if(tabela.equals("t_candidato")) campoNome = "nome";
+
+		try
+		{
+			Connection conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = "SELECT * FROM " + tabela
+							  + " WHERE " + campoNome
+							  + " = \"" + candidato.getNome() + "\" "
+							  + "AND ano = "
+							  + candidato.getAno();
+			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);	
+			System.out.println(comandoSQL);
+
+			resultadoSQL = instrucaoSQL.executeQuery(comandoSQL);
+			return resultadoSQL;
+
+		} catch (SQLException e)
+		{
+			System.out.println("Um erro ocorreu ao tentar acessar o BD.");
+			e.getMessage();	
+			return null;
+		} 
+
+	}
+
 
 }

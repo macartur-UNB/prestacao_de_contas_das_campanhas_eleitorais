@@ -16,23 +16,22 @@
 
 <body>
 
-<!-- Pegando os parametros do Candidato -->
-<jsp:useBean id="candidato" class="modelo.beans.Candidato" />
-<jsp:setProperty name="candidato" property="nome" value="${param.nome}" /> 
-<jsp:setProperty name="candidato" property="ano" value="${param.ano}" /> 
-
 <!-- Mostrar na tela os dados do Candidato -->
 <h1>Resultado da busca:</h1>
 <table>
 <tr>
 	<td> Candidato: </td>
-	<td>${candidato.nome}</td>
+	<td>${param.nome}</td>
 </tr>
 <tr>
 	<td> Ano: </td>
-	<td>${candidato.ano}</td>
+	<td>${param.ano} </td>
 </tr>
 </table>
+
+<jsp:useBean id="candidato" class="modelo.beans.Candidato" />
+<jsp:setProperty name="candidato" property="nome" value="${param.nome}" /> 
+<jsp:setProperty name="candidato" property="ano" value="${param.ano}" /> 
 
 <!-- Tabela de receitas -->
 <h2> Receitas: </h2>

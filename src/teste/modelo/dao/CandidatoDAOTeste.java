@@ -1,5 +1,7 @@
 package teste.modelo.dao;
 
+import static org.junit.Assert.*;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -126,6 +128,30 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		listaPartidos.add(this.partidoCadastrado);
 		
 		this.partidoDAO.cadastrarPartidos(listaPartidos);
+	}
+	
+	@Test
+	public void verificarSeUmCandidatoExiste() throws SQLException{
+		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
+
+		Candidato candidato = new Candidato();
+		candidato.setNome("Fulano");
+		candidato.setAno(1990);
+		candidato.setPartido(this.partidoCadastrado);
+		listaCandidatos.add(candidato);
+
+		this.candidatoDAO.cadastrarLista(listaCandidatos);
+		assertTrue(candidato.existe());
+
+	}
+
+	@Test
+	public void verificarQueUmCandidatoNaoExiste() throws SQLException{
+		Candidato candidato = new Candidato();
+		candidato.setNome("Fulano");
+		candidato.setAno(1990);
+		candidato.setPartido(this.partidoCadastrado);
+		assertFalse(candidato.existe());
 	}
 
 }
