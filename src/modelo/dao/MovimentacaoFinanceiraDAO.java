@@ -19,14 +19,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-import modelo.beans.Despesa;
 import modelo.beans.Candidato;
+import modelo.beans.Despesa;
 import modelo.beans.Doador;
 import modelo.beans.Fornecedor;
 import modelo.beans.Receita;
 
 /*****************************************************************************/
-public class MovimentacaoDAO {
+public class MovimentacaoFinanceiraDAO {
 
 	/**** Atributos **********************************************************/
 	public static final String CANDIDATONOME   = "candidato_nome";
@@ -56,7 +56,7 @@ public class MovimentacaoDAO {
 
 	/**** Construtores 
 	 * @throws SQLException **********************************************/
-	public MovimentacaoDAO() throws SQLException {
+	public MovimentacaoFinanceiraDAO() throws SQLException {
 		this.conexao = new ConexaoBancoDados().getConexao();
 	}
 

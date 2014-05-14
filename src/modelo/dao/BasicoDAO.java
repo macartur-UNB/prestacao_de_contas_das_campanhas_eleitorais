@@ -11,8 +11,8 @@ import java.util.Comparator;
 
 public abstract class BasicoDAO<O> {
 
-	private Connection conexao;
-	private PreparedStatement instrucaoSQL;
+	protected Connection conexao;
+	protected PreparedStatement instrucaoSQL;
 	
 	private Comparator<O> comparador;
 	private String nomeTabela;
@@ -59,7 +59,7 @@ public abstract class BasicoDAO<O> {
 		
 		return lista;
 	}
-	
+		
 	protected ArrayList<O> getListaNaoCadastrados(ArrayList<O> lista) throws SQLException {
 		ArrayList<O> listaNaoCadastrados = new ArrayList<>();
 		ArrayList<O> listaCadastrados = getLista();
