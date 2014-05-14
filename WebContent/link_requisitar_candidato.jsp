@@ -14,7 +14,7 @@
 <h1>Visualizar Candidatos</h1>
 <p>Essa funcionalidade retorna, provisoriamente, o nome do candidato.</p>
 
-<form action="requisitarCandidato">
+<form action="SelecionarCandidato">
 	<table>
 	<tr>
 		<td></td>
