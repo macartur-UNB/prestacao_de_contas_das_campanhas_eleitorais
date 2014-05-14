@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
@@ -118,8 +119,10 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 	}
 
 
-	public Candidato getCandidato(String nome) throws SQLException {
-		Candidato candidato = new Candidato();
+	public LinkedList<Candidato> getCandidato(String nome) {
+		
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();;
+		
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
@@ -127,20 +130,28 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-
-			if (resultadoSQL.next()) {
+			
+			while (resultadoSQL.next()) {
+				Candidato candidato = new Candidato();
 				candidato.setNome(resultadoSQL.getString(NOME));
+				candidato.setAno(resultadoSQL.getInt(ANO));
+				candidato.setCpf(resultadoSQL.getString(CPF));
+				candidato.setNumero(resultadoSQL.getString(NUMERO));
+				candidato.setCargo(resultadoSQL.getString(CARGO));
+				//candidato.setFoiEleito(resultado.getSQL(RESULTADO);
+				//candidato.setPartido(resultadoSQL.getString(PARTIDO));
+				candidato.setPessoaJuridica(false);
+				candidato.setUf(resultadoSQL.getString(UF));
+
+				if (candidato != null) listaCandidato.add(candidato);
 			}
 
-			instrucaoSQL.close();
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
 
-		} catch (Exception e) {
-			throw new SQLException(e.getMessage());
-		} finally {
-			fecharConexao();
-		}
-
-		return candidato;
+		return listaCandidato;
 	}
 
 }

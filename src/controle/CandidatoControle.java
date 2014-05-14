@@ -2,6 +2,7 @@ package controle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
@@ -18,7 +19,7 @@ public class CandidatoControle {
 		return this.candidatoDAO.getLista();
 	}
 
-	public Candidato getCandidato(String nome) throws SQLException {
+	public LinkedList<Candidato> getCandidato(String nome) throws SQLException {
 		return this.candidatoDAO.getCandidato(nome);
 	}
 
