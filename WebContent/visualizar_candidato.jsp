@@ -37,8 +37,10 @@ LinkedList<Candidato> listaCandidato = candidatoControle.getCandidato(nome);
 
 <%
 String ano;
+String sigla;
 for(Candidato candidato:listaCandidato){
 	ano = candidato.getAno().toString();
+	sigla = candidato.getPartido().getSigla();
 	out.println("<table border=\"2\" width=\"600\"><tbody>");
 		out.println("<tr>");
 			out.println("<td rowspan=\"2\">");
@@ -48,7 +50,8 @@ for(Candidato candidato:listaCandidato){
 				    + ano + "\">" + ano + "</a>");
 			out.println("</td>");
 			out.println("<td>");
-				out.println("Partido: " +candidato.getPartido().getSigla());
+				out.println("Partido: " + "<a href=\"SelecionarPartido?sigla=" 
+							+ sigla + "\">" +sigla + "</a>");
 			out.println("</td>");
 			out.println("<td>");
 				out.println("Cargo Pleiteado: " +candidato.getCargo());
