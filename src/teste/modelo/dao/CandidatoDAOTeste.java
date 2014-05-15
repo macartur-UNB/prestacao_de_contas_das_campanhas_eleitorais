@@ -46,27 +46,8 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
 	}
 	
-	@Test (expected = SQLException.class)
-	public void deveLancarExcecaoAoCadastrarCandidatosIguais() throws Exception {
-		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
-		
-		Candidato candidato = new Candidato();
-		candidato.setNome("candidato inexistente");
-		candidato.setAno(1990);
-		candidato.setPartido(this.partidoCadastrado);
-		listaCandidatos.add(candidato);
-		
-		candidato = new Candidato();
-		candidato.setNome("candidato inexistente");
-		candidato.setAno(1990);
-		candidato.setPartido(this.partidoCadastrado);
-		listaCandidatos.add(candidato);
-		
-		this.candidatoDAO.cadastrarLista(listaCandidatos);
-	}
-	
 	@Test
-	public void naoDeveLancarExcecaoAoRecuperarUmCandidatoPeloNome() throws Exception {
+	public void deveRecuperarUmCandidatoPeloNomeEAno() throws Exception {
 		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 		
 		Candidato candidato = new Candidato();
@@ -77,7 +58,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
 		
-		Assert.assertEquals(candidato, this.candidatoDAO.getUmCandidato("candidato existente"));
+		Assert.assertEquals(candidato, this.candidatoDAO.getUmCandidato("candidato existente", 1990));
 	}
 	
 	@Test
@@ -134,17 +115,6 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		this.candidatoDAO.getLista().size();
 	}
 	
-	private void cadastrarPartido() throws Exception {
-		ArrayList<Partido> listaPartidos = new ArrayList<>();
-		
-		this.partidoCadastrado = new Partido();
-		this.partidoCadastrado.setSigla("A");
-		this.partidoCadastrado.setNumeroPartido("1");
-		listaPartidos.add(this.partidoCadastrado);
-		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-	}
-	
 	@Test
 	public void verificarSeUmCandidatoExiste() throws SQLException{
 		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
@@ -167,6 +137,17 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		candidato.setAno(1990);
 		candidato.setPartido(this.partidoCadastrado);
 		assertFalse(candidato.existe());
+	}
+	
+	private void cadastrarPartido() throws Exception {
+		ArrayList<Partido> listaPartidos = new ArrayList<>();
+		
+		this.partidoCadastrado = new Partido();
+		this.partidoCadastrado.setSigla("A");
+		this.partidoCadastrado.setNumeroPartido("1");
+		listaPartidos.add(this.partidoCadastrado);
+		
+		this.partidoDAO.cadastrarPartidos(listaPartidos);
 	}
 
 }

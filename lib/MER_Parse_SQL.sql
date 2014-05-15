@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS t_despesa;
 DROP TABLE IF EXISTS t_despesaC;
 DROP TABLE IF EXISTS t_receitaC;
 DROP TABLE IF EXISTS t_despesaP;
@@ -17,6 +18,7 @@ CREATE TABLE t_partido (
  );
 
 CREATE TABLE t_candidato (
+  id                INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome              VARCHAR(255) NOT NULL,
   partido_sigla     VARCHAR(20) NOT NULL,
   cpf          	    VARCHAR(20) NULL,
@@ -25,7 +27,7 @@ CREATE TABLE t_candidato (
   cargo_pleiteado   VARCHAR(45) NULL,
   uf                VARCHAR(45) NULL,
   resultado_eleicao VARCHAR(45) NULL,
-  PRIMARY KEY(nome),
+  PRIMARY KEY(id),
   FOREIGN KEY(partido_sigla) REFERENCES t_partido(sigla)
 );
 
@@ -86,7 +88,7 @@ CREATE TABLE t_despesaP (
 
 CREATE  TABLE t_receitaC (
   id                INTEGER UNSIGNED NOT NULL ,
-  candidato_nome    VARCHAR(255) NOT NULL ,
+  candidato_id      INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   ano               VARCHAR(45) NULL ,
   horaRegistro      VARCHAR(45) NULL ,
   entregaEmConjunto VARCHAR(45) NULL ,
@@ -101,12 +103,12 @@ CREATE  TABLE t_receitaC (
   nomeDoador        VARCHAR(45) NULL ,
   cadastroDoador    VARCHAR(45) NULL ,
   PRIMARY KEY (id) ,
-  FOREIGN KEY (candidato_nome) REFERENCES t_candidato(nome)
+  FOREIGN KEY (candidato_id) REFERENCES t_candidato(id)
 );
 
 CREATE  TABLE t_despesaC (
   id                 INTEGER UNSIGNED NOT NULL ,
-  candidato_nome     VARCHAR(255) NOT NULL ,
+  candidato_id       INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   ano                VARCHAR(45) NULL ,
   horaRegistro       VARCHAR(45) NULL ,
   entregaEmConjunto  VARCHAR(45) NULL ,
@@ -121,5 +123,22 @@ CREATE  TABLE t_despesaC (
   nomeFornecedor     VARCHAR(45) NULL ,
   cadastroFornecedor VARCHAR(45) NULL ,
   PRIMARY KEY (id) ,
-  FOREIGN KEY (candidato_nome) REFERENCES t_candidato(nome)
+  FOREIGN KEY (candidato_id) REFERENCES t_candidato(id)
+);
+
+CREATE TABLE t_despesa (
+id                 	INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+em_nome_de 			VARCHAR(255) NOT NULL ,
+hora_registro 		VARCHAR(45) NULL ,
+entrega_em_conjunto VARCHAR(45) NULL ,
+numero_documento	VARCHAR(45) NULL ,
+ano 				VARCHAR(45) NULL ,
+valor 				VARCHAR(45) NULL ,
+fonte 				VARCHAR(45) NULL ,
+tipo 				VARCHAR(45) NULL ,
+especie 			VARCHAR(45) NULL ,
+descricao 			VARCHAR(45) NULL ,
+tipo_documento 		VARCHAR(45) NULL ,
+fornecedor			VARCHAR(255) NOT NULL ,
+PRIMARY KEY (id)
 );

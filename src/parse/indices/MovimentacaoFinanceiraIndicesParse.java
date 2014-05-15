@@ -8,7 +8,7 @@ import modelo.beans.Candidato;
 import modelo.beans.MovimentacaoFinanceira;
 
 
-public class MovimentacaoFinanceiraIndices {
+public class MovimentacaoFinanceiraIndicesParse {
 
 	public static final int INDICE_INVALIDO = -1;
 	
@@ -16,19 +16,19 @@ public class MovimentacaoFinanceiraIndices {
 	private int indiceHoraRegistro;
 	private int indiceEntregaEmConjunto;
 	private int indiceNumeroDocumento;
-	private int indiceData;
+	private int indiceAno;
 	private int indiceValor;
 	private int indiceFonte;
 	private int indiceTipo;
 	private int indiceEspecie;
 	private int indiceDescricao;
 
-	public MovimentacaoFinanceiraIndices() {
+	public MovimentacaoFinanceiraIndicesParse() {
 		this.indicEmNomeDe = INDICE_INVALIDO;
 		this.indiceHoraRegistro = INDICE_INVALIDO;
 		this.indiceEntregaEmConjunto = INDICE_INVALIDO;
 		this.indiceNumeroDocumento = INDICE_INVALIDO;
-		this.indiceData = INDICE_INVALIDO;
+		this.indiceAno = INDICE_INVALIDO;
 		this.indiceValor = INDICE_INVALIDO;
 		this.indiceFonte = INDICE_INVALIDO;
 		this.indiceFonte = INDICE_INVALIDO;
@@ -54,12 +54,8 @@ public class MovimentacaoFinanceiraIndices {
 		if(indiceValido(this.indiceNumeroDocumento)) {
 			movimentacaoFinanceira.setNumeroDocumento(campo[this.indiceNumeroDocumento]);
 		}
-		if(indiceValido(this.indiceData)) {
-			Calendar calendar = Calendar.getInstance();
-		    SimpleDateFormat sdf = new SimpleDateFormat("MMM dd HH:mm:ss yyyy");
-//		    cal.setTime(sdf.parse("Mar 14 16:02:37 2011"));
-		    calendar.setTime(sdf.parse(campo[this.indiceData]));
-			movimentacaoFinanceira.setData(calendar);
+		if(indiceValido(this.indiceAno)) {
+			movimentacaoFinanceira.setAno(campo[this.indiceAno]);
 		}
 		if(indiceValido(this.indiceValor)) {
 			float valor = Float.parseFloat(campo[this.indiceValor]);
@@ -85,7 +81,7 @@ public class MovimentacaoFinanceiraIndices {
 		movimentacaoFinanceira.setHoraRegistro(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setEntregaEmConjunto(MovimentacaoFinanceira.BOOLEAN_VAZIO);
 		movimentacaoFinanceira.setNumeroDocumento(MovimentacaoFinanceira.STRING_VAZIO);
-		movimentacaoFinanceira.setData(MovimentacaoFinanceira.CALENDAR_VAZIO);
+		movimentacaoFinanceira.setAno(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setValor(MovimentacaoFinanceira.FLOAT_VAZIO);
 		movimentacaoFinanceira.setFonte(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setTipo(MovimentacaoFinanceira.STRING_VAZIO);
@@ -93,8 +89,48 @@ public class MovimentacaoFinanceiraIndices {
 		movimentacaoFinanceira.setDescricao(MovimentacaoFinanceira.STRING_VAZIO);
 	}
 	
-	private boolean indiceValido(int indice) {
+	protected boolean indiceValido(int indice) {
 		return indice > INDICE_INVALIDO;
+	}
+
+	public void setIndicEmNomeDe(int indicEmNomeDe) {
+		this.indicEmNomeDe = indicEmNomeDe;
+	}
+
+	public void setIndiceHoraRegistro(int indiceHoraRegistro) {
+		this.indiceHoraRegistro = indiceHoraRegistro;
+	}
+
+	public void setIndiceEntregaEmConjunto(int indiceEntregaEmConjunto) {
+		this.indiceEntregaEmConjunto = indiceEntregaEmConjunto;
+	}
+
+	public void setIndiceNumeroDocumento(int indiceNumeroDocumento) {
+		this.indiceNumeroDocumento = indiceNumeroDocumento;
+	}
+
+	public void setIndiceAno(int indiceAno) {
+		this.indiceAno = indiceAno;
+	}
+
+	public void setIndiceValor(int indiceValor) {
+		this.indiceValor = indiceValor;
+	}
+
+	public void setIndiceFonte(int indiceFonte) {
+		this.indiceFonte = indiceFonte;
+	}
+
+	public void setIndiceTipo(int indiceTipo) {
+		this.indiceTipo = indiceTipo;
+	}
+
+	public void setIndiceEspecie(int indiceEspecie) {
+		this.indiceEspecie = indiceEspecie;
+	}
+
+	public void setIndiceDescricao(int indiceDescricao) {
+		this.indiceDescricao = indiceDescricao;
 	}
 	
 }
