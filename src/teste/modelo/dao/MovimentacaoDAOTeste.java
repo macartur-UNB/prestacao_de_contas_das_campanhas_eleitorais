@@ -15,21 +15,29 @@ import modelo.beans.Despesa;
 import modelo.beans.Partido;
 import modelo.beans.Receita;
 
-import org.junit.Before;
 import org.junit.Test;
 
-public class MovimentacaoDAOTeste {
+import teste.TemplateTeste;
+
+public class MovimentacaoDAOTeste extends TemplateTeste {
 
 	private LinkedList<Receita> listaReceitas;
 	private LinkedList<Despesa> listaDespesas;
 
+	@Override
+	public void beforeTest() throws Exception {
+		this.listaReceitas = new LinkedList<>();
+		this.listaDespesas = new LinkedList<>();
+	}
 
-	@Before
-	public void setUp() throws Exception {
+	@Override
+	public void afterTest() throws Exception {
+	
 	}
 
 	@Test
 	public void obterListaCandidato() throws SQLException {
+		
 		Candidato candidato = new Candidato();
 		candidato.setNome("WLADIMIR SILVA FURTADO");
 		candidato.setAno(2014);
@@ -44,6 +52,7 @@ public class MovimentacaoDAOTeste {
 
 	@Test
 	public void obterListaPartido() throws SQLException {
+		
 		Partido partido = new Partido();
 		partido.setNome("PT");
 
@@ -54,5 +63,6 @@ public class MovimentacaoDAOTeste {
 		System.out.println(listaDespesas);
 	}
 
+	
 }
 	
