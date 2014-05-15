@@ -14,7 +14,9 @@
 </head>
 <body>
 
+	<!--  CABEÇALHO -->
 	<%@include file="imports/cabecalho.jsp"%>
+	<!-- FIM CABEÇALHO -->
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
@@ -36,34 +38,23 @@
 				</p>
 				<h4>-- O que é o Projeto?</h4>
 				<p></p>
-				<p>Atualmente, estamos desempenhando nossos esforços para
-					criação de website que supra uma carência, dos cidadãos de bem, que
-					existe a anos. Informações acerca de seus candidatos e partidos
-					políticos.</p>
-				<p>Sabe-se que não é fácil ter acesso a esse tipo de informação,
-					tornando a pesquisa cansativa e, muitas das vezes, ineficiente.
-					Logo, utilizamos das informações disponibilizadas segundo a lei nº
-					12.527/2011, no qual é possível a obtenção de informações de cunho
-					publico tais como estatísticas da polícia, informações sobre
-					localidade, gastos com o governo entre diversos outros. No entanto,
-					essas informações na maioria das vezes, estão de forma praticamente
-					ilegível, o que torna o esforço na procura em vão. É nesse contexto
-					que o projeto Campanhas-ON surge.</p>
-				<p>Com o objetivo de fazer com que informação desse tipo sejam
-					mais acessíveis aos usuários do sistema. Nós limitamos o
-					desenvolvimento desde projeto apenas para informações de gastos e
-					despesas de partidos e candidatos. A partir desses dados, faremos
-					uma série de comparações a fim de gerar gráficos, planilhas, listas
-					entre outros, para que você possa ter acesso a essas informações de
-					maneira mais fácil e objetiva.</p>
-				<h4>-- O que Você pode fazer com isso?</h4>
+				<p>	Trata-se de uma solução de software que busca tornar os dados relativos à receitas e despesas de campanhas eleitorais de 2002 à 2012 mais acessíveis e
+					legíveis. Esses dados são abertos, disponibilizados pelo Tribunal Superior Eleitoral (TSE) com granularidade bianual em arquivos com a extensão ".txt".
+					Conforme dispõem os artigos 28 e 32 da Lei nº 9.504/97, os candidatos, partidos políticos e comitês financeiros devem fornecer estes dados à Justiça Eleitoral
+					até o trigésimo dia posterior ao término das eleições.
+				</p>
+				<p>	Contudo, mesmo esses dados sendo públicos, não existe uma forma simplificada e concisa que permita uma real abstração de informação a partir deles.
+					Assim, o <b>Campanhas-ON</b> pode ser visto como uma forma integrada de acesso a todos os dados referentes às contas eleitorais, disponibilizados pelo TSE.
+					Além disso, é uma ferramenta que objetiva agregar valor aos dados através de gráficos, comparações e relatórios, não sendo, portanto, um mero buscador de
+					informação.
+				</p> 
+				<h4>-- Como Utilizar o <i>Web Site</i>?</h4>
 				<p></p>
-				<p>Você como leitor poderá verificar de maneira mais acessível
-					os dados de seus candidatos de interesse além de ter noção do fluxo
-					de movimentação de despesas receitas. Lembre-se também, que estão
-					disponíveis alguns dados pessoais e partidários de seus candidatos.</p>
-				<p>Não deixe de tomar conhecimento, com poucos clicks é possível
-					ter um universo de informações.</p>
+				<p>	Navegue pelo menu no cabeçalho da página para acessar informações referentes à candidatos e partidos. Tais páginas terão informações complementares que
+					auxiliam no uso do software. Para pesquisas avançadas, utilize a seção de pesquisa.
+				</p>
+				<p> <b>Campanhas-ON</b> está em seu primeiro <i>release</i>. Novas páginas, tratamento de dados e tecnologias serão incluídas em seu segundo <i>release</i>.
+				</p>
 				<br>
 				<br>
 			</div>
@@ -72,27 +63,9 @@
 	</div>
 	<!-- FIM CONTEUDO-->
 
-	<!-- RODAPE -->
-	<div id="rodape">
-		<div id="centro_rodape">
-			<a href="index.jsp"> <img src="img/logo.png" width="257"
-				height="58" alt="Logo" title="CampanhasOn"></a>
-			<div id="redes_sociais">
-				<a href="index.jsp"><img src="img/facebook.png" width="32"
-					height="32" alt="Facebook" title="Facebook"></a> <a
-					href="index.jsp"><img src="img/twitter.png" width="32"
-					height="32" alt="Twitter" title="Twitter"></a> <a
-					href="https://github.com/macartur/prestacao_de_contas_das_campanhas_eleitorais"><img
-					src="img/github.png" width="32" height="32" alt="GitHub"
-					title="GitHub"></a>
-			</div>
-			<div id="dado_rodape">
-				Universidade de Brasília <br> Faculdade do Gama - FGA <br>
-				Projeto: Campanhas-On / MDS
-			</div>
-		</div>
-	</div>
-	<!-- FIM RODAPE -->
+	<!-- RODAPÉ -->
+	<%@include file="imports/rodape.jsp"%>
+	<!-- FIM RODAPÉ -->
 
 </body>
 </html>

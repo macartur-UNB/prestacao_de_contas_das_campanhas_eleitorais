@@ -167,8 +167,10 @@
 
 	</div>
 	<!-- FIM PAGINA CENTRAL -->
-
+	
+	<!-- RODAPÉ -->
 	<%@include file="imports/rodape.jsp"%>
+	<!-- FIM RODAPÉ -->
 
 </body>
 </html>
