@@ -21,7 +21,7 @@ public class FornecedorIndicesParse {
 			fornecedor.setNome(campo[this.indiceNome]);
 		}
 		
-		if(indiceValido(this.indiceCadastroNacional)) {
+		if(indiceValido(this.indiceCadastroNacional) && !campo[this.indiceCadastroNacional].isEmpty()) {
 			fornecedor.setCadastroNacional(campo[this.indiceCadastroNacional]);
 		}
 	}

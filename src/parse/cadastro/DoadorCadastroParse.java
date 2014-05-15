@@ -25,7 +25,7 @@ public class DoadorCadastroParse implements ExecutorLeitorCSV {
 			this.doadorParse.addDoador(campo);
 			this.linhasLidas++;
 			
-			if(this.linhasLidas >= 40000) {
+			if(this.linhasLidas >= 20000) {
 				this.doadorParse.cadastrarDoadores();
 				this.doadorParse.resetar();
 				this.linhasLidas = 0;
@@ -98,15 +98,15 @@ public class DoadorCadastroParse implements ExecutorLeitorCSV {
 	
 	private DoadorIndicesParse getDoadorIndicesParseReceita2004() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
-		doadorIndicesParse.setIndiceNome(18);
-		doadorIndicesParse.setIndiceCadastroNacional(19);
+		doadorIndicesParse.setIndiceNome(15);
+		doadorIndicesParse.setIndiceCadastroNacional(16);
 		return doadorIndicesParse;
 	}
 	
 	private DoadorIndicesParse getDoadorIndicesParseReceita2006() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
-		doadorIndicesParse.setIndiceNome(18);
-		doadorIndicesParse.setIndiceCadastroNacional(19);
+		doadorIndicesParse.setIndiceNome(15);
+		doadorIndicesParse.setIndiceCadastroNacional(16);
 		
 		return doadorIndicesParse;
 	}

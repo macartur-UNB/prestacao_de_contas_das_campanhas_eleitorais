@@ -3,20 +3,36 @@ package modelo.beans;
 import java.util.Calendar;
 
 public class MovimentacaoFinanceira {
+	
+	public static final String STRING_VAZIO = "";
+	public static final Integer INTEGER_VAZIO = 0;
+	public static final Float FLOAT_VAZIO = (float) 0;
+	public static final Boolean BOOLEAN_VAZIO = false;
+	public static final Pessoa PESSOA_VAZIO = null;
+	public static final Calendar CALENDAR_VAZIO = null;
 
 	private Pessoa emNomeDe;
 	private String horaRegistro;
-	private boolean entregaEmConjunto;
+	private Boolean entregaEmConjunto;
 	private String numeroDocumento;
 	private Calendar data;
-	private float valor;
+	private Float valor;
 	private String fonte;
 	private String tipo;
 	private String especie;
 	private String descricao;
 
 	public MovimentacaoFinanceira(){
-
+		this.emNomeDe = PESSOA_VAZIO;
+		this.horaRegistro = STRING_VAZIO;
+		this.entregaEmConjunto = BOOLEAN_VAZIO;
+		this.numeroDocumento = STRING_VAZIO;
+		this.data = CALENDAR_VAZIO;
+		this.valor = FLOAT_VAZIO;
+		this.fonte = STRING_VAZIO;
+		this.tipo = STRING_VAZIO;
+		this.especie = STRING_VAZIO;
+		this.descricao = STRING_VAZIO;
 	}
 
 	public Pessoa getEmNomeDe() {
@@ -35,11 +51,11 @@ public class MovimentacaoFinanceira {
 		this.horaRegistro = horaRegistro;
 	}
 
-	public boolean isEntregaEmConjunto() {
+	public Boolean isEntregaEmConjunto() {
 		return entregaEmConjunto;
 	}
 
-	public void setEntregaEmConjunto(boolean entregaEmConjunto) {
+	public void setEntregaEmConjunto(Boolean entregaEmConjunto) {
 		this.entregaEmConjunto = entregaEmConjunto;
 	}
 
@@ -59,11 +75,11 @@ public class MovimentacaoFinanceira {
 		this.data = data;
 	}
 
-	public float getValor() {
+	public Float getValor() {
 		return valor;
 	}
 
-	public void setValor(float valor) {
+	public void setValor(Float valor) {
 		this.valor = valor;
 	}
 

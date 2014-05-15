@@ -47,7 +47,8 @@ public class Parse implements ExecutorLeitorCSV {
 		
 		if(this.tipoArquivo.equals(DESPESA)) {
 			this.fornecedorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-		} else {
+		} 
+		else {
 			this.doadorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
 		}
 	}
@@ -58,7 +59,8 @@ public class Parse implements ExecutorLeitorCSV {
 		
 		if(this.tipoArquivo.equals(DESPESA)) {
 			this.fornecedorCadastroParse.finalizarCadastros();
-		} else {
+		} 
+		else {
 			this.doadorCadastroParse.finalizarCadastros();
 		}
 	}

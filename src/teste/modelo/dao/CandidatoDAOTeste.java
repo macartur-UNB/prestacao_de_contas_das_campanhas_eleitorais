@@ -66,6 +66,21 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	}
 	
 	@Test
+	public void naoDeveLancarExcecaoAoRecuperarUmCandidatoPeloNome() throws Exception {
+		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
+		
+		Candidato candidato = new Candidato();
+		candidato.setNome("candidato existente");
+		candidato.setAno(1990);
+		candidato.setPartido(this.partidoCadastrado);
+		listaCandidatos.add(candidato);
+		
+		this.candidatoDAO.cadastrarLista(listaCandidatos);
+		
+		Assert.assertEquals(candidato, this.candidatoDAO.getUmCandidato("candidato existente"));
+	}
+	
+	@Test
 	public void naoDeveCadastrarUmCandidatoJaExistente() throws Exception {
 		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 		

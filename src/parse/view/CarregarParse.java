@@ -54,7 +54,7 @@ public class CarregarParse extends HttpServlet {
 				FileItem arquivo = null;
 				String tipoArquivo = "";
 				String ano = "";
-				String divisao = "\";\"";
+				String divisao = ";";
 				int linhaInicial = 1;
 
 

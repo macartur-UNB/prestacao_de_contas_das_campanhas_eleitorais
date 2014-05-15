@@ -52,6 +52,34 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 	protected String getSqlSelect() {
 		return SQL_SELECT;
 	}
+	
+	public Candidato getUmCandidato(String nome) throws SQLException {
+		Candidato candidato = new Candidato();
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+			
+			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '" + nome + "'";
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
+			
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			
+			ArrayList<Candidato> listaCandidatos = new ArrayList<>();
+			adicionarResultSetNaLista(listaCandidatos, resultadoSQL);
+			
+			if(!listaCandidatos.isEmpty()) {
+				candidato = listaCandidatos.get(0);
+			}
+			
+			instrucaoSQL.close();
+			
+		} catch(Exception e) {
+			throw new SQLException(e.getMessage());
+		} finally {
+			fecharConexao();
+		}
+		
+		return candidato;	
+	}
 
 	@Override
 	protected void adicionarListaNoBatch(ArrayList<Candidato> lista,

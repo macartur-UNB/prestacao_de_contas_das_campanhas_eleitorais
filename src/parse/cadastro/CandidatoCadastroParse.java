@@ -33,7 +33,7 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 			this.candidatoParse.addCandidato(campo);
 			this.linhasLidas++;
 
-			if(this.linhasLidas >= 40000) {
+			if(this.linhasLidas >= 20000) {
 				this.candidatoParse.cadastrarCandidatos();
 				this.candidatoParse.resetar();
 				this.linhasLidas = 0;
@@ -152,10 +152,10 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 	private CandidatoIndicesParse getCandidatoIndicesParseReceita2008() {
 		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2008);
 		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceUf(4);
-		candidatoIndicesParse.setIndiceCargo(1);
-		candidatoIndicesParse.setIndicePartidoSigla(9);
-		candidatoIndicesParse.setIndiceNumero(3);
+		candidatoIndicesParse.setIndiceUf(5);
+		candidatoIndicesParse.setIndiceCargo(2);
+		candidatoIndicesParse.setIndicePartidoSigla(12);
+		candidatoIndicesParse.setIndiceNumero(11);
 
 		return candidatoIndicesParse;
 	}

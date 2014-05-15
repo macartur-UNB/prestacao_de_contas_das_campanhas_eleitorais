@@ -11,8 +11,8 @@ import java.util.Comparator;
 
 public abstract class BasicoDAO<O> {
 
-	private Connection conexao;
-	private PreparedStatement instrucaoSQL;
+	protected Connection conexao;
+	protected PreparedStatement instrucaoSQL;
 	
 	private Comparator<O> comparador;
 	private String nomeTabela;
@@ -52,14 +52,14 @@ public abstract class BasicoDAO<O> {
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
 			adicionarResultSetNaLista(lista, resultadoSQL);			
 		} catch(Exception e) {
-			throw new SQLException(nomeTabela + e.getMessage());
+			throw new SQLException(nomeTabela + " - " + e.getMessage());
 		} finally {
 			fecharConexao();
 		}
 		
 		return lista;
 	}
-	
+		
 	protected ArrayList<O> getListaNaoCadastrados(ArrayList<O> lista) throws SQLException {
 		ArrayList<O> listaNaoCadastrados = new ArrayList<>();
 		ArrayList<O> listaCadastrados = getLista();

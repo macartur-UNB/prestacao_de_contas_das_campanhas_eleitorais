@@ -25,7 +25,7 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 			this.fornecedorParse.addFornecedor(campo);
 			this.linhasLidas++;
 			
-			if(this.linhasLidas >= 40000) {
+			if(this.linhasLidas >= 20000) {
 				this.fornecedorParse.cadastrarFornecedores();
 				this.fornecedorParse.resetar();
 				this.linhasLidas = 0;
@@ -113,8 +113,8 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 	
 	private FornecedorIndicesParse getFornecedorIndicesParseDespesa2008() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
-		fornecedorIndicesParse.setIndiceNome(16);
-		fornecedorIndicesParse.setIndiceCadastroNacional(17);
+		fornecedorIndicesParse.setIndiceNome(22);
+		fornecedorIndicesParse.setIndiceCadastroNacional(23);
 		
 		return fornecedorIndicesParse;
 	}

@@ -32,7 +32,7 @@ public class PartidoCadastroParse implements ExecutorLeitorCSV{
 			this.partidoParse.addPartido(campo);
 			this.linhasLidas++;
 			
-			if(this.linhasLidas >= 40000) {
+			if(this.linhasLidas >= 20000) {
 				this.partidoParse.cadastrarPartidos();
 				this.partidoParse.resetar();
 				this.linhasLidas = 0;
@@ -133,12 +133,8 @@ public class PartidoCadastroParse implements ExecutorLeitorCSV{
 		return partidoIndicesParse;
 	}
 	
-	private PartidoIndicesParse gePartidoIndicesParseDespesa2008() {		
-		PartidoIndicesParse partidoIndicesParse = new PartidoIndicesParse();
-		partidoIndicesParse.setIndiceSigla(9);
-		partidoIndicesParse.setIndiceNumeroPartido(8);
-		
-		return partidoIndicesParse;
+	private PartidoIndicesParse gePartidoIndicesParseDespesa2008() {	
+		return gePartidoIndicesParseReceita2008();
 	}
 	
 }
