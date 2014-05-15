@@ -63,7 +63,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		Despesa despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -82,7 +82,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		Despesa despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -101,7 +101,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		Despesa despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -117,7 +117,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		
 		Despesa despesa = new Despesa();
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -131,14 +131,14 @@ public class DespesaDAOTeste extends TemplateTeste {
 		Despesa despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
 		despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454123");
 		listaDespesas.add(despesa);
 		
@@ -153,7 +153,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		
 		Despesa despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -167,7 +167,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		Despesa despesa = new Despesa();
 		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno().toString());
+		despesa.setAno(this.candidatoCadastrado.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
