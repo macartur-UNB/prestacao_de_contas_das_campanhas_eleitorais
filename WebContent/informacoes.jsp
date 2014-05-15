@@ -25,24 +25,15 @@
 			<div class="informacoes">
 				<h4>-- Quem Somos?</h4>
 				<p></p>
-				<p>Estudante da Engenharia de Software nós, Augusto Modesto,
-					Jonathan Morais, Matheus Ferraz, Rafael Valença e Yuri Loiola
-					estudamos na Universidade de Brasília. Esse projeto visa, além de
-					trazer a sensação de cidadania para nós, torna informações de
-					difícil acesso, como dados de partidos, candidatos, receitas e
-					despesas, mais acessível a população. Para isso, fora necessário
-					estudar os diversos métodos de desenvolvimento de um software, para
-					que atendesse as exigências de um projeto de qualidade.</p>
-				<p>Esse projeto faz parte da disciplina de Métodos de
-					Desenvolvimento de Software, que tem como objetivo, ensinar ao
-					aluno, os diversos tipos de desenvolvimento de software de forma
-					teórica e prática. Foram feitos levantamentos de requisitos,
-					pesquisas e estudo para que fosse possível cria um produto
-					possibilitasse conforto ao usuário durante a navegação,
-					confiabilidade nas informações, rapidez nas informações. Essa é
-					apenas a primeira release, portanto, o website ainda estará em
-					desenvolvimento, mas para as próximas versões, novas
-					funcionalidades estarão sendo implementadas.</p>
+				<p>	Somos alunos das disciplinas de Métodos de Desenvolvimento de Software e Gestão de Portifólios e Projetos de Software do curso de Engenharia de Software
+					da Universidade de Brasília. Composto por cinco desenvolvedores: Augusto Modesto, Jonathan Moraes, Matheus Ferraz, Rafael Valença e Yuri Loiola; dois
+					gestores: Luciano Prestes e Macártur de Sousa; e sob orientação de dois <i>coaches</i>: João Henrique e Maria Luciene.
+				</p>
+				<p>	O projeto é parte da temática de ambas as disciplinas, conceituada e aplicada pelo Professor Hilmer Rodrigues Neri. O tema exercido envolve a criação de um 
+					sistema que extraia informações de Dados Abertos do Governo Federal e os traduza para informações acessíveis e inteligíveis. Tal metodologia não só nos
+					ensina métodos de desenvolvimento e gestão de produtos de software, como nos permite aprender a atuar de forma consciente na sociedade em que vivemos.
+					Além de um projeto de software, é uma iniciativa que promove a cidadania.
+				</p>
 				<h4>-- O que é o Projeto?</h4>
 				<p></p>
 				<p>Atualmente, estamos desempenhando nossos esforços para
