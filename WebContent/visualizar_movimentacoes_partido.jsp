@@ -66,7 +66,7 @@ try {
 	<th>Hora Registro</th>
 	<!-- <th>Entraga em Conjunto</th>  -->
 	<th>Número do Documento</th>
-	<th>Data</th>
+	<th>Ano</th>
 	<th>Valor</th>
 	<th>Fonte</th>
 	<th>Tipo</th>
@@ -84,7 +84,7 @@ out.println("<tr>");
 	out.println("<td>"+receita.getHoraRegistro()+"</td>");
 	//out.println("<td>"+receita.isEntregaEmConjunto()+"</td>");
 	out.println("<td>"+receita.getNumeroDocumento()+"</td>");
-	out.println("<td>"+receita.getData()+"</td>");
+	out.println("<td>"+receita.getAno()+"</td>");
 	out.println("<td>"+receita.getValor()+"</td>");
 	out.println("<td>"+receita.getFonte()+"</td>");
 	out.println("<td>"+receita.getTipo()+"</td>");
@@ -108,7 +108,7 @@ out.println("</tr>");
 	<th>Hora Registro</th>
 	<!-- <th>Entraga em Conjunto</th>  -->
 	<th>Número do Documento</th>
-	<th>Data</th>
+	<th>Ano</th>
 	<th>Valor</th>
 	<th>Fonte</th>
 	<th>Tipo</th>
@@ -126,7 +126,7 @@ for(Despesa despesa:listaDespesas)
 	out.println("<td>"+despesa.getHoraRegistro()+"</td>");
 	//out.println("<td>"+despesa.isEntregaEmConjunto()+"</td>");
 	out.println("<td>"+despesa.getNumeroDocumento()+"</td>");
-	out.println("<td>"+despesa.getData()+"</td>");
+	out.println("<td>"+despesa.getAno()+"</td>");
 	out.println("<td>"+despesa.getValor()+"</td>");
 	out.println("<td>"+despesa.getFonte()+"</td>");
 	out.println("<td>"+despesa.getTipo()+"</td>");
