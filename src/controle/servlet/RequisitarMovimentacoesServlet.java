@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.CandidatoControle;
 import modelo.beans.Candidato;
-import modelo.beans.Despesa;
-import modelo.beans.Receita;
+
 
 @WebServlet("/requisitarMovimentacoes")
 public class RequisitarMovimentacoesServlet extends HttpServlet {
@@ -51,7 +49,8 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 				requestDispatcher.forward(request,response);
 			}else{
 				// Busca receitas e despesas do candidato
-
+				
+				request.setAttribute("candidato", candidato);
 				requestDispatcher = request
 					    .getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
 				requestDispatcher.forward(request,response);
