@@ -64,8 +64,10 @@ public class DespesaCadastroParse implements ExecutorLeitorCSV {
 				return getDespesaIndicesParse2004();
 
 			case ANO_2006:
+				return getDespesaIndicesParse2006();
 
 			case ANO_2008:
+				return getDespesaIndicesParse2008();
 
 			default:
 				return null;
@@ -96,18 +98,29 @@ public class DespesaCadastroParse implements ExecutorLeitorCSV {
 		return despesaIndicesParse;
 	}
 	
-//	private String tipoDocumento;
-//	private Fornecedor fornecedor;
-//	
-//	private Pessoa emNomeDe;
-//	private String horaRegistro;
-//	private Boolean entregaEmConjunto;
-//	private String numeroDocumento;
-//	private String ano;
-//	private Float valor;
-//	private String fonte;
-//	private String tipo;
-//	private String especie;
-//	private String descricao;
+	private DespesaIndicesParse getDespesaIndicesParse2006() {
+		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
+		despesaIndicesParse.setIndiceFornecedor(18);
+		despesaIndicesParse.setIndiceEmNomeDe(0);
+		despesaIndicesParse.setIndiceValor(9);
+		despesaIndicesParse.setIndiceTipo(11);	
+		despesaIndicesParse.setIndiceTipoDocumento(16);
+		despesaIndicesParse.setIndiceEspecie(13);
+
+		return despesaIndicesParse;
+	}
 	
+	private DespesaIndicesParse getDespesaIndicesParse2008() {
+		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2008);
+		despesaIndicesParse.setIndiceFornecedor(22);
+		despesaIndicesParse.setIndiceEmNomeDe(0);
+		despesaIndicesParse.setIndiceValor(13);
+		despesaIndicesParse.setIndiceTipo(11);	
+		despesaIndicesParse.setIndiceTipoDocumento(20);
+		despesaIndicesParse.setIndiceEspecie(17);
+		despesaIndicesParse.setIndiceNumeroDocumento(19);
+
+		return despesaIndicesParse;
+	}
+		
 }

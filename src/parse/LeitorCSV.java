@@ -33,8 +33,10 @@ public class LeitorCSV {
 			if(i % 1000 == 0) {
 				System.out.println("lendo linha: " + i + " / " + totalLinhas);
 			}
+			
 			linha = transformarPontoVirgulasDoCampoEmVirgula(linha);
 			campo = linha.split(divisao);
+
 			removerAspas(campo);
 			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
 		}

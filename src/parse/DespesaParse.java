@@ -24,9 +24,7 @@ public class DespesaParse {
 	public void addDespesa(String campo[]) throws ParseException {
 		Despesa despesa = this.despesaIndicesParse.iniciarDespesa(campo);
 		
-		if(!this.listaDespesas.contains(despesa)) {
-			this.listaDespesas.add(despesa);
-		}
+		this.listaDespesas.add(despesa);
 	}
 	
 	public void cadastrarDespesas() throws SQLException {
