@@ -52,7 +52,7 @@
 				<form name="voltar" action="index.jsp">
 					<input type="submit" value="Voltar">
 				</form>
-				br>
+				<br>
 			</div>
 		</div>
 	</div>
