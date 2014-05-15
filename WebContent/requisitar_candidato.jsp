@@ -17,6 +17,8 @@
 </head>
 <body>
 
+<%@include file="imports/cabecario.jsp" %>
+
 <h1>Busca de Candidatos</h1>
 
 <form action="SelecionarCandidato">
