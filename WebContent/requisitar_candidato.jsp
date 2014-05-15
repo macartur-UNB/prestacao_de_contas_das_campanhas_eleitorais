@@ -39,7 +39,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><br><input type="submit" value="Buscar" /></td>
+							<td><br><input type="submit" class="botao" value="Buscar" /></td>
 						</tr>
 					</table>
 				</form>
