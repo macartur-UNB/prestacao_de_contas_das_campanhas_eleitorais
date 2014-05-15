@@ -52,6 +52,11 @@
 				<form name="voltar" action="index.jsp">
 					<input type="submit" value="Voltar">
 				</form>
+				br>
+			</div>
+		</div>
+	</div>
+	<!-- FIM CONTEUDO-->
 	
 	<!-- RODAPE -->
 	<div id="rodape">
