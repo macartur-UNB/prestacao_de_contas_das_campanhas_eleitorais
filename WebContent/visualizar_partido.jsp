@@ -19,6 +19,15 @@
 
 	<%@include file="imports/cabecario.jsp"%>
 
+<div id="pagina">
+		<div class="titulo_topo">
+			<h3>Perfil</h3>
+		</div>
+		<div id="conteudo_informacoes">
+			<div class="informacoes">
+				<p>
+					Abaixo o Perfil do <b>Partidos</b> selecionado.
+				</p>
 
 <%
 Partido partido;
