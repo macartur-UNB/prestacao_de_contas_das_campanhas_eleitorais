@@ -50,7 +50,7 @@
 					<tr><td>
 						<c:url var="AnoUrl" value="/requisitarMovimentacoes">
 							<c:param name="tabela" value="partido" />
-							<c:param name="nome" value="${partido.sigla}" />
+							<c:param name="sigla" value="${partido.sigla}" />
 							<c:param name="ano" value="${ano}" />
 						</c:url>
 						<a href="${AnoUrl}">${ano}</a>

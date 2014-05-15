@@ -44,7 +44,7 @@
 	<th>Cadastro do Doador</th>	
 </tr>
 <!-- Elementos da tabela -->
-<c:forEach var="receita" items="${candidato.listaReceitas}">
+<c:forEach var="receita" items="${listaReceitas}">
 	<tr>
 		<td>${receita.horaRegistro}</td>
 		<td>${receita.numeroDocumento}</td>
@@ -81,7 +81,7 @@
 	<th>Cadastro do Fornecedor</th>	
 </tr>
 <!-- Elementos da tabela -->
-<c:forEach var="despesa" items="${candidato.listaDespesas}">
+<c:forEach var="despesa" items="${listaDespesas}">
 	<tr>
 		<td>${despesa.horaRegistro}</td>
 		<td>${despesa.numeroDocumento}</td>

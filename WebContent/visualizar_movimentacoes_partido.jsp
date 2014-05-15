@@ -1,6 +1,3 @@
-<%@page import="modelo.beans.Partido"%>
-<%@page import="modelo.beans.Receita"%>
-<%@page import="modelo.beans.Despesa"%>
 <%@page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -16,23 +13,7 @@
 
 <body>
 
-<!-- Pegando os parametros do Candidato -->
-<jsp:useBean id="partido" class="modelo.beans.Partido" />
-<jsp:setProperty name="partido" property="sigla" value="${param.nome}" /> 
-
-<!-- Passando ano para integer-->
-<%
-int ano;
-try{
-	ano = Integer.parseInt(request.getParameter("ano"));
-} catch (NumberFormatException e)
-{
-	out.println("Erro na obtenção do ano.");
-	return;
-}
-%>
-
-<!-- Mostrar na tela os dados do Candidato -->
+<!-- Mostrar na tela os dados do Partido -->
 <h1>Resultado da busca:</h1>
 <table>
 <tr>
@@ -44,19 +25,6 @@ try{
 	<td>${param.ano}</td>
 </tr>
 </table>
-
-<%
-//Buscar dados no BD
-LinkedList<Receita> listaReceitas;
-LinkedList<Despesa> listaDespesas;
-try {
-	listaReceitas = partido.getListaReceitas(ano);
-	listaDespesas = partido.getListaDespesas(ano);
-} catch(Exception e){
-	System.out.println("Erro no acesso ao BD");
-	throw new ServletException(e);
-}			
-%>
 
 <!-- Tabela de receitas -->
 <h2> Receitas: </h2>
@@ -77,27 +45,21 @@ try {
 	<th>Cadastro do Doador</th>	
 </tr>
 <!-- Elementos da tabela -->
-<%
-for(Receita receita:listaReceitas)
-{
-out.println("<tr>");
-	out.println("<td>"+receita.getHoraRegistro()+"</td>");
-	//out.println("<td>"+receita.isEntregaEmConjunto()+"</td>");
-	out.println("<td>"+receita.getNumeroDocumento()+"</td>");
-	out.println("<td>"+receita.getData()+"</td>");
-	out.println("<td>"+receita.getValor()+"</td>");
-	out.println("<td>"+receita.getFonte()+"</td>");
-	out.println("<td>"+receita.getTipo()+"</td>");
-	out.println("<td>"+receita.getEspecie()+"</td>");
-	out.println("<td>"+receita.getDescricao()+"</td>");
-	out.println("<td>"+receita.getReciboEleitoral()+"</td>");
-	out.println("<td>"+receita.getDoador().getNome()+"</td>");
-	out.println("<td>"+receita.getDoador().getCadastroNacional()
-			+"</td>");
-
-out.println("</tr>");	
-}
-%>
+<c:forEach var="receita" items="${listaReceitas}">
+	<tr>
+		<td>${receita.horaRegistro}</td>
+		<td>${receita.numeroDocumento}</td>
+		<td>${receita.data}</td>
+		<td>${receita.valor}</td>
+		<td>${receita.fonte}</td>
+		<td>${receita.tipo}</td>
+		<td>${receita.especie}</td>
+		<td>${receita.descricao}</td>
+		<td>${receita.reciboEleitoral}</td>
+		<td>${receita.doador.nome}</td>
+		<td>${receita.doador.cadastroNacional}</td>
+	</tr>
+</c:forEach>
 </table>
 
 <!-- Tabela de despesas -->
@@ -119,26 +81,21 @@ out.println("</tr>");
 	<th>Cadastro do Fornecedor</th>	
 </tr>
 <!-- Elementos da tabela -->
-<%
-for(Despesa despesa:listaDespesas)
-{
-	out.println("<tr>");
-	out.println("<td>"+despesa.getHoraRegistro()+"</td>");
-	//out.println("<td>"+despesa.isEntregaEmConjunto()+"</td>");
-	out.println("<td>"+despesa.getNumeroDocumento()+"</td>");
-	out.println("<td>"+despesa.getData()+"</td>");
-	out.println("<td>"+despesa.getValor()+"</td>");
-	out.println("<td>"+despesa.getFonte()+"</td>");
-	out.println("<td>"+despesa.getTipo()+"</td>");
-	out.println("<td>"+despesa.getEspecie()+"</td>");
-	out.println("<td>"+despesa.getDescricao()+"</td>");
-	out.println("<td>"+despesa.getTipoDocumento()+"</td>");
-	out.println("<td>"+despesa.getFornecedor().getNome()+"</td>");
-	out.println("<td>"+despesa.getFornecedor().getCadastroNacional()
-			+"</td>");
-	out.println("<tr>");
-}
-%>
+<c:forEach var="despesa" items="${listaDespesas}">
+	<tr>
+		<td>${despesa.horaRegistro}</td>
+		<td>${despesa.numeroDocumento}</td>
+		<td>${despesa.data}</td>
+		<td>${despesa.valor}</td>
+		<td>${despesa.fonte}</td>
+		<td>${despesa.tipo}</td>
+		<td>${despesa.especie}</td>
+		<td>${despesa.descricao}</td>
+		<td>${despesa.tipoDocumento}</td>
+		<td>${despesa.fornecedor.nome}</td>
+		<td>${despesa.fornecedor.cadastroNacional}</td>
+	</tr>
+</c:forEach>
 </table>
 
 </body>
