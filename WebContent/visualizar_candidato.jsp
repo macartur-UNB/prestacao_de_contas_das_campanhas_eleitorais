@@ -1,7 +1,4 @@
-<%@page import="java.io.PrintWriter"%>
-<%@ page import="modelo.beans.Candidato"%>
-<%@ page import="controle.CandidatoControle"%>
-<%@ page import="java.util.LinkedList"%>
+<%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -31,72 +28,57 @@
 					Abaixo o Perfil do <b>Candidato</b> selecionado.
 				</p>
 
-
-				<%
-					CandidatoControle candidatoControle = new CandidatoControle();
-
-					String nome = request.getParameter("nome");
-					String cpf = request.getParameter("cpf");
-
-					LinkedList<Candidato> listaCandidato = candidatoControle
-							.getCandidato(nome);
-				%>
-
 				<!-- Identificacao do candidato -->
 				<table>
 					<tr>
 						<td>Nome:</td>
 						<td>
-							<%
-								out.println(nome);
-							%>
+							${param.nome}
 						</td>
 					</tr>
 					<tr>
 						<td>CPF:</td>
 						<td>
-							<%
-								out.println(cpf);
-							%>
+							<c:out value="${cpf}" />
 						</td>
 					</tr>
 				</table>
 
 				<!-- Anos em que ele concorreu -->
+				<c:forEach var="candidato" items="${listaCandidato}" >
 
-				<%
-					String ano;
-					String sigla;
-					for (Candidato candidato : listaCandidato) {
-						ano = candidato.getAno().toString();
-						sigla = candidato.getPartido().getSigla();
-						out.println("<table border=\"2\" width=\"600\"><tbody>");
-						out.println("<tr>");
-						out.println("<td rowspan=\"2\">");
-						nome.replaceAll(" ", "+");
-						out.println("<a href=\"requisitarMovimentacoes"
-								+ "?tabela=candidato&nome=" + nome + "&ano=" + ano
-								+ "\">" + ano + "</a>");
-						out.println("</td>");
-						out.println("<td>");
-						out.println("Partido: " + "<a href=\"SelecionarPartido?sigla="
-								+ sigla + "\">" + sigla + "</a>");
-						out.println("</td>");
-						out.println("<td>");
-						out.println("Cargo Pleiteado: " + candidato.getCargo());
-						out.println("</td>");
-						out.println("</tr>");
-						out.println("<tr>");
-						out.println("<td>");
-						out.println("UF: " + candidato.getUf());
-						out.println("</td>");
-						out.println("<td>");
-						out.println("Número: " + candidato.getNumero());
-						out.println("</td>");
-						out.println("</tr>");
-						out.println("</tbody></table><br />");
-					}
-				%>
+					<table border="2" width="600"><tbody>
+					<tr>
+						<td rowspan="2">
+							<c:url var="AnoUrl" value="/requisitarMovimentacoes">
+								<c:param name="tabela" value="candidato"></c:param>
+								<c:param name="nome" value="${candidato.nome}"></c:param>
+								<c:param name="ano" value="${candidato.ano}"></c:param>
+							</c:url>
+							<a href="${AnoUrl}">${candidato.ano}</a>
+						</td>
+						<td>
+							<c:url var="partidoUrl" value="/SelecionarPartido">
+								<c:param name="sigla" value="${candidato.partido.sigla}"></c:param>
+							</c:url>
+							Partido: <a href="${partidoUrl}">${candidato.partido.sigla}</a>
+						</td>
+						<td>
+							Cargo Pleiteado: ${candidato.cargo}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							UF: ${candidato.uf}
+						</td>
+						<td>
+							Número: ${candidato.numero}
+						</td>
+					</tr>
+				</tbody></table>
+				<br />
+			</c:forEach>
+
 
 				<br>
 			</div>
