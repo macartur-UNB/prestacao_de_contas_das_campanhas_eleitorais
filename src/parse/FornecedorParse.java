@@ -21,7 +21,7 @@ public class FornecedorParse {
 	
 	public void addFornecedor(String campo[]) {
 		Fornecedor fornecedor = this.fornecedorIndicesParse.iniciarFornecedor(campo);
-		if(!this.listaFornecedores.contains(fornecedor)) {
+		if(!fornecedor.getNome().isEmpty() && !this.listaFornecedores.contains(fornecedor)) {
 			this.listaFornecedores.add(fornecedor);
 		}
 	}

@@ -25,7 +25,7 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 			this.fornecedorParse.addFornecedor(campo);
 			this.linhasLidas++;
 			
-			if(this.linhasLidas >= 40000) {
+			if(this.linhasLidas >= 20000) {
 				this.fornecedorParse.cadastrarFornecedores();
 				this.fornecedorParse.resetar();
 				this.linhasLidas = 0;

@@ -11,6 +11,8 @@ import java.util.List;
 
 import org.apache.commons.fileupload.FileItem;
 
+import com.mysql.jdbc.StringUtils;
+
 public class LeitorCSV {
 	
 	public interface ExecutorLeitorCSV {
@@ -33,8 +35,8 @@ public class LeitorCSV {
 			if(i % 1000 == 0) {
 				System.out.println("lendo linha: " + i + " / " + totalLinhas);
 			}
-			linha = removerAspas(linha);
 			campo = linha.split(divisao);
+			removerAspas(campo);
 			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
 		}
 		System.out.println("lendo linha: Terminou");
@@ -102,11 +104,15 @@ public class LeitorCSV {
 		return listaCampos;
 	}
 	
-	private String removerAspas(String palavra) {
-		if(palavra.charAt(0) == '"') {
-			palavra = palavra.substring(1, palavra.length()-2);
+	private void removerAspas(String palavra[]) {
+		for(int i = 0; i < palavra.length; i++) {
+			if(palavra[i].length() > 0 && palavra[i].charAt(0) == '"') {
+				palavra[i] = palavra[i].substring(1, palavra[i].length());
+			}
+			if(palavra[i].length() > 0 && palavra[i].charAt(palavra[i].length()-1) == '"') {
+				palavra[i] = palavra[i].substring(0, palavra[i].length()-1);
+			}
 		}
-		return palavra;
 	}
 		
 }

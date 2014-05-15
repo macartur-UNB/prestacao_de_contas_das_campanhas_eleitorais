@@ -23,6 +23,7 @@ public class CandidatoParse {
 		Candidato candidato = new Candidato();
 		candidato.setNome(campo[this.candidatoIndicesParse.getIndiceNome()]);
 		candidato.setAno(this.candidatoIndicesParse.getAno());
+		
 
 		if(!this.listaCandidatos.contains(candidato)) {
 			this.candidatoIndicesParse.iniciarCandidato(candidato, campo);

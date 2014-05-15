@@ -32,7 +32,7 @@ public class PartidoCadastroParse implements ExecutorLeitorCSV{
 			this.partidoParse.addPartido(campo);
 			this.linhasLidas++;
 			
-			if(this.linhasLidas >= 40000) {
+			if(this.linhasLidas >= 20000) {
 				this.partidoParse.cadastrarPartidos();
 				this.partidoParse.resetar();
 				this.linhasLidas = 0;

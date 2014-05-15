@@ -52,7 +52,7 @@ public abstract class BasicoDAO<O> {
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
 			adicionarResultSetNaLista(lista, resultadoSQL);			
 		} catch(Exception e) {
-			throw new SQLException(nomeTabela + e.getMessage());
+			throw new SQLException(nomeTabela + " - " + e.getMessage());
 		} finally {
 			fecharConexao();
 		}
