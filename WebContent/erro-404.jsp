@@ -14,6 +14,7 @@
 </head>
 <body>
 	
+	<%@include file="imports/cabecario.jsp"%>
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
