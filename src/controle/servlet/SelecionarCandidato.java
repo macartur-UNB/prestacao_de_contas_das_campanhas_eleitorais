@@ -1,7 +1,7 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controle.CandidatoControle;
 import modelo.beans.Candidato;
+
 
 @WebServlet("/SelecionarCandidato")
 public class SelecionarCandidato extends HttpServlet {
@@ -31,7 +32,7 @@ public class SelecionarCandidato extends HttpServlet {
 		RequestDispatcher requestDispatcher;
 		
 		CandidatoControle control = new CandidatoControle();
-		LinkedList<Candidato> listaCandidato = control.getCandidato(nome);
+		List<Candidato> listaCandidato = (List<Candidato>) control.getCandidato(nome);
 		
 		// verifica se candidato existe
 		if(listaCandidato.isEmpty()){
@@ -42,6 +43,7 @@ public class SelecionarCandidato extends HttpServlet {
 	
 			String cpf = listaCandidato.get(0).getCpf();
 			request.setAttribute("cpf", cpf);
+			request.setAttribute("listaCandidato",listaCandidato);
 		
 			requestDispatcher = request
 				.getRequestDispatcher("/visualizar_candidato.jsp");

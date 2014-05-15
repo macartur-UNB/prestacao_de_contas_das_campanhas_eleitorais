@@ -26,7 +26,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Abaixo o Perfil do <b>Partidos</b> selecionado.
+					Abaixo o Perfil do <b>Partido</b> selecionado.
 				</p>
 
 				<%
