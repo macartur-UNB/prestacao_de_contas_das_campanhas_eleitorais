@@ -63,14 +63,14 @@
 									<p>
 										<span>O Campanhas-ON é um <i>WebSite</i> desenvolvido
 											para VOCÊ, com o intuito que compartilhar informação de
-											dificil acesso de forma rápida e usual.
+											difícil acesso de forma rápida e usual.
 										</span>
 									</p>
 									<p>
 										<span>É aqui onde VOCÊ poderá verificar as receitas e
 											despesas de cada um deles. Com apenas poucos <i>clicks</i>
 											será possível acessar a um universo de informação.&nbsp;
-										</span> Para navergar pelos informações de seus <b>CANDIDATOS</b>
+										</span> Para navegar pelas informações de seus <b>CANDIDATOS</b>
 										entre no <b>MENU</b> Candidatos ou para acessar informações
 										acerca dos <b>PARTIDOS</b> de sua preferência entre no <b>MENU</b>
 										Partidos.
@@ -105,10 +105,10 @@
 							<center>Quem Somos</center>
 						</h1>
 						<div id="conteudo_box">
-							Somos alunos do curso de Engenharia de Software da Universidade
-							de Brasília. Com o objetivo de contruir um <i>website</i> para
-							conclusão da disciplina de Métodos de Engenharia de Software,
-							aplicando, na práticas, os fundamentos da Engenharia de Software.
+							Somos alunos do Curso de Engenharia de Software da Universidade
+							de Brasília.O objetivo de construir um <i>website</i> está atrelado à
+							conclusão da disciplina de Métodos de Desenvolvimento de Software,
+							aplicando, na prática, os fundamentos da Engenharia de Software.
 						</div>
 						<br>
 						<div id="saiba_mais_box">
@@ -123,8 +123,8 @@
 							<center>O que é o Projeto</center>
 						</h1>
 						<div id="conteudo_box">O Campanhas-ON é a materialização da
-							Engenharia de Software no que desrespeito ao nosso curso. Visamos
-							alcaçar com esse projeto, todos os cidadãos de bem no qual visam
+							Engenharia de Software no que diz respeito ao nosso curso. Visamos
+							alcançar com esse projeto, todos os cidadãos de bem no qual visam
 							ter conhecimento de seus Candidatos e Partidos, Receitas e
 							Despesas.</div>
 						<br>
@@ -137,12 +137,12 @@
 				<div id="box_servicos_3">
 					<div id="efeito_box3">
 						<h1>
-							<center>O que fazer com ISSO</center>
+							<center>O quê fazer com ISSO</center>
 						</h1>
 						<div id="conteudo_box">
 							Utilize esse <i>website</i> para suprir sua necessidade de
 							informações acerca de seus Candidatos. Aqui será possível
-							verificar essa informações além de muitas outra. Você também
+							verificar essas informações além de muitas outras. Você também
 							poderá comparar gastos de candidatos de sua preferência. <b>Fique
 								por DENTRO!</b>
 						</div>
