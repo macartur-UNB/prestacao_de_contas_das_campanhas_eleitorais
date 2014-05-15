@@ -22,8 +22,9 @@
 <!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
-<h1>Busca de Candidatos</h1>
+		<h3>Buscar</h3>
 
+		<p>Entre com o uma parte do nome do <b>Candidato</b> que deseja buscar, e em seguida, click em burcar.</p>
 <form action="SelecionarCandidato">
 	<table>
     <tr>
