@@ -1,7 +1,3 @@
-<%@page import="modelo.beans.Candidato"%>
-<%@page import="modelo.beans.Receita"%>
-<%@page import="modelo.beans.Despesa"%>
-<%@page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -28,10 +24,6 @@
 	<td>${param.ano} </td>
 </tr>
 </table>
-
-<jsp:useBean id="candidato" class="modelo.beans.Candidato" />
-<jsp:setProperty name="candidato" property="nome" value="${param.nome}" /> 
-<jsp:setProperty name="candidato" property="ano" value="${param.ano}" /> 
 
 <!-- Tabela de receitas -->
 <h2> Receitas: </h2>
