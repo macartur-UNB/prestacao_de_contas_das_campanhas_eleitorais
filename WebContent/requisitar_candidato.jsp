@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<%@include file="imports/cabecario.jsp"%>
+	<%@include file="imports/cabecalhocandidatos.jsp"%>
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">

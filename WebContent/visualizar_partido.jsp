@@ -17,7 +17,7 @@
 </head>
 <body>
 
-	<%@include file="imports/cabecario.jsp"%>
+	<%@include file="imports/cabecalhopartidos.jsp"%>
 
 	<div id="pagina">
 		<div class="titulo_topo">

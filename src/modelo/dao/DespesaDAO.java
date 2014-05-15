@@ -114,12 +114,13 @@ public class DespesaDAO extends BasicoDAO<Despesa> {
 		}
 	}
 
-	public ArrayList<Despesa> getDespesasPorSelecao(String campo, String valor, String ano) throws SQLException {
+
+	public ArrayList<Despesa> getDespesasPorSelecao(String tabela, String valorNaTabela, String ano) throws SQLException {
 		ArrayList<Despesa> listaDespesas = new ArrayList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_despesa WHERE " + campo + " LIKE '" + valor + "'"
+			String comandoSQL = "SELECT * FROM t_despesa WHERE " + tabela + " LIKE '" + valorNaTabela + "'"
 					+ "AND ano LIKE '" + ano + "'";
 			
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			

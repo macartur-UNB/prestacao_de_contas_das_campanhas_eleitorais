@@ -12,12 +12,11 @@
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
-<link href="css/conteudoInformacoes.css" rel="stylesheet"
-	type="text/css" media="all">
+<link href="css/conteudoInformacoes.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
 
-	<%@include file="imports/cabecario.jsp"%>
+	<%@include file="imports/cabecalhopartidos.jsp"%>
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
