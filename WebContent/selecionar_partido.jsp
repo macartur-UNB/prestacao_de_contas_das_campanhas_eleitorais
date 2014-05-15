@@ -17,6 +17,8 @@
 </head>
 <body>
 
+	<%@include file="imports/cabecario.jsp"%>
+
 <jsp:useBean id="controle" class="controle.PartidoControle"/>
 
 <h4> Lista de Partidos: </h4>
