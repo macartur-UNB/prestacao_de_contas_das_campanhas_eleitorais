@@ -57,6 +57,8 @@ for(int ano:Anos){
 }
 
 %>
+	<%@include file="imports/rodape.jsp"%>
+
 
 </body>
 </html>
