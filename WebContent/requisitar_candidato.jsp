@@ -19,6 +19,9 @@
 
 <%@include file="imports/cabecario.jsp" %>
 
+<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<div id="pagina">
+		<div class="titulo_topo">
 <h1>Busca de Candidatos</h1>
 
 <form action="SelecionarCandidato">
