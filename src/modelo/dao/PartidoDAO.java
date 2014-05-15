@@ -118,28 +118,27 @@ public class PartidoDAO {
 		Partido partido = new Partido();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
-			
+
 			String comandoSQL = "SELECT * FROM t_partido WHERE sigla LIKE '" + sigla + "'";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-			
+
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-			
+
 			if(resultadoSQL.next()) {
 				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
 				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
-			} else{
+			} else {
 				partido.setSigla("0");
-				partido.setNumeroPartido("0");
 			}
-			
+
 			instrucaoSQL.close();
-			
+
 		} catch(Exception e) {
 			throw new SQLException(e.getMessage());
 		} finally {
 			fecharConexao();
 		}
-		
+
 		return partido;		
 	}
 	

@@ -15,7 +15,11 @@ import modelo.beans.Partido;
 
 @WebServlet("/SelecionarPartido")
 public class SelecionarPartido extends HttpServlet {
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> Paginas jsp desacopladas da model
 	private static final long serialVersionUID = 3822481979152525593L;
 
 	@Override
@@ -26,13 +30,16 @@ public class SelecionarPartido extends HttpServlet {
 
 		String sigla = request.getParameter("sigla");
 		
-		try{
-			Partido partido = partidoControle.getPartido(sigla);
+		Partido partido = new Partido();
+		
+		
+		try {
+			partido = partidoControle.getPartido(sigla);
 			int anos[] = { 2012, 2010, 2008, 2006, 2004, 2002 };
-			
 			// Verifica se o partido existe
-			if(partido.getNumeroPartido()=="0"){
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/partido_inexistente.html");
+			if(partido.getSigla().equals("0"))
+			{
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/erro_partido_inexistente.jsp");
 				requestDispatcher.forward(request, response);
 			}else{
 				request.setAttribute("partido", partido);
@@ -40,11 +47,9 @@ public class SelecionarPartido extends HttpServlet {
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_partido.jsp");
 				requestDispatcher.forward(request, response);
 			}
-			
-		}catch(SQLException e)
-		{
-			throw new ServletException("Aconteceu um erro ao acessar o BD.",e);
-		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}			
 		
 	}
 
