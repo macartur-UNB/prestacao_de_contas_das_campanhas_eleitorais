@@ -18,6 +18,9 @@
 	type="text/css" media="all">
 </head>
 <body>
+
+<%@include file="imports/cabecario.jsp"%>
+
 <%
 CandidatoControle candidatoControle = new CandidatoControle();
 
