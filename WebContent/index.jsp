@@ -26,11 +26,11 @@
 			<div id="menu">
 				<ul>
 					<li><a href="index.jsp" class="homestatic">Home</a></li>
-					<li><a href="candidatos.jsp" class="candidatos">Candidatos</a>
+					<li><a href="requisitar_candidato.jsp" class="candidatos">Candidatos</a>
 					</li>
-					<li><a href="partidos.jsp" class="partidos">Partidos</a>
+					<li><a href="requisitar_partido.jsp" class="partidos">Partidos</a>
 					</li>
-					<li><a href="pesquisar.jsp" class="pesquisar">Pesquisar</a>
+					<li><a href="erro-404.jsp" class="pesquisar">Pesquisar</a>
 					</li>
 				</ul>
 			</div>
