@@ -21,6 +21,17 @@
 
 <%@include file="imports/cabecario.jsp"%>
 
+<div id="pagina">
+		<div class="titulo_topo">
+			<h3>Visualizar</h3>
+		</div>
+		<div id="conteudo_informacoes">
+			<div class="informacoes">
+				<p>
+					Abaixo o Perfil do <b>Candidato</b> selecionado.
+				</p>
+
+
 <%
 CandidatoControle candidatoControle = new CandidatoControle();
 
