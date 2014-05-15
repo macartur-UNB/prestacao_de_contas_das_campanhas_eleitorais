@@ -11,6 +11,7 @@
 </head>
 <body>
 
+	<%@include file="imports/cabecario.jsp"%>
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
@@ -53,7 +54,8 @@
 		<!-- content  -->
 	</div>
 	<!-- FIM CONTEUDO-->
-
+	
+	<%@include file="imports/rodape.jsp"%>
 	
 </body>
 </html>
