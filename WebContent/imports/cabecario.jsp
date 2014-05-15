@@ -9,7 +9,7 @@
 			<!-- MENU -->
 			<div id="menu">
 				<ul>
-					<li><a href="index.jsp" class="homestatic">Home</a></li>
+					<li><a href="index.jsp" class="home">Home</a></li>
 					<li><a href="candidatos.jsp" class="candidatos">Candidatos</a>
 					</li>
 					<li><a href="partidos.jsp" class="partidos">Partidos</a>
