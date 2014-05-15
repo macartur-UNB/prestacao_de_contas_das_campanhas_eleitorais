@@ -1,5 +1,3 @@
-<%@ page import="modelo.beans.Partido"%>
-<%@ page import="controle.PartidoControle"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -29,21 +27,8 @@
 					Abaixo o Perfil do <b>Partido</b> selecionado.
 				</p>
 
-				<%
-					Partido partido;
-					PartidoControle partidoControle = new PartidoControle();
-
-					String sigla = request.getParameter("sigla");
-
-					partido = partidoControle.getPartido(sigla);
-
-					int Anos[] = { 2012, 2010, 2008, 2006, 2004, 2002 };
-				%>
-
 				<h1>
-					<%
-						partido.getNome();
-					%>
+					<c:out value="${partido.nome}" />
 				</h1>
 
 				<table>
@@ -54,23 +39,24 @@
 					<tr>
 						<td>Número:</td>
 						<td>
-							<%
-								out.println(partido.getNumeroPartido());
-							%>
+							<c:out value="${partido.numeroPartido}" />
 						</td>
 					</tr>
 				</table>
 				<br />
-
-				<%
-					for (int ano : Anos) {
-						out.println("<table border=\"2\" width=\"300\"");
-						out.println("<tr><td>" + "<a href=\"requisitarMovimentacoes"
-								+ "?tabela=partido&nome=" + partido.getSigla()
-								+ "&ano=" + ano + "\">" + ano + "</td></tr>");
-						out.println("</table><br />");
-					}
-				%>
+				
+				<c:forEach var ="ano" items ="${anos}" >
+					<table border="2" width="300">
+					<tr><td>
+						<c:url var="AnoUrl" value="/requisitarMovimentacoes">
+							<c:param name="tabela" value="partido" />
+							<c:param name="nome" value="${partido.sigla}" />
+							<c:param name="ano" value="${ano}" />
+						</c:url>
+						<a href="${AnoUrl}">${ano}</a>
+					</td></tr>
+					</table><br />
+				</c:forEach>
 
 				<br>
 			</div>

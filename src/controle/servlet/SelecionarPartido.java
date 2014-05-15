@@ -1,7 +1,7 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.util.LinkedList;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controle.PartidoControle;
 import modelo.beans.Partido;
-import modelo.dao.PartidoDAO;
 
 @WebServlet("/SelecionarPartido")
 public class SelecionarPartido extends HttpServlet {
@@ -21,9 +21,31 @@ public class SelecionarPartido extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		PartidoControle partidoControle = new PartidoControle();
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_partido.jsp");
-		requestDispatcher.forward(request, response);
+		String sigla = request.getParameter("sigla");
+		
+		try{
+			Partido partido = partidoControle.getPartido(sigla);
+			int anos[] = { 2012, 2010, 2008, 2006, 2004, 2002 };
+			
+			// Verifica se o partido existe
+			if(partido.getNumeroPartido()=="0"){
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/partido_inexistente.html");
+				requestDispatcher.forward(request, response);
+			}else{
+				request.setAttribute("partido", partido);
+				request.setAttribute("anos",anos);
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/visualizar_partido.jsp");
+				requestDispatcher.forward(request, response);
+			}
+			
+		}catch(SQLException e)
+		{
+			throw new ServletException("Aconteceu um erro ao acessar o BD.",e);
+		}
+		
 	}
 
 }
