@@ -65,7 +65,7 @@ for(Candidato candidato:listaCandidato){
 				out.println("Número: " +candidato.getNumero());
 			out.println("</td>");
 		out.println("</tr>");
-	out.println("</tbody></table>");
+	out.println("</tbody></table><br />");
 }
 %>
 

@@ -20,9 +20,33 @@ String sigla = request.getParameter("sigla");
 
 partido = partidoControle.getPartido(sigla);
 
+int Anos[] = {2012,2010,2008,2006,2004,2002};
 
-out.println("Partido: " + partido.getSigla());
-out.println("Número do Partido: " + partido.getNumeroPartido());
+%>
+
+<h1><% partido.getNome(); %></h1>
+
+<table>
+<tr>
+	<td>Sigla: </td>
+	<td>${param.sigla}</td>
+</tr>
+<tr>
+	<td>Número: </td>
+	<td> <% out.println(partido.getNumeroPartido());%> </td>
+</tr>
+</table>
+<br />
+
+<%
+for(int ano:Anos){
+	out.println("<table border=\"2\" width=\"300\"");
+	out.println("<tr><td>" + "<a href=\"requisitarMovimentacoes"
+			+ "?tabela=partido&nome=" + partido.getSigla()
+			+ "&ano=" + ano + "\">" + ano + "</td></tr>");
+	out.println("</table><br />"); 
+}
+
 %>
 
 </body>
