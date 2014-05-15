@@ -20,8 +20,8 @@
                <c:param name="numeroPartido" value="${partido.numeroPartido}"></c:param>
         </c:url>
         <a href="${partidoUrl}" >${partido.sigla}</a>
-        </br>
-        </br>
+        <br>
+        <br>
 </c:forEach>
 
 </body>
