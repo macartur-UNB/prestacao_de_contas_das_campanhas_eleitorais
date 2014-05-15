@@ -141,10 +141,10 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 	private CandidatoIndicesParse getCandidatoIndicesParseDespesa2008() {
 		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2008);
 		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceUf(4);
-		candidatoIndicesParse.setIndiceCargo(1);
-		candidatoIndicesParse.setIndicePartidoSigla(9);
-		candidatoIndicesParse.setIndiceNumero(3);
+		candidatoIndicesParse.setIndiceUf(5);
+		candidatoIndicesParse.setIndiceCargo(2);
+		candidatoIndicesParse.setIndicePartidoSigla(12);
+		candidatoIndicesParse.setIndiceNumero(4);
 
 		return candidatoIndicesParse;
 	}
@@ -155,7 +155,7 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 		candidatoIndicesParse.setIndiceUf(5);
 		candidatoIndicesParse.setIndiceCargo(2);
 		candidatoIndicesParse.setIndicePartidoSigla(12);
-		candidatoIndicesParse.setIndiceNumero(4);
+		candidatoIndicesParse.setIndiceNumero(11);
 
 		return candidatoIndicesParse;
 	}

@@ -113,8 +113,8 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 	
 	private FornecedorIndicesParse getFornecedorIndicesParseDespesa2008() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
-		fornecedorIndicesParse.setIndiceNome(16);
-		fornecedorIndicesParse.setIndiceCadastroNacional(17);
+		fornecedorIndicesParse.setIndiceNome(22);
+		fornecedorIndicesParse.setIndiceCadastroNacional(23);
 		
 		return fornecedorIndicesParse;
 	}

@@ -18,9 +18,13 @@ public class PartidoIndicesParse {
 		reiniciarPartido(partido);
 				
 		if(indiceValido(this.indiceSigla)) {
+//			System.out.println("\n+---------------------------------+");
+//			System.out.println("campo.length: " + campo.length);
+//			System.out.println("campo[" + this.indiceSigla + "]: " + campo[this.indiceSigla]);
 			partido.setSigla(campo[this.indiceSigla]);
 		}
 		if(indiceValido(this.indiceNumeroPartido)) {
+//			System.out.println("campo[" + this.indiceNumeroPartido + "]: " + campo[this.indiceNumeroPartido]);
 			partido.setNumeroPartido(campo[this.indiceNumeroPartido]);
 		}
 	}
