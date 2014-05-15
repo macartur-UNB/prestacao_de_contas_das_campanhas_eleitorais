@@ -12,7 +12,7 @@ public class MovimentacaoFinanceiraIndicesParse {
 
 	public static final int INDICE_INVALIDO = -1;
 
-	private String ano;
+	private Integer ano;
 	
 	private int indiceEmNomeDe;
 	private int indiceHoraRegistro;
@@ -25,7 +25,7 @@ public class MovimentacaoFinanceiraIndicesParse {
 	private int indiceDescricao;
 
 	public MovimentacaoFinanceiraIndicesParse(String ano) {
-		this.ano = ano;
+		this.ano = Integer.valueOf(ano);
 		
 		this.indiceEmNomeDe = INDICE_INVALIDO;
 		this.indiceHoraRegistro = INDICE_INVALIDO;
@@ -82,7 +82,7 @@ public class MovimentacaoFinanceiraIndicesParse {
 		movimentacaoFinanceira.setHoraRegistro(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setEntregaEmConjunto(MovimentacaoFinanceira.BOOLEAN_VAZIO);
 		movimentacaoFinanceira.setNumeroDocumento(MovimentacaoFinanceira.STRING_VAZIO);
-		movimentacaoFinanceira.setAno(MovimentacaoFinanceira.STRING_VAZIO);
+		movimentacaoFinanceira.setAno(MovimentacaoFinanceira.INTEGER_VAZIO);
 		movimentacaoFinanceira.setValor(MovimentacaoFinanceira.FLOAT_VAZIO);
 		movimentacaoFinanceira.setFonte(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setTipo(MovimentacaoFinanceira.STRING_VAZIO);
@@ -110,7 +110,7 @@ public class MovimentacaoFinanceiraIndicesParse {
 		this.indiceNumeroDocumento = indiceNumeroDocumento;
 	}
 
-	public void setAno(String indiceAno) {
+	public void setAno(Integer indiceAno) {
 		this.ano = indiceAno;
 	}
 

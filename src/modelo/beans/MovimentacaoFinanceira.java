@@ -15,7 +15,7 @@ public class MovimentacaoFinanceira {
 	private String horaRegistro;
 	private Boolean entregaEmConjunto;
 	private String numeroDocumento;
-	private String ano;
+	private Integer ano;
 	private Float valor;
 	private String fonte;
 	private String tipo;
@@ -27,7 +27,7 @@ public class MovimentacaoFinanceira {
 		this.horaRegistro = STRING_VAZIO;
 		this.entregaEmConjunto = BOOLEAN_VAZIO;
 		this.numeroDocumento = STRING_VAZIO;
-		this.ano = STRING_VAZIO;
+		this.ano = INTEGER_VAZIO;
 		this.valor = FLOAT_VAZIO;
 		this.fonte = STRING_VAZIO;
 		this.tipo = STRING_VAZIO;
@@ -47,7 +47,7 @@ public class MovimentacaoFinanceira {
 				this.horaRegistro.equalsIgnoreCase(outraMovimentacao.getHoraRegistro()) &&
 				this.entregaEmConjunto.equals(outraMovimentacao.isEntregaEmConjunto()) &&
 				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
-				this.ano.equalsIgnoreCase(outraMovimentacao.getAno()) &&
+				this.ano.equals(outraMovimentacao.getAno()) &&
 				this.valor.equals(outraMovimentacao.getValor()) &&
 				this.fonte.equalsIgnoreCase(outraMovimentacao.getFonte()) &&
 				this.tipo.equalsIgnoreCase(outraMovimentacao.getTipo()) &&
@@ -87,11 +87,11 @@ public class MovimentacaoFinanceira {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	public String getAno() {
+	public Integer getAno() {
 		return ano;
 	}
 
-	public void setAno(String ano) {
+	public void setAno(Integer ano) {
 		this.ano = ano;
 	}
 

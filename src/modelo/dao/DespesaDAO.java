@@ -69,7 +69,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> {
 			instrucaoSQL.setString(2, despesa.getHoraRegistro());
 			instrucaoSQL.setBoolean(3, despesa.isEntregaEmConjunto());
 			instrucaoSQL.setString(4, despesa.getNumeroDocumento());
-			instrucaoSQL.setString(5, despesa.getAno());
+			instrucaoSQL.setString(5, despesa.getAno().toString());
 			instrucaoSQL.setFloat(6, despesa.getValor());
 			instrucaoSQL.setString(7, despesa.getFonte());
 			instrucaoSQL.setString(8, despesa.getTipo());
@@ -101,7 +101,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> {
 			despesa.setHoraRegistro(resultadoSQL.getString(HORA_REGISTRO));
 			despesa.setEntregaEmConjunto(Boolean.valueOf(resultadoSQL.getString(ENTREGA_EM_CONJUNTO)));
 			despesa.setNumeroDocumento(resultadoSQL.getString(NUMERO_DOCUMENTO));
-			despesa.setAno(resultadoSQL.getString(ANO));
+			despesa.setAno(resultadoSQL.getInt(ANO));
 			despesa.setValor(resultadoSQL.getFloat(VALOR));
 			despesa.setFonte(resultadoSQL.getString(FONTE));
 			despesa.setTipo(resultadoSQL.getString(TIPO));
