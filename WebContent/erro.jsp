@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Informações - Campanhas-ON</title>
+<title>ERRO - Campanhas-ON</title>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
