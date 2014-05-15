@@ -22,14 +22,15 @@
 <!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Buscar</h3>
+			<h3>Partidos</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-
+<p>
+					Listagem de <b>Partidos</b>. Click no partido desejado para visualizar mais informações.
+				</p>
 <jsp:useBean id="controle" class="controle.PartidoControle"/>
 
-<h4> Lista de Partidos: </h4>
 <c:forEach var="partido" items="${controle.listaPartidos}">
         <c:url var="partidoUrl" value="/SelecionarPartido">
                <c:param name="sigla" value="${partido.sigla}"></c:param>
