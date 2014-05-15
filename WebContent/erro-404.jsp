@@ -26,7 +26,7 @@
 				<h4>Um erro ocorreu! A página acessada não existe!</h4>
 				<br>
 				<form name="voltar" action="index.jsp">
-					<input type="submit" value="Voltar">
+					<input type="submit" class="botao" value="Voltar">
 				</form>
 				<br>
 			</div>
