@@ -14,31 +14,9 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
-	<!-- CABECALHO e MENU -->
-	<div id="topo">
-		<div id="cabecalho">
-			<div id="logo">
-				<a href="index.jsp"> <img src="img/logo.png" width="257"
-					height="58" alt="Logo" title="CampanhasOn">
-				</a> <span class="titulo">Informe-se JÁ!</span>
-			</div>
-			<!-- MENU -->
-			<div id="menu">
-				<ul>
-					<li><a href="index.jsp" class="homestatic">Home</a></li>
-					<li><a href="requisitar_candidato.jsp" class="candidatos">Candidatos</a>
-					</li>
-					<li><a href="requisitar_partido.jsp" class="partidos">Partidos</a>
-					</li>
-					<li><a href="erro-404.jsp" class="pesquisar">Pesquisar</a>
-					</li>
-				</ul>
-			</div>
-			<!-- FIM MENU -->
-		</div>
-	</div>
-	<!-- FIM CABECALHO e MENU -->
 
+	<%@include file="imports/cabecalhohome.jsp"%>
+	
 	<!-- PAGINA CENTRAL, BANNER, INFORMACOES e TOP5 -->
 	<!-- PAGINA CENTRAL -->
 	<div id="pagina">
@@ -174,27 +152,7 @@
 	</div>
 	<!-- FIM PAGINA CENTRAL -->
 
-	<!-- RODAPE -->
-	<div id="rodape">
-		<div id="centro_rodape">
-			<a href="index.jsp"> <img src="img/logo.png" width="257"
-				height="58" alt="Logo" title="CampanhasOn"></a>
-			<div id="redes_sociais">
-				<a href="index.jsp"><img src="img/facebook.png" width="32"
-					height="32" alt="Facebook" title="Facebook"></a> <a
-					href="index.jsp"><img src="img/twitter.png" width="32"
-					height="32" alt="Twitter" title="Twitter"></a> <a
-					href="https://github.com/macartur/prestacao_de_contas_das_campanhas_eleitorais"><img
-					src="img/github.png" width="32" height="32" alt="GitHub"
-					title="GitHub"></a>
-			</div>
-			<div id="dado_rodape">
-				Universidade de Brasília <br> Faculdade do Gama - FGA <br>
-				Projeto: Campanhas-On / MDS
-			</div>
-		</div>
-	</div>
-	<!-- FIM RODAPE -->
+	<%@include file="imports/rodape.jsp"%>
 
 </body>
 </html>

@@ -14,7 +14,7 @@
 			</div>
 			<div id="dado_rodape">
 				Universidade de Brasília <br> Faculdade do Gama - FGA <br>
-				Projeto: Campanhas-On / MDS
+				Projeto: Campanhas-On / MDS GPP
 			</div>
 		</div>
 	</div>
