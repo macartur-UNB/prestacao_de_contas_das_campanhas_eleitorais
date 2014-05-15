@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/SelecionarPartido")
 public class SelecionarPartido extends HttpServlet {
 
-	private static final long serialVersionUID = 1L;
-       
+	private static final long serialVersionUID = 3822481979152525593L;
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
