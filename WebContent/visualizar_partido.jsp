@@ -17,6 +17,9 @@
 </head>
 <body>
 
+	<%@include file="imports/cabecario.jsp"%>
+
+
 <%
 Partido partido;
 PartidoControle partidoControle = new PartidoControle();
