@@ -32,5 +32,7 @@
         <br>
 </c:forEach>
 
+	<%@include file="imports/rodape.jsp"%>
+
 </body>
 </html>
