@@ -56,7 +56,6 @@
 	clear:both;
 }
 
-
 input.botao{
 	width:120px;
 	height:30px;
@@ -69,6 +68,7 @@ input.botao{
 	border-top:1px solid #CCC;
 	border-bottom:1px solid #CCC;
 }
+
 input.botao:hover{
 	width:120px;
 	height:30px;
