@@ -33,5 +33,8 @@
     </tr>
     </table>
 </form>
+
+<%@include file="imports/rodape.jsp" %>
+
 </body>
 </html>
