@@ -10,8 +10,8 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse {
 	private int indiceFornecedor;
 	private int indiceTipoDocumento;
 	
-	public DespesaIndicesParse() {
-		super();
+	public DespesaIndicesParse(String ano) {
+		super(ano);
 		this.indiceFornecedor = INDICE_INVALIDO;
 		this.indiceTipoDocumento = INDICE_INVALIDO;
 	}
@@ -28,6 +28,12 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse {
 		if(indiceValido(this.indiceTipoDocumento)) {
 			despesa.setTipoDocumento(campo[this.indiceTipoDocumento]);
 		}
+	}
+	
+	public Despesa iniciarDespesa(String campo[]) throws ParseException {
+		Despesa despesa = new Despesa();
+		iniciarDespesa(despesa, campo);
+		return despesa;
 	}
 	
 	private void reiniciarDespesa(Despesa despesa) {

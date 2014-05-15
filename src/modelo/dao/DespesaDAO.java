@@ -89,9 +89,13 @@ public class DespesaDAO extends BasicoDAO<Despesa> {
 			Fornecedor fornecedor = new Fornecedor();
 			Candidato candidato = new Candidato();
 			
-			candidato = this.candidatoDAO.getUmCandidato(resultadoSQL.getString(EM_NOME_DE),
-					resultadoSQL.getInt(ANO));
-			fornecedor = this.fornecedorDAO.getUmFornecedor(resultadoSQL.getString(FORNECEDOR));
+			candidato.setNome((resultadoSQL.getString(EM_NOME_DE)));
+			candidato.setAno(resultadoSQL.getInt(ANO));
+			fornecedor.setNome(resultadoSQL.getString(FORNECEDOR));
+			
+//			candidato = this.candidatoDAO.getUmCandidato(resultadoSQL.getString(EM_NOME_DE),
+//					resultadoSQL.getInt(ANO));
+//			fornecedor = this.fornecedorDAO.getUmFornecedor(resultadoSQL.getString(FORNECEDOR));
 			
 			despesa.setEmNomeDe(candidato);
 			despesa.setHoraRegistro(resultadoSQL.getString(HORA_REGISTRO));
