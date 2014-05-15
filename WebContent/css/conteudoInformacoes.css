@@ -55,3 +55,28 @@
 	padding-bottom:10px;
 	clear:both;
 }
+
+
+input.botao{
+	width:120px;
+	height:30px;
+	padding:2px;
+	margin:5px;
+	background-color:#034569;
+	color:#CCC;
+	font-size:18px;
+	border-right:1px solid #CCC;
+	border-top:1px solid #CCC;
+	border-bottom:1px solid #CCC;
+}
+input.botao:hover{
+	width:120px;
+	height:30px;
+	padding:2px;
+	margin:5px;
+	background-color:#CCC;
+	color:#024a68;
+	border-right:1px solid #f8f8f8;
+	border-top:1px solid #f8f8f8;
+	border-bottom:1px solid #f8f8f8;
+}
