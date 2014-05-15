@@ -13,7 +13,7 @@ public class PartidoValidacao {
 	}
 
 	public void siglaNaoNula(Partido partido) throws PartidoExcecao {
-		if ((partido.getSigla() == null) || (partido.getSigla().length() == 0)) {
+		if ((partido.getSigla() == null)) {
 			throw new PartidoExcecao(SIGLA_VAZIA);
 		}
 	}
