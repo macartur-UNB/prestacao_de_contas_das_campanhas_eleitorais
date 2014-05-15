@@ -18,14 +18,12 @@ import modelo.beans.Candidato;
 public class SelecionarCandidato extends HttpServlet {
 
 	private static final long serialVersionUID = -4024368294265814535L;
-
-	String nome;
 	
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		this.nome = request.getParameter("nome");
+		String nome = request.getParameter("nome");
 		Candidato candidato = new Candidato();
 		candidato.setNome(nome);
 		
@@ -37,7 +35,7 @@ public class SelecionarCandidato extends HttpServlet {
 		// verifica se candidato existe
 		if(listaCandidato.isEmpty()){
 			requestDispatcher = request
-				    .getRequestDispatcher("/candidato_inexistente.html");
+				    .getRequestDispatcher("/erro_candidato_inexistente.jsp");
 			requestDispatcher.forward(request,response);
 		} else{
 	

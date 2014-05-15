@@ -1,7 +1,3 @@
-<%@page import="modelo.beans.Candidato"%>
-<%@page import="modelo.beans.Receita"%>
-<%@page import="modelo.beans.Despesa"%>
-<%@page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -29,10 +25,6 @@
 </tr>
 </table>
 
-<jsp:useBean id="candidato" class="modelo.beans.Candidato" />
-<jsp:setProperty name="candidato" property="nome" value="${param.nome}" /> 
-<jsp:setProperty name="candidato" property="ano" value="${param.ano}" /> 
-
 <!-- Tabela de receitas -->
 <h2> Receitas: </h2>
 
@@ -52,7 +44,7 @@
 	<th>Cadastro do Doador</th>	
 </tr>
 <!-- Elementos da tabela -->
-<c:forEach var="receita" items="${candidato.listaReceitas}">
+<c:forEach var="receita" items="${listaReceitas}">
 	<tr>
 		<td>${receita.horaRegistro}</td>
 		<td>${receita.numeroDocumento}</td>
@@ -89,7 +81,7 @@
 	<th>Cadastro do Fornecedor</th>	
 </tr>
 <!-- Elementos da tabela -->
-<c:forEach var="despesa" items="${candidato.listaDespesas}">
+<c:forEach var="despesa" items="${listaDespesas}">
 	<tr>
 		<td>${despesa.horaRegistro}</td>
 		<td>${despesa.numeroDocumento}</td>
