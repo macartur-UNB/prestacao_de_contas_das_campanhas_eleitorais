@@ -11,24 +11,26 @@ import modelo.beans.MovimentacaoFinanceira;
 public class MovimentacaoFinanceiraIndicesParse {
 
 	public static final int INDICE_INVALIDO = -1;
+
+	private String ano;
 	
-	private int indicEmNomeDe;
+	private int indiceEmNomeDe;
 	private int indiceHoraRegistro;
 	private int indiceEntregaEmConjunto;
 	private int indiceNumeroDocumento;
-	private int indiceAno;
 	private int indiceValor;
 	private int indiceFonte;
 	private int indiceTipo;
 	private int indiceEspecie;
 	private int indiceDescricao;
 
-	public MovimentacaoFinanceiraIndicesParse() {
-		this.indicEmNomeDe = INDICE_INVALIDO;
+	public MovimentacaoFinanceiraIndicesParse(String ano) {
+		this.ano = ano;
+		
+		this.indiceEmNomeDe = INDICE_INVALIDO;
 		this.indiceHoraRegistro = INDICE_INVALIDO;
 		this.indiceEntregaEmConjunto = INDICE_INVALIDO;
 		this.indiceNumeroDocumento = INDICE_INVALIDO;
-		this.indiceAno = INDICE_INVALIDO;
 		this.indiceValor = INDICE_INVALIDO;
 		this.indiceFonte = INDICE_INVALIDO;
 		this.indiceFonte = INDICE_INVALIDO;
@@ -39,9 +41,11 @@ public class MovimentacaoFinanceiraIndicesParse {
 	public void iniciarMovimentacaoFinanceira(MovimentacaoFinanceira movimentacaoFinanceira, String campo[]) throws ParseException {
 		reiniciarMovimentacaoFinanceira(movimentacaoFinanceira);
 		
-		if(indiceValido(this.indicEmNomeDe)) {
+		movimentacaoFinanceira.setAno(ano);
+		
+		if(indiceValido(this.indiceEmNomeDe)) {
 			Candidato candidato = new Candidato();
-			candidato.setNome(campo[this.indicEmNomeDe]);
+			candidato.setNome(campo[this.indiceEmNomeDe]);
 			movimentacaoFinanceira.setEmNomeDe(candidato);
 		}
 		if(indiceValido(this.indiceHoraRegistro)) {
@@ -54,11 +58,8 @@ public class MovimentacaoFinanceiraIndicesParse {
 		if(indiceValido(this.indiceNumeroDocumento)) {
 			movimentacaoFinanceira.setNumeroDocumento(campo[this.indiceNumeroDocumento]);
 		}
-		if(indiceValido(this.indiceAno)) {
-			movimentacaoFinanceira.setAno(campo[this.indiceAno]);
-		}
 		if(indiceValido(this.indiceValor)) {
-			float valor = Float.parseFloat(campo[this.indiceValor]);
+			float valor = Float.parseFloat(campo[this.indiceValor].replace(',', '.'));
 			movimentacaoFinanceira.setValor(valor);
 		}
 		if(indiceValido(this.indiceFonte)) {
@@ -93,8 +94,8 @@ public class MovimentacaoFinanceiraIndicesParse {
 		return indice > INDICE_INVALIDO;
 	}
 
-	public void setIndicEmNomeDe(int indicEmNomeDe) {
-		this.indicEmNomeDe = indicEmNomeDe;
+	public void setIndiceEmNomeDe(int indicEmNomeDe) {
+		this.indiceEmNomeDe = indicEmNomeDe;
 	}
 
 	public void setIndiceHoraRegistro(int indiceHoraRegistro) {
@@ -109,8 +110,8 @@ public class MovimentacaoFinanceiraIndicesParse {
 		this.indiceNumeroDocumento = indiceNumeroDocumento;
 	}
 
-	public void setIndiceAno(int indiceAno) {
-		this.indiceAno = indiceAno;
+	public void setAno(String indiceAno) {
+		this.ano = indiceAno;
 	}
 
 	public void setIndiceValor(int indiceValor) {
@@ -132,5 +133,7 @@ public class MovimentacaoFinanceiraIndicesParse {
 	public void setIndiceDescricao(int indiceDescricao) {
 		this.indiceDescricao = indiceDescricao;
 	}
+	
+	
 	
 }

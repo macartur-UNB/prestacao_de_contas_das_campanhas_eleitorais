@@ -11,8 +11,6 @@ import java.util.List;
 
 import org.apache.commons.fileupload.FileItem;
 
-import com.mysql.jdbc.StringUtils;
-
 public class LeitorCSV {
 	
 	public interface ExecutorLeitorCSV {
@@ -35,6 +33,7 @@ public class LeitorCSV {
 			if(i % 1000 == 0) {
 				System.out.println("lendo linha: " + i + " / " + totalLinhas);
 			}
+			linha = transformarPontoVirgulasDoCampoEmVirgula(linha);
 			campo = linha.split(divisao);
 			removerAspas(campo);
 			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
@@ -114,5 +113,23 @@ public class LeitorCSV {
 			}
 		}
 	}
+	
+	private String transformarPontoVirgulasDoCampoEmVirgula(String palavra) {
+		String novaPalavra;
+		char caracteres[] = palavra.toCharArray();
 		
+//		System.out.println("\n+------------------------------------------------+");
+//		System.out.println("palavra: " + palavra);
+		for(int i = 1; i < caracteres.length-1; i++) {
+			if( caracteres[i] == ';' && (caracteres[i-1] != '"' || caracteres[i+1] != '"') ){
+				caracteres[i] = ',';
+			}
+		}
+		
+		novaPalavra = String.copyValueOf(caracteres);
+
+//		System.out.println("novaPalavra: " + novaPalavra);
+		
+		return novaPalavra;
+	}
 }
