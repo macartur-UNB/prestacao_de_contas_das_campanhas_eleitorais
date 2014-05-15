@@ -1,8 +1,8 @@
-<%@ page import="modelo.beans.Partido" %>
-<%@ page import="controle.PartidoControle" %>
+<%@ page import="modelo.beans.Partido"%>
+<%@ page import="controle.PartidoControle"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,29 +19,34 @@
 
 	<%@include file="imports/cabecario.jsp"%>
 
-<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
 			<h3>Partidos</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-<p>
-					Listagem de <b>Partidos</b>. Click no partido desejado para visualizar mais informações.
+				<p>
+					Listagem de <b>Partidos</b>. Click no partido desejado para
+					visualizar mais informações.
 				</p>
-<jsp:useBean id="controle" class="controle.PartidoControle"/>
+				<jsp:useBean id="controle" class="controle.PartidoControle" />
 
-<c:forEach var="partido" items="${controle.listaPartidos}">
-        <c:url var="partidoUrl" value="/SelecionarPartido">
-               <c:param name="sigla" value="${partido.sigla}"></c:param>
-               <c:param name="numeroPartido" value="${partido.numeroPartido}"></c:param>
-        </c:url>
-        <a href="${partidoUrl}" >${partido.sigla}</a>
-        <br>
-        <br>
-</c:forEach>
+				<c:forEach var="partido" items="${controle.listaPartidos}">
+					<c:url var="partidoUrl" value="/SelecionarPartido">
+						<c:param name="sigla" value="${partido.sigla}"></c:param>
+						<c:param name="numeroPartido" value="${partido.numeroPartido}"></c:param>
+					</c:url>
+					<a href="${partidoUrl}">${partido.sigla}</a>
+					<br>
+					<br>
+				</c:forEach>
+				<br>
+			</div>
+		</div>
+	</div>
+	<!-- FIM CONTEUDO-->
 
-	<%@include file="imports/rodape.jsp"%>
-
+				<%@include file="imports/rodape.jsp"%>
 </body>
 </html>
