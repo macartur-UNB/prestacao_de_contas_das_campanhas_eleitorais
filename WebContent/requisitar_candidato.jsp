@@ -1,8 +1,8 @@
 <%@page import="controle.servlet.SelecionarCandidato"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
- 
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,36 +17,39 @@
 </head>
 <body>
 
-<%@include file="imports/cabecario.jsp" %>
+	<%@include file="imports/cabecario.jsp"%>
 
-<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
-		<h3>Buscar</h3>
+			<h3>Buscar</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 
-		<p>Entre com o uma parte do nome do <b>Candidato</b> que deseja buscar, e em seguida, click em burcar.</p>
-<form action="SelecionarCandidato">
-	<table>
-    <tr>
-    	<td>Nome: </td>
-    	<td><input type="text" name="nome" /></td>
-    </tr>
-    <tr>
-    	<td></td>
-    	<td><input type="submit" value="Buscar" /></td>
-    </tr>
-    </table>
-</form>
-<br>
+				<p>
+					Entre com o uma parte do nome do <b>Candidato</b> que deseja
+					buscar, e em seguida, click em burcar.
+				</p>
+				<form action="SelecionarCandidato">
+					<table>
+						<tr>
+							<td>Nome:</td>
+							<td><input type="text" name="nome" /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Buscar" /></td>
+						</tr>
+					</table>
+				</form>
+				<br>
 			</div>
 		</div>
 	</div>
 	<!-- FIM CONTEUDO-->
 
-<%@include file="imports/rodape.jsp" %>
+	<%@include file="imports/rodape.jsp"%>
 
 </body>
 </html>
