@@ -89,6 +89,12 @@ for(Candidato candidato:listaCandidato){
 }
 %>
 
+<br>
+			</div>
+		</div>
+	</div>
+	<!-- FIM CONTEUDO-->
+
 <%@include file="imports/rodape.jsp"%>
 
 
