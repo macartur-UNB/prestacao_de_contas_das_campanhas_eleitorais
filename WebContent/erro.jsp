@@ -43,6 +43,15 @@
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
+		<h3>Erro!</h3>
+		</div>
+		<div id="conteudo_informacoes">
+			<div class="informacoes">
+				<h4>Um erro ocorreu! Não será possível exibir a Página!</h4>
+				<br>
+				<form name="voltar" action="index.jsp">
+					<input type="submit" value="Voltar">
+				</form>
 	
 	<!-- RODAPE -->
 	<div id="rodape">
