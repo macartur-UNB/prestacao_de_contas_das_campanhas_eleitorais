@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,7 +13,7 @@
 	type="text/css" media="all">
 </head>
 <body>
-<!-- CABECALHO e MENU -->
+	<!-- CABECALHO e MENU -->
 	<div id="topo">
 		<div id="cabecalho">
 			<div id="logo">
@@ -39,11 +39,11 @@
 		</div>
 	</div>
 	<!-- FIM CABECALHO e MENU -->
-	
+
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
-		<h3>Erro!</h3>
+			<h3>Erro!</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
@@ -58,7 +58,7 @@
 		<!-- content  -->
 	</div>
 	<!-- FIM CONTEUDO-->
-	
+
 	<!-- RODAPE -->
 	<div id="rodape">
 		<div id="centro_rodape">
@@ -80,7 +80,7 @@
 		</div>
 	</div>
 	<!-- FIM RODAPE -->
-	
+
 
 </body>
 </html>
