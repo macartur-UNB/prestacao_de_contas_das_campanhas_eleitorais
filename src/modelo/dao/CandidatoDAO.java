@@ -154,7 +154,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
-			String comandoSQL = "SELECT * FROM t_candidato WHERE nome = '" + nome + "'";
+			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '%"+nome+"%' ";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
