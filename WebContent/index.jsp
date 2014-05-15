@@ -43,7 +43,8 @@
 									<p>
 										<span>O Campanhas-ON é um <i>Web Site</i> desenvolvido
 											para VOCÊ, com o intuito de compartilhar informação de
-											dificil acesso de forma rápida e usual.
+											difícil acesso de forma rápida e usual.
+
 										</span>
 									</p>
 									<p>
@@ -85,6 +86,7 @@
 							<center>Quem Somos</center>
 						</h1>
 						<div id="conteudo_box">
+
 							Somos alunos das disciplinas de
 							Métodos de Desenvolvimento de
 							Software e Gestão de Portifólios
@@ -93,6 +95,7 @@
 							Universidade de Brasília. Composto
 							por cinco desenvolvedores, dois
 							gestores e dois <i>coaches</i>.
+
 						</div>
 						<br>
 						<div id="saiba_mais_box">
@@ -106,17 +109,12 @@
 						<h1>
 							<center>O que é o Projeto</center>
 						</h1>
-						<div id="conteudo_box">
-							Trata-se de uma solução de
-							software que busca tornar os
-							dados relativos à receitas e
-							despesas de campanhas
-							eleitorais de 2002 à 2012 mais 
-							acessíveis e legíveis. Esses 
-							dados são abertos, 
-							disponibilizados pelo TSE 
-							com granularidade bianual.
-						</div>
+
+						<div id="conteudo_box">O Campanhas-ON é a materialização da
+							Engenharia de Software no que diz respeito ao nosso curso. Visamos
+							alcançar com esse projeto, todos os cidadãos de bem no qual visam
+							ter conhecimento de seus Candidatos e Partidos, Receitas e
+							Despesas.</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -139,6 +137,7 @@
 							uso do software. Para pesquisas 
 							avançadas, utilize a seção de
 							pesquisa.
+
 						</div>
 						<br>
 						<div id="saiba_mais_box">
