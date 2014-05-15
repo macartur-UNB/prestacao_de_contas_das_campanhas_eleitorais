@@ -40,6 +40,10 @@
 	</div>
 	<!-- FIM CABECALHO e MENU -->
 	
+	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<div id="pagina">
+		<div class="titulo_topo">
+	
 	<!-- RODAPE -->
 	<div id="rodape">
 		<div id="centro_rodape">
