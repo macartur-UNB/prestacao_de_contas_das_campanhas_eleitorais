@@ -63,7 +63,7 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 			requestDispatcher.forward(request,response);
 		} else {
 			requestDispatcher = request
-				    .getRequestDispatcher("/erro.html");
+				    .getRequestDispatcher("/erro.jsp");
 				requestDispatcher.forward(request,response);
 		}
 
