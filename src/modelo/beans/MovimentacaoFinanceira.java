@@ -15,7 +15,7 @@ public class MovimentacaoFinanceira {
 	private String horaRegistro;
 	private Boolean entregaEmConjunto;
 	private String numeroDocumento;
-	private Calendar data;
+	private String ano;
 	private Float valor;
 	private String fonte;
 	private String tipo;
@@ -27,7 +27,7 @@ public class MovimentacaoFinanceira {
 		this.horaRegistro = STRING_VAZIO;
 		this.entregaEmConjunto = BOOLEAN_VAZIO;
 		this.numeroDocumento = STRING_VAZIO;
-		this.data = CALENDAR_VAZIO;
+		this.ano = STRING_VAZIO;
 		this.valor = FLOAT_VAZIO;
 		this.fonte = STRING_VAZIO;
 		this.tipo = STRING_VAZIO;
@@ -35,6 +35,26 @@ public class MovimentacaoFinanceira {
 		this.descricao = STRING_VAZIO;
 	}
 
+	@Override
+	public boolean equals(Object object) {
+		if( !(object instanceof MovimentacaoFinanceira)) {
+			return false;
+		}
+		
+		MovimentacaoFinanceira outraMovimentacao = (MovimentacaoFinanceira) object;
+		
+		return this.emNomeDe.equals(outraMovimentacao.getEmNomeDe()) &&
+				this.horaRegistro.equalsIgnoreCase(outraMovimentacao.getHoraRegistro()) &&
+				this.entregaEmConjunto.equals(outraMovimentacao.isEntregaEmConjunto()) &&
+				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
+				this.ano.equalsIgnoreCase(outraMovimentacao.getAno()) &&
+				this.valor.equals(outraMovimentacao.getValor()) &&
+				this.fonte.equalsIgnoreCase(outraMovimentacao.getFonte()) &&
+				this.tipo.equalsIgnoreCase(outraMovimentacao.getTipo()) &&
+				this.especie.equalsIgnoreCase(outraMovimentacao.getEspecie()) &&
+				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao());
+	}
+	
 	public Pessoa getEmNomeDe() {
 		return emNomeDe;
 	}
@@ -67,12 +87,12 @@ public class MovimentacaoFinanceira {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	public Calendar getData() {
-		return data;
+	public String getAno() {
+		return ano;
 	}
 
-	public void setData(Calendar data) {
-		this.data = data;
+	public void setAno(String ano) {
+		this.ano = ano;
 	}
 
 	public Float getValor() {

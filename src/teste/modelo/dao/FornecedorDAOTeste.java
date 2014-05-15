@@ -78,6 +78,21 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		Assert.assertEquals(listaFornecedores, this.fornecedorDAO.getLista());
 	}
 	
+	@Test
+	public void deveRecuperarUmFornecedorCadastrado() throws Exception {
+		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
+		
+		Fornecedor fornecedor = new Fornecedor();
+		fornecedor.setNome("Nome");
+		fornecedor.setPessoaJuridica(true);
+		fornecedor.setCadastroNacional("123");
+		listaFornecedores.add(fornecedor);
+
+		this.fornecedorDAO.cadastrarLista(listaFornecedores);
+		
+		Assert.assertEquals(fornecedor, this.fornecedorDAO.getUmFornecedor("Nome"));
+	}
+	
 	@Test(expected = SQLException.class)
 	public void deveLancarExcecaoAoTentarPegarAListaDeFornecedoresSeAConexaoComOBancoNaoForSucedida() throws Exception {
 		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);

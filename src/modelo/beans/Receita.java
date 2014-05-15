@@ -7,11 +7,16 @@
 package modelo.beans;
 
 public class Receita extends MovimentacaoFinanceira {
-
+	
+	public static final Doador DOADOR_VAZIO = new Doador();
+	
 	private String reciboEleitoral;
 	private Doador doador;
 	
-	public Receita() {}
+	public Receita() {
+		this.reciboEleitoral = STRING_VAZIO;
+		this.doador = DOADOR_VAZIO;
+	}
 	
 	public String getReciboEleitoral() {
 		return reciboEleitoral;

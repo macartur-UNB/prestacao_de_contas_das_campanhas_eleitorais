@@ -53,12 +53,13 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		return SQL_SELECT;
 	}
 	
-	public Candidato getUmCandidato(String nome) throws SQLException {
+	public Candidato getUmCandidato(String nome, int ano) throws SQLException {
 		Candidato candidato = new Candidato();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '" + nome + "'";
+			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '" + nome + "' "
+					+ "AND ano LIKE '" + ano + "'";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
 			
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
@@ -149,7 +150,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 	public LinkedList<Candidato> getCandidato(String nome) {
 		
-		LinkedList<Candidato> listaCandidato = new LinkedList<>();;
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 		
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();

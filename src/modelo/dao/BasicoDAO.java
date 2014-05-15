@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import modelo.beans.Despesa;
+
 
 public abstract class BasicoDAO<O> {
 
@@ -25,7 +27,6 @@ public abstract class BasicoDAO<O> {
 	public void cadastrarLista(ArrayList<O> lista) throws SQLException {
 		try {
 			ArrayList<O> listaNaoCadastrados = getListaNaoCadastrados(lista);
-			
 			this.conexao = new ConexaoBancoDados().getConexao();
 			this.instrucaoSQL = getInstrucaoSQL(getSqlInsert());
 			this.conexao.setAutoCommit(false);
@@ -47,10 +48,12 @@ public abstract class BasicoDAO<O> {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
 			String comandoSQL = getSqlSelect();
+			
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 			
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
-			adicionarResultSetNaLista(lista, resultadoSQL);			
+			
+			adicionarResultSetNaLista(lista, resultadoSQL);
 		} catch(Exception e) {
 			throw new SQLException(nomeTabela + " - " + e.getMessage());
 		} finally {
