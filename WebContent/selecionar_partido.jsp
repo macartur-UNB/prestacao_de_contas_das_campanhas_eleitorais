@@ -19,6 +19,14 @@
 
 	<%@include file="imports/cabecario.jsp"%>
 
+<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
+	<div id="pagina">
+		<div class="titulo_topo">
+			<h3>Buscar</h3>
+		</div>
+		<div id="conteudo_informacoes">
+			<div class="informacoes">
+
 <jsp:useBean id="controle" class="controle.PartidoControle"/>
 
 <h4> Lista de Partidos: </h4>
