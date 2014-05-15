@@ -14,31 +14,11 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
-	<!-- CABECALHO e MENU -->
-	<div id="topo">
-		<div id="cabecalho">
-			<div id="logo">
-				<a href="index.jsp"> <img src="img/logo.png" width="257"
-					height="58" alt="Logo" title="CampanhasOn">
-				</a> <span class="titulo">Informe-se JÁ!</span>
-			</div>
-			<!-- MENU -->
-			<div id="menu">
-				<ul>
-					<li><a href="index.jsp" class="homestatic">Home</a></li>
-					<li><a href="requisitar_candidato.jsp" class="candidatos">Candidatos</a>
-					</li>
-					<li><a href="requisitar_partido.jsp" class="partidos">Partidos</a>
-					</li>
-					<li><a href="erro-404.jsp" class="pesquisar">Pesquisar</a>
-					</li>
-				</ul>
-			</div>
-			<!-- FIM MENU -->
-		</div>
-	</div>
-	<!-- FIM CABECALHO e MENU -->
 
+	<!--  CABEÇALHO -->
+	<%@include file="imports/cabecalhohome.jsp"%>
+	<!-- FIM CABEÇALHO -->
+	
 	<!-- PAGINA CENTRAL, BANNER, INFORMACOES e TOP5 -->
 	<!-- PAGINA CENTRAL -->
 	<div id="pagina">
@@ -61,16 +41,16 @@
 									</h2>
 									<p></p>
 									<p>
-										<span>O Campanhas-ON é um <i>WebSite</i> desenvolvido
-											para VOCÊ, com o intuito que compartilhar informação de
+										<span>O Campanhas-ON é um <i>Web Site</i> desenvolvido
+											para VOCÊ, com o intuito de compartilhar informação de
 											dificil acesso de forma rápida e usual.
 										</span>
 									</p>
 									<p>
 										<span>É aqui onde VOCÊ poderá verificar as receitas e
-											despesas de cada um deles. Com apenas poucos <i>clicks</i>
+											despesas de partidos e candidatos. Com apenas alguns <i>clicks</i>
 											será possível acessar a um universo de informação.&nbsp;
-										</span> Para navergar pelos informações de seus <b>CANDIDATOS</b>
+										</span> Para navegar pelas informações de seus <b>CANDIDATOS</b>
 										entre no <b>MENU</b> Candidatos ou para acessar informações
 										acerca dos <b>PARTIDOS</b> de sua preferência entre no <b>MENU</b>
 										Partidos.
@@ -105,10 +85,14 @@
 							<center>Quem Somos</center>
 						</h1>
 						<div id="conteudo_box">
-							Somos alunos do curso de Engenharia de Software da Universidade
-							de Brasília. Com o objetivo de contruir um <i>website</i> para
-							conclusão da disciplina de Métodos de Engenharia de Software,
-							aplicando, na práticas, os fundamentos da Engenharia de Software.
+							Somos alunos das disciplinas de
+							Métodos de Desenvolvimento de
+							Software e Gestão de Portifólios
+							e Projetos de Software do curso
+							de Engenharia de Software da
+							Universidade de Brasília. Composto
+							por cinco desenvolvedores, dois
+							gestores e dois <i>coaches</i>.
 						</div>
 						<br>
 						<div id="saiba_mais_box">
@@ -122,11 +106,17 @@
 						<h1>
 							<center>O que é o Projeto</center>
 						</h1>
-						<div id="conteudo_box">O Campanhas-ON é a materialização da
-							Engenharia de Software no que desrespeito ao nosso curso. Visamos
-							alcaçar com esse projeto, todos os cidadãos de bem no qual visam
-							ter conhecimento de seus Candidatos e Partidos, Receitas e
-							Despesas.</div>
+						<div id="conteudo_box">
+							Trata-se de uma solução de
+							software que busca tornar os
+							dados relativos à receitas e
+							despesas de campanhas
+							eleitorais de 2002 à 2012 mais 
+							acessíveis e legíveis. Esses 
+							dados são abertos, 
+							disponibilizados pelo TSE 
+							com granularidade bianual.
+						</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -137,14 +127,18 @@
 				<div id="box_servicos_3">
 					<div id="efeito_box3">
 						<h1>
-							<center>O que fazer com ISSO</center>
+							<center>Como Utilizar o <i>Web Site</i></center>
 						</h1>
 						<div id="conteudo_box">
-							Utilize esse <i>website</i> para suprir sua necessidade de
-							informações acerca de seus Candidatos. Aqui será possível
-							verificar essa informações além de muitas outra. Você também
-							poderá comparar gastos de candidatos de sua preferência. <b>Fique
-								por DENTRO!</b>
+							Navegue pelo menu no cabeçalho
+							da página para acessar
+							informações referentes à
+							candidatos e partidos. Tais
+							páginas terão informações
+							complementares que auxiliam no 
+							uso do software. Para pesquisas 
+							avançadas, utilize a seção de
+							pesquisa.
 						</div>
 						<br>
 						<div id="saiba_mais_box">
@@ -174,27 +168,7 @@
 	</div>
 	<!-- FIM PAGINA CENTRAL -->
 
-	<!-- RODAPE -->
-	<div id="rodape">
-		<div id="centro_rodape">
-			<a href="index.jsp"> <img src="img/logo.png" width="257"
-				height="58" alt="Logo" title="CampanhasOn"></a>
-			<div id="redes_sociais">
-				<a href="index.jsp"><img src="img/facebook.png" width="32"
-					height="32" alt="Facebook" title="Facebook"></a> <a
-					href="index.jsp"><img src="img/twitter.png" width="32"
-					height="32" alt="Twitter" title="Twitter"></a> <a
-					href="https://github.com/macartur/prestacao_de_contas_das_campanhas_eleitorais"><img
-					src="img/github.png" width="32" height="32" alt="GitHub"
-					title="GitHub"></a>
-			</div>
-			<div id="dado_rodape">
-				Universidade de Brasília <br> Faculdade do Gama - FGA <br>
-				Projeto: Campanhas-On / MDS
-			</div>
-		</div>
-	</div>
-	<!-- FIM RODAPE -->
+	<%@include file="imports/rodape.jsp"%>
 
 </body>
 </html>
