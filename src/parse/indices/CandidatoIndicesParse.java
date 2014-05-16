@@ -119,44 +119,12 @@ public class CandidatoIndicesParse {
 		this.indiceNome = indiceNome;
 	}
 
-	public static int getIndiceInvalido() {
-		return INDICE_INVALIDO;
-	}
-
-	public int getAno() {
+	public Integer getAno() {
 		return ano;
 	}
 
 	public int getIndiceNome() {
 		return indiceNome;
-	}
-
-	public int getIndiceCpf() {
-		return indiceCpf;
-	}
-
-	public int getIndiceCargo() {
-		return indiceCargo;
-	}
-
-	public int getIndicePartidoSigla() {
-		return indicePartidoSigla;
-	}
-
-	public int getIndiceNumero() {
-		return indiceNumero;
-	}
-
-	public int getIndiceUf() {
-		return indiceUf;
-	}
-
-	public int getIndiceFoiEleito() {
-		return indiceFoiEleito;
-	}
-
-	public int getIndiceResultadoUltimaEleicao() {
-		return indiceResultadoUltimaEleicao;
 	}
 
 	public void setIndiceResultadoUltimaEleicao(int indiceResultadoUltimaEleicao) {

@@ -1,4 +1,4 @@
-package parse;
+package parse.controle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,13 +7,13 @@ import modelo.beans.Partido;
 import modelo.dao.PartidoDAO;
 import parse.indices.PartidoIndicesParse;
 
-public class PartidoParse {
+public class PartidoParseControle {
 
 	private PartidoIndicesParse partidoIndicesParse;
 	private ArrayList<Partido> listaPartidos;
 	private PartidoDAO partidoDAO;
 	
-	public PartidoParse(PartidoIndicesParse partidoIndicesParse) {
+	public PartidoParseControle(PartidoIndicesParse partidoIndicesParse) {
 		this.partidoDAO = new PartidoDAO();
 		this.listaPartidos = new ArrayList<>();
 		this.partidoIndicesParse = partidoIndicesParse;

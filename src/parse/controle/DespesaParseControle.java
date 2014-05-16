@@ -1,4 +1,4 @@
-package parse;
+package parse.controle;
 
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -8,13 +8,13 @@ import modelo.beans.Despesa;
 import modelo.dao.DespesaDAO;
 import parse.indices.DespesaIndicesParse;
 
-public class DespesaParse {
+public class DespesaParseControle {
 
 	private DespesaDAO despesaDAO;
 	private ArrayList<Despesa> listaDespesas;
 	private DespesaIndicesParse despesaIndicesParse;
 	
-	public DespesaParse(DespesaIndicesParse despesaIndicesParse) {
+	public DespesaParseControle(DespesaIndicesParse despesaIndicesParse) {
 		this.despesaDAO = new DespesaDAO();
 		this.listaDespesas = new ArrayList<>();
 		

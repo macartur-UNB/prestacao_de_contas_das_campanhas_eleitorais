@@ -1,7 +1,7 @@
 package parse.cadastro;
 
-import parse.DoadorParse;
 import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.controle.DoadorParseControle;
 import parse.indices.DoadorIndicesParse;
 
 public class DoadorCadastroParse implements ExecutorLeitorCSV {
@@ -16,7 +16,7 @@ public class DoadorCadastroParse implements ExecutorLeitorCSV {
 	
 	private int linhasLidas;
 
-	private DoadorParse doadorParse;
+	private DoadorParseControle doadorParse;
 	private DoadorIndicesParse doadorIndicesParse;
 	
 	@Override
@@ -51,7 +51,7 @@ public class DoadorCadastroParse implements ExecutorLeitorCSV {
 		this.linhasLidas = 0;
 		
 		this.doadorIndicesParse = getPartidoIndicesParse(tipoArquivo, ano);
-		this.doadorParse = new DoadorParse(this.doadorIndicesParse);
+		this.doadorParse = new DoadorParseControle(this.doadorIndicesParse);
 	}
 	
 	private DoadorIndicesParse getPartidoIndicesParse(String tipoArquivo, String ano) {

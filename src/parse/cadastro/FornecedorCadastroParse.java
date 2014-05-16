@@ -1,7 +1,7 @@
 package parse.cadastro;
 
-import parse.FornecedorParse;
 import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.controle.FornecedorParseControle;
 import parse.indices.FornecedorIndicesParse;
 
 public class FornecedorCadastroParse implements ExecutorLeitorCSV {
@@ -16,7 +16,7 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 	
 	private int linhasLidas;
 
-	private FornecedorParse fornecedorParse;
+	private FornecedorParseControle fornecedorParse;
 	private FornecedorIndicesParse fornecedorIndicesParse;
 	
 	@Override
@@ -51,7 +51,7 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 		this.linhasLidas = 0;
 		
 		this.fornecedorIndicesParse = getPartidoIndicesParse(tipoArquivo, ano);
-		this.fornecedorParse = new FornecedorParse(this.fornecedorIndicesParse);
+		this.fornecedorParse = new FornecedorParseControle(this.fornecedorIndicesParse);
 	}
 	
 	private FornecedorIndicesParse getPartidoIndicesParse(String tipoArquivo, String ano) {

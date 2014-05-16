@@ -1,4 +1,4 @@
-package parse;
+package parse.controle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,13 +7,13 @@ import parse.indices.FornecedorIndicesParse;
 import modelo.beans.Fornecedor;
 import modelo.dao.FornecedorDAO;
 
-public class FornecedorParse {
+public class FornecedorParseControle {
 
 	private FornecedorIndicesParse fornecedorIndicesParse;
 	private ArrayList<Fornecedor> listaFornecedores;
 	private FornecedorDAO fornecedorDAO;
 	
-	public FornecedorParse(FornecedorIndicesParse fornecedorIndicesParse) {
+	public FornecedorParseControle(FornecedorIndicesParse fornecedorIndicesParse) {
 		this.fornecedorDAO = new FornecedorDAO();
 		this.listaFornecedores = new ArrayList<>();
 		this.fornecedorIndicesParse = fornecedorIndicesParse;

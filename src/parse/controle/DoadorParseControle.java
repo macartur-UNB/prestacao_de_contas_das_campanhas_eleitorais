@@ -1,4 +1,4 @@
-package parse;
+package parse.controle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,13 +7,13 @@ import modelo.beans.Doador;
 import modelo.dao.DoadorDAO;
 import parse.indices.DoadorIndicesParse;
 
-public class DoadorParse {
+public class DoadorParseControle {
 	
 	private DoadorIndicesParse doadorIndicesParse;
 	private ArrayList<Doador> listaDoadores;
 	private DoadorDAO doadorDAO;
 	
-	public DoadorParse(DoadorIndicesParse doadorIndicesParse) {
+	public DoadorParseControle(DoadorIndicesParse doadorIndicesParse) {
 		this.doadorDAO = new DoadorDAO();
 		this.listaDoadores = new ArrayList<>();
 		this.doadorIndicesParse = doadorIndicesParse;

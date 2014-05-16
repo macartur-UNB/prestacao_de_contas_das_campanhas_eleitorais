@@ -2,8 +2,8 @@ package parse.cadastro;
 
 import modelo.beans.Fornecedor;
 import modelo.beans.Pessoa;
-import parse.DespesaParse;
 import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.controle.DespesaParseControle;
 import parse.indices.DespesaIndicesParse;
 
 public class DespesaCadastroParse implements ExecutorLeitorCSV {
@@ -18,14 +18,14 @@ public class DespesaCadastroParse implements ExecutorLeitorCSV {
 	
 	private int linhasLidas;
 
-	private DespesaParse despesaParse;
+	private DespesaParseControle despesaParse;
 	private DespesaIndicesParse despesaIndicesParse;
 	
 	public DespesaCadastroParse(String tipoArquivo, String ano) {
 		this.linhasLidas = 0;
 		
 		this.despesaIndicesParse = getCandidatoIndicesParse(tipoArquivo, ano);
-		this.despesaParse = new DespesaParse(this.despesaIndicesParse);
+		this.despesaParse = new DespesaParseControle(this.despesaIndicesParse);
 	}
 	
 	@Override

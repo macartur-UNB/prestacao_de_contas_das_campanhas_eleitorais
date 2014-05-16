@@ -1,4 +1,4 @@
-package parse;
+package parse.controle;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -7,13 +7,13 @@ import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
 import parse.indices.CandidatoIndicesParse;
 
-public class CandidatoParse {
+public class CandidatoParseControle {
 
 	private CandidatoIndicesParse candidatoIndicesParse;
 	private ArrayList<Candidato> listaCandidatos;
 	private CandidatoDAO candidatoDAO;
 
-	public CandidatoParse(CandidatoIndicesParse candidatoIndicesParse) {
+	public CandidatoParseControle(CandidatoIndicesParse candidatoIndicesParse) {
 		this.candidatoDAO = new CandidatoDAO();
 		this.listaCandidatos = new ArrayList<>();
 		this.candidatoIndicesParse = candidatoIndicesParse;

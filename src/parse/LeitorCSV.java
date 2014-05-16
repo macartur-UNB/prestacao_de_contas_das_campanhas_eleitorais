@@ -1,5 +1,6 @@
 package parse;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -7,7 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.LinkedList;
-import java.util.List;
 
 import org.apache.commons.fileupload.FileItem;
 
@@ -29,7 +29,7 @@ public class LeitorCSV {
 		BufferedReader leitorArquivo = new BufferedReader(new InputStreamReader(arquivo.getInputStream()));
 		
 		ignorarLinhas(leitorArquivo, linhaInicial);
-		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) && (!linha.isEmpty()); i++ ) {
+		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) ; i++ ) {
 			if(i % 1000 == 0) {
 				System.out.println("lendo linha: " + i + " / " + totalLinhas);
 			}
@@ -45,30 +45,6 @@ public class LeitorCSV {
 		leitorArquivo.close();
 	}
 	
-	public LinkedList<String[]> getCamposCSV(FileItem arquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
-		LinkedList<String[]> listaCampos;
-		BufferedReader leitorArquivo;
-		
-		leitorArquivo = new BufferedReader(new InputStreamReader(arquivo.getInputStream()));
-		
-		ignorarLinhas(leitorArquivo, linhaInicial);
-		listaCampos = (LinkedList<String[]>) lerLinhas(leitorArquivo, divisao, linhaInicial, linhaFinal);
-		
-		leitorArquivo.close();
-		
-		return listaCampos;
-	}
-	
-	public List<String[]> getCamposCSV(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
-		int numeroLinhas;
-		numeroLinhas = getNumeroLinhas(arquivo);
-		return getCamposCSV(arquivo, divisao, linhaInicial, numeroLinhas);
-	}
-	
-	public List<String[]> getCamposCSV(FileItem arquivo, String divisao) throws IOException {
-		return getCamposCSV(arquivo, divisao, 1);
-	}
-	
 	public int getNumeroLinhas(FileItem arquivo) throws IOException {
 		int numeroLinhas;
 		
@@ -81,28 +57,11 @@ public class LeitorCSV {
 		
 		numeroLinhas = lineRead.getLineNumber() + 1;
 		
-		lineRead.close();
-		dataInputStream.close();
-		inputStream.close();
-		
 		return numeroLinhas;
 	}
 	
 	private void ignorarLinhas(BufferedReader leitorArquivo, int numeroLinhas) throws IOException {
 		for(int i = 1; (i < numeroLinhas) && (leitorArquivo.readLine() != null); i++);
-	}
-	
-	private LinkedList<String[]> lerLinhas(BufferedReader leitorArquivo, String divisao, int linhaInicial, int linhaFinal) throws IOException {
-		LinkedList<String[]> listaCampos;
-		String linha;
-		
-		listaCampos = new LinkedList<>();
-		
-		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) && (i <= linhaFinal) && (!linha.isEmpty()); i++ ) {
-			listaCampos.add(linha.split(divisao));
-		}
-		
-		return listaCampos;
 	}
 	
 	private void removerAspas(String palavra[]) {
