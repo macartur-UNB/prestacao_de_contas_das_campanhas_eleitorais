@@ -6,6 +6,8 @@ import parse.indices.PartidoIndicesParse;
 
 public class PartidoCadastroParse implements ExecutorLeitorCSV{
 	
+	public static final int LINHAS_PARA_COMMITAR = 20000;
+	
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
 	

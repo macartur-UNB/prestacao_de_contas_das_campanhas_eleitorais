@@ -48,6 +48,18 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumeroPartido());
 	}
 	
+	@Test
+	public void naoDeveCadastrarDoisPartidosIguais() throws Exception {
+		this.partidoParseControle.addPartido(campo);
+		this.partidoParseControle.addPartido(campo);
+		this.partidoParseControle.cadastrarPartidos();
+		this.partidoParseControle.resetar();
+		
+		int numeroPartidos = this.partidoDAO.getListaPartidos().size();
+				
+		Assert.assertEquals(1, numeroPartidos);
+	}
+	
 	private void iniciarIndices() {
 		this.partidoIndicesParse.setIndiceSigla(SIGLA);
 		this.partidoIndicesParse.setIndiceNumeroPartido(NUMERO);
