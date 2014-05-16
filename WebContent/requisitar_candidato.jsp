@@ -30,7 +30,7 @@
 					Entre com o uma parte do nome do <b>Candidato</b> que deseja
 					buscar, e em seguida, click em burcar.
 				</p>
-				<form action="SelecionarCandidato">
+				<form action="SelecionarCandidato" method="post">
 					<table>
 						<tr>
 							<td>Nome:</td>

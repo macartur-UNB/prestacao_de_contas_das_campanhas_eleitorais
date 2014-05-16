@@ -27,7 +27,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Abaixo as Movimentações Financeiras do <b>Candidato</b> / <b>Partido</b>
+					Abaixo as Movimentações Financeiras do <b><c:out value="${entidade}"/> </b>
 					selecionado.
 				</p>
 

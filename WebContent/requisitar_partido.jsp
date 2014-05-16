@@ -25,7 +25,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Listagem de <b>Partidos</b>. Click no partido desejado para
+					Listagem de <b>Partidos</b>. Clique no partido desejado para
 					visualizar mais informações.
 				</p>
 				<jsp:useBean id="controle" class="controle.PartidoControle" />
@@ -33,7 +33,6 @@
 				<c:forEach var="partido" items="${controle.listaPartidos}">
 					<c:url var="partidoUrl" value="/SelecionarPartido">
 						<c:param name="sigla" value="${partido.sigla}"></c:param>
-						<c:param name="numeroPartido" value="${partido.numeroPartido}"></c:param>
 					</c:url>
 					<a href="${partidoUrl}">${partido.sigla}</a>
 					<br>
