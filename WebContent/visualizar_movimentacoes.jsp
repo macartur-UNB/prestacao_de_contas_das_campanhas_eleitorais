@@ -31,7 +31,6 @@
 					selecionado.
 				</p>
 
-
 				<!-- Mostrar na tela os dados do Candidato -->
 				<!-- <h4>Resultado da busca:</h4>-->
 				<table>
@@ -53,7 +52,7 @@
 						<th>Hora Registro</th>
 						<!-- <th>Entraga em Conjunto</th>  -->
 						<th>Número do Documento</th>
-						<th>Data</th>
+						<th>Ano</th>
 						<th>Valor</th>
 						<th>Fonte</th>
 						<th>Tipo</th>
@@ -89,7 +88,7 @@
 						<th>Hora Registro</th>
 						<!-- <th>Entraga em Conjunto</th>  -->
 						<th>Número do Documento</th>
-						<th>Data</th>
+						<th>Ano</th>
 						<th>Valor</th>
 						<th>Fonte</th>
 						<th>Tipo</th>
