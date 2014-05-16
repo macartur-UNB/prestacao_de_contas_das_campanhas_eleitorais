@@ -26,7 +26,6 @@ public class CandidatoIndicesParseTest {
 		iniciarIndices();
 		iniciarCampos();
 	}
-
 	
 	@Test
 	public void iniciarUmCandidatoComIndicesValidos() throws Exception {
@@ -46,6 +45,14 @@ public class CandidatoIndicesParseTest {
 	public void iniciarUmCandidatoComIndicesInvalidos() throws Exception {
 		this.candidatoIndicesParse = new CandidatoIndicesParse(ANO_2002);
 		Candidato candidato = this.candidatoIndicesParse.iniciarCandidato(this.campo);
+		Assert.assertNotEquals(this.campo[0], candidato.getNome());
+		Assert.assertNotEquals(this.campo[1], candidato.getCpf());
+		Assert.assertNotEquals(this.campo[2], candidato.getCargo());
+		Assert.assertNotEquals(this.campo[3], candidato.getPartido().getSigla());
+		Assert.assertNotEquals(this.campo[4], candidato.getNumero());
+		Assert.assertNotEquals(this.campo[5], candidato.getUf());
+		Assert.assertNotEquals(this.campo[6], candidato.getFoiEleito().toString());
+		Assert.assertNotEquals(this.campo[7], candidato.getResultadoUltimaEleicao().toString());
 	}
 	
 	@Test
