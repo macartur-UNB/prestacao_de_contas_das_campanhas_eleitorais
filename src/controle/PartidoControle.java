@@ -20,6 +20,6 @@ public class PartidoControle {
 	
 	public Partido getPartido(String sigla) throws SQLException {
 		return this.partidoDAO.getPartido(sigla);
-
 	}
+
 }

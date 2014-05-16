@@ -41,6 +41,7 @@
 									</h2>
 									<p></p>
 									<p>
+
 										<span>O Campanhas-ON é um <i>Web Site</i> desenvolvido
 											para VOCÊ, com o intuito de compartilhar informação de
 											difícil acesso de forma rápida e usual.
