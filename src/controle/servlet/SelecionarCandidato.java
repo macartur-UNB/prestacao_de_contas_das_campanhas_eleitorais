@@ -23,14 +23,11 @@ public class SelecionarCandidato extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		String nome = request.getParameter("nome");
-		Candidato candidato = new Candidato();
-		candidato.setNome(nome);
 
 		RequestDispatcher requestDispatcher;
 
 		CandidatoControle control = new CandidatoControle();
-		List<Candidato> listaCandidato = (List<Candidato>) control
-				.getCandidato(nome);
+		List<Candidato> listaCandidato = control.getCandidato(nome);
 
 		if (listaCandidato.isEmpty()) {
 			requestDispatcher = request

@@ -45,13 +45,15 @@
 					<table border="2" width="600">
 						<tbody>
 							<tr>
-								<td rowspan="2"><c:url var="AnoUrl"
-										value="/requisitarMovimentacoes">
+								<td rowspan="2">
+									<c:url var="AnoUrl" value="/requisitarMovimentacoes">
 										<c:param name="tabela" value="candidato"></c:param>
 										<c:param name="nome" value="${candidato.nome}"></c:param>
 										<c:param name="ano" value="${candidato.ano}"></c:param>
-									</c:url> <a href="${AnoUrl}">${candidato.ano}</a></td>
-								<td><c:url var="partidoUrl" value="/SelecionarPartido">
+									</c:url>
+									<a href="${AnoUrl}">${candidato.ano}</a></td>
+								<td>
+									<c:url var="partidoUrl" value="/SelecionarPartido">
 										<c:param name="sigla" value="${candidato.partido.sigla}"></c:param>
 									</c:url> Partido: <a href="${partidoUrl}">${candidato.partido.sigla}</a>
 								</td>

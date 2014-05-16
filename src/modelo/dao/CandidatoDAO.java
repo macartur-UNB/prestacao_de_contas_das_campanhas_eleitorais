@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
@@ -152,7 +153,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 	public LinkedList<Candidato> getCandidato(String nome) {
 
-		LinkedList<Candidato> listaCandidato = new LinkedList<>();;
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
