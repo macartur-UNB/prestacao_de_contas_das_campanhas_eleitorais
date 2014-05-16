@@ -11,7 +11,7 @@ import modelo.beans.Fornecedor;
 
 public class FornecedorDAO extends BasicoDAO<Fornecedor>{
 
-	private enum Comparacao implements Comparator<Fornecedor> {
+	public enum Comparacao implements Comparator<Fornecedor> {
 		NOME {
 			@Override
 			public int compare(Fornecedor f1, Fornecedor f2) {

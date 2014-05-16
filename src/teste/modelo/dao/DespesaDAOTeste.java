@@ -45,6 +45,11 @@ public class DespesaDAOTeste extends TemplateTeste {
 	}
 
 	@Test
+	public void valoresComparacao() throws Exception {
+		DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+	}
+
+	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmaDespesaInexistente() throws Exception {
 		ArrayList<Despesa> listaDespesas = new ArrayList<>();
 		

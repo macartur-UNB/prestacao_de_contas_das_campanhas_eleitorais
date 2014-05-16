@@ -10,7 +10,7 @@ import modelo.beans.Doador;
 
 public class DoadorDAO extends BasicoDAO<Doador>{
 
-	private enum Comparacao implements Comparator<Doador> {
+	public enum Comparacao implements Comparator<Doador> {
 		NOME {
 			@Override
 			public int compare(Doador d1, Doador d2) {

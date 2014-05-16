@@ -28,7 +28,8 @@ public class Despesa extends MovimentacaoFinanceira {
 		
 		if(this.getAno().equals(outraDespesa.getAno())) {
 			return this.fornecedor.equals(outraDespesa.getFornecedor()) &&
-					this.tipoDocumento.equals(outraDespesa.getTipoDocumento());
+					this.tipoDocumento.equals(outraDespesa.getTipoDocumento()) &&
+					super.equals(object);
 		}
 		return false;
 	}

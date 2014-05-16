@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import modelo.beans.Candidato;
 import modelo.beans.Fornecedor;
 import modelo.beans.Partido;
+import modelo.dao.DoadorDAO;
 import modelo.dao.FornecedorDAO;
 
 import org.junit.Assert;
@@ -29,6 +30,11 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 	}
 
+	@Test
+	public void valoresComparacao() throws Exception {
+		FornecedorDAO.Comparacao.valueOf(FornecedorDAO.Comparacao.NOME.toString());
+	}
+	
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmFornecedorInexistente() throws Exception {
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();

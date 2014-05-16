@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Doador;
+import modelo.dao.DespesaDAO;
 import modelo.dao.DoadorDAO;
 
 import org.junit.Assert;
@@ -23,6 +24,11 @@ public class DoadorDAOTeste extends TemplateTeste {
 	@Override
 	public void afterTest() throws Exception {
 		
+	}
+	
+	@Test
+	public void valoresComparacao() throws Exception {
+		DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
 	}
 
 	@Test

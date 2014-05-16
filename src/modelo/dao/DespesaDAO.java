@@ -12,7 +12,7 @@ import modelo.beans.Fornecedor;
 
 public class DespesaDAO extends BasicoDAO<Despesa> {
 	
-	private enum Comparacao implements Comparator<Despesa> {
+	public enum Comparacao implements Comparator<Despesa> {
 		NOME {
 			@Override
 			public int compare(Despesa d1, Despesa d2) {
