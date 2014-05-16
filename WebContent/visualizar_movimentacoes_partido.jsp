@@ -82,28 +82,7 @@
 	<th>Cadastro do Fornecedor</th>	
 </tr>
 <!-- Elementos da tabela -->
-<<<<<<< HEAD
-<%
-for(Despesa despesa:listaDespesas)
-{
-	out.println("<tr>");
-	out.println("<td>"+despesa.getHoraRegistro()+"</td>");
-	//out.println("<td>"+despesa.isEntregaEmConjunto()+"</td>");
-	out.println("<td>"+despesa.getNumeroDocumento()+"</td>");
-	out.println("<td>"+despesa.getAno()+"</td>");
-	out.println("<td>"+despesa.getValor()+"</td>");
-	out.println("<td>"+despesa.getFonte()+"</td>");
-	out.println("<td>"+despesa.getTipo()+"</td>");
-	out.println("<td>"+despesa.getEspecie()+"</td>");
-	out.println("<td>"+despesa.getDescricao()+"</td>");
-	out.println("<td>"+despesa.getTipoDocumento()+"</td>");
-	out.println("<td>"+despesa.getFornecedor().getNome()+"</td>");
-	out.println("<td>"+despesa.getFornecedor().getCadastroNacional()
-			+"</td>");
-	out.println("<tr>");
-}
-%>
-=======
+
 <c:forEach var="despesa" items="${listaDespesas}">
 	<tr>
 		<td>${despesa.horaRegistro}</td>
@@ -119,7 +98,6 @@ for(Despesa despesa:listaDespesas)
 		<td>${despesa.fornecedor.cadastroNacional}</td>
 	</tr>
 </c:forEach>
->>>>>>> Paginas jsp desacopladas da model
 </table>
 
 </body>
