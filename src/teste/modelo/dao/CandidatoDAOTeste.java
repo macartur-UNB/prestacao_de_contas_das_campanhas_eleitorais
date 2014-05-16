@@ -34,6 +34,11 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	}
 	
 	@Test
+	public void valoresComparacao() throws Exception {
+		CandidatoDAO.Comparacao.valueOf(CandidatoDAO.Comparacao.NOME.toString());
+	}
+	
+	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmCandidatoInexistente() throws Exception {
 		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 		

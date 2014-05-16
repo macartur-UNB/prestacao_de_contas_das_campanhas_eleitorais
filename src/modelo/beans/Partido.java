@@ -38,15 +38,18 @@ public class Partido extends Pessoa {
 	public static final String NOMEFORNECEDOR     = "nomeFornecedor";
 	public static final String CADASTROFORNECEDOR = "cadastroFornecedor";
 	
-	public static final String CAMPO_VAZIO = "";
+	public static final String STRING_VAZIO = "";
+	public static final Boolean BOOLEAN_VAZIO = false;
 	
 	/**** Atributos de Classe *******************************************/
 	private String numeroPartido;
 	private String sigla;
 	
 	public Partido() {
-		this.sigla = CAMPO_VAZIO;
-		this.numeroPartido = CAMPO_VAZIO;
+		this.setNome(STRING_VAZIO);
+		this.setPessoaJuridica(BOOLEAN_VAZIO);
+		this.sigla = STRING_VAZIO;
+		this.numeroPartido = STRING_VAZIO;
 	}
 	
 	@Override

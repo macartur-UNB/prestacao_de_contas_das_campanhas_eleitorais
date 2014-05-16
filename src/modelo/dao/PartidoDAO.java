@@ -13,7 +13,7 @@ import modelo.beans.Partido;
 
 public class PartidoDAO {
 	
-	private enum Comparacao implements Comparator<Partido> {
+	public enum Comparacao implements Comparator<Partido> {
 		NOME {
 			@Override
 			public int compare(Partido p1, Partido p2) {
@@ -68,7 +68,7 @@ public class PartidoDAO {
 			for(Partido partido : listaPartidosAtualizaveis) {
 				for(Partido partidoCadastrado : listaPartidosCadastrados) {
 					if(partido.getSigla().equals(partidoCadastrado.getSigla())) {
-						if(partidoCadastrado.getNumeroPartido().equals(Partido.CAMPO_VAZIO)) {
+						if(partidoCadastrado.getNumeroPartido().equals(Partido.STRING_VAZIO)) {
 							instrucaoSQL.setString(1, partido.getNumeroPartido());
 							instrucaoSQL.setString(2, partido.getSigla());
 							instrucaoSQL.addBatch();

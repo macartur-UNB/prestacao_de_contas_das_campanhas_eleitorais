@@ -13,7 +13,7 @@ import modelo.beans.Partido;
 
 public class CandidatoDAO extends BasicoDAO<Candidato> {
 
-	private enum Comparacao implements Comparator<Candidato> {
+	public enum Comparacao implements Comparator<Candidato> {
 		NOME {
 			@Override
 			public int compare(Candidato c1, Candidato c2) {
@@ -21,7 +21,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 			}
 		};
 	}
-
+	
 	public static final String NOME_TABELA = "t_candidato";
 	public static final String NOME = "nome";
 	public static final String CPF = "cpf";

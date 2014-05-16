@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Partido;
+import modelo.dao.FornecedorDAO;
 import modelo.dao.PartidoDAO;
 
 import org.junit.Assert;
@@ -23,6 +24,11 @@ public class PartidoDAOTeste extends TemplateTeste {
 	@Override
 	public void afterTest() throws Exception {
 		
+	}
+	
+	@Test
+	public void valoresComparacao() throws Exception {
+		PartidoDAO.Comparacao.valueOf(PartidoDAO.Comparacao.NOME.toString());
 	}
 
 	@Test
@@ -118,9 +124,10 @@ public class PartidoDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRecuperarUmPartidoPelaSiglaComNomeESiglaVazio() throws Exception {
-		Partido partido = new Partido();
+		Partido partido = new Partido();		
 		Assert.assertEquals(partido, this.partidoDAO.getPartido("Sigla"));
 	}
+
 	
 	@Test(expected = SQLException.class)
 	public void deveLancarExcecaoAoRecuperarUmPartidoEAConexaoComOBancoNaoForSucedida() throws Exception {

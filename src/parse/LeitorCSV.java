@@ -1,13 +1,11 @@
 package parse;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.util.LinkedList;
 
 import org.apache.commons.fileupload.FileItem;
 
@@ -78,9 +76,6 @@ public class LeitorCSV {
 	private String transformarPontoVirgulasDoCampoEmVirgula(String palavra) {
 		String novaPalavra;
 		char caracteres[] = palavra.toCharArray();
-		
-//		System.out.println("\n+------------------------------------------------+");
-//		System.out.println("palavra: " + palavra);
 		for(int i = 1; i < caracteres.length-1; i++) {
 			if( caracteres[i] == ';' && (caracteres[i-1] != '"' || caracteres[i+1] != '"') ){
 				caracteres[i] = ',';
@@ -88,9 +83,6 @@ public class LeitorCSV {
 		}
 		
 		novaPalavra = String.copyValueOf(caracteres);
-
-//		System.out.println("novaPalavra: " + novaPalavra);
-		
 		return novaPalavra;
 	}
 }
