@@ -22,7 +22,7 @@ import modelo.beans.Partido;
 import modelo.beans.Receita;
 
 @WebServlet("/requisitarMovimentacoes")
-public class RequisitarMovimentacoesServlet extends HttpServlet {
+public class RequisitarMovimentacoes extends HttpServlet {
 
 	private static final long serialVersionUID = 2421786756015460808L;
 

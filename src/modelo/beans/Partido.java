@@ -84,9 +84,9 @@ public class Partido extends Pessoa {
 
 			String comandoSQL = "SELECT * FROM t_receitaP "
 							  + "WHERE partido_sigla "
-							  + " = \"" + this.getNome() + "\" ";
-							  //+ "AND ano = "
-							  //+ ano;
+							  + " = \"" + this.getSigla() + "\" "
+							  + "AND ano = "
+							  + ano;
 			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);
 			System.out.println(comandoSQL);
 			
@@ -141,9 +141,9 @@ public class Partido extends Pessoa {
 
 			String comandoSQL = "SELECT * FROM t_despesaP "
 							  + "WHERE partido_sigla "
-							  + " = \"" + this.getNome() + "\"";
-							  //+ "AND ano = "
-							  //+ ano;
+							  + " = \"" + this.getSigla() + "\""
+							  + " AND ano = "
+							  + ano;
 			PreparedStatement instrucaoSQL = conexao.prepareStatement(comandoSQL);	
 			System.out.println(comandoSQL);
 			
