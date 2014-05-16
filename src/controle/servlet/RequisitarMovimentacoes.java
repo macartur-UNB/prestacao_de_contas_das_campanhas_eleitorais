@@ -35,12 +35,13 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		String nome = request.getParameter("nome");
 
 		RequestDispatcher requestDispatcher;
+		MovimentacaoDAO dao = new MovimentacaoDAO();
 
 		if (request.getParameter("tabela").equals("candidato")) {
 			Candidato candidato = new Candidato();
 			candidato.setNome(nome);
 			candidato.setAno(ano);
-
+			
 			if (!candidato.existe()) {
 				requestDispatcher = request
 						.getRequestDispatcher("/erro_candidato_inexistente.jsp");
@@ -49,8 +50,6 @@ public class RequisitarMovimentacoes extends HttpServlet {
 				request.setAttribute("candidato", candidato);
 				request.setAttribute("entidade", "Candidato");
 				
-				MovimentacaoDAO dao = new MovimentacaoDAO();
-
 				//List<Receita> listaReceita = dao.getListaReceitas(candidato);
 				List<Despesa> listaDespesa = dao.getListaDespesas(candidato);
 				
@@ -70,8 +69,8 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			partido.setSigla(sigla);
 
 			try{
-				List<Receita> listaReceita = partido.getListaReceitas(ano);
-				List<Despesa> listaDespesa = partido.getListaDespesas(ano);
+				List<Receita> listaReceita = dao.getListaReceitas(partido,ano);
+				List<Despesa> listaDespesa = dao.getListaDespesas(partido,ano);
 				request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);
 
