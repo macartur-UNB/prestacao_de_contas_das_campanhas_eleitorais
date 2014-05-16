@@ -6,7 +6,7 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,7 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import controle.PartidoControle;
 import modelo.beans.Candidato;
+import modelo.beans.Despesa;
 import modelo.beans.Partido;
+import modelo.beans.Receita;
 
 @WebServlet("/requisitarMovimentacoes")
 public class RequisitarMovimentacoesServlet extends HttpServlet {
@@ -44,18 +46,32 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 				requestDispatcher.forward(request, response);
 			} else {
 				request.setAttribute("candidato", candidato);
+				request.setAttribute("entidade", "Candidato");
+				
+				List<Receita> listaReceita = candidato.getListaReceitas();
+				List<Despesa> listaDespesa = candidato.getListaDespesas();
+				
+				request.setAttribute("listaReceitas", listaReceita);
+				request.setAttribute("listaDespesas", listaDespesa);
+				
 				requestDispatcher = request
-						.getRequestDispatcher("/visualizar_movimentacoes_candidato.jsp");
+						.getRequestDispatcher("/visualizar_movimentacoes.jsp");
 				requestDispatcher.forward(request, response);
 			}
 		} else if (request.getParameter("tabela").equals("partido")) {
 			PartidoControle partidoControle = new PartidoControle();
 
-			String sigla = request.getParameter("sigla");
+			String sigla = request.getParameter("nome");
 
 			Partido partido = new Partido();
-
-			try {
+			partido.setSigla(sigla);
+			
+			try{
+				List<Receita> listaReceita = partido.getListaReceitas(ano);
+				List<Despesa> listaDespesa = partido.getListaDespesas(ano);
+				request.setAttribute("listaReceitas", listaReceita);
+				request.setAttribute("listaDespesas", listaDespesa);
+				
 				partido = partidoControle.getPartido(sigla);
 				if (partido.getSigla().equals("0")) {
 					requestDispatcher = request
@@ -63,16 +79,17 @@ public class RequisitarMovimentacoesServlet extends HttpServlet {
 					requestDispatcher.forward(request, response);
 				} else {
 					request.setAttribute("partido", partido);
+					request.setAttribute("entidade","Partido");
 
 					requestDispatcher = request
-							.getRequestDispatcher("/visualizar_movimentacoes_partido.jsp");
+							.getRequestDispatcher("/visualizar_movimentacoes.jsp");
 					requestDispatcher.forward(request, response);
 				}
-
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} catch(Exception e){
+				System.out.println("Erro no acesso ao BD");
+				throw new ServletException(e);
 			}
-
+			
 		}
 
 	}

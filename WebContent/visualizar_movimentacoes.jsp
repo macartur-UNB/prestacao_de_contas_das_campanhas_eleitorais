@@ -16,7 +16,7 @@
 <h1>Resultado da busca:</h1>
 <table>
 <tr>
-	<td> Candidato: </td>
+	<td><c:out value="${entidade}" />: </td>
 	<td>${param.nome}</td>
 </tr>
 <tr>
