@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import parse.indices.PartidoIndicesParse;
 
-public class PartidoIndicesParseTest {
+public class PartidoIndicesParseTeste {
 		
 	private String campo[];
 	private PartidoIndicesParse partidoIndicesParse;

@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import parse.indices.CandidatoIndicesParse;
 
-public class CandidatoIndicesParseTest {
+public class CandidatoIndicesParseTeste {
 	
 	public static final Integer ANO_2002 = 2002;
 	
