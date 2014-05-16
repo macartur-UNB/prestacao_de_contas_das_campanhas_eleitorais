@@ -122,6 +122,8 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		ResultSet resultadoSQL;
 		String campoNome = "candidato_nome";
 		if(tabela.equals("t_candidato")) campoNome = "nome";
+		if(tabela.equals("t_despesa")) campoNome = "em_nome_de";
+		if(tabela.equals("t_receita")) campoNome = "em_nome_de";
 
 		try
 		{

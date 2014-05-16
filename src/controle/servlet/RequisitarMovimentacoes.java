@@ -48,10 +48,10 @@ public class RequisitarMovimentacoes extends HttpServlet {
 				request.setAttribute("candidato", candidato);
 				request.setAttribute("entidade", "Candidato");
 
-				List<Receita> listaReceita = candidato.getListaReceitas();
+				//List<Receita> listaReceita = candidato.getListaReceitas();
 				List<Despesa> listaDespesa = candidato.getListaDespesas();
 				
-				request.setAttribute("listaReceitas", listaReceita);
+				//request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);
 				
 				requestDispatcher = request

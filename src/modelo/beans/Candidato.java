@@ -22,10 +22,9 @@ public class Candidato extends Pessoa{
 	public static final String CANDIDATONOME   = "candidato_nome";
 	public static final String PARTIDOSIGLA    = "partido_sigla";
 	public static final String ANO             = "ano";
-	public static final String HORAREGISTRO    = "horaRegistro";
-	public static final String ENTREGACONJUNTO = "entregaEmConjunto";
-	public static final String NUMERODOC       = "numeroDoc";
-	public static final String DATA            = "data";
+	public static final String HORAREGISTRO    = "hora_registro";
+	public static final String ENTREGACONJUNTO = "entrega_em_conjunto";
+	public static final String NUMERODOC       = "numero_documento";
 	public static final String VALOR           = "valor";
 	public static final String FONTE           = "fonte";
 	public static final String TIPO            = "tipo";
@@ -36,8 +35,8 @@ public class Candidato extends Pessoa{
 	public static final String NOMEDOADOR      = "nomeDoador";
 	public static final String CADASTRODOADOR  = "cadastroDoador";
 
-	public static final String TIPODOC            = "tipoDoc";
-	public static final String NOMEFORNECEDOR     = "nomeFornecedor";
+	public static final String TIPODOC            = "tipo_documento";
+	public static final String NOMEFORNECEDOR     = "fornecedor";
 	public static final String CADASTROFORNECEDOR = "cadastroFornecedor";
 
 	public static final String STRING_VAZIO = "";
@@ -161,8 +160,8 @@ public class Candidato extends Pessoa{
 					receita.setEntregaEmConjunto(false);
 				}
 				receita.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
-				//receita.setData(data) verificar formatacao
-				//receita.setValor(resultadoSQL.getFloat(VALOR)); verificar formatacao
+				receita.setAno(Integer.parseInt(resultadoSQL.getString(ANO)));
+				receita.setValor(Float.parseFloat(resultadoSQL.getString(VALOR))); 
 				receita.setFonte(resultadoSQL.getString(FONTE));
 				receita.setTipo(resultadoSQL.getString(TIPO));
 				receita.setEspecie(resultadoSQL.getString(ESPECIE));
@@ -172,7 +171,6 @@ public class Candidato extends Pessoa{
 				doador.setNome(resultadoSQL.getString(NOMEDOADOR));
 				doador.setCadastroNacional("CADASTRODOADOR");
 				receita.setDoador(doador);
-
 
 				if(receita != null)	listaReceitas.add(receita);
 			};
@@ -189,7 +187,7 @@ public class Candidato extends Pessoa{
 	public LinkedList<Despesa> getListaDespesas() {
 		LinkedList<Despesa> listaDespesas = new LinkedList<>();
 		CandidatoDAO dao = new CandidatoDAO();
-		ResultSet resultadoSQL = dao.selectSQL(this, "t_despesaC");
+		ResultSet resultadoSQL = dao.selectSQL(this, "t_despesa");
 
 		try	{
 			while(resultadoSQL.next()) {
@@ -207,8 +205,8 @@ public class Candidato extends Pessoa{
 				}
 
 				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERODOC));
-				//despesa.setData(data) verificar formatacao
-				//despesa.setValor(resultadoSQL.getFloat(VALOR)); verificar formatacao
+				despesa.setAno(resultadoSQL.getInt("ANO"));
+				despesa.setValor(resultadoSQL.getFloat(VALOR)); 
 				despesa.setFonte(resultadoSQL.getString(FONTE));
 				despesa.setTipo(resultadoSQL.getString(TIPO));
 				despesa.setEspecie(resultadoSQL.getString(ESPECIE));
@@ -216,7 +214,7 @@ public class Candidato extends Pessoa{
 				despesa.setTipoDocumento(resultadoSQL.getString(TIPODOC));
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.setNome(resultadoSQL.getString(NOMEFORNECEDOR));
-				fornecedor.setCadastroNacional(resultadoSQL.getString(CADASTROFORNECEDOR));
+				//fornecedor.setCadastroNacional(resultadoSQL.getString(CADASTROFORNECEDOR));
 				despesa.setFornecedor(fornecedor);
 
 				if(despesa != null) listaDespesas.add(despesa);

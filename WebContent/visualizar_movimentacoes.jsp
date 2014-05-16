@@ -33,7 +33,7 @@
 	<th>Hora Registro</th>
 	<!-- <th>Entraga em Conjunto</th>  -->
 	<th>Número do Documento</th>
-	<th>Data</th>
+	<th>Ano</th>
 	<th>Valor</th>
 	<th>Fonte</th>
 	<th>Tipo</th>
@@ -44,6 +44,7 @@
 	<th>Cadastro do Doador</th>	
 </tr>
 <!-- Elementos da tabela -->
+<!-- (Ainda nao implementado)
 <c:forEach var="receita" items="${listaReceitas}">
 	<tr>
 		<td>${receita.horaRegistro}</td>
@@ -58,8 +59,9 @@
 		<td>${receita.doador.nome}</td>
 		<td>${receita.doador.cadastroNacional}</td>
 	</tr>
-</c:forEach>
-</table>
+</c:forEach>  -->
+</table> 
+<br />
 
 <!-- Tabela de despesas -->
 <h2> Despesas: </h2>
@@ -69,7 +71,7 @@
 	<th>Hora Registro</th>
 	<!-- <th>Entraga em Conjunto</th>  -->
 	<th>Número do Documento</th>
-	<th>Data</th>
+	<th>Ano</th>
 	<th>Valor</th>
 	<th>Fonte</th>
 	<th>Tipo</th>
@@ -85,7 +87,7 @@
 		<td>${despesa.horaRegistro}</td>
 		<td>${despesa.numeroDocumento}</td>
 		<td>${despesa.ano}</td>
-		<td>${despesa.valor}</td>
+		<td>R$ ${despesa.valor}</td>
 		<td>${despesa.fonte}</td>
 		<td>${despesa.tipo}</td>
 		<td>${despesa.especie}</td>
