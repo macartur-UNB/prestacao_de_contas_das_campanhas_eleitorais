@@ -48,7 +48,7 @@
 	<tr>
 		<td>${receita.horaRegistro}</td>
 		<td>${receita.numeroDocumento}</td>
-		<td>${receita.data}</td>
+		<td>${receita.ano}</td>
 		<td>${receita.valor}</td>
 		<td>${receita.fonte}</td>
 		<td>${receita.tipo}</td>
@@ -60,7 +60,6 @@
 	</tr>
 </c:forEach>
 </table>
-
 
 <!-- Tabela de despesas -->
 <h2> Despesas: </h2>
@@ -85,7 +84,7 @@
 	<tr>
 		<td>${despesa.horaRegistro}</td>
 		<td>${despesa.numeroDocumento}</td>
-		<td>${despesa.data}</td>
+		<td>${despesa.ano}</td>
 		<td>${despesa.valor}</td>
 		<td>${despesa.fonte}</td>
 		<td>${despesa.tipo}</td>
@@ -96,6 +95,7 @@
 		<td>${despesa.fornecedor.cadastroNacional}</td>
 	</tr>
 </c:forEach>
+
 </table>
 </body>
 </html>

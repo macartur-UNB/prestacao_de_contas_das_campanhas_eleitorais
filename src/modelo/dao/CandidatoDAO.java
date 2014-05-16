@@ -149,17 +149,19 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 
 	public LinkedList<Candidato> getCandidato(String nome) {
-		
-		LinkedList<Candidato> listaCandidato = new LinkedList<>();
-		
+
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();;
+
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
-			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '%"+nome+"%' ";
+			String comandoSQL = "SELECT * FROM t_candidato WHERE nome = '" + nome + "'";
+			//String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '%"+nome+"%' ";
+
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-			
+
 			while (resultadoSQL.next()) {
 				Candidato candidato = new Candidato();
 				candidato.setNome(resultadoSQL.getString(NOME));

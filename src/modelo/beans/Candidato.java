@@ -9,22 +9,12 @@
 
 package modelo.beans;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
 import modelo.dao.CandidatoDAO;
-import modelo.dao.ConexaoBancoDados;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.LinkedList;
-
-import modelo.dao.ConexaoBancoDados;
 
 public class Candidato extends Pessoa{
 

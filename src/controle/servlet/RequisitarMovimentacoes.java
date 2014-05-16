@@ -34,7 +34,7 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		String nome = request.getParameter("nome");
 
 		RequestDispatcher requestDispatcher;
-		
+
 		if (request.getParameter("tabela").equals("candidato")) {
 			Candidato candidato = new Candidato();
 			candidato.setNome(nome);
@@ -47,7 +47,7 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			} else {
 				request.setAttribute("candidato", candidato);
 				request.setAttribute("entidade", "Candidato");
-				
+
 				List<Receita> listaReceita = candidato.getListaReceitas();
 				List<Despesa> listaDespesa = candidato.getListaDespesas();
 				
@@ -65,13 +65,13 @@ public class RequisitarMovimentacoes extends HttpServlet {
 
 			Partido partido = new Partido();
 			partido.setSigla(sigla);
-			
+
 			try{
 				List<Receita> listaReceita = partido.getListaReceitas(ano);
 				List<Despesa> listaDespesa = partido.getListaDespesas(ano);
 				request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);
-				
+
 				partido = partidoControle.getPartido(sigla);
 				if (partido.getSigla().equals("0")) {
 					requestDispatcher = request
@@ -89,7 +89,7 @@ public class RequisitarMovimentacoes extends HttpServlet {
 				System.out.println("Erro no acesso ao BD");
 				throw new ServletException(e);
 			}
-			
+
 		}
 
 	}
