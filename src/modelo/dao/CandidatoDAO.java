@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
 
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
@@ -25,11 +24,11 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 	
 	public static final String NOME_TABELA = "t_candidato";
 	public static final String NOME = "nome";
+	public static final String ANO = "ano";
 	public static final String CPF = "cpf";
 	public static final String UF = "uf";
 	public static final String PARTIDO = "partido_sigla";
 	public static final String NUMERO = "numero";
-	public static final String ANO = "ano";
 	public static final String CARGO = "cargo_pleiteado";
 	public static final String RESULTADO = "resultado_eleicao";
 	private static final String SQL_SELECT = "SELECT * FROM t_candidato";

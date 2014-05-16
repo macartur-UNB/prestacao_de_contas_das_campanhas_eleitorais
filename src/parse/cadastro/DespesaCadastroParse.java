@@ -1,7 +1,5 @@
 package parse.cadastro;
 
-import modelo.beans.Fornecedor;
-import modelo.beans.Pessoa;
 import parse.LeitorCSV.ExecutorLeitorCSV;
 import parse.controle.DespesaParseControle;
 import parse.indices.DespesaIndicesParse;

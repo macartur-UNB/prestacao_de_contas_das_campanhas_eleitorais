@@ -1,18 +1,13 @@
 package teste.parse.cadastro;
 
-import static org.junit.Assert.*;
 import modelo.beans.Partido;
 import modelo.dao.PartidoDAO;
 
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import parse.cadastro.PartidoCadastroParse;
-import parse.indices.PartidoIndicesParse;
 import teste.TemplateTeste;
 
 public class PartidoCadastroParseTeste extends TemplateTeste {

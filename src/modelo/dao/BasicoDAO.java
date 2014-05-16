@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import modelo.beans.Despesa;
-
-
 public abstract class BasicoDAO<O> {
 
 	protected Connection conexao;

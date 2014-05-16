@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import modelo.beans.Candidato;
 import modelo.beans.Fornecedor;
 
 public class FornecedorDAO extends BasicoDAO<Fornecedor>{

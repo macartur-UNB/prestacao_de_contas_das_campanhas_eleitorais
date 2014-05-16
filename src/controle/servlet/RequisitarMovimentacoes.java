@@ -20,6 +20,7 @@ import modelo.beans.Candidato;
 import modelo.beans.Despesa;
 import modelo.beans.Partido;
 import modelo.beans.Receita;
+import modelo.dao.MovimentacaoDAO;
 
 @WebServlet("/requisitarMovimentacoes")
 public class RequisitarMovimentacoes extends HttpServlet {
@@ -47,9 +48,11 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			} else {
 				request.setAttribute("candidato", candidato);
 				request.setAttribute("entidade", "Candidato");
+				
+				MovimentacaoDAO dao = new MovimentacaoDAO();
 
-				//List<Receita> listaReceita = candidato.getListaReceitas();
-				List<Despesa> listaDespesa = candidato.getListaDespesas();
+				//List<Receita> listaReceita = dao.getListaReceitas(candidato);
+				List<Despesa> listaDespesa = dao.getListaDespesas(candidato);
 				
 				//request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);

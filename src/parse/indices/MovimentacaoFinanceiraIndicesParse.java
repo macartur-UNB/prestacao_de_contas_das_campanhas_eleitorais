@@ -1,8 +1,6 @@
 package parse.indices;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import modelo.beans.Candidato;
 import modelo.beans.MovimentacaoFinanceira;

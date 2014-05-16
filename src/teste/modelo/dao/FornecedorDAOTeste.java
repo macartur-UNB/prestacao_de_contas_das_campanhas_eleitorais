@@ -1,14 +1,9 @@
 package teste.modelo.dao;
 
-import static org.junit.Assert.*;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.beans.Candidato;
 import modelo.beans.Fornecedor;
-import modelo.beans.Partido;
-import modelo.dao.DoadorDAO;
 import modelo.dao.FornecedorDAO;
 
 import org.junit.Assert;

@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Partido;
-import modelo.dao.FornecedorDAO;
 import modelo.dao.PartidoDAO;
 
 import org.junit.Assert;
