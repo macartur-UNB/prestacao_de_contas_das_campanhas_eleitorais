@@ -15,12 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controle.MovimentacaoControle;
 import controle.PartidoControle;
 import modelo.beans.Candidato;
 import modelo.beans.Despesa;
 import modelo.beans.Partido;
 import modelo.beans.Receita;
-import modelo.dao.MovimentacaoDAO;
 
 @WebServlet("/requisitarMovimentacoes")
 public class RequisitarMovimentacoes extends HttpServlet {
@@ -35,7 +35,7 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		String nome = request.getParameter("nome");
 
 		RequestDispatcher requestDispatcher;
-		MovimentacaoDAO dao = new MovimentacaoDAO();
+		MovimentacaoControle control = new MovimentacaoControle();
 
 		if (request.getParameter("tabela").equals("candidato")) {
 			Candidato candidato = new Candidato();
@@ -50,8 +50,8 @@ public class RequisitarMovimentacoes extends HttpServlet {
 				request.setAttribute("candidato", candidato);
 				request.setAttribute("entidade", "Candidato");
 				
-				//List<Receita> listaReceita = dao.getListaReceitas(candidato);
-				List<Despesa> listaDespesa = dao.getListaDespesas(candidato);
+				//List<Receita> listaReceita = control.getListaReceitas(candidato);
+				List<Despesa> listaDespesa = control.getListaDespesas(candidato);
 				
 				//request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);
@@ -69,8 +69,8 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			partido.setSigla(sigla);
 
 			try{
-				List<Receita> listaReceita = dao.getListaReceitas(partido,ano);
-				List<Despesa> listaDespesa = dao.getListaDespesas(partido,ano);
+				List<Receita> listaReceita = control.getListaReceitas(partido,ano);
+				List<Despesa> listaDespesa = control.getListaDespesas(partido,ano);
 				request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);
 
