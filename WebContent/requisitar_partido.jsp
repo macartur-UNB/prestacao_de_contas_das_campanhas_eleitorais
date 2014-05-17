@@ -28,9 +28,8 @@
 					Listagem de <b>Partidos</b>. Clique no partido desejado para
 					visualizar mais informações.
 				</p>
-				<jsp:useBean id="controle" class="controle.PartidoControle" />
 
-				<c:forEach var="partido" items="${controle.listaPartidos}">
+				<c:forEach var="partido" items="${listaPartidos}">
 					<c:url var="partidoUrl" value="/SelecionarPartido">
 						<c:param name="sigla" value="${partido.sigla}"></c:param>
 					</c:url>

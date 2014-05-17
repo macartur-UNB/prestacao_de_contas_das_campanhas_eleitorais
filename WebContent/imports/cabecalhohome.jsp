@@ -12,7 +12,7 @@
 					<li><a href="index.jsp" class="homestatic">Home</a></li>
 					<li><a href="requisitar_candidato.jsp" class="candidatos">Candidatos</a>
 					</li>
-					<li><a href="requisitar_partido.jsp" class="partidos">Partidos</a>
+					<li><a href="RequisitarPartido" class="partidos">Partidos</a>
 					</li>
 					<li><a href="erro-404.jsp" class="pesquisar">Pesquisar</a>
 					</li>

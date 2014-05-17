@@ -5,10 +5,7 @@ xmlns="http://java.sun.com/xml/ns/javaee"
 xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" >
-
-   <display-name>Application Name</display-name>
-
-    
+  <display-name>Application Name</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -17,14 +14,12 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" >
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    
   <error-page>
-   <exception-type>java.lang.Exception</exception-type>
-   <location>/erro.jsp</location>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/erro.jsp</location>
   </error-page>
-  
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/erro-404.jsp</location>
+    <error-code>404</error-code>
+    <location>/erro-404.jsp</location>
   </error-page>
 </web-app>
