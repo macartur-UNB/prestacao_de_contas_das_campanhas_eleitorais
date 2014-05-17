@@ -123,7 +123,8 @@ public class PartidoDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRecuperarUmPartidoPelaSiglaComNomeESiglaVazio() throws Exception {
-		Partido partido = new Partido();		
+		Partido partido = new Partido();	
+		partido.setSigla("0");
 		Assert.assertEquals(partido, this.partidoDAO.getPartido("Sigla"));
 	}
 

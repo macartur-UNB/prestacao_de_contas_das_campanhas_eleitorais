@@ -127,6 +127,8 @@ public class PartidoDAO {
 			if(resultadoSQL.next()) {
 				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
 				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
+			} else{
+				partido.setSigla("0");
 			}
 
 			instrucaoSQL.close();
