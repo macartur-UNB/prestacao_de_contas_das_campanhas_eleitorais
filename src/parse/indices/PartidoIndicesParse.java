@@ -2,7 +2,7 @@ package parse.indices;
 
 import modelo.beans.Partido;
 
-public class PartidoIndicesParse {
+public class PartidoIndicesParse extends IndicesParse<Partido>{
 
 	public static final int INDICE_INVALIDO = -1;
 
@@ -10,13 +10,13 @@ public class PartidoIndicesParse {
 	private int indiceNumeroPartido;
 	
 	public PartidoIndicesParse() {
+		super();
 		this.indiceSigla = INDICE_INVALIDO;
 		this.indiceNumeroPartido = INDICE_INVALIDO;
 	}
 	
-	public void iniciarPartido(Partido partido, String campo[]) {
-		reiniciarPartido(partido);
-				
+	@Override
+	protected void setIndicesValidos(Partido partido, String campo[]) {
 		if(indiceValido(this.indiceSigla)) {
 			partido.setSigla(campo[this.indiceSigla]);
 		}
@@ -24,22 +24,13 @@ public class PartidoIndicesParse {
 			partido.setNumeroPartido(campo[this.indiceNumeroPartido]);
 		}
 	}
-	
-	public Partido iniciarPartido(String campo[]) {
-		Partido partido = new Partido();
-		iniciarPartido(partido, campo);
-		return partido;
-	}
-	
-	private void reiniciarPartido(Partido partido) {
+
+	@Override
+	protected void setVazioEmTodosOsSetters(Partido partido) {
 		partido.setSigla(Partido.STRING_VAZIO);
 		partido.setNumeroPartido(Partido.STRING_VAZIO);
 	}
 	
-	private boolean indiceValido(int indice) {
-		return indice > INDICE_INVALIDO;
-	}
-
 	public void setIndiceSigla(int indiceSigla) {
 		this.indiceSigla = indiceSigla;
 	}

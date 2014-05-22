@@ -24,7 +24,8 @@ public class PartidoIndicesParseTeste {
 
 	@Test
 	public void iniciarUmPartidoComIndicesValidos() throws Exception {
-		Partido partido = this.partidoIndicesParse.iniciarPartido(this.campo);
+		Partido partido = new Partido();
+		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		Assert.assertEquals(this.campo[0], partido.getSigla());
 		Assert.assertEquals(this.campo[1], partido.getNumeroPartido());
 	}
@@ -32,7 +33,8 @@ public class PartidoIndicesParseTeste {
 	@Test
 	public void iniciarUmCandidatoComIndicesInvalidos() throws Exception {
 		this.partidoIndicesParse = new PartidoIndicesParse();
-		Partido partido = this.partidoIndicesParse.iniciarPartido(this.campo);
+		Partido partido = new Partido();
+		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		Assert.assertNotEquals(this.campo[0], partido.getSigla());
 		Assert.assertNotEquals(this.campo[1], partido.getNumeroPartido());
 	}

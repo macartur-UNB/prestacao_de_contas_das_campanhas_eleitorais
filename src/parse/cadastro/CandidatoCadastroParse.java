@@ -1,6 +1,5 @@
 package parse.cadastro;
 
-import parse.LeitorCSV.ExecutorLeitorCSVObservador;
 import parse.controle.CandidatoParseControle;
 import parse.indices.CandidatoIndicesParse;
 

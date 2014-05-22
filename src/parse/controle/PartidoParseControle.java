@@ -20,7 +20,8 @@ public class PartidoParseControle {
 	}
 	
 	public void addPartido(String campo[]) {
-		Partido partido = this.partidoIndicesParse.iniciarPartido(campo);
+		Partido partido = new Partido();
+		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		if(!this.listaPartidos.contains(partido)) {
 			this.listaPartidos.add(partido);
 		}
