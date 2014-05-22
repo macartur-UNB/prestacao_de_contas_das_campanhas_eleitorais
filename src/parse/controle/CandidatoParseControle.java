@@ -26,7 +26,7 @@ public class CandidatoParseControle {
 		
 
 		if(!this.listaCandidatos.contains(candidato)) {
-			this.candidatoIndicesParse.iniciarCandidato(candidato, campo);
+			this.candidatoIndicesParse.iniciarInstancia(candidato, campo);
 			this.listaCandidatos.add(candidato);
 		}
 	}

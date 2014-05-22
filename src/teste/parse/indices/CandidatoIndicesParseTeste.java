@@ -25,7 +25,8 @@ public class CandidatoIndicesParseTeste {
 	
 	@Test
 	public void iniciarUmCandidatoComIndicesValidos() throws Exception {
-		Candidato candidato = this.candidatoIndicesParse.iniciarCandidato(this.campo);
+		Candidato candidato = new Candidato();
+		this.candidatoIndicesParse.iniciarInstancia(candidato, this.campo);
 		Assert.assertEquals(this.candidatoIndicesParse.getAno(), candidato.getAno());
 		Assert.assertEquals(this.campo[0], candidato.getNome());
 		Assert.assertEquals(this.campo[1], candidato.getCpf());
@@ -40,7 +41,8 @@ public class CandidatoIndicesParseTeste {
 	@Test
 	public void iniciarUmCandidatoComIndicesInvalidos() throws Exception {
 		this.candidatoIndicesParse = new CandidatoIndicesParse(ANO_2002);
-		Candidato candidato = this.candidatoIndicesParse.iniciarCandidato(this.campo);
+		Candidato candidato = new Candidato();
+		this.candidatoIndicesParse.iniciarInstancia(candidato, this.campo);
 		Assert.assertNotEquals(this.campo[0], candidato.getNome());
 		Assert.assertNotEquals(this.campo[1], candidato.getCpf());
 		Assert.assertNotEquals(this.campo[2], candidato.getCargo());
@@ -53,7 +55,8 @@ public class CandidatoIndicesParseTeste {
 	
 	@Test
 	public void iniciarCandidatosComFoiEleitoTrue() throws Exception {
-		Candidato candidato = this.candidatoIndicesParse.iniciarCandidato(this.campo);
+		Candidato candidato = new Candidato();
+		this.candidatoIndicesParse.iniciarInstancia(candidato, this.campo);
 		this.campo[6] = "true";
 		Assert.assertEquals(this.candidatoIndicesParse.getAno(), candidato.getAno());
 		Assert.assertEquals(this.campo[0], candidato.getNome());

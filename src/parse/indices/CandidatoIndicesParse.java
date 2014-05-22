@@ -3,9 +3,7 @@ package parse.indices;
 import modelo.beans.Candidato;
 import modelo.beans.Partido;
 
-public class CandidatoIndicesParse {
-
-	public static final int INDICE_INVALIDO = -1;
+public class CandidatoIndicesParse extends IndicesParse<Candidato> {
 
 	private int ano;
 	private int indiceNome;
@@ -28,10 +26,9 @@ public class CandidatoIndicesParse {
 		this.indiceFoiEleito = INDICE_INVALIDO;
 		this.indiceResultadoUltimaEleicao = INDICE_INVALIDO;
 	}
-
-	public void iniciarCandidato(Candidato candidato, String campo[]) {
-		reiniciarCandidato(candidato);
-
+	
+	@Override
+	protected void setIndicesValidos(Candidato candidato, String[] campo) {
 		candidato.setAno(ano);
 		if(indiceValido(this.indiceNome)) {
 			candidato.setNome(campo[this.indiceNome]);
@@ -64,13 +61,8 @@ public class CandidatoIndicesParse {
 		candidato.setPessoaJuridica(false);
 	}
 
-	public Candidato iniciarCandidato(String campo[]) {
-		Candidato candidato = new Candidato();
-		iniciarCandidato(candidato, campo);
-		return candidato;
-	}
-
-	private void reiniciarCandidato(Candidato candidato) {
+	@Override
+	protected void setVazioEmTodosOsSetters(Candidato candidato) {
 		candidato.setNome(Candidato.STRING_VAZIO);
 		candidato.setAno(Candidato.INTEGER_VAZIO);
 		candidato.setCpf(Candidato.STRING_VAZIO);
@@ -81,10 +73,6 @@ public class CandidatoIndicesParse {
 		candidato.setFoiEleito(Candidato.BOOLEAN_VAZIO);
 		candidato.setPessoaJuridica(Candidato.BOOLEAN_VAZIO);
 		candidato.setResultadoUltimaEleicao(Candidato.INTEGER_VAZIO);
-	}
-
-	private boolean indiceValido(int indice) {
-		return indice > INDICE_INVALIDO;
 	}
 
 	public void setAno(int ano) {
