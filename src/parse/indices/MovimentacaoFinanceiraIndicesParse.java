@@ -1,12 +1,10 @@
 package parse.indices;
 
-import java.text.ParseException;
-
 import modelo.beans.Candidato;
 import modelo.beans.MovimentacaoFinanceira;
 
 
-public class MovimentacaoFinanceiraIndicesParse {
+public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<MovimentacaoFinanceira> {
 
 	public static final int INDICE_INVALIDO = -1;
 
@@ -36,11 +34,11 @@ public class MovimentacaoFinanceiraIndicesParse {
 		this.indiceDescricao = INDICE_INVALIDO;
 	}
 	
-	public void iniciarMovimentacaoFinanceira(MovimentacaoFinanceira movimentacaoFinanceira, String campo[]) throws ParseException {
-		reiniciarMovimentacaoFinanceira(movimentacaoFinanceira);
+	@Override
+	protected void setIndicesValidos(MovimentacaoFinanceira movimentacaoFinanceira,
+			String[] campo) {
 		
 		movimentacaoFinanceira.setAno(ano);
-		
 		if(indiceValido(this.indiceEmNomeDe)) {
 			Candidato candidato = new Candidato();
 			candidato.setNome(campo[this.indiceEmNomeDe]);
@@ -72,10 +70,10 @@ public class MovimentacaoFinanceiraIndicesParse {
 		if(indiceValido(this.indiceDescricao)) {
 			movimentacaoFinanceira.setDescricao(campo[this.indiceDescricao]);
 		}
-		
 	}
-	
-	private void reiniciarMovimentacaoFinanceira(MovimentacaoFinanceira movimentacaoFinanceira) {
+
+	@Override
+	protected void setVazioEmTodosOsSetters(MovimentacaoFinanceira movimentacaoFinanceira) {
 		movimentacaoFinanceira.setEmNomeDe(MovimentacaoFinanceira.PESSOA_VAZIO);
 		movimentacaoFinanceira.setHoraRegistro(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setEntregaEmConjunto(MovimentacaoFinanceira.BOOLEAN_VAZIO);
@@ -131,7 +129,5 @@ public class MovimentacaoFinanceiraIndicesParse {
 	public void setIndiceDescricao(int indiceDescricao) {
 		this.indiceDescricao = indiceDescricao;
 	}
-	
-	
 	
 }

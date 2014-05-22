@@ -22,7 +22,8 @@ public class DespesaParseControle {
 	}
 	
 	public void addDespesa(String campo[]) throws ParseException {
-		Despesa despesa = this.despesaIndicesParse.iniciarDespesa(campo);
+		Despesa despesa = new Despesa();
+		this.despesaIndicesParse.iniciarInstancia(despesa, campo);
 		
 		this.listaDespesas.add(despesa);
 	}
