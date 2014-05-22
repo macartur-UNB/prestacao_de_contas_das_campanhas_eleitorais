@@ -26,7 +26,7 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	private String tipoArquivo;
 	private String ano;
 	
-	public Parse(String tipoArquivo, String ano) {
+	public Parse(String tipoArquivo, String ano) throws ParseException {
 		this.tipoArquivo = tipoArquivo;
 		this.ano = ano;
 		this.leitorCSV = new LeitorCSV();
@@ -38,28 +38,32 @@ public class Parse implements ExecutorLeitorCSVObservador {
 		this.despesaCadastroParse = new DespesaCadastroParse(this.tipoArquivo, this.ano);
 	}
 	
-	public void executarParse(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
+	public void executarParse(FileItem arquivo, String divisao, int linhaInicial) throws IOException, ParseException {
 		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, linhaInicial);
 		finalizarCadastros();
 	}
 	
 	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-		this.candidatoCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-		
-		if(this.tipoArquivo.equals(DESPESA)) {
-			this.fornecedorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-			this.despesaCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-		} 
-		else {
-			this.doadorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
+		try {
+			this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
+			this.candidatoCadastroParse.executarLinhaDoArquivo(campo);
+			
+			if(this.tipoArquivo.equals(DESPESA)) {
+				this.fornecedorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
+				this.despesaCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
+			} 
+			else {
+				this.doadorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
 		}
 	}
 	
-	private void finalizarCadastros() {
+	private void finalizarCadastros() throws ParseException {
 		this.partidoCadastroParse.finalizarCadastros();
-		this.candidatoCadastroParse.finalizarCadastros();
+		this.candidatoCadastroParse.cadastrarInstancias();
 		
 		if(this.tipoArquivo.equals(DESPESA)) {
 			this.fornecedorCadastroParse.finalizarCadastros();
