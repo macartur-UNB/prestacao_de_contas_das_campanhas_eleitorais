@@ -20,7 +20,8 @@ public class FornecedorParseControle {
 	}
 	
 	public void addFornecedor(String campo[]) {
-		Fornecedor fornecedor = this.fornecedorIndicesParse.iniciarFornecedor(campo);
+		Fornecedor fornecedor = new Fornecedor();
+		this.fornecedorIndicesParse.iniciarInstancia(fornecedor, campo);
 		if(!fornecedor.getNome().isEmpty() && !this.listaFornecedores.contains(fornecedor)) {
 			this.listaFornecedores.add(fornecedor);
 		}

@@ -2,7 +2,7 @@ package parse.indices;
 
 import modelo.beans.Fornecedor;
 
-public class FornecedorIndicesParse {
+public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 
 	public static final int INDICE_INVALIDO = -1;
 
@@ -14,9 +14,8 @@ public class FornecedorIndicesParse {
 		this.indiceCadastroNacional = INDICE_INVALIDO;
 	}
 	
-	public void iniciarFornecedor(Fornecedor fornecedor, String campo[]) {
-		reiniciarFornecedor(fornecedor);
-		
+	@Override
+	protected void setIndicesValidos(Fornecedor fornecedor, String[] campo) {
 		if(indiceValido(this.indiceNome)) {
 			fornecedor.setNome(campo[this.indiceNome]);
 		}
@@ -25,22 +24,13 @@ public class FornecedorIndicesParse {
 			fornecedor.setCadastroNacional(campo[this.indiceCadastroNacional]);
 		}
 	}
-	
-	public Fornecedor iniciarFornecedor(String campo[]) {
-		Fornecedor fornecedor = new Fornecedor();
-		iniciarFornecedor(fornecedor, campo);
-		return fornecedor;
-	}
-	
-	private void reiniciarFornecedor(Fornecedor fornecedor) {
+
+	@Override
+	protected void setVazioEmTodosOsSetters(Fornecedor fornecedor) {
 		fornecedor.setNome(Fornecedor.STRING_VAZIO);
 		fornecedor.setCadastroNacional(Fornecedor.STRING_VAZIO);
 	}
 	
-	private boolean indiceValido(int indice) {
-		return indice > INDICE_INVALIDO;
-	}
-
 	public int getIndiceNome() {
 		return indiceNome;
 	}

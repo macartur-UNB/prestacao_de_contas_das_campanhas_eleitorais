@@ -32,7 +32,8 @@ public class FornecedorIndicesParseTestes extends TemplateTeste {
 	
 	@Test
 	public void iniciarUmFornecedorComIndicesValidos() throws Exception {
-		Fornecedor fornecedor = this.fornecedorIndicesParse.iniciarFornecedor(this.campo);
+		Fornecedor fornecedor = new Fornecedor();
+		this.fornecedorIndicesParse.iniciarInstancia(fornecedor, campo);
 		assertEquals(this.campo[INDICE_NOME], fornecedor.getNome());
 		assertEquals(this.campo[INDICE_CADASTRO_NACIONAL], fornecedor.getCadastroNacional());
 	}
@@ -41,7 +42,8 @@ public class FornecedorIndicesParseTestes extends TemplateTeste {
 	@Test
 	public void iniciarUmCandidatoComIndicesInvalidos() throws Exception {
 		this.fornecedorIndicesParse = new FornecedorIndicesParse();
-		Fornecedor fornecedor = this.fornecedorIndicesParse.iniciarFornecedor(this.campo);
+		Fornecedor fornecedor = new Fornecedor();
+		this.fornecedorIndicesParse.iniciarInstancia(fornecedor, campo);
 		assertNotEquals(this.campo[INDICE_NOME], fornecedor.getNome());
 		assertNotEquals(this.campo[INDICE_CADASTRO_NACIONAL], fornecedor.getCadastroNacional());
 	}
