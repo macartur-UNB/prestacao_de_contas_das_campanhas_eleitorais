@@ -9,9 +9,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
+import parse.ParseDAO;
+import parse.ParseException;
 import modelo.beans.Partido;
 
-public class PartidoDAO {
+public class PartidoDAO implements ParseDAO<Partido>{
 	
 	public enum Comparacao implements Comparator<Partido> {
 		NOME {
@@ -31,6 +33,26 @@ public class PartidoDAO {
 	
 	public PartidoDAO() {
 		
+	}
+	
+	@Override
+	public void cadastrarListaParse(ArrayList<Partido> lista) throws ParseException {
+		try {
+			cadastrarPartidos(lista);
+		} catch(Exception e) {
+			throw new ParseException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public ArrayList<Partido> getListaParse() throws ParseException {
+		ArrayList<Partido> lista = new ArrayList<>();
+		try {
+			lista = new ArrayList<>(getListaPartidos());
+		} catch(Exception e) {
+			throw new ParseException(e.getMessage());
+		}
+		return lista;
 	}
 	
 	public void cadastrarPartidos(ArrayList<Partido> listaPartidos) throws SQLException {
