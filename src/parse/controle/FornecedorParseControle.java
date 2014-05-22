@@ -1,37 +1,19 @@
 package parse.controle;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import parse.indices.FornecedorIndicesParse;
 import modelo.beans.Fornecedor;
 import modelo.dao.FornecedorDAO;
+import parse.indices.IndicesParse;
 
-public class FornecedorParseControle {
+public class FornecedorParseControle extends ParseControle<Fornecedor> {
 
-	private FornecedorIndicesParse fornecedorIndicesParse;
-	private ArrayList<Fornecedor> listaFornecedores;
-	private FornecedorDAO fornecedorDAO;
-	
-	public FornecedorParseControle(FornecedorIndicesParse fornecedorIndicesParse) {
-		this.fornecedorDAO = new FornecedorDAO();
-		this.listaFornecedores = new ArrayList<>();
-		this.fornecedorIndicesParse = fornecedorIndicesParse;
+	public FornecedorParseControle(IndicesParse<Fornecedor> indicesParse) {
+		super(indicesParse, new FornecedorDAO());
 	}
-	
-	public void addFornecedor(String campo[]) {
+
+	@Override
+	public Fornecedor novaInstancia() {
 		Fornecedor fornecedor = new Fornecedor();
-		this.fornecedorIndicesParse.iniciarInstancia(fornecedor, campo);
-		if(!fornecedor.getNome().isEmpty() && !this.listaFornecedores.contains(fornecedor)) {
-			this.listaFornecedores.add(fornecedor);
-		}
+		return fornecedor;
 	}
 	
-	public void cadastrarFornecedores() throws SQLException {
-		this.fornecedorDAO.cadastrarLista(listaFornecedores);
-	}
-	
-	public void resetar() {
-		this.listaFornecedores.clear();
-	}
 }

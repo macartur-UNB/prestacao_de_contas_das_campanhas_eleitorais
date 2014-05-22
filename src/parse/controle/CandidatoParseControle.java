@@ -14,6 +14,6 @@ public class CandidatoParseControle extends ParseControle<Candidato> {
 	public Candidato novaInstancia() {
 		Candidato candidato = new Candidato();
 		return candidato;
-	}	
+	}
 
 }

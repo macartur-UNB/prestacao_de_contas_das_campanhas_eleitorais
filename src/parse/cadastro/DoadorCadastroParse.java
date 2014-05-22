@@ -20,11 +20,11 @@ public class DoadorCadastroParse {
 	
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try{
-			this.doadorParse.addDoador(campo);
+			this.doadorParse.addInstanciaUnica(campo);
 			this.linhasLidas++;
 			
 			if(this.linhasLidas >= 20000) {
-				this.doadorParse.cadastrarDoadores();
+				this.doadorParse.cadastrarInstancias();
 				this.doadorParse.resetar();
 				this.linhasLidas = 0;
 			}
@@ -37,7 +37,7 @@ public class DoadorCadastroParse {
 	
 	public void finalizarCadastros() {
 		try{
-			this.doadorParse.cadastrarDoadores();
+			this.doadorParse.cadastrarInstancias();
 			this.doadorParse.resetar();
 			this.linhasLidas = 0;
 		} catch(Exception e) {

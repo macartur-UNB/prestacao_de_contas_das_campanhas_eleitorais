@@ -1,9 +1,7 @@
 package parse.controle;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.dao.BasicoDAO;
 import parse.ParseDAO;
 import parse.ParseException;
 import parse.indices.IndicesParse;
