@@ -1,42 +1,19 @@
 package parse.controle;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
-import parse.indices.CandidatoIndicesParse;
+import parse.indices.IndicesParse;
 
-public class CandidatoParseControle {
+public class CandidatoParseControle extends ParseControle<Candidato> {
 
-	private CandidatoIndicesParse candidatoIndicesParse;
-	private ArrayList<Candidato> listaCandidatos;
-	private CandidatoDAO candidatoDAO;
-
-	public CandidatoParseControle(CandidatoIndicesParse candidatoIndicesParse) {
-		this.candidatoDAO = new CandidatoDAO();
-		this.listaCandidatos = new ArrayList<>();
-		this.candidatoIndicesParse = candidatoIndicesParse;
+	public CandidatoParseControle(IndicesParse<Candidato> indicesParse) {
+		super(indicesParse, new CandidatoDAO());
 	}
-
-	public void addCandidato(String campo[]) {
+	
+	@Override
+	public Candidato novaInstancia() {
 		Candidato candidato = new Candidato();
-		candidato.setNome(campo[this.candidatoIndicesParse.getIndiceNome()]);
-		candidato.setAno(this.candidatoIndicesParse.getAno());
-		
-
-		if(!this.listaCandidatos.contains(candidato)) {
-			this.candidatoIndicesParse.iniciarInstancia(candidato, campo);
-			this.listaCandidatos.add(candidato);
-		}
-	}
-
-	public void cadastrarCandidatos() throws SQLException {		
-		this.candidatoDAO.cadastrarLista(listaCandidatos);
-	}
-
-	public void resetar() {
-		this.listaCandidatos.clear();
-	}
+		return candidato;
+	}	
 
 }

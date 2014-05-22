@@ -27,11 +27,11 @@ public class CandidatoCadastroParse {
 
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try {
-			this.candidatoParse.addCandidato(campo);
+			this.candidatoParse.addInstancia(campo);
 			this.linhasLidas++;
 
 			if(this.linhasLidas >= 20000) {
-				this.candidatoParse.cadastrarCandidatos();
+				this.candidatoParse.cadastrarInstancias();
 				this.candidatoParse.resetar();
 				this.linhasLidas = 0;
 			}
@@ -43,7 +43,7 @@ public class CandidatoCadastroParse {
 
 	public void finalizarCadastros() {
 		try {
-			this.candidatoParse.cadastrarCandidatos();
+			this.candidatoParse.cadastrarInstancias();
 			this.candidatoParse.resetar();
 			this.linhasLidas = 0;
 		} catch(Exception e) {
