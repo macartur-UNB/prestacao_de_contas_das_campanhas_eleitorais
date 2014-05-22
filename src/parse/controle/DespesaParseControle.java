@@ -1,38 +1,20 @@
 package parse.controle;
 
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.ArrayList;
-
 import modelo.beans.Despesa;
 import modelo.dao.DespesaDAO;
-import parse.indices.DespesaIndicesParse;
+import parse.indices.IndicesParse;
 
-public class DespesaParseControle {
+public class DespesaParseControle extends ParseControle<Despesa> {
 
-	private DespesaDAO despesaDAO;
-	private ArrayList<Despesa> listaDespesas;
-	private DespesaIndicesParse despesaIndicesParse;
-	
-	public DespesaParseControle(DespesaIndicesParse despesaIndicesParse) {
-		this.despesaDAO = new DespesaDAO();
-		this.listaDespesas = new ArrayList<>();
-		
-		this.despesaIndicesParse = despesaIndicesParse;
+	public DespesaParseControle(IndicesParse<Despesa> indicesParse) {
+		super(indicesParse, new DespesaDAO());
 	}
-	
-	public void addDespesa(String campo[]) throws ParseException {
+
+	@Override
+	public Despesa novaInstancia() {
 		Despesa despesa = new Despesa();
-		this.despesaIndicesParse.iniciarInstancia(despesa, campo);
-		
-		this.listaDespesas.add(despesa);
+		return despesa;
 	}
+
 	
-	public void cadastrarDespesas() throws SQLException {
-		this.despesaDAO.cadastrarLista(this.listaDespesas);
-	}
-	
-	public void resetar() {
-		this.listaDespesas.clear();
-	}
 }

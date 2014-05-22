@@ -4,7 +4,7 @@ import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
 import modelo.beans.MovimentacaoFinanceira;
 
-public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Despesa> {
+public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse {
 
 	private int indiceFornecedor;
 	private int indiceTipoDocumento;

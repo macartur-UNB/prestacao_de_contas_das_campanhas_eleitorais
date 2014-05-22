@@ -20,11 +20,11 @@ public class FornecedorCadastroParse {
 	
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try{
-			this.fornecedorParse.addFornecedor(campo);
+			this.fornecedorParse.addInstanciaUnica(campo);
 			this.linhasLidas++;
 			
 			if(this.linhasLidas >= 20000) {
-				this.fornecedorParse.cadastrarFornecedores();
+				this.fornecedorParse.cadastrarInstancias();
 				this.fornecedorParse.resetar();
 				this.linhasLidas = 0;
 			}
@@ -37,7 +37,7 @@ public class FornecedorCadastroParse {
 	
 	public void finalizarCadastros() {
 		try{
-			this.fornecedorParse.cadastrarFornecedores();
+			this.fornecedorParse.cadastrarInstancias();
 			this.fornecedorParse.resetar();
 			this.linhasLidas = 0;
 		} catch(Exception e) {

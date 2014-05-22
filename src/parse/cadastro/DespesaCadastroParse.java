@@ -27,11 +27,11 @@ public class DespesaCadastroParse {
 	
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try {
-			this.despesaParse.addDespesa(campo);
+			this.despesaParse.addInstancia(campo);
 			this.linhasLidas++;
 
 			if(this.linhasLidas >= 20000) {
-				this.despesaParse.cadastrarDespesas();
+				this.despesaParse.cadastrarInstancias();
 				this.despesaParse.resetar();
 				this.linhasLidas = 0;
 			}
@@ -43,7 +43,7 @@ public class DespesaCadastroParse {
 	
 	public void finalizarCadastros() {
 		try {
-			this.despesaParse.cadastrarDespesas();
+			this.despesaParse.cadastrarInstancias();
 			this.despesaParse.resetar();
 			this.linhasLidas = 0;
 		} catch(Exception e) {
