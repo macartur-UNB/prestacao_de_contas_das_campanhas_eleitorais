@@ -29,11 +29,11 @@ public class PartidoCadastroParse {
 	
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try{
-			this.partidoParse.addPartido(campo);
+			this.partidoParse.addInstanciaUnica(campo);
 			this.linhasLidas++;
 			
 			if(this.linhasLidas >= 20000) {
-				this.partidoParse.cadastrarPartidos();
+				this.partidoParse.cadastrarInstancias();
 				this.partidoParse.resetar();
 				this.linhasLidas = 0;
 			}
@@ -44,7 +44,7 @@ public class PartidoCadastroParse {
 	
 	public void finalizarCadastros() {
 		try{
-			this.partidoParse.cadastrarPartidos();
+			this.partidoParse.cadastrarInstancias();
 			this.partidoParse.resetar();
 			this.linhasLidas = 0;
 		} catch(Exception e) {
