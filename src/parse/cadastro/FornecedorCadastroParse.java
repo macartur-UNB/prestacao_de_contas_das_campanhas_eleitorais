@@ -1,10 +1,9 @@
 package parse.cadastro;
 
-import parse.LeitorCSV.ExecutorLeitorCSV;
 import parse.controle.FornecedorParseControle;
 import parse.indices.FornecedorIndicesParse;
 
-public class FornecedorCadastroParse implements ExecutorLeitorCSV {
+public class FornecedorCadastroParse {
 
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
@@ -19,7 +18,6 @@ public class FornecedorCadastroParse implements ExecutorLeitorCSV {
 	private FornecedorParseControle fornecedorParse;
 	private FornecedorIndicesParse fornecedorIndicesParse;
 	
-	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try{
 			this.fornecedorParse.addFornecedor(campo);

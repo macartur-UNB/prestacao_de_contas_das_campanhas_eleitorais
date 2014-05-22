@@ -21,7 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import parse.LeitorCSV;
-import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.LeitorCSV.ExecutorLeitorCSVObservador;
 
 public class LeitorCSVTest {
 
@@ -31,22 +31,20 @@ public class LeitorCSVTest {
 	private FileItem fileItem;
 	
 	private LeitorCSV leitorCSV;
-	private ExecutorLeitorCSV executorLeitorCSV;
+	private ExecutorLeitorCSVObservador executorLeitorCSV;
 	
 	@Before
 	public void setUp() throws IOException {
-		String diretorio = new File("").getAbsolutePath();
-		String caminhoArquivo = diretorio + NOME_ARQUIVO;
-		
 		initFileItem();
 		
-		this.leitorCSV = new LeitorCSV();
-		this.executorLeitorCSV = new ExecutorLeitorCSV() {
+		this.executorLeitorCSV = new ExecutorLeitorCSVObservador() {
 			@Override
 			public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 				
 			}
 		};
+		this.leitorCSV = new LeitorCSV();
+		this.leitorCSV.setExecutorLeitorCSVObservador(this.executorLeitorCSV);
 	}
 	
 	@Test
@@ -57,12 +55,12 @@ public class LeitorCSVTest {
 
 	@Test
 	public void deveExecutarMetodoPorLinhaLidaSemLancarExcecao() throws Exception {
-		this.leitorCSV.executarMetodoPorLinhaLida(this.fileItem, ";", this.executorLeitorCSV, 1);
+		this.leitorCSV.executarMetodoPorLinhaLida(this.fileItem, ";", 1);
 	}
 	
 	@Test
 	public void deveExecutarMetodoPorLinhaLidaApartirDaLinha10000SemLancarExcecao() throws Exception {
-		this.leitorCSV.executarMetodoPorLinhaLida(this.fileItem, ";", this.executorLeitorCSV, 10000);
+		this.leitorCSV.executarMetodoPorLinhaLida(this.fileItem, ";", 10000);
 	}
 	
 	

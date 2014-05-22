@@ -1,10 +1,9 @@
 package parse.cadastro;
 
-import parse.LeitorCSV.ExecutorLeitorCSV;
 import parse.controle.DoadorParseControle;
 import parse.indices.DoadorIndicesParse;
 
-public class DoadorCadastroParse implements ExecutorLeitorCSV {
+public class DoadorCadastroParse {
 
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
@@ -19,7 +18,6 @@ public class DoadorCadastroParse implements ExecutorLeitorCSV {
 	private DoadorParseControle doadorParse;
 	private DoadorIndicesParse doadorIndicesParse;
 	
-	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try{
 			this.doadorParse.addDoador(campo);

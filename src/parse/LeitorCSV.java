@@ -11,15 +11,17 @@ import org.apache.commons.fileupload.FileItem;
 
 public class LeitorCSV {
 	
-	public interface ExecutorLeitorCSV {
+	public interface ExecutorLeitorCSVObservador {
 		public void executarMetodoPorLinhaDoArquivo(String campo[]);
 	}
 	
+	private ExecutorLeitorCSVObservador executorLeitorCSVObservador;
+	
 	public LeitorCSV() {
-		
+		this.executorLeitorCSVObservador = null;
 	}
 	
-	public void executarMetodoPorLinhaLida(FileItem arquivo, String divisao, ExecutorLeitorCSV executorLeitorCSV, int linhaInicial) throws IOException {
+	public void executarMetodoPorLinhaLida(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
 		String campo[];
 		String linha;
 		int totalLinhas = getNumeroLinhas(arquivo);
@@ -36,7 +38,7 @@ public class LeitorCSV {
 			campo = linha.split(divisao);
 
 			removerAspas(campo);
-			executorLeitorCSV.executarMetodoPorLinhaDoArquivo(campo);
+			notificarObservador(campo);
 		}
 		System.out.println("lendo linha: Terminou");
 		
@@ -85,4 +87,16 @@ public class LeitorCSV {
 		novaPalavra = String.copyValueOf(caracteres);
 		return novaPalavra;
 	}
+
+	public void setExecutorLeitorCSVObservador(
+			ExecutorLeitorCSVObservador executorLeitorCSVObservador) {
+		this.executorLeitorCSVObservador = executorLeitorCSVObservador;
+	}
+	
+	private void notificarObservador(String campo[]) {
+		if(this.executorLeitorCSVObservador != null) {
+			this.executorLeitorCSVObservador.executarMetodoPorLinhaDoArquivo(campo);
+		}
+	}
+	
 }

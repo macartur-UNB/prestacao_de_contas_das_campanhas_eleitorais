@@ -1,10 +1,9 @@
 package parse.cadastro;
 
-import parse.LeitorCSV.ExecutorLeitorCSV;
 import parse.controle.PartidoParseControle;
 import parse.indices.PartidoIndicesParse;
 
-public class PartidoCadastroParse implements ExecutorLeitorCSV{
+public class PartidoCadastroParse {
 	
 	public static final int LINHAS_PARA_COMMITAR = 20000;
 	
@@ -28,7 +27,6 @@ public class PartidoCadastroParse implements ExecutorLeitorCSV{
 		this.partidoParse = new PartidoParseControle(this.partidoIndicesParse);
 	}
 	
-	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try{
 			this.partidoParse.addPartido(campo);

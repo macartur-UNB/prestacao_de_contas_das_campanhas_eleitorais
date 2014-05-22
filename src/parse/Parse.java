@@ -4,14 +4,14 @@ import java.io.IOException;
 
 import org.apache.commons.fileupload.FileItem;
 
-import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.LeitorCSV.ExecutorLeitorCSVObservador;
 import parse.cadastro.CandidatoCadastroParse;
 import parse.cadastro.DespesaCadastroParse;
 import parse.cadastro.DoadorCadastroParse;
 import parse.cadastro.FornecedorCadastroParse;
 import parse.cadastro.PartidoCadastroParse;
 
-public class Parse implements ExecutorLeitorCSV {
+public class Parse implements ExecutorLeitorCSVObservador {
 
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
@@ -29,17 +29,17 @@ public class Parse implements ExecutorLeitorCSV {
 	public Parse(String tipoArquivo, String ano) {
 		this.tipoArquivo = tipoArquivo;
 		this.ano = ano;
-	}
-	
-	public void executarParse(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
 		this.leitorCSV = new LeitorCSV();
+		this.leitorCSV.setExecutorLeitorCSVObservador(this);
 		this.partidoCadastroParse = new PartidoCadastroParse(this.tipoArquivo, this.ano);
 		this.candidatoCadastroParse = new CandidatoCadastroParse(this.tipoArquivo, this.ano);
 		this.fornecedorCadastroParse = new FornecedorCadastroParse(this.tipoArquivo, this.ano);
 		this.doadorCadastroParse = new DoadorCadastroParse(this.tipoArquivo, this.ano);
 		this.despesaCadastroParse = new DespesaCadastroParse(this.tipoArquivo, this.ano);
-		
-		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, this, linhaInicial);
+	}
+	
+	public void executarParse(FileItem arquivo, String divisao, int linhaInicial) throws IOException {
+		this.leitorCSV.executarMetodoPorLinhaLida(arquivo, divisao, linhaInicial);
 		finalizarCadastros();
 	}
 	

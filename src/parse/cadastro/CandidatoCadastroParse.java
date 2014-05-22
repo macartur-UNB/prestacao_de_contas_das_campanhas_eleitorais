@@ -1,10 +1,10 @@
 package parse.cadastro;
 
-import parse.LeitorCSV.ExecutorLeitorCSV;
+import parse.LeitorCSV.ExecutorLeitorCSVObservador;
 import parse.controle.CandidatoParseControle;
 import parse.indices.CandidatoIndicesParse;
 
-public class CandidatoCadastroParse implements ExecutorLeitorCSV {
+public class CandidatoCadastroParse {
 
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
@@ -26,8 +26,6 @@ public class CandidatoCadastroParse implements ExecutorLeitorCSV {
 		this.candidatoParse = new CandidatoParseControle(candidatoIndicesParse);
 	}
 
-
-	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try {
 			this.candidatoParse.addCandidato(campo);
