@@ -10,7 +10,7 @@ import parse.indices.CandidatoIndicesParse;
 
 public class CandidatoIndicesParseTeste {
 	
-	public static final Integer ANO_2002 = 2002;
+	public static final String ANO_2002 = "2002";
 	
 	private String campo[];
 	private CandidatoIndicesParse candidatoIndicesParse;
@@ -76,7 +76,7 @@ public class CandidatoIndicesParseTeste {
 	}
 
 	private void iniciarIndices() {
-		this.candidatoIndicesParse.setAno(ANO_2002);
+		this.candidatoIndicesParse.setAno(Integer.parseInt(ANO_2002));
 		this.candidatoIndicesParse.setIndiceNome(0);
 		this.candidatoIndicesParse.setIndiceCpf(1);
 		this.candidatoIndicesParse.setIndiceCargo(2);

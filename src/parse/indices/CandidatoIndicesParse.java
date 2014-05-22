@@ -15,8 +15,8 @@ public class CandidatoIndicesParse extends IndicesParse<Candidato> {
 	private int indiceFoiEleito;
 	private int indiceResultadoUltimaEleicao;
 
-	public CandidatoIndicesParse(int ano) {
-		this.ano = ano;
+	public CandidatoIndicesParse(String ano) {
+		this.ano = Integer.parseInt(ano);
 		this.indiceNome = INDICE_INVALIDO;
 		this.indiceCpf = INDICE_INVALIDO;
 		this.indiceCargo = INDICE_INVALIDO;
