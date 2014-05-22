@@ -1,10 +1,12 @@
 package parse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.commons.fileupload.FileItem;
 
 import parse.LeitorCSV.ExecutorLeitorCSVObservador;
+import parse.cadastro.CadastroParse;
 import parse.cadastro.CandidatoCadastroParse;
 import parse.cadastro.DespesaCadastroParse;
 import parse.cadastro.DoadorCadastroParse;
@@ -17,8 +19,8 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	public static final String RECEITA = "receita";
 	
 	private LeitorCSV leitorCSV;
-	private PartidoCadastroParse partidoCadastroParse;
-	private CandidatoCadastroParse candidatoCadastroParse;
+	private ArrayList<CadastroParse<?>> listaCadastrosParse;
+	
 	private FornecedorCadastroParse fornecedorCadastroParse;
 	private DoadorCadastroParse doadorCadastroParse;
 	private DespesaCadastroParse despesaCadastroParse;
@@ -31,8 +33,11 @@ public class Parse implements ExecutorLeitorCSVObservador {
 		this.ano = ano;
 		this.leitorCSV = new LeitorCSV();
 		this.leitorCSV.setExecutorLeitorCSVObservador(this);
-		this.partidoCadastroParse = new PartidoCadastroParse(this.tipoArquivo, this.ano);
-		this.candidatoCadastroParse = new CandidatoCadastroParse(this.tipoArquivo, this.ano);
+
+		this.listaCadastrosParse = new ArrayList<>();
+		this.listaCadastrosParse.add(new PartidoCadastroParse(this.tipoArquivo, this.ano));
+		this.listaCadastrosParse.add(new CandidatoCadastroParse(this.tipoArquivo, this.ano));
+		
 		this.fornecedorCadastroParse = new FornecedorCadastroParse(this.tipoArquivo, this.ano);
 		this.doadorCadastroParse = new DoadorCadastroParse(this.tipoArquivo, this.ano);
 		this.despesaCadastroParse = new DespesaCadastroParse(this.tipoArquivo, this.ano);
@@ -46,8 +51,9 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	@Override
 	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
 		try {
-			this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-			this.candidatoCadastroParse.executarLinhaDoArquivo(campo);
+			for(CadastroParse<?> cadastroParse : this.listaCadastrosParse) {
+				cadastroParse.executarLinhaDoArquivo(campo);
+			}
 			
 			if(this.tipoArquivo.equals(DESPESA)) {
 				this.fornecedorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
@@ -62,8 +68,9 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	}
 	
 	private void finalizarCadastros() throws ParseException {
-		this.partidoCadastroParse.finalizarCadastros();
-		this.candidatoCadastroParse.cadastrarInstancias();
+		for(CadastroParse<?> cadastroParse : this.listaCadastrosParse) {
+			cadastroParse.cadastrarInstancias();
+		}
 		
 		if(this.tipoArquivo.equals(DESPESA)) {
 			this.fornecedorCadastroParse.finalizarCadastros();
