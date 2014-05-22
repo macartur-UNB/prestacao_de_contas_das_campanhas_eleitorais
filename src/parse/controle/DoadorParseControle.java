@@ -20,7 +20,8 @@ public class DoadorParseControle {
 	}
 	
 	public void addDoador(String campo[]) {
-		Doador doador = this.doadorIndicesParse.iniciarDoador(campo);
+		Doador doador = new Doador();
+		this.doadorIndicesParse.iniciarInstancia(doador, campo);
 		if(!this.listaDoadores.contains(doador)) {
 			this.listaDoadores.add(doador);
 		}

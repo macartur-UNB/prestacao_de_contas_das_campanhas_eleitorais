@@ -2,7 +2,7 @@ package parse.indices;
 
 import modelo.beans.Doador;
 
-public class DoadorIndicesParse {
+public class DoadorIndicesParse extends IndicesParse<Doador> {
 
 	public static final int INDICE_INVALIDO = -1;
 
@@ -14,9 +14,8 @@ public class DoadorIndicesParse {
 		this.indiceCadastroNacional = INDICE_INVALIDO;
 	}
 	
-	public void iniciarDoador(Doador doador, String campo[]) {
-		reiniciarDoador(doador);
-		
+	@Override
+	protected void setIndicesValidos(Doador doador, String[] campo) {
 		if(indiceValido(this.indiceNome)) {
 			doador.setNome(campo[this.indiceNome]);
 		}
@@ -25,20 +24,11 @@ public class DoadorIndicesParse {
 			doador.setCadastroNacional(campo[this.indiceCadastroNacional]);
 		}
 	}
-	
-	public Doador iniciarDoador(String campo[]) {
-		Doador doador = new Doador();
-		iniciarDoador(doador, campo);
-		return doador;
-	}
-	
-	private void reiniciarDoador(Doador doador) {
+
+	@Override
+	protected void setVazioEmTodosOsSetters(Doador doador) {
 		doador.setNome(Doador.STRING_VAZIO);
 		doador.setCadastroNacional(Doador.STRING_VAZIO);
-	}
-	
-	private boolean indiceValido(int indice) {
-		return indice > INDICE_INVALIDO;
 	}
 
 	public int getIndiceNome() {
@@ -56,4 +46,5 @@ public class DoadorIndicesParse {
 	public void setIndiceCadastroNacional(int indiceCadastroNacional) {
 		this.indiceCadastroNacional = indiceCadastroNacional;
 	}
+	
 }
