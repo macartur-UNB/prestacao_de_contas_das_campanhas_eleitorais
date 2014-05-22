@@ -37,8 +37,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesDespesa2002();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -52,8 +52,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesDespesa2004();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -68,8 +68,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesDespesa2006();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -84,8 +84,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesDespesa2008();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -100,8 +100,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesReceita2002();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -115,8 +115,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesReceita2004();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -131,8 +131,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesReceita2006();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -147,8 +147,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse = new PartidoCadastroParse(tipoArquivo, ano);
 		
 		setIndicesReceita2008();
-		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
-		this.partidoCadastroParse.finalizarCadastros();
+		this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
+		this.partidoCadastroParse.cadastrarInstancias();
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
@@ -164,8 +164,8 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		
 		setIndicesReceita2008();
 		
-		for(int i = 0; i < PartidoCadastroParse.LINHAS_PARA_COMMITAR; i++) {
-			this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
+		for(int i = 0; i < PartidoCadastroParse.LINHAS_PARA_FAZER_CADASTRO; i++) {
+			this.partidoCadastroParse.executarLinhaDoArquivo(this.campo);
 		}
 		
 		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();

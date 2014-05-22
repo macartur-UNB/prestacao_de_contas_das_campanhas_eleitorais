@@ -29,7 +29,7 @@ public abstract class CadastroParse<O> {
 	}
 	
 	public void executarLinhaDoArquivo(String campo[]) throws ParseException {
-		this.parseControle.addInstancia(campo);
+		this.parseControle.addInstanciaUnica(campo);
 		this.linhasLidas++;
 		if(this.linhasLidas >= LINHAS_PARA_FAZER_CADASTRO) {
 			cadastrarInstancias();
