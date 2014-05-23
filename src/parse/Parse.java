@@ -21,7 +21,6 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	private LeitorCSV leitorCSV;
 	private ArrayList<CadastroParse<?>> listaCadastrosParse;
 	
-	private FornecedorCadastroParse fornecedorCadastroParse;
 	private DoadorCadastroParse doadorCadastroParse;
 	private DespesaCadastroParse despesaCadastroParse;
 	
@@ -37,8 +36,8 @@ public class Parse implements ExecutorLeitorCSVObservador {
 		this.listaCadastrosParse = new ArrayList<>();
 		this.listaCadastrosParse.add(new PartidoCadastroParse(this.tipoArquivo, this.ano));
 		this.listaCadastrosParse.add(new CandidatoCadastroParse(this.tipoArquivo, this.ano));
+		this.listaCadastrosParse.add(new FornecedorCadastroParse(this.tipoArquivo, this.ano));
 		
-		this.fornecedorCadastroParse = new FornecedorCadastroParse(this.tipoArquivo, this.ano);
 		this.doadorCadastroParse = new DoadorCadastroParse(this.tipoArquivo, this.ano);
 		this.despesaCadastroParse = new DespesaCadastroParse(this.tipoArquivo, this.ano);
 	}
@@ -56,7 +55,6 @@ public class Parse implements ExecutorLeitorCSVObservador {
 			}
 			
 			if(this.tipoArquivo.equals(DESPESA)) {
-				this.fornecedorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
 				this.despesaCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
 			} 
 			else {
@@ -73,7 +71,6 @@ public class Parse implements ExecutorLeitorCSVObservador {
 		}
 		
 		if(this.tipoArquivo.equals(DESPESA)) {
-			this.fornecedorCadastroParse.finalizarCadastros();
 			this.despesaCadastroParse.finalizarCadastros();
 		} 
 		else {
