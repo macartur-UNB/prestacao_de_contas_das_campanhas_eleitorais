@@ -1,120 +1,79 @@
 package parse.cadastro;
 
-import parse.controle.FornecedorParseControle;
+import modelo.beans.Fornecedor;
+import parse.ParseException;
+import parse.controle.ParseControle;
 import parse.indices.FornecedorIndicesParse;
+import parse.indices.IndicesParse;
 
-public class FornecedorCadastroParse {
-
-	public static final String DESPESA = "despesa";
-	public static final String RECEITA = "receita";
+public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
 	
-	public static final String ANO_2002 = "2002";
-	public static final String ANO_2004 = "2004";
-	public static final String ANO_2006 = "2006";
-	public static final String ANO_2008 = "2008";
-	
-	private int linhasLidas;
-
-	private FornecedorParseControle fornecedorParse;
-	private FornecedorIndicesParse fornecedorIndicesParse;
-	
-	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
-		try{
-			this.fornecedorParse.addInstanciaUnica(campo);
-			this.linhasLidas++;
-			
-			if(this.linhasLidas >= 20000) {
-				this.fornecedorParse.cadastrarInstancias();
-				this.fornecedorParse.resetar();
-				this.linhasLidas = 0;
-			}
-		} catch(Exception e) {
-			this.fornecedorParse.resetar();
-			this.linhasLidas = 0;
-			System.out.println("ERRO: " + e.getMessage());
-		}
+	public FornecedorCadastroParse(String tipoArquivo, String ano)
+			throws ParseException {
+		super(tipoArquivo, ano);
 	}
 	
-	public void finalizarCadastros() {
-		try{
-			this.fornecedorParse.cadastrarInstancias();
-			this.fornecedorParse.resetar();
-			this.linhasLidas = 0;
-		} catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
+
+	@Override
+	public ParseControle<Fornecedor> novaInstancia(
+			IndicesParse<Fornecedor> indicesParse) {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	public FornecedorCadastroParse(String tipoArquivo, String ano) {
-		this.linhasLidas = 0;
-		
-		this.fornecedorIndicesParse = getPartidoIndicesParse(tipoArquivo, ano);
-		this.fornecedorParse = new FornecedorParseControle(this.fornecedorIndicesParse);
-	}
-	
-	private FornecedorIndicesParse getPartidoIndicesParse(String tipoArquivo, String ano) {
-		if(tipoArquivo.equals(DESPESA)) {
-			switch (ano) {
-			case ANO_2002:
-				return getFornecedorIndicesParseDespesa2002();
 
-			case ANO_2004:
-				return getFornecedorIndicesParseDespesa2004();
-
-			case ANO_2006:
-				return getFornecedorIndicesParseDespesa2006();
-
-			case ANO_2008:
-				return getFornecedorIndicesParseDespesa2008();
-
-			default:
-				return null;
-			}
-		} else {
-			switch (ano) {
-			case ANO_2002:
-				
-			case ANO_2004:
-
-			case ANO_2006:
-
-			case ANO_2008:
-
-			default:
-				return null;
-			}
-		}
-	}
-	
-	private FornecedorIndicesParse getFornecedorIndicesParseDespesa2002() {
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseDespesa2002() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceNome(8);
 		fornecedorIndicesParse.setIndiceCadastroNacional(6);
 		
 		return fornecedorIndicesParse;
 	}
-	
-	private FornecedorIndicesParse getFornecedorIndicesParseDespesa2004() {
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseDespesa2004() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceNome(18);
 		fornecedorIndicesParse.setIndiceCadastroNacional(19);
 		return fornecedorIndicesParse;
 	}
-	
-	private FornecedorIndicesParse getFornecedorIndicesParseDespesa2006() {
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseDespesa2006() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceNome(18);
 		fornecedorIndicesParse.setIndiceCadastroNacional(19);
 		
 		return fornecedorIndicesParse;
 	}
-	
-	private FornecedorIndicesParse getFornecedorIndicesParseDespesa2008() {
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseDespesa2008() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceNome(22);
 		fornecedorIndicesParse.setIndiceCadastroNacional(23);
 		
 		return fornecedorIndicesParse;
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2002() {
+		return new FornecedorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2004() {
+		return new FornecedorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2006() {
+		return new FornecedorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2008() {
+		return new FornecedorIndicesParse();
 	}
 	
 }
