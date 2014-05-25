@@ -1,7 +1,11 @@
 package teste;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
+import modelo.beans.Candidato;
+import modelo.beans.Partido;
 import modelo.dao.CandidatoDAO;
 
 import org.junit.Test;
@@ -28,6 +32,17 @@ public class CandidatoControleTeste extends TemplateTeste {
 	@Test
 	public void deveRecuperarUmCandidatoPeloNome() throws SQLException {
 		
+		
+		ArrayList<Candidato>   listaCandidatos = new ArrayList <Candidato> ();
+			
+		Candidato candidato = new Candidato();
+		candidato.setNome("Nome_Candidato");
+		listaCandidatos.add(candidato);
+				
+		/*this.candidatoDAO.adicionarResultSetNaLista(listaCandidatos);*/
+		this.candidatoDAO.getCandidato("Nome_Candidato");
+		this.candidatoControle.getCandidato("Nome_Candidato");
+			
 	}
 	
 	@Test

@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.CandidatoControle;
 import modelo.beans.Candidato;
+import controle.CandidatoControle;
 
-@WebServlet("/SelecionarCandidato")
-public class SelecionarCandidato extends HttpServlet {
 
-	private static final long serialVersionUID = -4024368294265814535L;
-
+@WebServlet("/VisualizarResultadoListaBuscaCandidato")
+public class VisualizarResultadoListaBuscaCandidato extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -27,22 +27,21 @@ public class SelecionarCandidato extends HttpServlet {
 		RequestDispatcher requestDispatcher;
 
 		CandidatoControle control = new CandidatoControle();
-		List<Candidato> listaCandidato = control.getUmCandidato(nome);
+		List<Candidato> listaCandidatos = control.getListaCandidatos(nome);
 
-		if (listaCandidato.isEmpty()) {
+		if (listaCandidatos.isEmpty()) {
 			requestDispatcher = request
 					.getRequestDispatcher("/erro_candidato_inexistente.jsp");
 			requestDispatcher.forward(request, response);
 		} else {
 
-			String cpf = listaCandidato.get(0).getCpf();
+			String cpf = listaCandidatos.get(0).getCpf();
 			request.setAttribute("cpf", cpf);
-			request.setAttribute("listaCandidato", listaCandidato);
+			request.setAttribute("listaCandidatos", listaCandidatos);
 
 			requestDispatcher = request
-					.getRequestDispatcher("/visualizar_candidato.jsp");
+					.getRequestDispatcher("/visualizar_lista_candidatos.jsp");
 			requestDispatcher.forward(request, response);
 		}
 	}
-
 }

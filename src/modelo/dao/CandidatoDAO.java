@@ -188,5 +188,44 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 		return listaCandidato;
 	}
+	
+	public LinkedList<Candidato> getLista(String nome) {
+
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			
+			String comandoSQL = "SELECT * FROM t_candidato WHERE nome LIKE '%"+nome+"%' ";
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Candidato candidato = new Candidato();
+				candidato.setNome(resultadoSQL.getString(NOME));
+				candidato.setAno(resultadoSQL.getInt(ANO));
+				candidato.setCpf(resultadoSQL.getString(CPF));
+				candidato.setNumero(resultadoSQL.getString(NUMERO));
+				candidato.setCargo(resultadoSQL.getString(CARGO));
+				//candidato.setFoiEleito(resultado.getSQL(RESULTADO);
+				Partido partido = new Partido();
+				partido.setSigla(resultadoSQL.getString(PARTIDO));
+				candidato.setPartido(partido);
+				candidato.setPessoaJuridica(false);
+				candidato.setUf(resultadoSQL.getString(UF));
+
+				if (candidato != null) listaCandidato.add(candidato);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+
+		return listaCandidato;
+	}
 
 }
