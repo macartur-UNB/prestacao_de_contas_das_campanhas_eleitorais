@@ -1,5 +1,7 @@
 package controle;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import modelo.beans.Candidato;
@@ -11,6 +13,10 @@ public class CandidatoControle {
 
 	public CandidatoControle() {
 		this.candidatoDAO = new CandidatoDAO();
+	}
+	
+	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
+		return this.candidatoDAO.getLista();
 	}
 
 	public LinkedList<Candidato> getListaCandidatos(String nome) {
