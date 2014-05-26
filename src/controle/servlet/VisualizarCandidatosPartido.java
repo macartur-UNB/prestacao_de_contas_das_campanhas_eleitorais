@@ -20,38 +20,49 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
+	public VisualizarCandidatosPartido() {
+	}
+	
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		CandidatoControle candidatoControle = new CandidatoControle();
-		
-		String sigla = request.getParameter("sigla");
-		int ano = Integer.parseInt(request.getParameter("ano"));
-		
-		Partido partido = new Partido();
-		partido.setSigla(sigla);
-		
 		try {
+			CandidatoControle candidatoControle = new CandidatoControle();
 			ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 			listaCandidatos = candidatoControle.getListaCandidatos();
-			ArrayList<Candidato> listaCandidatosDF = new ArrayList<>();
-			for(Candidato candidato : listaCandidatos) {
-				if((candidato.getUf().equals("DF"))
-						&& (candidato.getPartido().equals(partido))
-						&& (candidato.getAno().equals(ano))
-						&& !(listaCandidatosDF.contains(candidato))) {
-					listaCandidatosDF.add(candidato);
-				}
-			}
+			listaCandidatos =
+					filtrarListaDeCandidatosPorUfPartidoAnoCadastroUnico
+					(listaCandidatos,request,response);
 			int anos[] = { 2010, 2006, 2002 };
 			request.setAttribute("anos", anos);
-			request.setAttribute("listaCandidatosDF", listaCandidatosDF);
+			request.setAttribute("listaCandidatos", listaCandidatos);
 			RequestDispatcher requestDispatcher = request.
 					getRequestDispatcher("/visualizar_candidato_partido.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Candidato> filtrarListaDeCandidatosPorUfPartidoAnoCadastroUnico
+		(ArrayList<Candidato> lCandidatos, HttpServletRequest request,
+		 HttpServletResponse response) {	
+		
+		String sigla = request.getParameter("sigla");
+		int ano = Integer.parseInt(request.getParameter("ano"));
+		Partido partido = new Partido();
+		partido.setSigla(sigla);
+		
+		ArrayList<Candidato> lCandidatosFiltrados = new ArrayList<>();
+		
+		for(Candidato candidato : lCandidatos) {
+			if((candidato.getUf().equals("DF"))
+					&& (candidato.getPartido().equals(partido))
+					&& (candidato.getAno().equals(ano))
+					&& !(lCandidatosFiltrados.contains(candidato))) {
+				lCandidatosFiltrados.add(candidato);
+			}
+		}		
+		return lCandidatosFiltrados;
 	}
 }

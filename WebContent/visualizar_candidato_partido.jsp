@@ -29,7 +29,7 @@
 					visualizar mais informações.
 				</p>
 
-				<c:forEach var="candidato" items="${listaCandidatosDF}">
+				<c:forEach var="candidato" items="${listaCandidatos}">
 					<c:url var="candidatoUrl" value="/SelecionarCandidato">
 						<c:param name="nome" value="${candidato.nome}"></c:param>
 					</c:url>
