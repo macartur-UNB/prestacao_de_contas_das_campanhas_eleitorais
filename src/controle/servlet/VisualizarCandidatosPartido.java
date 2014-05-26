@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,13 +36,14 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 					listaCandidatosDF.add(candidato);
 				}
 			}
-			
 			int anos[] = { 2010, 2006, 2002 };
-			int i = 0;
-			candidato = candidatoControle.getUmCandidato(nome,anos[i]);
-			
+			request.setAttribute("anos", anos);
+			request.setAttribute("listaCandidatosDF", listaCandidatosDF);
+			RequestDispatcher requestDispatcher = request.
+					getRequestDispatcher("/visualizar_candidato_partido.jsp");
+			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
-			
+			e.printStackTrace();
 		}
 	}
 }
