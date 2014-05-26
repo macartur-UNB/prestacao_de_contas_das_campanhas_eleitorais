@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.beans.Candidato;
+import modelo.beans.Partido;
 import controle.CandidatoControle;
 
 @WebServlet("/VisualizarCandidatosPartido")
@@ -26,13 +27,21 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 		CandidatoControle candidatoControle = new CandidatoControle();
 		
 		String nome = request.getParameter("nome");
+		String sigla = request.getParameter("sigla");
+		int ano = Integer.parseInt(request.getParameter("ano"));
+		
+		Partido partido = new Partido();
+		partido.setSigla(sigla);
 		
 		try {
 			ArrayList<Candidato> listaCandidatos = new ArrayList<>();
 			listaCandidatos = candidatoControle.getListaCandidatos();
 			ArrayList<Candidato> listaCandidatosDF = new ArrayList<>();
 			for(Candidato candidato : listaCandidatos) {
-				if(candidato.getUf().equals("DF")) {
+				if((candidato.getUf().equals("DF"))
+						&& (candidato.getPartido().equals(partido))
+						&& (candidato.getAno().equals(ano))
+						&& !(listaCandidatosDF.contains(candidato))) {
 					listaCandidatosDF.add(candidato);
 				}
 			}

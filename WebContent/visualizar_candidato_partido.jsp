@@ -16,49 +16,33 @@
 <body>
 
 	<%@include file="imports/cabecalhopartidos.jsp"%>
-
+	
+	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Perfil</h3>
+			<h3>Candidatos</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Abaixo o Perfil do <b>Partido</b> selecionado.
+					Listagem de <b>Candidatos</b>. Clique no candidato desejado para
+					visualizar mais informações.
 				</p>
 
-				<table>
-					<tr>
-						<td>Nome</td>
-						<td>${partido.nome}</td>
-					</tr>
-					
-					<tr>
-						<td>Sigla:</td>
-						<td>${partido.sigla}</td>
-					</tr>
-				</table>
-				<br />
-				
-				<c:forEach var ="ano" items ="${anos}" >
-					<table border="2" width="300">
-					<tr><td>
-						<c:url var="AnoUrl" value="/VisualizarCandidatosPartido">
-							<c:param name="sigla" value="${partido.sigla}" />						
-							<c:param name="ano" value="${ano}" />
-						</c:url>
-						<a href="${AnoUrl}">${ano}</a>
-					</td></tr>
-					</table><br />
+				<c:forEach var="candidato" items="${listaCandidatosDF}">
+					<c:url var="candidatoUrl" value="/SelecionarCandidato">
+						<c:param name="nome" value="${candidato.nome}"></c:param>
+					</c:url>
+					<a href="${candidatoUrl}">${candidato.nome}</a>
+					<br>
 				</c:forEach>
-
 				<br>
 			</div>
 		</div>
 	</div>
+	<!-- FIM CONTEUDO-->
 
 	<%@include file="imports/rodape.jsp"%>
-
 
 </body>
 </html>
