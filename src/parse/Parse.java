@@ -21,9 +21,6 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	private LeitorCSV leitorCSV;
 	private ArrayList<CadastroParse<?>> listaCadastrosParse;
 	
-	private DoadorCadastroParse doadorCadastroParse;
-	private DespesaCadastroParse despesaCadastroParse;
-	
 	private String tipoArquivo;
 	private String ano;
 	
@@ -37,9 +34,8 @@ public class Parse implements ExecutorLeitorCSVObservador {
 		this.listaCadastrosParse.add(new PartidoCadastroParse(this.tipoArquivo, this.ano));
 		this.listaCadastrosParse.add(new CandidatoCadastroParse(this.tipoArquivo, this.ano));
 		this.listaCadastrosParse.add(new FornecedorCadastroParse(this.tipoArquivo, this.ano));
-		
-		this.doadorCadastroParse = new DoadorCadastroParse(this.tipoArquivo, this.ano);
-		this.despesaCadastroParse = new DespesaCadastroParse(this.tipoArquivo, this.ano);
+		this.listaCadastrosParse.add(new DoadorCadastroParse(this.tipoArquivo, this.ano));
+		this.listaCadastrosParse.add(new DespesaCadastroParse(this.tipoArquivo, this.ano));
 	}
 	
 	public void executarParse(FileItem arquivo, String divisao, int linhaInicial) throws IOException, ParseException {
@@ -53,13 +49,6 @@ public class Parse implements ExecutorLeitorCSVObservador {
 			for(CadastroParse<?> cadastroParse : this.listaCadastrosParse) {
 				cadastroParse.executarLinhaDoArquivo(campo);
 			}
-			
-			if(this.tipoArquivo.equals(DESPESA)) {
-				this.despesaCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-			} 
-			else {
-				this.doadorCadastroParse.executarMetodoPorLinhaDoArquivo(campo);
-			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -68,13 +57,6 @@ public class Parse implements ExecutorLeitorCSVObservador {
 	private void finalizarCadastros() throws ParseException {
 		for(CadastroParse<?> cadastroParse : this.listaCadastrosParse) {
 			cadastroParse.cadastrarInstancias();
-		}
-		
-		if(this.tipoArquivo.equals(DESPESA)) {
-			this.despesaCadastroParse.finalizarCadastros();
-		} 
-		else {
-			this.doadorCadastroParse.finalizarCadastros();
 		}
 	}
 

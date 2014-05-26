@@ -16,5 +16,4 @@ public class DespesaParseControle extends ParseControle<Despesa> {
 		return despesa;
 	}
 
-	
 }
