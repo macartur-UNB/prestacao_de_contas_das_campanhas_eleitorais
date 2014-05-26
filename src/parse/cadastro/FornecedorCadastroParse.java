@@ -2,6 +2,7 @@ package parse.cadastro;
 
 import modelo.beans.Fornecedor;
 import parse.ParseException;
+import parse.controle.FornecedorParseControle;
 import parse.controle.ParseControle;
 import parse.indices.FornecedorIndicesParse;
 import parse.indices.IndicesParse;
@@ -17,8 +18,7 @@ public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
 	@Override
 	public ParseControle<Fornecedor> novaInstancia(
 			IndicesParse<Fornecedor> indicesParse) {
-		// TODO Auto-generated method stub
-		return null;
+		return new FornecedorParseControle(indicesParse);
 	}
 
 	@Override

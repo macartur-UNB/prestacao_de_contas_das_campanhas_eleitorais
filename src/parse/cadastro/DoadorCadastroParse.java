@@ -1,115 +1,74 @@
 package parse.cadastro;
 
+import modelo.beans.Doador;
+import parse.ParseException;
 import parse.controle.DoadorParseControle;
+import parse.controle.ParseControle;
 import parse.indices.DoadorIndicesParse;
+import parse.indices.IndicesParse;
 
-public class DoadorCadastroParse {
+public class DoadorCadastroParse extends CadastroParse<Doador> {
 
-	public static final String DESPESA = "despesa";
-	public static final String RECEITA = "receita";
 	
-	public static final String ANO_2002 = "2002";
-	public static final String ANO_2004 = "2004";
-	public static final String ANO_2006 = "2006";
-	public static final String ANO_2008 = "2008";
-	
-	private int linhasLidas;
-
-	private DoadorParseControle doadorParse;
-	private DoadorIndicesParse doadorIndicesParse;
-	
-	public void executarMetodoPorLinhaDoArquivo(String[] campo) {
-		try{
-			this.doadorParse.addInstanciaUnica(campo);
-			this.linhasLidas++;
-			
-			if(this.linhasLidas >= 20000) {
-				this.doadorParse.cadastrarInstancias();
-				this.doadorParse.resetar();
-				this.linhasLidas = 0;
-			}
-		} catch(Exception e) {
-			this.doadorParse.resetar();
-			this.linhasLidas = 0;
-			System.out.println("ERRO: " + e.getMessage());
-		}
-	}
-	
-	public void finalizarCadastros() {
-		try{
-			this.doadorParse.cadastrarInstancias();
-			this.doadorParse.resetar();
-			this.linhasLidas = 0;
-		} catch(Exception e) {
-			System.out.println("ERRO: " + e.getMessage());
-		}
-	}
-	
-	public DoadorCadastroParse(String tipoArquivo, String ano) {
-		this.linhasLidas = 0;
+	public DoadorCadastroParse(String tipoArquivo, String ano)
+			throws ParseException {
+		super(tipoArquivo, ano);
 		
-		this.doadorIndicesParse = getPartidoIndicesParse(tipoArquivo, ano);
-		this.doadorParse = new DoadorParseControle(this.doadorIndicesParse);
 	}
-	
-	private DoadorIndicesParse getPartidoIndicesParse(String tipoArquivo, String ano) {
-		if(tipoArquivo.equals(DESPESA)) {
-			switch (ano) {
-			case ANO_2002:
-				
-			case ANO_2004:
 
-			case ANO_2006:
-
-			case ANO_2008:
-
-			default:
-				return null;
-			}
-		} else {
-			switch (ano) {
-			case ANO_2002:
-				return getDoadorIndicesParseReceita2002();
-
-			case ANO_2004:
-				return getDoadorIndicesParseReceita2004();
-
-			case ANO_2006:
-				return getDoadorIndicesParseReceita2006();
-
-			case ANO_2008:
-				return getDoadorIndicesParseReceita2008();
-
-			default:
-				return null;
-			}
-		}
+	@Override
+	public ParseControle<Doador> novaInstancia(IndicesParse<Doador> indicesParse) {
+		return new DoadorParseControle(indicesParse);
 	}
-	
-	private DoadorIndicesParse getDoadorIndicesParseReceita2002() {
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2002() {
+		return new DoadorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2004() {
+		return new DoadorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2006() {
+		return new DoadorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2008() {
+		return new DoadorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseReceita2002() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceNome(8);
 		doadorIndicesParse.setIndiceCadastroNacional(6);
 		
 		return doadorIndicesParse;
 	}
-	
-	private DoadorIndicesParse getDoadorIndicesParseReceita2004() {
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseReceita2004() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceNome(15);
 		doadorIndicesParse.setIndiceCadastroNacional(16);
 		return doadorIndicesParse;
 	}
-	
-	private DoadorIndicesParse getDoadorIndicesParseReceita2006() {
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseReceita2006() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceNome(15);
 		doadorIndicesParse.setIndiceCadastroNacional(16);
 		
 		return doadorIndicesParse;
 	}
-	
-	private DoadorIndicesParse getDoadorIndicesParseReceita2008() {
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseReceita2008() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceNome(19);
 		doadorIndicesParse.setIndiceCadastroNacional(20);
