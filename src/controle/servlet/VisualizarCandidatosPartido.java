@@ -26,7 +26,6 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 		
 		CandidatoControle candidatoControle = new CandidatoControle();
 		
-		String nome = request.getParameter("nome");
 		String sigla = request.getParameter("sigla");
 		int ano = Integer.parseInt(request.getParameter("ano"));
 		
