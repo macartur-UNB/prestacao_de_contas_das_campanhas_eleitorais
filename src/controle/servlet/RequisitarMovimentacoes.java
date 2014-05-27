@@ -74,7 +74,11 @@ public class RequisitarMovimentacoes extends HttpServlet {
 				request.setAttribute("listaReceitas", listaReceita);
 				request.setAttribute("listaDespesas", listaDespesa);
 
-				partido = partidoControle.getPartido(sigla);
+				
+				//FIX ME =============
+				partido = partidoControle.getListaPartidos("sigla",sigla).getFirst();
+				//===============
+				
 				if (partido.getSigla().equals("0")) {
 					requestDispatcher = request
 							.getRequestDispatcher("/erro_partido_inexistente.jsp");

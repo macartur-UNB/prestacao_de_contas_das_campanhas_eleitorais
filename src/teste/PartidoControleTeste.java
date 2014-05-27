@@ -38,10 +38,8 @@ public class PartidoControleTeste extends TemplateTeste {
 		listaPartidos.add(partido);
 		
 		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		this.partidoDAO.getPartido("PT");
-		this.partidoControle.getPartido("PT");
 		
-		Assert.assertEquals(partido, this.partidoControle.getPartido("PT"));
+		Assert.assertEquals(partido, this.partidoControle.getListaPartidos("sigla","PT").getFirst());
 	}
 	
 	@Test
@@ -60,10 +58,8 @@ public class PartidoControleTeste extends TemplateTeste {
 		listaPartidos.add(partido2);
 		
 		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		this.partidoDAO.getListaPartidos();
-		this.partidoControle.getListaPartidos();
-		
-		Assert.assertEquals(listaPartidos, this.partidoControle.getListaPartidos());
-		
+				
+		Assert.assertEquals(listaPartidos.get(0), this.partidoControle.getTodosPartidos().get(0));
+		Assert.assertEquals(listaPartidos.get(1), this.partidoControle.getTodosPartidos().get(1));
 	}
 }

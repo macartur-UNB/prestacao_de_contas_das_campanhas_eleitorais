@@ -14,12 +14,14 @@ public class PartidoControle {
 		this.partidoDAO = new PartidoDAO();
 	}
 	
-	public LinkedList<Partido> getListaPartidos() throws SQLException {
-		return this.partidoDAO.getListaPartidos();
+	public LinkedList<Partido> getListaPartidos(String sigla,String valor) throws SQLException {
+		return this.partidoDAO.getListaPartidos(sigla,valor);
 	}
 	
-	public Partido getPartido(String sigla) throws SQLException {
-		return this.partidoDAO.getPartido(sigla);
+	
+	public LinkedList<Partido> getTodosPartidos() throws SQLException{
+		return this.partidoDAO.getTodosPartidos();
 	}
-
+	
+	
 }

@@ -13,14 +13,15 @@ public class Partido extends Pessoa {
 	public static final String STRING_VAZIO = "";
 	public static final Boolean BOOLEAN_VAZIO = false;
 	
-	private String numeroPartido;
+	private String numero;
 	private String sigla;
+	
 	
 	public Partido() {
 		this.setNome(STRING_VAZIO);
 		this.setPessoaJuridica(BOOLEAN_VAZIO);
 		this.sigla = STRING_VAZIO;
-		this.numeroPartido = STRING_VAZIO;
+		this.numero = STRING_VAZIO;
 	}
 	
 	@Override
@@ -33,11 +34,11 @@ public class Partido extends Pessoa {
 	}
 	
 	public String getNumeroPartido() {
-		return numeroPartido;
+		return numero;
 	}
 	
 	public void setNumeroPartido(String numeroPartido) {
-		this.numeroPartido = numeroPartido;
+		this.numero = numeroPartido;
 	}
 	
 	public String getSigla() {
@@ -46,6 +47,5 @@ public class Partido extends Pessoa {
 	
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
-	}
-	
+	}	
 }

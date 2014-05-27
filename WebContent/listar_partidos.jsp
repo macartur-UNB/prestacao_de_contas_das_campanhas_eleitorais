@@ -19,30 +19,38 @@
 
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Perfil</h3>
+			<h3>Listagem</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Abaixo o Perfil do <b>Partido</b> selecionado.
+					Abaixo a <b>lista de Partidos</b> selecionados.
 				</p>
 
-				<table>
-					<tr>
-						<td>Nome</td>
-						<td>${partido.nome}</td>
-					</tr>
-					
-					<tr>
-						<td>Sigla:</td>
-						<td>${partido.sigla}</td>
-					</tr>
-				</table>
-				<br />
+				<c:forEach var="listaPartidos" items="${listaPartidos}">
+					<table border="2" width="300">
+						<tr>
+							<td>Nome:</td>
+							<td>							
+								<c:url var="partidoURL" value="/visualizarPartido">
+									<c:param name="nome" value="${listaPartidos.nome}"></c:param>
+									<c:param name="sigla" value="${listaPartidos.sigla}"></c:param>
+								</c:url>
+								<a  href="${partidoURL}" > ${listaPartidos.nome} </a>
+							</td>
+						</tr>
+						<tr>
+							<td>Sigla:</td>
+							<td> ${listaPartidos.sigla}</td>
+						</tr>
+					</table>
+					<br />
+				</c:forEach>
 				<br>
 			</div>
 		</div>
 	</div>
+	<!-- FIM CONTEUDO-->
 
 	<%@include file="imports/rodape.jsp"%>
 

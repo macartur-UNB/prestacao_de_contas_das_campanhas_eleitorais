@@ -40,7 +40,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 	}
@@ -55,7 +55,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());
@@ -71,7 +71,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());
@@ -87,7 +87,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());
@@ -103,7 +103,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 	}
@@ -118,7 +118,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());
@@ -134,7 +134,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());
@@ -150,7 +150,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 		this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		this.partidoCadastroParse.finalizarCadastros();
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());
@@ -168,7 +168,7 @@ public class PartidoCadastroParseTeste extends TemplateTeste {
 			this.partidoCadastroParse.executarMetodoPorLinhaDoArquivo(this.campo);
 		}
 		
-		Partido partido = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partido = this.partidoDAO.getTodosPartidos().getFirst();
 		
 		Assert.assertEquals(this.campo[this.indiceSigla], partido.getSigla());
 		Assert.assertEquals(this.campo[this.indiceNumero], partido.getNumeroPartido());

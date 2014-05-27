@@ -25,17 +25,17 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Listagem de <b>Partidos</b>. Clique no partido desejado para
-					visualizar mais informações.
+					Buscar <b>Partido</b>
 				</p>
 
-				<c:forEach var="partido" items="${listaPartidos}">
-					<c:url var="partidoUrl" value="/SelecionarPartido">
-						<c:param name="sigla" value="${partido.sigla}"></c:param>
-					</c:url>
-					<a href="${partidoUrl}">${partido.sigla}</a>
-					<br>
-				</c:forEach>
+				<form action="RequisitarPartido" method="POST">
+					<select name="select">
+						<option name="sigla">Sigla</option>
+						<option name="nome">Nome</option>
+					</select> 
+					<input type="text" name="valor" /> 
+					<input type="submit" value="BUSCAR" />
+				</form>
 				<br>
 			</div>
 		</div>

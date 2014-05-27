@@ -42,7 +42,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		this.partidoParseControle.cadastrarPartidos();
 		this.partidoParseControle.resetar();
 		
-		Partido partidoCadastrado = this.partidoDAO.getListaPartidos().getFirst();
+		Partido partidoCadastrado = this.partidoDAO.getTodosPartidos().getFirst();
 				
 		Assert.assertEquals(this.campo[SIGLA], partidoCadastrado.getSigla());
 		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumeroPartido());
@@ -55,7 +55,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		this.partidoParseControle.cadastrarPartidos();
 		this.partidoParseControle.resetar();
 		
-		int numeroPartidos = this.partidoDAO.getListaPartidos().size();
+		int numeroPartidos = this.partidoDAO.getTodosPartidos().size();
 				
 		Assert.assertEquals(1, numeroPartidos);
 	}

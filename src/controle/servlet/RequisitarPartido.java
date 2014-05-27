@@ -21,13 +21,17 @@ public class RequisitarPartido extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String tipo = request.getParameter("select");
+		String valor = request.getParameter("valor");
+		
 		PartidoControle control = new PartidoControle();
 		try {
-			List<Partido> listaPartidos = control.getListaPartidos();
+			List<Partido> listaPartidos = control.getListaPartidos(tipo, valor);
+			
 			request.setAttribute("listaPartidos", listaPartidos);
 			
 			RequestDispatcher requestDispatcher = request
-					.getRequestDispatcher("/requisitar_partido.jsp");
+					.getRequestDispatcher("/listar_partidos.jsp");
 			requestDispatcher.forward(request, response);
 		
 		} catch (SQLException e) {

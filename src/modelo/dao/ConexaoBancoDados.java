@@ -22,7 +22,7 @@ public class ConexaoBancoDados {
 	private static String nomeSevidor = "localhost";
 	private static String nomeBanco = "gpp";
 	private static String usuario = "root";
-	private static String senha = "root";
+	private static String senha = "macartur";
 	
 	private Connection conexao;
 	private Statement afirmacao;
@@ -33,12 +33,9 @@ public class ConexaoBancoDados {
 	
 	public Connection getConexao() throws SQLException {
 		Connection conexao = null;
+			
 		try {
-			conexao = DriverManager.getConnection(localBanco + nomeSevidor + "/" + nomeBanco, usuario, senha);
-			return conexao;
-		} catch(Exception e) {
-		}		
-		try {
+			Class.forName("com.mysql.jdbc.Driver");
 			conexao = DriverManager.getConnection(localBanco + nomeSevidor + "/" + nomeBanco, usuario, senha);
 			return conexao;
 		} catch(Exception e) {

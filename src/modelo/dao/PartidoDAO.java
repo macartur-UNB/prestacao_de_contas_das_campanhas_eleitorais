@@ -24,6 +24,7 @@ public class PartidoDAO {
 	
 	private static final String SIGLA_PARTIDO = "sigla";
 	private static final String NUMERO_PARTIDO = "numero";
+	private static final String NOME = "nome";
 	
 	private Connection conexao;
 	private PreparedStatement instrucaoSQL;
@@ -36,7 +37,7 @@ public class PartidoDAO {
 		try {
 			ArrayList<Partido> listaPartidosNaoCadastrados = new ArrayList<>();
 			ArrayList<Partido> listaPartidosAtualizaveis = new ArrayList<>();
-			LinkedList<Partido> listaPartidosCadastrados = getListaPartidos();
+			LinkedList<Partido> listaPartidosCadastrados = getListaPartidos("sigla", "%");
 			Collections.sort(listaPartidosCadastrados, Comparacao.NOME);
 			for(Partido partido : listaPartidos) {
 				if(Collections.binarySearch(listaPartidosCadastrados, partido, Comparacao.NOME) < 0) {
@@ -88,12 +89,18 @@ public class PartidoDAO {
 		}		
 	}
 	
-	public LinkedList<Partido> getListaPartidos() throws SQLException {
+	public LinkedList<Partido> getTodosPartidos() throws SQLException
+	{
+		return getListaPartidos("sigla","%");		
+	}
+	
+		
+	public LinkedList<Partido> getListaPartidos(String tipo, String valor) throws SQLException {
 		LinkedList<Partido> listaPartidos = new LinkedList<>();
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 			
-			String comandoSQL = "SELECT * FROM t_partido";
+			String comandoSQL = "SELECT * FROM t_partido WHERE "+tipo+" LIKE '%"+valor+"%'";
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 			
 			ResultSet resultadoSQL = (ResultSet) this.instrucaoSQL.executeQuery();
@@ -101,7 +108,7 @@ public class PartidoDAO {
 				Partido partido = new Partido();
 				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
 				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
-				
+				partido.setNome(resultadoSQL.getString(NOME));				
 				listaPartidos.add(partido);
 			}
 			
@@ -113,35 +120,7 @@ public class PartidoDAO {
 		
 		return listaPartidos;
 	}
-	
-	public Partido getPartido(String sigla) throws SQLException {
-		Partido partido = new Partido();
-		try {
-			this.conexao = new ConexaoBancoDados().getConexao();
-
-			String comandoSQL = "SELECT * FROM t_partido WHERE sigla LIKE '" + sigla + "'";
-			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);			
-
-			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-
-			if(resultadoSQL.next()) {
-				partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
-				partido.setNumeroPartido(resultadoSQL.getString(NUMERO_PARTIDO));
-			} else{
-				partido.setSigla("0");
-			}
-
-			instrucaoSQL.close();
-
-		} catch(Exception e) {
-			throw new SQLException(e.getMessage());
-		} finally {
-			fecharConexao();
-		}
-
-		return partido;		
-	}
-	
+		
 	private void fecharConexao() throws SQLException {
 		if(this.instrucaoSQL != null) {
 			this.instrucaoSQL.close();
