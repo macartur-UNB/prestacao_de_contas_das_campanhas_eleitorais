@@ -24,7 +24,7 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 	}
 	
 	@Override
-	protected void service(HttpServletRequest request,
+	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
 			CandidatoControle candidatoControle = new CandidatoControle();
