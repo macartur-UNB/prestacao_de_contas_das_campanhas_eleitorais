@@ -32,7 +32,7 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 			listaCandidatos = candidatoControle.getListaCandidatos();
 			listaCandidatos =
 					filtrarListaDeCandidatosPorUfPartidoAnoCadastroUnico
-					(listaCandidatos,request,response);
+					(listaCandidatos,request);
 			int anos[] = { 2010, 2006, 2002 };
 			request.setAttribute("anos", anos);
 			request.setAttribute("listaCandidatos", listaCandidatos);
@@ -45,8 +45,7 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 	}
 	
 	public ArrayList<Candidato> filtrarListaDeCandidatosPorUfPartidoAnoCadastroUnico
-		(ArrayList<Candidato> lCandidatos, HttpServletRequest request,
-		 HttpServletResponse response) {	
+		(ArrayList<Candidato> lCandidatos, HttpServletRequest request) {	
 		
 		String sigla = request.getParameter("sigla");
 		int ano = Integer.parseInt(request.getParameter("ano"));
