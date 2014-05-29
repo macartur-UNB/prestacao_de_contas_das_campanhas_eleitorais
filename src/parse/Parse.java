@@ -10,8 +10,6 @@ import parse.cadastro.CadastroParse;
 
 public abstract class Parse implements ExecutorLeitorCSVObservador {
 
-	public static final String DESPESA = "despesa";
-	public static final String RECEITA = "receita";
 	
 	private LeitorCSV leitorCSV;
 	private ArrayList<CadastroParse<?>> listaCadastrosParse;

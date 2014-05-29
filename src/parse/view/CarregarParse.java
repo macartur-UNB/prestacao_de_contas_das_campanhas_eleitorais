@@ -19,8 +19,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import parse.Parse;
+import parse.ParsePartido;
 import parse.ParseReceitasDespesas;
-import parse.cadastro.PartidoCadastroParse;
+import parse.cadastro.receita_despesa.PartidoCadastroParseDespesaReceita;
 
 @WebServlet("/carregarParse")
 public class CarregarParse extends HttpServlet {
@@ -56,7 +57,6 @@ public class CarregarParse extends HttpServlet {
 				FileItem arquivo = null;
 				String tipoArquivo = "";
 				String ano = "";
-				String divisao = ";";
 				int linhaInicial = 1;
 
 
@@ -66,28 +66,28 @@ public class CarregarParse extends HttpServlet {
 					} else {
 						if(fileItem.getFieldName().equals("arquivo_tipo")) {
 							if(fileItem.getString().equals("despesa")) {
-								tipoArquivo = PartidoCadastroParse.DESPESA;
+								tipoArquivo = PartidoCadastroParseDespesaReceita.DESPESA;
 							} else {
-								tipoArquivo = PartidoCadastroParse.RECEITA;
+								tipoArquivo = PartidoCadastroParseDespesaReceita.RECEITA;
 							}
 						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
 							linhaInicial = Integer.parseInt(fileItem.getString());
 						} else if(fileItem.getFieldName().equals("arquivo_ano")) {
 							switch (fileItem.getString()) {
 							case "2002":
-								ano = PartidoCadastroParse.ANO_2002;
+								ano = PartidoCadastroParseDespesaReceita.ANO_2002;
 								break;
 
 							case "2004":
-								ano = PartidoCadastroParse.ANO_2004;
+								ano = PartidoCadastroParseDespesaReceita.ANO_2004;
 								break;
 
 							case "2006":
-								ano = PartidoCadastroParse.ANO_2006;
+								ano = PartidoCadastroParseDespesaReceita.ANO_2006;
 								break;
 
 							case "2008":
-								ano = PartidoCadastroParse.ANO_2008;
+								ano = PartidoCadastroParseDespesaReceita.ANO_2008;
 								break;
 
 							default:
@@ -97,7 +97,8 @@ public class CarregarParse extends HttpServlet {
 					}
 				}
 
-				Parse parse = new ParseReceitasDespesas(tipoArquivo, ano);
+				String divisao = ";";
+				Parse parse = new ParsePartido(tipoArquivo, ano);
 				parse.executarParse(arquivo, divisao, linhaInicial);
 
 

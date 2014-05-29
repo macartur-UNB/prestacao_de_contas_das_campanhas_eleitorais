@@ -1,4 +1,4 @@
-package parse.cadastro;
+package parse.cadastro.receita_despesa;
 
 import modelo.beans.Doador;
 import parse.ParseException;
@@ -7,7 +7,7 @@ import parse.controle.ParseControle;
 import parse.indices.DoadorIndicesParse;
 import parse.indices.IndicesParse;
 
-public class DoadorCadastroParse extends CadastroParse<Doador> {
+public class DoadorCadastroParse extends CadastroParseReceitasDespesas<Doador> {
 
 	
 	public DoadorCadastroParse(String tipoArquivo, String ano)

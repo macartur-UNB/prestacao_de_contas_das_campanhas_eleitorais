@@ -45,7 +45,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		Partido partidoCadastrado = this.partidoDAO.getTodosPartidos().getFirst();
 				
 		Assert.assertEquals(this.campo[SIGLA], partidoCadastrado.getSigla());
-		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumeroPartido());
+		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumero());
 	}
 	
 	@Test
@@ -62,7 +62,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 	
 	private void iniciarIndices() {
 		this.partidoIndicesParse.setIndiceSigla(SIGLA);
-		this.partidoIndicesParse.setIndiceNumeroPartido(NUMERO);
+		this.partidoIndicesParse.setIndiceNumero(NUMERO);
 	}
 	
 	private void iniciarCampos() {

@@ -8,20 +8,21 @@
 
 package modelo.beans;
 
-public class Partido extends Pessoa {
+public class Partido {
 	
 	public static final String STRING_VAZIO = "";
-	public static final Boolean BOOLEAN_VAZIO = false;
 	
 	private String numero;
 	private String sigla;
+	private String deferimento;
+	private String nome;
 	
 	
 	public Partido() {
-		this.setNome(STRING_VAZIO);
-		this.setPessoaJuridica(BOOLEAN_VAZIO);
+		this.nome = STRING_VAZIO;
 		this.sigla = STRING_VAZIO;
 		this.numero = STRING_VAZIO;
+		this.deferimento = STRING_VAZIO;
 	}
 	
 	@Override
@@ -33,12 +34,12 @@ public class Partido extends Pessoa {
 		return this.sigla.equalsIgnoreCase(outroPartido.getSigla());
 	}
 	
-	public String getNumeroPartido() {
+	public String getNumero() {
 		return numero;
 	}
 	
-	public void setNumeroPartido(String numeroPartido) {
-		this.numero = numeroPartido;
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	
 	public String getSigla() {
@@ -47,5 +48,22 @@ public class Partido extends Pessoa {
 	
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
-	}	
+	}
+
+	public String getDeferimento() {
+		return deferimento;
+	}
+
+	public void setDeferimento(String deferimento) {
+		this.deferimento = deferimento;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
 }

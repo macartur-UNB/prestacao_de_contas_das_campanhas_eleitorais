@@ -149,7 +149,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		
 		this.partidoCadastrado = new Partido();
 		this.partidoCadastrado.setSigla("A");
-		this.partidoCadastrado.setNumeroPartido("1");
+		this.partidoCadastrado.setNumero("1");
 		listaPartidos.add(this.partidoCadastrado);
 		
 		this.partidoDAO.cadastrarPartidos(listaPartidos);

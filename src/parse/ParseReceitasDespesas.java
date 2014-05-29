@@ -3,11 +3,11 @@ package parse;
 import java.util.ArrayList;
 
 import parse.cadastro.CadastroParse;
-import parse.cadastro.CandidatoCadastroParse;
-import parse.cadastro.DespesaCadastroParse;
-import parse.cadastro.DoadorCadastroParse;
-import parse.cadastro.FornecedorCadastroParse;
-import parse.cadastro.PartidoCadastroParse;
+import parse.cadastro.receita_despesa.CandidatoCadastroParse;
+import parse.cadastro.receita_despesa.DespesaCadastroParse;
+import parse.cadastro.receita_despesa.DoadorCadastroParse;
+import parse.cadastro.receita_despesa.FornecedorCadastroParse;
+import parse.cadastro.receita_despesa.PartidoCadastroParseDespesaReceita;
 
 public class ParseReceitasDespesas extends Parse {
 
@@ -21,7 +21,7 @@ public class ParseReceitasDespesas extends Parse {
 			ArrayList<CadastroParse<?>> listaCadastrosParse,
 			String tipoArquivo, String ano) throws ParseException {
 		
-		listaCadastrosParse.add(new PartidoCadastroParse(tipoArquivo, ano));
+		listaCadastrosParse.add(new PartidoCadastroParseDespesaReceita(tipoArquivo, ano));
 		listaCadastrosParse.add(new CandidatoCadastroParse(tipoArquivo, ano));
 		listaCadastrosParse.add(new FornecedorCadastroParse(tipoArquivo, ano));
 		listaCadastrosParse.add(new DoadorCadastroParse(tipoArquivo, ano));

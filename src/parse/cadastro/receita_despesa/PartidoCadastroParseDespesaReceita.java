@@ -1,4 +1,4 @@
-package parse.cadastro;
+package parse.cadastro.receita_despesa;
 
 import modelo.beans.Partido;
 import parse.ParseException;
@@ -7,9 +7,9 @@ import parse.controle.PartidoParseControle;
 import parse.indices.IndicesParse;
 import parse.indices.PartidoIndicesParse;
 
-public class PartidoCadastroParse extends CadastroParse<Partido> {
+public class PartidoCadastroParseDespesaReceita extends CadastroParseReceitasDespesas<Partido> {
 	
-	public PartidoCadastroParse(String tipoArquivo, String ano)
+	public PartidoCadastroParseDespesaReceita(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
 	}
@@ -52,7 +52,7 @@ public class PartidoCadastroParse extends CadastroParse<Partido> {
 	protected IndicesParse<Partido> getIndicesParseReceita2004() {
 		PartidoIndicesParse partidoIndicesParse = new PartidoIndicesParse();
 		partidoIndicesParse.setIndiceSigla(8);
-		partidoIndicesParse.setIndiceNumeroPartido(7);
+		partidoIndicesParse.setIndiceNumero(7);
 		
 		return partidoIndicesParse;
 	}
@@ -61,7 +61,7 @@ public class PartidoCadastroParse extends CadastroParse<Partido> {
 	protected IndicesParse<Partido> getIndicesParseReceita2006() {
 		PartidoIndicesParse partidoIndicesParse = new PartidoIndicesParse();
 		partidoIndicesParse.setIndiceSigla(8);
-		partidoIndicesParse.setIndiceNumeroPartido(7);
+		partidoIndicesParse.setIndiceNumero(7);
 		
 		return partidoIndicesParse;
 	}
@@ -70,7 +70,7 @@ public class PartidoCadastroParse extends CadastroParse<Partido> {
 	protected IndicesParse<Partido> getIndicesParseReceita2008() {
 		PartidoIndicesParse partidoIndicesParse = new PartidoIndicesParse();
 		partidoIndicesParse.setIndiceSigla(12);
-		partidoIndicesParse.setIndiceNumeroPartido(11);
+		partidoIndicesParse.setIndiceNumero(11);
 		
 		return partidoIndicesParse;
 	}

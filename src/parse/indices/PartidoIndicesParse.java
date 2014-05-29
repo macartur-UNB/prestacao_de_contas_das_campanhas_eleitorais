@@ -4,15 +4,17 @@ import modelo.beans.Partido;
 
 public class PartidoIndicesParse extends IndicesParse<Partido>{
 
-	public static final int INDICE_INVALIDO = -1;
-
 	private int indiceSigla;
-	private int indiceNumeroPartido;
+	private int indiceNumero;
+	private int indiceDeferimento;
+	private int indiceNome;
 	
 	public PartidoIndicesParse() {
 		super();
 		this.indiceSigla = INDICE_INVALIDO;
-		this.indiceNumeroPartido = INDICE_INVALIDO;
+		this.indiceNumero = INDICE_INVALIDO;
+		this.indiceDeferimento = INDICE_INVALIDO;
+		this.indiceNome = INDICE_INVALIDO;
 	}
 	
 	@Override
@@ -20,15 +22,23 @@ public class PartidoIndicesParse extends IndicesParse<Partido>{
 		if(indiceValido(this.indiceSigla)) {
 			partido.setSigla(campo[this.indiceSigla]);
 		}
-		if(indiceValido(this.indiceNumeroPartido)) {
-			partido.setNumeroPartido(campo[this.indiceNumeroPartido]);
+		if(indiceValido(this.indiceNumero)) {
+			partido.setNumero(campo[this.indiceNumero]);
+		}
+		if(indiceValido(this.indiceDeferimento)){
+			partido.setDeferimento(campo[this.indiceDeferimento]);
+		}
+		if(indiceValido(this.indiceNome)){
+			partido.setNome(campo[this.indiceNome]);
 		}
 	}
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Partido partido) {
 		partido.setSigla(Partido.STRING_VAZIO);
-		partido.setNumeroPartido(Partido.STRING_VAZIO);
+		partido.setNumero(Partido.STRING_VAZIO);
+		partido.setNome(Partido.STRING_VAZIO);
+		partido.setDeferimento(Partido.STRING_VAZIO);
 	}
 	
 	public void setIndiceSigla(int indiceSigla) {
@@ -36,7 +46,35 @@ public class PartidoIndicesParse extends IndicesParse<Partido>{
 	}
 
 	public void setIndiceNumeroPartido(int indiceNumeroPartido) {
-		this.indiceNumeroPartido = indiceNumeroPartido;
+		this.indiceNumero = indiceNumeroPartido;
+	}
+
+	public int getIndiceNumero() {
+		return indiceNumero;
+	}
+
+	public void setIndiceNumero(int indiceNumero) {
+		this.indiceNumero = indiceNumero;
+	}
+
+	public int getIndiceDeferimento() {
+		return indiceDeferimento;
+	}
+
+	public void setIndiceDeferimento(int indiceDeferimento) {
+		this.indiceDeferimento = indiceDeferimento;
+	}
+
+	public int getIndiceNome() {
+		return indiceNome;
+	}
+
+	public void setIndiceNome(int indiceNome) {
+		this.indiceNome = indiceNome;
+	}
+
+	public int getIndiceSigla() {
+		return indiceSigla;
 	}
 	
 }
