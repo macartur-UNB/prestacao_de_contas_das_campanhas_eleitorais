@@ -6,7 +6,7 @@ import parse.indices.IndicesParse;
 
 public abstract class CadastroParse<O> {
 
-	public static final Integer LINHAS_PARA_FAZER_CADASTRO = 20000;
+	public static final Integer LINHAS_PARA_FAZER_CADASTRO = 10000;
 	
 	public static final String DESPESA = "despesa";
 	public static final String RECEITA = "receita";
