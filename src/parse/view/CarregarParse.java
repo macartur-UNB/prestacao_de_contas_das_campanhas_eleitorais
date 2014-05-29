@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import parse.Parse;
+import parse.ParseReceitasDespesas;
 import parse.cadastro.PartidoCadastroParse;
 
 @WebServlet("/carregarParse")
@@ -96,7 +97,7 @@ public class CarregarParse extends HttpServlet {
 					}
 				}
 
-				Parse parse = new Parse(tipoArquivo, ano);
+				Parse parse = new ParseReceitasDespesas(tipoArquivo, ano);
 				parse.executarParse(arquivo, divisao, linhaInicial);
 
 
