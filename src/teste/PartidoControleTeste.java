@@ -33,7 +33,7 @@ public class PartidoControleTeste extends TemplateTeste {
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido = new Partido();
-		partido.setNumeroPartido("13");
+		partido.setNumero("13");
 		partido.setSigla("PT");
 		listaPartidos.add(partido);
 		
@@ -51,12 +51,12 @@ public class PartidoControleTeste extends TemplateTeste {
 		
 		Partido partido1 = new Partido();
 		partido1.setSigla("PSDB");
-		partido1.setNumeroPartido("45");
+		partido1.setNumero("45");
 		listaPartidos.add(partido1);
 		
 		Partido partido2 = new Partido();
 		partido2.setSigla("PT");
-		partido2.setNumeroPartido("13");
+		partido2.setNumero("13");
 		listaPartidos.add(partido2);
 		
 		this.partidoDAO.cadastrarPartidos(listaPartidos);

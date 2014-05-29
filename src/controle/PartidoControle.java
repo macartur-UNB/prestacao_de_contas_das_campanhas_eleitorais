@@ -1,10 +1,12 @@
 package controle;
 
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import modelo.beans.Partido;
 import modelo.dao.PartidoDAO;
+import modelo.dao.PartidoDAO.Comparacao;
 
 public class PartidoControle {
 	
@@ -14,12 +16,12 @@ public class PartidoControle {
 		this.partidoDAO = new PartidoDAO();
 	}
 	
-	public LinkedList<Partido> getListaPartidos() throws SQLException {
-		return this.partidoDAO.getListaPartidos();
+	public ArrayList<Partido> getListaPartidos() throws SQLException {
+		return this.partidoDAO.getLista();
 	}
 	
 	public Partido getPartido(String sigla) throws SQLException {
-		return this.partidoDAO.getPartido(sigla);
+		return null;
 	}
 
 }

@@ -19,7 +19,7 @@ public class PartidoValidacao {
 	}
 	
 	public void numeroNaoNulo(Partido partido) throws PartidoExcecao {
-		if((partido.getNumeroPartido() == null)) {
+		if((partido.getNumero() == null)) {
 			throw new PartidoExcecao(NUMERO_PARTIDO_VAZIO);
 		}
 	}

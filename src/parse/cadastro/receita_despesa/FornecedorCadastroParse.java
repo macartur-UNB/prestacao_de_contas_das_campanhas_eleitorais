@@ -1,4 +1,4 @@
-package parse.cadastro;
+package parse.cadastro.receita_despesa;
 
 import modelo.beans.Fornecedor;
 import parse.ParseException;
@@ -7,7 +7,7 @@ import parse.controle.ParseControle;
 import parse.indices.FornecedorIndicesParse;
 import parse.indices.IndicesParse;
 
-public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
+public class FornecedorCadastroParse extends CadastroParseReceitasDespesas<Fornecedor> {
 	
 	public FornecedorCadastroParse(String tipoArquivo, String ano)
 			throws ParseException {
