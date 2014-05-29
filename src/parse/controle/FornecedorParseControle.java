@@ -15,5 +15,10 @@ public class FornecedorParseControle extends ParseControle<Fornecedor> {
 		Fornecedor fornecedor = new Fornecedor();
 		return fornecedor;
 	}
+
+	@Override
+	public boolean iguais(Fornecedor objetoUm, Fornecedor objetoDois) {
+		return objetoUm.equals(objetoDois);
+	}
 	
 }
