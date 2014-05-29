@@ -8,6 +8,7 @@ import parse.indices.IndicesParse;
 
 public abstract class ParseControle<O> {
 
+	private O objetoVazio;
 	private ParseDAO<O> basicoDAO;
 	private ArrayList<O> listaInstancias;
 	private IndicesParse<O> indicesParse;
@@ -17,20 +18,18 @@ public abstract class ParseControle<O> {
 
 		this.basicoDAO = basicoDAO;
 		this.indicesParse = indicesParse;
+		this.objetoVazio = novaInstancia();
 	}
 
 	public abstract O novaInstancia();
-	
-	public void addInstanciaUnica(String campo[]) {
-		O objeto = fazerNovaInstancia(campo);		
-		if(!this.listaInstancias.contains(objeto)) {
-			this.listaInstancias.add(objeto);
-		}
-	}
+	public abstract boolean iguais(O objetoUm, O objetoDois);
 	
 	public void addInstancia(String campo[]) {
-		O objeto = fazerNovaInstancia(campo);
-		this.listaInstancias.add(objeto);
+		O objeto = fazerNovaInstancia(campo);		
+		if( (!iguais(objeto, objetoVazio)) && 
+				(!this.listaInstancias.contains(objeto)) ) {
+			this.listaInstancias.add(objeto);
+		}
 	}
 	
 	public void cadastrarInstancias() throws ParseException {

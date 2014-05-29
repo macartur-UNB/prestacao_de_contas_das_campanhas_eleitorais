@@ -15,5 +15,10 @@ public class PartidoParseControle extends ParseControle<Partido> {
 		Partido partido = new Partido();
 		return partido;
 	}
+
+	@Override
+	public boolean iguais(Partido objetoUm, Partido objetoDois) {
+		return objetoUm.equals(objetoDois);
+	}
 	
 }

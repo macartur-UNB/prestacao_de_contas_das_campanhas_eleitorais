@@ -38,7 +38,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 	
 	@Test
 	public void cadastrarPartido() throws Exception {
-		this.partidoParseControle.addInstanciaUnica(campo);
+		this.partidoParseControle.addInstancia(campo);
 		this.partidoParseControle.cadastrarInstancias();
 		this.partidoParseControle.resetar();
 		
@@ -50,8 +50,8 @@ public class PartidoParseControleTeste extends TemplateTeste {
 	
 	@Test
 	public void naoDeveCadastrarDoisPartidosIguais() throws Exception {
-		this.partidoParseControle.addInstanciaUnica(campo);
-		this.partidoParseControle.addInstanciaUnica(campo);
+		this.partidoParseControle.addInstancia(campo);
+		this.partidoParseControle.addInstancia(campo);
 		this.partidoParseControle.cadastrarInstancias();
 		this.partidoParseControle.resetar();
 		

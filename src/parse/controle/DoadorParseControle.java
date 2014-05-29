@@ -14,6 +14,11 @@ public class DoadorParseControle extends ParseControle<Doador> {
 	public Doador novaInstancia() {
 		Doador doador = new Doador();
 		return doador;
+	}
+
+	@Override
+	public boolean iguais(Doador objetoUm, Doador objetoDois) {
+		return objetoUm.equals(objetoDois);
 	}	
 	
 }

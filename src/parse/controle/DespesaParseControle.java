@@ -16,4 +16,9 @@ public class DespesaParseControle extends ParseControle<Despesa> {
 		return despesa;
 	}
 
+	@Override
+	public boolean iguais(Despesa objetoUm, Despesa objetoDois) {
+		return objetoUm.equals(objetoDois);
+	}
+
 }
