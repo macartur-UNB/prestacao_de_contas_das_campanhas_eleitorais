@@ -52,6 +52,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 			instrucaoSQL.setString(2, partido.getSigla());
 			instrucaoSQL.setString(3, partido.getNome());
 			instrucaoSQL.setString(4, partido.getDeferimento());
+			instrucaoSQL.addBatch();
 		}
 		
 	}
