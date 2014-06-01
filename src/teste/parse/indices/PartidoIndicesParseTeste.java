@@ -34,7 +34,7 @@ public class PartidoIndicesParseTeste {
 	}
 	
 	@Test
-	public void iniciarUmCandidatoComIndicesInvalidos() throws Exception {
+	public void iniciarUmPartidoComIndicesInvalidos() throws Exception {
 		
 		this.partidoIndicesParse = new PartidoIndicesParse();
 		Partido partido = new Partido();
@@ -58,4 +58,15 @@ public class PartidoIndicesParseTeste {
 		this.campo[2] = "11.9.1986";
 		this.campo[3] = "DEMOCRATAS";
 	}
+	
+	@Test
+	public void verificarIndices() {
+		
+		Assert.assertEquals(0, this.partidoIndicesParse.getIndiceSigla());
+		Assert.assertEquals(1, this.partidoIndicesParse.getIndiceNumero());
+		Assert.assertEquals(2, this.partidoIndicesParse.getIndiceDeferimento());
+		Assert.assertEquals(3, this.partidoIndicesParse.getIndiceNome());
+		
+	}
+	
 }
