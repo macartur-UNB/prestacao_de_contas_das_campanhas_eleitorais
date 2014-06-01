@@ -20,12 +20,12 @@ public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resul
 		};
 	}
 	
-	private static final String ID = "id";
+	private static final String ID = "id_resultado";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "resultado";
 	private static final String SQL_INSERCAO = "INSERT INTO "+ NOME_TABELA
-			+" ("+ID+", "+CODIGO+", "+ DESCRICAO + "values (?, ?, ?)" ;
+			+" ("+ID+", "+CODIGO+", "+ DESCRICAO + ") values (null, ?, ?)" ;
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public ResultadoDAO() {
@@ -46,9 +46,8 @@ public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resul
 	protected void adicionarListaNoBatch(ArrayList<Resultado> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for(Resultado resultado : lista) {
-			instrucaoSQL.setInt(1, resultado.getId());
-			instrucaoSQL.setInt(2, resultado.getCodigo());
-			instrucaoSQL.setString(3, resultado.getDescricao());
+			instrucaoSQL.setInt(1, resultado.getCodigo());
+			instrucaoSQL.setString(2, resultado.getDescricao());
 			instrucaoSQL.addBatch();
 		}
 	}
