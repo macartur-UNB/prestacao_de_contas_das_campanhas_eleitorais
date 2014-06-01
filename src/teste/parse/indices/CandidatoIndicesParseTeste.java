@@ -36,6 +36,8 @@ public class CandidatoIndicesParseTeste {
 		this.candidatoIndicesParse = new CandidatoIndicesParse();
 		Candidato candidato = new Candidato();
 		this.candidatoIndicesParse.iniciarInstancia(candidato, campo);
+		
+		Assert.assertNotEquals(0, candidatoIndicesParse.getIndiceNome());
 		Assert.assertNotEquals(this.campo[0], candidato.getNome());
 		Assert.assertNotEquals(this.campo[1], candidato.getTituloEleitoral());
 	}
