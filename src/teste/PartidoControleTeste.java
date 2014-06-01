@@ -26,23 +26,6 @@ public class PartidoControleTeste extends TemplateTeste {
 	public void afterTest() throws Exception {
 		
 	}
-
-	@Test
-	public void deveRecuperarUmPartidoPelaSigla() throws SQLException {
-		
-		ArrayList<Partido> listaPartidos = new ArrayList<>();
-		
-		Partido partido = new Partido();
-		partido.setNumero("13");
-		partido.setSigla("PT");
-		listaPartidos.add(partido);
-		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		this.partidoDAO.getPartido("PT");
-		this.partidoControle.getPartido("PT");
-		
-		Assert.assertEquals(partido, this.partidoControle.getPartido("PT"));
-	}
 	
 	@Test
 	public void deveRecuperarUmaListaDePartidos() throws SQLException {
@@ -50,17 +33,21 @@ public class PartidoControleTeste extends TemplateTeste {
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido1 = new Partido();
+		partido1.setNome("Partido da Social Democracia Brasileira");
 		partido1.setSigla("PSDB");
+		partido1.setDeferimento("24.8.1989");
 		partido1.setNumero("45");
 		listaPartidos.add(partido1);
 		
 		Partido partido2 = new Partido();
+		partido2.setNome("Partido dos Trabalhadores");
 		partido2.setSigla("PT");
+		partido2.setDeferimento("11.2.1982");
 		partido2.setNumero("13");
 		listaPartidos.add(partido2);
 		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		this.partidoDAO.getListaPartidos();
+		this.partidoDAO.cadastrarLista(listaPartidos);
+		this.partidoDAO.getLista();
 		this.partidoControle.getListaPartidos();
 		
 		Assert.assertEquals(listaPartidos, this.partidoControle.getListaPartidos());
