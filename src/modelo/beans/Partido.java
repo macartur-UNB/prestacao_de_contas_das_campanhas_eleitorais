@@ -1,11 +1,3 @@
-/** CRIADO POR:          
- * 
- *  COMENTARIOS:
- *  Rafael: (10/05/14) Transferi os metodos de MovimentacaoDAO pra ca. Com
- *  isso, esses metodos se tornam metodos sem parametros e podem mais 
- *  facilmente serem usados atraves de tags na vies.
-**/
-
 package modelo.beans;
 
 public class Partido {
