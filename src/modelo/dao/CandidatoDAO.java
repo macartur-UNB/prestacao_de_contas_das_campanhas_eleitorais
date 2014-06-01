@@ -37,7 +37,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 
 	public CandidatoDAO() {
-		super(NOME_TABELA, Comparacao.NOME);
+		super(NOME_TABELA, Comparacao.TITULO_ELEITORAL);
 	}
 
 	@Override

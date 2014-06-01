@@ -2,10 +2,9 @@ package parse;
 
 import java.util.ArrayList;
 
-import parse.Parse;
-import parse.ParseException;
 import parse.cadastro.CadastroParse;
 import parse.cadastro.candidatura.CadastroCandidatoParse;
+import parse.cadastro.candidatura.CadastroResultadoParse;
 
 public class ParseCandidato extends Parse {
 
@@ -19,6 +18,8 @@ public class ParseCandidato extends Parse {
 			String tipoArquivo, String ano) throws ParseException {
 
 		listaCadastrosParse.add(new CadastroCandidatoParse(null, null));
+		listaCadastrosParse.add(new CadastroResultadoParse(null, null));
+
 
 	}
 
