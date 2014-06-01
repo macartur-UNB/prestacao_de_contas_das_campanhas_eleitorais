@@ -6,8 +6,8 @@ public class Cargo {
 	public static final String STRING_VAZIO = "";
 	public static final int INTEGER_VAZIO = 0;
 	
-	private int id;
-	private int codigo;
+	private Integer id;
+	private Integer codigo;
 	private String descricao;
 	
 	public Cargo(){
@@ -25,13 +25,13 @@ public class Cargo {
 		return this.descricao.equalsIgnoreCase(outroCargo.getDescricao());
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(int codigo) {
