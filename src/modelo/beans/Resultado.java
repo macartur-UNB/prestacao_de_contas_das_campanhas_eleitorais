@@ -24,13 +24,13 @@ public class Resultado {
 		return this.descricao.equalsIgnoreCase(outroResultado.getDescricao());
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(int codigo) {
@@ -42,6 +42,5 @@ public class Resultado {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 	
 }
