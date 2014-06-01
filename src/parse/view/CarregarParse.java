@@ -19,9 +19,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import parse.Parse;
+import parse.ParseCandidato;
 import parse.ParsePartido;
 import parse.ParseReceitasDespesas;
-import parse.cadastro.partido.ParseCandidato;
 import parse.cadastro.receita_despesa.PartidoCadastroParseDespesaReceita;
 
 @WebServlet("/carregarParse")
