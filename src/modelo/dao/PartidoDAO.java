@@ -24,11 +24,11 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 	private static final String NUMERO = "numero";
 	private static final String SIGLA = "sigla";
 	private static final String DEFERIMENTO = "deferimento";
-	private static final String NOME_TABELA = "t_partido";
+	private static final String NOME_TABELA = "partido";
 	private static final String SQL_INSERCAO = "INSERT INTO "+NOME_TABELA
 			+" ("+NUMERO+", "+SIGLA+", "+NOME+", "+DEFERIMENTO+") "
 			+ "values (?, ?, ?, ?)" ;
-	private static final String SQL_SELECAO = "SELECT * FROM t_partido";
+	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 		
 	public PartidoDAO() {
 		super(NOME_TABELA, Comparacao.SIGLA);
@@ -52,6 +52,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 			instrucaoSQL.setString(2, partido.getSigla());
 			instrucaoSQL.setString(3, partido.getNome());
 			instrucaoSQL.setString(4, partido.getDeferimento());
+			instrucaoSQL.addBatch();
 		}
 		
 	}

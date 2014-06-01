@@ -21,6 +21,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import parse.Parse;
 import parse.ParsePartido;
 import parse.ParseReceitasDespesas;
+import parse.cadastro.partido.ParseCandidato;
 import parse.cadastro.receita_despesa.PartidoCadastroParseDespesaReceita;
 
 @WebServlet("/carregarParse")
@@ -98,7 +99,7 @@ public class CarregarParse extends HttpServlet {
 				}
 
 				String divisao = ";";
-				Parse parse = new ParsePartido(tipoArquivo, ano);
+				Parse parse = new ParseCandidato(tipoArquivo, ano);
 				parse.executarParse(arquivo, divisao, linhaInicial);
 
 
