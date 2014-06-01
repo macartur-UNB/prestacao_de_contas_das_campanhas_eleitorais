@@ -1,4 +1,4 @@
-package parse.cadastro.partido;
+package parse;
 
 import java.util.ArrayList;
 
