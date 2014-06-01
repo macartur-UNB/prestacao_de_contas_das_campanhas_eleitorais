@@ -8,9 +8,9 @@ import parse.indices.IndicesParse;
 import parse.indices.PartidoIndicesParse;
 import modelo.beans.Partido;
 
-public class CadastroParsePartido extends CadastroParse<Partido>{
+public class CadastroPartidoParse extends CadastroParse<Partido>{
 
-	public CadastroParsePartido(String tipoArquivo, String ano)
+	public CadastroPartidoParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
 	}
