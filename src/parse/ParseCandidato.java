@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import parse.cadastro.CadastroParse;
 import parse.cadastro.candidatura.CadastroCandidatoParse;
 import parse.cadastro.candidatura.CadastroResultadoParse;
+import parse.cadastro.candidatura.CadastroCargoParse;
 
 public class ParseCandidato extends Parse {
 
@@ -19,8 +20,7 @@ public class ParseCandidato extends Parse {
 
 		listaCadastrosParse.add(new CadastroCandidatoParse(null, null));
 		listaCadastrosParse.add(new CadastroResultadoParse(null, null));
-
-
+		listaCadastrosParse.add(new CadastroCargoParse(null, null));
 	}
 
 	
