@@ -1,7 +1,5 @@
 package teste.parse.cadastro;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import teste.TemplateTeste;

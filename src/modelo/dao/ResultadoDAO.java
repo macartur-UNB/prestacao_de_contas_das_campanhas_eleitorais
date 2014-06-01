@@ -28,8 +28,8 @@ public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resul
 			+" ("+ID+", "+CODIGO+", "+ DESCRICAO + "values (?, ?, ?)" ;
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
-	public ResultadoDAO(String nomeTabela, Comparator<Resultado> comparador) {
-		super(nomeTabela, Comparacao.DESCRICAO);
+	public ResultadoDAO() {
+		super(NOME_TABELA, Comparacao.DESCRICAO);
 	}
 
 	@Override
