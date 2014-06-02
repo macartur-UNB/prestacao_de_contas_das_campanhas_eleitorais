@@ -3,6 +3,7 @@ package modelo.beans;
 public class Candidato {
 
 	public static final String  STRING_VAZIO = "";
+	public static final Integer  INTEGER_VAZIO = 0;
 	
 	/**** Atributos de Classe *******************************************/
 	

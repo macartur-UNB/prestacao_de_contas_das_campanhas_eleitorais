@@ -19,6 +19,7 @@ public class CandidatoIndicesParse extends IndicesParse<Candidato> {
 		}
 		if (indiceValido(this.indiceTituloEleitoral)) {
 			candidato.setTituloEleitoral(campo[this.indiceTituloEleitoral]);
+
 		}
 	}
 

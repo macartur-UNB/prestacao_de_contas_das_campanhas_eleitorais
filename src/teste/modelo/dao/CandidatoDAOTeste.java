@@ -37,7 +37,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		
 		Candidato candidato = new Candidato();
 		candidato.setNome("CANDIDATO INEXISTENTE");
-		candidato.setTituloEleitoral("000000");
+		candidato.setTituloEleitoral("00000");
 		listaCandidatos.add(candidato);
 		
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
@@ -50,7 +50,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		
 		Candidato candidato = new Candidato();
 		candidato.setNome("CANDIDATO INEXISTENTE");
-		candidato.setTituloEleitoral("000000");
+		candidato.setTituloEleitoral("00000");
 		listaCandidatos.add(candidato);
 
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
@@ -66,12 +66,12 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		
 		Candidato candidato = new Candidato();
 		candidato.setNome("CANDIDATO INEXISTENTE");
-		candidato.setTituloEleitoral("000000");
+		candidato.setTituloEleitoral("00000");
 		listaCandidatos.add(candidato);
 		
 		Candidato candidatoDois = new Candidato();
 		candidatoDois.setNome("CANDIDATO INEXISTENTE DOIS");
-		candidatoDois.setTituloEleitoral("000001");
+		candidatoDois.setTituloEleitoral("00001");
 		listaCandidatos.add(candidatoDois);
 		
 		candidatoDAO.cadastrarLista(listaCandidatos);
@@ -85,11 +85,11 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		
 		Candidato candidato = new Candidato();
 		candidato.setNome("FULANO");
-		candidato.setTituloEleitoral("000000");
+		candidato.setTituloEleitoral("00000");
 		
 		Candidato candidatoDois = new Candidato();
 		candidatoDois.setNome("FULANO");
-		candidatoDois.setTituloEleitoral("000001");
+		candidatoDois.setTituloEleitoral("00001");
 
 		Assert.assertFalse(candidato.equals(candidatoDois));
 	}
