@@ -10,8 +10,8 @@ import parse.cadastro.campanha.CadastroResultadoParse;
 
 public class ParseCandidato extends Parse {
 
-	public ParseCandidato(String tipoArquivo, String ano) throws ParseException {
-		super(tipoArquivo, ano);
+	public ParseCandidato() throws ParseException {
+		super(null, null);
 	}
 
 	@Override

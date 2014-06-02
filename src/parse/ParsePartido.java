@@ -7,8 +7,8 @@ import parse.cadastro.partido.CadastroPartidoParse;
 
 public class ParsePartido extends Parse {
 
-	public ParsePartido(String tipoArquivo, String ano) throws ParseException {
-		super(tipoArquivo, ano);
+	public ParsePartido() throws ParseException {
+		super(null, null);
 
 	}
 
