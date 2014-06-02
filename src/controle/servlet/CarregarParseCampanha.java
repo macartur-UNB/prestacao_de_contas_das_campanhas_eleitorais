@@ -1,4 +1,4 @@
-package parse.view;
+package controle.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,11 +19,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import parse.Parse;
 import parse.ParseCandidato;
-import parse.ParsePartido;
-import parse.cadastro.receita_despesa.PartidoCadastroParseDespesaReceita;
 
-@WebServlet("/carregarParse")
-public class CarregarParse extends HttpServlet {
+@WebServlet("/carregarParseCampanha")
+public class CarregarParseCampanha extends HttpServlet {
 
 	private static final long serialVersionUID = 5625867877274809499L;
 
@@ -54,8 +52,6 @@ public class CarregarParse extends HttpServlet {
 				List<FileItem> fields = upload.parseRequest(request);
 
 				FileItem arquivo = null;
-				String tipoArquivo = "";
-				String ano = "";
 				int linhaInicial = 1;
 
 
@@ -64,40 +60,15 @@ public class CarregarParse extends HttpServlet {
 						arquivo = fileItem;
 					} else {
 						if(fileItem.getFieldName().equals("arquivo_tipo")) {
-							if(fileItem.getString().equals("despesa")) {
-								tipoArquivo = PartidoCadastroParseDespesaReceita.DESPESA;
-							} else {
-								tipoArquivo = PartidoCadastroParseDespesaReceita.RECEITA;
-							}
 						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
 							linhaInicial = Integer.parseInt(fileItem.getString());
-						} else if(fileItem.getFieldName().equals("arquivo_ano")) {
-							switch (fileItem.getString()) {
-							case "2002":
-								ano = PartidoCadastroParseDespesaReceita.ANO_2002;
-								break;
-
-							case "2004":
-								ano = PartidoCadastroParseDespesaReceita.ANO_2004;
-								break;
-
-							case "2006":
-								ano = PartidoCadastroParseDespesaReceita.ANO_2006;
-								break;
-
-							case "2008":
-								ano = PartidoCadastroParseDespesaReceita.ANO_2008;
-								break;
-
-							default:
-								break;
-							}
-						}
+						} 
+						
 					}
 				}
 
 				String divisao = ";";
-				Parse parse = new ParseCandidato(tipoArquivo, ano);
+				Parse parse = new ParseCandidato();
 				parse.executarParse(arquivo, divisao, linhaInicial);
 
 
