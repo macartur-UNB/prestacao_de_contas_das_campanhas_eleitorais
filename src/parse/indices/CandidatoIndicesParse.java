@@ -38,9 +38,5 @@ public class CandidatoIndicesParse extends IndicesParse<Candidato> {
 		this.indiceNome = indiceNome;
 	}
 
-	public int getIndiceNome() {
-		return indiceNome;
-	}
-
 
 }

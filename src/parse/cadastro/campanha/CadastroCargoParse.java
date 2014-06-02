@@ -1,4 +1,4 @@
-package parse.cadastro.candidatura;
+package parse.cadastro.campanha;
 
 import modelo.beans.Cargo;
 import parse.ParseException;

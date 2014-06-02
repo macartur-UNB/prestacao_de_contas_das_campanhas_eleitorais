@@ -8,10 +8,8 @@ public class MovimentacaoFinanceira {
 	public static final Integer INTEGER_VAZIO = 0;
 	public static final Float FLOAT_VAZIO = (float) 0;
 	public static final Boolean BOOLEAN_VAZIO = false;
-	public static final Pessoa PESSOA_VAZIO = null;
 	public static final Calendar CALENDAR_VAZIO = null;
 
-	private Pessoa emNomeDe;
 	private String horaRegistro;
 	private Boolean entregaEmConjunto;
 	private String numeroDocumento;
@@ -23,7 +21,6 @@ public class MovimentacaoFinanceira {
 	private String descricao;
 
 	public MovimentacaoFinanceira(){
-		this.emNomeDe = PESSOA_VAZIO;
 		this.horaRegistro = STRING_VAZIO;
 		this.entregaEmConjunto = BOOLEAN_VAZIO;
 		this.numeroDocumento = STRING_VAZIO;
@@ -43,8 +40,7 @@ public class MovimentacaoFinanceira {
 		
 		MovimentacaoFinanceira outraMovimentacao = (MovimentacaoFinanceira) object;
 		
-		return this.emNomeDe.equals(outraMovimentacao.getEmNomeDe()) &&
-				this.horaRegistro.equalsIgnoreCase(outraMovimentacao.getHoraRegistro()) &&
+		return 	this.horaRegistro.equalsIgnoreCase(outraMovimentacao.getHoraRegistro()) &&
 				this.entregaEmConjunto.equals(outraMovimentacao.isEntregaEmConjunto()) &&
 				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
 				this.ano.equals(outraMovimentacao.getAno()) &&
@@ -55,14 +51,6 @@ public class MovimentacaoFinanceira {
 				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao());
 	}
 	
-	public Pessoa getEmNomeDe() {
-		return emNomeDe;
-	}
-
-	public void setEmNomeDe(Pessoa emNomeDe) {
-		this.emNomeDe = emNomeDe;
-	}
-
 	public String getHoraRegistro() {
 		return horaRegistro;
 	}
