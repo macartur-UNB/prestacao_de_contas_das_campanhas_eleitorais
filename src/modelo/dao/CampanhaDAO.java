@@ -13,11 +13,6 @@ import modelo.beans.Partido;
 import modelo.beans.Resultado;
 
 public class CampanhaDAO extends BasicoDAO<Campanha> {
-	
-	public CampanhaDAO(String nomeTabela, Comparator<Campanha> comparador) {
-		super(nomeTabela, comparador);
-		// TODO Auto-generated constructor stub
-	}
 
 	public enum Comparacao implements Comparator<Campanha> {
 		ANO {
@@ -36,8 +31,8 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		
 	private static final String NOME_TABELA = "campanha";
 	private final String ID = "id_Campanha";
-	private final String ID_RESULTADO = "resultado_id_resultado";
-	private final String ID_CARGO = "cargo_id_cargo";
+	private final String COD_RESULTADO = "resultado_cod_resultado";
+	private final String COD_CARGO = "cargo_cod_cargo";
 	private final String SIGLA_PARTIDO = "partido_sigla";
 	private final String TITULO_CANDIDATO = "candidato_titulo_eleitoral";
 	private final String ANO = "ano";
@@ -50,8 +45,8 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
-					   + NOME_TABELA + " (" + ID + ", " + ID_RESULTADO + ", "
-					   + ID_CARGO + ", " + SIGLA_PARTIDO + ", " 
+					   + NOME_TABELA + " (" + ID + ", " + COD_RESULTADO + ", "
+					   + COD_CARGO + ", " + SIGLA_PARTIDO + ", " 
 					   + TITULO_CANDIDATO + ", " + ANO + ", " + NUM_CANDIDATO
 					   + ", " + NOME_URNA + ", " + UF + ", "
 					   + DESPESA_MAX_DECLARADA + ", " + DESPESA_MAX_CALCULADA
@@ -80,7 +75,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			instrucaoSQL.setInt(2, campanha.getResultado().getId());
 			instrucaoSQL.setInt(3, campanha.getCargo().getId());	
 			instrucaoSQL.setString(4, campanha.getPartido().getSigla());	
-			instrucaoSQL.setInt(5, campanha.getCandidato().getTituloEleitoral());	
+			instrucaoSQL.setString(5, campanha.getCandidato().getTituloEleitoral());	
 			instrucaoSQL.setInt(6, campanha.getAno());	
 			instrucaoSQL.setInt(7, campanha.getNumeroCandidato());	
 			instrucaoSQL.setString(8, campanha.getNomeDeUrna());	
@@ -124,17 +119,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	private void PreparaCampos(Cargo cargo, Resultado resultado,
 			Partido partido, Candidato candidato, ResultSet resultadoSQL) 
 				throws SQLException {
-		cargo.setId(resultadoSQL.getInt(ID_CARGO));
-		// Buscar no BD a descricao e o codigo do cargo
-		
-		resultado.setId(resultadoSQL.getInt(ID_RESULTADO));
-		// Buscar no BD a descricao e o codigo do resultado
-		
+		cargo.setId(resultadoSQL.getInt(COD_CARGO));		
+		resultado.setId(resultadoSQL.getInt(COD_RESULTADO));		
 		partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
-		// Buscar no BD o nome, numero e deferimento do partido
-		
-		candidato.setTituloEleitoral(resultadoSQL.getInt(TITULO_CANDIDATO));
-		// Buscar no BD o nome do candidato
+		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
 		
 	}
 

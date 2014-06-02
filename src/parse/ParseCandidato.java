@@ -3,9 +3,10 @@ package parse;
 import java.util.ArrayList;
 
 import parse.cadastro.CadastroParse;
-import parse.cadastro.candidatura.CadastroCandidatoParse;
-import parse.cadastro.candidatura.CadastroCargoParse;
-import parse.cadastro.candidatura.CadastroResultadoParse;
+import parse.cadastro.campanha.CadastroCampanhaParse;
+import parse.cadastro.campanha.CadastroCandidatoParse;
+import parse.cadastro.campanha.CadastroCargoParse;
+import parse.cadastro.campanha.CadastroResultadoParse;
 
 public class ParseCandidato extends Parse {
 
@@ -21,6 +22,8 @@ public class ParseCandidato extends Parse {
 		listaCadastrosParse.add(new CadastroCandidatoParse(null, null));
 		listaCadastrosParse.add(new CadastroResultadoParse(null, null));
 		listaCadastrosParse.add(new CadastroCargoParse(null, null));
+		listaCadastrosParse.add(new CadastroCampanhaParse(null, null));
+
 
 	}
 

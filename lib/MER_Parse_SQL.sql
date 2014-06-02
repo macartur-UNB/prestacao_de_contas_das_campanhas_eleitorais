@@ -15,8 +15,8 @@ DROP TABLE IF EXISTS  tipo_movimentacao;
 
 CREATE TABLE campanha (
   id_campanha INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  resultado_id_resultado INTEGER UNSIGNED NOT NULL,
-  cargo_id_cargo INTEGER UNSIGNED NOT NULL,
+  resultado_cod_resultado INTEGER NOT NULL,
+  cargo_cod_cargo INTEGER NOT NULL,
   partido_sigla VARCHAR(8) NOT NULL,
   candidato_titulo_eleitoral VARCHAR(255) NOT NULL,
   ano INTEGER UNSIGNED NULL,
@@ -27,8 +27,8 @@ CREATE TABLE campanha (
   despesa_maxima_calculada VARCHAR(255) NULL,
   receita_maxima_calculada VARCHAR(255) NULL,
   PRIMARY KEY(id_campanha),
-  INDEX campanha_fk_1(resultado_id_resultado),
-  INDEX campanha_fk_2(cargo_id_cargo),
+  INDEX campanha_fk_1(resultado_cod_resultado),
+  INDEX campanha_fk_2(cargo_cod_cargo),
   INDEX campanha_fk_3(candidato_titulo_eleitoral),
   INDEX campanha_fk_4(partido_sigla)
 );
