@@ -25,7 +25,7 @@
 			<div class="informacoes">
 			
 				<h1>Parse Partido</h1>
-				<p>Atualiza tabela: Partido.</p>
+				<p>Usar arquivo: utf_partidos_politicos_registrados_tse.txt</p>
 				
 				<form action="carregarParsePartido" method="POST"
 					enctype="multipart/form-data">
@@ -48,7 +48,7 @@
 				
 
 				<h1>Parse Campanha</h1>
-				<p>Atualiza tabelas: Cargo, Resultado, Candidato e Campanha.</p>
+				<p>Usar arquivos: utf_consulta_cand_&ltano&gt_&ltuf&gt.txt </p>
 				
 
 				<form action="carregarParseCampanha" method="POST"
