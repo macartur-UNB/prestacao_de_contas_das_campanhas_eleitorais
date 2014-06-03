@@ -29,8 +29,12 @@ public class SelecionarPartido extends HttpServlet {
 		Partido partido = new Partido();
 
 		try {
-			partido = partidoControle.getPartido(sigla);
-			int anos[] = { 2012, 2010, 2008, 2006, 2004, 2002 };
+			for(Partido partidoBuscado : partidoControle.getTodosPartidos()) {
+				if(partidoBuscado.getSigla().equalsIgnoreCase(sigla)) {
+					partido = partidoBuscado;
+				}
+			}
+			int anos[] = { 2010, 2006, 2002 };
 			if (partido.getSigla().equals("0")) {
 				RequestDispatcher requestDispatcher = request
 						.getRequestDispatcher("/erro_partido_inexistente.jsp");

@@ -51,6 +51,5 @@ public class PartidoControleTeste extends TemplateTeste {
 		this.partidoControle.getListaPartidos();
 		
 		Assert.assertEquals(listaPartidos, this.partidoControle.getListaPartidos());
-		
 	}
 }

@@ -27,20 +27,15 @@
 					Abaixo o Perfil do <b>Partido</b> selecionado.
 				</p>
 
-				<h1>
-					<c:out value="${partido.nome}" />
-				</h1>
-
 				<table>
 					<tr>
-						<td>Sigla:</td>
-						<td>${param.sigla}</td>
+						<td>Nome</td>
+						<td>${partido.nome}</td>
 					</tr>
+					
 					<tr>
-						<td>Número:</td>
-						<td>
-							<c:out value="${partido.numeroPartido}" />
-						</td>
+						<td>Sigla:</td>
+						<td>${partido.sigla}</td>
 					</tr>
 				</table>
 				<br />
@@ -48,9 +43,8 @@
 				<c:forEach var ="ano" items ="${anos}" >
 					<table border="2" width="300">
 					<tr><td>
-						<c:url var="AnoUrl" value="/requisitarMovimentacoes">
-							<c:param name="tabela" value="partido" />
-							<c:param name="nome" value="${partido.sigla}" />
+						<c:url var="AnoUrl" value="/VisualizarCandidatosPartido">
+							<c:param name="sigla" value="${partido.sigla}" />						
 							<c:param name="ano" value="${ano}" />
 						</c:url>
 						<a href="${AnoUrl}">${ano}</a>
@@ -62,7 +56,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- FIM CONTEUDO-->
 
 	<%@include file="imports/rodape.jsp"%>
 

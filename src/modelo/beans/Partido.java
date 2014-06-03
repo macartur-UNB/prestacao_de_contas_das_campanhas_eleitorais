@@ -56,6 +56,5 @@ public class Partido {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	
+
 }

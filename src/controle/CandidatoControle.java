@@ -13,7 +13,7 @@ public class CandidatoControle {
 	public CandidatoControle() {
 		this.candidatoDAO = new CandidatoDAO();
 	}
-
+	
 	public ArrayList<Candidato> getListaCandidatos() throws SQLException {
 		return this.candidatoDAO.getLista();
 	}

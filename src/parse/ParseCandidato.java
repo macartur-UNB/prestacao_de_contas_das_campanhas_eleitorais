@@ -23,10 +23,6 @@ public class ParseCandidato extends Parse {
 		listaCadastrosParse.add(new CadastroResultadoParse(null, null));
 		listaCadastrosParse.add(new CadastroCargoParse(null, null));
 		listaCadastrosParse.add(new CadastroCampanhaParse(null, null));
-
-
 	}
-
-	
 	
 }
