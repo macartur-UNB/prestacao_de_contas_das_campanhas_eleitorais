@@ -9,7 +9,6 @@ public class Partido {
 	private String deferimento;
 	private String nome;
 	
-	
 	public Partido() {
 		this.nome = STRING_VAZIO;
 		this.sigla = STRING_VAZIO;
@@ -57,5 +56,5 @@ public class Partido {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 }
