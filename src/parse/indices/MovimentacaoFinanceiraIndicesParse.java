@@ -42,7 +42,7 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		if(indiceValido(this.indiceEmNomeDe)) {
 			Candidato candidato = new Candidato();
 			candidato.setNome(campo[this.indiceEmNomeDe]);
-			movimentacaoFinanceira.setEmNomeDe(candidato);
+//			movimentacaoFinanceira.setEmNomeDe(candidato);
 		}
 		if(indiceValido(this.indiceHoraRegistro)) {
 			movimentacaoFinanceira.setHoraRegistro(campo[this.indiceHoraRegistro]);
@@ -75,7 +75,7 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	@Override
 	protected void setVazioEmTodosOsSetters(O objeto) {
 		MovimentacaoFinanceira movimentacaoFinanceira = (MovimentacaoFinanceira) objeto;
-		movimentacaoFinanceira.setEmNomeDe(MovimentacaoFinanceira.PESSOA_VAZIO);
+//		movimentacaoFinanceira.setEmNomeDe(MovimentacaoFinanceira.PESSOA_VAZIO);
 		movimentacaoFinanceira.setHoraRegistro(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setEntregaEmConjunto(MovimentacaoFinanceira.BOOLEAN_VAZIO);
 		movimentacaoFinanceira.setNumeroDocumento(MovimentacaoFinanceira.STRING_VAZIO);

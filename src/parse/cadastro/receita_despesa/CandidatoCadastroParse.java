@@ -22,48 +22,32 @@ public class CandidatoCadastroParse extends CadastroParseReceitasDespesas<Candid
 
 	@Override
 	protected IndicesParse<Candidato> getIndicesParseDespesa2002() {
-		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2002);
+		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
 		candidatoIndicesParse.setIndiceNome(3);
-		candidatoIndicesParse.setIndiceUf(0);
-		candidatoIndicesParse.setIndiceCargo(2);
-		candidatoIndicesParse.setIndicePartidoSigla(1);
-		candidatoIndicesParse.setIndiceNumero(4);
 
 		return candidatoIndicesParse;
 	}
 
 	@Override
 	protected IndicesParse<Candidato> getIndicesParseDespesa2004() {
-		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2004);
+		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
 		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceUf(4);
-		candidatoIndicesParse.setIndiceCargo(1);
-		candidatoIndicesParse.setIndicePartidoSigla(8);
-		candidatoIndicesParse.setIndiceNumero(3);
 
 		return candidatoIndicesParse;
 	}
 
 	@Override
 	protected IndicesParse<Candidato> getIndicesParseDespesa2006() {
-		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2006);
+		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
 		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceUf(4);
-		candidatoIndicesParse.setIndiceCargo(1);
-		candidatoIndicesParse.setIndicePartidoSigla(8);
-		candidatoIndicesParse.setIndiceNumero(3);
 
 		return candidatoIndicesParse;
 	}
 
 	@Override
 	protected IndicesParse<Candidato> getIndicesParseDespesa2008() {
-		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2008);
+		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
 		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceUf(5);
-		candidatoIndicesParse.setIndiceCargo(2);
-		candidatoIndicesParse.setIndicePartidoSigla(12);
-		candidatoIndicesParse.setIndiceNumero(4);
 
 		return candidatoIndicesParse;
 	}
@@ -85,12 +69,8 @@ public class CandidatoCadastroParse extends CadastroParseReceitasDespesas<Candid
 
 	@Override
 	protected IndicesParse<Candidato> getIndicesParseReceita2008() {
-		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse(ANO_2008);
+		CandidatoIndicesParse candidatoIndicesParse = new CandidatoIndicesParse();
 		candidatoIndicesParse.setIndiceNome(0);
-		candidatoIndicesParse.setIndiceUf(5);
-		candidatoIndicesParse.setIndiceCargo(2);
-		candidatoIndicesParse.setIndicePartidoSigla(12);
-		candidatoIndicesParse.setIndiceNumero(11);
 
 		return candidatoIndicesParse;
 	}

@@ -55,9 +55,9 @@ public class VisualizarCandidatosPartido extends HttpServlet {
 		ArrayList<Candidato> lCandidatosFiltrados = new ArrayList<>();
 		
 		for(Candidato candidato : lCandidatos) {
-			if((candidato.getUf().equals("DF"))
-					&& (candidato.getPartido().equals(partido))
-					&& (candidato.getAno().equals(ano))
+			if((candidato.getNome().equals("DF"))
+//					&& (candidato.getPartido().equals(partido))
+//					&& (candidato.getAno().equals(ano))
 					&& !(lCandidatosFiltrados.contains(candidato))) {
 				lCandidatosFiltrados.add(candidato);
 			}

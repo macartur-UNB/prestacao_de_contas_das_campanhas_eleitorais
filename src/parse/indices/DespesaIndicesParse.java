@@ -20,7 +20,7 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Desp
 		
 		if(indiceValido(this.indiceFornecedor)) {
 			Fornecedor fornecedor = new Fornecedor();
-			fornecedor.setNome(campo[this.indiceFornecedor]);
+//			fornecedor.setNome(campo[this.indiceFornecedor]);
 			despesa.setFornecedor(fornecedor);
 		}
 		if(indiceValido(this.indiceTipoDocumento)) {

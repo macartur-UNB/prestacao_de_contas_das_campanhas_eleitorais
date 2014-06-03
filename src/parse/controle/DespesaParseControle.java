@@ -1,13 +1,12 @@
 package parse.controle;
 
 import modelo.beans.Despesa;
-import modelo.dao.DespesaDAO;
 import parse.indices.IndicesParse;
 
 public class DespesaParseControle extends ParseControle<Despesa> {
 
 	public DespesaParseControle(IndicesParse<Despesa> indicesParse) {
-		super(indicesParse, new DespesaDAO());
+		super(indicesParse, null);
 	}
 
 	@Override

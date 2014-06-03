@@ -17,7 +17,7 @@ public class DoadorIndicesParse extends IndicesParse<Doador> {
 	@Override
 	protected void setIndicesValidos(Doador doador, String[] campo) {
 		if(indiceValido(this.indiceNome)) {
-			doador.setNome(campo[this.indiceNome]);
+//			doador.setNome(campo[this.indiceNome]);
 		}
 		
 		if(indiceValido(this.indiceCadastroNacional)) {
@@ -27,7 +27,7 @@ public class DoadorIndicesParse extends IndicesParse<Doador> {
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Doador doador) {
-		doador.setNome(Doador.STRING_VAZIO);
+//		doador.setNome(Doador.STRING_VAZIO);
 		doador.setCadastroNacional(Doador.STRING_VAZIO);
 	}
 

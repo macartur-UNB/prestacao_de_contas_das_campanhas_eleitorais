@@ -40,26 +40,26 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		if (request.getParameter("tabela").equals("candidato")) {
 			Candidato candidato = new Candidato();
 			candidato.setNome(nome);
-			candidato.setAno(ano);
+//			candidato.setAno(ano);
 			
-			if (!candidato.existe()) {
-				requestDispatcher = request
-						.getRequestDispatcher("/erro_candidato_inexistente.jsp");
-				requestDispatcher.forward(request, response);
-			} else {
+//			if (!candidato.existe()) {
+//				requestDispatcher = request
+//						.getRequestDispatcher("/erro_candidato_inexistente.jsp");
+//				requestDispatcher.forward(request, response);
+//			} else {
 				request.setAttribute("candidato", candidato);
 				request.setAttribute("entidade", "Candidato");
 				
 				//List<Receita> listaReceita = control.getListaReceitas(candidato);
-				List<Despesa> listaDespesa = control.getListaDespesas(candidato);
+//				List<Despesa> listaDespesa = control.getListaDespesas(candidato);
 				
 				//request.setAttribute("listaReceitas", listaReceita);
-				request.setAttribute("listaDespesas", listaDespesa);
+//				request.setAttribute("listaDespesas", listaDespesa);
 				
 				requestDispatcher = request
 						.getRequestDispatcher("/visualizar_movimentacoes.jsp");
 				requestDispatcher.forward(request, response);
-			}
+//			}
 		} else if (request.getParameter("tabela").equals("partido")) {
 			PartidoControle partidoControle = new PartidoControle();
 
@@ -69,14 +69,14 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			partido.setSigla(sigla);
 
 			try{
-				List<Receita> listaReceita = control.getListaReceitas(partido,ano);
-				List<Despesa> listaDespesa = control.getListaDespesas(partido,ano);
-				request.setAttribute("listaReceitas", listaReceita);
-				request.setAttribute("listaDespesas", listaDespesa);
+//				List<Receita> listaReceita = control.getListaReceitas(partido,ano);
+//				List<Despesa> listaDespesa = control.getListaDespesas(partido,ano);
+//				request.setAttribute("listaReceitas", listaReceita);
+//				request.setAttribute("listaDespesas", listaDespesa);
 
 				
 				//FIX ME =============
-				partido = partidoControle.getListaPartidos("sigla",sigla).getFirst();
+//				partido = partidoControle.getListaPartidos("sigla",sigla).getFirst();
 				//===============
 				
 				if (partido.getSigla().equals("0")) {

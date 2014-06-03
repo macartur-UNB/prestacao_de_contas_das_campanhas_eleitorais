@@ -1,6 +1,7 @@
 package controle.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -27,7 +28,8 @@ public class SelecionarCandidato extends HttpServlet {
 		RequestDispatcher requestDispatcher;
 
 		CandidatoControle control = new CandidatoControle();
-		List<Candidato> listaCandidato = control.getUmCandidato(nome);
+		List<Candidato> listaCandidato = new ArrayList<Candidato>();
+//		List<Candidato> listaCandidato = control.getUmCandidato(nome);
 
 		if (listaCandidato.isEmpty()) {
 			requestDispatcher = request
@@ -35,9 +37,9 @@ public class SelecionarCandidato extends HttpServlet {
 			requestDispatcher.forward(request, response);
 		} else {
 
-			String cpf = listaCandidato.get(0).getCpf();
-			request.setAttribute("cpf", cpf);
-			request.setAttribute("listaCandidato", listaCandidato);
+//			String cpf = listaCandidato.get(0).getCpf();
+//			request.setAttribute("cpf", cpf);
+//			request.setAttribute("listaCandidato", listaCandidato);
 
 			requestDispatcher = request
 					.getRequestDispatcher("/visualizar_candidato.jsp");

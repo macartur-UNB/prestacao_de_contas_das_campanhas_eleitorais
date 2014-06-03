@@ -1,13 +1,12 @@
 package parse.controle;
 
 import modelo.beans.Doador;
-import modelo.dao.DoadorDAO;
 import parse.indices.IndicesParse;
 
 public class DoadorParseControle extends ParseControle<Doador> {
 
 	public DoadorParseControle(IndicesParse<Doador> indicesParse) {
-		super(indicesParse, new DoadorDAO());
+		super(indicesParse, null);
 	}
 
 	@Override

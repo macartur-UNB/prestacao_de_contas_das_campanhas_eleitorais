@@ -2,6 +2,7 @@ package controle.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,8 +29,9 @@ public class SelecionarPartido extends HttpServlet {
 
 		Partido partido = new Partido();
 
+		ArrayList<Partido> partidos = new ArrayList<>();
 		try {
-			for(Partido partidoBuscado : partidoControle.getTodosPartidos()) {
+			for(Partido partidoBuscado : partidos) {
 				if(partidoBuscado.getSigla().equalsIgnoreCase(sigla)) {
 					partido = partidoBuscado;
 				}
@@ -46,7 +48,7 @@ public class SelecionarPartido extends HttpServlet {
 						.getRequestDispatcher("/visualizar_partido.jsp");
 				requestDispatcher.forward(request, response);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

@@ -17,7 +17,7 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 	@Override
 	protected void setIndicesValidos(Fornecedor fornecedor, String[] campo) {
 		if(indiceValido(this.indiceNome)) {
-			fornecedor.setNome(campo[this.indiceNome]);
+//			fornecedor.setNome(campo[this.indiceNome]);
 		}
 		
 		if(indiceValido(this.indiceCadastroNacional) && !campo[this.indiceCadastroNacional].isEmpty()) {
@@ -27,7 +27,7 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Fornecedor fornecedor) {
-		fornecedor.setNome(Fornecedor.STRING_VAZIO);
+//		fornecedor.setNome(Fornecedor.STRING_VAZIO);
 		fornecedor.setCadastroNacional(Fornecedor.STRING_VAZIO);
 	}
 	
