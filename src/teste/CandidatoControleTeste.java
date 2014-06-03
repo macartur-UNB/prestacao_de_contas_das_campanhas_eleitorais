@@ -41,7 +41,7 @@ public class CandidatoControleTeste extends TemplateTeste {
 				
 		/*this.candidatoDAO.adicionarResultSetNaLista(listaCandidatos);*/
 		this.candidatoDAO.getCandidato("Nome_Candidato");
-		this.candidatoControle.getCandidato("Nome_Candidato");
+		this.candidatoControle.getUmCandidato("Nome_Candidato");
 			
 	}
 	
