@@ -54,7 +54,7 @@ public class CarregarParsePartido extends HttpServlet {
 				FileItem arquivo = null;
 				int linhaInicial = 1;
 
-
+/**
 				for(FileItem fileItem : fields) {
 					if(!fileItem.isFormField()) {
 						arquivo = fileItem;
@@ -66,6 +66,7 @@ public class CarregarParsePartido extends HttpServlet {
 						
 					}
 				}
+*/
 
 				String divisao = ";";
 				Parse parse = new ParsePartido();

@@ -36,12 +36,6 @@
 						</tr>
 
 						<tr>
-							<td>Linha Inicial:</td>
-							<td><input type="number" name="arquivo_linha_inicial"
-								value="1" /></td>
-						</tr>
-
-						<tr>
 							<td></td>
 							<td>
 								<p align="right">
@@ -63,12 +57,6 @@
 						<tr>
 							<td>Arquivo do Parse:</td>
 							<td><input type="file" name="arquivo" size="50" /></td>
-						</tr>
-
-						<tr>
-							<td>Linha Inicial:</td>
-							<td><input type="number" name="arquivo_linha_inicial"
-								value="1" /></td>
 						</tr>
 
 						<tr>
