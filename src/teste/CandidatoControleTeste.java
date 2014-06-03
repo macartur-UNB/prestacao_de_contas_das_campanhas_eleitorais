@@ -1,17 +1,10 @@
 package teste;
 
-import static org.junit.Assert.assertEquals;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Candidato;
-<<<<<<< HEAD
-import modelo.beans.Partido;
-=======
->>>>>>> 922fb0f... Modificações sobre tipagem de atributos
 import modelo.dao.CandidatoDAO;
-import modelo.dao.PartidoDAO;
 
 import org.junit.Assert;
 import org.junit.Test;
