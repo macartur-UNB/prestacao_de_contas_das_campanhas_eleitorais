@@ -17,8 +17,8 @@ public class CandidatoControle {
 		return this.candidatoDAO.getLista(nome);
 	}
 
-	public LinkedList<Candidato> getUmCandidato(String nome) {
-		return this.candidatoDAO.getCandidato(nome);
+	public Candidato getUmCandidato(String tituloEleitoral) {
+		return this.candidatoDAO.getCandidato(tituloEleitoral);
 	}
 
 }

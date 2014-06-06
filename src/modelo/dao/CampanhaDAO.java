@@ -137,5 +137,62 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		
 	}
 
+	public ArrayList<Campanha> getCampanhas(Candidato candidato) {
+		ArrayList<Campanha> listaCampanha = new ArrayList<>();
+		String comandoSQL = SQL_SELECT + " WHERE " + TITULO_CANDIDATO 
+				+" = '"+candidato.getTituloEleitoral()+"' ";
+		listaCampanha = buscaBD(comandoSQL);
+		for (Campanha campanha : listaCampanha)
+			campanha.setCandidato(candidato);
+		return listaCampanha;	
+	}
+	
+	public ArrayList<Campanha> buscaBD(String SQL) {
+
+		ArrayList<Campanha> listaCampanha = new ArrayList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			
+			PartidoDAO partidoDAO = new PartidoDAO();
+			CargoDAO cargoDAO = new CargoDAO();
+			ResultadoDAO resultadoDAO = new ResultadoDAO();
+
+			while (resultadoSQL.next()) {
+				Campanha campanha = new Campanha();
+				campanha.setAno(resultadoSQL.getInt(ANO));
+				campanha.setCargo(
+						cargoDAO.getPeloCod(resultadoSQL.getInt(COD_CARGO)));
+				campanha.setDespesaMaxDeclarada(resultadoSQL.getFloat(DESPESA_MAX_DECLARADA));
+				campanha.setDespesaTotalCalculada(resultadoSQL.getFloat(DESPESA_MAX_CALCULADA));
+				campanha.setId(resultadoSQL.getInt(ID));
+				campanha.setNomeDeUrna(resultadoSQL.getString(NOME_URNA));
+				campanha.setNumeroCandidato(resultadoSQL.getInt(NUM_CANDIDATO));
+				campanha.setPartido(
+						partidoDAO.getPelaSigla(resultadoSQL.getString(SIGLA_PARTIDO)));
+
+				campanha.setReceitaTotalCalculada(resultadoSQL.getFloat(RECEITA_MAX_CALCULADA));
+				campanha.setResultado(
+						resultadoDAO.getPeloCod(resultadoSQL.getInt(COD_RESULTADO)));
+				campanha.setUf(resultadoSQL.getString(UF));
+				
+
+				if (campanha != null) listaCampanha.add(campanha);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+
+		return listaCampanha;
+	}
+
 		
 }

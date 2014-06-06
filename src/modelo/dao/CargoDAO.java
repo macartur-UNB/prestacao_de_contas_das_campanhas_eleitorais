@@ -64,4 +64,27 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 			lista.add(cargo);
 		}
 	}
+
+	public Cargo getPeloCod(Integer codigo) {
+		Cargo cargo = new Cargo();
+		String comandoSQL = SQL_SELECAO + " WHERE " + CODIGO +" = "+codigo+" ";
+		
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			while(resultadoSQL.next())
+			{
+				cargo.setCodigo(resultadoSQL.getInt(CODIGO));
+				cargo.setDescricao(resultadoSQL.getString(DESCRICAO));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+		return cargo;
+	}
 }

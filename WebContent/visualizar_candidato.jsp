@@ -31,37 +31,37 @@
 				<table>
 					<tr>
 						<td>Nome:</td>
-						<td>${param.nome}</td>
+						<td><c:out value="${candidato.nome}" /></td>
 					</tr>
 					<tr>
-						<td>CPF:</td>
-						<td><c:out value="${cpf}" /></td>
+						<td>Título Eleitoral:</td>
+						<td><c:out value="${candidato.tituloEleitoral}" /></td>
 					</tr>
 				</table>
 
 				<!-- Anos em que ele concorreu -->
-				<c:forEach var="candidato" items="${listaCandidato}">
+				<c:forEach var="campanha" items="${campanhas}">
 
 					<table border="2" width="600">
 						<tbody>
 							<tr>
 								<td rowspan="2">
 									<c:url var="AnoUrl" value="/requisitarMovimentacoes">
-										<c:param name="tabela" value="candidato"></c:param>
-										<c:param name="nome" value="${candidato.nome}"></c:param>
-										<c:param name="ano" value="${candidato.ano}"></c:param>
+										<c:param name="tabela" value="campanha"></c:param>
+										<c:param name="numero" value="${campanha.numeroCandidato}"></c:param>
+										<c:param name="ano" value="${campanha.ano}"></c:param>
 									</c:url>
-									<a href="${AnoUrl}">${candidato.ano}</a></td>
+									<a href="${AnoUrl}">${campanha.ano}</a></td>
 								<td>
 									<c:url var="partidoUrl" value="/SelecionarPartido">
-										<c:param name="sigla" value="${candidato.partido.sigla}"></c:param>
-									</c:url> Partido: <a href="${partidoUrl}">${candidato.partido.sigla}</a>
+										<c:param name="sigla" value="${campanha.partido.sigla}"></c:param>
+									</c:url> Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
 								</td>
-								<td>Cargo Pleiteado: ${candidato.cargo}</td>
+								<td>Cargo Pleiteado: ${campanha.cargo.descricao}</td>
 							</tr>
 							<tr>
-								<td>UF: ${candidato.uf}</td>
-								<td>Número: ${candidato.numero}</td>
+								<td>UF: ${campanha.uf}</td>
+								<td>Número: ${campanha.numeroCandidato}</td>
 							</tr>
 						</tbody>
 					</table>

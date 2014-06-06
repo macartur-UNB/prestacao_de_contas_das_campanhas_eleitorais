@@ -72,23 +72,33 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		}
 	}
 	
-	public LinkedList<Candidato> getCandidato(String nome) {
+	public Candidato getCandidato(String tituloEleitoral) {
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
-		String comandoSQL = SQL_SELECT + "WHERE " + NOME + " = '" + nome + "'";
-		listaCandidato = buscaBD(nome, comandoSQL);
-		return listaCandidato;
+		String comandoSQL = SQL_SELECT + " WHERE " + TITULO_ELEITORAL + " = '" + tituloEleitoral + "'";
+		listaCandidato = buscaBD(comandoSQL);
+		if(listaCandidato.isEmpty())
+		{
+			Candidato cand = new Candidato();
+			cand.setTituloEleitoral("-1");
+			return cand;
+		}
+		else if(listaCandidato.size() == 1)
+			return listaCandidato.get(0);
+		else
+			System.out.println("Um erro ocorreu.");
+			return null;
 	}
 	
 	public LinkedList<Candidato> getLista(String nome) {
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 		String comandoSQL = SQL_SELECT + " WHERE " + NOME +" LIKE '%"+nome+"%' ";
-		listaCandidato = buscaBD(nome, comandoSQL);
+		listaCandidato = buscaBD(comandoSQL);
 		return listaCandidato;
 	}
 	
-	public LinkedList<Candidato> buscaBD(String nome, String SQL) {
+	public LinkedList<Candidato> buscaBD(String SQL) {
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 
