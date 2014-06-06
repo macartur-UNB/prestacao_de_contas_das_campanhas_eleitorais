@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedList;
 
 import modelo.beans.Candidato;
 
@@ -69,6 +70,51 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 			candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_ELEITORAL));
 			lista.add(candidato);
 		}
+	}
+	
+	public LinkedList<Candidato> getCandidato(String nome) {
+
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();
+		String comandoSQL = SQL_SELECT + "WHERE " + NOME + " = '" + nome + "'";
+		listaCandidato = buscaBD(nome, comandoSQL);
+		return listaCandidato;
+	}
+	
+	public LinkedList<Candidato> getLista(String nome) {
+
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();
+		String comandoSQL = SQL_SELECT + " WHERE " + NOME +" LIKE '%"+nome+"%' ";
+		listaCandidato = buscaBD(nome, comandoSQL);
+		return listaCandidato;
+	}
+	
+	public LinkedList<Candidato> buscaBD(String nome, String SQL) {
+
+		LinkedList<Candidato> listaCandidato = new LinkedList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Candidato candidato = new Candidato();
+				candidato.setNome(resultadoSQL.getString(NOME));
+				candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_ELEITORAL));
+
+				if (candidato != null) listaCandidato.add(candidato);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+
+		return listaCandidato;
 	}
 	
 }
