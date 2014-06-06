@@ -21,12 +21,9 @@ public class RequisitarPartido extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String tipo = request.getParameter("select");
-		String valor = request.getParameter("valor");
-		
 		PartidoControle control = new PartidoControle();
 		try {
-			List<Partido> listaPartidos = control.getListaPartidos(tipo, valor);
+			List<Partido> listaPartidos = control.getListaPartidos();
 			request.setAttribute("listaPartidos", listaPartidos);
 			
 			RequestDispatcher requestDispatcher = request

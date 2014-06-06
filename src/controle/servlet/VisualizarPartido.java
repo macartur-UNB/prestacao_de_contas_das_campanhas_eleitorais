@@ -1,8 +1,6 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,8 +17,6 @@ public class VisualizarPartido extends HttpServlet{
 
 	private static final long serialVersionUID = 2421786756015460808L;
 	
-	
-	
 	@Override
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +26,7 @@ public class VisualizarPartido extends HttpServlet{
 		
 		RequestDispatcher requestDispatcher;
 		
-		Partido partido= new Partido();
+		Partido partido = new Partido();
 		
 		partido.setNome(nome);
 		partido.setSigla(sigla);

@@ -1,7 +1,6 @@
 package controle.servlet;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.PartidoControle;
 import modelo.beans.Partido;
 
 @WebServlet("/SelecionarPartido")
@@ -22,18 +20,9 @@ public class SelecionarPartido extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		PartidoControle partidoControle = new PartidoControle();
-
-		String sigla = request.getParameter("sigla");
-
 		Partido partido = new Partido();
 
 		try {
-			for(Partido partidoBuscado : partidoControle.getTodosPartidos()) {
-				if(partidoBuscado.getSigla().equalsIgnoreCase(sigla)) {
-					partido = partidoBuscado;
-				}
-			}
 			int anos[] = { 2010, 2006, 2002 };
 			if (partido.getSigla().equals("0")) {
 				RequestDispatcher requestDispatcher = request
@@ -46,7 +35,7 @@ public class SelecionarPartido extends HttpServlet {
 						.getRequestDispatcher("/visualizar_partido.jsp");
 				requestDispatcher.forward(request, response);
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
