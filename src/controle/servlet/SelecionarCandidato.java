@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.CandidatoControle;
+import modelo.beans.Campanha;
 import modelo.beans.Candidato;
+import controle.CampanhaControle;
+import controle.CandidatoControle;
 
 @WebServlet("/SelecionarCandidato")
 public class SelecionarCandidato extends HttpServlet {
@@ -22,22 +24,22 @@ public class SelecionarCandidato extends HttpServlet {
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		String nome = request.getParameter("nome");
+		String tituloEleitoral = request.getParameter("tituloEleitoral");
 
 		RequestDispatcher requestDispatcher;
 
-		CandidatoControle control = new CandidatoControle();
-		List<Candidato> listaCandidato = control.getUmCandidato(nome);
+		CandidatoControle candidatoControl = new CandidatoControle();
+		CampanhaControle campanhaControl = new CampanhaControle();
+		Candidato candidato = candidatoControl.getUmCandidato(tituloEleitoral);
 
-		if (listaCandidato.isEmpty()) {
+		if (candidato.getTituloEleitoral().equals("-1")) {
 			requestDispatcher = request
 					.getRequestDispatcher("/erro_candidato_inexistente.jsp");
 			requestDispatcher.forward(request, response);
 		} else {
-
-			String cpf = listaCandidato.get(0).getCpf();
-			request.setAttribute("cpf", cpf);
-			request.setAttribute("listaCandidato", listaCandidato);
+			List<Campanha> campanhas = campanhaControl.getListaCampanhas(candidato);
+			request.setAttribute("candidato", candidato);
+			request.setAttribute("campanhas", campanhas);
 
 			requestDispatcher = request
 					.getRequestDispatcher("/visualizar_candidato.jsp");

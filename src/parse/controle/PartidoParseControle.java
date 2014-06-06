@@ -1,37 +1,24 @@
 package parse.controle;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import modelo.beans.Partido;
 import modelo.dao.PartidoDAO;
-import parse.indices.PartidoIndicesParse;
+import parse.indices.IndicesParse;
 
-public class PartidoParseControle {
+public class PartidoParseControle extends ParseControle<Partido> {
 
-	private PartidoIndicesParse partidoIndicesParse;
-	private ArrayList<Partido> listaPartidos;
-	private PartidoDAO partidoDAO;
-	
-	public PartidoParseControle(PartidoIndicesParse partidoIndicesParse) {
-		this.partidoDAO = new PartidoDAO();
-		this.listaPartidos = new ArrayList<>();
-		this.partidoIndicesParse = partidoIndicesParse;
+	public PartidoParseControle(IndicesParse<Partido> indicesParse) {
+		super(indicesParse, new PartidoDAO());
 	}
-	
-	public void addPartido(String campo[]) {
+
+	@Override
+	public Partido novaInstancia() {
 		Partido partido = new Partido();
-		this.partidoIndicesParse.iniciarInstancia(partido, campo);
-		if(!this.listaPartidos.contains(partido)) {
-			this.listaPartidos.add(partido);
-		}
+		return partido;
+	}
+
+	@Override
+	public boolean iguais(Partido objetoUm, Partido objetoDois) {
+		return objetoUm.equals(objetoDois);
 	}
 	
-	public void cadastrarPartidos() throws SQLException {
-		this.partidoDAO.cadastrarPartidos(this.listaPartidos);
-	}
-	
-	public void resetar() {
-		this.listaPartidos.clear();
-	}
 }

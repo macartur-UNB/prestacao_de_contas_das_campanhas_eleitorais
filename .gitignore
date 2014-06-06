@@ -4,6 +4,7 @@ WebContent/WEB-INF/classes/
 target/
 .DS_Store
 bin
+.classpath
 *~
 /build
 

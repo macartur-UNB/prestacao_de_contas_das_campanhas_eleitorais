@@ -39,6 +39,19 @@
 					</tr>
 				</table>
 				<br />
+				
+				<c:forEach var ="ano" items ="${anos}" >
+					<table border="2" width="300">
+					<tr><td>
+						<c:url var="AnoUrl" value="/VisualizarCandidatosPartido">
+							<c:param name="sigla" value="${partido.sigla}" />						
+							<c:param name="ano" value="${ano}" />
+						</c:url>
+						<a href="${AnoUrl}">${ano}</a>
+					</td></tr>
+					</table><br />
+				</c:forEach>
+
 				<br>
 			</div>
 		</div>

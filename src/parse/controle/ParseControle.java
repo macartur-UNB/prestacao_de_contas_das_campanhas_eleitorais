@@ -1,40 +1,39 @@
 package parse.controle;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.dao.BasicoDAO;
+import parse.ParseDAO;
+import parse.ParseException;
 import parse.indices.IndicesParse;
 
 public abstract class ParseControle<O> {
 
-	private BasicoDAO<O> basicoDAO;
+	private O objetoVazio;
+	private ParseDAO<O> basicoDAO;
 	private ArrayList<O> listaInstancias;
 	private IndicesParse<O> indicesParse;
 	
-	public ParseControle(IndicesParse<O> indicesParse, BasicoDAO<O> basicoDAO) {
+	public ParseControle(IndicesParse<O> indicesParse, ParseDAO<O> basicoDAO) {
 		this.listaInstancias = new ArrayList<>();
 
 		this.basicoDAO = basicoDAO;
 		this.indicesParse = indicesParse;
+		this.objetoVazio = novaInstancia();
 	}
 
 	public abstract O novaInstancia();
+	public abstract boolean iguais(O objetoUm, O objetoDois);
 	
-	public void addInstanciaUnica(String campo[]) {
+	public void addInstancia(String campo[]) {
 		O objeto = fazerNovaInstancia(campo);		
-		if(!this.listaInstancias.contains(objeto)) {
+		if( (!iguais(objeto, objetoVazio)) && 
+				(!this.listaInstancias.contains(objeto)) ) {
 			this.listaInstancias.add(objeto);
 		}
 	}
 	
-	public void addInstancia(String campo[]) {
-		O objeto = fazerNovaInstancia(campo);
-		this.listaInstancias.add(objeto);
-	}
-	
-	public void cadastrarInstancias() throws SQLException {
-		this.basicoDAO.cadastrarLista(this.listaInstancias);
+	public void cadastrarInstancias() throws ParseException {
+		this.basicoDAO.cadastrarListaParse(this.listaInstancias);
 	}
 	
 	public void resetar() {

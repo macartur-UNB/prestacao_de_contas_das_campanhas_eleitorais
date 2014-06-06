@@ -27,7 +27,6 @@ public class RequisitarPartido extends HttpServlet {
 		PartidoControle control = new PartidoControle();
 		try {
 			List<Partido> listaPartidos = control.getListaPartidos(tipo, valor);
-			
 			request.setAttribute("listaPartidos", listaPartidos);
 			
 			RequestDispatcher requestDispatcher = request

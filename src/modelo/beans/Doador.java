@@ -1,13 +1,12 @@
 package modelo.beans;
 
-public class Doador extends Pessoa {
+public class Doador {
 	
 	public static final String STRING_VAZIO = "";
 	
 	private String cadastroNacional;
 	
 	public Doador() {
-		this.setNome(STRING_VAZIO);
 		this.cadastroNacional = STRING_VAZIO;
 	}
 	
@@ -17,7 +16,7 @@ public class Doador extends Pessoa {
 			return false;
 		
 		Doador outroDoador = (Doador) object;
-		return this.getNome().equalsIgnoreCase(outroDoador.getNome());
+		return this.getCadastroNacional().equalsIgnoreCase(outroDoador.getCadastroNacional());
 	}
 
 	public String getCadastroNacional() {

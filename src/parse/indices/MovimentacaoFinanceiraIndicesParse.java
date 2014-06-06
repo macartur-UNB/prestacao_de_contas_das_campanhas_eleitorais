@@ -4,7 +4,7 @@ import modelo.beans.Candidato;
 import modelo.beans.MovimentacaoFinanceira;
 
 
-public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<MovimentacaoFinanceira> {
+public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 
 	public static final int INDICE_INVALIDO = -1;
 
@@ -35,8 +35,8 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<Moviment
 	}
 	
 	@Override
-	protected void setIndicesValidos(MovimentacaoFinanceira movimentacaoFinanceira,
-			String[] campo) {
+	protected void setIndicesValidos(O objeto, String[] campo) {
+		MovimentacaoFinanceira movimentacaoFinanceira = (MovimentacaoFinanceira) objeto;
 		
 		movimentacaoFinanceira.setAno(ano);
 		if(indiceValido(this.indiceEmNomeDe)) {
@@ -73,7 +73,8 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<Moviment
 	}
 
 	@Override
-	protected void setVazioEmTodosOsSetters(MovimentacaoFinanceira movimentacaoFinanceira) {
+	protected void setVazioEmTodosOsSetters(O objeto) {
+		MovimentacaoFinanceira movimentacaoFinanceira = (MovimentacaoFinanceira) objeto;
 		movimentacaoFinanceira.setEmNomeDe(MovimentacaoFinanceira.PESSOA_VAZIO);
 		movimentacaoFinanceira.setHoraRegistro(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setEntregaEmConjunto(MovimentacaoFinanceira.BOOLEAN_VAZIO);

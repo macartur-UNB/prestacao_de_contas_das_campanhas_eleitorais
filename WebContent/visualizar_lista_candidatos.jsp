@@ -31,7 +31,7 @@
 
 				<c:forEach var="candidato" items="${listaCandidatos}">
 					<c:url var="candidatoUrl" value="/SelecionarCandidato">
-						<c:param name="nome" value="${candidato.nome}"></c:param>
+						<c:param name="tituloEleitoral" value="${candidato.tituloEleitoral}"></c:param>
 					</c:url>
 					<a href="${candidatoUrl}">${candidato.nome}</a>
 					<br>

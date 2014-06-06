@@ -35,8 +35,6 @@ public class VisualizarResultadoListaBuscaCandidato extends HttpServlet {
 			requestDispatcher.forward(request, response);
 		} else {
 
-			String cpf = listaCandidatos.get(0).getCpf();
-			request.setAttribute("cpf", cpf);
 			request.setAttribute("listaCandidatos", listaCandidatos);
 
 			requestDispatcher = request

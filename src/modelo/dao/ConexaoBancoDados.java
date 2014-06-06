@@ -22,7 +22,7 @@ public class ConexaoBancoDados {
 	private static String nomeSevidor = "localhost";
 	private static String nomeBanco = "gpp";
 	private static String usuario = "root";
-	private static String senha = "macartur";
+	private static String senha = "root";
 	
 	private Connection conexao;
 	private Statement afirmacao;

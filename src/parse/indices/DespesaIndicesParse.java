@@ -2,7 +2,6 @@ package parse.indices;
 
 import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
-import modelo.beans.MovimentacaoFinanceira;
 
 public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Despesa> {
 
@@ -16,11 +15,9 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Desp
 	}
 	
 	@Override
-	protected void setIndicesValidos(
-			MovimentacaoFinanceira movimentacaoFinanceira, String[] campo) {
-		super.setIndicesValidos(movimentacaoFinanceira, campo);
+	protected void setIndicesValidos(Despesa despesa, String[] campo) {
+		super.setIndicesValidos(despesa, campo);
 		
-		Despesa despesa = (Despesa) movimentacaoFinanceira;
 		if(indiceValido(this.indiceFornecedor)) {
 			Fornecedor fornecedor = new Fornecedor();
 			fornecedor.setNome(campo[this.indiceFornecedor]);
@@ -32,11 +29,9 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Desp
 	}
 	
 	@Override
-	protected void setVazioEmTodosOsSetters(
-			MovimentacaoFinanceira movimentacaoFinanceira) {
-		super.setVazioEmTodosOsSetters(movimentacaoFinanceira);
+	protected void setVazioEmTodosOsSetters(Despesa despesa) {
+		super.setVazioEmTodosOsSetters(despesa);
 
-		Despesa despesa = (Despesa) movimentacaoFinanceira;
 		despesa.setFornecedor(Despesa.FORNECEDOR_VAZIO);
 		despesa.setTipoDocumento(Despesa.STRING_VAZIO);
 	}

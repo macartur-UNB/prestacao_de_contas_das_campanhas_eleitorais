@@ -14,6 +14,11 @@ public class CandidatoParseControle extends ParseControle<Candidato> {
 	public Candidato novaInstancia() {
 		Candidato candidato = new Candidato();
 		return candidato;
-	}	
+	}
+
+	@Override
+	public boolean iguais(Candidato objetoUm, Candidato objetoDois) {
+		return objetoUm.equals(objetoDois);
+	}
 
 }

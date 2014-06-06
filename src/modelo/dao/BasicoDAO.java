@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public abstract class BasicoDAO<O> {
+import parse.ParseDAO;
+import parse.ParseException;
+
+public abstract class BasicoDAO<O> implements ParseDAO<O>{
 
 	protected Connection conexao;
 	protected PreparedStatement instrucaoSQL;
@@ -19,6 +22,26 @@ public abstract class BasicoDAO<O> {
 	public BasicoDAO(String nomeTabela, Comparator<O> comparador) {
 		this.nomeTabela = nomeTabela;
 		this.comparador = comparador;
+	}
+	
+	@Override
+	public void cadastrarListaParse(ArrayList<O> lista) throws ParseException {
+		try {
+			cadastrarLista(lista);
+		} catch(Exception e) {
+			throw new ParseException(e.getMessage());
+		}
+	}
+	
+	@Override
+	public ArrayList<O> getListaParse() throws ParseException {
+		ArrayList<O> lista = new ArrayList<>();
+		try {
+			lista = getLista();
+		} catch(Exception e) {
+			throw new ParseException(e.getMessage());
+		}
+		return lista;
 	}
 	
 	public void cadastrarLista(ArrayList<O> lista) throws SQLException {
@@ -32,6 +55,9 @@ public abstract class BasicoDAO<O> {
 			
 			this.instrucaoSQL.executeBatch();
 			this.conexao.commit();
+			
+			System.out.println("CADASTROU!");
+			
 		} catch(Exception e) {
 			throw new SQLException(nomeTabela + " - " + e.getMessage());
 		} finally {

@@ -27,61 +27,42 @@ public class PartidoDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void valoresComparacao() throws Exception {
-		PartidoDAO.Comparacao.valueOf(PartidoDAO.Comparacao.NOME.toString());
+		PartidoDAO.Comparacao.valueOf(PartidoDAO.Comparacao.SIGLA.toString());
 	}
 
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmPartidoInexistente() throws Exception {
+		
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido = new Partido();
-		partido.setNumeroPartido("1");
+		partido.setNumero("1");
 		partido.setSigla("A");
+		partido.setDeferimento("11.2.1982");
+		partido.setNome("AEIOU");
 		listaPartidos.add(partido);
 		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
+		this.partidoDAO.cadastrarLista(listaPartidos);
 	}
 
 	@Test
 	public void naoDeveCadastrarUmPartidoJaCadastrado() throws Exception {
+		
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido = new Partido();
-		partido.setNumeroPartido("1");
+		partido.setNumero("1");
 		partido.setSigla("A");
+		partido.setDeferimento("11.2.1982");
+		partido.setNome("AEIOU");
 		listaPartidos.add(partido);
 		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		int numeroDePartidosCadastrados = this.partidoDAO.getTodosPartidos().size();
+		this.partidoDAO.cadastrarLista(listaPartidos);
+		int numeroDePartidosNaLista = this.partidoDAO.getLista().size();
 		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
+		this.partidoDAO.cadastrarLista(listaPartidos);
 		
-		Assert.assertEquals(numeroDePartidosCadastrados, this.partidoDAO.getTodosPartidos().size());
-	}
-	
-	@Test
-	public void deveAtualizarUmPartidoComMesmaSiglaMasSemNumero() throws Exception {
-		ArrayList<Partido> listaPartidos = new ArrayList<>();
-		
-		Partido partido = new Partido();
-		partido.setSigla("A");
-		listaPartidos.add(partido);
-		
-		partido = new Partido();
-		partido.setSigla("B");
-		partido.setNumeroPartido("2");
-		listaPartidos.add(partido);
-		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		
-		partido = new Partido();
-		partido.setSigla("A");
-		partido.setNumeroPartido("1");
-		listaPartidos.add(partido);
-		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		
-	//	Assert.assertEquals(partido.getNumeroPartido(), this.partidoDAO.getListaPartidos().get(0).getNumeroPartido());
+		Assert.assertEquals(numeroDePartidosNaLista, this.partidoDAO.getLista().size());
 	}
 	
 	@Test(expected = SQLException.class)
@@ -90,52 +71,21 @@ public class PartidoDAOTeste extends TemplateTeste {
 		
 		Partido partido = new Partido();
 		partido.setSigla("A");
-		partido.setNumeroPartido("2");
+		partido.setNumero("2");
 		listaPartidos.add(partido);
 		
 		partido = new Partido();
 		partido.setSigla("A");
-		partido.setNumeroPartido("2");
+		partido.setNumero("2");
 		listaPartidos.add(partido);
 		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
+		this.partidoDAO.cadastrarLista(listaPartidos);
 	}
 	
 	@Test(expected = SQLException.class)
 	public void deveLancarExcecaoAoTentarPegarAListaDePartidosSeAConexaoComOBancoNaoForSucedida() throws Exception {
 		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.partidoDAO.getTodosPartidos().size();
-	}
-	
-	@Test
-	public void deveRecuperarUmPartidoPelaSigla() throws Exception {
-		ArrayList<Partido> listaPartidos = new ArrayList<>();
-		
-		Partido partido = new Partido();
-		partido.setNumeroPartido("1");
-		partido.setSigla("A");
-		listaPartidos.add(partido);
-		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-		
-		Assert.assertEquals(partido, this.partidoDAO.getListaPartidos("sigla","A").getFirst());
-	}
-	
-	@Test
-	public void deveRecuperarUmPartidoPelaSiglaComNomeESiglaVazio() throws Exception {
-		Partido partido = new Partido();	
-		partido.setSigla("0");
-		
-		//FIX ME , TESTE SEM OBJETIVO
-		
-		Assert.assertEquals(partido, this.partidoDAO.getListaPartidos("sigla","0").getFirst());
-	}
-
-	
-	@Test(expected = SQLException.class)
-	public void deveLancarExcecaoAoRecuperarUmPartidoEAConexaoComOBancoNaoForSucedida() throws Exception {
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.partidoDAO.getListaPartidos("sigla","Sigla");
+		this.partidoDAO.getLista().size();
 	}
 
 }
