@@ -12,25 +12,24 @@ import parse.ParseDAO;
 public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 
 	public enum Comparacao implements Comparator<Cargo> {
-		DESCRICAO {
+		CODIGO {
 			@Override
 			public int compare(Cargo c1, Cargo c2) {
-				return c1.getDescricao().compareToIgnoreCase(c2.getDescricao());
+				return c1.getCodigo().compareTo(c2.getCodigo());
 			}
 		};
 	}
 
-	private static final String ID = "id_cargo";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "cargo";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
-			+ " (" + ID + ", " + CODIGO + ", " + DESCRICAO + ") "
-			+ "values (?, ?, ?)";
+			+ " (" + CODIGO + ", " + DESCRICAO + ") "
+			+ "values (?, ?)";
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 
 	public CargoDAO() {
-		super(NOME_TABELA, Comparacao.DESCRICAO);
+		super(NOME_TABELA, Comparacao.CODIGO);
 	}
 
 	@Override
@@ -47,9 +46,8 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 	protected void adicionarListaNoBatch(ArrayList<Cargo> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for (Cargo cargo : lista) {
-			instrucaoSQL.setInt(1, cargo.getId());
-			instrucaoSQL.setInt(2, cargo.getCodigo());
-			instrucaoSQL.setString(3, cargo.getDescricao());
+			instrucaoSQL.setInt(1, cargo.getCodigo());
+			instrucaoSQL.setString(2, cargo.getDescricao());
 			instrucaoSQL.addBatch();
 		}
 
@@ -60,7 +58,6 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 			ResultSet resultadoSQL) throws SQLException {
 		while (resultadoSQL.next()) {
 			Cargo cargo = new Cargo();
-			cargo.setId(resultadoSQL.getInt(ID));
 			cargo.setCodigo(resultadoSQL.getInt(CODIGO));
 			cargo.setDescricao(resultadoSQL.getString(DESCRICAO));
 

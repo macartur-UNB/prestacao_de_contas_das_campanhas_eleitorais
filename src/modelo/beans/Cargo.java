@@ -6,12 +6,10 @@ public class Cargo {
 	public static final String STRING_VAZIO = "";
 	public static final int INTEGER_VAZIO = 0;
 	
-	private Integer id;
 	private Integer codigo;
 	private String descricao;
 	
 	public Cargo(){
-		this.id = INTEGER_VAZIO;
 		this.codigo = INTEGER_VAZIO;
 		this.descricao = STRING_VAZIO;
 	}
@@ -25,12 +23,6 @@ public class Cargo {
 		return this.descricao.equalsIgnoreCase(outroCargo.getDescricao());
 	}
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public Integer getCodigo() {
 		return codigo;
 	}

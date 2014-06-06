@@ -12,24 +12,23 @@ import parse.ParseDAO;
 public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resultado> {
 
 	public enum Comparacao implements Comparator<Resultado> {
-		DESCRICAO {
+		CODIGO {
 			@Override
 			public int compare(Resultado r1, Resultado r2) {
-				return r1.getDescricao().compareToIgnoreCase(r2.getDescricao());
+				return r1.getCodigo().compareTo(r2.getCodigo());
 			}
 		};
 	}
 	
-	private static final String ID = "id_resultado";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "resultado";
 	private static final String SQL_INSERCAO = "INSERT INTO "+ NOME_TABELA
-			+" ("+ID+", "+CODIGO+", "+ DESCRICAO + ") values (null, ?, ?)" ;
+			+" (" +CODIGO+", "+ DESCRICAO + ") values (?, ?)" ;
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public ResultadoDAO() {
-		super(NOME_TABELA, Comparacao.DESCRICAO);
+		super(NOME_TABELA, Comparacao.CODIGO);
 	}
 
 	@Override
@@ -57,7 +56,6 @@ public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resul
 			ResultSet resultadoSQL) throws SQLException {
 		while (resultadoSQL.next()) {
 			Resultado resultado = new Resultado();
-			resultado.setId(resultadoSQL.getInt(ID));
 			resultado.setCodigo(resultadoSQL.getInt(CODIGO));
 			resultado.setDescricao(resultadoSQL.getString(DESCRICAO));
 			

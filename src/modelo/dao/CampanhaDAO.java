@@ -26,7 +26,18 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			public int compare(Campanha c1, Campanha c2) {
 				return c1.getNumeroCandidato().compareTo(c2.getNumeroCandidato());
 			}
-		};
+		},
+		ANO_E_NUMERO {
+			@Override
+			public int compare(Campanha c1, Campanha c2) {
+				Integer ano1 = c1.getAno();
+				Integer ano2 = c2.getAno();
+				if(ano1 != ano2)
+					return ano1.compareTo(ano2);
+				else
+					return c1.getNumeroCandidato().compareTo(c2.getNumeroCandidato());	
+			}
+		}
 	}
 		
 	private static final String NOME_TABELA = "campanha";
@@ -54,7 +65,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	public CampanhaDAO() {
-		super(NOME_TABELA, Comparacao.ANO);
+		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
 	}
 	
 	@Override
@@ -72,8 +83,8 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for (Campanha campanha : lista) {
 			instrucaoSQL.setInt(1, campanha.getId());			
-			instrucaoSQL.setInt(2, campanha.getResultado().getId());
-			instrucaoSQL.setInt(3, campanha.getCargo().getId());	
+			instrucaoSQL.setInt(2, campanha.getResultado().getCodigo());
+			instrucaoSQL.setInt(3, campanha.getCargo().getCodigo());	
 			instrucaoSQL.setString(4, campanha.getPartido().getSigla());	
 			instrucaoSQL.setString(5, campanha.getCandidato().getTituloEleitoral());	
 			instrucaoSQL.setInt(6, campanha.getAno());	
@@ -119,8 +130,8 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	private void PreparaCampos(Cargo cargo, Resultado resultado,
 			Partido partido, Candidato candidato, ResultSet resultadoSQL) 
 				throws SQLException {
-		cargo.setId(resultadoSQL.getInt(COD_CARGO));		
-		resultado.setId(resultadoSQL.getInt(COD_RESULTADO));		
+		cargo.setCodigo(resultadoSQL.getInt(COD_CARGO));		
+		resultado.setCodigo(resultadoSQL.getInt(COD_RESULTADO));		
 		partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
 		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
 		

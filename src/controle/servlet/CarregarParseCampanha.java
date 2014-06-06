@@ -18,7 +18,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import parse.Parse;
-import parse.ParseCandidato;
+import parse.ParseCampanha;
 
 @WebServlet("/carregarParseCampanha")
 public class CarregarParseCampanha extends HttpServlet {
@@ -53,23 +53,24 @@ public class CarregarParseCampanha extends HttpServlet {
 
 				FileItem arquivo = null;
 				int linhaInicial = 1;
+				String tipoArquivo = "campanha";
 
-/**
+
 				for(FileItem fileItem : fields) {
-					if(!fileItem.isFormField()) {
+					if(!fileItem.isFormField()) 
 						arquivo = fileItem;
-					} else {
+	
+					/**else {
 						if(fileItem.getFieldName().equals("arquivo_tipo")) {
 						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
 							linhaInicial = Integer.parseInt(fileItem.getString());
 						} 
 						
-					}
+					}*/
 				}
-*/
 
 				String divisao = ";";
-				Parse parse = new ParseCandidato();
+				Parse parse = new ParseCampanha(tipoArquivo, "");
 				parse.executarParse(arquivo, divisao, linhaInicial);
 
 

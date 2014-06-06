@@ -53,23 +53,24 @@ public class CarregarParsePartido extends HttpServlet {
 
 				FileItem arquivo = null;
 				int linhaInicial = 1;
+				String tipoArquivo = "partido";
 
-/**
+
 				for(FileItem fileItem : fields) {
-					if(!fileItem.isFormField()) {
+					if(!fileItem.isFormField())
 						arquivo = fileItem;
-					} else {
+						/**		 else {
 						if(fileItem.getFieldName().equals("arquivo_tipo")) {
 						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
 							linhaInicial = Integer.parseInt(fileItem.getString());
 						} 
 						
-					}
+					}*/
 				}
-*/
+
 
 				String divisao = ";";
-				Parse parse = new ParsePartido();
+				Parse parse = new ParsePartido(tipoArquivo, "");
 				parse.executarParse(arquivo, divisao, linhaInicial);
 
 

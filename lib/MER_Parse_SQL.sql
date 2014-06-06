@@ -40,10 +40,9 @@ CREATE TABLE candidato (
 );
 
 CREATE TABLE cargo (
-  id_cargo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  codigo VARCHAR(255) NULL,
+  codigo INTEGER NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_cargo)
+  PRIMARY KEY(codigo)
 );
 
 CREATE TABLE despesa (
@@ -95,7 +94,7 @@ CREATE TABLE partido (
   numero INTEGER UNSIGNED NULL,
   nome VARCHAR(255) NULL,
   deferimento VARCHAR(255) NULL,
-  PRIMARY KEY(sigla)
+  PRIMARY KEY(numero)
 );
 
 CREATE TABLE receita (
@@ -115,10 +114,9 @@ CREATE TABLE receita (
 );
 
 CREATE TABLE resultado (
-  id_resultado INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  codigo VARCHAR(255) NULL,
+  codigo INTEGER NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_resultado)
+  PRIMARY KEY(codigo)
 );
 
 CREATE TABLE tipo_documento (

@@ -43,12 +43,12 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		}		
 		if (indiceValido(this.indiceResultadoCod)) {
 			Resultado resultado = new Resultado();
-			resultado.setId(Integer.parseInt(campo[this.indiceResultadoCod]));
+			resultado.setCodigo(Integer.parseInt(campo[this.indiceResultadoCod]));
 			campanha.setResultado(resultado);
 		}
 		if (indiceValido(this.indiceCargoCod)) {
 			Cargo cargo = new Cargo();
-			cargo.setId(Integer.parseInt(campo[this.indiceCargoCod]));
+			cargo.setCodigo(Integer.parseInt(campo[this.indiceCargoCod]));
 			campanha.setCargo(cargo);
 		}	
 		if (indiceValido(this.indicePartidoSigla)) {

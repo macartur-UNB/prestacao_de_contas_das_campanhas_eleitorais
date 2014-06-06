@@ -12,10 +12,10 @@ import parse.ParseDAO;
 public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 	
 	public enum Comparacao implements Comparator<Partido> {
-		SIGLA {
+		NUMERO {
 			@Override
 			public int compare(Partido p1, Partido p2) {
-				return p1.getSigla().compareToIgnoreCase(p2.getSigla());
+				return p1.getNumero().compareTo(p2.getNumero());
 			}
 		};
 	}
@@ -31,7 +31,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 		
 	public PartidoDAO() {
-		super(NOME_TABELA, Comparacao.SIGLA);
+		super(NOME_TABELA, Comparacao.NUMERO);
 	}
 
 	@Override

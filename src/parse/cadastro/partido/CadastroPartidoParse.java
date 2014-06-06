@@ -28,12 +28,18 @@ public class CadastroPartidoParse extends CadastroParse<Partido>{
 			String ano) throws ParseException {
 		PartidoIndicesParse partidoIndicesParse;
 		partidoIndicesParse = new PartidoIndicesParse();
-		
-		partidoIndicesParse.setIndiceNome(2);
-		partidoIndicesParse.setIndiceSigla(1);
-		partidoIndicesParse.setIndiceNumero(5);
-		partidoIndicesParse.setIndiceDeferimento(3);
-		
+		if(tipoArquivo.equals("partido"))
+		{
+			partidoIndicesParse.setIndiceNome(2);
+			partidoIndicesParse.setIndiceSigla(1);
+			partidoIndicesParse.setIndiceNumero(5);
+			partidoIndicesParse.setIndiceDeferimento(3);
+		}else if(tipoArquivo.equals("campanha"))
+		{
+			partidoIndicesParse.setIndiceNome(18);
+			partidoIndicesParse.setIndiceSigla(17);
+			partidoIndicesParse.setIndiceNumero(16);
+		}
 		return partidoIndicesParse;
 	}
 
