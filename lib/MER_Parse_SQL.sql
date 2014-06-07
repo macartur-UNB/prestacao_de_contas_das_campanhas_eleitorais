@@ -64,12 +64,10 @@ CREATE TABLE despesa (
 
 CREATE TABLE doador (
   cpf_cnpj INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  receita_id_receita INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,
-  PRIMARY KEY(cpf_cnpj),
-  INDEX doador_fk_1(receita_id_receita)
+  PRIMARY KEY(cpf_cnpj)
 );
 
 CREATE TABLE forma_de_pagamento (
@@ -81,12 +79,10 @@ CREATE TABLE forma_de_pagamento (
 
 CREATE TABLE fornecedor (
   cpf_cnpj INTEGER UNSIGNED NOT NULL,
-  despesa_id_despesas INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,
-  PRIMARY KEY(cpf_cnpj),
-  INDEX fornecedor_fk_1(despesa_id_despesas)
+  PRIMARY KEY(cpf_cnpj)
 );
 
 CREATE TABLE partido (

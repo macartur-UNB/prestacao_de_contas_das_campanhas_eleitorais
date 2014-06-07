@@ -1,13 +1,21 @@
 package modelo.beans;
 
 public class Fornecedor {
-
-	public static final String STRING_VAZIO = "";
 	
-	private String cadastroNacional;
+	public static final String STRING_VAZIO = "";
+	public static final int INTEGER_VAZIO = 0;
+	
+	private Integer cpf_cnpj;
+	private String nome;
+	private String uf;
+	private String situacaoCadastral;
+	
 	
 	public Fornecedor() {
-		this.cadastroNacional = STRING_VAZIO;
+		this.cpf_cnpj = INTEGER_VAZIO;
+		this.nome = STRING_VAZIO;
+		this.uf = STRING_VAZIO;
+		this.situacaoCadastral = STRING_VAZIO;
 	}
 	
 	@Override
@@ -16,15 +24,39 @@ public class Fornecedor {
 			return false;
 		
 		Fornecedor outroFornecedor = (Fornecedor) object;
-		return this.getCadastroNacional().equalsIgnoreCase(outroFornecedor.getCadastroNacional());
-	}
-
-	public String getCadastroNacional() {
-		return cadastroNacional;
-	}
-
-	public void setCadastroNacional(String cadastroNacional) {
-		this.cadastroNacional = cadastroNacional;
+		return this.getCpf_cnpj().equals(outroFornecedor.getCpf_cnpj());
 	}
 	
+	public Integer getCpf_cnpj() {
+		return cpf_cnpj;
+	}
+	
+	public void setCpf_cnpj(Integer cpf_cnpj) {
+		this.cpf_cnpj = cpf_cnpj;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getUf() {
+		return uf;
+	}
+	
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	
+	public String getSituacaoCadastral() {
+		return situacaoCadastral;
+	}
+	
+	public void setSituacaoCadastral(String situacaoCadastral) {
+		this.situacaoCadastral = situacaoCadastral;
+	}
+
 }
