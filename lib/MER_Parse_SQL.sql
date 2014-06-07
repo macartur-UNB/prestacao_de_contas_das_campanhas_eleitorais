@@ -67,7 +67,7 @@ CREATE TABLE doador (
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,
-  PRIMARY KEY(cpf_cnpj),
+  PRIMARY KEY(cpf_cnpj)
 );
 
 CREATE TABLE forma_de_pagamento (
