@@ -8,14 +8,14 @@ public class Doador {
 	private Integer cpf_cnpj;
 	private String nome;
 	private String uf;
-	private String situacao_cadastral;
+	private String situacaoCadastral;
 	
 	
 	public Doador() {
 		this.cpf_cnpj = INTEGER_VAZIO;
 		this.nome = STRING_VAZIO;
 		this.uf = STRING_VAZIO;
-		this.situacao_cadastral = STRING_VAZIO;
+		this.situacaoCadastral = STRING_VAZIO;
 	}
 	
 	@Override
@@ -51,12 +51,12 @@ public class Doador {
 		this.uf = uf;
 	}
 
-	public String getSituacao_cadastral() {
-		return situacao_cadastral;
+	public String getSituacaoCadastral() {
+		return situacaoCadastral;
 	}
 
-	public void setSituacao_cadastral(String situacao_cadastral) {
-		this.situacao_cadastral = situacao_cadastral;
+	public void setSituacaoCadastral(String situacaoCadastral) {
+		this.situacaoCadastral = situacaoCadastral;
 	}
 
 }

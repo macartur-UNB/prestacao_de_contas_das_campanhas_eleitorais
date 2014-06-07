@@ -32,7 +32,7 @@ public class DoadorIndicesParse extends IndicesParse<Doador> {
 			doador.setUf(campo[this.indiceUf]);
 		}
 		if(indiceValido(this.indiceSituacaoCadastral)) {
-			doador.setSituacao_cadastral(campo[this.indiceSituacaoCadastral]);
+			doador.setSituacaoCadastral(campo[this.indiceSituacaoCadastral]);
 		}
 	}
 
@@ -41,7 +41,7 @@ public class DoadorIndicesParse extends IndicesParse<Doador> {
 		doador.setCpf_cnpj(INTEGER_VAZIO);
 		doador.setNome(Doador.STRING_VAZIO);
 		doador.setUf(Doador.STRING_VAZIO);
-		doador.setSituacao_cadastral(Doador.STRING_VAZIO);
+		doador.setSituacaoCadastral(Doador.STRING_VAZIO);
 	}
 
 	public int getIndiceCpf_Cnpj() {

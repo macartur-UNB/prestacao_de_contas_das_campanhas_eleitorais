@@ -2,18 +2,12 @@ package parse.cadastro.receita_despesa;
 
 import modelo.beans.Fornecedor;
 import parse.ParseException;
-import parse.cadastro.CadastroParse;
 import parse.controle.FornecedorParseControle;
 import parse.controle.ParseControle;
 import parse.indices.FornecedorIndicesParse;
 import parse.indices.IndicesParse;
 
-public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
-	
-	public static final String ANO_2002 = "2002";
-	public static final String ANO_2006 = "2006";
-	public static final String ANO_2010 = "2010";
-	public static final String DESPESA = "despesa";
+public class FornecedorCadastroParse extends CadastroParseReceitasDespesas<Fornecedor> {
 
 	public FornecedorCadastroParse(String tipoArquivo, String ano)
 			throws ParseException {
@@ -26,28 +20,8 @@ public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
 		FornecedorParseControle fornecedorParseControle = new FornecedorParseControle(indicesParse);
 		return fornecedorParseControle;
 	}
-
-	@Override
-	protected IndicesParse<Fornecedor> getIndicesParse(String tipoArquivo,
-			String ano) throws ParseException {
-		
-		switch(ano) {
-		case ANO_2002:
-			return getFornecedorIndicesParse2002();
-			
-		case ANO_2006:
-			return getFornecedorIndicesParse2006();
-			
-		case ANO_2010:
-			return getFornecedorIndicesParse2010();
-			
-		default:
-			return null;
-		}
-		
-	}
 	
-	public FornecedorIndicesParse getFornecedorIndicesParse2002() {
+	public FornecedorIndicesParse getIndicesParseDespesa2002() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceCpf_Cnpj(6);
 		fornecedorIndicesParse.setIndiceNome(8);
@@ -56,7 +30,7 @@ public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
 		return fornecedorIndicesParse;
 	}
 	
-	public FornecedorIndicesParse getFornecedorIndicesParse2006() {
+	public FornecedorIndicesParse getIndicesParseDespesa2006() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceCpf_Cnpj(19);
 		fornecedorIndicesParse.setIndiceNome(18);
@@ -66,12 +40,28 @@ public class FornecedorCadastroParse extends CadastroParse<Fornecedor> {
 		return fornecedorIndicesParse;
 	}
 	
-	public FornecedorIndicesParse getFornecedorIndicesParse2010() {
+	public FornecedorIndicesParse getIndicesParseDespesa2010() {
 		FornecedorIndicesParse fornecedorIndicesParse = new FornecedorIndicesParse();
 		fornecedorIndicesParse.setIndiceCpf_Cnpj(10);
 		fornecedorIndicesParse.setIndiceNome(11);
 		
 		return fornecedorIndicesParse;
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2002() {
+		return new FornecedorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2006() {
+		return new FornecedorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Fornecedor> getIndicesParseReceita2010() {
+		return new FornecedorIndicesParse();
+
 	}
 
 }

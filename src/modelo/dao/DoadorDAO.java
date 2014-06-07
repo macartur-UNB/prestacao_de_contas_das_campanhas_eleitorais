@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import parse.ParseDAO;
 import modelo.beans.Doador;
+import parse.ParseDAO;
 
 public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	
@@ -51,7 +51,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 			instrucaoSQL.setInt(1, doador.getCpf_cnpj());
 			instrucaoSQL.setString(2, doador.getNome());
 			instrucaoSQL.setString(3, doador.getUf());
-			instrucaoSQL.setString(4, doador.getSituacao_cadastral());
+			instrucaoSQL.setString(4, doador.getSituacaoCadastral());
 			instrucaoSQL.addBatch();
 		}
 		
@@ -65,7 +65,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 			doador.setCpf_cnpj(resultadoSQL.getInt(CPF_CNPJ));
 			doador.setNome(resultadoSQL.getString(NOME));
 			doador.setUf(resultadoSQL.getString(UF));
-			doador.setSituacao_cadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
+			doador.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
 			
 			lista.add(doador);
 		}

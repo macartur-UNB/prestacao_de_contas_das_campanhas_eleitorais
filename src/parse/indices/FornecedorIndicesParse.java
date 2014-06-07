@@ -13,7 +13,6 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 	private int indiceSituacaoCadastral;
 	
 	public FornecedorIndicesParse() {
-		super();
 		this.indiceCpf_Cnpj = INDICE_INVALIDO;
 		this.indiceNome = INDICE_INVALIDO;
 		this.indiceUf = INDICE_INVALIDO;
@@ -32,7 +31,7 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 			fornecedor.setUf(campo[this.indiceUf]);
 		}
 		if(indiceValido(this.indiceSituacaoCadastral)) {
-			fornecedor.setSituacao_cadastral(campo[this.indiceSituacaoCadastral]);
+			fornecedor.setSituacaoCadastral(campo[this.indiceSituacaoCadastral]);
 		}
 	}
 
@@ -41,7 +40,7 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 		fornecedor.setCpf_cnpj(INTEGER_VAZIO);
 		fornecedor.setNome(Fornecedor.STRING_VAZIO);
 		fornecedor.setUf(Fornecedor.STRING_VAZIO);
-		fornecedor.setSituacao_cadastral(Fornecedor.STRING_VAZIO);
+		fornecedor.setSituacaoCadastral(Fornecedor.STRING_VAZIO);
 	}
 
 	public int getIndiceCpf_Cnpj() {

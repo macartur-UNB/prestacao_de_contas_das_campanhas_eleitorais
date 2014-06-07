@@ -2,19 +2,12 @@ package parse.cadastro.receita_despesa;
 
 import modelo.beans.Doador;
 import parse.ParseException;
-import parse.cadastro.CadastroParse;
 import parse.controle.DoadorParseControle;
 import parse.controle.ParseControle;
 import parse.indices.DoadorIndicesParse;
 import parse.indices.IndicesParse;
 
-public class DoadorCadastroParse extends CadastroParse<Doador> {
-	
-	public static final String ANO_2002 = "2002";
-	public static final String ANO_2006 = "2006";
-	public static final String ANO_2010 = "2010";
-	public static final String RECEITA = "receita";
-
+public class DoadorCadastroParse extends CadastroParseReceitasDespesas<Doador> {
 
 	public DoadorCadastroParse(String tipoArquivo, String ano)
 			throws ParseException {
@@ -27,28 +20,8 @@ public class DoadorCadastroParse extends CadastroParse<Doador> {
 		DoadorParseControle doadorParseControle = new DoadorParseControle(indicesParse);
 		return doadorParseControle;
 	}
-
-	@Override
-	protected IndicesParse<Doador> getIndicesParse(String tipoArquivo,
-			String ano) throws ParseException {
-		
-		switch(ano) {
-		case ANO_2002:
-			return getDoadorIndicesParse2002();
-			
-		case ANO_2006:
-			return getDoadorIndicesParse2006();
-			
-		case ANO_2010:
-			return getDoadorIndicesParse2010();
-			
-		default:
-			return null;
-		}
-		
-	}
 	
-	public DoadorIndicesParse getDoadorIndicesParse2002() {
+	public DoadorIndicesParse getIndicesParseReceita2002() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceCpf_Cnpj(6);
 		doadorIndicesParse.setIndiceNome(8);
@@ -57,7 +30,7 @@ public class DoadorCadastroParse extends CadastroParse<Doador> {
 		return doadorIndicesParse;
 	}
 	
-	public DoadorIndicesParse getDoadorIndicesParse2006() {
+	public DoadorIndicesParse getIndicesParseReceita2006() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceCpf_Cnpj(16);
 		doadorIndicesParse.setIndiceNome(15);
@@ -67,12 +40,27 @@ public class DoadorCadastroParse extends CadastroParse<Doador> {
 		return doadorIndicesParse;
 	}
 	
-	public DoadorIndicesParse getDoadorIndicesParse2010() {
+	public DoadorIndicesParse getIndicesParseReceita2010() {
 		DoadorIndicesParse doadorIndicesParse = new DoadorIndicesParse();
 		doadorIndicesParse.setIndiceCpf_Cnpj(10);
 		doadorIndicesParse.setIndiceNome(11);
 		
 		return doadorIndicesParse;
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2002() {
+		return new DoadorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2006() {
+		return new DoadorIndicesParse();
+	}
+
+	@Override
+	protected IndicesParse<Doador> getIndicesParseDespesa2010() {
+		return new DoadorIndicesParse();
 	}
 
 }

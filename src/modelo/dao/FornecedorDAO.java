@@ -27,7 +27,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 	private static final String NOME_TABELA = "fornecedor";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + CPF_CNPJ + ", " + NOME + ", " + UF + ", " + SITUACAO_CADASTRAL + ") "
-			+ "values (?, ?, ?, ?)";
+			+ "VALUES(?, ?, ?, ?)";
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public FornecedorDAO() {
@@ -51,7 +51,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 			instrucaoSQL.setInt(1, fornecedor.getCpf_cnpj());
 			instrucaoSQL.setString(2, fornecedor.getNome());
 			instrucaoSQL.setString(3, fornecedor.getUf());
-			instrucaoSQL.setString(4, fornecedor.getSituacao_cadastral());
+			instrucaoSQL.setString(4, fornecedor.getSituacaoCadastral());
 			instrucaoSQL.addBatch();
 		}	
 	}
@@ -64,7 +64,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 			fornecedor.setCpf_cnpj(resultadoSQL.getInt(CPF_CNPJ));
 			fornecedor.setNome(resultadoSQL.getString(NOME));
 			fornecedor.setUf(resultadoSQL.getString(UF));
-			fornecedor.setSituacao_cadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
+			fornecedor.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
 			
 			lista.add(fornecedor);
 		}
