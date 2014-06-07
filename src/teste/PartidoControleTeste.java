@@ -9,6 +9,7 @@ import modelo.dao.PartidoDAO;
 import org.junit.Assert;
 import org.junit.Test;
 
+import parse.ParseException;
 import controle.PartidoControle;
 
 public class PartidoControleTeste extends TemplateTeste {
@@ -28,28 +29,56 @@ public class PartidoControleTeste extends TemplateTeste {
 	}
 	
 	@Test
-	public void deveRecuperarUmaListaDePartidos() throws SQLException {
+	public void deveRecuperarUmaListaDePartidos() throws SQLException, ParseException {
 		
-		ArrayList<Partido> listaPartidos = new ArrayList<>();
+		/*ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido1 = new Partido();
-		partido1.setNome("Partido da Social Democracia Brasileira");
-		partido1.setSigla("PSDB");
-		partido1.setDeferimento("24.8.1989");
-		partido1.setNumero("45");
+		partido1.setNome("PARTIDO EXISTENTE 1");
+		partido1.setSigla("PE1");
+		partido1.setNumero("46");
+		partido1.setDeferimento("15.8.1996");
 		listaPartidos.add(partido1);
 		
 		Partido partido2 = new Partido();
-		partido2.setNome("Partido dos Trabalhadores");
-		partido2.setSigla("PT");
-		partido2.setDeferimento("11.2.1982");
-		partido2.setNumero("13");
+		partido2.setNome("PARTIDO EXISTENTE 2");
+		partido2.setSigla("PE2");
+		partido1.setNumero("78");
+		partido1.setDeferimento("15.4.1995");
 		listaPartidos.add(partido2);
 		
 		this.partidoDAO.cadastrarLista(listaPartidos);
 		this.partidoDAO.getLista();
 		this.partidoControle.getListaPartidos();
 		
-		Assert.assertEquals(listaPartidos, this.partidoControle.getListaPartidos());
+		Assert.assertEquals(listaPartidos, this.partidoControle.getListaPartidos());*/
+		
+	}
+	
+	@Test
+	public void deveRecuperarUmPartidoPelaSigla() throws SQLException {
+		
+		/*ArrayList<Partido> listaPartidos = new ArrayList<>();
+		Partido partidoRecuperado = new Partido();
+		
+		Partido partido1 = new Partido();
+		partido1.setNome("PARTIDO EXISTENTE 1");
+		partido1.setSigla("PE1");
+		partido1.setNumero("46");
+		partido1.setDeferimento("15.8.1996");
+		listaPartidos.add(partido1);
+		
+		Partido partido2 = new Partido();
+		partido2.setNome("PARTIDO EXISTENTE 2");
+		partido2.setSigla("PE2");
+		partido1.setNumero("78");
+		partido1.setDeferimento("15.4.1995");
+		listaPartidos.add(partido2);
+		
+		this.partidoDAO.cadastrarLista(listaPartidos);
+		partidoRecuperado = this.partidoDAO.getPelaSigla("PE1");
+		this.partidoControle.getPartido("PE1");
+		
+		Assert.assertEquals(partidoRecuperado, this.partidoControle.getPartido("PE1"));*/
 	}
 }
