@@ -12,7 +12,6 @@ public class TipoDocumentoCadastroParse extends CadastroParseReceitasDespesas<Ti
 	public TipoDocumentoCadastroParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
-
 	}
 
 	@Override
@@ -21,30 +20,27 @@ public class TipoDocumentoCadastroParse extends CadastroParseReceitasDespesas<Ti
 		return tipoDocumentoParseControle;
 	}
 	
-	public TipoDocumentoIndicesParse getIndicesParseTipoDocumento2002() {
-		TipoDocumentoIndicesParse tipoDocumentoIndicesParse = new TipoDocumentoIndicesParse();
-		tipoDocumentoIndicesParse.setIndiceCodigo(0);
-		
-		return tipoDocumentoIndicesParse;
+	public TipoDocumentoIndicesParse getIndicesParseDespesa2002() {
+		return new TipoDocumentoIndicesParse();
 	}
 	
-	public TipoDocumentoIndicesParse getIndicesParseTipoDocumento2006() {
+	public TipoDocumentoIndicesParse getIndicesParseDespesa2006() {
 		TipoDocumentoIndicesParse tipoDocumentoIndicesParse = new TipoDocumentoIndicesParse();
-		tipoDocumentoIndicesParse.setIndiceCodigo(0);
 		tipoDocumentoIndicesParse.setIndiceCodigo(17);
 		tipoDocumentoIndicesParse.setIndiceDescricao(16);
-		
 		return tipoDocumentoIndicesParse;
 	}
 	
-	public TipoDocumentoIndicesParse getIndicesParseTipoDocumento2010() {
+	public TipoDocumentoIndicesParse getIndicesParseDespesa2010() {
 		TipoDocumentoIndicesParse tipoDocumentoIndicesParse = new TipoDocumentoIndicesParse();
-		tipoDocumentoIndicesParse.setIndiceCodigo(0);
 		tipoDocumentoIndicesParse.setIndiceDescricao(8);
-		
 		return tipoDocumentoIndicesParse;
 	}
 
+	@Override
+	protected IndicesParse<TipoDocumento> getIndicesParseReceita2002() {
+		return new TipoDocumentoIndicesParse();
+	}
 
 	@Override
 	protected IndicesParse<TipoDocumento> getIndicesParseReceita2006() {
@@ -53,26 +49,6 @@ public class TipoDocumentoCadastroParse extends CadastroParseReceitasDespesas<Ti
 
 	@Override
 	protected IndicesParse<TipoDocumento> getIndicesParseReceita2010() {
-		return new TipoDocumentoIndicesParse();
-	}
-
-	@Override
-	protected IndicesParse<TipoDocumento> getIndicesParseDespesa2002() {
-		return new TipoDocumentoIndicesParse();
-	}
-
-	@Override
-	protected IndicesParse<TipoDocumento> getIndicesParseDespesa2006() {
-		return new TipoDocumentoIndicesParse();
-	}
-
-	@Override
-	protected IndicesParse<TipoDocumento> getIndicesParseDespesa2010() {
-		return new TipoDocumentoIndicesParse();
-	}
-
-	@Override
-	protected IndicesParse<TipoDocumento> getIndicesParseReceita2002() {
 		return new TipoDocumentoIndicesParse();
 	}
 

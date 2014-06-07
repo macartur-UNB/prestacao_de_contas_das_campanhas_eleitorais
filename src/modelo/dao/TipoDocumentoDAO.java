@@ -12,10 +12,13 @@ import parse.ParseDAO;
 public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements ParseDAO<TipoDocumento> {
 
 	public enum Comparacao implements Comparator<TipoDocumento> {
-		DESCRICAO {
+		COD_E_DESCRICAO {
 			@Override
-			public int compare(TipoDocumento tp1, TipoDocumento tp2) {
-				return tp1.getDescricao().compareToIgnoreCase(tp2.getDescricao());
+			public int compare(TipoDocumento t1, TipoDocumento t2) {
+				if (t1.getCodigo() != t2.getCodigo())
+					return t1.getCodigo().compareTo(t2.getCodigo());
+				else
+					return t1.getDescricao().compareToIgnoreCase(t2.getDescricao());
 			}
 		};
 	}
@@ -23,14 +26,14 @@ public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements ParseD
 	private static final String ID = "id";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
-	private static final String NOME_TABELA = "cargo";
+	private static final String NOME_TABELA = "tipo_documento";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + ID + ", " + CODIGO + ", " + DESCRICAO + ") "
 			+ "values (?, ?, ?)";
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 
 	public TipoDocumentoDAO() {
-		super(NOME_TABELA, Comparacao.DESCRICAO);
+		super(NOME_TABELA, Comparacao.COD_E_DESCRICAO);
 	}
 
 	@Override

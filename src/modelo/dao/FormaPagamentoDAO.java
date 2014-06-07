@@ -15,10 +15,10 @@ public class FormaPagamentoDAO extends BasicoDAO<FormaPagamento> implements Pars
 		COD_E_DESCRICAO {
 			@Override
 			public int compare(FormaPagamento t1, FormaPagamento t2) {
-				if (t1.getCodigo() == null || t2.getCodigo() == null)
-					return t1.getDescricao().compareToIgnoreCase(t2.getDescricao());
-				else
+				if (t1.getCodigo() != t2.getCodigo())
 					return t1.getCodigo().compareTo(t2.getCodigo());
+				else
+					return t1.getDescricao().compareToIgnoreCase(t2.getDescricao());
 			}
 		};
 	}
@@ -26,7 +26,7 @@ public class FormaPagamentoDAO extends BasicoDAO<FormaPagamento> implements Pars
 	private static final String ID = "id";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
-	private static final String NOME_TABELA = "formaPagamento";
+	private static final String NOME_TABELA = "forma_de_pagamento";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + ID + ", " + CODIGO + ", " + DESCRICAO + ") "
 			+ "values (?, ?, ?)";

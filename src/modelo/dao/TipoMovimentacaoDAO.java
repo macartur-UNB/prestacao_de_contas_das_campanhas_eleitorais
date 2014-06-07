@@ -15,10 +15,10 @@ public class TipoMovimentacaoDAO extends BasicoDAO<TipoMovimentacao> implements 
 		COD_E_DESCRICAO {
 			@Override
 			public int compare(TipoMovimentacao t1, TipoMovimentacao t2) {
-				if (t1.getCodigo() == null || t2.getCodigo() == null)
-					return t1.getDescricao().compareToIgnoreCase(t2.getDescricao());
-				else
+				if (t1.getCodigo() != t2.getCodigo())
 					return t1.getCodigo().compareTo(t2.getCodigo());
+				else
+					return t1.getDescricao().compareToIgnoreCase(t2.getDescricao());
 			}
 		};
 	}
@@ -26,7 +26,7 @@ public class TipoMovimentacaoDAO extends BasicoDAO<TipoMovimentacao> implements 
 	private static final String ID = "id";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
-	private static final String NOME_TABELA = "tipoMovimentacao";
+	private static final String NOME_TABELA = "tipo_movimentacao";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + ID + ", " + CODIGO + ", " + DESCRICAO + ") "
 			+ "values (?, ?, ?)";
