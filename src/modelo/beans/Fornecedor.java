@@ -23,7 +23,8 @@ public class Fornecedor {
 			return false;
 		
 		Fornecedor outroFornecedor = (Fornecedor) object;
-		return this.getCpf_cnpj().equals(outroFornecedor.getCpf_cnpj());
+		return this.getCpf_cnpj().equals(outroFornecedor.getCpf_cnpj()) &&
+			   this.getNome().equals(outroFornecedor.getNome());
 	}
 	
 	public String getCpf_cnpj() {

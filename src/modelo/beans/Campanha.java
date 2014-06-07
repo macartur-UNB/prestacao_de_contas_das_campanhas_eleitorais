@@ -42,18 +42,15 @@ public class Campanha {
 	
 	@Override
 	public boolean equals(Object object) {
-		boolean result = true;
 		if( !(object instanceof Campanha) || object == null )
-			result = false;
+			return false;
 		else
 		{
 			Campanha outraCampanha = (Campanha) object;
-			if(!this.ano.equals(outraCampanha.getAno()))
-				result = false;
-			if(!this.numeroCandidato.equals(outraCampanha.getNumeroCandidato()))
-				result = false;
+			return this.ano.equals(outraCampanha.getAno()) &&
+				   this.numeroCandidato.equals(outraCampanha.getNumeroCandidato());
 		}
-		return result;
+
 	}
 
 	public Integer getId() {

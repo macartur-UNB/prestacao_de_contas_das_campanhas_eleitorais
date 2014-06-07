@@ -23,7 +23,8 @@ public class Doador {
 			return false;
 		
 		Doador outroDoador = (Doador) object;
-		return this.getCpf_cnpj().equals(outroDoador.getCpf_cnpj());
+		return this.getCpf_cnpj().equals(outroDoador.getCpf_cnpj()) &&
+			   this.getNome().equals(outroDoador.getNome());
 	}
 
 	public String getCpf_cnpj() {

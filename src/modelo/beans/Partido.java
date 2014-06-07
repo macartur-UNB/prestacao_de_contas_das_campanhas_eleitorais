@@ -22,7 +22,7 @@ public class Partido {
 			return false;
 		
 		Partido outroPartido = (Partido) object;
-		return this.sigla.equalsIgnoreCase(outroPartido.getSigla());
+		return this.numero.equals(outroPartido.getNumero());
 	}
 	
 	public String getNumero() {
