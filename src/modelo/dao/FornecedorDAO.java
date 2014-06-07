@@ -12,12 +12,14 @@ import parse.ParseDAO;
 public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<Fornecedor> {
 	
 	public enum Comparacao implements Comparator<Fornecedor> {
-		CPF_CNPJ {
+		CPF_E_NOME {
 			public int compare(Fornecedor f1, Fornecedor f2) {
-				return f1.getCpf_cnpj().compareTo(f2.getCpf_cnpj());
+				if(f1.getCpf_cnpj() != f2.getCpf_cnpj())
+					return f1.getCpf_cnpj().compareToIgnoreCase(f2.getCpf_cnpj());
+				else
+					return f1.getNome().compareToIgnoreCase(f2.getNome());
 			}
-		}
-		
+		}	
 	}
 	
 	private static final String CPF_CNPJ = "cpf_cnpj";
@@ -31,7 +33,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public FornecedorDAO() {
-		super(NOME_TABELA, Comparacao.CPF_CNPJ);
+		super(NOME_TABELA, Comparacao.CPF_E_NOME);
 	}
 	
 	@Override
@@ -48,7 +50,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 	protected void adicionarListaNoBatch(ArrayList<Fornecedor> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for(Fornecedor fornecedor : lista) {
-			instrucaoSQL.setInt(1, fornecedor.getCpf_cnpj());
+			instrucaoSQL.setString(1, fornecedor.getCpf_cnpj());
 			instrucaoSQL.setString(2, fornecedor.getNome());
 			instrucaoSQL.setString(3, fornecedor.getUf());
 			instrucaoSQL.setString(4, fornecedor.getSituacaoCadastral());
@@ -61,11 +63,10 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 			ResultSet resultadoSQL) throws SQLException {
 		while(resultadoSQL.next()) {
 			Fornecedor fornecedor = new Fornecedor();
-			fornecedor.setCpf_cnpj(resultadoSQL.getInt(CPF_CNPJ));
+			fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ));
 			fornecedor.setNome(resultadoSQL.getString(NOME));
 			fornecedor.setUf(resultadoSQL.getString(UF));
 			fornecedor.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
-			
 			lista.add(fornecedor);
 		}
 		

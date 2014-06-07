@@ -63,7 +63,7 @@ CREATE TABLE despesa (
 );
 
 CREATE TABLE doador (
-  cpf_cnpj INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  cpf_cnpj VARCHAR(255) NULL,
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,
@@ -78,7 +78,7 @@ CREATE TABLE forma_de_pagamento (
 );
 
 CREATE TABLE fornecedor (
-  cpf_cnpj INTEGER UNSIGNED NOT NULL,
+  cpf_cnpj VARCHAR(255) NULL,
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,

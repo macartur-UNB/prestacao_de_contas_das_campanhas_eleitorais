@@ -15,18 +15,6 @@ import modelo.beans.Resultado;
 public class CampanhaDAO extends BasicoDAO<Campanha> {
 
 	public enum Comparacao implements Comparator<Campanha> {
-		ANO {
-			@Override
-			public int compare(Campanha c1, Campanha c2) {
-				return c1.getAno().compareTo(c2.getAno());
-			}
-		},
-		NUMERO_CANDIDATO {
-			@Override
-			public int compare(Campanha c1, Campanha c2) {
-				return c1.getNumeroCandidato().compareTo(c2.getNumeroCandidato());
-			}
-		},
 		ANO_E_NUMERO {
 			@Override
 			public int compare(Campanha c1, Campanha c2) {
@@ -39,6 +27,12 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			}
 		}
 	}
+	
+	
+	private CandidatoDAO candidatoDAO;
+	private PartidoDAO partidoDAO;
+	private CargoDAO cargoDAO;
+	private ResultadoDAO resultadoDAO;
 		
 	private static final String NOME_TABELA = "campanha";
 	private final String ID = "id_Campanha";
@@ -66,6 +60,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	
 	public CampanhaDAO() {
 		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
+		this.candidatoDAO = new CandidatoDAO();
+		this.cargoDAO = new CargoDAO();
+		this.partidoDAO = new PartidoDAO();
+		this.resultadoDAO = new ResultadoDAO();
 	}
 	
 	@Override
@@ -164,11 +162,6 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-			
-			CandidatoDAO candidatoDAO = new CandidatoDAO();
-			PartidoDAO partidoDAO = new PartidoDAO();
-			CargoDAO cargoDAO = new CargoDAO();
-			ResultadoDAO resultadoDAO = new ResultadoDAO();
 
 			while (resultadoSQL.next()) {
 				Campanha campanha = new Campanha();

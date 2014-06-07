@@ -5,7 +5,6 @@ import modelo.beans.Doador;
 public class DoadorIndicesParse extends IndicesParse<Doador> {
 
 	public static final int INDICE_INVALIDO = -1;
-	public static final int INTEGER_VAZIO = 0;
 
 	private int indiceCpf_Cnpj;
 	private int indiceNome;
@@ -23,7 +22,7 @@ public class DoadorIndicesParse extends IndicesParse<Doador> {
 	@Override
 	protected void setIndicesValidos(Doador doador, String[] campo) {
 		if(indiceValido(this.indiceCpf_Cnpj)) {
-			doador.setCpf_cnpj(Integer.parseInt(campo[this.indiceCpf_Cnpj]));
+			doador.setCpf_cnpj(campo[this.indiceCpf_Cnpj]);
 		}
 		if(indiceValido(this.indiceNome)) {
 			doador.setNome(campo[this.indiceNome]);
@@ -38,7 +37,7 @@ public class DoadorIndicesParse extends IndicesParse<Doador> {
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Doador doador) {
-		doador.setCpf_cnpj(INTEGER_VAZIO);
+		doador.setCpf_cnpj(Doador.STRING_VAZIO);
 		doador.setNome(Doador.STRING_VAZIO);
 		doador.setUf(Doador.STRING_VAZIO);
 		doador.setSituacaoCadastral(Doador.STRING_VAZIO);

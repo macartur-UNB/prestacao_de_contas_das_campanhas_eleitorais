@@ -5,7 +5,6 @@ import modelo.beans.Fornecedor;
 public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 
 	public static final int INDICE_INVALIDO = -1;
-	public static final int INTEGER_VAZIO = 0;
 
 	private int indiceCpf_Cnpj;
 	private int indiceNome;
@@ -22,7 +21,7 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 	@Override
 	protected void setIndicesValidos(Fornecedor fornecedor, String[] campo) {
 		if(indiceValido(this.indiceCpf_Cnpj)) {
-			fornecedor.setCpf_cnpj(Integer.parseInt(campo[this.indiceCpf_Cnpj]));
+			fornecedor.setCpf_cnpj(campo[this.indiceCpf_Cnpj]);
 		}
 		if(indiceValido(this.indiceNome)) {
 			fornecedor.setNome(campo[this.indiceNome]);
@@ -37,7 +36,7 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Fornecedor fornecedor) {
-		fornecedor.setCpf_cnpj(INTEGER_VAZIO);
+		fornecedor.setCpf_cnpj(Fornecedor.STRING_VAZIO);
 		fornecedor.setNome(Fornecedor.STRING_VAZIO);
 		fornecedor.setUf(Fornecedor.STRING_VAZIO);
 		fornecedor.setSituacaoCadastral(Fornecedor.STRING_VAZIO);
