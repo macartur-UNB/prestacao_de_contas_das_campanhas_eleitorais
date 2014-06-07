@@ -119,7 +119,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 				if (candidato != null) listaCandidato.add(candidato);
 			}
 
-		} catch (SQLException e) {
+ 		} catch (SQLException e) {
 			System.out.println("Um erro aconteceu.");
 			e.getMessage();
 		} 
