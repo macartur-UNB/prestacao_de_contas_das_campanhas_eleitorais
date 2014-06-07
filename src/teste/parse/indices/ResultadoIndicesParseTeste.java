@@ -16,7 +16,7 @@ public class ResultadoIndicesParseTeste {
 	@Before
 	public void setUp() throws Exception {
 		this.resultadoIndicesParse = new ResultadoIndicesParse();
-		this.campo = new String[3];
+		this.campo = new String[2];
 		
 		iniciarCampos();
 		iniciarIndices();
@@ -27,9 +27,8 @@ public class ResultadoIndicesParseTeste {
 		
 		Resultado resultado = new Resultado();
 		this.resultadoIndicesParse.iniciarInstancia(resultado, campo);
-		Assert.assertEquals(this.campo[0], resultado.getId().toString());
-		Assert.assertEquals(this.campo[1], resultado.getCodigo().toString());
-		Assert.assertEquals(this.campo[2], resultado.getDescricao());
+		Assert.assertEquals(this.campo[0], resultado.getCodigo().toString());
+		Assert.assertEquals(this.campo[1], resultado.getDescricao());
 		
 	}
 	
@@ -39,34 +38,30 @@ public class ResultadoIndicesParseTeste {
 		this.resultadoIndicesParse = new ResultadoIndicesParse();
 		Resultado resultado = new Resultado();
 		this.resultadoIndicesParse.iniciarInstancia(resultado, campo);
-		Assert.assertNotEquals(this.campo[0], resultado.getId().toString());
-		Assert.assertNotEquals(this.campo[1], resultado.getCodigo().toString());
-		Assert.assertNotEquals(this.campo[2], resultado.getDescricao());
+		Assert.assertNotEquals(this.campo[0], resultado.getCodigo().toString());
+		Assert.assertNotEquals(this.campo[1], resultado.getDescricao());
 		
 	}
 	
 	private void iniciarIndices() {
 		
-		this.resultadoIndicesParse.setIndiceId(0);
-		this.resultadoIndicesParse.setIndiceCodigo(1);
-		this.resultadoIndicesParse.setIndiceDescricao(2);
+		this.resultadoIndicesParse.setIndiceCodigo(0);
+		this.resultadoIndicesParse.setIndiceDescricao(1);
 
 	}
 	
 	private void iniciarCampos() {
 		
-		this.campo[0] = "1";
-		this.campo[1] = "123";
-		this.campo[2] = "RESULTADO INEXISTENTE";
+		this.campo[0] = "123";
+		this.campo[1] = "RESULTADO INEXISTENTE";
 		
 	}
 	
 	@Test
 	public void verificarIndices() {
 		
-		Assert.assertEquals(0, this.resultadoIndicesParse.getIndiceId());
-		Assert.assertEquals(1, this.resultadoIndicesParse.getIndiceCodigo());
-		Assert.assertEquals(2, this.resultadoIndicesParse.getIndiceDescricao());
+		Assert.assertEquals(0, this.resultadoIndicesParse.getIndiceCodigo());
+		Assert.assertEquals(1, this.resultadoIndicesParse.getIndiceDescricao());
 		
 	}
 

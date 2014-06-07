@@ -11,9 +11,8 @@ import parse.indices.CargoIndicesParse;
 
 public class CargoParseControleTeste {
 
-	public static final int ID = 0;
-	public static final int CODIGO = 1;
-	public static final int DESCRICAO = 2;
+	public static final int CODIGO = 0;
+	public static final int DESCRICAO = 1;
 	
 	private String campo[];
 	private CargoDAO cargoDAO;
@@ -21,7 +20,7 @@ public class CargoParseControleTeste {
 	private CargoParseControle cargoParseControle;
 
 	public void beforeTest() throws Exception {
-		this.campo = new String[3];
+		this.campo = new String[2];
 		this.cargoDAO = new CargoDAO();
 		this.cargoIndicesParse = new CargoIndicesParse();
 		this.cargoParseControle = new CargoParseControle(this.cargoIndicesParse);
@@ -44,7 +43,6 @@ public class CargoParseControleTeste {
 		
 		Cargo cargoCadastrado = this.cargoDAO.getLista().get(0);
 				
-		Assert.assertEquals(this.campo[ID], cargoCadastrado.getId().toString());
 		Assert.assertEquals(this.campo[CODIGO], cargoCadastrado.getCodigo().toString());
 		Assert.assertEquals(this.campo[DESCRICAO], cargoCadastrado.getDescricao());
 		
@@ -52,7 +50,6 @@ public class CargoParseControleTeste {
 	
 	private void iniciarIndices() {
 		
-		this.cargoIndicesParse.setIndiceId(ID);
 		this.cargoIndicesParse.setIndiceCodigo(CODIGO);
 		this.cargoIndicesParse.setIndiceDescricao(DESCRICAO);
 		
@@ -60,7 +57,6 @@ public class CargoParseControleTeste {
 	
 	private void iniciarCampos() {
 		
-		this.campo[ID] = "1";
 		this.campo[CODIGO] = "125";
 		this.campo[DESCRICAO] = "CARGO INEXISTENTE";
 		
