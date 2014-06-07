@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.beans.Partido;
+import controle.PartidoControle;
 
 @WebServlet("/SelecionarPartido")
 public class SelecionarPartido extends HttpServlet {
@@ -21,6 +22,9 @@ public class SelecionarPartido extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		Partido partido = new Partido();
+		PartidoControle partidoControle = new PartidoControle();
+		
+		String sigla = request.getParameter("sigla");
 
 		try {
 			int anos[] = { 2010, 2006, 2002 };
@@ -29,6 +33,7 @@ public class SelecionarPartido extends HttpServlet {
 						.getRequestDispatcher("/erro_partido_inexistente.jsp");
 				requestDispatcher.forward(request, response);
 			} else {
+				partido = partidoControle.getPartido(sigla);
 				request.setAttribute("partido", partido);
 				request.setAttribute("anos", anos);
 				RequestDispatcher requestDispatcher = request

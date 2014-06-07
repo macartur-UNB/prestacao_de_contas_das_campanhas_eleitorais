@@ -32,8 +32,7 @@
 						<tr>
 							<td>Nome:</td>
 							<td>							
-								<c:url var="partidoURL" value="/visualizarPartido">
-									<c:param name="nome" value="${partido.nome}"></c:param>
+								<c:url var="partidoURL" value="/SelecionarPartido">
 									<c:param name="sigla" value="${partido.sigla}"></c:param>
 								</c:url>
 								<a  href="${partidoURL}" > ${partido.nome} </a>

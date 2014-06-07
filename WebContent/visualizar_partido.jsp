@@ -37,6 +37,16 @@
 						<td>Sigla:</td>
 						<td>${partido.sigla}</td>
 					</tr>
+					
+					<tr>
+						<td>Numero:</td>
+						<td>${partido.numero}</td>
+					</tr>
+					
+					<tr>
+						<td>Deferimento:</td>
+						<td>${partido.deferimento}</td>
+					</tr>
 				</table>
 				<br />
 				
