@@ -97,4 +97,30 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 		return partido;
 	}
 	
+	public Partido getPeloNumero(String numero) {
+		Partido partido = new Partido();
+		String comandoSQL = SQL_SELECAO + " WHERE " + NUMERO +" = '"+numero+"' ";
+		System.out.println(comandoSQL);
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			
+			while(resultadoSQL.next())
+			{
+				partido.setSigla(resultadoSQL.getString(SIGLA));
+				partido.setNome(resultadoSQL.getString(NOME));
+				partido.setDeferimento(resultadoSQL.getString(DEFERIMENTO));
+				partido.setNumero(resultadoSQL.getString(NUMERO));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+		return partido;
+	}
+	
 }

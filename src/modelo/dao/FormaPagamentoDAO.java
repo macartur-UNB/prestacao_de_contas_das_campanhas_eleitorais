@@ -23,7 +23,7 @@ public class FormaPagamentoDAO extends BasicoDAO<FormaPagamento> implements Pars
 		};
 	}
 
-	private static final String ID = "id";
+	private static final String ID = "id_forma_pagamento";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "forma_de_pagamento";

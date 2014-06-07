@@ -35,10 +35,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	private ResultadoDAO resultadoDAO;
 		
 	private static final String NOME_TABELA = "campanha";
-	private final String ID = "id_Campanha";
+	private final String ID = "id_campanha";
 	private final String COD_RESULTADO = "resultado_cod_resultado";
 	private final String COD_CARGO = "cargo_cod_cargo";
-	private final String SIGLA_PARTIDO = "partido_sigla";
+	private final String NUMERO_PARTIDO = "partido_numero";
 	private final String TITULO_CANDIDATO = "candidato_titulo_eleitoral";
 	private final String ANO = "ano";
 	private final String NUM_CANDIDATO = "numero_candidatura";
@@ -51,7 +51,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
 					   + NOME_TABELA + " (" + ID + ", " + COD_RESULTADO + ", "
-					   + COD_CARGO + ", " + SIGLA_PARTIDO + ", " 
+					   + COD_CARGO + ", " + NUMERO_PARTIDO + ", " 
 					   + TITULO_CANDIDATO + ", " + ANO + ", " + NUM_CANDIDATO
 					   + ", " + NOME_URNA + ", " + UF + ", "
 					   + DESPESA_MAX_DECLARADA + ", " + DESPESA_MAX_CALCULADA
@@ -83,7 +83,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			instrucaoSQL.setInt(1, campanha.getId());			
 			instrucaoSQL.setInt(2, campanha.getResultado().getCodigo());
 			instrucaoSQL.setInt(3, campanha.getCargo().getCodigo());	
-			instrucaoSQL.setString(4, campanha.getPartido().getSigla());	
+			instrucaoSQL.setString(4, campanha.getPartido().getNumero());	
 			instrucaoSQL.setString(5, campanha.getCandidato().getTituloEleitoral());	
 			instrucaoSQL.setInt(6, campanha.getAno());	
 			instrucaoSQL.setInt(7, campanha.getNumeroCandidato());	
@@ -130,7 +130,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 				throws SQLException {
 		cargo.setCodigo(resultadoSQL.getInt(COD_CARGO));		
 		resultado.setCodigo(resultadoSQL.getInt(COD_RESULTADO));		
-		partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
+		partido.setNumero(resultadoSQL.getString(NUMERO_PARTIDO));
 		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
 	}
 
@@ -144,7 +144,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	
 	public ArrayList<Campanha> getCampanhasPorSiglaPartidoEAno(String sigla, String ano) {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
-		String comandoSQL = SQL_SELECT + " WHERE " + SIGLA_PARTIDO + " = '"+sigla+"' AND "
+		String comandoSQL = SQL_SELECT + " WHERE " + NUMERO_PARTIDO + " = '"+sigla+"' AND "
 		+ ANO + " = '"+ano+"' ";
 		listaCampanha = buscaBD(comandoSQL);
 		return listaCampanha;
@@ -174,7 +174,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 				campanha.setNomeDeUrna(resultadoSQL.getString(NOME_URNA));
 				campanha.setNumeroCandidato(resultadoSQL.getInt(NUM_CANDIDATO));
 				campanha.setPartido(
-						partidoDAO.getPelaSigla(resultadoSQL.getString(SIGLA_PARTIDO)));
+						partidoDAO.getPeloNumero(resultadoSQL.getString(NUMERO_PARTIDO)));
 				
 				campanha.setReceitaTotalCalculada(resultadoSQL.getFloat(RECEITA_MAX_CALCULADA));
 				campanha.setResultado(
