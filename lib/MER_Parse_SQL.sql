@@ -71,10 +71,10 @@ CREATE TABLE doador (
 );
 
 CREATE TABLE forma_de_pagamento (
-  id_forma_pagamento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   codigo VARCHAR(255) NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_forma_pagamento)
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE fornecedor (
@@ -116,15 +116,15 @@ CREATE TABLE resultado (
 );
 
 CREATE TABLE tipo_documento (
-  id_tipo_movimentacao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   codigo VARCHAR(255) NULL,
-  tipo VARCHAR(255) NULL,
-  PRIMARY KEY(id_tipo_movimentacao)
+  descricao VARCHAR(255) NULL,
+  PRIMARY KEY(id)
 );
 
 CREATE TABLE tipo_movimentacao (
-  id_tipo_movimentacao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   codigo INTEGER UNSIGNED NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_tipo_movimentacao)
+  PRIMARY KEY(id)
 );
