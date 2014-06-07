@@ -134,7 +134,6 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		resultado.setCodigo(resultadoSQL.getInt(COD_RESULTADO));		
 		partido.setSigla(resultadoSQL.getString(SIGLA_PARTIDO));
 		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
-		
 	}
 
 	public ArrayList<Campanha> getCampanhas(Candidato candidato) {
@@ -142,9 +141,15 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		String comandoSQL = SQL_SELECT + " WHERE " + TITULO_CANDIDATO 
 				+" = '"+candidato.getTituloEleitoral()+"' ";
 		listaCampanha = buscaBD(comandoSQL);
-		for (Campanha campanha : listaCampanha)
-			campanha.setCandidato(candidato);
 		return listaCampanha;	
+	}
+	
+	public ArrayList<Campanha> getCampanhasPorSiglaPartidoEAno(String sigla, String ano) {
+		ArrayList<Campanha> listaCampanha = new ArrayList<>();
+		String comandoSQL = SQL_SELECT + " WHERE " + SIGLA_PARTIDO + " = '"+sigla+"' AND "
+		+ ANO + " = '"+ano+"' ";
+		listaCampanha = buscaBD(comandoSQL);
+		return listaCampanha;
 	}
 	
 	public ArrayList<Campanha> buscaBD(String SQL) {
@@ -160,6 +165,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
 			
+			CandidatoDAO candidatoDAO = new CandidatoDAO();
 			PartidoDAO partidoDAO = new PartidoDAO();
 			CargoDAO cargoDAO = new CargoDAO();
 			ResultadoDAO resultadoDAO = new ResultadoDAO();
@@ -176,13 +182,13 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 				campanha.setNumeroCandidato(resultadoSQL.getInt(NUM_CANDIDATO));
 				campanha.setPartido(
 						partidoDAO.getPelaSigla(resultadoSQL.getString(SIGLA_PARTIDO)));
-
+				
 				campanha.setReceitaTotalCalculada(resultadoSQL.getFloat(RECEITA_MAX_CALCULADA));
 				campanha.setResultado(
 						resultadoDAO.getPeloCod(resultadoSQL.getInt(COD_RESULTADO)));
 				campanha.setUf(resultadoSQL.getString(UF));
 				
-
+				campanha.setCandidato(candidatoDAO.getCandidato(resultadoSQL.getString(TITULO_CANDIDATO)));
 				if (campanha != null) listaCampanha.add(campanha);
 			}
 

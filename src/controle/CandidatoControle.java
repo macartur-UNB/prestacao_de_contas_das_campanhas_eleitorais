@@ -20,5 +20,4 @@ public class CandidatoControle {
 	public Candidato getUmCandidato(String tituloEleitoral) {
 		return this.candidatoDAO.getCandidato(tituloEleitoral);
 	}
-
 }

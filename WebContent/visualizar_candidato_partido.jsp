@@ -29,11 +29,11 @@
 					visualizar mais informações.
 				</p>
 
-				<c:forEach var="candidato" items="${listaCandidatos}">
+				<c:forEach var="campanha" items="${listaCampanhas}">
 					<c:url var="candidatoUrl" value="/SelecionarCandidato">
-						<c:param name="nome" value="${candidato.nome}"></c:param>
+						<c:param name="tituloEleitoral" value="${campanha.candidato.tituloEleitoral}"></c:param>
 					</c:url>
-					<a href="${candidatoUrl}">${candidato.nome}</a>
+					<a href="${candidatoUrl}">${campanha.candidato.nome}</a>
 					<br>
 				</c:forEach>
 				<br>

@@ -126,5 +126,4 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 		return listaCandidato;
 	}
-	
 }
