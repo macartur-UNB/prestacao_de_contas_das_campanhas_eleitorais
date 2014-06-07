@@ -13,6 +13,8 @@ public class DoadorCadastroParse extends CadastroParse<Doador> {
 	public static final String ANO_2002 = "2002";
 	public static final String ANO_2006 = "2006";
 	public static final String ANO_2010 = "2010";
+	public static final String RECEITA = "receita";
+
 
 	public DoadorCadastroParse(String tipoArquivo, String ano)
 			throws ParseException {

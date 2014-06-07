@@ -19,6 +19,6 @@ public class FornecedorParseControle extends ParseControle<Fornecedor> {
 	@Override
 	public boolean iguais(Fornecedor objetoUm, Fornecedor objetoDois) {
 		return objetoUm.equals(objetoDois);
-	}
+	}	
 	
 }
