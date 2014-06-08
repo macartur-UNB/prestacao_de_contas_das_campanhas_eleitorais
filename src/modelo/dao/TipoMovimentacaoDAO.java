@@ -23,7 +23,7 @@ public class TipoMovimentacaoDAO extends BasicoDAO<TipoMovimentacao> implements 
 		};
 	}
 
-	private static final String ID = "id";
+	private static final String ID = "id_tipo_movimentacao";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "tipo_movimentacao";

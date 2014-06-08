@@ -23,7 +23,7 @@ public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements ParseD
 		};
 	}
 
-	private static final String ID = "id";
+	private static final String ID = "id_tipo_documento";
 	private static final String CODIGO = "codigo";
 	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "tipo_documento";
