@@ -32,9 +32,6 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	
 	
 	private CampanhaDAO campanhaDAO;
-	private TipoMovimentacaoDAO tipoMovimentacaoDAO;
-	private FormaPagamentoDAO formaPagamentoDAO;
-	private TipoDocumentoDAO tipoDocumentoDAO;
 	private FornecedorDAO fornecedorDAO;
 		
 	private static final String NOME_TABELA = "despesa";
@@ -62,9 +59,6 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	public DespesaDAO() {
 		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
 		this.campanhaDAO = new CampanhaDAO();
-		this.tipoMovimentacaoDAO = new TipoMovimentacaoDAO();
-		this.formaPagamentoDAO = new FormaPagamentoDAO();
-		this.tipoDocumentoDAO = new TipoDocumentoDAO();
 		this.fornecedorDAO = new FornecedorDAO();
 	}
 
