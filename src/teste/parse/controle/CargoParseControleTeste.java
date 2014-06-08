@@ -8,8 +8,9 @@ import org.junit.Test;
 
 import parse.controle.CargoParseControle;
 import parse.indices.CargoIndicesParse;
+import teste.TemplateTeste;
 
-public class CargoParseControleTeste {
+public class CargoParseControleTeste extends TemplateTeste {
 
 	public static final int CODIGO = 0;
 	public static final int DESCRICAO = 1;
@@ -19,6 +20,7 @@ public class CargoParseControleTeste {
 	private CargoIndicesParse cargoIndicesParse;
 	private CargoParseControle cargoParseControle;
 
+	@Override
 	public void beforeTest() throws Exception {
 		this.campo = new String[2];
 		this.cargoDAO = new CargoDAO();
@@ -29,11 +31,11 @@ public class CargoParseControleTeste {
 		iniciarIndices();
 	}
 	
-	public void afterTest() {
+	@Override
+	public void afterTest() throws Exception {
 		
 	}
 
-	
 	@Test
 	public void cadastrarCargos() throws Exception {
 		
@@ -46,6 +48,19 @@ public class CargoParseControleTeste {
 		Assert.assertEquals(this.campo[CODIGO], cargoCadastrado.getCodigo().toString());
 		Assert.assertEquals(this.campo[DESCRICAO], cargoCadastrado.getDescricao());
 		
+	}
+	
+	@Test
+	public void naoDeveCadastrarDoisCargosIguais() throws Exception {
+		
+		this.cargoParseControle.addInstancia(campo);
+		this.cargoParseControle.addInstancia(campo);
+		this.cargoParseControle.cadastrarInstancias();
+		this.cargoParseControle.resetar();
+		
+		int numeroCargosCadastrados = this.cargoDAO.getLista().size();
+		
+		Assert.assertEquals(1, numeroCargosCadastrados);
 	}
 	
 	private void iniciarIndices() {
