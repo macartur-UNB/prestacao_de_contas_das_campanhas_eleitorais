@@ -11,9 +11,6 @@ public class CadastroCandidatoParseTeste extends TemplateTeste {
 		
 	}
 	
-	public void cadastrarCandidato() throws Exception {
-		
-	}
 	
 	@Test
 	public void deveRetornar() {
