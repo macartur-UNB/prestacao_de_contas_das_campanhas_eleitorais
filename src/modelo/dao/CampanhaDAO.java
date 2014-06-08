@@ -63,17 +63,17 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	protected void adicionarListaNoBatch(ArrayList<Campanha> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for (Campanha campanha : lista) {
-			instrucaoSQL.setInt(2, campanha.getResultado().getCodigo());
-			instrucaoSQL.setInt(3, campanha.getCargo().getCodigo());	
-			instrucaoSQL.setInt(4, campanha.getPartido().getNumero());	
-			instrucaoSQL.setString(5, campanha.getCandidato().getTituloEleitoral());	
-			instrucaoSQL.setInt(6, campanha.getAno());	
-			instrucaoSQL.setInt(7, campanha.getNumeroCandidato());	
-			instrucaoSQL.setString(8, campanha.getNomeDeUrna());	
-			instrucaoSQL.setString(9, campanha.getUf());	
-			instrucaoSQL.setFloat(10, campanha.getDespesaMaxDeclarada());	
-			instrucaoSQL.setFloat(11, campanha.getDespesaTotalCalculada());	
-			instrucaoSQL.setFloat(12, campanha.getReceitaTotalCalculada());	
+			instrucaoSQL.setInt(3, campanha.getResultado().getCodigo());
+			instrucaoSQL.setInt(4, campanha.getCargo().getCodigo());	
+			instrucaoSQL.setInt(5, campanha.getPartido().getNumero());	
+			instrucaoSQL.setString(6, campanha.getCandidato().getTituloEleitoral());	
+			instrucaoSQL.setInt(1, campanha.getAno());	
+			instrucaoSQL.setInt(2, campanha.getNumeroCandidato());	
+			instrucaoSQL.setString(7, campanha.getNomeDeUrna());	
+			instrucaoSQL.setString(8, campanha.getUf());	
+			instrucaoSQL.setFloat(9, campanha.getDespesaMaxDeclarada());	
+			instrucaoSQL.setFloat(10, campanha.getDespesaTotalCalculada());	
+			instrucaoSQL.setFloat(11, campanha.getReceitaTotalCalculada());	
 			instrucaoSQL.addBatch();	
 		}
 	}
