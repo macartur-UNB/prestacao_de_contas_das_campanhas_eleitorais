@@ -3,9 +3,7 @@ package teste.modelo.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.beans.Fornecedor;
 import modelo.beans.Partido;
-import modelo.dao.FornecedorDAO;
 import modelo.dao.PartidoDAO;
 
 import org.junit.Assert;
@@ -49,7 +47,7 @@ public class PartidoDAOTeste extends TemplateTeste {
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido = new Partido();
-		partido.setNumero("1");
+		partido.setNumero(1);
 		partido.setSigla("A");
 		partido.setDeferimento("11.2.1982");
 		partido.setNome("AEIOU");
@@ -64,7 +62,7 @@ public class PartidoDAOTeste extends TemplateTeste {
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 		
 		Partido partido = new Partido();
-		partido.setNumero("1");
+		partido.setNumero(1);
 		partido.setSigla("A");
 		partido.setDeferimento("11.2.1982");
 		partido.setNome("AEIOU");
@@ -84,12 +82,12 @@ public class PartidoDAOTeste extends TemplateTeste {
 		
 		Partido partido = new Partido();
 		partido.setSigla("A");
-		partido.setNumero("2");
+		partido.setNumero(2);
 		listaPartidos.add(partido);
 		
 		partido = new Partido();
 		partido.setSigla("A");
-		partido.setNumero("2");
+		partido.setNumero(2);
 		listaPartidos.add(partido);
 		
 		this.partidoDAO.cadastrarLista(listaPartidos);
