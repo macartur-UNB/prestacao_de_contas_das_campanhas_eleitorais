@@ -83,7 +83,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			instrucaoSQL.setInt(1, campanha.getId());			
 			instrucaoSQL.setInt(2, campanha.getResultado().getCodigo());
 			instrucaoSQL.setInt(3, campanha.getCargo().getCodigo());	
-			instrucaoSQL.setString(4, campanha.getPartido().getNumero());	
+			instrucaoSQL.setInt(4, campanha.getPartido().getNumero());	
 			instrucaoSQL.setString(5, campanha.getCandidato().getTituloEleitoral());	
 			instrucaoSQL.setInt(6, campanha.getAno());	
 			instrucaoSQL.setInt(7, campanha.getNumeroCandidato());	
@@ -130,7 +130,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 				throws SQLException {
 		cargo.setCodigo(resultadoSQL.getInt(COD_CARGO));		
 		resultado.setCodigo(resultadoSQL.getInt(COD_RESULTADO));		
-		partido.setNumero(resultadoSQL.getString(NUMERO_PARTIDO));
+		partido.setNumero(resultadoSQL.getInt(NUMERO_PARTIDO));
 		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
 	}
 

@@ -48,7 +48,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 	protected void adicionarListaNoBatch(ArrayList<Partido> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for(Partido partido : lista) {
-			instrucaoSQL.setString(1, partido.getNumero());
+			instrucaoSQL.setInt(1, partido.getNumero());
 			instrucaoSQL.setString(2, partido.getSigla());
 			instrucaoSQL.setString(3, partido.getNome());
 			instrucaoSQL.setString(4, partido.getDeferimento());
@@ -63,7 +63,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 		while (resultadoSQL.next()) {
 			Partido partido = new Partido();
 			partido.setNome(resultadoSQL.getString(NOME));
-			partido.setNumero(resultadoSQL.getString(NUMERO));
+			partido.setNumero(resultadoSQL.getInt(NUMERO));
 			partido.setSigla(resultadoSQL.getString(SIGLA));
 			partido.setDeferimento(resultadoSQL.getString(DEFERIMENTO));
 			
@@ -87,7 +87,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 				partido.setSigla(resultadoSQL.getString(SIGLA));
 				partido.setNome(resultadoSQL.getString(NOME));
 				partido.setDeferimento(resultadoSQL.getString(DEFERIMENTO));
-				partido.setNumero(resultadoSQL.getString(NUMERO));
+				partido.setNumero(resultadoSQL.getInt(NUMERO));
 			}
 
 		} catch (SQLException e) {
@@ -113,7 +113,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 				partido.setSigla(resultadoSQL.getString(SIGLA));
 				partido.setNome(resultadoSQL.getString(NOME));
 				partido.setDeferimento(resultadoSQL.getString(DEFERIMENTO));
-				partido.setNumero(resultadoSQL.getString(NUMERO));
+				partido.setNumero(resultadoSQL.getInt(NUMERO));
 			}
 
 		} catch (SQLException e) {
