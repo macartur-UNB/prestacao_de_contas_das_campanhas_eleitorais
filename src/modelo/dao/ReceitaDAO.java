@@ -30,8 +30,6 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	
 	private CampanhaDAO campanhaDAO;
 	private DoadorDAO doadorDAO;
-	private TipoMovimentacaoDAO tipoMovimentacaoDAO;
-	private FormaPagamentoDAO formaPagamentoDAO;
 		
 	private static final String NOME_TABELA = "receita";
 	private final String ID = "id_receita";
@@ -59,8 +57,6 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
 		this.campanhaDAO = new CampanhaDAO();
 		this.doadorDAO = new DoadorDAO();
-		this.formaPagamentoDAO = new FormaPagamentoDAO();
-		this.tipoMovimentacaoDAO = new TipoMovimentacaoDAO();
 	}
 
 	@Override
