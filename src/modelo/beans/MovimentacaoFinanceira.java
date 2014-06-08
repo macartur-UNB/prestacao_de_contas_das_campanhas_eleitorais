@@ -14,8 +14,8 @@ public class MovimentacaoFinanceira {
 	private Integer ano;
 	private String data;
 	private Float valor;
-	private TipoMovimentacao tipoMovimentacao;
-	private FormaPagamento formaPagamento;
+	private String tipoMovimentacao;
+	private String formaPagamento;
 	private String descricao;
 
 	public MovimentacaoFinanceira(){
@@ -26,8 +26,8 @@ public class MovimentacaoFinanceira {
 		this.ano = INTEGER_VAZIO;
 		this.valor = FLOAT_VAZIO;
 		this.descricao = STRING_VAZIO;
-		this.tipoMovimentacao = (TipoMovimentacao) OBJETO_VAZIO;
-		this.formaPagamento = (FormaPagamento) OBJETO_VAZIO;
+		this.tipoMovimentacao = STRING_VAZIO;
+		this.formaPagamento = STRING_VAZIO;
 	}
 
 	@Override
@@ -104,19 +104,19 @@ public class MovimentacaoFinanceira {
 		this.data = data;
 	}
 
-	public TipoMovimentacao getTipoMovimentacao() {
+	public String getTipoMovimentacao() {
 		return tipoMovimentacao;
 	}
 
-	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+	public void setTipoMovimentacao(String tipoMovimentacao) {
 		this.tipoMovimentacao = tipoMovimentacao;
 	}
 
-	public FormaPagamento getFormaPagamento() {
+	public String getFormaPagamento() {
 		return formaPagamento;
 	}
 
-	public void setFormaPagamento(FormaPagamento formaPagamento) {
+	public void setFormaPagamento(String formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}	
 	

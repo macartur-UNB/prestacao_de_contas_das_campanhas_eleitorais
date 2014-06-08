@@ -20,7 +20,7 @@ public class ConexaoBancoDados {
 	
 	private static String localBanco = "jdbc:mysql://";	
 	private static String nomeSevidor = "localhost";
-	private static String nomeBanco = "gpp";
+	private static String nomeBanco = "c_on";
 	private static String usuario = "root";
 	private static String senha = "root";
 	

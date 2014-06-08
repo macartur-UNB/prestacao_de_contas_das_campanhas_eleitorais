@@ -4,11 +4,11 @@ public class Despesa extends MovimentacaoFinanceira {
 
 	public static final Object OBJETO_VAZIO = null; 
 	
-	private TipoDocumento tipoDocumento;
+	private String tipoDocumento;
 	private Fornecedor fornecedor;
 	
 	public Despesa(){
-		this.tipoDocumento = (TipoDocumento) OBJETO_VAZIO;
+		this.tipoDocumento = STRING_VAZIO;
 		this.fornecedor = (Fornecedor) OBJETO_VAZIO;
 	}
 	
@@ -29,11 +29,11 @@ public class Despesa extends MovimentacaoFinanceira {
 		}
 	}
 	
-	public TipoDocumento getTipoDocumento() {
+	public String getTipoDocumento() {
 		return tipoDocumento;
 	}
 	
-	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+	public void setTipoDocumento(String tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
 	
