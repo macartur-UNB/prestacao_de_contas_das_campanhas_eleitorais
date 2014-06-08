@@ -11,7 +11,7 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 	private int indiceId;
 	private int indiceResultadoCod;
 	private int indiceCargoCod;
-	private int indicePartidoSigla;
+	private int indicePartidoNumero;
 	private int indiceCandidatoTitulo;
 	private int indiceAno;
 	private int indiceNumeroCandidato;
@@ -25,7 +25,7 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		this.indiceId = INDICE_INVALIDO;	
 		this.indiceResultadoCod = INDICE_INVALIDO;	
 		this.indiceCargoCod = INDICE_INVALIDO;	
-		this.indicePartidoSigla = INDICE_INVALIDO;	
+		this.indicePartidoNumero = INDICE_INVALIDO;	
 		this.indiceCandidatoTitulo = INDICE_INVALIDO;	
 		this.indiceAno = INDICE_INVALIDO;	
 		this.indiceNumeroCandidato = INDICE_INVALIDO;	
@@ -51,9 +51,9 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 			cargo.setCodigo(Integer.parseInt(campo[this.indiceCargoCod]));
 			campanha.setCargo(cargo);
 		}	
-		if (indiceValido(this.indicePartidoSigla)) {
+		if (indiceValido(this.indicePartidoNumero)) {
 			Partido partido = new Partido();
-			partido.setSigla(campo[this.indicePartidoSigla]);
+			partido.setNumero(Integer.parseInt(campo[this.indicePartidoNumero]));
 			campanha.setPartido(partido);
 		}	
 		if (indiceValido(this.indiceCandidatoTitulo)) {
@@ -120,8 +120,8 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		this.indiceCargoCod = indiceCargoId;
 	}
 
-	public void setIndicePartidoSigla(int indicePartidoSigla) {
-		this.indicePartidoSigla = indicePartidoSigla;
+	public void setIndicePartidoNumero(int indicePartidoSigla) {
+		this.indicePartidoNumero = indicePartidoSigla;
 	}
 
 	public void setIndiceCandidatoTitulo(int indiceCandidatoTitulo) {
