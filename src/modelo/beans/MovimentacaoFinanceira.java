@@ -1,70 +1,51 @@
 package modelo.beans;
 
-import java.util.Calendar;
 
 public class MovimentacaoFinanceira {
 	
 	public static final String STRING_VAZIO = "";
 	public static final Integer INTEGER_VAZIO = 0;
 	public static final Float FLOAT_VAZIO = (float) 0;
-	public static final Boolean BOOLEAN_VAZIO = false;
-	public static final Calendar CALENDAR_VAZIO = null;
-
-	private String horaRegistro;
-	private Boolean entregaEmConjunto;
+	public static final Object OBJETO_VAZIO = null;
+	
+	private Integer id;
+	private Campanha campanha;
 	private String numeroDocumento;
 	private Integer ano;
+	private String data;
 	private Float valor;
-	private String fonte;
-	private String tipo;
-	private String especie;
+	private TipoMovimentacao tipoMovimentacao;
+	private FormaPagamento formaPagamento;
 	private String descricao;
 
 	public MovimentacaoFinanceira(){
-		this.horaRegistro = STRING_VAZIO;
-		this.entregaEmConjunto = BOOLEAN_VAZIO;
+		this.id = INTEGER_VAZIO;
+		this.campanha = (Campanha) OBJETO_VAZIO;
 		this.numeroDocumento = STRING_VAZIO;
+		this.data = STRING_VAZIO;
 		this.ano = INTEGER_VAZIO;
 		this.valor = FLOAT_VAZIO;
-		this.fonte = STRING_VAZIO;
-		this.tipo = STRING_VAZIO;
-		this.especie = STRING_VAZIO;
 		this.descricao = STRING_VAZIO;
+		this.tipoMovimentacao = (TipoMovimentacao) OBJETO_VAZIO;
+		this.formaPagamento = (FormaPagamento) OBJETO_VAZIO;
 	}
 
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof MovimentacaoFinanceira)) {
+		if( !(object instanceof MovimentacaoFinanceira) || object == null) {
 			return false;
 		}
 		
 		MovimentacaoFinanceira outraMovimentacao = (MovimentacaoFinanceira) object;
 		
-		return 	this.horaRegistro.equalsIgnoreCase(outraMovimentacao.getHoraRegistro()) &&
-				this.entregaEmConjunto.equals(outraMovimentacao.isEntregaEmConjunto()) &&
+		return 	
+				this.campanha.equals(outraMovimentacao.getCampanha()) &&
 				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
 				this.ano.equals(outraMovimentacao.getAno()) &&
 				this.valor.equals(outraMovimentacao.getValor()) &&
-				this.fonte.equalsIgnoreCase(outraMovimentacao.getFonte()) &&
-				this.tipo.equalsIgnoreCase(outraMovimentacao.getTipo()) &&
-				this.especie.equalsIgnoreCase(outraMovimentacao.getEspecie()) &&
-				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao());
-	}
-	
-	public String getHoraRegistro() {
-		return horaRegistro;
-	}
-
-	public void setHoraRegistro(String horaRegistro) {
-		this.horaRegistro = horaRegistro;
-	}
-
-	public Boolean isEntregaEmConjunto() {
-		return entregaEmConjunto;
-	}
-
-	public void setEntregaEmConjunto(Boolean entregaEmConjunto) {
-		this.entregaEmConjunto = entregaEmConjunto;
+				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao()) &&
+				this.tipoMovimentacao.equals(outraMovimentacao.getTipoMovimentacao()) &&
+				this.formaPagamento.equals(outraMovimentacao.getFormaPagamento());
 	}
 
 	public String getNumeroDocumento() {
@@ -91,36 +72,54 @@ public class MovimentacaoFinanceira {
 		this.valor = valor;
 	}
 
-	public String getFonte() {
-		return fonte;
-	}
-
-	public void setFonte(String fonte) {
-		this.fonte = fonte;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getEspecie() {
-		return especie;
-	}
-
-	public void setEspecie(String especie) {
-		this.especie = especie;
-	}
-
 	public String getDescricao() {
 		return descricao;
 	}
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Campanha getCampanha() {
+		return campanha;
+	}
+
+	public void setCampanha(Campanha campanha) {
+		this.campanha = campanha;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public TipoMovimentacao getTipoMovimentacao() {
+		return tipoMovimentacao;
+	}
+
+	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+		this.tipoMovimentacao = tipoMovimentacao;
+	}
+
+	public FormaPagamento getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(FormaPagamento formaPagamento) {
+		this.formaPagamento = formaPagamento;
 	}	
+	
+	
 	
 }

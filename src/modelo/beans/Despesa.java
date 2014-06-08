@@ -1,44 +1,39 @@
-/** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  01/05/2014
- * 
- *  COMENTARIOS: 
-**/
-
 package modelo.beans;
 
 public class Despesa extends MovimentacaoFinanceira {
 
-	public static final Fornecedor FORNECEDOR_VAZIO = null; 
+	public static final Object OBJETO_VAZIO = null; 
 	
-	private String tipoDocumento;
+	private TipoDocumento tipoDocumento;
 	private Fornecedor fornecedor;
 	
 	public Despesa(){
-		this.tipoDocumento = STRING_VAZIO;
-		this.fornecedor = FORNECEDOR_VAZIO;
+		this.tipoDocumento = (TipoDocumento) OBJETO_VAZIO;
+		this.fornecedor = (Fornecedor) OBJETO_VAZIO;
 	}
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Despesa) ) {
+		if( !(object instanceof Despesa) || object == null) {
+			return false;
+		} else {
+		
+			Despesa outraDespesa = (Despesa) object;
+		
+			if(this.getAno().equals(outraDespesa.getAno())) {
+				return this.fornecedor.equals(outraDespesa.getFornecedor()) &&
+					   this.tipoDocumento.equals(outraDespesa.getTipoDocumento()) &&
+					   super.equals(object);
+			}
 			return false;
 		}
-		
-		Despesa outraDespesa = (Despesa) object;
-		
-		if(this.getAno().equals(outraDespesa.getAno())) {
-			return this.fornecedor.equals(outraDespesa.getFornecedor()) &&
-					this.tipoDocumento.equals(outraDespesa.getTipoDocumento()) &&
-					super.equals(object);
-		}
-		return false;
 	}
 	
-	public String getTipoDocumento() {
+	public TipoDocumento getTipoDocumento() {
 		return tipoDocumento;
 	}
 	
-	public void setTipoDocumento(String tipoDocumento) {
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
 	

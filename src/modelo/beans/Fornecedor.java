@@ -3,16 +3,15 @@ package modelo.beans;
 public class Fornecedor {
 	
 	public static final String STRING_VAZIO = "";
-	public static final int INTEGER_VAZIO = 0;
 	
-	private Integer cpf_cnpj;
+	private String cpf_cnpj;
 	private String nome;
 	private String uf;
 	private String situacaoCadastral;
 	
 	
 	public Fornecedor() {
-		this.cpf_cnpj = INTEGER_VAZIO;
+		this.cpf_cnpj = STRING_VAZIO;
 		this.nome = STRING_VAZIO;
 		this.uf = STRING_VAZIO;
 		this.situacaoCadastral = STRING_VAZIO;
@@ -27,11 +26,11 @@ public class Fornecedor {
 		return this.getCpf_cnpj().equals(outroFornecedor.getCpf_cnpj());
 	}
 	
-	public Integer getCpf_cnpj() {
+	public String getCpf_cnpj() {
 		return cpf_cnpj;
 	}
 	
-	public void setCpf_cnpj(Integer cpf_cnpj) {
+	public void setCpf_cnpj(String cpf_cnpj) {
 		this.cpf_cnpj = cpf_cnpj;
 	}
 	

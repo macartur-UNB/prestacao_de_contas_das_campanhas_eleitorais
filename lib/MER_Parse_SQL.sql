@@ -17,7 +17,7 @@ CREATE TABLE campanha (
   id_campanha INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   resultado_cod_resultado INTEGER NOT NULL,
   cargo_cod_cargo INTEGER NOT NULL,
-  partido_sigla VARCHAR(8) NOT NULL,
+  partido_numero  INTEGER UNSIGNED NULL,
   candidato_titulo_eleitoral VARCHAR(255) NOT NULL,
   ano INTEGER UNSIGNED NULL,
   numero_candidatura VARCHAR(255) NULL,
@@ -30,7 +30,7 @@ CREATE TABLE campanha (
   INDEX campanha_fk_1(resultado_cod_resultado),
   INDEX campanha_fk_2(cargo_cod_cargo),
   INDEX campanha_fk_3(candidato_titulo_eleitoral),
-  INDEX campanha_fk_4(partido_sigla)
+  INDEX campanha_fk_4(partido_numero)
 );
 
 CREATE TABLE candidato (
@@ -40,30 +40,33 @@ CREATE TABLE candidato (
 );
 
 CREATE TABLE cargo (
-  codigo INTEGER NULL,
+  cod_cargo INTEGER NOT NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(codigo)
+  PRIMARY KEY(cod_cargo)
 );
 
 CREATE TABLE despesa (
-  id_despesas INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  tipo_documento_id_tipo_movimentacao INTEGER UNSIGNED NOT NULL,
+  id_despesa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   tipo_movimentacao_id_tipo_movimentacao INTEGER UNSIGNED NOT NULL,
-  forma_de_pagamento_id_forma_pagamento INTEGER UNSIGNED NOT NULL,
-  campanha_id_candidato INTEGER UNSIGNED NOT NULL,
+  tipo_documento_id_tipo_documento INTEGER UNSIGNED NOT NULL,
+  forma_pagamento_id_forma_pagamento INTEGER UNSIGNED NOT NULL,
+  campanha_id_campanha INTEGER UNSIGNED NOT NULL,
+  fornecedor_cpf_cnpj VARCHAR(255) NULL,
   numero_documento INTEGER UNSIGNED NULL,
+  ano INTEGER UNSIGNED NULL,
   valor FLOAT NULL,
   descricao VARCHAR(255) NULL,
   data_despesa VARCHAR(255) NULL,
-  PRIMARY KEY(id_despesas),
-  INDEX despesa_fk_1(tipo_documento_id_tipo_movimentacao),
-  INDEX despesa_fk_2(tipo_movimentacao_id_tipo_movimentacao),
-  INDEX despesa_fk_3(forma_de_pagamento_id_forma_pagamento),
-  INDEX despesa_fk_4(campanha_id_candidato)
+  PRIMARY KEY(id_despesa),
+  INDEX despesa_fk_1(tipo_movimentacao_id_tipo_movimentacao),
+  INDEX despesa_fk_2(tipo_documento_id_tipo_documento),
+  INDEX despesa_fk_3(forma_pagamento_id_forma_pagamento),
+  INDEX despesa_fk_4(campanha_id_campanha),
+  INDEX despesa_fk_5(fornecedor_cpf_cnpj)
 );
 
 CREATE TABLE doador (
-  cpf_cnpj INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  cpf_cnpj VARCHAR(255) NOT NULL,
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,
@@ -78,7 +81,7 @@ CREATE TABLE forma_de_pagamento (
 );
 
 CREATE TABLE fornecedor (
-  cpf_cnpj INTEGER UNSIGNED NOT NULL,
+  cpf_cnpj VARCHAR(255) NOT NULL,
   nome VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   situacao_cadastral VARCHAR(255) NULL,
@@ -86,8 +89,8 @@ CREATE TABLE fornecedor (
 );
 
 CREATE TABLE partido (
-  sigla VARCHAR(8) NOT NULL,
   numero INTEGER UNSIGNED NULL,
+  sigla VARCHAR(8) NOT NULL,
   nome VARCHAR(255) NULL,
   deferimento VARCHAR(255) NULL,
   PRIMARY KEY(numero)
@@ -97,29 +100,32 @@ CREATE TABLE receita (
   id_receita INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   tipo_movimentacao_id_tipo_movimentacao INTEGER UNSIGNED NOT NULL,
   forma_de_pagamento_id_forma_pagamento INTEGER UNSIGNED NOT NULL,
-  campanha_id_candidato INTEGER UNSIGNED NOT NULL,
+  campanha_id_campanha INTEGER UNSIGNED NOT NULL,
+  doador_cpf_cnpj VARCHAR(255) NOT NULL,
   recibo_eleitoral VARCHAR(255) NULL,
   numero_documento INTEGER UNSIGNED NULL,
+  ano INTEGER UNSIGNED NULL,
   data_receita VARCHAR(255) NULL,
   valor FLOAT NULL,
   descricao VARCHAR(255) NULL,
   PRIMARY KEY(id_receita),
   INDEX receita_fk_1(tipo_movimentacao_id_tipo_movimentacao),
   INDEX receita_fk_2(forma_de_pagamento_id_forma_pagamento),
-  INDEX receita_fk_3(campanha_id_candidato)
+  INDEX receita_fk_3(campanha_id_campanha),
+  INDEX receita_fk_4(doador_cpf_cnpj)
 );
 
 CREATE TABLE resultado (
-  codigo INTEGER NULL,
+  cod_resultado INTEGER NOT NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(codigo)
+  PRIMARY KEY(cod_resultado)
 );
 
 CREATE TABLE tipo_documento (
-  id_tipo_movimentacao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_tipo_documento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   codigo VARCHAR(255) NULL,
-  tipo VARCHAR(255) NULL,
-  PRIMARY KEY(id_tipo_movimentacao)
+  descricao VARCHAR(255) NULL,
+  PRIMARY KEY(id_tipo_documento)
 );
 
 CREATE TABLE tipo_movimentacao (

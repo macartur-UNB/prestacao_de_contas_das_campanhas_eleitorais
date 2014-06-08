@@ -12,10 +12,12 @@ import parse.ParseDAO;
 public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	
 	public enum Comparacao implements Comparator<Doador> {
-		CPF_CNPJ {
+		CPF_E_NOME {
 			public int compare(Doador d1, Doador d2) {
-				return d1.getCpf_cnpj().compareTo(d2.getCpf_cnpj());
-			}
+				if(d1.getCpf_cnpj() != d2.getCpf_cnpj())
+					return d1.getCpf_cnpj().compareToIgnoreCase(d2.getCpf_cnpj());
+				else
+					return d1.getNome().compareToIgnoreCase(d2.getNome());			}
 		}
 		
 	}
@@ -31,7 +33,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public DoadorDAO() {
-		super(NOME_TABELA, Comparacao.CPF_CNPJ);
+		super(NOME_TABELA, Comparacao.CPF_E_NOME);
 	}
 
 	@Override
@@ -48,7 +50,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	protected void adicionarListaNoBatch(ArrayList<Doador> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for(Doador doador : lista) {
-			instrucaoSQL.setInt(1, doador.getCpf_cnpj());
+			instrucaoSQL.setString(1, doador.getCpf_cnpj());
 			instrucaoSQL.setString(2, doador.getNome());
 			instrucaoSQL.setString(3, doador.getUf());
 			instrucaoSQL.setString(4, doador.getSituacaoCadastral());
@@ -62,7 +64,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 			ResultSet resultadoSQL) throws SQLException {
 		while(resultadoSQL.next()) {
 			Doador doador = new Doador();
-			doador.setCpf_cnpj(resultadoSQL.getInt(CPF_CNPJ));
+			doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ));
 			doador.setNome(resultadoSQL.getString(NOME));
 			doador.setUf(resultadoSQL.getString(UF));
 			doador.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));

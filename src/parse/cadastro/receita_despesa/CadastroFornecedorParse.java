@@ -7,9 +7,9 @@ import parse.controle.ParseControle;
 import parse.indices.FornecedorIndicesParse;
 import parse.indices.IndicesParse;
 
-public class FornecedorCadastroParse extends CadastroParseReceitasDespesas<Fornecedor> {
+public class CadastroFornecedorParse extends CadastroParseReceitasDespesas<Fornecedor> {
 
-	public FornecedorCadastroParse(String tipoArquivo, String ano)
+	public CadastroFornecedorParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
 
