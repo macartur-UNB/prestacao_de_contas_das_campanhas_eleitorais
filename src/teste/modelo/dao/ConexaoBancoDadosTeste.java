@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class ConexaoBancoDadosTeste {
 	
-	private static final String NOME_BANCO_OFICIAL = "gpp";
+	private static final String NOME_BANCO_OFICIAL = "c_on";
 	private static final String LOCAL_BANCO_OFICIAL = "jdbc:mysql://";
 	
 	private static final String NOME_BANCO_TESTES = "banco_de_testes";

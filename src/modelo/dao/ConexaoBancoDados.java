@@ -1,10 +1,3 @@
-/** CRIADO POR:          
- *  ULTIMA MODIFICACAO:  08/05/2014 (Rafael)
- * 
- *  COMENTARIOS: 
- *  - Removi codigo em duplicidade.
-**/
-
 package modelo.dao;
 
 import java.io.BufferedReader;
