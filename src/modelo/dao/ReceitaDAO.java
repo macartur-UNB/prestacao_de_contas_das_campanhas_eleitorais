@@ -60,15 +60,16 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for (Receita receita : lista) {
 			instrucaoSQL.setInt(1, receita.getId());
-			instrucaoSQL.setString(2, receita.getTipoMovimentacao());
-			instrucaoSQL.setString(3, receita.getFormaPagamento());
-			instrucaoSQL.setInt(4, receita.getCampanha().getAno());
-			instrucaoSQL.setString(5, receita.getDoador().getCpf_cnpj());
-			instrucaoSQL.setString(6, receita.getReciboEleitoral());
-			instrucaoSQL.setString(7, receita.getNumeroDocumento());
-			instrucaoSQL.setString(9, receita.getData());
-			instrucaoSQL.setFloat(10, receita.getValor());
-			instrucaoSQL.setString(11, receita.getDescricao());
+			instrucaoSQL.setString(8, receita.getTipoMovimentacao());
+			instrucaoSQL.setString(5, receita.getFormaPagamento());
+			instrucaoSQL.setInt(2, receita.getCampanha().getAno());
+			instrucaoSQL.setInt(3, receita.getCampanha().getNumeroCandidato());
+			instrucaoSQL.setString(11, receita.getDoador().getCpf_cnpj());
+			instrucaoSQL.setString(9, receita.getReciboEleitoral());
+			instrucaoSQL.setString(10, receita.getNumeroDocumento());
+			instrucaoSQL.setString(7, receita.getData());
+			instrucaoSQL.setFloat(4, receita.getValor());
+			instrucaoSQL.setString(6, receita.getDescricao());
 			instrucaoSQL.addBatch();
 		}
 		
