@@ -82,7 +82,7 @@ CREATE TABLE despesa (
 CREATE TABLE receita (
   id_receita INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   campanha_ano INTEGER UNSIGNED NOT NULL,
-  campanha_numero_candidato INTEGER UNSIGNED NOT NULL,  doador_cpf_cnpj VARCHAR(255) NOT NULL,
+  campanha_numero_candidato INTEGER UNSIGNED NOT NULL, 
   valor FLOAT NULL,
   forma_pagamento VARCHAR(255) NULL,
   descricao VARCHAR(255) NULL,

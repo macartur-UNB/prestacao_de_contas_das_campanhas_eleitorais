@@ -14,17 +14,7 @@ public class Receita extends MovimentacaoFinanceira {
 	}
 	
 	public boolean equals(Object object) {
-		if( !(object instanceof Receita) || object == null) {
-			return false;
-		} else {
-			Receita outraReceita = (Receita) object;
-			
-			if(this.getReciboEleitoral().equals(outraReceita.getReciboEleitoral())) {
-				return	this.doador.equals(outraReceita.getDoador()) &&
-						super.equals(object);
-			}
-			return false;
-		}
+		return false;
 	}
 	
 	public String getReciboEleitoral() {

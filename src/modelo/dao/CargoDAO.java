@@ -20,9 +20,9 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 		};
 	}
 
+	private static final String NOME_TABELA = "cargo";
 	private static final String CODIGO = "cod_cargo";
 	private static final String DESCRICAO = "descricao";
-	private static final String NOME_TABELA = "cargo";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + CODIGO + ", " + DESCRICAO + ") "
 			+ "values (?, ?)";
