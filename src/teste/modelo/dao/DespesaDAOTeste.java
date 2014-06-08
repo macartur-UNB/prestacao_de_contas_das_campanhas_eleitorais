@@ -34,9 +34,9 @@ public class DespesaDAOTeste extends TemplateTeste {
 		this.candidatoDAO = new CandidatoDAO();
 		this.fornecedorDAO = new FornecedorDAO();
 		
-		cadastrarPartido();
-		cadastrarCandidato();
-		cadastrarFornecedor();
+		//cadastrarPartido();
+		//cadastrarCandidato();
+		//cadastrarFornecedor();
 	}
 
 	@Override
@@ -45,9 +45,36 @@ public class DespesaDAOTeste extends TemplateTeste {
 	}
 
 	@Test
-	public void valoresComparacao() throws Exception {
-		DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+	public void valoresComparacaoParteI() throws Exception {
+		//DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+		
+		Despesa D1 = new Despesa();
+		Despesa D2 = new Despesa();
+		D1.setAno(2010);
+		D2.setAno(2006);
+		int resultado;
+
+		resultado = DespesaDAO.Comparacao.ANO_E_NUMERO.compare(D1, D2);
+		
+		Assert.assertEquals(1,resultado);
 	}
+	
+	@Test
+	public void valoresComparacaoParteII() throws Exception {
+		//DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+		
+		Despesa D1 = new Despesa();
+		Despesa D2 = new Despesa();
+		D1.setAno(2010);
+		D2.setAno(2010);
+		D1.setNumeroDocumento("000");
+		D2.setNumeroDocumento("000");
+		int resultado;
+
+		resultado = DespesaDAO.Comparacao.ANO_E_NUMERO.compare(D1, D2);
+		
+		Assert.assertEquals(0,resultado);
+	}	
 
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmaDespesaInexistente() throws Exception {

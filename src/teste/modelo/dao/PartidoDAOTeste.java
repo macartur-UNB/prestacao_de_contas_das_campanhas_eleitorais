@@ -3,7 +3,9 @@ package teste.modelo.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.beans.Fornecedor;
 import modelo.beans.Partido;
+import modelo.dao.FornecedorDAO;
 import modelo.dao.PartidoDAO;
 
 import org.junit.Assert;
@@ -27,7 +29,18 @@ public class PartidoDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void valoresComparacao() throws Exception {
-		PartidoDAO.Comparacao.valueOf(PartidoDAO.Comparacao.SIGLA.toString());
+		//PartidoDAO.Comparacao.valueOf(PartidoDAO.Comparacao.SIGLA.toString());
+		
+		Partido P1 = new Partido();
+		Partido P2 = new Partido();
+		P1.setNumero(123);
+		P2.setNumero(123);
+		int resultado;
+
+		resultado = PartidoDAO.Comparacao.NUMERO.compare(P1, P2);
+		
+		Assert.assertEquals(0,resultado);
+		
 	}
 
 	@Test
@@ -88,4 +101,23 @@ public class PartidoDAOTeste extends TemplateTeste {
 		this.partidoDAO.getLista().size();
 	}
 
+	@Test
+	public void testeGetPelaSigla(){
+		partidoDAO.getPelaSigla(null);
+		//Necessita testar o loop while
+	}
+	
+	@Test
+	public void testeGetPelaNumero(){
+		partidoDAO.getPeloNumero(null);
+		//Necessita testar o loop while
+	}
+	
+	@Test(expected = SQLException.class)
+	public void deveLancarExcecaoAoGetarPelaSiglaOuNumero() throws Exception {
+		this.conexaoBancoDados.setLocalBanco(null);
+		partidoDAO.getPelaSigla(null);
+		partidoDAO.getPeloNumero(null);
+	}
+	
 }

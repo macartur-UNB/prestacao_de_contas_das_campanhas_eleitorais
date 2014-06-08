@@ -1,6 +1,7 @@
 package teste.modelo.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import modelo.beans.Candidato;
 import modelo.dao.CandidatoDAO;
@@ -93,5 +94,33 @@ public class CandidatoDAOTeste extends TemplateTeste {
 
 		Assert.assertFalse(candidato.equals(candidatoDois));
 	}
+	
+	@Test
+	public void deveReturnaFalseDuranteAhComparacao() throws Exception{
+		
+		CandidatoDAO.Comparacao.valueOf(CandidatoDAO.Comparacao.TITULO_ELEITORAL.toString());
+		
+		Candidato C1 = new Candidato();
+		Candidato C2 = new Candidato();
+		int resultado;
+
+		resultado = CandidatoDAO.Comparacao.NOME.compare(C1, C2);		
+		
+		Assert.assertEquals(0,resultado);
+	}
+	
+	@Test
+	public void testeGetListaComUmTituloVazio() throws Exception{
+		candidatoDAO.getCandidato(null);
+	}
+	
+	@Test
+	public void testeGetCandidatoComUmTituloVazio() throws Exception{
+		LinkedList<Candidato> LK = null;
+		LK = candidatoDAO.getLista(null);
+		
+		Assert.assertEquals(0,LK.size());
+	}
+	
 	
 }
