@@ -1,6 +1,5 @@
 package modelo.beans;
 
-import java.util.Calendar;
 
 public class MovimentacaoFinanceira {
 	
@@ -13,7 +12,7 @@ public class MovimentacaoFinanceira {
 	private Campanha campanha;
 	private String numeroDocumento;
 	private Integer ano;
-	private Calendar data;
+	private String data;
 	private Float valor;
 	private TipoMovimentacao tipoMovimentacao;
 	private FormaPagamento formaPagamento;
@@ -23,7 +22,7 @@ public class MovimentacaoFinanceira {
 		this.id = INTEGER_VAZIO;
 		this.campanha = (Campanha) OBJETO_VAZIO;
 		this.numeroDocumento = STRING_VAZIO;
-		this.data = (Calendar) OBJETO_VAZIO;
+		this.data = STRING_VAZIO;
 		this.ano = INTEGER_VAZIO;
 		this.valor = FLOAT_VAZIO;
 		this.descricao = STRING_VAZIO;
@@ -97,11 +96,11 @@ public class MovimentacaoFinanceira {
 		this.campanha = campanha;
 	}
 
-	public Calendar getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Calendar data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 

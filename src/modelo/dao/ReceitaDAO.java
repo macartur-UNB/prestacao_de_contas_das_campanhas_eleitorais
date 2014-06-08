@@ -6,8 +6,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+import modelo.beans.Campanha;
+import modelo.beans.Candidato;
+import modelo.beans.Cargo;
+import modelo.beans.Doador;
+import modelo.beans.FormaPagamento;
+import modelo.beans.Partido;
 import modelo.beans.Receita;
-import modelo.dao.CampanhaDAO.Comparacao;
+import modelo.beans.Resultado;
+import modelo.beans.TipoMovimentacao;
 import parse.ParseDAO;
 
 public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> {
@@ -38,56 +45,94 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj";
 	private final String RECIBO_ELEITORAL = "recibo_eleitoral";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
+	private final String ANO = "ano";
 	private final String DATA_RECEITA  = "data_receita";
 	private final String VALOR = "valor";
 	private final String DESCRICAO = "descricao";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
-					   + NOME_TABELA + " (" + ID + ", " + COD_RESULTADO + ", "
-					   + COD_CARGO + ", " + SIGLA_PARTIDO + ", " 
-					   + TITULO_CANDIDATO + ", " + ANO + ", " + NUM_CANDIDATO
-					   + ", " + NOME_URNA + ", " + UF + ", "
-					   + DESPESA_MAX_DECLARADA + ", " + DESPESA_MAX_CALCULADA
-					   + ", " + RECEITA_MAX_CALCULADA 
-					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + NOME_TABELA + " (" + ID + ", " + ID_TIPO_MOVIMENTACAO + ", "
+					   + ID_FORMA_PAGAMENTO + ", " + ID_CAMPANHA + ", " 
+					   + CPF_CNPJ_DOADOR + ", " + RECIBO_ELEITORAL + ", " + NUMERO_DOCUMENTO
+					   + ", " + ANO + ", " + DATA_RECEITA + ", " + VALOR + ", "
+					   + DESCRICAO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
-	public ReceitaDAO() {
+
+	public ReceitaDAO(String nomeTabela, Comparator<Receita> comparador) {
 		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
 		this.campanhaDAO = new CampanhaDAO();
 		this.doadorDAO = new DoadorDAO();
 		this.formaPagamentoDAO = new FormaPagamentoDAO();
-		this
-	}
-
-	public ReceitaDAO(String nomeTabela, Comparator<Receita> comparador) {
-		super(nomeTabela, comparador);
+		this.tipoMovimentacaoDAO = new TipoMovimentacaoDAO();
 	}
 
 	@Override
 	protected String getSqlInsert() {
-		// TODO Auto-generated method stub
-		return null;
+		return SQL_INSERT;
 	}
 
 	@Override
 	protected String getSqlSelect() {
-		// TODO Auto-generated method stub
-		return null;
+		return SQL_SELECT;
 	}
 
 	@Override
 	protected void adicionarListaNoBatch(ArrayList<Receita> lista,
 			PreparedStatement instrucaoSQL) throws SQLException {
-		// TODO Auto-generated method stub
+		for (Receita receita : lista) {
+			instrucaoSQL.setInt(1, receita.getId());
+			instrucaoSQL.setInt(2, receita.getTipoMovimentacao().getId());
+			instrucaoSQL.setInt(3, receita.getFormaPagamento().getId());
+			instrucaoSQL.setInt(4, receita.getCampanha().getId());
+			instrucaoSQL.setString(5, receita.getDoador().getCpf_cnpj());
+			instrucaoSQL.setString(6, receita.getReciboEleitoral());
+			instrucaoSQL.setString(7, receita.getNumeroDocumento());
+			instrucaoSQL.setInt(8, receita.getAno());
+			instrucaoSQL.setString(9, receita.getData());
+			instrucaoSQL.setFloat(10, receita.getValor());
+			instrucaoSQL.setString(11, receita.getDescricao());
+			instrucaoSQL.addBatch();
+		}
 		
 	}
 
 	@Override
 	protected void adicionarResultSetNaLista(ArrayList<Receita> lista,
 			ResultSet resultadoSQL) throws SQLException {
-		// TODO Auto-generated method stub
+		while (resultadoSQL.next()) {
+			Campanha campanha = new Campanha();
+			FormaPagamento formaPagamento = new FormaPagamento();
+			TipoMovimentacao tipoMovimentacao = new TipoMovimentacao();
+			Doador doador = new Doador();
+			
+			PreparaCampos(campanha, formaPagamento, tipoMovimentacao, doador, resultadoSQL);
+			
+			Receita receita = new Receita();
+			receita.setId(resultadoSQL.getInt(ID));
+			receita.setTipoMovimentacao(tipoMovimentacao);
+			receita.setFormaPagamento(formaPagamento);
+			receita.setCampanha(campanha);
+			receita.setDoador(doador);
+			receita.setReciboEleitoral(resultadoSQL.getString(RECIBO_ELEITORAL));
+			receita.setNumeroDocumento(resultadoSQL.getString(NUMERO_DOCUMENTO));
+			receita.setAno(resultadoSQL.getInt(ANO));
+			receita.setData(resultadoSQL.getString(DATA_RECEITA));
+			receita.setValor(resultadoSQL.getFloat(VALOR));
+			receita.setDescricao(resultadoSQL.getString(DESCRICAO));
+			
+			lista.add(receita);
+		}
 		
+	}
+	
+	private void PreparaCampos(Campanha campanha,
+			FormaPagamento formaPagamento, TipoMovimentacao tipoMovimentacao, Doador doador, ResultSet resultadoSQL) 
+				throws SQLException {
+		campanha.setId(resultadoSQL.getInt(ID_CAMPANHA));		
+		formaPagamento.setId(resultadoSQL.getInt(ID_FORMA_PAGAMENTO));		
+		tipoMovimentacao.setId(resultadoSQL.getInt(ID_TIPO_MOVIMENTACAO));
+		doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_DOADOR));
 	}
 
 }

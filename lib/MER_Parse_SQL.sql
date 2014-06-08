@@ -103,6 +103,7 @@ CREATE TABLE receita (
   doador_cpf_cnpj VARCHAR(255) NOT NULL,
   recibo_eleitoral VARCHAR(255) NULL,
   numero_documento INTEGER UNSIGNED NULL,
+  ano INTEGER UNSIGNED NULL,
   data_receita VARCHAR(255) NULL,
   valor FLOAT NULL,
   descricao VARCHAR(255) NULL,
