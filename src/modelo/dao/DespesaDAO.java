@@ -59,7 +59,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
-	public DespesaDAO(String nomeTabela, Comparator<Despesa> comparador) {
+	public DespesaDAO() {
 		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
 		this.campanhaDAO = new CampanhaDAO();
 		this.tipoMovimentacaoDAO = new TipoMovimentacaoDAO();

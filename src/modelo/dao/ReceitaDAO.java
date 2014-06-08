@@ -7,13 +7,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import modelo.beans.Campanha;
-import modelo.beans.Candidato;
-import modelo.beans.Cargo;
 import modelo.beans.Doador;
 import modelo.beans.FormaPagamento;
-import modelo.beans.Partido;
 import modelo.beans.Receita;
-import modelo.beans.Resultado;
 import modelo.beans.TipoMovimentacao;
 import parse.ParseDAO;
 
@@ -59,7 +55,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 					   + DESCRICAO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
-	public ReceitaDAO(String nomeTabela, Comparator<Receita> comparador) {
+	public ReceitaDAO() {
 		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
 		this.campanhaDAO = new CampanhaDAO();
 		this.doadorDAO = new DoadorDAO();
