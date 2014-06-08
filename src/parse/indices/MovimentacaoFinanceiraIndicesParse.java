@@ -89,72 +89,36 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		return indice > INDICE_INVALIDO;
 	}
 
-	public Integer getAno() {
-		return ano;
-	}
-
 	public void setAno(Integer ano) {
 		this.ano = ano;
-	}
-
-	public int getIndiceId() {
-		return indiceId;
 	}
 
 	public void setIndiceId(int indiceId) {
 		this.indiceId = indiceId;
 	}
 
-	public int getIndiceCampanha() {
-		return indiceCampanha;
-	}
-
 	public void setIndiceCampanha(int indiceCampanha) {
 		this.indiceCampanha = indiceCampanha;
-	}
-
-	public int getIndiceNumeroDocumento() {
-		return indiceNumeroDocumento;
 	}
 
 	public void setIndiceNumeroDocumento(int indiceNumeroDocumento) {
 		this.indiceNumeroDocumento = indiceNumeroDocumento;
 	}
 
-	public int getIndiceData() {
-		return indiceData;
-	}
-
 	public void setIndiceData(int indiceData) {
 		this.indiceData = indiceData;
-	}
-
-	public int getIndiceValor() {
-		return indiceValor;
 	}
 
 	public void setIndiceValor(int indiceValor) {
 		this.indiceValor = indiceValor;
 	}
 
-	public int getIndiceTipoMovimentacao() {
-		return indiceTipoMovimentacao;
-	}
-
 	public void setIndiceTipoMovimentacao(int indiceTipoMovimentacao) {
 		this.indiceTipoMovimentacao = indiceTipoMovimentacao;
 	}
 
-	public int getIndiceFormaPagamento() {
-		return indiceFormaPagamento;
-	}
-
 	public void setIndiceFormaPagamento(int indiceFormaPagamento) {
 		this.indiceFormaPagamento = indiceFormaPagamento;
-	}
-
-	public int getIndiceDescricao() {
-		return indiceDescricao;
 	}
 
 	public void setIndiceDescricao(int indiceDescricao) {
