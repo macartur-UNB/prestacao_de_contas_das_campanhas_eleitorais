@@ -105,16 +105,52 @@ public class BeanTeste {
 		tipoDocumento2.setDescricao("Outro");
 		assertEquals(false, tipoDocumento.equals(tipoDocumento2));
 		
+		TipoMovimentacao tipoMovimentacao = instanciarTipoMovimentacao();
+		TipoMovimentacao tipoMovimentacao2 = instanciarTipoMovimentacao();
+		tipoMovimentacao2.setDescricao("Outro");
+		assertEquals(false, tipoMovimentacao.equals(tipoMovimentacao2));
 		
+		FormaPagamento formaPagamento = instanciarFormaPagamento();
+		FormaPagamento formaPagamento2 = instanciarFormaPagamento();
+		formaPagamento2.setDescricao("Outro");
+		assertEquals(false, formaPagamento.equals(formaPagamento2));
+		
+		MovimentacaoFinanceira movimentacaoFinanceira = instanciarMovimentacaoFinanceira();
+		MovimentacaoFinanceira movimentacaoFinanceira2 = instanciarMovimentacaoFinanceira();
+		movimentacaoFinanceira2.setCampanha(campanha2);
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		movimentacaoFinanceira2.setCampanha(campanha);
+		movimentacaoFinanceira2.setNumeroDocumento("Outro");
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		movimentacaoFinanceira2.setNumeroDocumento("Numero Documento Teste");
+		movimentacaoFinanceira2.setAno(60);
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		movimentacaoFinanceira2.setAno(50);
+		movimentacaoFinanceira2.setValor((float) 2000);
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		movimentacaoFinanceira2.setValor((float) 1000);
+		movimentacaoFinanceira2.setDescricao("Outro");
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		movimentacaoFinanceira2.setDescricao("Descricao Movimentacao Financeira Teste");
+		movimentacaoFinanceira2.setTipoMovimentacao(tipoMovimentacao2);
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		movimentacaoFinanceira2.setTipoMovimentacao(tipoMovimentacao);
+		movimentacaoFinanceira2.setFormaPagamento(formaPagamento2);
+		assertEquals(false, movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+	
 		Despesa despesa = instanciarDespesa();
 		Despesa despesa2 = instanciarDespesa();
+		despesa2.setAno(60);
+		assertEquals(false, despesa.equals(despesa2));
+		despesa2.setAno(50);
 		despesa2.setFornecedor(fornecedor2);
 		assertEquals(false, despesa.equals(despesa2));
 		despesa2.setFornecedor(fornecedor);
 		despesa2.setTipoDocumento(tipoDocumento2);
 		assertEquals(false, despesa.equals(despesa2));
-		
-		
+		despesa2.setTipoDocumento(tipoDocumento);
+		despesa2.setCampanha(campanha2);
+		assertEquals(false, despesa.equals(despesa2));
 		
 	}
 	
