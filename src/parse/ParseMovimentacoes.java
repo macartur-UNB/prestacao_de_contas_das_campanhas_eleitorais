@@ -7,6 +7,7 @@ import parse.cadastro.receita_despesa.CadastroDespesaParse;
 import parse.cadastro.receita_despesa.CadastroDoadorParse;
 import parse.cadastro.receita_despesa.CadastroFormaPagamentoParse;
 import parse.cadastro.receita_despesa.CadastroFornecedorParse;
+import parse.cadastro.receita_despesa.CadastroReceitaParse;
 import parse.cadastro.receita_despesa.CadastroTipoDocumentoParse;
 import parse.cadastro.receita_despesa.CadastroTipoMovimentacaoParse;
 
