@@ -53,6 +53,7 @@ CREATE TABLE despesa (
   campanha_id_campanha INTEGER UNSIGNED NOT NULL,
   fornecedor_cpf_cnpj VARCHAR(255) NULL,
   numero_documento INTEGER UNSIGNED NULL,
+  ano INTEGER UNSIGNED NULL,
   valor FLOAT NULL,
   descricao VARCHAR(255) NULL,
   data_despesa VARCHAR(255) NULL,
