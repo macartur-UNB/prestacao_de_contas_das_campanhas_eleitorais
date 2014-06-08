@@ -7,9 +7,9 @@ import parse.controle.ParseControle;
 import parse.indices.DespesaIndicesParse;
 import parse.indices.IndicesParse;
 
-public class DespesaCadastroParse extends CadastroParseReceitasDespesas<Despesa> {
+public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa> {
 
-	public DespesaCadastroParse(String tipoArquivo, String ano)
+	public CadastroDespesaParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
 	}
@@ -89,6 +89,18 @@ public class DespesaCadastroParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseReceita2008() {
 		return new DespesaIndicesParse(ANO_2008);
+	}
+
+	@Override
+	protected IndicesParse<Despesa> getIndicesParseDespesa2010() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected IndicesParse<Despesa> getIndicesParseReceita2010() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 		
 }

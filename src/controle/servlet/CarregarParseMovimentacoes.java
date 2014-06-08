@@ -17,8 +17,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import parse.Parse;
 import parse.ParseMovimentacoes;
-import parse.cadastro.receita_despesa.DoadorCadastroParse;
-import parse.cadastro.receita_despesa.FornecedorCadastroParse;
+import parse.cadastro.receita_despesa.CadastroDoadorParse;
+import parse.cadastro.receita_despesa.CadastroFornecedorParse;
 
 @WebServlet("/carregarParseMovimentacoes")
 public class CarregarParseMovimentacoes extends HttpServlet {
@@ -63,22 +63,22 @@ public class CarregarParseMovimentacoes extends HttpServlet {
 					} else {
 						if(fileItem.getFieldName().equals("arquivo_tipo")) {
 							if(fileItem.getString().equals("despesa")) {
-								tipoArquivo = FornecedorCadastroParse.DESPESA;
+								tipoArquivo = CadastroFornecedorParse.DESPESA;
 							} else {
-								tipoArquivo = DoadorCadastroParse.RECEITA;
+								tipoArquivo = CadastroDoadorParse.RECEITA;
 							}
 						} else if(fileItem.getFieldName().equals("arquivo_ano")) {
 							switch (fileItem.getString()) {
 							case "2002":
-								ano = DoadorCadastroParse.ANO_2002;
+								ano = CadastroDoadorParse.ANO_2002;
 								break;
 
 							case "2006":
-								ano = DoadorCadastroParse.ANO_2006;
+								ano = CadastroDoadorParse.ANO_2006;
 								break;
 
 							case "2010":
-								ano = DoadorCadastroParse.ANO_2010;
+								ano = CadastroDoadorParse.ANO_2010;
 								break;
 
 							default:

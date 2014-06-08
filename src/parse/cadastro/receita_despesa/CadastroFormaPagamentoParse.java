@@ -7,9 +7,9 @@ import parse.controle.FormaPagamentoParseControle;
 import parse.indices.IndicesParse;
 import parse.indices.FormaPagamentoIndicesParse;
 
-public class FormaPagamentoCadastroParse extends CadastroParseReceitasDespesas<FormaPagamento> {
+public class CadastroFormaPagamentoParse extends CadastroParseReceitasDespesas<FormaPagamento> {
 
-	public FormaPagamentoCadastroParse(String tipoArquivo, String ano)
+	public CadastroFormaPagamentoParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
 	}

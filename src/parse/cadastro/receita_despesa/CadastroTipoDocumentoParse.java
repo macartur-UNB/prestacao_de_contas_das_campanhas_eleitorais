@@ -7,9 +7,9 @@ import parse.controle.TipoDocumentoParseControle;
 import parse.indices.IndicesParse;
 import parse.indices.TipoDocumentoIndicesParse;
 
-public class TipoDocumentoCadastroParse extends CadastroParseReceitasDespesas<TipoDocumento> {
+public class CadastroTipoDocumentoParse extends CadastroParseReceitasDespesas<TipoDocumento> {
 
-	public TipoDocumentoCadastroParse(String tipoArquivo, String ano)
+	public CadastroTipoDocumentoParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
 	}
