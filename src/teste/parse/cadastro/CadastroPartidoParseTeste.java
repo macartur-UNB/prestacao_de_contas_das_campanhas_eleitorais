@@ -35,16 +35,12 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 	public void deveRetornarUmClasseDePartidoParseControle() throws ParseException {
 		assertEquals(partidoParseControle, cadastroPartido.novaInstancia(indicesPartido));
 	}
-	
-
 
 	@Test
 	public void TestaCondicaoDoMetodoGetIndicesParse() throws ParseException {
 		
 	}
 	
-	
-
 	@Override
 	public void afterTest() throws Exception {
 		
