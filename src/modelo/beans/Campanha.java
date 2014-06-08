@@ -48,7 +48,8 @@ public class Campanha {
 		{
 			Campanha outraCampanha = (Campanha) object;
 			return this.ano.equals(outraCampanha.getAno()) &&
-				   this.numeroCandidato.equals(outraCampanha.getNumeroCandidato());
+				   this.numeroCandidato.equals(outraCampanha.getNumeroCandidato()) &&
+				   this.nomeDeUrna.equalsIgnoreCase(outraCampanha.getNomeDeUrna());
 		}
 
 	}

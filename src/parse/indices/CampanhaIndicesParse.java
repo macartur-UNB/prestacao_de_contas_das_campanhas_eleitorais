@@ -84,7 +84,8 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		if (indiceValido(this.indiceReceitaTotalCalculada)) {
 			campanha.setReceitaTotalCalculada(
 					Float.parseFloat(campo[this.indiceReceitaTotalCalculada]));
-		}	
+		}
+		
 	}
 
 	@Override

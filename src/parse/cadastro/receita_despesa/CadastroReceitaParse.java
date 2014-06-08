@@ -38,7 +38,7 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 	@Override
 	protected IndicesParse<Receita> getIndicesParseReceita2002() {
 		ReceitaIndicesParse receitaIndicesParse = new ReceitaIndicesParse(ANO_2002);
-		//receitaIndicesParse.setIndiceCampanha(?);
+		receitaIndicesParse.setIndiceCampanha(4);
 		//receitaIndicesParse.setIndiceFormaPagamento(?);
 		receitaIndicesParse.setIndiceData(5);
 		receitaIndicesParse.setIndiceDoador(6);

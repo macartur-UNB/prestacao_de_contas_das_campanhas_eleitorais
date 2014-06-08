@@ -59,7 +59,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	public CampanhaDAO() {
-		super(NOME_TABELA, Comparacao.ANO_E_NUMERO);
+		super(NOME_TABELA, null);
 		this.candidatoDAO = new CandidatoDAO();
 		this.cargoDAO = new CargoDAO();
 		this.partidoDAO = new PartidoDAO();

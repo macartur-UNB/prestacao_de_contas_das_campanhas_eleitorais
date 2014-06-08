@@ -43,7 +43,8 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		}
 		if(indiceValido(this.indiceCampanha)) {
 			Campanha campanha = new Campanha();
-			campanha.setId(Integer.parseInt(campo[this.indiceCampanha]));
+			campanha.setNumeroCandidato(Integer.parseInt(campo[this.indiceCampanha]));
+			campanha.setAno(this.ano);
 			movimentacaoFinanceira.setCampanha(campanha);
 		}
 		if(indiceValido(this.indiceNumeroDocumento)) {
