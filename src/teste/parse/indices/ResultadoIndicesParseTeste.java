@@ -56,13 +56,5 @@ public class ResultadoIndicesParseTeste {
 		this.campo[1] = "RESULTADO INEXISTENTE";
 		
 	}
-	
-	@Test
-	public void verificarIndices() {
-		
-		Assert.assertEquals(0, this.resultadoIndicesParse.getIndiceCodigo());
-		Assert.assertEquals(1, this.resultadoIndicesParse.getIndiceDescricao());
-		
-	}
 
 }

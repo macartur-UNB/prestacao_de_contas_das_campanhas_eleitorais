@@ -57,12 +57,4 @@ public class CargoIndicesParseTeste {
 		
 	}
 	
-	@Test
-	public void verificarIndices() {
-		
-		Assert.assertEquals(0, this.cargoIndicesParse.getIndiceCodigo());
-		Assert.assertEquals(1, this.cargoIndicesParse.getIndicesDescricao());
-		
-	}
-
 }

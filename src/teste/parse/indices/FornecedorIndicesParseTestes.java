@@ -57,12 +57,4 @@ public class FornecedorIndicesParseTestes {
 		this.campo[3] = "REGULAR";
 	}
 	
-	@Test
-	public void verificarIndices() {
-		Assert.assertEquals(0, this.fornecedorIndicesParse.getIndiceCpf_Cnpj());
-		Assert.assertEquals(1, this.fornecedorIndicesParse.getIndiceNome());
-		Assert.assertEquals(2, this.fornecedorIndicesParse.getIndiceUf());
-		Assert.assertEquals(3, this.fornecedorIndicesParse.getIndiceSituacaoCadastral());
-	}
-	
 }
