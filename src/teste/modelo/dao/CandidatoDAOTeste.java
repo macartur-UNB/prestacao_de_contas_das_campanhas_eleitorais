@@ -120,7 +120,6 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		LK = candidatoDAO.getLista(null);
 		
 		Assert.assertEquals(0,LK.size());
-	}
-	
+	}	
 	
 }
