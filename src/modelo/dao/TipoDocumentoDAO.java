@@ -9,7 +9,8 @@ import java.util.Comparator;
 import modelo.beans.TipoDocumento;
 import parse.ParseDAO;
 
-public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements ParseDAO<TipoDocumento> {
+public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements
+		ParseDAO<TipoDocumento> {
 
 	public enum Comparacao implements Comparator<TipoDocumento> {
 		COD_E_DESCRICAO {
@@ -18,7 +19,8 @@ public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements ParseD
 				if (t1.getCodigo() != t2.getCodigo())
 					return t1.getCodigo().compareTo(t2.getCodigo());
 				else
-					return t1.getDescricao().compareToIgnoreCase(t2.getDescricao());
+					return t1.getDescricao().compareToIgnoreCase(
+							t2.getDescricao());
 			}
 		};
 	}
@@ -71,27 +73,21 @@ public class TipoDocumentoDAO extends BasicoDAO<TipoDocumento> implements ParseD
 		}
 	}
 
-	public TipoDocumento getPeloId(Integer id) {
+	public TipoDocumento getPeloId(Integer id) throws SQLException {
 		TipoDocumento tipoDocumento = new TipoDocumento();
-		String comandoSQL = SQL_SELECAO + " WHERE " + ID +" = "+id+" ";
-		
-		try {
-			this.conexao = new ConexaoBancoDados().getConexao();
+		String comandoSQL = SQL_SELECAO + " WHERE " + ID + " = " + id + " ";
 
-			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+		this.conexao = new ConexaoBancoDados().getConexao();
 
-			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-			while(resultadoSQL.next())
-			{
-				tipoDocumento.setId(resultadoSQL.getInt(ID));
-				tipoDocumento.setCodigo(resultadoSQL.getInt(CODIGO));
-				tipoDocumento.setDescricao(resultadoSQL.getString(DESCRICAO));
-			}
+		this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
-		} catch (SQLException e) {
-			System.out.println("Um erro aconteceu.");
-			e.getMessage();
-		} 
+		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+		while (resultadoSQL.next()) {
+			tipoDocumento.setId(resultadoSQL.getInt(ID));
+			tipoDocumento.setCodigo(resultadoSQL.getInt(CODIGO));
+			tipoDocumento.setDescricao(resultadoSQL.getString(DESCRICAO));
+		}
+
 		return tipoDocumento;
 	}
 }
