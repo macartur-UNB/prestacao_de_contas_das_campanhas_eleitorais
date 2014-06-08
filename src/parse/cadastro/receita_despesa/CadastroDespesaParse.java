@@ -23,51 +23,41 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2002() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2002);
-		despesaIndicesParse.setIndiceFornecedor(8);
-		despesaIndicesParse.setIndiceEmNomeDe(3);
-		despesaIndicesParse.setIndiceValor(9);
-		despesaIndicesParse.setIndiceTipo(10);		
-
-		return despesaIndicesParse;
-	}
-
-	@Override
-	protected IndicesParse<Despesa> getIndicesParseDespesa2004() {
-		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2004);
-		despesaIndicesParse.setIndiceFornecedor(18);
-		despesaIndicesParse.setIndiceEmNomeDe(0);
-		despesaIndicesParse.setIndiceValor(9);
-		despesaIndicesParse.setIndiceTipo(11);	
-		despesaIndicesParse.setIndiceTipoDocumento(16);
-		despesaIndicesParse.setIndiceEspecie(13);
-
+		//despesaIndicesParse.setIndiceCampanha(?);
+		//despesaIndicesParse.setIndiceTipoMovimentacao(?);
+		despesaIndicesParse.setIndiceData(5);
+		despesaIndicesParse.setIndiceFornecedor(6);
+		despesaIndicesParse.setIndiceValor(9);	
 		return despesaIndicesParse;
 	}
 
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2006() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
-		despesaIndicesParse.setIndiceFornecedor(18);
-		despesaIndicesParse.setIndiceEmNomeDe(0);
-		despesaIndicesParse.setIndiceValor(9);
-		despesaIndicesParse.setIndiceTipo(11);	
-		despesaIndicesParse.setIndiceTipoDocumento(16);
-		despesaIndicesParse.setIndiceEspecie(13);
-
+		//despesaIndicesParse.setIndiceCampanha(?);
+		//despesaIndicesParse.setIndiceTipoMovimentacao(?);
+		//despesaIndicesParse.setIndiceTipoDocumento(?);
+		//despesaIndicesParse.setIndiceFormaPagamento(?);
+		despesaIndicesParse.setIndiceNumeroDocumento(15);
+		despesaIndicesParse.setIndiceData(10);
+		despesaIndicesParse.setIndiceFornecedor(19);
+		despesaIndicesParse.setIndiceValor(9);	
 		return despesaIndicesParse;
+
 	}
 
 	@Override
-	protected IndicesParse<Despesa> getIndicesParseDespesa2008() {
-		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2008);
-		despesaIndicesParse.setIndiceFornecedor(22);
-		despesaIndicesParse.setIndiceEmNomeDe(0);
-		despesaIndicesParse.setIndiceValor(13);
-		despesaIndicesParse.setIndiceTipo(11);	
-		despesaIndicesParse.setIndiceTipoDocumento(20);
-		despesaIndicesParse.setIndiceEspecie(17);
-		despesaIndicesParse.setIndiceNumeroDocumento(19);
-
+	protected IndicesParse<Despesa> getIndicesParseDespesa2010() {
+		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
+		//despesaIndicesParse.setIndiceCampanha(?);
+		//despesaIndicesParse.setIndiceTipoMovimentacao(?);
+		//despesaIndicesParse.setIndiceTipoDocumento(?);
+		//despesaIndicesParse.setIndiceFormaPagamento(?);
+		despesaIndicesParse.setIndiceNumeroDocumento(9);
+		despesaIndicesParse.setIndiceData(12);
+		despesaIndicesParse.setIndiceFornecedor(10);
+		despesaIndicesParse.setIndiceValor(13);	
+		despesaIndicesParse.setIndiceDescricao(17);
 		return despesaIndicesParse;
 	}
 
@@ -77,30 +67,13 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	}
 
 	@Override
-	protected IndicesParse<Despesa> getIndicesParseReceita2004() {
-		return new DespesaIndicesParse(ANO_2004);
-	}
-
-	@Override
 	protected IndicesParse<Despesa> getIndicesParseReceita2006() {
 		return new DespesaIndicesParse(ANO_2006);
 	}
 
 	@Override
-	protected IndicesParse<Despesa> getIndicesParseReceita2008() {
-		return new DespesaIndicesParse(ANO_2008);
-	}
-
-	@Override
-	protected IndicesParse<Despesa> getIndicesParseDespesa2010() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	protected IndicesParse<Despesa> getIndicesParseReceita2010() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DespesaIndicesParse(ANO_2010);
 	}
-		
+
 }
