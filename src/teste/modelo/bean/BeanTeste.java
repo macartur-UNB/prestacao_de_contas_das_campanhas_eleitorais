@@ -77,6 +77,44 @@ public class BeanTeste {
 	
 	@Test
 	public void equalsDeveRetornarFalsoSeForemDiferentes() {
+		Campanha campanha = instanciarCampanha();
+		Campanha campanha2 = instanciarCampanha();
+		campanha2.setAno(60);
+		assertEquals(false, campanha.equals(campanha2));
+		campanha2.setAno(50);
+		campanha2.setNumeroCandidato(60);
+		assertEquals(false, campanha.equals(campanha2));
+		
+		Candidato candidato = instanciarCandidato();
+		Candidato candidato2 = instanciarCandidato();
+		candidato2.setTituloEleitoral("Outro");
+		assertEquals(false, candidato.equals(candidato2));
+		
+		Cargo cargo = instanciarCargo();
+		Cargo cargo2 = instanciarCargo();
+		cargo2.setDescricao("Outro");
+		assertEquals(false, cargo.equals(cargo2));
+		
+		Fornecedor fornecedor = instanciarFornecedor();
+		Fornecedor fornecedor2 = instanciarFornecedor();
+		fornecedor2.setCpf_cnpj("Outro");
+		assertEquals(false, fornecedor.equals(fornecedor2));
+		
+		TipoDocumento tipoDocumento = instanciarTipoDocumento();
+		TipoDocumento tipoDocumento2 = instanciarTipoDocumento();
+		tipoDocumento2.setDescricao("Outro");
+		assertEquals(false, tipoDocumento.equals(tipoDocumento2));
+		
+		
+		Despesa despesa = instanciarDespesa();
+		Despesa despesa2 = instanciarDespesa();
+		despesa2.setFornecedor(fornecedor2);
+		assertEquals(false, despesa.equals(despesa2));
+		despesa2.setFornecedor(fornecedor);
+		despesa2.setTipoDocumento(tipoDocumento2);
+		assertEquals(false, despesa.equals(despesa2));
+		
+		
 		
 	}
 	
