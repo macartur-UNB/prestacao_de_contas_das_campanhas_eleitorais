@@ -42,32 +42,17 @@ public class FornecedorIndicesParse extends IndicesParse<Fornecedor> {
 		fornecedor.setSituacaoCadastral(Fornecedor.STRING_VAZIO);
 	}
 
-	public int getIndiceCpf_Cnpj() {
-		return indiceCpf_Cnpj;
-	}
-
 	public void setIndiceCpf_Cnpj(int indiceCpf_Cnpj) {
 		this.indiceCpf_Cnpj = indiceCpf_Cnpj;
 	}
 
-	public int getIndiceNome() {
-		return indiceNome;
-	}
 
 	public void setIndiceNome(int indiceNome) {
 		this.indiceNome = indiceNome;
 	}
 
-	public int getIndiceUf() {
-		return indiceUf;
-	}
-
 	public void setIndiceUf(int indiceUf) {
 		this.indiceUf = indiceUf;
-	}
-
-	public int getIndiceSituacaoCadastral() {
-		return indiceSituacaoCadastral;
 	}
 
 	public void setIndiceSituacaoCadastral(int indiceSituacaoCadastral) {

@@ -45,32 +45,17 @@ public class PartidoIndicesParse extends IndicesParse<Partido>{
 		this.indiceSigla = indiceSigla;
 	}
 
-	public int getIndiceNumero() {
-		return indiceNumero;
-	}
-
 	public void setIndiceNumero(int indiceNumero) {
 		this.indiceNumero = indiceNumero;
-	}
-
-	public int getIndiceDeferimento() {
-		return indiceDeferimento;
 	}
 
 	public void setIndiceDeferimento(int indiceDeferimento) {
 		this.indiceDeferimento = indiceDeferimento;
 	}
 
-	public int getIndiceNome() {
-		return indiceNome;
-	}
-
 	public void setIndiceNome(int indiceNome) {
 		this.indiceNome = indiceNome;
 	}
 
-	public int getIndiceSigla() {
-		return indiceSigla;
-	}
 	
 }

@@ -38,24 +38,12 @@ public class FormaPagamentoIndicesParse extends IndicesParse<FormaPagamento> {
 		
 	}
 
-	public int getIndiceId() {
-		return indiceId;
-	}
-
 	public void setIndiceId(int indiceId) {
 		this.indiceId = indiceId;
 	}
 
-	public int getIndiceCodigo() {
-		return indiceCodigo;
-	}
-
 	public void setIndiceCodigo(int indiceCodigo) {
 		this.indiceCodigo = indiceCodigo;
-	}
-
-	public int getIndiceDescricao() {
-		return indiceDescricao;
 	}
 
 	public void setIndiceDescricao(int indiceDescricao) {
