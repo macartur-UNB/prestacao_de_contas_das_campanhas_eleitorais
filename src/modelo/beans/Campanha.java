@@ -12,7 +12,6 @@ public class Campanha {
 	
 	/**** Atributos de Classe *******************************************/
 	
-	private Integer id;
 	private Resultado resultado;
 	private Cargo cargo;
 	private Partido partido;
@@ -26,7 +25,6 @@ public class Campanha {
 	private Float receitaTotalCalculada;
 	
 	public Campanha() {
-		this.id = INTEGER_VAZIO;
 		this.resultado = RESULTADO_VAZIO;
 		this.cargo = CARGO_VAZIO;
 		this.partido = PARTIDO_VAZIO;
@@ -51,14 +49,6 @@ public class Campanha {
 				   this.numeroCandidato.equals(outraCampanha.getNumeroCandidato());
 		}
 
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public Resultado getResultado() {

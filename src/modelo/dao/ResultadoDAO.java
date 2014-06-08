@@ -20,9 +20,9 @@ public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resul
 		};
 	}
 	
+	private static final String NOME_TABELA = "resultado";
 	private static final String CODIGO = "cod_resultado";
 	private static final String DESCRICAO = "descricao";
-	private static final String NOME_TABELA = "resultado";
 	private static final String SQL_INSERCAO = "INSERT INTO "+ NOME_TABELA
 			+" (" +CODIGO+", "+ DESCRICAO + ") values (?, ?)" ;
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;

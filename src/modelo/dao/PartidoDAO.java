@@ -20,11 +20,11 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 		};
 	}
 	
-	private static final String NOME = "nome";
+	private static final String NOME_TABELA = "partido";
 	private static final String NUMERO = "numero";
 	private static final String SIGLA = "sigla";
+	private static final String NOME = "nome";
 	private static final String DEFERIMENTO = "deferimento";
-	private static final String NOME_TABELA = "partido";
 	private static final String SQL_INSERCAO = "INSERT INTO "+NOME_TABELA
 			+" ("+NUMERO+", "+SIGLA+", "+NOME+", "+DEFERIMENTO+") "
 			+ "values (?, ?, ?, ?)" ;

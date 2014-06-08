@@ -11,11 +11,10 @@ public class MovimentacaoFinanceira {
 	private Integer id;
 	private Campanha campanha;
 	private String numeroDocumento;
-	private Integer ano;
 	private String data;
 	private Float valor;
-	private TipoMovimentacao tipoMovimentacao;
-	private FormaPagamento formaPagamento;
+	private String tipoMovimentacao;
+	private String formaPagamento;
 	private String descricao;
 
 	public MovimentacaoFinanceira(){
@@ -23,11 +22,10 @@ public class MovimentacaoFinanceira {
 		this.campanha = (Campanha) OBJETO_VAZIO;
 		this.numeroDocumento = STRING_VAZIO;
 		this.data = STRING_VAZIO;
-		this.ano = INTEGER_VAZIO;
 		this.valor = FLOAT_VAZIO;
 		this.descricao = STRING_VAZIO;
-		this.tipoMovimentacao = (TipoMovimentacao) OBJETO_VAZIO;
-		this.formaPagamento = (FormaPagamento) OBJETO_VAZIO;
+		this.tipoMovimentacao = STRING_VAZIO;
+		this.formaPagamento = STRING_VAZIO;
 	}
 
 	@Override
@@ -41,7 +39,6 @@ public class MovimentacaoFinanceira {
 		return 	
 				this.campanha.equals(outraMovimentacao.getCampanha()) &&
 				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
-				this.ano.equals(outraMovimentacao.getAno()) &&
 				this.valor.equals(outraMovimentacao.getValor()) &&
 				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao()) &&
 				this.tipoMovimentacao.equals(outraMovimentacao.getTipoMovimentacao()) &&
@@ -54,14 +51,6 @@ public class MovimentacaoFinanceira {
 
 	public void setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
-	}
-
-	public Integer getAno() {
-		return ano;
-	}
-
-	public void setAno(Integer ano) {
-		this.ano = ano;
 	}
 
 	public Float getValor() {
@@ -104,19 +93,19 @@ public class MovimentacaoFinanceira {
 		this.data = data;
 	}
 
-	public TipoMovimentacao getTipoMovimentacao() {
+	public String getTipoMovimentacao() {
 		return tipoMovimentacao;
 	}
 
-	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+	public void setTipoMovimentacao(String tipoMovimentacao) {
 		this.tipoMovimentacao = tipoMovimentacao;
 	}
 
-	public FormaPagamento getFormaPagamento() {
+	public String getFormaPagamento() {
 		return formaPagamento;
 	}
 
-	public void setFormaPagamento(FormaPagamento formaPagamento) {
+	public void setFormaPagamento(String formaPagamento) {
 		this.formaPagamento = formaPagamento;
 	}	
 	

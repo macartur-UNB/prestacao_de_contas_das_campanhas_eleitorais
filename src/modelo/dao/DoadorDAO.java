@@ -12,28 +12,25 @@ import parse.ParseDAO;
 public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	
 	public enum Comparacao implements Comparator<Doador> {
-		CPF_E_NOME {
+		CPF_CNPJ {
 			public int compare(Doador d1, Doador d2) {
-				if(d1.getCpf_cnpj() != d2.getCpf_cnpj())
-					return d1.getCpf_cnpj().compareToIgnoreCase(d2.getCpf_cnpj());
-				else
-					return d1.getNome().compareToIgnoreCase(d2.getNome());			}
+				return d1.getCpf_cnpj().compareToIgnoreCase(d2.getCpf_cnpj());
+			}
 		}
-		
 	}
 	
-	private static final String CPF_CNPJ = "cpf_cnpj";
+	private static final String NOME_TABELA = "doador";
+	private static final String CPF_CNPJ = "cpf_cnpj_doador";
 	private static final String NOME = "nome";
 	private static final String UF = "uf";
 	private static final String SITUACAO_CADASTRAL = "situacao_cadastral";
-	private static final String NOME_TABELA = "doador";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + CPF_CNPJ + ", " + NOME + ", " + UF + ", " + SITUACAO_CADASTRAL + ") "
 			+ "values (?, ?, ?, ?)";
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public DoadorDAO() {
-		super(NOME_TABELA, Comparacao.CPF_E_NOME);
+		super(NOME_TABELA, Comparacao.CPF_CNPJ);
 	}
 
 	@Override
