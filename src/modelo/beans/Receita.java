@@ -14,7 +14,16 @@ public class Receita extends MovimentacaoFinanceira {
 	}
 	
 	public boolean equals(Object object) {
-		return false;
+		if( !(object instanceof Receita) || object == null) {
+			return false;
+		}
+		
+		Receita outraReceita = (Receita) object;
+		
+		return super.equals(object) &&
+			   this.reciboEleitoral.equals(outraReceita.getReciboEleitoral()) &&
+			   this.doador.equals(outraReceita.getDoador()); 
+
 	}
 	
 	public String getReciboEleitoral() {
