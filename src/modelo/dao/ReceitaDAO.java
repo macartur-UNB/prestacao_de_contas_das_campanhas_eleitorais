@@ -19,12 +19,12 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	private static final String NOME_TABELA = "receita";
 	private final String ID = "id_receita";
 	private final String CAMPANHA_ANO = "campanha_ano";
-	private final String CAMPANHA_NUMERO = "campanha_numero";
+	private final String CAMPANHA_NUMERO = "campanha_numero_candidato";
 	private final String VALOR = "valor";
-	private final String FORMA_PAGAMENTO = "forma_de_pagamento_id_forma_pagamento";
+	private final String FORMA_PAGAMENTO = "forma_pagamento";
 	private final String DESCRICAO = "descricao";
 	private final String DATA  = "data_receita";
-	private final String TIPO_MOVIMENTACAO = "tipo_movimentacao_id_tipo_movimentacao";
+	private final String TIPO_MOVIMENTACAO = "tipo_movimentacao";
 	private final String RECIBO_ELEITORAL = "recibo_eleitoral";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
 	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj_doador";
