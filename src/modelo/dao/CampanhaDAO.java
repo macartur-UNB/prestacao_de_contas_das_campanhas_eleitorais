@@ -128,8 +128,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	
 	public ArrayList<Campanha> getCampanhasPorSiglaPartidoEAno(String sigla, String ano) {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
-		String comandoSQL = SQL_SELECT + " WHERE " + NUMERO_PARTIDO + " = '"+sigla+"' AND "
-		+ ANO + " = '"+ano+"' ";
+		Partido partido = this.partidoDAO.getPelaSigla(sigla);
+		String comandoSQL = SQL_SELECT + " WHERE " + NUMERO_PARTIDO + " = '"
+				+partido.getNumero()+"' AND "
+				+ ANO + " = '"+ano+"' ";
 		listaCampanha = buscaBD(comandoSQL);
 		return listaCampanha;
 	}
