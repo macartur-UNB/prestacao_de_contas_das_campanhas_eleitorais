@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS  doador;
 DROP TABLE IF EXISTS  fornecedor;
 
 CREATE TABLE campanha (
+  id_campanha INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   ano INTEGER UNSIGNED NOT NULL,
   numero_candidato INTEGER UNSIGNED NOT NULL,
   resultado_cod_resultado INTEGER NOT NULL,
@@ -22,7 +23,7 @@ CREATE TABLE campanha (
   despesa_maxima_declarada VARCHAR(255) NULL,
   despesa_maxima_calculada VARCHAR(255) NULL,
   receita_maxima_calculada VARCHAR(255) NULL,
-  PRIMARY KEY(ano,numero_candidato,cargo_cod_cargo),
+  PRIMARY KEY(id_campanha),
   INDEX campanha_fk_1(resultado_cod_resultado),
   INDEX campanha_fk_2(cargo_cod_cargo),
   INDEX campanha_fk_3(candidato_titulo_eleitoral),

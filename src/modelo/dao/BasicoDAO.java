@@ -89,11 +89,19 @@ public abstract class BasicoDAO<O> implements ParseDAO<O>{
 	protected ArrayList<O> getListaNaoCadastrados(ArrayList<O> lista) throws SQLException {
 		ArrayList<O> listaNaoCadastrados = new ArrayList<>();
 		ArrayList<O> listaCadastrados = getLista();
-		Collections.sort(listaCadastrados, this.comparador);
-		for(O objeto : lista) {
-			if(Collections.binarySearch(listaCadastrados, objeto, this.comparador) < 0) {
-				listaNaoCadastrados.add(objeto);
+		if(this.comparador != null) {
+			Collections.sort(listaCadastrados, this.comparador);
+			for(O objeto : lista) {
+			    if(Collections.binarySearch(listaCadastrados, objeto, this.comparador) < 0) {
+			    listaNaoCadastrados.add(objeto);
 			}
+		}
+		} else {
+			for(O objeto : lista) {
+			     if(!listaCadastrados.contains(objeto)) {
+			         listaNaoCadastrados.add(objeto);
+			      }
+		     }
 		}
 		
 		return listaNaoCadastrados;

@@ -84,6 +84,7 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Campanha campanha) {
+		campanha.setId(Campanha.INTEGER_VAZIO);
 		campanha.setResultado(Campanha.RESULTADO_VAZIO);	
 		campanha.setCargo(Campanha.CARGO_VAZIO);	
 		campanha.setPartido(Campanha.PARTIDO_VAZIO);	
