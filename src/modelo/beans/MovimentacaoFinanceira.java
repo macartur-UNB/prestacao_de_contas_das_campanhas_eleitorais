@@ -38,11 +38,11 @@ public class MovimentacaoFinanceira {
 		
 		return 	
 				this.campanha.equals(outraMovimentacao.getCampanha()) &&
-				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
-				this.valor.equals(outraMovimentacao.getValor()) &&
 				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao()) &&
+				this.formaPagamento.equals(outraMovimentacao.getFormaPagamento()) &&
+				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
 				this.tipoMovimentacao.equals(outraMovimentacao.getTipoMovimentacao()) &&
-				this.formaPagamento.equals(outraMovimentacao.getFormaPagamento());
+				this.valor.equals(outraMovimentacao.getValor());
 	}
 
 	public String getNumeroDocumento() {
