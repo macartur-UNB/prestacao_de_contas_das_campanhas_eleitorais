@@ -132,7 +132,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		return listaCampanha;	
 	}
 	
-	public ArrayList<Campanha> getCampanhasPorSiglaPartidoEAno(String sigla, String ano) {
+	public ArrayList<Campanha> getCampanhasPorSiglaPartidoEAno(String sigla, String ano) throws SQLException {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 		Partido partido = this.partidoDAO.getPelaSigla(sigla);
 		String comandoSQL = SQL_SELECT 
