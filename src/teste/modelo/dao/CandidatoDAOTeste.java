@@ -104,7 +104,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		Candidato C2 = new Candidato();
 		int resultado;
 
-		resultado = CandidatoDAO.Comparacao.NOME.compare(C1, C2);		
+		resultado = CandidatoDAO.Comparacao.TITULO_ELEITORAL.compare(C1, C2);		
 		
 		Assert.assertEquals(0,resultado);
 	}
