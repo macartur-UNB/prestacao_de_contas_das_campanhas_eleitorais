@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Campanha;
+import modelo.beans.Cargo;
 import modelo.beans.Doador;
 import modelo.beans.Receita;
 import parse.ParseDAO;
@@ -27,6 +28,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	private final String RECIBO_ELEITORAL = "recibo_eleitoral";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
 	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj_doador";
+	private final String CARGO = "cargo";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -36,7 +38,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 					   + ", " + TIPO_MOVIMENTACAO + ", " + RECIBO_ELEITORAL 
 					   + ", " + NUMERO_DOCUMENTO + ", "
 					   + CPF_CNPJ_DOADOR 
-					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + ", " + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public ReceitaDAO() {
@@ -70,6 +72,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			instrucaoSQL.setString(7, receita.getData());
 			instrucaoSQL.setFloat(4, receita.getValor());
 			instrucaoSQL.setString(6, receita.getDescricao());
+			instrucaoSQL.setString(12, receita.getCampanha().getCargo().getDescricao());
 			instrucaoSQL.addBatch();
 		}
 		
@@ -80,8 +83,11 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			ResultSet resultadoSQL) throws SQLException {
 		while (resultadoSQL.next()) {
 			Campanha campanha = new Campanha();
+			Cargo cargo = new Cargo();
+			cargo.setDescricao(resultadoSQL.getString(CARGO));
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));	
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));	
+			campanha.setCargo(cargo);
 
 			Doador doador = new Doador();
 			doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_DOADOR));

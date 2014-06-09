@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Campanha;
+import modelo.beans.Cargo;
 import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
 import parse.ParseDAO;
@@ -27,6 +28,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	private final String TIPO_DOCUMENTO = "tipo_documento";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
 	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj_fornecedor";
+	private final String CARGO = "cargo";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -36,7 +38,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 					   + ", " + TIPO_MOVIMENTACAO + ", " + TIPO_DOCUMENTO 
 					   + ", " + NUMERO_DOCUMENTO + ", " 
 					   + CPF_CNPJ_FORNECEDOR 
-					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + ", " + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public DespesaDAO() {
@@ -69,8 +71,9 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			instrucaoSQL.setString(8, despesa.getTipoMovimentacao());
 			instrucaoSQL.setString(9, despesa.getTipoDocumento());
 			instrucaoSQL.setString(10, despesa.getNumeroDocumento());
-			instrucaoSQL.setString(11, despesa.getFornecedor().getCpf_cnpj());	
-					instrucaoSQL.addBatch();
+			instrucaoSQL.setString(11, despesa.getFornecedor().getCpf_cnpj());
+			instrucaoSQL.setString(12, despesa.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.addBatch();
 		}
 		
 	}
@@ -80,8 +83,11 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			ResultSet resultadoSQL) throws SQLException {
 		while (resultadoSQL.next()) {
 			Campanha campanha = new Campanha();
+			Cargo cargo = new Cargo();
+			cargo.setDescricao(resultadoSQL.getString(CARGO));
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
+			campanha.setCargo(cargo);
 
 			Fornecedor fornecedor = new Fornecedor();
 			fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));

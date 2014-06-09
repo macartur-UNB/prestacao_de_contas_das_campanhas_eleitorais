@@ -1,6 +1,7 @@
 package parse.indices;
 
 import modelo.beans.Campanha;
+import modelo.beans.Cargo;
 import modelo.beans.MovimentacaoFinanceira;
 
 
@@ -13,7 +14,7 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	private int indiceId;
 	private int indiceCampanhaAno;
 	private int indiceCampanhaNumero;
-	private int indiceCampanhaNome;
+	private int indiceCampanhaCargo;
 	private int indiceNumeroDocumento;
 	private int indiceData;
 	private int indiceValor;
@@ -26,7 +27,7 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		this.indiceId = INDICE_INVALIDO;
 		this.indiceCampanhaAno = INDICE_INVALIDO;
 		this.indiceCampanhaNumero = INDICE_INVALIDO;
-		this.indiceCampanhaNome = INDICE_INVALIDO;
+		this.indiceCampanhaCargo = INDICE_INVALIDO;
 		this.indiceNumeroDocumento = INDICE_INVALIDO;
 		this.indiceData = INDICE_INVALIDO;
 		this.indiceValor = INDICE_INVALIDO;
@@ -51,8 +52,10 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		if(indiceValido(this.indiceCampanhaNumero)) {
 			campanha.setNumeroCandidato(Integer.parseInt(campo[this.indiceCampanhaNumero]));
 		}
-		if(indiceValido(this.indiceCampanhaNome)) {
-			campanha.setNomeDeUrna(campo[this.indiceCampanhaNome]);
+		if(indiceValido(this.indiceCampanhaCargo)) {
+			Cargo cargo = new Cargo();
+			cargo.setDescricao(campo[this.indiceCampanhaCargo]);
+			campanha.setCargo(cargo);
 		}
 		if(indiceValido(this.indiceNumeroDocumento)) {
 			movimentacaoFinanceira.setNumeroDocumento(campo[this.indiceNumeroDocumento]);
@@ -110,8 +113,8 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		this.indiceCampanhaNumero = indiceCampanhaNumero;
 	}
 	
-	public void setIndiceCampanhaNome(int indiceCampanhaNome) {
-		this.indiceCampanhaNome = indiceCampanhaNome;
+	public void setIndiceCampanhaCargo(int indiceCampanhaCargo) {
+		this.indiceCampanhaCargo = indiceCampanhaCargo;
 	}
 	public void setIndiceNumeroDocumento(int indiceNumeroDocumento) {
 		this.indiceNumeroDocumento = indiceNumeroDocumento;

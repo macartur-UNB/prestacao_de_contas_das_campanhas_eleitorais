@@ -23,8 +23,9 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2002() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2002);
-		//despesaIndicesParse.setIndiceCampanha(?);
-		//despesaIndicesParse.setIndiceTipoMovimentacao(?);
+		despesaIndicesParse.setIndiceCampanhaNumero(4);
+		despesaIndicesParse.setIndiceCampanhaCargo(2);
+		despesaIndicesParse.setIndiceTipoMovimentacao(10);
 		despesaIndicesParse.setIndiceData(5);
 		despesaIndicesParse.setIndiceFornecedor(6);
 		despesaIndicesParse.setIndiceValor(9);	
@@ -34,10 +35,11 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2006() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
-		//despesaIndicesParse.setIndiceCampanha(?);
-		//despesaIndicesParse.setIndiceTipoMovimentacao(?);
-		//despesaIndicesParse.setIndiceTipoDocumento(?);
-		//despesaIndicesParse.setIndiceFormaPagamento(?);
+		despesaIndicesParse.setIndiceCampanhaNumero(3);
+		despesaIndicesParse.setIndiceCampanhaCargo(1);
+		despesaIndicesParse.setIndiceTipoMovimentacao(11);
+		despesaIndicesParse.setIndiceTipoDocumento(16);
+		despesaIndicesParse.setIndiceFormaPagamento(13);
 		despesaIndicesParse.setIndiceNumeroDocumento(15);
 		despesaIndicesParse.setIndiceData(10);
 		despesaIndicesParse.setIndiceFornecedor(19);
@@ -49,10 +51,11 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2010() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
-		//despesaIndicesParse.setIndiceCampanha(?);
-		//despesaIndicesParse.setIndiceTipoMovimentacao(?);
-		//despesaIndicesParse.setIndiceTipoDocumento(?);
-		//despesaIndicesParse.setIndiceFormaPagamento(?);
+		despesaIndicesParse.setIndiceCampanhaNumero(3);
+		despesaIndicesParse.setIndiceCampanhaCargo(4);
+		despesaIndicesParse.setIndiceTipoMovimentacao(14);
+		despesaIndicesParse.setIndiceTipoDocumento(8);
+		despesaIndicesParse.setIndiceFormaPagamento(16);
 		despesaIndicesParse.setIndiceNumeroDocumento(9);
 		despesaIndicesParse.setIndiceData(12);
 		despesaIndicesParse.setIndiceFornecedor(10);

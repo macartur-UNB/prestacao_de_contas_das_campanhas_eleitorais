@@ -107,8 +107,6 @@ public class MovimentacaoFinanceira {
 
 	public void setFormaPagamento(String formaPagamento) {
 		this.formaPagamento = formaPagamento;
-	}	
-	
-	
+	}
 	
 }
