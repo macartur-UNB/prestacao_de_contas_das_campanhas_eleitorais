@@ -23,7 +23,7 @@ CREATE TABLE campanha (
   despesa_maxima_calculada VARCHAR(255) NULL,
   receita_maxima_calculada VARCHAR(255) NULL,
   
-  PRIMARY KEY(ano,numero_candidato),
+  PRIMARY KEY(ano,numero_candidato,nome_de_urna),
   INDEX campanha_fk_1(resultado_cod_resultado),
   INDEX campanha_fk_2(cargo_cod_cargo),
   INDEX campanha_fk_3(candidato_titulo_eleitoral),
