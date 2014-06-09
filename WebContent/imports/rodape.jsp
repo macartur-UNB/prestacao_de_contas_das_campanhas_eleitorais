@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- RODAPE -->
 	<div id="rodape">
 		<div id="centro_rodape">

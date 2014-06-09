@@ -53,9 +53,11 @@
 									</c:url>
 									<a href="${AnoUrl}">${campanha.ano}</a></td>
 								<td>
-									<c:url var="partidoUrl" value="/SelecionarPartido">
+									<c:url var="partidoUrl" value="/mvc">
+										<c:param name="logica" value="SelecionarPartido"></c:param>
 										<c:param name="sigla" value="${campanha.partido.sigla}"></c:param>
-									</c:url> Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
+									</c:url>
+									Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
 								</td>
 								<td>Cargo Pleiteado: ${campanha.cargo.descricao}</td>
 							</tr>

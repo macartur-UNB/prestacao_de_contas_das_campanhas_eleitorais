@@ -32,10 +32,11 @@
 						<tr>
 							<td>Nome:</td>
 							<td>							
-								<c:url var="partidoURL" value="/SelecionarPartido">
+								<c:url var="url_partido" value="/mvc">
+									<c:param name="logica" value="SelecionarPartido"></c:param>
 									<c:param name="sigla" value="${partido.sigla}"></c:param>
 								</c:url>
-								<a  href="${partidoURL}" > ${partido.nome} </a>
+								<a  href="${url_partido}" > ${partido.nome} </a>
 							</td>
 						</tr>
 						<tr>

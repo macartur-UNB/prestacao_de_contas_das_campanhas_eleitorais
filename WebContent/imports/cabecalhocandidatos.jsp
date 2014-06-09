@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- CABECALHO e MENU -->
 	<div id="topo">
 		<div id="cabecalho">
@@ -12,8 +14,11 @@
 					<li><a href="index.jsp" class="home">Home</a></li>
 					<li><a href="requisitar_candidato.jsp" class="candidatosstatic">Candidatos</a>
 					</li>
-					<li><a href="RequisitarPartido" class="partidos">Partidos</a>
-					</li>
+					<li>
+					<c:url var="url_partido" value="/mvc">
+						<c:param name="logica" value="RequisitarPartido"></c:param>
+					</c:url>
+					<a href="${url_partido}" class="partidos">Partidos</a>					</li>
 					<li><a href="erro-404.jsp" class="pesquisar">Pesquisar</a>
 					</li>
 				</ul>
