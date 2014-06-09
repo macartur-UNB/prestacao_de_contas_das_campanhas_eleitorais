@@ -29,7 +29,7 @@
 
 				<table>
 					<tr>
-						<td>Nome</td>
+						<td>Nome: </td>
 						<td>${partido.nome}</td>
 					</tr>
 					

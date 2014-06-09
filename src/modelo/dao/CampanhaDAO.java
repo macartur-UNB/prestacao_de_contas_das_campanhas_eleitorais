@@ -42,6 +42,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 					   + ", " + RECEITA_MAX_CALCULADA 
 					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
+	private final String INDEX_CANDIDATO = "campanha_fk_3";
+	private final String INDEX_PARTIDO = "campanha_fk_4";
+	private final String INDEX_ANO = "campanha_sk_1";
+	
 	public CampanhaDAO() {
 		super(NOME_TABELA, null);
 		this.candidatoDAO = new CandidatoDAO();
@@ -120,7 +124,9 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 
 	public ArrayList<Campanha> getCampanhas(Candidato candidato) {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
-		String comandoSQL = SQL_SELECT + " WHERE " + TITULO_CANDIDATO 
+		String comandoSQL = SQL_SELECT 
+				+ " USE INDEX (" + INDEX_CANDIDATO + ")"
+				+ " WHERE " + TITULO_CANDIDATO 
 				+" = '"+candidato.getTituloEleitoral()+"' ";
 		listaCampanha = buscaBD(comandoSQL);
 		return listaCampanha;	
@@ -129,7 +135,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	public ArrayList<Campanha> getCampanhasPorSiglaPartidoEAno(String sigla, String ano) {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 		Partido partido = this.partidoDAO.getPelaSigla(sigla);
-		String comandoSQL = SQL_SELECT + " WHERE " + NUMERO_PARTIDO + " = '"
+		String comandoSQL = SQL_SELECT 
+				+ " USE INDEX (" + INDEX_PARTIDO + ", "
+				+ INDEX_ANO + ")"
+				+ " WHERE " + NUMERO_PARTIDO + " = '"
 				+partido.getNumero()+"' AND "
 				+ ANO + " = '"+ano+"' ";
 		listaCampanha = buscaBD(comandoSQL);

@@ -24,6 +24,10 @@ CREATE TABLE campanha (
   despesa_maxima_calculada VARCHAR(255) NULL,
   receita_maxima_calculada VARCHAR(255) NULL,
   PRIMARY KEY(id_campanha),
+  INDEX campanha_sk_1(ano),
+  INDEX campanha_sk_2(numero_candidato),
+  INDEX campanha_sk_3(cargo_cod_cargo),
+  INDEX campanha_sk_4(nome_de_urna),
   INDEX campanha_fk_1(resultado_cod_resultado),
   INDEX campanha_fk_2(cargo_cod_cargo),
   INDEX campanha_fk_3(candidato_titulo_eleitoral),
@@ -35,19 +39,22 @@ CREATE TABLE partido (
   sigla VARCHAR(8) NOT NULL,
   nome VARCHAR(255) NULL,
   deferimento VARCHAR(255) NULL,
-  PRIMARY KEY(numero)
+  PRIMARY KEY(numero),
+  INDEX partido_sk_1(sigla)
 );
 
 CREATE TABLE candidato (
   titulo_eleitoral VARCHAR(255) NOT NULL,
   nome VARCHAR(80) NOT NULL,
-  PRIMARY KEY(titulo_eleitoral)
+  PRIMARY KEY(titulo_eleitoral),
+  INDEX candidato_sk_1(nome)
 );
 
 CREATE TABLE cargo (
   cod_cargo INTEGER NOT NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(cod_cargo)
+  PRIMARY KEY(cod_cargo),
+  INDEX cargo_sk_1(descricao)
 );
 
 CREATE TABLE resultado (
@@ -70,6 +77,7 @@ CREATE TABLE despesa (
   fornecedor_cpf_cnpj_fornecedor VARCHAR(255) NULL,
   cargo VARCHAR(255) NOT NULL,
   PRIMARY KEY(id_despesa),
+  INDEX despesa_sk_1(cargo),
   INDEX despesa_fk_1(campanha_ano),
   INDEX despesa_fk_2(campanha_numero_candidato),
   INDEX despesa_fk_3(fornecedor_cpf_cnpj_fornecedor)
@@ -90,6 +98,7 @@ CREATE TABLE receita (
   doador_cpf_cnpj_doador VARCHAR(255) NULL,
   cargo VARCHAR(255) NOT NULL,
   PRIMARY KEY(id_receita),
+  INDEX receita_sk_1(cargo),
   INDEX despesa_fk_1(campanha_ano),
   INDEX despesa_fk_2(campanha_numero_candidato),
   INDEX despesa_fk_3(doador_cpf_cnpj_doador)

@@ -29,6 +29,8 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 			+" ("+NUMERO+", "+SIGLA+", "+NOME+", "+DEFERIMENTO+") "
 			+ "values (?, ?, ?, ?)" ;
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
+	
+	private static final String INDEX_SIGLA = "partido_sk_1";
 		
 	public PartidoDAO() {
 		super(NOME_TABELA, Comparacao.NUMERO);
@@ -73,8 +75,9 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 	
 	public Partido getPelaSigla(String sigla) {
 		Partido partido = new Partido();
-		String comandoSQL = SQL_SELECAO + " WHERE " + SIGLA +" = '"+sigla+"' ";
-		System.out.println(comandoSQL);
+		String comandoSQL = SQL_SELECAO
+				   			+" USE INDEX (" + INDEX_SIGLA + ")"
+				   			+" WHERE " + SIGLA +" = '"+sigla+"'";
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
@@ -100,7 +103,6 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido>{
 	public Partido getPeloNumero(String numero) {
 		Partido partido = new Partido();
 		String comandoSQL = SQL_SELECAO + " WHERE " + NUMERO +" = '"+numero+"' ";
-		System.out.println(comandoSQL);
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 

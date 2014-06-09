@@ -28,7 +28,8 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 	private final String SQL_INSERT = "INSERT INTO "
 					   + NOME_TABELA + " (" + TITULO_ELEITORAL + ", " 
 					   + NOME + ") VALUES(?,?)";
-
+	
+	private final String INDEX_NOME = "candidato_sk_1";
 
 	public CandidatoDAO() {
 		super(NOME_TABELA, Comparacao.TITULO_ELEITORAL);
@@ -86,7 +87,9 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 	public LinkedList<Candidato> getLista(String nome) {
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
-		String comandoSQL = SQL_SELECT + " WHERE " + NOME +" LIKE '%"+nome+"%' ";
+		String comandoSQL = SQL_SELECT 
+				+ " USE INDEX (" + INDEX_NOME + ")"
+				+ " WHERE " + NOME +" LIKE '%"+nome+"%' ";
 		listaCandidato = buscaBD(comandoSQL);
 		return listaCandidato;
 	}
