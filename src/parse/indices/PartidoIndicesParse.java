@@ -23,7 +23,7 @@ public class PartidoIndicesParse extends IndicesParse<Partido>{
 			partido.setSigla(campo[this.indiceSigla]);
 		}
 		if(indiceValido(this.indiceNumero)) {
-			partido.setNumero(campo[this.indiceNumero]);
+			partido.setNumero(Integer.parseInt(campo[this.indiceNumero]));
 		}
 		if(indiceValido(this.indiceDeferimento)){
 			partido.setDeferimento(campo[this.indiceDeferimento]);
@@ -36,7 +36,7 @@ public class PartidoIndicesParse extends IndicesParse<Partido>{
 	@Override
 	protected void setVazioEmTodosOsSetters(Partido partido) {
 		partido.setSigla(Partido.STRING_VAZIO);
-		partido.setNumero(Partido.STRING_VAZIO);
+		partido.setNumero(Partido.INTEGER_VAZIO);
 		partido.setNome(Partido.STRING_VAZIO);
 		partido.setDeferimento(Partido.STRING_VAZIO);
 	}
@@ -45,32 +45,17 @@ public class PartidoIndicesParse extends IndicesParse<Partido>{
 		this.indiceSigla = indiceSigla;
 	}
 
-	public int getIndiceNumero() {
-		return indiceNumero;
-	}
-
 	public void setIndiceNumero(int indiceNumero) {
 		this.indiceNumero = indiceNumero;
-	}
-
-	public int getIndiceDeferimento() {
-		return indiceDeferimento;
 	}
 
 	public void setIndiceDeferimento(int indiceDeferimento) {
 		this.indiceDeferimento = indiceDeferimento;
 	}
 
-	public int getIndiceNome() {
-		return indiceNome;
-	}
-
 	public void setIndiceNome(int indiceNome) {
 		this.indiceNome = indiceNome;
 	}
 
-	public int getIndiceSigla() {
-		return indiceSigla;
-	}
 	
 }

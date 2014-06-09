@@ -10,9 +10,8 @@ public abstract class CadastroParseReceitasDespesas<O> extends CadastroParse<O> 
 	public static final String RECEITA = "receita";
 
 	public static final String ANO_2002 = "2002";
-	public static final String ANO_2004 = "2004";
 	public static final String ANO_2006 = "2006";
-	public static final String ANO_2008 = "2008";
+	public static final String ANO_2010 = "2008";
 	
 	public CadastroParseReceitasDespesas(String tipoArquivo, String ano)
 			throws ParseException {
@@ -32,25 +31,21 @@ public abstract class CadastroParseReceitasDespesas<O> extends CadastroParse<O> 
 	}
 	
 	protected abstract IndicesParse<O> getIndicesParseDespesa2002();
-	protected abstract IndicesParse<O> getIndicesParseDespesa2004();
 	protected abstract IndicesParse<O> getIndicesParseDespesa2006();
-	protected abstract IndicesParse<O> getIndicesParseDespesa2008();
+	protected abstract IndicesParse<O> getIndicesParseDespesa2010();
 
 	protected abstract IndicesParse<O> getIndicesParseReceita2002();
-	protected abstract IndicesParse<O> getIndicesParseReceita2004();
 	protected abstract IndicesParse<O> getIndicesParseReceita2006();
-	protected abstract IndicesParse<O> getIndicesParseReceita2008();
+	protected abstract IndicesParse<O> getIndicesParseReceita2010();
 
 	private IndicesParse<O> getIndicesParseDespesa(String ano) throws ParseException {
 		switch (ano) {
 		case ANO_2002:
 			return getIndicesParseDespesa2002();
-		case ANO_2004:
-			return getIndicesParseDespesa2004();
 		case ANO_2006:
 			return getIndicesParseDespesa2006();
-		case ANO_2008:
-			return getIndicesParseDespesa2008();
+		case ANO_2010:
+			return getIndicesParseDespesa2010();
 		}
 		throw new ParseException("Ano do arquivo, esta invalido!");
 	}
@@ -59,12 +54,10 @@ public abstract class CadastroParseReceitasDespesas<O> extends CadastroParse<O> 
 		switch (ano) {
 		case ANO_2002:
 			return getIndicesParseReceita2002();
-		case ANO_2004:
-			return getIndicesParseReceita2004();
 		case ANO_2006:
 			return getIndicesParseReceita2006();
-		case ANO_2008:
-			return getIndicesParseReceita2008();
+		case ANO_2010:
+			return getIndicesParseReceita2010();
 		}
 		throw new ParseException("Ano do arquivo, esta invalido!");
 	}

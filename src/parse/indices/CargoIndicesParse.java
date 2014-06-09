@@ -33,15 +33,9 @@ public class CargoIndicesParse extends IndicesParse<Cargo>{
 		this.indiceCodigo = indiceCodigo;
 	}
 
-	public int getIndiceCodigo() {
-		return indiceCodigo;
-	}
 
 	public void setIndiceDescricao(int indiceDescricao) {
 		this.indiceDescricao = indiceDescricao;
 	}
-	
-	public int getIndicesDescricao (){
-		return indiceDescricao;
-	}
+
 }

@@ -29,7 +29,7 @@
 
 				<table>
 					<tr>
-						<td>Nome</td>
+						<td>Nome: </td>
 						<td>${partido.nome}</td>
 					</tr>
 					
@@ -37,13 +37,24 @@
 						<td>Sigla:</td>
 						<td>${partido.sigla}</td>
 					</tr>
+					
+					<tr>
+						<td>Numero:</td>
+						<td>${partido.numero}</td>
+					</tr>
+					
+					<tr>
+						<td>Deferimento:</td>
+						<td>${partido.deferimento}</td>
+					</tr>
 				</table>
 				<br />
 				
 				<c:forEach var ="ano" items ="${anos}" >
 					<table border="2" width="300">
 					<tr><td>
-						<c:url var="AnoUrl" value="/VisualizarCandidatosPartido">
+						<c:url var="AnoUrl" value="/mvc">
+							<c:param name="logica" value="VisualizarCandidatosPartido" />												
 							<c:param name="sigla" value="${partido.sigla}" />						
 							<c:param name="ano" value="${ano}" />
 						</c:url>

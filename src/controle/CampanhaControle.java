@@ -1,4 +1,5 @@
 package controle;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Campanha;
@@ -16,5 +17,8 @@ public class CampanhaControle {
 	public ArrayList<Campanha> getListaCampanhas(Candidato candidato) {
 		return this.campanhaDAO.getCampanhas(candidato);
 	}
-
+	
+	public ArrayList<Campanha> getListaCampanhasPorSiglaPartidoEAno(String sigla, String ano) throws SQLException{
+		return this.campanhaDAO.getCampanhasPorSiglaPartidoEAno(sigla,ano);
+	}
 }

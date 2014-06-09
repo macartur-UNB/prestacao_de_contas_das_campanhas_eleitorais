@@ -1,67 +1,32 @@
 package controle.servlet;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.beans.Candidato;
-import modelo.beans.Partido;
-import controle.CandidatoControle;
+import modelo.beans.Campanha;
+import controle.CampanhaControle;
 
-@WebServlet("/VisualizarCandidatosPartido")
-public class VisualizarCandidatosPartido extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
-	
-	public VisualizarCandidatosPartido() {
-	}
+public class VisualizarCandidatosPartido implements Logica {
 	
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest req, HttpServletResponse res)
+			throws Exception {
 		try {
-			CandidatoControle candidatoControle = new CandidatoControle();
-			ArrayList<Candidato> listaCandidatos = new ArrayList<>();
-			listaCandidatos = candidatoControle.getListaCandidatos();
-			listaCandidatos =
-					filtrarListaDeCandidatosPorUfPartidoAnoCadastroUnico
-					(listaCandidatos,request);
+			CampanhaControle campanhaControle = new CampanhaControle();
+			ArrayList<Campanha> listaCampanhas = new ArrayList<>();
+			String sigla = req.getParameter("sigla");
+			String ano =  req.getParameter("ano");
+			listaCampanhas = campanhaControle.getListaCampanhasPorSiglaPartidoEAno(sigla,ano);
 			int anos[] = { 2010, 2006, 2002 };
-			request.setAttribute("anos", anos);
-			request.setAttribute("listaCandidatos", listaCandidatos);
-			RequestDispatcher requestDispatcher = request.
-					getRequestDispatcher("/visualizar_candidato_partido.jsp");
-			requestDispatcher.forward(request, response);
-		} catch (SQLException e) {
-			e.printStackTrace();
+			req.setAttribute("anos", anos);
+			req.setAttribute("listaCampanhas", listaCampanhas);
+			return "/visualizar_candidato_partido.jsp";
+		} catch (Exception e) {
+			System.out.println("Erro no acesso ao BD");
+			throw new ServletException(e);		
 		}
-	}
-	
-	public ArrayList<Candidato> filtrarListaDeCandidatosPorUfPartidoAnoCadastroUnico
-		(ArrayList<Candidato> lCandidatos, HttpServletRequest request) {	
-		
-		String sigla = request.getParameter("sigla");
-		int ano = Integer.parseInt(request.getParameter("ano"));
-		Partido partido = new Partido();
-		partido.setSigla(sigla);
-		
-		ArrayList<Candidato> lCandidatosFiltrados = new ArrayList<>();
-		
-		for(Candidato candidato : lCandidatos) {
-			if((candidato.getUf().equals("DF"))
-					&& (candidato.getPartido().equals(partido))
-					&& (candidato.getAno().equals(ano))
-					&& !(lCandidatosFiltrados.contains(candidato))) {
-				lCandidatosFiltrados.add(candidato);
-			}
-		}		
-		return lCandidatosFiltrados;
 	}
 }

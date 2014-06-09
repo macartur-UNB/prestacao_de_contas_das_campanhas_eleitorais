@@ -8,20 +8,21 @@ import org.junit.Test;
 
 import parse.controle.CargoParseControle;
 import parse.indices.CargoIndicesParse;
+import teste.TemplateTeste;
 
-public class CargoParseControleTeste {
+public class CargoParseControleTeste extends TemplateTeste {
 
-	public static final int ID = 0;
-	public static final int CODIGO = 1;
-	public static final int DESCRICAO = 2;
+	public static final int CODIGO = 0;
+	public static final int DESCRICAO = 1;
 	
 	private String campo[];
 	private CargoDAO cargoDAO;
 	private CargoIndicesParse cargoIndicesParse;
 	private CargoParseControle cargoParseControle;
 
+	@Override
 	public void beforeTest() throws Exception {
-		this.campo = new String[3];
+		this.campo = new String[2];
 		this.cargoDAO = new CargoDAO();
 		this.cargoIndicesParse = new CargoIndicesParse();
 		this.cargoParseControle = new CargoParseControle(this.cargoIndicesParse);
@@ -30,11 +31,11 @@ public class CargoParseControleTeste {
 		iniciarIndices();
 	}
 	
-	public void afterTest() {
+	@Override
+	public void afterTest() throws Exception {
 		
 	}
 
-	
 	@Test
 	public void cadastrarCargos() throws Exception {
 		
@@ -44,15 +45,26 @@ public class CargoParseControleTeste {
 		
 		Cargo cargoCadastrado = this.cargoDAO.getLista().get(0);
 				
-		Assert.assertEquals(this.campo[ID], cargoCadastrado.getId().toString());
 		Assert.assertEquals(this.campo[CODIGO], cargoCadastrado.getCodigo().toString());
 		Assert.assertEquals(this.campo[DESCRICAO], cargoCadastrado.getDescricao());
 		
 	}
 	
+	@Test
+	public void naoDeveCadastrarDoisCargosIguais() throws Exception {
+		
+		this.cargoParseControle.addInstancia(campo);
+		this.cargoParseControle.addInstancia(campo);
+		this.cargoParseControle.cadastrarInstancias();
+		this.cargoParseControle.resetar();
+		
+		int numeroCargosCadastrados = this.cargoDAO.getLista().size();
+		
+		Assert.assertEquals(1, numeroCargosCadastrados);
+	}
+	
 	private void iniciarIndices() {
 		
-		this.cargoIndicesParse.setIndiceId(ID);
 		this.cargoIndicesParse.setIndiceCodigo(CODIGO);
 		this.cargoIndicesParse.setIndiceDescricao(DESCRICAO);
 		
@@ -60,7 +72,6 @@ public class CargoParseControleTeste {
 	
 	private void iniciarCampos() {
 		
-		this.campo[ID] = "1";
 		this.campo[CODIGO] = "125";
 		this.campo[DESCRICAO] = "CARGO INEXISTENTE";
 		

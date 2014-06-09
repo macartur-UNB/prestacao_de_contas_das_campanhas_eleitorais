@@ -3,8 +3,10 @@ package modelo.beans;
 public class Partido {
 	
 	public static final String STRING_VAZIO = "";
+	public static final Integer INTEGER_VAZIO = 0;
+
 	
-	private String numero;
+	private Integer numero;
 	private String sigla;
 	private String deferimento;
 	private String nome;
@@ -12,7 +14,7 @@ public class Partido {
 	public Partido() {
 		this.nome = STRING_VAZIO;
 		this.sigla = STRING_VAZIO;
-		this.numero = STRING_VAZIO;
+		this.numero = INTEGER_VAZIO;
 		this.deferimento = STRING_VAZIO;
 	}
 	
@@ -22,14 +24,14 @@ public class Partido {
 			return false;
 		
 		Partido outroPartido = (Partido) object;
-		return this.sigla.equalsIgnoreCase(outroPartido.getSigla());
+		return this.numero.equals(outroPartido.getNumero());
 	}
 	
-	public String getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 	
-	public void setNumero(String numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 	

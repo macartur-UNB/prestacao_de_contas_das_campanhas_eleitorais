@@ -47,15 +47,20 @@
 							<tr>
 								<td rowspan="2">
 									<c:url var="AnoUrl" value="/requisitarMovimentacoes">
-										<c:param name="tabela" value="campanha"></c:param>
-										<c:param name="numero" value="${campanha.numeroCandidato}"></c:param>
+										<c:param name="numero_cand" value="${campanha.numeroCandidato}"></c:param>
 										<c:param name="ano" value="${campanha.ano}"></c:param>
+										<c:param name="cargo_cod" value="${campanha.cargo.codigo}"></c:param>
+										<c:param name="resultado_cod" value="${campanha.resultado.codigo}"></c:param>
+										<c:param name="nome_urna" value="${campanha.nomeDeUrna}"></c:param>
+										<c:param name="nome" value="${candidato.nome}"></c:param>
 									</c:url>
 									<a href="${AnoUrl}">${campanha.ano}</a></td>
 								<td>
-									<c:url var="partidoUrl" value="/SelecionarPartido">
+									<c:url var="partidoUrl" value="/mvc">
+										<c:param name="logica" value="SelecionarPartido"></c:param>
 										<c:param name="sigla" value="${campanha.partido.sigla}"></c:param>
-									</c:url> Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
+									</c:url>
+									Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
 								</td>
 								<td>Cargo Pleiteado: ${campanha.cargo.descricao}</td>
 							</tr>

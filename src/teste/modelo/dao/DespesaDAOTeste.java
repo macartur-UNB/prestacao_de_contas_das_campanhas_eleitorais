@@ -3,100 +3,69 @@ package teste.modelo.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.beans.Campanha;
+import modelo.beans.Despesa;
+import modelo.beans.Fornecedor;
+import modelo.dao.DespesaDAO;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import modelo.beans.Candidato;
-import modelo.beans.Despesa;
-import modelo.beans.Fornecedor;
-import modelo.beans.Partido;
-import modelo.dao.CandidatoDAO;
-import modelo.dao.DespesaDAO;
-import modelo.dao.FornecedorDAO;
-import modelo.dao.PartidoDAO;
 import teste.TemplateTeste;
 
 public class DespesaDAOTeste extends TemplateTeste {
 	
 	private DespesaDAO despesaDAO;
-	private PartidoDAO partidoDAO;
-	private CandidatoDAO candidatoDAO;
-	private FornecedorDAO fornecedorDAO;
-	
-	private Partido partidoCadastrado;
-	private Candidato candidatoCadastrado;
+
+	private Campanha campanhaCadastrada;
 	private Fornecedor fornecedorCadastrado;
 	
-	@Override
-	public void beforeTest() throws Exception {
-		this.despesaDAO = new DespesaDAO();
-		this.partidoDAO = new PartidoDAO();
-		this.candidatoDAO = new CandidatoDAO();
-		this.fornecedorDAO = new FornecedorDAO();
-		
-		cadastrarPartido();
-		cadastrarCandidato();
-		cadastrarFornecedor();
-	}
-
 	@Override
 	public void afterTest() throws Exception {
 		
 	}
 
 	@Test
-	public void valoresComparacao() throws Exception {
-		DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+	public void valoresComparacaoParteI() throws Exception {
+		//DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+		
+		Despesa D1 = new Despesa();
+		Despesa D2 = new Despesa();
+		//D1.setAno(2010);
+		//D2.setAno(2006);
+		int resultado;
+
+		resultado = DespesaDAO.Comparacao.ANO_E_NUMERO.compare(D1, D2);
+		
+		Assert.assertEquals(1,resultado);
 	}
+	
+	@Test
+	public void valoresComparacaoParteII() throws Exception {
+		//DespesaDAO.Comparacao.valueOf(DespesaDAO.Comparacao.NOME.toString());
+		
+		Despesa D1 = new Despesa();
+		Despesa D2 = new Despesa();
+		D1.setAno(2010);
+		D2.setAno(2010);
+		D1.setNumeroDocumento("000");
+		D2.setNumeroDocumento("000");
+		int resultado;
+
+		resultado = DespesaDAO.Comparacao.ANO_E_NUMERO.compare(D1, D2);
+		
+		Assert.assertEquals(0,resultado);
+	}	
 
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmaDespesaInexistente() throws Exception {
 		ArrayList<Despesa> listaDespesas = new ArrayList<>();
 		
 		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
 		despesa.setFornecedor(this.fornecedorCadastrado);
 		listaDespesas.add(despesa);
 		
 		this.despesaDAO.cadastrarLista(listaDespesas);
-	}
-
-	@Test
-	public void deveRecuperarUmaListaDeDespesasPeloEmNomeDeEAno() throws Exception {
-		ArrayList<Despesa> listaDespesas = new ArrayList<>();
-		
-		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
-		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
-		despesa.setNumeroDocumento("123454");
-		listaDespesas.add(despesa);
-		
-		this.despesaDAO.cadastrarLista(listaDespesas);
-		
-		ArrayList<Despesa> listaResultado = this.despesaDAO.getDespesasPorSelecao(DespesaDAO.EM_NOME_DE,
-				this.candidatoCadastrado.getNome(), "2002");
-		
-		Assert.assertEquals(listaDespesas, listaResultado);
-	}
-	
-	@Test
-	public void deveRecuperarUmaListaDeDespesasPeloFornecedorDeEAno() throws Exception {
-		ArrayList<Despesa> listaDespesas = new ArrayList<>();
-		
-		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
-		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
-		despesa.setNumeroDocumento("123454");
-		listaDespesas.add(despesa);
-		
-		this.despesaDAO.cadastrarLista(listaDespesas);
-		
-		ArrayList<Despesa> listaResultado = this.despesaDAO.getDespesasPorSelecao(DespesaDAO.FORNECEDOR,
-				this.fornecedorCadastrado.getNome(), "2002");
-		
-		Assert.assertEquals(listaDespesas, listaResultado);
 	}
 	
 	@Test
@@ -104,9 +73,9 @@ public class DespesaDAOTeste extends TemplateTeste {
 		ArrayList<Despesa> listaDespesas = new ArrayList<>();
 		
 		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
+		despesa.setCampanha(this.campanhaCadastrada);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
+		despesa.setAno(this.campanhaCadastrada.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -122,7 +91,7 @@ public class DespesaDAOTeste extends TemplateTeste {
 		
 		Despesa despesa = new Despesa();
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
+		despesa.setAno(this.campanhaCadastrada.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
@@ -134,16 +103,16 @@ public class DespesaDAOTeste extends TemplateTeste {
 		ArrayList<Despesa> listaDespesas = new ArrayList<>();
 		
 		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
+		despesa.setCampanha(this.campanhaCadastrada);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
+		despesa.setAno(this.campanhaCadastrada.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
 		despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
+		despesa.setCampanha(this.campanhaCadastrada);
 		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
+		despesa.setAno(this.campanhaCadastrada.getAno());
 		despesa.setNumeroDocumento("123454123");
 		listaDespesas.add(despesa);
 		
@@ -157,70 +126,18 @@ public class DespesaDAOTeste extends TemplateTeste {
 		ArrayList<Despesa> listaDespesas = new ArrayList<>();
 		
 		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
+		despesa.setCampanha(this.campanhaCadastrada);
+		despesa.setAno(this.campanhaCadastrada.getAno());
 		despesa.setNumeroDocumento("123454");
 		listaDespesas.add(despesa);
 		
 		this.despesaDAO.cadastrarLista(listaDespesas);
 	}
 
-	@Test (expected = SQLException.class)
-	public void deveLancarExcecaoAoTentarRecuperarUmaListaDeDespesasPorUmCampoInvalido() throws Exception {
-		ArrayList<Despesa> listaDespesas = new ArrayList<>();
+	@Override
+	public void beforeTest() throws Exception {
+		// TODO Auto-generated method stub
 		
-		Despesa despesa = new Despesa();
-		despesa.setEmNomeDe(this.candidatoCadastrado);
-		despesa.setFornecedor(this.fornecedorCadastrado);
-		despesa.setAno(this.candidatoCadastrado.getAno());
-		despesa.setNumeroDocumento("123454");
-		listaDespesas.add(despesa);
-		
-		this.despesaDAO.cadastrarLista(listaDespesas);
-		
-		ArrayList<Despesa> listaResultado = this.despesaDAO.getDespesasPorSelecao("Campo Invalido",
-				this.fornecedorCadastrado.getNome(), "2002");
-	}
-	
-	@Test(expected = SQLException.class)
-	public void deveLancarExcecaoAoTentarPegarAListaDeDespesasSeAConexaoComOBancoNaoForSucedida() throws Exception {
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.despesaDAO.getLista();
-	}
-	
-	private void cadastrarPartido() throws Exception {
-		ArrayList<Partido> listaPartidos = new ArrayList<>();
-		
-		this.partidoCadastrado = new Partido();
-		this.partidoCadastrado.setSigla("A");
-		this.partidoCadastrado.setNumero("1");
-		listaPartidos.add(this.partidoCadastrado);
-		
-		this.partidoDAO.cadastrarPartidos(listaPartidos);
-	}
-	
-	private void cadastrarCandidato() throws Exception {
-		ArrayList<Candidato> listaCandidatos = new ArrayList<>();
-		
-		this.candidatoCadastrado = new Candidato();
-		this.candidatoCadastrado.setNome("Candidato");
-		this.candidatoCadastrado.setAno(2002);
-		this.candidatoCadastrado.setPartido(this.partidoCadastrado);
-		listaCandidatos.add(this.candidatoCadastrado);
-		
-		this.candidatoDAO.cadastrarLista(listaCandidatos);
-	}
-	
-	private void cadastrarFornecedor() throws Exception {
-		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
-		
-		this.fornecedorCadastrado = new Fornecedor();
-		this.fornecedorCadastrado.setNome("Fornecedor");
-		this.fornecedorCadastrado.setCadastroNacional("123456");
-		this.fornecedorCadastrado.setPessoaJuridica(true);
-		listaFornecedores.add(this.fornecedorCadastrado);
-		
-		this.fornecedorDAO.cadastrarLista(listaFornecedores);
 	}
 
 }

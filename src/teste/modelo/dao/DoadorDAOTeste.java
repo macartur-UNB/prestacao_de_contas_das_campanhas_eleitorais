@@ -3,7 +3,9 @@ package teste.modelo.dao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.beans.Despesa;
 import modelo.beans.Doador;
+import modelo.dao.DespesaDAO;
 import modelo.dao.DoadorDAO;
 
 import org.junit.Assert;
@@ -26,8 +28,34 @@ public class DoadorDAOTeste extends TemplateTeste {
 	}
 	
 	@Test
-	public void valoresComparacao() throws Exception {
-		DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
+	public void valoresComparacaoParteI() throws Exception {
+		//DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
+		
+		Doador D1 = new Doador();
+		Doador D2 = new Doador();
+		D1.setCpf_cnpj("123");
+		D2.setCpf_cnpj("123");
+		int resultado;
+
+		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
+		
+		Assert.assertEquals(0,resultado);
+	}
+	
+	@Test
+	public void valoresComparacaoParteII() throws Exception {
+		//DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
+		
+		Doador D1 = new Doador();
+		Doador D2 = new Doador();
+		D1.setCpf_cnpj("124");
+		D2.setCpf_cnpj("125");
+		int resultado;
+
+		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
+		
+		Assert.assertEquals(-1,resultado);
+		
 	}
 
 	@Test
@@ -36,8 +64,6 @@ public class DoadorDAOTeste extends TemplateTeste {
 		
 		Doador doador = new Doador();
 		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
 		listaDoadores.add(doador);
 		
 		this.doadorDAO.cadastrarLista(listaDoadores);
@@ -49,8 +75,6 @@ public class DoadorDAOTeste extends TemplateTeste {
 		
 		Doador doador = new Doador();
 		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
 		listaDoadores.add(doador);
 
 		this.doadorDAO.cadastrarLista(listaDoadores);
@@ -65,24 +89,21 @@ public class DoadorDAOTeste extends TemplateTeste {
 		
 		Doador doador = new Doador();
 		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
+		doador.setCpf_cnpj("123");
+		doador.setSituacaoCadastral("Cadastrado");
+		doador.setUf("DF");
 		listaDoadores.add(doador);
 		
 		doador = new Doador();
-		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
+		doador.setNome("Nome2");
+		doador.setCpf_cnpj("1234");
+		doador.setSituacaoCadastral("Cadastrado");
+		doador.setUf("DF");
 		listaDoadores.add(doador);
 
 		this.doadorDAO.cadastrarLista(listaDoadores);
 		Assert.assertEquals(listaDoadores, this.doadorDAO.getLista());
 	}
 	
-	@Test(expected = SQLException.class)
-	public void deveLancarExcecaoAoTentarPegarAListaDeDoadoresSeAConexaoComOBancoNaoForSucedida() throws Exception {
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.doadorDAO.getLista().size();
-	}
 
 }

@@ -24,7 +24,8 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 			
-				<h1>Parse Partido</h1>
+				<!--  PARSE DOS PARTIDOS -->
+				<h1>Parse dos Partidos</h1>
 				<p>Usar arquivo: utf_partidos_politicos_registrados_tse.txt</p>
 				
 				<form action="carregarParsePartido" method="POST"
@@ -46,8 +47,8 @@
 					</table>
 				</form>
 				
-
-				<h1>Parse Campanha</h1>
+				<!-- PARSE DAS CAMPANHAS -->
+				<h1>Parse das Campanhas</h1>
 				<p>Usar arquivos: utf_consulta_cand_&ltano&gt_&ltuf&gt.txt </p>
 				
 
@@ -70,6 +71,56 @@
 					</table>
 				</form>
 				
+				<!-- PARSE DAS MOVIMENTACOES FINANCEIRAS -->
+				<h1>Parse das Movimentações Financeiras</h1>
+				<p>Usar arquivos: utf_&ltReceita/Despesa&gtCandidatos_&ltano&gt.csv </p>
+				
+				<form action="carregarParseMovimentacoes" method="POST"
+					enctype="multipart/form-data">
+					<table>
+						<tr>
+							<td>Arquivo do Parse:</td>
+							<td><input type="file" name="arquivo" size="50" /></td>
+						</tr>
+						<tr>
+							<td>Tipo do Arquivo:</td>
+							<td><input type="radio" name="arquivo_tipo" value="despesa"
+								checked /> Despesa</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="radio" name="arquivo_tipo" value="receita" />
+								Receita</td>
+						</tr>
+
+						<tr>
+							<td>Ano:</td>
+							<td><input type="radio" name="arquivo_ano" value="2002"
+								checked /> 2002</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="radio" name="arquivo_ano" value="2006" />
+								2006</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="radio" name="arquivo_ano" value="2010" />
+								2010</td>
+						</tr>
+
+						<tr>
+							<td></td>
+							<td>
+								<p align="right">
+									<input type="submit" class="botao" value="Carregar" />
+								</p>
+							</td>
+						</tr>
+					</table>
+				</form>
+
+					
 				<br>
 			</div>
 		</div>

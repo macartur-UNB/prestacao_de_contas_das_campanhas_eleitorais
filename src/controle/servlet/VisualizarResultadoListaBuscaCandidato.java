@@ -1,28 +1,21 @@
 package controle.servlet;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.beans.Candidato;
 import controle.CandidatoControle;
 
-
-@WebServlet("/VisualizarResultadoListaBuscaCandidato")
-public class VisualizarResultadoListaBuscaCandidato extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class VisualizarResultadoListaBuscaCandidato implements Logica {
        
 	@Override
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		String nome = request.getParameter("nome");
+	public String executa(HttpServletRequest req, HttpServletResponse res)
+			throws Exception {
+		
+		String nome = req.getParameter("nome");
 
 		RequestDispatcher requestDispatcher;
 
@@ -30,16 +23,12 @@ public class VisualizarResultadoListaBuscaCandidato extends HttpServlet {
 		List<Candidato> listaCandidatos = control.getListaCandidatos(nome);
 
 		if (listaCandidatos.isEmpty()) {
-			requestDispatcher = request
-					.getRequestDispatcher("/erro_candidato_inexistente.jsp");
-			requestDispatcher.forward(request, response);
+			return "/erro_candidato_inexistente.jsp";
 		} else {
 
-			request.setAttribute("listaCandidatos", listaCandidatos);
+			req.setAttribute("listaCandidatos", listaCandidatos);
 
-			requestDispatcher = request
-					.getRequestDispatcher("/visualizar_lista_candidatos.jsp");
-			requestDispatcher.forward(request, response);
+			return "/visualizar_lista_candidatos.jsp";
 		}
 	}
 }
