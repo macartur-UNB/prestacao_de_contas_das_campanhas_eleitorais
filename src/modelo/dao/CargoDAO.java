@@ -64,10 +64,21 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 			lista.add(cargo);
 		}
 	}
-
+	
 	public Cargo getPeloCod(Integer codigo) {
-		Cargo cargo = new Cargo();
 		String comandoSQL = SQL_SELECAO + " WHERE " + CODIGO +" = "+codigo+" ";
+		return buscaBD(comandoSQL);
+	}
+	
+	public Cargo getPelaDescricao(String descricao) {
+		String comandoSQL = SQL_SELECAO + " WHERE "
+						  + DESCRICAO +" like '%"+descricao+"%' ";
+		return buscaBD(comandoSQL);
+	}
+	
+	public Cargo buscaBD(String SQL) {
+		Cargo cargo = new Cargo();
+		String comandoSQL = SQL;
 		
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();

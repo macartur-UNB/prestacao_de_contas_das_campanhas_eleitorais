@@ -14,7 +14,16 @@ public class Despesa extends MovimentacaoFinanceira {
 	
 	@Override
 	public boolean equals(Object object) {
+		if( !(object instanceof Despesa) || object == null) {
 			return false;
+		}
+		
+		Despesa outraDespesa = (Despesa) object;
+		
+		return super.equals(object) &&
+			   this.tipoDocumento.equals(outraDespesa.getTipoDocumento()) &&
+			   this.fornecedor.equals(outraDespesa.getFornecedor()); 
+
 	}
 	
 	public String getTipoDocumento() {

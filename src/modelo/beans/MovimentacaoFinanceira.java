@@ -42,7 +42,8 @@ public class MovimentacaoFinanceira {
 				this.formaPagamento.equals(outraMovimentacao.getFormaPagamento()) &&
 				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
 				this.tipoMovimentacao.equals(outraMovimentacao.getTipoMovimentacao()) &&
-				this.valor.equals(outraMovimentacao.getValor());
+				this.valor.equals(outraMovimentacao.getValor()) &&
+				this.data.equals(outraMovimentacao.getData());
 	}
 
 	public String getNumeroDocumento() {

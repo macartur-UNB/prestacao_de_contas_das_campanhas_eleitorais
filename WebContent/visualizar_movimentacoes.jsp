@@ -22,12 +22,12 @@
 
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Movimentação</h3>
+			<h3>Movimentações</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Abaixo as Movimentações Financeiras do <b><c:out value="${entidade}"/> </b>
+					Abaixo as Movimentações Financeiras do <b>Candidato</b> 
 					selecionado.
 				</p>
 
@@ -35,8 +35,16 @@
 				<!-- <h4>Resultado da busca:</h4>-->
 				<table>
 					<tr>
-						<td><c:out value="${entidade}" />:</td>
+						<td>Candidato: </td>
 						<td>${param.nome}</td>
+					</tr>
+					<tr>
+						<td>Nome de Urna:</td>
+						<td>${param.nome_urna}</td>
+					</tr>
+					<tr>
+						<td>Número do Candidato:</td>
+						<td>${param.numero_cand}</td>
 					</tr>
 					<tr>
 						<td>Ano:</td>
