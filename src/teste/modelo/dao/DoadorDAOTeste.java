@@ -108,10 +108,5 @@ public class DoadorDAOTeste extends TemplateTeste {
 		Assert.assertEquals(listaDoadores, this.doadorDAO.getLista());
 	}
 	
-	@Test (expected = SQLException.class)
-	public void deveLancarExcecaoAoTentarPegarAListaDeDoadoresSeAConexaoComOBancoNaoForSucedida() throws Exception {
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.doadorDAO.getLista().size();
-	}
 
 }

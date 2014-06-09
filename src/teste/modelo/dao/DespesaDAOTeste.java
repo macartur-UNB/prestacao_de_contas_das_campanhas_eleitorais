@@ -133,12 +133,6 @@ public class DespesaDAOTeste extends TemplateTeste {
 		
 		this.despesaDAO.cadastrarLista(listaDespesas);
 	}
-	
-	@Test(expected = SQLException.class)
-	public void deveLancarExcecaoAoTentarPegarAListaDeDespesasSeAConexaoComOBancoNaoForSucedida() throws Exception {
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.despesaDAO.getLista();
-	}
 
 	@Override
 	public void beforeTest() throws Exception {

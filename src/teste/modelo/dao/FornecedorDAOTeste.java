@@ -37,7 +37,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		F2.setCpf_cnpj("123");
 		int resultado;
 
-		resultado = FornecedorDAO.Comparacao.CPF_E_NOME.compare(F1, F2);
+		resultado = FornecedorDAO.Comparacao.CPF_CNPJ.compare(F1, F2);
 		
 		Assert.assertEquals(0,resultado);
 	}
@@ -53,7 +53,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		F2.setCpf_cnpj("125");
 		int resultado;
 
-		resultado = FornecedorDAO.Comparacao.CPF_E_NOME.compare(F1, F2);
+		resultado = FornecedorDAO.Comparacao.CPF_CNPJ.compare(F1, F2);
 		
 		Assert.assertEquals(-1,resultado);
 		
@@ -65,8 +65,8 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		fornecedor.setPessoaJuridica(true);
-		fornecedor.setCadastroNacional("123");
+		//fornecedor.setPessoaJuridica(true);
+		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 		
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
@@ -78,8 +78,8 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		fornecedor.setPessoaJuridica(true);
-		fornecedor.setCadastroNacional("123");
+		//fornecedor.setPessoaJuridica(true);
+		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
@@ -94,14 +94,14 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		fornecedor.setPessoaJuridica(true);
-		fornecedor.setCadastroNacional("123");
+		//fornecedor.setPessoaJuridica(true);
+		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 		
 		fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		fornecedor.setPessoaJuridica(true);
-		fornecedor.setCadastroNacional("123");
+		//fornecedor.setPessoaJuridica(true);
+		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
@@ -114,19 +114,13 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		fornecedor.setPessoaJuridica(true);
-		fornecedor.setCadastroNacional("123");
+		//fornecedor.setPessoaJuridica(true);
+		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
 		
 		Assert.assertEquals(fornecedor, this.fornecedorDAO.getUmFornecedor("Nome"));
-	}
-	
-	@Test(expected = SQLException.class)
-	public void deveLancarExcecaoAoTentarPegarAListaDeFornecedoresSeAConexaoComOBancoNaoForSucedida() throws Exception {
-		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_ERROR);
-		this.fornecedorDAO.getLista().size();
 	}
 	
 }
