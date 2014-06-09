@@ -30,7 +30,7 @@ public class LeitorCSV {
 		
 		ignorarLinhas(leitorArquivo, linhaInicial);
 		for(int i = linhaInicial; ((linha = leitorArquivo.readLine()) != null) ; i++ ) {
-			if(i % 100 == 0) {
+			if(i % 10000 == 0) {
 				System.out.println("lendo linha: " + i + " / " + totalLinhas);
 			}
 			

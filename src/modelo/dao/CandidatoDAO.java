@@ -12,13 +12,6 @@ import modelo.beans.Candidato;
 public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 	public enum Comparacao implements Comparator<Candidato> {
-		NOME {
-			@Override
-			public int compare(Candidato c1, Candidato c2) {
-				return c1.getNome().compareToIgnoreCase(c2.getNome());
-			}
-		},
-		
 		TITULO_ELEITORAL {
 			@Override
 			public int compare(Candidato c1, Candidato c2) {
@@ -28,8 +21,8 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 	}
 	
 	private static final String NOME_TABELA = "candidato";
-	private final String NOME = "nome";
 	private final String TITULO_ELEITORAL = "titulo_eleitoral";
+	private final String NOME = "nome";
 	private final String SQL_SELECT = "SELECT * FROM " 
 					   + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "

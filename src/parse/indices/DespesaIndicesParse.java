@@ -2,7 +2,6 @@ package parse.indices;
 
 import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
-import modelo.beans.TipoDocumento;
 
 public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Despesa> {
 
@@ -25,9 +24,7 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Desp
 			despesa.setFornecedor(fornecedor);
 		}
 		if(indiceValido(this.indiceTipoDocumento)) {
-			TipoDocumento tipoDocumento = new TipoDocumento();
-			tipoDocumento.setId(Integer.parseInt(campo[this.indiceTipoDocumento]));
-			despesa.setTipoDocumento(tipoDocumento);
+			despesa.setTipoDocumento(campo[this.indiceTipoDocumento]);
 		}
 	}
 	
@@ -36,7 +33,7 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Desp
 		super.setVazioEmTodosOsSetters(despesa);
 
 		despesa.setFornecedor((Fornecedor)Despesa.OBJETO_VAZIO);
-		despesa.setTipoDocumento((TipoDocumento)Despesa.OBJETO_VAZIO);
+		despesa.setTipoDocumento(Despesa.STRING_VAZIO);
 	}
 	
 	public void setIndiceFornecedor(int indiceFornecedor) {

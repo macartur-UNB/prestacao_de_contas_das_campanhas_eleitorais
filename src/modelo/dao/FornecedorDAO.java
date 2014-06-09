@@ -12,28 +12,26 @@ import parse.ParseDAO;
 public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<Fornecedor> {
 	
 	public enum Comparacao implements Comparator<Fornecedor> {
-		CPF_E_NOME {
+		CPF_CNPJ {
 			public int compare(Fornecedor f1, Fornecedor f2) {
-				if(f1.getCpf_cnpj() != f2.getCpf_cnpj())
-					return f1.getCpf_cnpj().compareToIgnoreCase(f2.getCpf_cnpj());
-				else
-					return f1.getNome().compareToIgnoreCase(f2.getNome());
+				return f1.getCpf_cnpj().compareToIgnoreCase(f2.getCpf_cnpj());
 			}
+
 		}	
 	}
 	
-	private static final String CPF_CNPJ = "cpf_cnpj";
+	private static final String NOME_TABELA = "fornecedor";
+	private static final String CPF_CNPJ = "cpf_cnpj_fornecedor";
 	private static final String NOME = "nome";
 	private static final String UF = "uf";
 	private static final String SITUACAO_CADASTRAL = "situacao_cadastral";
-	private static final String NOME_TABELA = "fornecedor";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + CPF_CNPJ + ", " + NOME + ", " + UF + ", " + SITUACAO_CADASTRAL + ") "
 			+ "VALUES(?, ?, ?, ?)";
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public FornecedorDAO() {
-		super(NOME_TABELA, Comparacao.CPF_E_NOME);
+		super(NOME_TABELA, Comparacao.CPF_CNPJ);
 	}
 	
 	@Override

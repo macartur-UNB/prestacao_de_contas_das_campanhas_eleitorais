@@ -1,9 +1,8 @@
 package parse.indices;
 
 import modelo.beans.Campanha;
-import modelo.beans.FormaPagamento;
+import modelo.beans.Cargo;
 import modelo.beans.MovimentacaoFinanceira;
-import modelo.beans.TipoMovimentacao;
 
 
 public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
@@ -13,7 +12,9 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	private Integer ano;
 	
 	private int indiceId;
-	private int indiceCampanha;
+	private int indiceCampanhaAno;
+	private int indiceCampanhaNumero;
+	private int indiceCampanhaCargo;
 	private int indiceNumeroDocumento;
 	private int indiceData;
 	private int indiceValor;
@@ -24,7 +25,9 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	public MovimentacaoFinanceiraIndicesParse(String ano) {
 		this.ano = Integer.valueOf(ano);
 		this.indiceId = INDICE_INVALIDO;
-		this.indiceCampanha = INDICE_INVALIDO;
+		this.indiceCampanhaAno = INDICE_INVALIDO;
+		this.indiceCampanhaNumero = INDICE_INVALIDO;
+		this.indiceCampanhaCargo = INDICE_INVALIDO;
 		this.indiceNumeroDocumento = INDICE_INVALIDO;
 		this.indiceData = INDICE_INVALIDO;
 		this.indiceValor = INDICE_INVALIDO;
@@ -37,15 +40,22 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	protected void setIndicesValidos(O objeto, String[] campo) {
 		MovimentacaoFinanceira movimentacaoFinanceira = (MovimentacaoFinanceira) objeto;
 		
-		movimentacaoFinanceira.setAno(ano);
+		Campanha campanha = new Campanha();
+		campanha.setAno(ano);
+		
 		if(indiceValido(this.indiceId)) {
 			movimentacaoFinanceira.setId(Integer.parseInt(campo[this.indiceId]));
 		}
-		if(indiceValido(this.indiceCampanha)) {
-			Campanha campanha = new Campanha();
-			campanha.setNumeroCandidato(Integer.parseInt(campo[this.indiceCampanha]));
-			campanha.setAno(this.ano);
-			movimentacaoFinanceira.setCampanha(campanha);
+		if(indiceValido(this.indiceCampanhaAno)) {
+			campanha.setAno(Integer.parseInt(campo[this.indiceCampanhaAno]));
+		}
+		if(indiceValido(this.indiceCampanhaNumero)) {
+			campanha.setNumeroCandidato(Integer.parseInt(campo[this.indiceCampanhaNumero]));
+		}
+		if(indiceValido(this.indiceCampanhaCargo)) {
+			Cargo cargo = new Cargo();
+			cargo.setDescricao(campo[this.indiceCampanhaCargo]);
+			campanha.setCargo(cargo);
 		}
 		if(indiceValido(this.indiceNumeroDocumento)) {
 			movimentacaoFinanceira.setNumeroDocumento(campo[this.indiceNumeroDocumento]);
@@ -58,18 +68,16 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 			movimentacaoFinanceira.setValor(valor);
 		}
 		if(indiceValido(this.indiceTipoMovimentacao)) {
-			TipoMovimentacao tipoMovimentacao = new TipoMovimentacao();
-			tipoMovimentacao.setId(Integer.parseInt(campo[this.indiceTipoMovimentacao]));
-			movimentacaoFinanceira.setTipoMovimentacao(tipoMovimentacao);
+			movimentacaoFinanceira.setTipoMovimentacao(campo[this.indiceTipoMovimentacao]);
 		}
 		if(indiceValido(this.indiceFormaPagamento)) {
-			FormaPagamento formaPagamento = new FormaPagamento();
-			formaPagamento.setId(Integer.parseInt(campo[this.indiceFormaPagamento]));
-			movimentacaoFinanceira.setFormaPagamento(formaPagamento);
+			movimentacaoFinanceira.setFormaPagamento(campo[this.indiceFormaPagamento]);
 		}
 		if(indiceValido(this.indiceDescricao)) {
 			movimentacaoFinanceira.setDescricao(campo[this.indiceDescricao]);
 		}
+		movimentacaoFinanceira.setCampanha(campanha);
+
 	}
 
 	@Override
@@ -78,11 +86,10 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		movimentacaoFinanceira.setId(MovimentacaoFinanceira.INTEGER_VAZIO);
 		movimentacaoFinanceira.setCampanha((Campanha)MovimentacaoFinanceira.OBJETO_VAZIO);
 		movimentacaoFinanceira.setNumeroDocumento(MovimentacaoFinanceira.STRING_VAZIO);
-		movimentacaoFinanceira.setAno(MovimentacaoFinanceira.INTEGER_VAZIO);
 		movimentacaoFinanceira.setData(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setValor(MovimentacaoFinanceira.FLOAT_VAZIO);
-		movimentacaoFinanceira.setFormaPagamento((FormaPagamento)MovimentacaoFinanceira.OBJETO_VAZIO);
-		movimentacaoFinanceira.setTipoMovimentacao((TipoMovimentacao)MovimentacaoFinanceira.OBJETO_VAZIO);
+		movimentacaoFinanceira.setFormaPagamento(MovimentacaoFinanceira.STRING_VAZIO);
+		movimentacaoFinanceira.setTipoMovimentacao(MovimentacaoFinanceira.STRING_VAZIO);
 		movimentacaoFinanceira.setDescricao(MovimentacaoFinanceira.STRING_VAZIO);
 	}
 	
@@ -98,10 +105,17 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		this.indiceId = indiceId;
 	}
 
-	public void setIndiceCampanha(int indiceCampanha) {
-		this.indiceCampanha = indiceCampanha;
+	public void setIndiceCampanhaAno(int indiceCampanhaAno) {
+		this.indiceCampanhaAno = indiceCampanhaAno;
 	}
-
+	
+	public void setIndiceCampanhaNumero(int indiceCampanhaNumero) {
+		this.indiceCampanhaNumero = indiceCampanhaNumero;
+	}
+	
+	public void setIndiceCampanhaCargo(int indiceCampanhaCargo) {
+		this.indiceCampanhaCargo = indiceCampanhaCargo;
+	}
 	public void setIndiceNumeroDocumento(int indiceNumeroDocumento) {
 		this.indiceNumeroDocumento = indiceNumeroDocumento;
 	}

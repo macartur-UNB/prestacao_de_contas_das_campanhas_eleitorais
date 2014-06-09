@@ -17,7 +17,7 @@ public class CandidatoControleTeste extends TemplateTeste {
 	private CandidatoDAO candidatoDAO;
 	private CandidatoControle candidatoControle;
 
-	@Override
+	@Override 
 	public void beforeTest() throws Exception {
 		this.candidatoDAO = new CandidatoDAO();
 		this.candidatoControle = new CandidatoControle();

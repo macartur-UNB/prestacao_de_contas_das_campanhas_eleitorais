@@ -8,7 +8,6 @@ import modelo.beans.Resultado;
 
 public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 
-	private int indiceId;
 	private int indiceResultadoCod;
 	private int indiceCargoCod;
 	private int indicePartidoNumero;
@@ -22,7 +21,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 	private int indiceReceitaTotalCalculada;
 
 	public CampanhaIndicesParse() {
-		this.indiceId = INDICE_INVALIDO;	
 		this.indiceResultadoCod = INDICE_INVALIDO;	
 		this.indiceCargoCod = INDICE_INVALIDO;	
 		this.indicePartidoNumero = INDICE_INVALIDO;	
@@ -38,9 +36,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 	
 	@Override
 	protected void setIndicesValidos(Campanha campanha, String[] campo) {
-		if (indiceValido(this.indiceId)) {
-			campanha.setId(Integer.parseInt(campo[this.indiceId]));
-		}		
 		if (indiceValido(this.indiceResultadoCod)) {
 			Resultado resultado = new Resultado();
 			resultado.setCodigo(Integer.parseInt(campo[this.indiceResultadoCod]));
@@ -90,7 +85,7 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Campanha campanha) {
-		campanha.setId(Campanha.INTEGER_VAZIO);	
+		campanha.setId(Campanha.INTEGER_VAZIO);
 		campanha.setResultado(Campanha.RESULTADO_VAZIO);	
 		campanha.setCargo(Campanha.CARGO_VAZIO);	
 		campanha.setPartido(Campanha.PARTIDO_VAZIO);	
@@ -102,10 +97,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		campanha.setDespesaMaxDeclarada(Campanha.FLOAT_VAZIO);	
 		campanha.setDespesaTotalCalculada(Campanha.FLOAT_VAZIO);	
 		campanha.setReceitaTotalCalculada(Campanha.FLOAT_VAZIO);	
-	}
-
-	public void setIndiceId(int indiceId) {
-		this.indiceId = indiceId;
 	}
 
 	public int getIndiceResultadoCod() {
@@ -120,8 +111,8 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		this.indiceCargoCod = indiceCargoId;
 	}
 
-	public void setIndicePartidoNumero(int indicePartidoSigla) {
-		this.indicePartidoNumero = indicePartidoSigla;
+	public void setIndicePartidoNumero(int indicePartidoNumero) {
+		this.indicePartidoNumero = indicePartidoNumero;
 	}
 
 	public void setIndiceCandidatoTitulo(int indiceCandidatoTitulo) {
