@@ -1,12 +1,6 @@
-/** CRIADO POR:          Rafael Valenca
- * 
- *  COMENTARIOS: 10/05/2014
- **/
-
 package controle.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,12 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.MovimentacaoControle;
-import controle.PartidoControle;
-import modelo.beans.Candidato;
-import modelo.beans.Despesa;
-import modelo.beans.Partido;
-import modelo.beans.Receita;
+import modelo.beans.Campanha;
+import modelo.beans.Cargo;
+import modelo.beans.Resultado;
+import modelo.dao.CampanhaDAO;
 
 @WebServlet("/requisitarMovimentacoes")
 public class RequisitarMovimentacoes extends HttpServlet {
@@ -32,71 +24,51 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		int ano = Integer.parseInt(request.getParameter("ano"));
-		String nome = request.getParameter("nome");
+		int numero = Integer.parseInt(request.getParameter("numero_cand"));
+		int cargo_cod = Integer.parseInt(request.getParameter("cargo_cod"));
+		int result_cod = Integer.parseInt(request.getParameter("resultado_cod"));
+		String nomeDeUrna = request.getParameter("nome_urna");
+		
+		Cargo cargo = new Cargo();
+		cargo.setCodigo(cargo_cod);
+		// Buscar descricao para exibir na pagina
+		
+		Resultado resultado = new Resultado();
+		resultado.setCodigo(result_cod);
+		// Buscar descricao para exbir na pagina
 
 		RequestDispatcher requestDispatcher;
-		MovimentacaoControle control = new MovimentacaoControle();
+		//MovimentacaoControle control = new MovimentacaoControle();
 
-		if (request.getParameter("tabela").equals("candidato")) {
-			Candidato candidato = new Candidato();
-			candidato.setNome(nome);
-			candidato.setAno(ano);
+		Campanha campanha = new Campanha();
+		campanha.setNumeroCandidato(numero);
+		campanha.setAno(ano);
+		campanha.setCargo(cargo);
+		campanha.setResultado(resultado);
+		campanha.setNomeDeUrna(nomeDeUrna);
+		
+		CampanhaDAO dao = new CampanhaDAO();
+		
+		campanha = dao.getPeloAnoNumeroECodCargo(campanha);
+		
+		if (campanha == null) {
+			requestDispatcher = request
+					.getRequestDispatcher("/erro_candidato_inexistente.jsp");
+			requestDispatcher.forward(request, response);
+		} else {
+			request.setAttribute("campanha", campanha);
 			
-			if (!candidato.existe()) {
-				requestDispatcher = request
-						.getRequestDispatcher("/erro_candidato_inexistente.jsp");
-				requestDispatcher.forward(request, response);
-			} else {
-				request.setAttribute("candidato", candidato);
-				request.setAttribute("entidade", "Candidato");
-				
-				//List<Receita> listaReceita = control.getListaReceitas(candidato);
-				List<Despesa> listaDespesa = control.getListaDespesas(candidato);
-				
-				//request.setAttribute("listaReceitas", listaReceita);
-				request.setAttribute("listaDespesas", listaDespesa);
-				
-				requestDispatcher = request
-						.getRequestDispatcher("/visualizar_movimentacoes.jsp");
-				requestDispatcher.forward(request, response);
-			}
-		} else if (request.getParameter("tabela").equals("partido")) {
-			PartidoControle partidoControle = new PartidoControle();
-
-			String sigla = request.getParameter("nome");
-
-			Partido partido = new Partido();
-			partido.setSigla(sigla);
-
-			try{
-				List<Receita> listaReceita = control.getListaReceitas(partido,ano);
-				List<Despesa> listaDespesa = control.getListaDespesas(partido,ano);
-				request.setAttribute("listaReceitas", listaReceita);
-				request.setAttribute("listaDespesas", listaDespesa);
-
-				
-				//FIX ME =============
-				partido = partidoControle.getListaPartidos("sigla",sigla).getFirst();
-				//===============
-				
-				if (partido.getSigla().equals("0")) {
-					requestDispatcher = request
-							.getRequestDispatcher("/erro_partido_inexistente.jsp");
-					requestDispatcher.forward(request, response);
-				} else {
-					request.setAttribute("partido", partido);
-					request.setAttribute("entidade","Partido");
-
-					requestDispatcher = request
-							.getRequestDispatcher("/visualizar_movimentacoes.jsp");
-					requestDispatcher.forward(request, response);
-				}
-			} catch(Exception e){
-				System.out.println("Erro no acesso ao BD");
-				throw new ServletException(e);
-			}
-
+			//List<Receita> listaReceita = control.getListaReceitas(campanha);
+			//List<Despesa> listaDespesa = control.getListaDespesas(campanha);
+			
+			//request.setAttribute("listaReceitas", listaReceita);
+			//request.setAttribute("listaDespesas", listaDespesa);
+		
+			requestDispatcher = request
+					.getRequestDispatcher("/visualizar_movimentacoes.jsp");
+			requestDispatcher.forward(request, response);
 		}
-
+	
 	}
+
 }

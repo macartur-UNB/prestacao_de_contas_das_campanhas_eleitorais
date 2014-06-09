@@ -145,6 +145,20 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		return listaCampanha;
 	}
 	
+	public Campanha getPeloAnoNumeroECodCargo(Campanha campanha)
+	{
+		ArrayList<Campanha> listaCampanha = new ArrayList<>();
+		String comandoSQL = SQL_SELECT + " WHERE " 
+				+ ANO +" = "+ campanha.getAno() + " AND "
+				+ NUM_CANDIDATO + " = '" + campanha.getNumeroCandidato() + "' AND "
+				+ COD_CARGO + " = " + campanha.getCargo().getCodigo();
+		listaCampanha = buscaBD(comandoSQL);
+		if (listaCampanha.isEmpty())
+			return null;
+		else 
+			return listaCampanha.get(0);
+	}
+	
 	public ArrayList<Campanha> buscaBD(String SQL) {
 
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
@@ -186,6 +200,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 
 		return listaCampanha;
 	}
+
 
 		
 }
