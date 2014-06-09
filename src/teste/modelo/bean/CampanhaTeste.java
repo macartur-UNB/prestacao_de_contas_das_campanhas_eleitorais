@@ -6,6 +6,7 @@ import static teste.modelo.bean.BeanTeste.instanciarCargo;
 import static teste.modelo.bean.BeanTeste.instanciarPartido;
 import static teste.modelo.bean.BeanTeste.instanciarResultado;
 import modelo.beans.Campanha;
+import modelo.beans.Cargo;
 import modelo.beans.Resultado;
 
 import org.junit.Assert;
@@ -27,6 +28,11 @@ public class CampanhaTeste {
 		campanha2.setAno(BeanTeste.INT_TESTE_2);
 		Assert.assertFalse(campanha.equals(campanha2));
 		campanha2.setAno(BeanTeste.INT_TESTE);
+		Cargo cargo = instanciarCargo();
+		cargo.setDescricao(BeanTeste.STRING_TESTE_2);
+		campanha2.setCargo(cargo);
+		Assert.assertFalse(campanha.equals(campanha2));
+		cargo.setDescricao(BeanTeste.STRING_TESTE);
 		campanha2.setNomeDeUrna(BeanTeste.STRING_TESTE_2);
 		Assert.assertFalse(campanha.equals(campanha2));
 		campanha2.setNomeDeUrna(BeanTeste.STRING_TESTE);
@@ -42,7 +48,7 @@ public class CampanhaTeste {
 		Assert.assertFalse(resultado.equals(campanha));
 		
 		Assert.assertEquals(resultado,campanha.getResultado());
-		Assert.assertEquals(instanciarCargo(),campanha.getCargo());
+		Assert.assertEquals(BeanTeste.INT_TESTE,campanha.getId());
 		Assert.assertEquals(instanciarPartido(),campanha.getPartido());
 		Assert.assertEquals(instanciarCandidato(),campanha.getCandidato());
 		Assert.assertEquals(BeanTeste.STRING_TESTE,campanha.getUf());

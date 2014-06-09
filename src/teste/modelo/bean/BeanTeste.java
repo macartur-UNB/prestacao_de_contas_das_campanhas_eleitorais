@@ -27,9 +27,10 @@ public class BeanTeste {
 		Campanha campanha = new Campanha();
 		campanha.setAno(INT_TESTE);
 		campanha.setCandidato(instanciarCandidato());
-		campanha.setCargo(instanciarCargo());
+		campanha.setCargo(instanciarCargo()); // Equals
 		campanha.setDespesaMaxDeclarada(FLOAT_TESTE);
 		campanha.setDespesaTotalCalculada(FLOAT_TESTE);
+		campanha.setId(INT_TESTE);
 		campanha.setNomeDeUrna(STRING_TESTE); // Equals
 		campanha.setNumeroCandidato(INT_TESTE); // Equals
 		campanha.setPartido(instanciarPartido());
