@@ -65,8 +65,6 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		//fornecedor.setPessoaJuridica(true);
-		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 		
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
@@ -78,8 +76,6 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		//fornecedor.setPessoaJuridica(true);
-		//fornecedor.setCadastroNacional("123");
 		listaFornecedores.add(fornecedor);
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
@@ -94,33 +90,19 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		
 		Fornecedor fornecedor = new Fornecedor();
 		fornecedor.setNome("Nome");
-		//fornecedor.setPessoaJuridica(true);
-		//fornecedor.setCadastroNacional("123");
+		fornecedor.setCpf_cnpj("123");
+		fornecedor.setSituacaoCadastral("Cadastrado");
+		fornecedor.setUf("DF");
 		listaFornecedores.add(fornecedor);
 		
 		fornecedor = new Fornecedor();
-		fornecedor.setNome("Nome");
-		//fornecedor.setPessoaJuridica(true);
-		//fornecedor.setCadastroNacional("123");
+		fornecedor.setNome("Nome2");
+		fornecedor.setCpf_cnpj("1234");
+		fornecedor.setSituacaoCadastral("Cadastrado");
+		fornecedor.setUf("DF");
 		listaFornecedores.add(fornecedor);
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
 		Assert.assertEquals(listaFornecedores, this.fornecedorDAO.getLista());
-	}
-	
-	@Test
-	public void deveRecuperarUmFornecedorCadastrado() throws Exception {
-		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
-		
-		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setNome("Nome");
-		//fornecedor.setPessoaJuridica(true);
-		//fornecedor.setCadastroNacional("123");
-		listaFornecedores.add(fornecedor);
-
-		this.fornecedorDAO.cadastrarLista(listaFornecedores);
-		
-		Assert.assertEquals(fornecedor, this.fornecedorDAO.getUmFornecedor("Nome"));
-	}
-	
+	}	
 }

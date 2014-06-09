@@ -37,10 +37,9 @@ public class DoadorDAOTeste extends TemplateTeste {
 		D2.setCpf_cnpj("123");
 		int resultado;
 
-		resultado = DoadorDAO.Comparacao.CPF_E_NOME.compare(D1, D2);
+		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
 		
 		Assert.assertEquals(0,resultado);
-		
 	}
 	
 	@Test
@@ -53,7 +52,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 		D2.setCpf_cnpj("125");
 		int resultado;
 
-		resultado = DoadorDAO.Comparacao.CPF_E_NOME.compare(D1, D2);
+		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
 		
 		Assert.assertEquals(-1,resultado);
 		
@@ -65,8 +64,6 @@ public class DoadorDAOTeste extends TemplateTeste {
 		
 		Doador doador = new Doador();
 		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
 		listaDoadores.add(doador);
 		
 		this.doadorDAO.cadastrarLista(listaDoadores);
@@ -78,8 +75,6 @@ public class DoadorDAOTeste extends TemplateTeste {
 		
 		Doador doador = new Doador();
 		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
 		listaDoadores.add(doador);
 
 		this.doadorDAO.cadastrarLista(listaDoadores);
@@ -94,14 +89,16 @@ public class DoadorDAOTeste extends TemplateTeste {
 		
 		Doador doador = new Doador();
 		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
+		doador.setCpf_cnpj("123");
+		doador.setSituacaoCadastral("Cadastrado");
+		doador.setUf("DF");
 		listaDoadores.add(doador);
 		
 		doador = new Doador();
-		doador.setNome("Nome");
-		doador.setPessoaJuridica(true);
-		doador.setCadastroNacional("123");
+		doador.setNome("Nome2");
+		doador.setCpf_cnpj("1234");
+		doador.setSituacaoCadastral("Cadastrado");
+		doador.setUf("DF");
 		listaDoadores.add(doador);
 
 		this.doadorDAO.cadastrarLista(listaDoadores);

@@ -31,8 +31,8 @@ public class DespesaDAOTeste extends TemplateTeste {
 		
 		Despesa D1 = new Despesa();
 		Despesa D2 = new Despesa();
-		D1.setAno(2010);
-		D2.setAno(2006);
+		//D1.setAno(2010);
+		//D2.setAno(2006);
 		int resultado;
 
 		resultado = DespesaDAO.Comparacao.ANO_E_NUMERO.compare(D1, D2);
