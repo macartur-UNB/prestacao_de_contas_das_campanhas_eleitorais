@@ -1,9 +1,3 @@
-/** CRIADO POR:          Rafael Valenca
- *  ULTIMA MODIFICACAO:  01/05/2014
- * 
- *  COMENTARIOS: 
-**/
-
 package modelo.beans;
 
 public class Receita extends MovimentacaoFinanceira {
@@ -14,8 +8,22 @@ public class Receita extends MovimentacaoFinanceira {
 	private Doador doador;
 	
 	public Receita() {
+		super();
 		this.reciboEleitoral = STRING_VAZIO;
 		this.doador = DOADOR_VAZIO;
+	}
+	
+	public boolean equals(Object object) {
+		if( !(object instanceof Receita) || object == null) {
+			return false;
+		}
+		
+		Receita outraReceita = (Receita) object;
+		
+		return super.equals(object) &&
+			   this.reciboEleitoral.equals(outraReceita.getReciboEleitoral()) &&
+			   this.doador.equals(outraReceita.getDoador()); 
+
 	}
 	
 	public String getReciboEleitoral() {

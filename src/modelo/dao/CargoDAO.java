@@ -20,9 +20,9 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 		};
 	}
 
-	private static final String CODIGO = "codigo";
-	private static final String DESCRICAO = "descricao";
 	private static final String NOME_TABELA = "cargo";
+	private static final String CODIGO = "cod_cargo";
+	private static final String DESCRICAO = "descricao";
 	private static final String SQL_INSERCAO = "INSERT INTO " + NOME_TABELA
 			+ " (" + CODIGO + ", " + DESCRICAO + ") "
 			+ "values (?, ?)";
@@ -64,10 +64,21 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 			lista.add(cargo);
 		}
 	}
-
+	
 	public Cargo getPeloCod(Integer codigo) {
-		Cargo cargo = new Cargo();
 		String comandoSQL = SQL_SELECAO + " WHERE " + CODIGO +" = "+codigo+" ";
+		return buscaBD(comandoSQL);
+	}
+	
+	public Cargo getPelaDescricao(String descricao) {
+		String comandoSQL = SQL_SELECAO + " WHERE "
+						  + DESCRICAO +" like '%"+descricao+"%' ";
+		return buscaBD(comandoSQL);
+	}
+	
+	public Cargo buscaBD(String SQL) {
+		Cargo cargo = new Cargo();
+		String comandoSQL = SQL;
 		
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();

@@ -12,9 +12,8 @@ import teste.TemplateTeste;
 
 public class ResultadoParseControleTeste extends TemplateTeste {
 
-	public static final int ID = 0;
-	public static final int CODIGO = 1;
-	public static final int DESCRICAO = 2;
+	public static final int CODIGO = 0;
+	public static final int DESCRICAO = 1;
 	
 	private String campo[];
 	private ResultadoDAO resultadoDAO;
@@ -22,7 +21,7 @@ public class ResultadoParseControleTeste extends TemplateTeste {
 	private ResultadoParseControle resultadoParseControle;
 
 	public void beforeTest() throws Exception {
-		this.campo = new String[3];
+		this.campo = new String[2];
 		this.resultadoDAO = new ResultadoDAO();
 		this.resultadoIndicesParse = new ResultadoIndicesParse();
 		this.resultadoParseControle = new ResultadoParseControle(this.resultadoIndicesParse);
@@ -45,7 +44,6 @@ public class ResultadoParseControleTeste extends TemplateTeste {
 		
 		Resultado resultadoCadastrado = this.resultadoDAO.getLista().get(0);
 				
-		Assert.assertEquals(this.campo[ID], resultadoCadastrado.getId().toString());
 		Assert.assertEquals(this.campo[CODIGO], resultadoCadastrado.getCodigo().toString());
 		Assert.assertEquals(this.campo[DESCRICAO], resultadoCadastrado.getDescricao());
 		
@@ -53,7 +51,6 @@ public class ResultadoParseControleTeste extends TemplateTeste {
 	
 	private void iniciarIndices() {
 		
-		this.resultadoIndicesParse.setIndiceId(ID);
 		this.resultadoIndicesParse.setIndiceCodigo(CODIGO);
 		this.resultadoIndicesParse.setIndiceDescricao(DESCRICAO);
 		
@@ -61,7 +58,6 @@ public class ResultadoParseControleTeste extends TemplateTeste {
 	
 	private void iniciarCampos() {
 		
-		this.campo[ID] = "1";
 		this.campo[CODIGO] = "125";
 		this.campo[DESCRICAO] = "RESULTADO INEXISTENTE";
 		

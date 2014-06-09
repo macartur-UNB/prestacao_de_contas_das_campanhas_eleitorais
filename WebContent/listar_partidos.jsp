@@ -24,24 +24,24 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p>
-					Abaixo a <b>lista de Partidos</b> selecionados.
+					Abaixo a <b>lista de Partidos</b>.
 				</p>
 
-				<c:forEach var="listaPartidos" items="${listaPartidos}">
+				<c:forEach var="partido" items="${listaPartidos}">
 					<table border="2" width="300">
 						<tr>
 							<td>Nome:</td>
 							<td>							
-								<c:url var="partidoURL" value="/visualizarPartido">
-									<c:param name="nome" value="${listaPartidos.nome}"></c:param>
-									<c:param name="sigla" value="${listaPartidos.sigla}"></c:param>
+								<c:url var="url_partido" value="/mvc">
+									<c:param name="logica" value="SelecionarPartido"></c:param>
+									<c:param name="sigla" value="${partido.sigla}"></c:param>
 								</c:url>
-								<a  href="${partidoURL}" > ${listaPartidos.nome} </a>
+								<a  href="${url_partido}" > ${partido.nome} </a>
 							</td>
 						</tr>
 						<tr>
 							<td>Sigla:</td>
-							<td> ${listaPartidos.sigla}</td>
+							<td> ${partido.sigla}</td>
 						</tr>
 					</table>
 					<br />

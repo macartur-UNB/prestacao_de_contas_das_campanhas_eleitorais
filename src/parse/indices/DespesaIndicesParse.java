@@ -32,7 +32,7 @@ public class DespesaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Desp
 	protected void setVazioEmTodosOsSetters(Despesa despesa) {
 		super.setVazioEmTodosOsSetters(despesa);
 
-		despesa.setFornecedor(Despesa.FORNECEDOR_VAZIO);
+		despesa.setFornecedor((Fornecedor)Despesa.OBJETO_VAZIO);
 		despesa.setTipoDocumento(Despesa.STRING_VAZIO);
 	}
 	

@@ -30,7 +30,11 @@
 					Entre com o uma parte do nome do <b>Candidato</b> que deseja
 					buscar, e em seguida, click em burcar.
 				</p>
-				<form action="VisualizarResultadoListaBuscaCandidato" method="post">
+				<c:url var="link_busca" value="/mvc">
+					<c:param name="logica" value="VisualizarResultadoListaBuscaCandidato"></c:param>
+				</c:url>
+				
+				<form action="${link_busca}" method="post">
 					<table>
 						<tr>
 							<td>Nome:</td>

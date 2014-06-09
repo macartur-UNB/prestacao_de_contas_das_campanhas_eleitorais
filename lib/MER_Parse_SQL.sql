@@ -1,134 +1,121 @@
-ALTER DATABASE gpp CHARSET = Latin1 COLLATE = latin1_swedish_ci;
+ALTER DATABASE c_on CHARSET = Latin1 COLLATE = latin1_swedish_ci;
 
 DROP TABLE IF EXISTS  campanha;
 DROP TABLE IF EXISTS  candidato;
-DROP TABLE IF EXISTS  cargo;
-DROP TABLE IF EXISTS  despesa;
-DROP TABLE IF EXISTS  doador;
-DROP TABLE IF EXISTS  forma_de_pagamento;
-DROP TABLE IF EXISTS  fornecedor;
 DROP TABLE IF EXISTS  partido;
-DROP TABLE IF EXISTS  receita;
+DROP TABLE IF EXISTS  cargo;
 DROP TABLE IF EXISTS  resultado;
-DROP TABLE IF EXISTS  tipo_documento;
-DROP TABLE IF EXISTS  tipo_movimentacao;
+DROP TABLE IF EXISTS  despesa;
+DROP TABLE IF EXISTS  receita;
+DROP TABLE IF EXISTS  doador;
+DROP TABLE IF EXISTS  fornecedor;
 
 CREATE TABLE campanha (
   id_campanha INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  ano INTEGER UNSIGNED NOT NULL,
+  numero_candidato INTEGER UNSIGNED NOT NULL,
   resultado_cod_resultado INTEGER NOT NULL,
   cargo_cod_cargo INTEGER NOT NULL,
-  partido_sigla VARCHAR(8) NOT NULL,
+  partido_numero  INTEGER UNSIGNED NULL,
   candidato_titulo_eleitoral VARCHAR(255) NOT NULL,
-  ano INTEGER UNSIGNED NULL,
-  numero_candidatura VARCHAR(255) NULL,
   nome_de_urna VARCHAR(255) NULL,
   uf VARCHAR(255) NULL,
   despesa_maxima_declarada VARCHAR(255) NULL,
   despesa_maxima_calculada VARCHAR(255) NULL,
   receita_maxima_calculada VARCHAR(255) NULL,
   PRIMARY KEY(id_campanha),
+  INDEX campanha_sk_1(ano),
+  INDEX campanha_sk_2(numero_candidato),
+  INDEX campanha_sk_3(cargo_cod_cargo),
+  INDEX campanha_sk_4(nome_de_urna),
   INDEX campanha_fk_1(resultado_cod_resultado),
   INDEX campanha_fk_2(cargo_cod_cargo),
   INDEX campanha_fk_3(candidato_titulo_eleitoral),
-  INDEX campanha_fk_4(partido_sigla)
+  INDEX campanha_fk_4(partido_numero)
+);
+
+CREATE TABLE partido (
+  numero INTEGER UNSIGNED NULL,
+  sigla VARCHAR(8) NOT NULL,
+  nome VARCHAR(255) NULL,
+  deferimento VARCHAR(255) NULL,
+  PRIMARY KEY(numero),
+  INDEX partido_sk_1(sigla)
 );
 
 CREATE TABLE candidato (
   titulo_eleitoral VARCHAR(255) NOT NULL,
   nome VARCHAR(80) NOT NULL,
-  PRIMARY KEY(titulo_eleitoral)
+  PRIMARY KEY(titulo_eleitoral),
+  INDEX candidato_sk_1(nome)
 );
 
 CREATE TABLE cargo (
-  codigo INTEGER NULL,
+  cod_cargo INTEGER NOT NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(codigo)
-);
-
-CREATE TABLE despesa (
-  id_despesas INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  tipo_documento_id_tipo_movimentacao INTEGER UNSIGNED NOT NULL,
-  tipo_movimentacao_id_tipo_movimentacao INTEGER UNSIGNED NOT NULL,
-  forma_de_pagamento_id_forma_pagamento INTEGER UNSIGNED NOT NULL,
-  campanha_id_candidato INTEGER UNSIGNED NOT NULL,
-  numero_documento INTEGER UNSIGNED NULL,
-  valor FLOAT NULL,
-  descricao VARCHAR(255) NULL,
-  data_despesa VARCHAR(255) NULL,
-  PRIMARY KEY(id_despesas),
-  INDEX despesa_fk_1(tipo_documento_id_tipo_movimentacao),
-  INDEX despesa_fk_2(tipo_movimentacao_id_tipo_movimentacao),
-  INDEX despesa_fk_3(forma_de_pagamento_id_forma_pagamento),
-  INDEX despesa_fk_4(campanha_id_candidato)
-);
-
-CREATE TABLE doador (
-  cpf_cnpj INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  receita_id_receita INTEGER UNSIGNED NOT NULL,
-  nome VARCHAR(255) NULL,
-  uf VARCHAR(255) NULL,
-  situacao_cadastral VARCHAR(255) NULL,
-  PRIMARY KEY(cpf_cnpj),
-  INDEX doador_fk_1(receita_id_receita)
-);
-
-CREATE TABLE forma_de_pagamento (
-  id_forma_pagamento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  codigo VARCHAR(255) NULL,
-  descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_forma_pagamento)
-);
-
-CREATE TABLE fornecedor (
-  cpf_cnpj INTEGER UNSIGNED NOT NULL,
-  despesa_id_despesas INTEGER UNSIGNED NOT NULL,
-  nome VARCHAR(255) NULL,
-  uf VARCHAR(255) NULL,
-  situacao_cadastral VARCHAR(255) NULL,
-  PRIMARY KEY(cpf_cnpj),
-  INDEX fornecedor_fk_1(despesa_id_despesas)
-);
-
-CREATE TABLE partido (
-  sigla VARCHAR(8) NOT NULL,
-  numero INTEGER UNSIGNED NULL,
-  nome VARCHAR(255) NULL,
-  deferimento VARCHAR(255) NULL,
-  PRIMARY KEY(numero)
-);
-
-CREATE TABLE receita (
-  id_receita INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  tipo_movimentacao_id_tipo_movimentacao INTEGER UNSIGNED NOT NULL,
-  forma_de_pagamento_id_forma_pagamento INTEGER UNSIGNED NOT NULL,
-  campanha_id_candidato INTEGER UNSIGNED NOT NULL,
-  recibo_eleitoral VARCHAR(255) NULL,
-  numero_documento INTEGER UNSIGNED NULL,
-  data_receita VARCHAR(255) NULL,
-  valor FLOAT NULL,
-  descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_receita),
-  INDEX receita_fk_1(tipo_movimentacao_id_tipo_movimentacao),
-  INDEX receita_fk_2(forma_de_pagamento_id_forma_pagamento),
-  INDEX receita_fk_3(campanha_id_candidato)
+  PRIMARY KEY(cod_cargo),
+  INDEX cargo_sk_1(descricao)
 );
 
 CREATE TABLE resultado (
-  codigo INTEGER NULL,
+  cod_resultado INTEGER NOT NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(codigo)
+  PRIMARY KEY(cod_resultado)
 );
 
-CREATE TABLE tipo_documento (
-  id_tipo_movimentacao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  codigo VARCHAR(255) NULL,
-  tipo VARCHAR(255) NULL,
-  PRIMARY KEY(id_tipo_movimentacao)
+CREATE TABLE despesa (
+  id_despesa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  campanha_ano INTEGER UNSIGNED NOT NULL,
+  campanha_numero_candidato INTEGER UNSIGNED NOT NULL,
+  valor FLOAT NULL,
+  forma_pagamento VARCHAR(255) NULL,
+  descricao VARCHAR(255) NULL,
+  data_despesa VARCHAR(255) NULL,
+  tipo_movimentacao VARCHAR(255) NULL,
+  tipo_documento VARCHAR(255) NULL,
+  numero_documento INTEGER UNSIGNED NULL,
+  fornecedor_cpf_cnpj_fornecedor VARCHAR(255) NULL,
+  cargo VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id_despesa),
+  INDEX despesa_sk_1(cargo),
+  INDEX despesa_fk_1(campanha_ano),
+  INDEX despesa_fk_2(campanha_numero_candidato),
+  INDEX despesa_fk_3(fornecedor_cpf_cnpj_fornecedor)
 );
 
-CREATE TABLE tipo_movimentacao (
-  id_tipo_movimentacao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  codigo INTEGER UNSIGNED NULL,
+
+CREATE TABLE receita (
+  id_receita INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  campanha_ano INTEGER UNSIGNED NOT NULL,
+  campanha_numero_candidato INTEGER UNSIGNED NOT NULL, 
+  valor FLOAT NULL,
+  forma_pagamento VARCHAR(255) NULL,
   descricao VARCHAR(255) NULL,
-  PRIMARY KEY(id_tipo_movimentacao)
+  data_receita VARCHAR(255) NULL,
+  tipo_movimentacao VARCHAR(255) NULL,
+  recibo_eleitoral VARCHAR(255) NULL,
+  numero_documento INTEGER UNSIGNED NULL,
+  doador_cpf_cnpj_doador VARCHAR(255) NULL,
+  cargo VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id_receita),
+  INDEX receita_sk_1(cargo),
+  INDEX despesa_fk_1(campanha_ano),
+  INDEX despesa_fk_2(campanha_numero_candidato),
+  INDEX despesa_fk_3(doador_cpf_cnpj_doador)
+);
+
+CREATE TABLE doador (
+  cpf_cnpj_doador VARCHAR(255) NOT NULL,
+  nome VARCHAR(255) NULL,
+  uf VARCHAR(255) NULL,
+  situacao_cadastral VARCHAR(255) NULL,
+  PRIMARY KEY(cpf_cnpj_doador)
+);
+
+CREATE TABLE fornecedor (
+  cpf_cnpj_fornecedor VARCHAR(255) NOT NULL,
+  nome VARCHAR(255) NULL,
+  uf VARCHAR(255) NULL,
+  situacao_cadastral VARCHAR(255) NULL,
+  PRIMARY KEY(cpf_cnpj_fornecedor)
 );

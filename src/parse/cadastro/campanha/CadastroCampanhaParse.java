@@ -35,7 +35,7 @@ public class CadastroCampanhaParse extends CadastroParse<Campanha> {
 		campanhaIndicesParse.setIndiceUf(5);
 		campanhaIndicesParse.setIndiceCargoCod(8);
 		campanhaIndicesParse.setIndiceCandidatoTitulo(26);
-		campanhaIndicesParse.setIndicePartidoSigla(17);
+		campanhaIndicesParse.setIndicePartidoNumero(16);
 		campanhaIndicesParse.setIndiceResultadoCod(40);
 		campanhaIndicesParse.setIndiceDespesaMaxDeclarada(39);
 	

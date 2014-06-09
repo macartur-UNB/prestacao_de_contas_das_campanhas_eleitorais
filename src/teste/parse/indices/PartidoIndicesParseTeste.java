@@ -59,14 +59,4 @@ public class PartidoIndicesParseTeste {
 		this.campo[3] = "DEMOCRATAS";
 	}
 	
-	@Test
-	public void verificarIndices() {
-		
-		Assert.assertEquals(0, this.partidoIndicesParse.getIndiceSigla());
-		Assert.assertEquals(1, this.partidoIndicesParse.getIndiceNumero());
-		Assert.assertEquals(2, this.partidoIndicesParse.getIndiceDeferimento());
-		Assert.assertEquals(3, this.partidoIndicesParse.getIndiceNome());
-		
-	}
-	
 }

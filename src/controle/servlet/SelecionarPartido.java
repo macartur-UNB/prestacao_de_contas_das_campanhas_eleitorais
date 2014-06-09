@@ -1,55 +1,37 @@
 package controle.servlet;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.PartidoControle;
 import modelo.beans.Partido;
+import controle.PartidoControle;
 
-@WebServlet("/SelecionarPartido")
-public class SelecionarPartido extends HttpServlet {
-
-	private static final long serialVersionUID = 3822481979152525593L;
+public class SelecionarPartido implements Logica {
 
 	@Override
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-
-		PartidoControle partidoControle = new PartidoControle();
-
-		String sigla = request.getParameter("sigla");
-
+	public String executa(HttpServletRequest req, HttpServletResponse res)
+			throws Exception {
 		Partido partido = new Partido();
+		PartidoControle partidoControle = new PartidoControle();
+		
+		String sigla = req.getParameter("sigla");
 
 		try {
-			for(Partido partidoBuscado : partidoControle.getTodosPartidos()) {
-				if(partidoBuscado.getSigla().equalsIgnoreCase(sigla)) {
-					partido = partidoBuscado;
-				}
-			}
 			int anos[] = { 2010, 2006, 2002 };
 			if (partido.getSigla().equals("0")) {
-				RequestDispatcher requestDispatcher = request
-						.getRequestDispatcher("/erro_partido_inexistente.jsp");
-				requestDispatcher.forward(request, response);
+				return "/erro_partido_inexistente.jsp";
 			} else {
-				request.setAttribute("partido", partido);
-				request.setAttribute("anos", anos);
-				RequestDispatcher requestDispatcher = request
-						.getRequestDispatcher("/visualizar_partido.jsp");
-				requestDispatcher.forward(request, response);
+				partido = partidoControle.getPartido(sigla);
+				req.setAttribute("partido", partido);
+				req.setAttribute("anos", anos);
+				
+				return "/visualizar_partido.jsp";
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			System.out.println("Erro no acesso ao BD");
+			throw new ServletException(e);		
 		}
-
 	}
 
 }

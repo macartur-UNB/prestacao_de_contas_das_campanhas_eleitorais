@@ -28,15 +28,10 @@ public class ResultadoIndicesParse extends IndicesParse<Resultado>{
 		resultado.setDescricao(Resultado.STRING_VAZIO);
 	}
 
-	public int getIndiceCodigo() {
-		return indiceCodigo;
-	}
 	public void setIndiceCodigo(int indiceCodigo) {
 		this.indiceCodigo = indiceCodigo;
 	}
-	public int getIndiceDescricao() {
-		return indiceDescricao;
-	}
+
 	public void setIndiceDescricao(int indiceDescricao) {
 		this.indiceDescricao = indiceDescricao;
 	}

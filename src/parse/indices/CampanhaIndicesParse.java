@@ -8,10 +8,9 @@ import modelo.beans.Resultado;
 
 public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 
-	private int indiceId;
 	private int indiceResultadoCod;
 	private int indiceCargoCod;
-	private int indicePartidoSigla;
+	private int indicePartidoNumero;
 	private int indiceCandidatoTitulo;
 	private int indiceAno;
 	private int indiceNumeroCandidato;
@@ -22,10 +21,9 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 	private int indiceReceitaTotalCalculada;
 
 	public CampanhaIndicesParse() {
-		this.indiceId = INDICE_INVALIDO;	
 		this.indiceResultadoCod = INDICE_INVALIDO;	
 		this.indiceCargoCod = INDICE_INVALIDO;	
-		this.indicePartidoSigla = INDICE_INVALIDO;	
+		this.indicePartidoNumero = INDICE_INVALIDO;	
 		this.indiceCandidatoTitulo = INDICE_INVALIDO;	
 		this.indiceAno = INDICE_INVALIDO;	
 		this.indiceNumeroCandidato = INDICE_INVALIDO;	
@@ -38,9 +36,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 	
 	@Override
 	protected void setIndicesValidos(Campanha campanha, String[] campo) {
-		if (indiceValido(this.indiceId)) {
-			campanha.setId(Integer.parseInt(campo[this.indiceId]));
-		}		
 		if (indiceValido(this.indiceResultadoCod)) {
 			Resultado resultado = new Resultado();
 			resultado.setCodigo(Integer.parseInt(campo[this.indiceResultadoCod]));
@@ -51,9 +46,9 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 			cargo.setCodigo(Integer.parseInt(campo[this.indiceCargoCod]));
 			campanha.setCargo(cargo);
 		}	
-		if (indiceValido(this.indicePartidoSigla)) {
+		if (indiceValido(this.indicePartidoNumero)) {
 			Partido partido = new Partido();
-			partido.setSigla(campo[this.indicePartidoSigla]);
+			partido.setNumero(Integer.parseInt(campo[this.indicePartidoNumero]));
 			campanha.setPartido(partido);
 		}	
 		if (indiceValido(this.indiceCandidatoTitulo)) {
@@ -84,12 +79,13 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		if (indiceValido(this.indiceReceitaTotalCalculada)) {
 			campanha.setReceitaTotalCalculada(
 					Float.parseFloat(campo[this.indiceReceitaTotalCalculada]));
-		}	
+		}
+		
 	}
 
 	@Override
 	protected void setVazioEmTodosOsSetters(Campanha campanha) {
-		campanha.setId(Campanha.INTEGER_VAZIO);	
+		campanha.setId(Campanha.INTEGER_VAZIO);
 		campanha.setResultado(Campanha.RESULTADO_VAZIO);	
 		campanha.setCargo(Campanha.CARGO_VAZIO);	
 		campanha.setPartido(Campanha.PARTIDO_VAZIO);	
@@ -103,14 +99,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		campanha.setReceitaTotalCalculada(Campanha.FLOAT_VAZIO);	
 	}
 
-	public void setIndiceId(int indiceId) {
-		this.indiceId = indiceId;
-	}
-
-	public int getIndiceResultadoCod() {
-		return indiceResultadoCod;
-	}
-
 	public void setIndiceResultadoCod(int indiceResultadoId) {
 		this.indiceResultadoCod = indiceResultadoId;
 	}
@@ -119,8 +107,8 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		this.indiceCargoCod = indiceCargoId;
 	}
 
-	public void setIndicePartidoSigla(int indicePartidoSigla) {
-		this.indicePartidoSigla = indicePartidoSigla;
+	public void setIndicePartidoNumero(int indicePartidoNumero) {
+		this.indicePartidoNumero = indicePartidoNumero;
 	}
 
 	public void setIndiceCandidatoTitulo(int indiceCandidatoTitulo) {

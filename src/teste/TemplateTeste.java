@@ -9,7 +9,7 @@ import org.junit.Before;
 
 public abstract class TemplateTeste {
 	
-	public static final String NOME_BANCO_OFICIAL = "gpp";
+	public static final String NOME_BANCO_OFICIAL = "c_on";
 	public static final String LOCAL_BANCO_OFICIAL = "jdbc:mysql://";
 	
 	public static final String NOME_BANCO_TESTES = "banco_de_testes";
