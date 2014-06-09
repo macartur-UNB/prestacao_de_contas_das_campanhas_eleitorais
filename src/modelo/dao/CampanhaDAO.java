@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import modelo.beans.Campanha;
 import modelo.beans.Candidato;
@@ -12,6 +13,20 @@ import modelo.beans.Partido;
 import modelo.beans.Resultado;
 
 public class CampanhaDAO extends BasicoDAO<Campanha> {
+	
+	public enum Comparacao implements Comparator<Campanha> {
+		ANO_NOME_NUMERO {
+			@Override
+			public int compare(Campanha c1, Campanha c2) {
+				if(c1.getAno() != c2.getAno())
+					return c1.getAno().compareTo(c2.getAno());
+				else if(c1.getNomeDeUrna() != c2.getNomeDeUrna())
+					return c1.getNomeDeUrna().compareToIgnoreCase(c2.getNomeDeUrna());
+				else
+					return c1.getNumeroCandidato().compareTo(c2.getNumeroCandidato());
+			}
+		};
+	}
 	
 	private CandidatoDAO candidatoDAO;
 	private PartidoDAO partidoDAO;
@@ -42,7 +57,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 	public CampanhaDAO() {
-		super(NOME_TABELA, null);
+		super(NOME_TABELA, Comparacao.ANO_NOME_NUMERO);
 		this.candidatoDAO = new CandidatoDAO();
 		this.cargoDAO = new CargoDAO();
 		this.partidoDAO = new PartidoDAO();
