@@ -99,10 +99,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		campanha.setReceitaTotalCalculada(Campanha.FLOAT_VAZIO);	
 	}
 
-	public int getIndiceResultadoCod() {
-		return indiceResultadoCod;
-	}
-
 	public void setIndiceResultadoCod(int indiceResultadoId) {
 		this.indiceResultadoCod = indiceResultadoId;
 	}
