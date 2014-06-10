@@ -27,7 +27,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h1>
-					${param.nome}
+					<c:out value="${campanha.candidato.nome}"/>
 				</h1>
 
 				<!-- Mostrar na tela os dados do Candidato -->
@@ -35,19 +35,27 @@
 				<table>
 					<tr>
 						<td>Nome de Urna do Candidato:</td>
-						<td>${param.nome_urna}</td>
+						<td>
+						<c:out value="${campanha.nomeDeUrna}"/>
+						</td>
 					</tr>
 					<tr>
 						<td>Número do Candidato:</td>
-						<td>${param.numero_cand}</td>
+						<td>
+						<c:out value="${campanha.numeroCandidato}"/>
+						</td>
 					</tr>
 					<tr>
 						<td>Ano:</td>
-						<td>${param.ano}</td>
+						<td>
+						<c:out value="${campanha.ano}"/>
+						</td>
 					</tr>
 					<tr>
 						<td>Despesa Máxima Declarada:</td>
-						<td>R$ ${param.despesa_max_dec}</td>
+						<td>
+						R$ <c:out value="${campanha.despesaMaxDeclarada}"/>
+						</td>
 					</tr>
 				</table>
 

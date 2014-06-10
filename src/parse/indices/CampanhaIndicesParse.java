@@ -17,8 +17,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 	private int indiceNomeDeUrna;
 	private int indiceUf;
 	private int indiceDespesaMaxDeclarada;
-	private int indiceDespesaTotalCalculada;
-	private int indiceReceitaTotalCalculada;
 
 	public CampanhaIndicesParse() {
 		this.indiceResultadoCod = INDICE_INVALIDO;	
@@ -30,8 +28,6 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		this.indiceNomeDeUrna = INDICE_INVALIDO;	
 		this.indiceUf = INDICE_INVALIDO;	
 		this.indiceDespesaMaxDeclarada = INDICE_INVALIDO;	
-		this.indiceDespesaTotalCalculada = INDICE_INVALIDO;	
-		this.indiceReceitaTotalCalculada = INDICE_INVALIDO;	
 	}
 	
 	@Override
@@ -70,16 +66,8 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		}	
 		if (indiceValido(this.indiceDespesaMaxDeclarada)) {
 			campanha.setDespesaMaxDeclarada(
-					Float.parseFloat(campo[this.indiceDespesaMaxDeclarada]));
+					Float.parseFloat(campo[this.indiceDespesaMaxDeclarada].replace(',', '.')));
 		}	
-		if (indiceValido(this.indiceDespesaTotalCalculada)) {
-			campanha.setDespesaTotalCalculada(
-					Float.parseFloat(campo[this.indiceDespesaTotalCalculada]));
-		}	
-		if (indiceValido(this.indiceReceitaTotalCalculada)) {
-			campanha.setReceitaTotalCalculada(
-					Float.parseFloat(campo[this.indiceReceitaTotalCalculada]));
-		}
 		
 	}
 
@@ -135,14 +123,7 @@ public class CampanhaIndicesParse extends IndicesParse<Campanha> {
 		this.indiceDespesaMaxDeclarada = indiceDespesaMaxDeclarada;
 	}
 
-	public void setIndiceDespesaTotalCalculada(int indiceDespesaTotalCalculada) {
-		this.indiceDespesaTotalCalculada = indiceDespesaTotalCalculada;
-	}
 
-	public void setIndiceReceitaTotalCalculada(int indiceReceitaTotalCalculada) {
-		this.indiceReceitaTotalCalculada = indiceReceitaTotalCalculada;
-	}
-	
 	
 
 }

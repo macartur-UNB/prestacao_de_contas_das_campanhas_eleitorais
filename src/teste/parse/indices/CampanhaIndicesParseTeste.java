@@ -71,8 +71,6 @@ public class CampanhaIndicesParseTeste {
 		this.campanhaIndicesParse.setIndiceNomeDeUrna(6);
 		this.campanhaIndicesParse.setIndiceUf(7);
 		this.campanhaIndicesParse.setIndiceDespesaMaxDeclarada(8);
-		this.campanhaIndicesParse.setIndiceDespesaTotalCalculada(9);
-		this.campanhaIndicesParse.setIndiceReceitaTotalCalculada(10);
 		
 	}
 	

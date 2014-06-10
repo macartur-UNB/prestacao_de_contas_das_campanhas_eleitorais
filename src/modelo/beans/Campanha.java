@@ -42,7 +42,7 @@ public class Campanha {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Campanha) || object == null )
+		if( !(object instanceof Campanha))
 			return false;
 		else
 		{

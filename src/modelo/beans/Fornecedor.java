@@ -19,7 +19,7 @@ public class Fornecedor {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Fornecedor) || object == null )
+		if( !(object instanceof Fornecedor))
 			return false;
 		
 		Fornecedor outroFornecedor = (Fornecedor) object;

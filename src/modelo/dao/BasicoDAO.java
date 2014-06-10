@@ -56,7 +56,7 @@ public abstract class BasicoDAO<O> implements ParseDAO<O>{
 			this.instrucaoSQL.executeBatch();
 			this.conexao.commit();
 			
-			System.out.println("CADASTROU!");
+			//System.out.println("CADASTROU!");
 			
 		} catch(Exception e) {
 			throw new SQLException(nomeTabela + " - " + e.getMessage());

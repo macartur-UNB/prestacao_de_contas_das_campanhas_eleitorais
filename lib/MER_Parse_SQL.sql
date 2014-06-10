@@ -39,8 +39,8 @@ CREATE TABLE partido (
   sigla VARCHAR(8) NOT NULL,
   nome VARCHAR(255) NULL,
   deferimento VARCHAR(255) NULL,
-  PRIMARY KEY(numero),
-  INDEX partido_sk_1(sigla)
+  PRIMARY KEY(sigla),
+  INDEX partido_sk_1(numero)
 );
 
 CREATE TABLE candidato (

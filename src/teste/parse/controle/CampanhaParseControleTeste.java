@@ -92,8 +92,6 @@ public class CampanhaParseControleTeste extends TemplateTeste {
 		this.campanhaIndicesParse.setIndiceNomeDeUrna(NOME_URNA);
 		this.campanhaIndicesParse.setIndiceUf(UF);
 		this.campanhaIndicesParse.setIndiceDespesaMaxDeclarada(DESPESA_MAX);
-		this.campanhaIndicesParse.setIndiceDespesaTotalCalculada(DESPESA_TOTAL);
-		this.campanhaIndicesParse.setIndiceReceitaTotalCalculada(RECEITA_TOTAL);
 		
 	}
 	

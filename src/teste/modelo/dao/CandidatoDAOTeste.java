@@ -109,10 +109,6 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		Assert.assertEquals(0,resultado);
 	}
 	
-	@Test
-	public void testeGetListaComUmTituloVazio() throws Exception{
-		candidatoDAO.getCandidato(null);
-	}
 	
 	@Test
 	public void testeGetCandidatoComUmTituloVazio() throws Exception{

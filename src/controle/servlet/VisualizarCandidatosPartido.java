@@ -7,22 +7,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.beans.Campanha;
+import modelo.beans.Partido;
 import controle.CampanhaControle;
+import controle.PartidoControle;
 
 public class VisualizarCandidatosPartido implements Logica {
 	
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
+		
+		String sigla = req.getParameter("sigla");
+		String ano =  req.getParameter("ano");
+		int anos[] = { 2010, 2006, 2002 };
+		
 		try {
+
 			CampanhaControle campanhaControle = new CampanhaControle();
+			PartidoControle controle = new PartidoControle();
+
 			ArrayList<Campanha> listaCampanhas = new ArrayList<>();
-			String sigla = req.getParameter("sigla");
-			String ano =  req.getParameter("ano");
 			listaCampanhas = campanhaControle.getListaCampanhasPorSiglaPartidoEAno(sigla,ano);
-			int anos[] = { 2010, 2006, 2002 };
+			
+			Partido partido = controle.getPartido(sigla);
+			
 			req.setAttribute("anos", anos);
 			req.setAttribute("listaCampanhas", listaCampanhas);
+			req.setAttribute("partido",partido);
 			return "/visualizar_candidato_partido.jsp";
 		} catch (Exception e) {
 			System.out.println("Erro no acesso ao BD");

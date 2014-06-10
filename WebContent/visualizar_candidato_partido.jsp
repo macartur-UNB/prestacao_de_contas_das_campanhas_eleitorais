@@ -25,7 +25,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h1>
-					${param.nome_partido}
+					<c:out value="${partido.nome}"/>
 				</h1>
 				<p>Listagem de <b>Candidatos</b>. Clique no candidato desejado para
 					visualizar mais informações.

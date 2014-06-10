@@ -19,7 +19,7 @@ public class Doador {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Doador) || object == null )
+		if( !(object instanceof Doador))
 			return false;
 		
 		Doador outroDoador = (Doador) object;

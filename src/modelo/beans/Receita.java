@@ -14,7 +14,7 @@ public class Receita extends MovimentacaoFinanceira {
 	}
 	
 	public boolean equals(Object object) {
-		if( !(object instanceof Receita) || object == null) {
+		if( !(object instanceof Receita)) {
 			return false;
 		}
 		

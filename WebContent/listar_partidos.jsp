@@ -28,9 +28,11 @@
 				</p>
 
 				<c:forEach var="partido" items="${listaPartidos}">
-					<table border="2" width="300">
+					<table border="2" width="500">
 						<tr>
-							<td>Nome:</td>
+							<td  width="70">
+							Nome:
+							</td>
 							<td>							
 								<c:url var="url_partido" value="/mvc">
 									<c:param name="logica" value="SelecionarPartido"></c:param>
@@ -40,7 +42,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td>Sigla:</td>
+							<td  width="70">
+							Sigla:
+							</td>
 							<td> ${partido.sigla}</td>
 						</tr>
 					</table>

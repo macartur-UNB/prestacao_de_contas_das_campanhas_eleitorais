@@ -51,10 +51,6 @@
 										<c:param name="numero_cand" value="${campanha.numeroCandidato}"></c:param>
 										<c:param name="ano" value="${campanha.ano}"></c:param>
 										<c:param name="cargo_cod" value="${campanha.cargo.codigo}"></c:param>
-										<c:param name="resultado_cod" value="${campanha.resultado.codigo}"></c:param>
-										<c:param name="nome_urna" value="${campanha.nomeDeUrna}"></c:param>
-										<c:param name="nome" value="${candidato.nome}"></c:param>
-										<c:param name="despesa_max_dec" value="${campanha.despesaMaxDeclarada}"></c:param>
 									</c:url>
 									<a href="${AnoUrl}">${campanha.ano}</a></td>
 								<td>

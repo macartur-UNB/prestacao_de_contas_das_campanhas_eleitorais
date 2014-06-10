@@ -14,7 +14,7 @@ public class Despesa extends MovimentacaoFinanceira {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Despesa) || object == null) {
+		if( !(object instanceof Despesa)) {
 			return false;
 		}
 		

@@ -30,7 +30,7 @@ public class MovimentacaoFinanceira {
 
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof MovimentacaoFinanceira) || object == null) {
+		if( !(object instanceof MovimentacaoFinanceira)) {
 			return false;
 		}
 		

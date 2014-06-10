@@ -54,7 +54,6 @@
 						<c:url var="AnoUrl" value="/mvc">
 							<c:param name="logica" value="VisualizarCandidatosPartido" />												
 							<c:param name="sigla" value="${partido.sigla}" />		
-							<c:param name="nome_partido" value="${partido.nome}" />				
 							<c:param name="ano" value="${ano}" />
 						</c:url>
 						<a href="${AnoUrl}">${ano}</a>

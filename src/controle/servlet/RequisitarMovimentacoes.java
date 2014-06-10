@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelo.beans.Campanha;
 import modelo.beans.Cargo;
-import modelo.beans.Resultado;
 import modelo.dao.CampanhaDAO;
 
 @WebServlet("/requisitarMovimentacoes")
@@ -26,26 +25,17 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		int ano = Integer.parseInt(request.getParameter("ano"));
 		int numero = Integer.parseInt(request.getParameter("numero_cand"));
 		int cargo_cod = Integer.parseInt(request.getParameter("cargo_cod"));
-		int result_cod = Integer.parseInt(request.getParameter("resultado_cod"));
-		String nomeDeUrna = request.getParameter("nome_urna");
 		
-		Cargo cargo = new Cargo();
-		cargo.setCodigo(cargo_cod);
-		// Buscar descricao para exibir na pagina
-		
-		Resultado resultado = new Resultado();
-		resultado.setCodigo(result_cod);
-		// Buscar descricao para exbir na pagina
-
 		RequestDispatcher requestDispatcher;
 		//MovimentacaoControle control = new MovimentacaoControle();
 
+		Cargo cargo = new Cargo();
+		cargo.setCodigo(cargo_cod);
+		
 		Campanha campanha = new Campanha();
 		campanha.setNumeroCandidato(numero);
 		campanha.setAno(ano);
 		campanha.setCargo(cargo);
-		campanha.setResultado(resultado);
-		campanha.setNomeDeUrna(nomeDeUrna);
 		
 		CampanhaDAO dao = new CampanhaDAO();
 		
