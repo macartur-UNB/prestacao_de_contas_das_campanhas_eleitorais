@@ -23,9 +23,9 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p>
-					Abaixo o Perfil do <b>Candidato</b> selecionado.
-				</p>
+				<h2>
+					<c:out value="${candidato.nome}" />
+				</h2>
 
 				<!-- Identificacao do candidato -->
 				<table>
@@ -38,6 +38,7 @@
 						<td><c:out value="${candidato.tituloEleitoral}" /></td>
 					</tr>
 				</table>
+				<br/>
 
 				<!-- Anos em que ele concorreu -->
 				<c:forEach var="campanha" items="${campanhas}">

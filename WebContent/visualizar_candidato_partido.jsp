@@ -24,8 +24,10 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p>
-					Listagem de <b>Candidatos</b>. Clique no candidato desejado para
+				<h1>
+					${param.nome_partido}
+				</h1>
+				<p>Listagem de <b>Candidatos</b>. Clique no candidato desejado para
 					visualizar mais informações.
 				</p>
 

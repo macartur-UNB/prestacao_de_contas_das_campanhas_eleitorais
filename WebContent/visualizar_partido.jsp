@@ -19,19 +19,14 @@
 
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Perfil</h3>
+			<h3>Partido</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p>
-					Abaixo o Perfil do <b>Partido</b> selecionado.
-				</p>
+			
+				<h1>${partido.nome}</h1>
 
 				<table>
-					<tr>
-						<td>Nome: </td>
-						<td>${partido.nome}</td>
-					</tr>
 					
 					<tr>
 						<td>Sigla:</td>
@@ -50,12 +45,16 @@
 				</table>
 				<br />
 				
+				<h2>Consulta de Candidatos:</h2>
+				<p>Clique em um dos anos para acessar a lista de candidatos deste Partido.</p>
+				
 				<c:forEach var ="ano" items ="${anos}" >
 					<table border="2" width="300">
 					<tr><td>
 						<c:url var="AnoUrl" value="/mvc">
 							<c:param name="logica" value="VisualizarCandidatosPartido" />												
-							<c:param name="sigla" value="${partido.sigla}" />						
+							<c:param name="sigla" value="${partido.sigla}" />		
+							<c:param name="nome_partido" value="${partido.nome}" />				
 							<c:param name="ano" value="${ano}" />
 						</c:url>
 						<a href="${AnoUrl}">${ano}</a>
