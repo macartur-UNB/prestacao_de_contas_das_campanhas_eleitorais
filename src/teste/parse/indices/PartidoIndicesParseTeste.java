@@ -28,7 +28,7 @@ public class PartidoIndicesParseTeste {
 		Partido partido = new Partido();
 		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		Assert.assertEquals(this.campo[0], partido.getSigla());
-		Assert.assertEquals(this.campo[1], partido.getNumero());
+		Assert.assertEquals(this.campo[1], partido.getNumero().toString());
 		Assert.assertEquals(this.campo[2], partido.getDeferimento());
 		Assert.assertEquals(this.campo[3], partido.getNome());
 	}
@@ -40,7 +40,7 @@ public class PartidoIndicesParseTeste {
 		Partido partido = new Partido();
 		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		Assert.assertNotEquals(this.campo[0], partido.getSigla());
-		Assert.assertNotEquals(this.campo[1], partido.getNumero());
+		Assert.assertNotEquals(this.campo[1], partido.getNumero().toString());
 		Assert.assertNotEquals(this.campo[2], partido.getDeferimento());
 		Assert.assertNotEquals(this.campo[3], partido.getNome());
 	}

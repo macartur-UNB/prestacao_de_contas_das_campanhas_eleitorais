@@ -18,7 +18,7 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 
 	private CadastroFornecedorParse cadastro;
 	private FornecedorDAO dao;
-	String  tipoArquivo = "campanha";
+	String  tipoArquivo = "despesa";
 	String  ano         = "2006";
 	
 	@Override
@@ -40,12 +40,13 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 		campo[19] = "123";
 		campo[18] = "NOME";
 		campo[20] = "UF";
-		campo[21] = "SITUACAO";
+		campo[21] = "SITUACAO";		
 		cadastro.executarLinhaDoArquivo(campo);
 		cadastro.cadastrarInstancias();
 		
 		ArrayList<Fornecedor> fornecedor = dao.getLista();
-		assertEquals(fornecedor.get(0).getNome(), "NOME");
+		System.out.println(fornecedor.get(0).getCpf_cnpj());
+		assertEquals(fornecedor.get(0).getCpf_cnpj(), "123");
 		
 	}
 

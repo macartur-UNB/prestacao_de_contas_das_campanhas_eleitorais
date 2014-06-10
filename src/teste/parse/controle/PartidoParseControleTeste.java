@@ -48,7 +48,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		Partido partidoCadastrado = this.partidoDAO.getLista().get(0);
 				
 		Assert.assertEquals(this.campo[SIGLA], partidoCadastrado.getSigla());
-		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumero());
+		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumero().toString());
 		Assert.assertEquals(this.campo[DEFERIMENTO], partidoCadastrado.getDeferimento());
 		Assert.assertEquals(this.campo[NOME], partidoCadastrado.getNome());
 	}
