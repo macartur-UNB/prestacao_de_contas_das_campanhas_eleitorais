@@ -43,24 +43,24 @@
 				<!-- Anos em que ele concorreu -->
 				<c:forEach var="campanha" items="${campanhas}">
 
-					<table border="2" width="600">
+					<table border="2">
 						<tbody>
 							<tr>
-								<td rowspan="2">
+								<td width="50" rowspan="2">
 									<c:url var="AnoUrl" value="/requisitarMovimentacoes">
 										<c:param name="numero_cand" value="${campanha.numeroCandidato}"></c:param>
 										<c:param name="ano" value="${campanha.ano}"></c:param>
 										<c:param name="cargo_cod" value="${campanha.cargo.codigo}"></c:param>
 									</c:url>
 									<a href="${AnoUrl}">${campanha.ano}</a></td>
-								<td>
+								<td width="250">
 									<c:url var="partidoUrl" value="/mvc">
 										<c:param name="logica" value="SelecionarPartido"></c:param>
 										<c:param name="sigla" value="${campanha.partido.sigla}"></c:param>
 									</c:url>
 									Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
 								</td>
-								<td>Cargo Pleiteado: ${campanha.cargo.descricao}</td>
+								<td width="250">Cargo Pleiteado: ${campanha.cargo.descricao}</td>
 							</tr>
 							<tr>
 								<td>UF: ${campanha.uf}</td>

@@ -24,7 +24,7 @@ public class Partido {
 			return false;
 		
 		Partido outroPartido = (Partido) object;
-		return this.numero.equals(outroPartido.getNumero());
+		return this.sigla.equals(outroPartido.getSigla());
 	}
 	
 	public Integer getNumero() {

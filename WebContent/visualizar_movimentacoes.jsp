@@ -27,16 +27,16 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h1>
-					<c:out value="${campanha.candidato.nome}"/>
+					<c:out value="${campanha.nomeDeUrna}"/>
 				</h1>
 
 				<!-- Mostrar na tela os dados do Candidato -->
 				<!-- <h4>Resultado da busca:</h4>-->
 				<table>
 					<tr>
-						<td>Nome de Urna do Candidato:</td>
+						<td width="200">Nome do Candidato:</td>
 						<td>
-						<c:out value="${campanha.nomeDeUrna}"/>
+						<c:out value="${campanha.candidato.nome}"/>
 						</td>
 					</tr>
 					<tr>
@@ -46,15 +46,27 @@
 						</td>
 					</tr>
 					<tr>
+						<td>Cargo Pleiteado:</td>
+						<td>
+						<c:out value="${campanha.cargo.descricao}"/>
+						</td>
+					</tr>
+					<tr>
 						<td>Ano:</td>
 						<td>
 						<c:out value="${campanha.ano}"/>
 						</td>
 					</tr>
 					<tr>
+						<td>Resultado:</td>
+						<td>
+						<c:out value="${campanha.resultado.descricao}"/>
+						</td>
+					</tr>
+					<tr>
 						<td>Despesa Máxima Declarada:</td>
 						<td>
-						R$ <c:out value="${campanha.despesaMaxDeclarada}"/>
+						<c:out value="${depesaTot}"/>
 						</td>
 					</tr>
 				</table>

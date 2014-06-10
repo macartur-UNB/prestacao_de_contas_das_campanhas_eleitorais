@@ -1,6 +1,9 @@
 package controle.servlet;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,8 +48,15 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			requestDispatcher = request
 					.getRequestDispatcher("/erro_candidato_inexistente.jsp");
 			requestDispatcher.forward(request, response);
-		} else {
+		} else {	
+			DecimalFormatSymbols padraoBrasileiro = new DecimalFormatSymbols(Locale.GERMAN);
+			
+			DecimalFormat df  = new DecimalFormat("###,###,##0.00",padraoBrasileiro);  
+			String despesaTot = df.format(campanha.getDespesaMaxDeclarada());  
+			despesaTot = "R$ " + despesaTot;
+			
 			request.setAttribute("campanha", campanha);
+			request.setAttribute("depesaTot", despesaTot);
 			
 			//List<Receita> listaReceita = control.getListaReceitas(campanha);
 			//List<Despesa> listaDespesa = control.getListaDespesas(campanha);
