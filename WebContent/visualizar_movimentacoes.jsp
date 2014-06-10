@@ -26,20 +26,15 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p>
-					Abaixo as Movimentações Financeiras do <b>Candidato</b> 
-					selecionado.
-				</p>
+				<h1>
+					${param.nome}
+				</h1>
 
 				<!-- Mostrar na tela os dados do Candidato -->
 				<!-- <h4>Resultado da busca:</h4>-->
 				<table>
 					<tr>
-						<td>Candidato: </td>
-						<td>${param.nome}</td>
-					</tr>
-					<tr>
-						<td>Nome de Urna:</td>
+						<td>Nome de Urna do Candidato:</td>
 						<td>${param.nome_urna}</td>
 					</tr>
 					<tr>
@@ -49,6 +44,10 @@
 					<tr>
 						<td>Ano:</td>
 						<td>${param.ano}</td>
+					</tr>
+					<tr>
+						<td>Despesa Máxima Declarada:</td>
+						<td>R$ ${param.despesa_max_dec}</td>
 					</tr>
 				</table>
 
