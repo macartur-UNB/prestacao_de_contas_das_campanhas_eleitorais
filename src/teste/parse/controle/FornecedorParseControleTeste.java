@@ -37,7 +37,7 @@ public class FornecedorParseControleTeste extends TemplateTeste {
 	}
 
 	@Test
-	public void cadastrarFornecedores() throws Exception {
+	public void cadastrarFornecedor() throws Exception {
 
 		this.fornecedorParseControle.addInstancia(campo);
 		this.fornecedorParseControle.cadastrarInstancias();

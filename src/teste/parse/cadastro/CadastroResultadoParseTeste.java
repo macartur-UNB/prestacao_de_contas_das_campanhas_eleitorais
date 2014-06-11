@@ -29,7 +29,6 @@ public class CadastroResultadoParseTeste extends TemplateTeste {
 
 	@Override
 	public void afterTest() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
