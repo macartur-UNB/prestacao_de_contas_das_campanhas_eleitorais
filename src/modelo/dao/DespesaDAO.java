@@ -13,8 +13,7 @@ import parse.ParseDAO;
 
 public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 
-	private CampanhaDAO campanhaDAO;
-	private FornecedorDAO fornecedorDAO;
+	//private FornecedorDAO fornecedorDAO;
 		
 	private static final String NOME_TABELA = "despesa";
 	private final String ID = "id_despesa";
@@ -29,7 +28,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	private final String NUMERO_DOCUMENTO = "numero_documento";
 	private final String NOME_FORNECEDOR = "fornecedor_nome";
 	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj";
-	private final String CARGO = "cargo";
+	private final String CAMPANHA_CARGO = "cargo";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -39,13 +38,13 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 					   + ", " + TIPO_MOVIMENTACAO + ", " + TIPO_DOCUMENTO 
 					   + ", " + NUMERO_DOCUMENTO + ", " 
 					   + NOME_FORNECEDOR + ", " + CPF_CNPJ_FORNECEDOR + ", " 
-					   + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + CAMPANHA_CARGO 
+					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public DespesaDAO() {
 		super(NOME_TABELA, null);
-		this.campanhaDAO = new CampanhaDAO();
-		this.fornecedorDAO = new FornecedorDAO();
+		//this.fornecedorDAO = new FornecedorDAO();
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 		while (resultadoSQL.next()) {
 			Campanha campanha = new Campanha();
 			Cargo cargo = new Cargo();
-			cargo.setDescricao(resultadoSQL.getString(CARGO));
+			cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
 			campanha.setCargo(cargo);
@@ -111,5 +110,69 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 
 		}
 	}
+
+	public ArrayList<Despesa> getPorAnoNumeroCargo(Campanha campanha) {
+		String comandoSQL = SQL_SELECT + " WHERE "
+				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
+				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
+				  + " AND " + CAMPANHA_CARGO 
+				  + " LIKE '%" + campanha.getCargo().getDescricao()
+				  + "%'";
+		System.out.println(comandoSQL);
+		return buscaBD(comandoSQL);
+	}
+	
+	public ArrayList<Despesa> buscaBD(String SQL) {
+
+		ArrayList<Despesa> listaDespesa = new ArrayList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Despesa despesa = new Despesa();
+				
+				Cargo cargo = new Cargo();
+				cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
+
+				Campanha campanha = new Campanha();
+				campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
+				campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
+				campanha.setCargo(cargo);
+				despesa.setCampanha(campanha);
+				
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setNome(resultadoSQL.getString(NOME_FORNECEDOR));
+				fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));
+				//despesa.setFornecedor(fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor));
+				despesa.setFornecedor(fornecedor);
+
+				
+				despesa.setData(resultadoSQL.getString(DATA));
+				despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
+				despesa.setFormaPagamento(resultadoSQL.getString(FORMA_PAGAMENTO));
+				despesa.setId(resultadoSQL.getInt(ID));
+				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERO_DOCUMENTO));
+				despesa.setTipoDocumento(resultadoSQL.getString(TIPO_DOCUMENTO));
+				despesa.setTipoMovimentacao(resultadoSQL.getString(TIPO_MOVIMENTACAO));
+				despesa.setValor(resultadoSQL.getFloat(VALOR));
+				
+				if (despesa != null) listaDespesa.add(despesa);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+
+		return listaDespesa;
+	}
+
 	
 }

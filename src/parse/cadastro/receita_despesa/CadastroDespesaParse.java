@@ -52,7 +52,7 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2010() {
-		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
+		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2010);
 		despesaIndicesParse.setIndiceCampanhaNumero(3);
 		despesaIndicesParse.setIndiceCampanhaCargo(4);
 		despesaIndicesParse.setIndiceTipoMovimentacao(14);

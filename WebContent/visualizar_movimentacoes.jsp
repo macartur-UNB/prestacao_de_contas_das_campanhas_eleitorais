@@ -70,79 +70,62 @@
 						</td>
 					</tr>
 				</table>
-
+				
 				<!-- Tabela de receitas -->
 				<h4>Receitas:</h4>
-
-				<table border="2" cellpadding="10">
-					<tr>
-						<th>Hora Registro</th>
-						<!-- <th>Entraga em Conjunto</th>  -->
-						<th>Número do Documento</th>
-						<th>Ano</th>
+				
+				<c:choose>
+				  <c:when test="${empty listaReceitas}">
+					  <p> Não há receitas declaradas. </p>
+				  </c:when>
+				  <c:otherwise>
+				    <table border="2" cellpadding="10">
+					  <tr>
+						<th>Data</th>
+						<th>Doador</th>
 						<th>Valor</th>
-						<th>Fonte</th>
-						<th>Tipo</th>
-						<th>Espécie</th>
-						<th>Descrição</th>
-						<th>Recibo Eleitoral</th>
-						<th>Nome do Doador</th>
-						<th>Cadastro do Doador</th>
-					</tr>
-					<!-- Elementos da tabela -->
-					<c:forEach var="receita" items="${listaReceitas}">
-						<tr>
-							<td>${receita.horaRegistro}</td>
-							<td>${receita.numeroDocumento}</td>
-							<td>${receita.ano}</td>
-							<td>${receita.valor}</td>
-							<td>${receita.fonte}</td>
-							<td>${receita.tipo}</td>
-							<td>${receita.especie}</td>
-							<td>${receita.descricao}</td>
-							<td>${receita.reciboEleitoral}</td>
-							<td>${receita.doador.nome}</td>
-							<td>${receita.doador.cadastroNacional}</td>
-						</tr>
-					</c:forEach>
-				</table>
+					  </tr>
+					  
+					  <c:forEach var="receita" items="${listaReceitas}">
+					    <tr>
+					      <td>${receita.data}</td>
+					      <td>${receita.doador.nome}</td>
+					      <td>R$ ${receita.valor}</td>
+					    </tr>
+					  </c:forEach>
+					  
+					</table>
+				  </c:otherwise>
+				</c:choose>
+
 
 				<!-- Tabela de despesas -->
 				<h4>Despesas:</h4>
 
-				<table border="2" cellpadding="7">
-					<tr>
-						<th>Hora Registro</th>
-						<!-- <th>Entraga em Conjunto</th>  -->
-						<th>Número do Documento</th>
-						<th>Ano</th>
+				<c:choose>
+				  <c:when test="${empty listaDespesas}">
+					  <p> Não há despesas declaradas. </p>
+				  </c:when>
+				  <c:otherwise>
+			        <table border="2" cellpadding="10">
+					  <tr>
+						<th>Data</th>
+						<th>Fornecedor</th>
 						<th>Valor</th>
-						<th>Fonte</th>
-						<th>Tipo</th>
-						<th>Espécie</th>
-						<th>Descrição</th>
-						<th>Tipo do Documento</th>
-						<th>Nome do Fornecedor</th>
-						<th>Cadastro do Fornecedor</th>
-					</tr>
-					<!-- Elementos da tabela -->
-					<c:forEach var="despesa" items="${listaDespesas}">
-						<tr>
-							<td>${despesa.horaRegistro}</td>
-							<td>${despesa.numeroDocumento}</td>
-							<td>${despesa.ano}</td>
-							<td>${despesa.valor}</td>
-							<td>${despesa.fonte}</td>
-							<td>${despesa.tipo}</td>
-							<td>${despesa.especie}</td>
-							<td>${despesa.descricao}</td>
-							<td>${despesa.tipoDocumento}</td>
-							<td>${despesa.fornecedor.nome}</td>
-							<td>${despesa.fornecedor.cadastroNacional}</td>
-						</tr>
-					</c:forEach>
-				</table>
-				<br>
+					  </tr>
+					  
+					  <!-- Elementos da tabela -->
+					  <c:forEach var="despesa" items="${listaDespesas}">
+					    <tr>
+					      <td>${despesa.data}</td>
+					      <td>${despesa.fornecedor.nome}</td>
+					      <td>R$ ${despesa.valor}</td>
+					    </tr>
+					  </c:forEach>
+					</table>
+				  </c:otherwise>
+				</c:choose>
+				
 			</div>
 		</div>
 	</div>

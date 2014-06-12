@@ -3,6 +3,7 @@ package controle.servlet;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controle.MovimentacaoControle;
 import modelo.beans.Campanha;
 import modelo.beans.Cargo;
+import modelo.beans.Despesa;
+import modelo.beans.Receita;
 import modelo.dao.CampanhaDAO;
 
 @WebServlet("/requisitarMovimentacoes")
@@ -30,7 +34,6 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		int cargo_cod = Integer.parseInt(request.getParameter("cargo_cod"));
 		
 		RequestDispatcher requestDispatcher;
-		//MovimentacaoControle control = new MovimentacaoControle();
 
 		Cargo cargo = new Cargo();
 		cargo.setCodigo(cargo_cod);
@@ -58,11 +61,17 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			request.setAttribute("campanha", campanha);
 			request.setAttribute("depesaTot", despesaTot);
 			
-			//List<Receita> listaReceita = control.getListaReceitas(campanha);
-			//List<Despesa> listaDespesa = control.getListaDespesas(campanha);
+			MovimentacaoControle control = new MovimentacaoControle();
 			
-			//request.setAttribute("listaReceitas", listaReceita);
-			//request.setAttribute("listaDespesas", listaDespesa);
+			List<Receita> listaReceita = control.getListaReceitas(campanha);
+			List<Despesa> listaDespesa = control.getListaDespesas(campanha);
+			
+			request.setAttribute("listaReceitas", listaReceita);
+			System.out.println("\nReceitas");
+			System.out.println(listaReceita);
+			request.setAttribute("listaDespesas", listaDespesa);
+			System.out.println("\nDespesas");
+			System.out.println(listaDespesa);
 		
 			requestDispatcher = request
 					.getRequestDispatcher("/visualizar_movimentacoes.jsp");

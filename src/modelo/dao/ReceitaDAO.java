@@ -13,8 +13,7 @@ import parse.ParseDAO;
 
 public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> {
 		
-	private CampanhaDAO campanhaDAO;
-	private DoadorDAO doadorDAO;
+	//private DoadorDAO doadorDAO;
 		
 	private static final String NOME_TABELA = "receita";
 	private final String ID = "id_receita";
@@ -29,7 +28,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	private final String NUMERO_DOCUMENTO = "numero_documento";
 	private final String NOME_DOADOR = "doador_nome";
 	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj";
-	private final String CARGO = "cargo";
+	private final String CAMPANHA_CARGO = "cargo";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -38,14 +37,14 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 					   + FORMA_PAGAMENTO + ", " + DESCRICAO + ", " + DATA
 					   + ", " + TIPO_MOVIMENTACAO + ", " + RECIBO_ELEITORAL 
 					   + ", " + NUMERO_DOCUMENTO + ", "
-					   + NOME_DOADOR + ", " + CPF_CNPJ_DOADOR + ", " + CARGO 
+					   + NOME_DOADOR + ", " + CPF_CNPJ_DOADOR + ", " 
+					   + CAMPANHA_CARGO 
 					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public ReceitaDAO() {
 		super(NOME_TABELA, null);
-		this.campanhaDAO = new CampanhaDAO();
-		this.doadorDAO = new DoadorDAO();
+		//this.doadorDAO = new DoadorDAO();
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 		while (resultadoSQL.next()) {
 			Campanha campanha = new Campanha();
 			Cargo cargo = new Cargo();
-			cargo.setDescricao(resultadoSQL.getString(CARGO));
+			cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));	
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));	
 			campanha.setCargo(cargo);
@@ -111,5 +110,68 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 		}
 		
 	}
+	
+
+	public ArrayList<Receita> getPorAnoNumeroCargo(Campanha campanha) {
+		String comandoSQL = SQL_SELECT + " WHERE "
+				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
+				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
+				  + " AND " + CAMPANHA_CARGO + " LIKE '%" 
+				  + campanha.getCargo().getDescricao() 
+				  + "%'";
+		return buscaBD(comandoSQL);
+	}
+	
+	public ArrayList<Receita> buscaBD(String SQL) {
+
+		ArrayList<Receita> listaReceita = new ArrayList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Receita receita = new Receita();
+				
+				Cargo cargo = new Cargo();
+				cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
+
+				Campanha campanha = new Campanha();
+				campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
+				campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
+				campanha.setCargo(cargo);
+				receita.setCampanha(campanha);
+				
+				Doador doador = new Doador();
+				doador.setNome(resultadoSQL.getString(NOME_DOADOR));
+				doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_DOADOR));
+				//receita.setDoador(fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor));
+				receita.setDoador(doador);
+
+				receita.setData(resultadoSQL.getString(DATA));
+				receita.setDescricao(resultadoSQL.getString(DESCRICAO));
+				receita.setFormaPagamento(resultadoSQL.getString(FORMA_PAGAMENTO));
+				receita.setId(resultadoSQL.getInt(ID));
+				receita.setNumeroDocumento(resultadoSQL.getString(NUMERO_DOCUMENTO));
+				receita.setReciboEleitoral(resultadoSQL.getString(RECIBO_ELEITORAL));
+				receita.setTipoMovimentacao(resultadoSQL.getString(TIPO_MOVIMENTACAO));
+				receita.setValor(resultadoSQL.getFloat(VALOR));
+				
+				if (receita != null) listaReceita.add(receita);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Um erro aconteceu.");
+			e.getMessage();
+		} 
+
+		return listaReceita;
+	}
+
 
 }
