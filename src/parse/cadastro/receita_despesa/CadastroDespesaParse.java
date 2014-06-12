@@ -23,7 +23,7 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2002() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2002);
-		//despesaIndicesParse.setIndiceCampanhaNumero(4);
+		despesaIndicesParse.setIndiceCampanhaNumero(4);
 		despesaIndicesParse.setIndiceCampanhaCargo(2);
 		despesaIndicesParse.setIndiceTipoMovimentacao(10);
 		despesaIndicesParse.setIndiceData(5);
@@ -36,7 +36,7 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2006() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
-		//despesaIndicesParse.setIndiceCampanhaNumero(3);
+		despesaIndicesParse.setIndiceCampanhaNumero(3);
 		despesaIndicesParse.setIndiceCampanhaCargo(1);
 		despesaIndicesParse.setIndiceTipoMovimentacao(11);
 		despesaIndicesParse.setIndiceTipoDocumento(16);
@@ -53,7 +53,7 @@ public class CadastroDespesaParse extends CadastroParseReceitasDespesas<Despesa>
 	@Override
 	protected IndicesParse<Despesa> getIndicesParseDespesa2010() {
 		DespesaIndicesParse despesaIndicesParse = new DespesaIndicesParse(ANO_2006);
-		//despesaIndicesParse.setIndiceCampanhaNumero(3);
+		despesaIndicesParse.setIndiceCampanhaNumero(3);
 		despesaIndicesParse.setIndiceCampanhaCargo(4);
 		despesaIndicesParse.setIndiceTipoMovimentacao(14);
 		despesaIndicesParse.setIndiceTipoDocumento(8);

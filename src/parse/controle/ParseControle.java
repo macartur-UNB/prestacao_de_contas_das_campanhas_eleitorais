@@ -30,6 +30,7 @@ public abstract class ParseControle<O> {
 				(!this.listaInstancias.contains(objeto)) ) {
 			this.listaInstancias.add(objeto);
 		}
+
 	}
 	
 	public void cadastrarInstancias() throws ParseException {

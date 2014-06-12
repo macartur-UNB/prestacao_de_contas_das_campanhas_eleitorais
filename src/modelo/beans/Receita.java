@@ -13,19 +13,6 @@ public class Receita extends MovimentacaoFinanceira {
 		this.doador = DOADOR_VAZIO;
 	}
 	
-	public boolean equals(Object object) {
-		if( !(object instanceof Receita)) {
-			return false;
-		}
-		
-		Receita outraReceita = (Receita) object;
-		
-		return super.equals(object) &&
-			   this.reciboEleitoral.equals(outraReceita.getReciboEleitoral()) &&
-			   this.doador.equals(outraReceita.getDoador()); 
-
-	}
-	
 	public String getReciboEleitoral() {
 		return reciboEleitoral;
 	}

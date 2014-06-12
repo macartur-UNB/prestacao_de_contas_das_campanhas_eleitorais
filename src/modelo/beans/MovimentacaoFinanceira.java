@@ -30,20 +30,7 @@ public class MovimentacaoFinanceira {
 
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof MovimentacaoFinanceira)) {
-			return false;
-		}
-		
-		MovimentacaoFinanceira outraMovimentacao = (MovimentacaoFinanceira) object;
-		
-		return 	
-				this.campanha.equals(outraMovimentacao.getCampanha()) &&
-				this.descricao.equalsIgnoreCase(outraMovimentacao.getDescricao()) &&
-				this.formaPagamento.equals(outraMovimentacao.getFormaPagamento()) &&
-				this.numeroDocumento.equalsIgnoreCase(outraMovimentacao.getNumeroDocumento()) &&
-				this.tipoMovimentacao.equals(outraMovimentacao.getTipoMovimentacao()) &&
-				this.valor.equals(outraMovimentacao.getValor()) &&
-				this.data.equals(outraMovimentacao.getData());
+		return false;
 	}
 
 	public String getNumeroDocumento() {
