@@ -22,7 +22,7 @@ public class ParseMovimentacoes extends Parse {
 
 		listaCadastrosParse.add(new CadastroDoadorParse(tipoArquivo, ano));
 		listaCadastrosParse.add(new CadastroFornecedorParse(tipoArquivo, ano));
-		//listaCadastrosParse.add(new CadastroReceitaParse(tipoArquivo, ano));
+		listaCadastrosParse.add(new CadastroReceitaParse(tipoArquivo, ano));
 		listaCadastrosParse.add(new CadastroDespesaParse(tipoArquivo, ano));
 
 

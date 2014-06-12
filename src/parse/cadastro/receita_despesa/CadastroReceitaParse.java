@@ -42,7 +42,8 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 		receitaIndicesParse.setIndiceCampanhaCargo(2);
 		receitaIndicesParse.setIndiceFormaPagamento(10);
 		receitaIndicesParse.setIndiceData(5);
-		receitaIndicesParse.setIndiceDoador(6);
+		receitaIndicesParse.setIndiceDoadorCpfCnpj(6);
+		receitaIndicesParse.setIndiceDoadorNome(8);
 		receitaIndicesParse.setIndiceValor(9);
 		
 		return receitaIndicesParse;
@@ -56,7 +57,8 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 		receitaIndicesParse.setIndiceTipoMovimentacao(11);
 		receitaIndicesParse.setIndiceFormaPagamento(13);
 		receitaIndicesParse.setIndiceData(10);
-		receitaIndicesParse.setIndiceDoador(16);
+		receitaIndicesParse.setIndiceDoadorCpfCnpj(16);
+		receitaIndicesParse.setIndiceDoadorNome(15);
 		receitaIndicesParse.setIndiceValor(9);
 		
 		return receitaIndicesParse;
@@ -72,7 +74,8 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 		receitaIndicesParse.setIndiceReciboEleitoral(8);
 		receitaIndicesParse.setIndiceNumeroDocumento(9);
 		receitaIndicesParse.setIndiceData(12);
-		receitaIndicesParse.setIndiceDoador(10);
+		receitaIndicesParse.setIndiceDoadorCpfCnpj(10);
+		receitaIndicesParse.setIndiceDoadorNome(11);
 		receitaIndicesParse.setIndiceValor(13);
 		receitaIndicesParse.setIndiceDescricao(17);
 		

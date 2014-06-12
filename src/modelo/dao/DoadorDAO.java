@@ -20,7 +20,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	}
 	
 	private static final String NOME_TABELA = "doador";
-	private static final String CPF_CNPJ = "cpf_cnpj_doador";
+	private static final String CPF_CNPJ = "cpf_cnpj";
 	private static final String NOME = "nome";
 	private static final String UF = "uf";
 	private static final String SITUACAO_CADASTRAL = "situacao_cadastral";
