@@ -36,7 +36,7 @@ public class ResultadoParseControleTeste extends TemplateTeste {
 
 	
 	@Test
-	public void cadastrarResultados() throws Exception {
+	public void cadastrarResultado() throws Exception {
 		
 		this.resultadoParseControle.addInstancia(campo);
 		this.resultadoParseControle.cadastrarInstancias();

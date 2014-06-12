@@ -37,7 +37,7 @@ public class CargoParseControleTeste extends TemplateTeste {
 	}
 
 	@Test
-	public void cadastrarCargos() throws Exception {
+	public void cadastrarCargo() throws Exception {
 		
 		this.cargoParseControle.addInstancia(campo);
 		this.cargoParseControle.cadastrarInstancias();

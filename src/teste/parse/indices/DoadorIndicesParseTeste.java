@@ -23,7 +23,7 @@ public class DoadorIndicesParseTeste {
 	}
 	
 	@Test
-	public void iniciarUmFornecedorComIndicesValidos() throws Exception {
+	public void iniciarUmDoadorComIndicesValidos() throws Exception {
 		Doador doador = new Doador();
 		this.doadorIndicesParse.iniciarInstancia(doador, campo);
 		Assert.assertEquals(this.campo[0], doador.getCpf_cnpj().toString());
@@ -33,7 +33,7 @@ public class DoadorIndicesParseTeste {
 	}
 	
 	@Test
-	public void iniciarUmFornecedorComIndicesInvalidos() {
+	public void iniciarUmDoadorComIndicesInvalidos() {
 		this.doadorIndicesParse = new DoadorIndicesParse();
 		Doador doador = new Doador();
 		this.doadorIndicesParse.iniciarInstancia(doador, campo);
