@@ -1,11 +1,8 @@
 package teste.modelo.dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.beans.Despesa;
 import modelo.beans.Doador;
-import modelo.dao.DespesaDAO;
 import modelo.dao.DoadorDAO;
 
 import org.junit.Assert;
@@ -29,33 +26,16 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void valoresComparacaoParteI() throws Exception {
-		//DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
 		
 		Doador D1 = new Doador();
 		Doador D2 = new Doador();
-		D1.setCpf_cnpj("123");
-		D2.setCpf_cnpj("123");
+		D1.setCpf_cnpj("1234567");
+		D2.setCpf_cnpj("1234567");
 		int resultado;
 
-		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
+		resultado = DoadorDAO.Comparacao.NOME.compare(D1, D2);
 		
 		Assert.assertEquals(0,resultado);
-	}
-	
-	@Test
-	public void valoresComparacaoParteII() throws Exception {
-		//DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
-		
-		Doador D1 = new Doador();
-		Doador D2 = new Doador();
-		D1.setCpf_cnpj("124");
-		D2.setCpf_cnpj("125");
-		int resultado;
-
-		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
-		
-		Assert.assertEquals(-1,resultado);
-		
 	}
 
 	@Test
