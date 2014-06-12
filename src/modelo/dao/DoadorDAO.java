@@ -12,7 +12,7 @@ import parse.ParseDAO;
 public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	
 	public enum Comparacao implements Comparator<Doador> {
-		CPF_CNPJ {
+		NOME {
 			public int compare(Doador d1, Doador d2) {
 				return d1.getCpf_cnpj().compareToIgnoreCase(d2.getCpf_cnpj());
 			}
@@ -30,7 +30,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public DoadorDAO() {
-		super(NOME_TABELA, Comparacao.CPF_CNPJ);
+		super(NOME_TABELA, Comparacao.NOME);
 	}
 
 	@Override

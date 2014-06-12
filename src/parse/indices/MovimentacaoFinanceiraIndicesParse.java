@@ -11,7 +11,6 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 
 	private Integer ano;
 	
-	private int indiceId;
 	private int indiceCampanhaAno;
 	private int indiceCampanhaNumero;
 	private int indiceCampanhaCargo;
@@ -24,7 +23,6 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 
 	public MovimentacaoFinanceiraIndicesParse(String ano) {
 		this.ano = Integer.valueOf(ano);
-		this.indiceId = INDICE_INVALIDO;
 		this.indiceCampanhaAno = INDICE_INVALIDO;
 		this.indiceCampanhaNumero = INDICE_INVALIDO;
 		this.indiceCampanhaCargo = INDICE_INVALIDO;
@@ -43,9 +41,6 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		Campanha campanha = new Campanha();
 		campanha.setAno(ano);
 		
-		if(indiceValido(this.indiceId)) {
-			movimentacaoFinanceira.setId(Integer.parseInt(campo[this.indiceId]));
-		}
 		if(indiceValido(this.indiceCampanhaAno)) {
 			campanha.setAno(Integer.parseInt(campo[this.indiceCampanhaAno]));
 		}
@@ -99,10 +94,6 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 
 	public void setAno(Integer ano) {
 		this.ano = ano;
-	}
-
-	public void setIndiceId(int indiceId) {
-		this.indiceId = indiceId;
 	}
 
 	public void setIndiceCampanhaAno(int indiceCampanhaAno) {

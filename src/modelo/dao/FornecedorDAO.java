@@ -12,16 +12,16 @@ import parse.ParseDAO;
 public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<Fornecedor> {
 	
 	public enum Comparacao implements Comparator<Fornecedor> {
-		CPF_CNPJ {
+		NOME {
 			public int compare(Fornecedor f1, Fornecedor f2) {
-				return f1.getCpf_cnpj().compareToIgnoreCase(f2.getCpf_cnpj());
+				return f1.getNome().compareToIgnoreCase(f2.getNome());
 			}
 
 		}	
 	}
 	
 	private static final String NOME_TABELA = "fornecedor";
-	private static final String CPF_CNPJ = "cpf_cnpj_fornecedor";
+	private static final String CPF_CNPJ = "cpf_cnpj";
 	private static final String NOME = "nome";
 	private static final String UF = "uf";
 	private static final String SITUACAO_CADASTRAL = "situacao_cadastral";
@@ -31,7 +31,7 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 	private static final String SQL_SELECAO = "SELECT * FROM " + NOME_TABELA;
 	
 	public FornecedorDAO() {
-		super(NOME_TABELA, Comparacao.CPF_CNPJ);
+		super(NOME_TABELA, Comparacao.NOME);
 	}
 	
 	@Override

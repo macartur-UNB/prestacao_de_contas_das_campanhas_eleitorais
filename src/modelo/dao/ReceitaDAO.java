@@ -27,7 +27,8 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	private final String TIPO_MOVIMENTACAO = "tipo_movimentacao";
 	private final String RECIBO_ELEITORAL = "recibo_eleitoral";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
-	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj_doador";
+	private final String NOME_DOADOR = "doador_nome";
+	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj";
 	private final String CARGO = "cargo";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
@@ -37,8 +38,8 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 					   + FORMA_PAGAMENTO + ", " + DESCRICAO + ", " + DATA
 					   + ", " + TIPO_MOVIMENTACAO + ", " + RECIBO_ELEITORAL 
 					   + ", " + NUMERO_DOCUMENTO + ", "
-					   + CPF_CNPJ_DOADOR 
-					   + ", " + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + NOME_DOADOR + ", " + CPF_CNPJ_DOADOR + ", " + CARGO 
+					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public ReceitaDAO() {
@@ -62,17 +63,18 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			PreparedStatement instrucaoSQL) throws SQLException {
 		for (Receita receita : lista) {
 			instrucaoSQL.setInt(1, receita.getId());
-			instrucaoSQL.setString(8, receita.getTipoMovimentacao());
-			instrucaoSQL.setString(5, receita.getFormaPagamento());
 			instrucaoSQL.setInt(2, receita.getCampanha().getAno());
 			instrucaoSQL.setInt(3, receita.getCampanha().getNumeroCandidato());
-			instrucaoSQL.setString(11, receita.getDoador().getCpf_cnpj());
+			instrucaoSQL.setFloat(4, receita.getValor());
+			instrucaoSQL.setString(5, receita.getFormaPagamento());
+			instrucaoSQL.setString(6, receita.getDescricao());
+			instrucaoSQL.setString(7, receita.getData());
+			instrucaoSQL.setString(8, receita.getTipoMovimentacao());
 			instrucaoSQL.setString(9, receita.getReciboEleitoral());
 			instrucaoSQL.setString(10, receita.getNumeroDocumento());
-			instrucaoSQL.setString(7, receita.getData());
-			instrucaoSQL.setFloat(4, receita.getValor());
-			instrucaoSQL.setString(6, receita.getDescricao());
-			instrucaoSQL.setString(12, receita.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.setString(11, receita.getDoador().getNome());
+			instrucaoSQL.setString(12, receita.getDoador().getCpf_cnpj());
+			instrucaoSQL.setString(13, receita.getCampanha().getCargo().getDescricao());
 			instrucaoSQL.addBatch();
 		}
 		
@@ -90,8 +92,9 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			campanha.setCargo(cargo);
 
 			Doador doador = new Doador();
+			doador.setNome(resultadoSQL.getString(NOME_DOADOR));
 			doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_DOADOR));
-		
+
 			Receita receita = new Receita();
 			receita.setId(resultadoSQL.getInt(ID));
 			receita.setTipoMovimentacao(resultadoSQL.getString(TIPO_MOVIMENTACAO));

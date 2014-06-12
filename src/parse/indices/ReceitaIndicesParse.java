@@ -6,26 +6,33 @@ import modelo.beans.Receita;
 public class ReceitaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Receita>{
 
 	private int indiceReciboEleitoral;
-	private int indiceDoador;
+	private int indiceDoadorNome;
+	private int indiceDoadorCpfCnpj;
 	
 	public ReceitaIndicesParse(String ano) {
 		super(ano);
 		this.indiceReciboEleitoral = INDICE_INVALIDO;
-		this.indiceDoador = INDICE_INVALIDO;
+		this.indiceDoadorNome = INDICE_INVALIDO;
+		this.indiceDoadorCpfCnpj = INDICE_INVALIDO;
+
 	}
 	
 	@Override
 	protected void setIndicesValidos(Receita receita, String[] campo) {
 		super.setIndicesValidos(receita, campo);
 		
+		Doador doador = new Doador();
 		if(indiceValido(this.indiceReciboEleitoral)) {
 			receita.setReciboEleitoral(campo[this.indiceReciboEleitoral]);
 		}
-		if(indiceValido(this.indiceDoador)) {
-			Doador doador = new Doador();
-			doador.setCpf_cnpj(campo[this.indiceDoador]);
-			receita.setDoador(doador);
+		if(indiceValido(this.indiceDoadorNome)) {
+			doador.setNome(campo[this.indiceDoadorNome]);
 		}
+		if(indiceValido(this.indiceDoadorCpfCnpj)) {
+			doador.setCpf_cnpj(campo[this.indiceDoadorCpfCnpj]);
+		}
+		receita.setDoador(doador);
+
 	}
 	
 	@Override
@@ -41,8 +48,11 @@ public class ReceitaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Rece
 		this.indiceReciboEleitoral = indiceReciboEleitoral;
 	}
 
-	public void setIndiceDoador(int indiceDoador) {
-		this.indiceDoador = indiceDoador;
+	public void setIndiceDoadorNome(int indiceDoadorNome) {
+		this.indiceDoadorNome = indiceDoadorNome;
 	}
 	
+	public void setIndiceDoadorCpfCnpj(int indiceDoadorCpfCnpj) {
+		this.indiceDoadorCpfCnpj = indiceDoadorCpfCnpj;
+	}
 }

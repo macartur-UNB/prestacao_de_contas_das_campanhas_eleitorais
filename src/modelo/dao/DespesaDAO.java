@@ -27,7 +27,8 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	private final String TIPO_MOVIMENTACAO = "tipo_movimentacao";
 	private final String TIPO_DOCUMENTO = "tipo_documento";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
-	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj_fornecedor";
+	private final String NOME_FORNECEDOR = "fornecedor_nome";
+	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj";
 	private final String CARGO = "cargo";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
@@ -37,8 +38,8 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 					   + FORMA_PAGAMENTO + ", " + DESCRICAO + ", " + DATA
 					   + ", " + TIPO_MOVIMENTACAO + ", " + TIPO_DOCUMENTO 
 					   + ", " + NUMERO_DOCUMENTO + ", " 
-					   + CPF_CNPJ_FORNECEDOR 
-					   + ", " + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + NOME_FORNECEDOR + ", " + CPF_CNPJ_FORNECEDOR + ", " 
+					   + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public DespesaDAO() {
@@ -71,8 +72,9 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			instrucaoSQL.setString(8, despesa.getTipoMovimentacao());
 			instrucaoSQL.setString(9, despesa.getTipoDocumento());
 			instrucaoSQL.setString(10, despesa.getNumeroDocumento());
-			instrucaoSQL.setString(11, despesa.getFornecedor().getCpf_cnpj());
-			instrucaoSQL.setString(12, despesa.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.setString(11, despesa.getFornecedor().getNome());
+			instrucaoSQL.setString(12, despesa.getFornecedor().getCpf_cnpj());
+			instrucaoSQL.setString(13, despesa.getCampanha().getCargo().getDescricao());
 			instrucaoSQL.addBatch();
 		}
 		
@@ -91,6 +93,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 
 			Fornecedor fornecedor = new Fornecedor();
 			fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));
+			fornecedor.setNome(resultadoSQL.getString(NOME_FORNECEDOR));
 
 			Despesa despesa = new Despesa();
 			despesa.setId(resultadoSQL.getInt(ID));			
