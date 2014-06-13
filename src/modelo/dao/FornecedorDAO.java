@@ -71,7 +71,6 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 	}
 
 	public Fornecedor getPeloNomeOuCpfCnpj(Fornecedor fornecedor) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
