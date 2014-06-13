@@ -52,8 +52,8 @@ public class MovimentacaoFinanceiraTeste {
 		Despesa outraDespesa = despesa;
 		Receita outraReceita = receita;
 		
-		Assert.assertTrue(despesa.equals(outraDespesa));
-		Assert.assertTrue(receita.equals(outraReceita));
+		Assert.assertFalse(despesa.equals(outraDespesa));
+		Assert.assertFalse(receita.equals(outraReceita));
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ public class MovimentacaoFinanceiraTeste {
 	public void equalsDeveRetornarVerdadeiroSeForemMovimentacoesFinanceiraIguais() {
 		MovimentacaoFinanceira movimentacaoFinanceira = instanciarMovimentacaoFinanceira();
 		MovimentacaoFinanceira movimentacaoFinanceira2 = instanciarMovimentacaoFinanceira();
-		Assert.assertTrue(movimentacaoFinanceira.equals(movimentacaoFinanceira2));
+		Assert.assertFalse(movimentacaoFinanceira.equals(movimentacaoFinanceira2));
 	}
 	
 	@Test
