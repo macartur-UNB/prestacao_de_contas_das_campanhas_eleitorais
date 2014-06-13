@@ -67,11 +67,7 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			List<Despesa> listaDespesa = control.getListaDespesas(campanha);
 			
 			request.setAttribute("listaReceitas", listaReceita);
-			System.out.println("\nReceitas");
-			System.out.println(listaReceita);
 			request.setAttribute("listaDespesas", listaDespesa);
-			System.out.println("\nDespesas");
-			System.out.println(listaDespesa);
 		
 			requestDispatcher = request
 					.getRequestDispatcher("/visualizar_movimentacoes.jsp");
