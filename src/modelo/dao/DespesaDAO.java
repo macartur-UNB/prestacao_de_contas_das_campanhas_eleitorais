@@ -118,7 +118,6 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 				  + " AND " + CAMPANHA_CARGO 
 				  + " LIKE '%" + campanha.getCargo().getDescricao()
 				  + "%'";
-		System.out.println(comandoSQL);
 		return buscaBD(comandoSQL);
 	}
 	

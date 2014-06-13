@@ -79,17 +79,17 @@
 					  <p> Não há receitas declaradas. </p>
 				  </c:when>
 				  <c:otherwise>
-				    <table border="2" cellpadding="10">
+				    <table border="2" cellpadding="10" align="center">
 					  <tr>
-						<th>Data</th>
-						<th>Doador</th>
-						<th>Valor</th>
+						<th width="100">Data</th>
+						<th width="600">Descrição</th>
+						<th width="100">Valor</th>
 					  </tr>
 					  
 					  <c:forEach var="receita" items="${listaReceitas}">
 					    <tr>
 					      <td>${receita.data}</td>
-					      <td>${receita.doador.nome}</td>
+					      <td>${receita.descricao} </td>
 					      <td>R$ ${receita.valor}</td>
 					    </tr>
 					  </c:forEach>
@@ -107,18 +107,18 @@
 					  <p> Não há despesas declaradas. </p>
 				  </c:when>
 				  <c:otherwise>
-			        <table border="2" cellpadding="10">
+			        <table border="2" cellpadding="10" align="center">
 					  <tr>
-						<th>Data</th>
-						<th>Fornecedor</th>
-						<th>Valor</th>
+						<th width="100">Data</th>
+						<th width="600">Descrição</th>
+						<th width="100">Valor</th>
 					  </tr>
 					  
 					  <!-- Elementos da tabela -->
 					  <c:forEach var="despesa" items="${listaDespesas}">
 					    <tr>
 					      <td>${despesa.data}</td>
-					      <td>${despesa.fornecedor.nome}</td>
+					      <td>${despesa.descricao}</td>
 					      <td>R$ ${despesa.valor}</td>
 					    </tr>
 					  </c:forEach>
