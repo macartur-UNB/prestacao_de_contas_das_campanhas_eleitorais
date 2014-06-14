@@ -96,7 +96,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	}
 	
 	@Test
-	public void deveReturnaFalseDuranteAhComparacao() throws Exception{
+	public void deveRetornarFalseDuranteAhComparacao() throws Exception{
 		
 		CandidatoDAO.Comparacao.valueOf(CandidatoDAO.Comparacao.TITULO_ELEITORAL.toString());
 		
