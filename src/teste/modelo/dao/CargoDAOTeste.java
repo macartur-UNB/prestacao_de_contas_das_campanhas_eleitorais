@@ -48,6 +48,29 @@ public class CargoDAOTeste extends TemplateTeste {
 	}
 	
 	@Test
+	public void deveRecuperarUmCargoPelaDescricao() throws SQLException {
+
+		ArrayList<Cargo> listaCargos = new ArrayList<>();
+		Cargo cargoRecuperado = new Cargo();
+
+		Cargo c1 = new Cargo();
+		c1.setCodigo(1);
+		c1.setDescricao("CARGO UM");
+		listaCargos.add(c1);
+
+		Cargo c2 = new Cargo();
+		c2.setCodigo(2);
+		c2.setDescricao("CARGO DOIS");
+		listaCargos.add(c2);
+
+		this.cargoDAO.cadastrarLista(listaCargos);
+
+		cargoRecuperado = this.cargoDAO.getPelaDescricao("CARGO UM");
+		Assert.assertEquals(c1, cargoRecuperado);
+
+	}
+	
+	@Test
 	public void deveRecuperarUmaListaDeCargos() throws SQLException {
 		
 		ArrayList<Cargo> listaCargos = new ArrayList<>();
