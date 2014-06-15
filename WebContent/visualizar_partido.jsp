@@ -42,6 +42,16 @@
 						<td>Deferimento:</td>
 						<td>${partido.deferimento}</td>
 					</tr>
+					
+					<tr>
+						<td>Link para o site do TSE:</td>
+						<td> <a href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}" target="_blank">  Link para o site </a>
+						</td>
+						
+						
+						
+						
+					</tr>
 				</table>
 				<br />
 				
