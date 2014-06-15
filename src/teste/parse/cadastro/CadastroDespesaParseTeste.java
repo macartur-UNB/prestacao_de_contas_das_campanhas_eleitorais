@@ -16,6 +16,7 @@ import teste.TemplateTeste;
 
 public class CadastroDespesaParseTeste extends TemplateTeste {
 
+	private static final String expected = null;
 	private CadastroDespesaParse cadastro1;
 	private CadastroDespesaParse cadastro2;
 	private CadastroDespesaParse cadastro3;
@@ -24,6 +25,9 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 	String  ano1         = "2006";
 	String  ano2         = "2002";
 	String  ano3         = "2010";
+	String  tipoArquivoErrado = "ArquivoErrado";
+	String  AnoInvalido = "2050";
+	
 	
 	@Override
 	public void beforeTest() throws Exception {
@@ -110,5 +114,21 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 		System.out.println(listaDespesa.get(0).getTipoMovimentacao());
 		assertEquals(listaDespesa.get(0).getTipoMovimentacao(), "TipoMov");
 	}
+	
+	/*@Test (expected = ParseException.class)
+	public void deveLancarUmaExcecaoAoTentarCarregarUmTipoDeArquivoDiferente() throws ParseException, SQLException {
+		CadastroDespesaParse cadastro4;
+		
+		cadastro4 = new CadastroDespesaParse(this.tipoArquivoErrado, this.ano3);
+		this.despesaDAO = new DespesaDAO();
+	}
+	
+	@Test (expected = ParseException.class)
+	public void deveLancarUmaExcecaoAoTentarCarregarUmAnoInvalido() throws ParseException, SQLException {
+		CadastroDespesaParse cadastro4;
+		
+		cadastro4 = new CadastroDespesaParse(this.tipoArquivo, this.AnoInvalido);
+		this.despesaDAO = new DespesaDAO();
+	}*/
 
 }

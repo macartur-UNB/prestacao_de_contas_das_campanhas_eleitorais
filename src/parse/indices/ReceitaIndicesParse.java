@@ -13,7 +13,7 @@ public class ReceitaIndicesParse extends MovimentacaoFinanceiraIndicesParse<Rece
 		super(ano);
 		this.indiceReciboEleitoral = INDICE_INVALIDO;
 		this.indiceDoadorNome = INDICE_INVALIDO;
-		this.indiceDoadorCpfCnpj = INDICE_INVALIDO;
+		this.indiceDoadorCpfCnpj = INDICE_INVALIDO; 
 
 	}
 	
