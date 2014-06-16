@@ -42,6 +42,11 @@ public class DespesaIndicesParseTeste {
 		Assert.assertNotEquals(this.campo[2], despesa.getTipoDocumento());
 	}
 	
+	@Test
+	public void deveRetornarOhAnoCadastrado() {
+		despesaIndicesParse.setAno(2010);
+	}
+	
 	private void iniciarIndices() {
 		this.despesaIndicesParse.setIndiceFornecedorNome(0);
 		this.despesaIndicesParse.setIndiceFornecedorCpfCnpj(1);
