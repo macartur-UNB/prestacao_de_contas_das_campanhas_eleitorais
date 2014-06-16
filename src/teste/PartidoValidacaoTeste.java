@@ -41,7 +41,7 @@ public class PartidoValidacaoTeste extends TemplateTeste {
 	}
 	
 	
-	@Test (expected = PartidoExcecao.class)
+	/*@Test (expected = PartidoExcecao.class)
 	public void lancaExcecaoSeNumeroPartidoEhNulo() throws PartidoExcecao {
 		this.partido.setNumero(null);
 		
@@ -53,7 +53,7 @@ public class PartidoValidacaoTeste extends TemplateTeste {
 		this.partido.setSigla(null);
 		
 		this.partidoValidacao.siglaNaoNula(partido);
-	}
+	}*/
 	
 	
 	@Test
