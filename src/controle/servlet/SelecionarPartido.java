@@ -23,8 +23,12 @@ public class SelecionarPartido implements Logica {
 				return "/erro_partido_inexistente.jsp";
 			} else {
 				partido = partidoControle.getPartido(sigla);
+				String linkTSE = trocaDeCaracteresEspeciais(partido);
 				req.setAttribute("partido", partido);
 				req.setAttribute("anos", anos);
+				req.setAttribute("linktse", linkTSE);
+				
+				
 				
 				return "/visualizar_partido.jsp";
 			}
@@ -32,6 +36,20 @@ public class SelecionarPartido implements Logica {
 			System.out.println("Erro no acesso ao BD");
 			throw new ServletException(e);		
 		}
+		
+		
+	}
+	
+	public String trocaDeCaracteresEspeciais(Partido partido)
+	{
+		String locallinkTSE = partido.getNome().toLowerCase();
+		locallinkTSE = locallinkTSE.replaceAll(" ", "-");
+		locallinkTSE = locallinkTSE.replaceAll("á", "a");
+		locallinkTSE = locallinkTSE.replaceAll("ã", "a");
+		locallinkTSE = locallinkTSE.replaceAll("ó", "o");
+		locallinkTSE = locallinkTSE.replaceAll("ú", "u");
+		locallinkTSE = locallinkTSE.replaceAll("ç", "c");
+		return locallinkTSE;
 	}
 
 }
