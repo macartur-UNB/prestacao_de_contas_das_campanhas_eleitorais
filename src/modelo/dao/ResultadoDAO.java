@@ -66,19 +66,23 @@ public class ResultadoDAO extends BasicoDAO<Resultado> implements ParseDAO<Resul
 	public Resultado getPeloCod(Integer codigo) throws SQLException {
 		Resultado resultado = new Resultado();
 		String comandoSQL = SQL_SELECAO + " WHERE " + CODIGO +" = "+codigo+" ";
-
-		this.conexao = new ConexaoBancoDados().getConexao();
-
-		this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
-
-		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-		
-		while(resultadoSQL.next())
-		{
-			resultado.setCodigo(resultadoSQL.getInt(CODIGO));
-			resultado.setDescricao(resultadoSQL.getString(DESCRICAO));
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+	
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+	
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			
+			while(resultadoSQL.next())
+			{
+				resultado.setCodigo(resultadoSQL.getInt(CODIGO));
+				resultado.setDescricao(resultadoSQL.getString(DESCRICAO));
+			}
+		} catch (SQLException e) {
+			throw new SQLException("ResultadoDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
 		}
-
 		return resultado;
 	}
 }

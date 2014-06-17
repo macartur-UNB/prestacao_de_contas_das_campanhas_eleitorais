@@ -1,6 +1,7 @@
 package controle.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
@@ -45,7 +46,11 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		
 		CampanhaDAO dao = new CampanhaDAO();
 		
-		campanha = dao.getPeloAnoNumeroECodCargo(campanha);
+		try {
+			campanha = dao.getPeloAnoNumeroECodCargo(campanha);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		if (campanha == null) {
 			requestDispatcher = request
@@ -63,8 +68,18 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			
 			MovimentacaoControle control = new MovimentacaoControle();
 			
-			List<Receita> listaReceita = control.getListaReceitas(campanha);
-			List<Despesa> listaDespesa = control.getListaDespesas(campanha);
+			List<Receita> listaReceita = null;
+			try {
+				listaReceita = control.getListaReceitas(campanha);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			List<Despesa> listaDespesa = null;
+			try {
+				listaDespesa = control.getListaDespesas(campanha);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
 			request.setAttribute("listaReceitas", listaReceita);
 			request.setAttribute("listaDespesas", listaDespesa);

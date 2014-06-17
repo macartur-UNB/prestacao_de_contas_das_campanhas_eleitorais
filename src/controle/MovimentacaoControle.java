@@ -1,5 +1,6 @@
 package controle;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import modelo.beans.Campanha;
@@ -18,7 +19,7 @@ public class MovimentacaoControle {
 		this.receitaDAO = new ReceitaDAO();
 	}
 
-	public List<Receita> getListaReceitas(Campanha campanha) {
+	public List<Receita> getListaReceitas(Campanha campanha) throws SQLException {
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
 				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO))
@@ -27,7 +28,7 @@ public class MovimentacaoControle {
 			return this.receitaDAO.getPorAnoNumeroCargo(campanha);
 	}
 
-	public List<Despesa> getListaDespesas(Campanha campanha) {
+	public List<Despesa> getListaDespesas(Campanha campanha) throws SQLException {
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
 				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO))

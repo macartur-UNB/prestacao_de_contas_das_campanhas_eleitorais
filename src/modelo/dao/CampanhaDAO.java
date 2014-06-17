@@ -122,7 +122,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
 	}
 
-	public ArrayList<Campanha> getCampanhas(Candidato candidato) {
+	public ArrayList<Campanha> getCampanhas(Candidato candidato) throws SQLException {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 		String comandoSQL = SQL_SELECT 
 				+ " USE INDEX (" + INDEX_CANDIDATO + ")"
@@ -145,7 +145,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		return listaCampanha;
 	}
 	
-	public Campanha getPeloAnoNumeroECodCargo(Campanha campanha)
+	public Campanha getPeloAnoNumeroECodCargo(Campanha campanha) throws SQLException
 	{
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 		String comandoSQL = SQL_SELECT + " WHERE " 
@@ -159,7 +159,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			return listaCampanha.get(0);
 	}
 	
-	public ArrayList<Campanha> buscaBD(String SQL) {
+	public ArrayList<Campanha> buscaBD(String SQL) throws SQLException {
 
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 
@@ -194,9 +194,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Um erro aconteceu.");
-			e.getMessage();
-		} 
+			throw new SQLException("CampanhaDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
 
 		return listaCampanha;
 	}

@@ -100,24 +100,31 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 
-		this.conexao = new ConexaoBancoDados().getConexao();
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
 
-		String comandoSQL = SQL;
+			String comandoSQL = SQL;
 
-		this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
-		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
 
-		while (resultadoSQL.next()) {
-			Candidato candidato = new Candidato();
-			candidato.setNome(resultadoSQL.getString(NOME));
-			candidato.setTituloEleitoral(resultadoSQL
-					.getString(TITULO_ELEITORAL));
+			while (resultadoSQL.next()) {
+				Candidato candidato = new Candidato();
+				candidato.setNome(resultadoSQL.getString(NOME));
+				candidato.setTituloEleitoral(resultadoSQL
+						.getString(TITULO_ELEITORAL));
 
-			if (candidato != null)
-				listaCandidato.add(candidato);
+				if (candidato != null)
+					listaCandidato.add(candidato);
+			}			
+		} catch (SQLException e) {
+			throw new SQLException("CandidatoDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
 		}
 
+		
 		return listaCandidato;
 	}
 }

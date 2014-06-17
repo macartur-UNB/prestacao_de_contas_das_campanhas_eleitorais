@@ -111,7 +111,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 		}
 	}
 
-	public ArrayList<Despesa> getPorAnoNumeroCargo(Campanha campanha) {
+	public ArrayList<Despesa> getPorAnoNumeroCargo(Campanha campanha) throws SQLException {
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
 				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
@@ -121,7 +121,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 		return buscaBD(comandoSQL);
 	}
 	
-	public ArrayList<Despesa> buscaBD(String SQL) {
+	public ArrayList<Despesa> buscaBD(String SQL) throws SQLException {
 
 		ArrayList<Despesa> listaDespesa = new ArrayList<>();
 
@@ -165,10 +165,11 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 				if (despesa != null) listaDespesa.add(despesa);
 			}
 
-		} catch (SQLException e) {
-			System.out.println("Um erro aconteceu.");
-			e.getMessage();
-		} 
+		}  catch (SQLException e) {
+			throw new SQLException("DespesaDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
 
 		return listaDespesa;
 	}

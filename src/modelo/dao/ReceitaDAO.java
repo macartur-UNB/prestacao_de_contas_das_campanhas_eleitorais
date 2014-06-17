@@ -112,7 +112,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	}
 	
 
-	public ArrayList<Receita> getPorAnoNumeroCargo(Campanha campanha) {
+	public ArrayList<Receita> getPorAnoNumeroCargo(Campanha campanha) throws SQLException {
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
 				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
@@ -122,7 +122,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 		return buscaBD(comandoSQL);
 	}
 	
-	public ArrayList<Receita> buscaBD(String SQL) {
+	public ArrayList<Receita> buscaBD(String SQL) throws SQLException {
 
 		ArrayList<Receita> listaReceita = new ArrayList<>();
 
@@ -166,9 +166,10 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Um erro aconteceu.");
-			e.getMessage();
-		} 
+			throw new SQLException("ReceitaDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
 
 		return listaReceita;
 	}
