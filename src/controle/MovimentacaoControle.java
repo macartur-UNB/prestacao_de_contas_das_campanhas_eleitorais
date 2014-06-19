@@ -37,4 +37,12 @@ public class MovimentacaoControle {
 			return this.despesaDAO.getPorAnoNumeroCargo(campanha);
 	}
 
+	public Receita getReceitaPeloId(int id) throws SQLException {
+		return this.receitaDAO.getPeloId(id);
+	}
+
+	public Despesa getDespesaPeloId(int id) throws SQLException {
+		return this.despesaDAO.getPeloId(id);
+	}
+
 }

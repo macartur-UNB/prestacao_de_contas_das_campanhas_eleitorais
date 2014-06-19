@@ -30,16 +30,17 @@
 				<!-- Identificacao do candidato -->
 				<table>
 					<tr>
-						<td>Nome:</td>
+						<td><b>Nome:</b></td>
 						<td><c:out value="${candidato.nome}" /></td>
 					</tr>
 					<tr>
-						<td>Título Eleitoral:</td>
+						<td><b>Título Eleitoral:</b></td>
 						<td><c:out value="${candidato.tituloEleitoral}" /></td>
 					</tr>
 				</table>
 				<br/>
-
+				
+				<p>Clique no ano para o qual deseja visualizar a prestação de contas deste candidato:</p>
 				<!-- Anos em que ele concorreu -->
 				<c:forEach var="campanha" items="${campanhas}">
 
@@ -58,13 +59,13 @@
 										<c:param name="logica" value="SelecionarPartido"></c:param>
 										<c:param name="sigla" value="${campanha.partido.sigla}"></c:param>
 									</c:url>
-									Partido: <a href="${partidoUrl}">${campanha.partido.sigla}</a>
+									<b>Partido:</b> <a href="${partidoUrl}">${campanha.partido.sigla}</a>
 								</td>
-								<td width="250">Cargo Pleiteado: ${campanha.cargo.descricao}</td>
+								<td width="250"><b>Cargo Pleiteado:</b> ${campanha.cargo.descricao}</td>
 							</tr>
 							<tr>
-								<td>UF: ${campanha.uf}</td>
-								<td>Número: ${campanha.numeroCandidato}</td>
+								<td><b>UF:</b> ${campanha.uf}</td>
+								<td><b>Número:</b> ${campanha.numeroCandidato}</td>
 							</tr>
 						</tbody>
 					</table>

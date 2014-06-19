@@ -9,6 +9,7 @@ import modelo.beans.Campanha;
 import modelo.beans.Cargo;
 import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
+import modelo.beans.Receita;
 import parse.ParseDAO;
 
 public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
@@ -119,6 +120,12 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 				  + " LIKE '%" + campanha.getCargo().getDescricao()
 				  + "%'";
 		return buscaBD(comandoSQL);
+	}
+	
+	public Despesa getPeloId(int id) throws SQLException {
+			String comandoSQL = SQL_SELECT + " WHERE "
+					  + ID + " = " + id;
+			return buscaBD(comandoSQL).get(0);
 	}
 	
 	public ArrayList<Despesa> buscaBD(String SQL) throws SQLException {

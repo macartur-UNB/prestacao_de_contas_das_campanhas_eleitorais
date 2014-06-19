@@ -34,37 +34,37 @@
 				<!-- <h4>Resultado da busca:</h4>-->
 				<table>
 					<tr>
-						<td width="200">Nome do Candidato:</td>
+						<td width="200"><b>Nome do Candidato:</b></td>
 						<td>
 						<c:out value="${campanha.candidato.nome}"/>
 						</td>
 					</tr>
 					<tr>
-						<td>Número do Candidato:</td>
+						<td><b>Número do Candidato:</b></td>
 						<td>
 						<c:out value="${campanha.numeroCandidato}"/>
 						</td>
 					</tr>
 					<tr>
-						<td>Cargo Pleiteado:</td>
+						<td><b>Cargo Pleiteado:</b></td>
 						<td>
 						<c:out value="${campanha.cargo.descricao}"/>
 						</td>
 					</tr>
 					<tr>
-						<td>Ano:</td>
+						<td><b>Ano:</b></td>
 						<td>
 						<c:out value="${campanha.ano}"/>
 						</td>
 					</tr>
 					<tr>
-						<td>Resultado:</td>
+						<td><b>Resultado:</b></td>
 						<td>
 						<c:out value="${campanha.resultado.descricao}"/>
 						</td>
 					</tr>
 					<tr>
-						<td>Despesa Máxima Declarada:</td>
+						<td><b>Despesa Máxima Declarada:</b></td>
 						<td>
 						<c:out value="${depesaTot}"/>
 						</td>
@@ -82,14 +82,14 @@
 				    <table border="2" cellpadding="10" align="center">
 					  <tr>
 						<th width="100">Data</th>
-						<th width="600">Descrição</th>
+						<th width="600">Tipo de Receita</th>
 						<th width="100">Valor</th>
 					  </tr>
 					  
 					  <c:forEach var="receita" items="${listaReceitas}">
 					    <tr>
 					      <td>${receita.data}</td>
-					      <td>${receita.descricao} </td>
+					      <td>${receita.tipoMovimentacao} </td>
 					      <td>R$ ${receita.valor}</td>
 					    </tr>
 					  </c:forEach>
@@ -110,16 +110,29 @@
 			        <table border="2" cellpadding="10" align="center">
 					  <tr>
 						<th width="100">Data</th>
-						<th width="600">Descrição</th>
+						<th width="600">Tipo de Despesa</th>
 						<th width="100">Valor</th>
 					  </tr>
 					  
 					  <!-- Elementos da tabela -->
 					  <c:forEach var="despesa" items="${listaDespesas}">
+					    
+					    <c:url  var="movimentacaoUrl" value="/mvc">
+					       <c:param name="logica" value="VisualizarMovimentacao"></c:param>
+					       <c:param name="movimentacao_tipo" value="despesa"></c:param>
+					       <c:param name="movimentacao_id" value="${despesa.id}"></c:param>
+					    </c:url>
+					    
 					    <tr>
-					      <td>${despesa.data}</td>
-					      <td>${despesa.descricao}</td>
-					      <td>R$ ${despesa.valor}</td>
+					      <td><a href="${movimentacaoUrl}">
+					      ${despesa.data}
+					      </a></td>
+					      <td><a href="${movimentacaoUrl}">
+					      ${despesa.tipoMovimentacao}
+					      </a></td>
+					      <td><a href="${movimentacaoUrl}">
+					      R$ ${despesa.valor}
+					      </a></td>
 					    </tr>
 					  </c:forEach>
 					</table>

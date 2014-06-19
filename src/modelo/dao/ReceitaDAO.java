@@ -122,6 +122,13 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 		return buscaBD(comandoSQL);
 	}
 	
+
+	public Receita getPeloId(int id) throws SQLException {
+		String comandoSQL = SQL_SELECT + " WHERE "
+				  + ID + " = " + id;
+		return buscaBD(comandoSQL).get(0);
+	}
+	
 	public ArrayList<Receita> buscaBD(String SQL) throws SQLException {
 
 		ArrayList<Receita> listaReceita = new ArrayList<>();
@@ -173,6 +180,5 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 
 		return listaReceita;
 	}
-
 
 }

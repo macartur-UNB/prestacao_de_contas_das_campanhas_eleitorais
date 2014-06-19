@@ -29,22 +29,22 @@
 				<table>
 					
 					<tr>
-						<td>Sigla:</td>
+						<td><b>Sigla:</b></td>
 						<td>${partido.sigla}</td>
 					</tr>
 					
 					<tr>
-						<td>Numero:</td>
+						<td><b>Numero:</b></td>
 						<td>${partido.numero}</td>
 					</tr>
 					
 					<tr>
-						<td>Deferimento:</td>
+						<td><b>Deferimento:</b></td>
 						<td>${partido.deferimento}</td>
 					</tr>
 					
 					<tr>
-						<td>Link para o site do TSE:</td>
+						<td><b>Link para o site do TSE:</b></td>
 						<td> <a href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}" target="_blank">  Link para o site </a>
 						</td>
 						
