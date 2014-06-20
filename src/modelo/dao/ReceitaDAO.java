@@ -13,7 +13,7 @@ import parse.ParseDAO;
 
 public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> {
 		
-	//private DoadorDAO doadorDAO;
+	private DoadorDAO doadorDAO;
 		
 	private static final String NOME_TABELA = "receita";
 	private final String ID = "id_receita";
@@ -29,6 +29,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	private final String NOME_DOADOR = "doador_nome";
 	private final String CPF_CNPJ_DOADOR = "doador_cpf_cnpj";
 	private final String CAMPANHA_CARGO = "cargo";
+	private final String CAMPANHA_UF = "campanha_uf";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -38,13 +39,13 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 					   + ", " + TIPO_MOVIMENTACAO + ", " + RECIBO_ELEITORAL 
 					   + ", " + NUMERO_DOCUMENTO + ", "
 					   + NOME_DOADOR + ", " + CPF_CNPJ_DOADOR + ", " 
-					   + CAMPANHA_CARGO 
-					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + CAMPANHA_CARGO + ", " + CAMPANHA_UF
+					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public ReceitaDAO() {
 		super(NOME_TABELA, null);
-		//this.doadorDAO = new DoadorDAO();
+		this.doadorDAO = new DoadorDAO();
 	}
 
 	@Override
@@ -74,6 +75,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			instrucaoSQL.setString(11, receita.getDoador().getNome());
 			instrucaoSQL.setString(12, receita.getDoador().getCpf_cnpj());
 			instrucaoSQL.setString(13, receita.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.setString(14, receita.getCampanha().getUf());
 			instrucaoSQL.addBatch();
 		}
 		
@@ -89,6 +91,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));	
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));	
 			campanha.setCargo(cargo);
+			campanha.setUf(resultadoSQL.getString(CAMPANHA_UF));
 
 			Doador doador = new Doador();
 			doador.setNome(resultadoSQL.getString(NOME_DOADOR));
@@ -112,10 +115,11 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	}
 	
 
-	public ArrayList<Receita> getPorAnoNumeroCargo(Campanha campanha) throws SQLException {
+	public ArrayList<Receita> getPorAnoNumeroCargoUf(Campanha campanha) throws Exception {
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
 				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
+				  + " AND " + CAMPANHA_UF + " = " + campanha.getUf()
 				  + " AND " + CAMPANHA_CARGO + " LIKE '%" 
 				  + campanha.getCargo().getDescricao() 
 				  + "%'";
@@ -123,13 +127,13 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 	}
 	
 
-	public Receita getPeloId(int id) throws SQLException {
+	public Receita getPeloId(int id) throws Exception {
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + ID + " = " + id;
 		return buscaBD(comandoSQL).get(0);
 	}
 	
-	public ArrayList<Receita> buscaBD(String SQL) throws SQLException {
+	public ArrayList<Receita> buscaBD(String SQL) throws Exception {
 
 		ArrayList<Receita> listaReceita = new ArrayList<>();
 
@@ -157,7 +161,7 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 				Doador doador = new Doador();
 				doador.setNome(resultadoSQL.getString(NOME_DOADOR));
 				doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_DOADOR));
-				//receita.setDoador(fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor));
+				receita.setDoador(doadorDAO.getPeloNomeOuCpfCnpj(doador));
 				receita.setDoador(doador);
 
 				receita.setData(resultadoSQL.getString(DATA));

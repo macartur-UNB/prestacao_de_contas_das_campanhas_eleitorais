@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import modelo.beans.Doador;
+import modelo.beans.Fornecedor;
 import parse.ParseDAO;
 
 public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
@@ -69,6 +70,54 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 			lista.add(doador);
 		}
 		
+	}
+	
+	public ArrayList<Doador> buscaBD(String SQL) throws SQLException {
+
+		ArrayList<Doador> listaDoador = new ArrayList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Doador doador = new Doador();
+				
+				doador.setNome(resultadoSQL.getString(NOME));
+				doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ));
+				doador.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
+				doador.setUf(resultadoSQL.getString(UF));
+
+				if (doador != null) listaDoador.add(doador);
+			}
+
+		}  catch (SQLException e) {
+			throw new SQLException("DoadorDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
+
+		return listaDoador;
+	}
+	
+	public Doador getPeloNomeOuCpfCnpj(Doador doador) throws Exception {
+		String comandoSQL = SQL_SELECAO + " WHERE ";
+		if(!doador.getNome().equals(Fornecedor.STRING_VAZIO)){
+			comandoSQL = comandoSQL + NOME + " = " 
+		  + doador.getNome();
+		}
+		else if(!doador.getCpf_cnpj().equals(Fornecedor.STRING_VAZIO)){
+			comandoSQL = comandoSQL + CPF_CNPJ + " = " 
+		  + doador.getCpf_cnpj();
+		}else{
+			throw new Exception();
+		}
+		return buscaBD(comandoSQL).get(0);
 	}
 
 }

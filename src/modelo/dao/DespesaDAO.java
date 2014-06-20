@@ -9,12 +9,11 @@ import modelo.beans.Campanha;
 import modelo.beans.Cargo;
 import modelo.beans.Despesa;
 import modelo.beans.Fornecedor;
-import modelo.beans.Receita;
 import parse.ParseDAO;
 
 public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 
-	//private FornecedorDAO fornecedorDAO;
+	private FornecedorDAO fornecedorDAO;
 		
 	private static final String NOME_TABELA = "despesa";
 	private final String ID = "id_despesa";
@@ -30,6 +29,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	private final String NOME_FORNECEDOR = "fornecedor_nome";
 	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj";
 	private final String CAMPANHA_CARGO = "cargo";
+	private final String CAMPANHA_UF = "campanha_uf";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -39,13 +39,13 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 					   + ", " + TIPO_MOVIMENTACAO + ", " + TIPO_DOCUMENTO 
 					   + ", " + NUMERO_DOCUMENTO + ", " 
 					   + NOME_FORNECEDOR + ", " + CPF_CNPJ_FORNECEDOR + ", " 
-					   + CAMPANHA_CARGO 
-					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + CAMPANHA_CARGO + ", " + CAMPANHA_UF
+					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public DespesaDAO() {
 		super(NOME_TABELA, null);
-		//this.fornecedorDAO = new FornecedorDAO();
+		this.fornecedorDAO = new FornecedorDAO();
 	}
 
 	@Override
@@ -75,6 +75,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			instrucaoSQL.setString(11, despesa.getFornecedor().getNome());
 			instrucaoSQL.setString(12, despesa.getFornecedor().getCpf_cnpj());
 			instrucaoSQL.setString(13, despesa.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.setString(14, despesa.getCampanha().getUf());
 			instrucaoSQL.addBatch();
 		}
 		
@@ -89,6 +90,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
+			campanha.setUf(resultadoSQL.getString(CAMPANHA_UF));
 			campanha.setCargo(cargo);
 
 			Fornecedor fornecedor = new Fornecedor();
@@ -112,23 +114,24 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 		}
 	}
 
-	public ArrayList<Despesa> getPorAnoNumeroCargo(Campanha campanha) throws SQLException {
+	public ArrayList<Despesa> getPorAnoNumeroCargoUf(Campanha campanha) throws Exception {
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
 				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
+				  + " AND " + CAMPANHA_UF + " = " + campanha.getUf()
 				  + " AND " + CAMPANHA_CARGO 
 				  + " LIKE '%" + campanha.getCargo().getDescricao()
 				  + "%'";
 		return buscaBD(comandoSQL);
 	}
 	
-	public Despesa getPeloId(int id) throws SQLException {
+	public Despesa getPeloId(int id) throws Exception {
 			String comandoSQL = SQL_SELECT + " WHERE "
 					  + ID + " = " + id;
 			return buscaBD(comandoSQL).get(0);
 	}
 	
-	public ArrayList<Despesa> buscaBD(String SQL) throws SQLException {
+	public ArrayList<Despesa> buscaBD(String SQL) throws Exception {
 
 		ArrayList<Despesa> listaDespesa = new ArrayList<>();
 
@@ -156,10 +159,9 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.setNome(resultadoSQL.getString(NOME_FORNECEDOR));
 				fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));
-				//despesa.setFornecedor(fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor));
+				despesa.setFornecedor(fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor));
 				despesa.setFornecedor(fornecedor);
 
-				
 				despesa.setData(resultadoSQL.getString(DATA));
 				despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
 				despesa.setFormaPagamento(resultadoSQL.getString(FORMA_PAGAMENTO));
