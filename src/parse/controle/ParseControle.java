@@ -10,8 +10,9 @@ public abstract class ParseControle<O> {
 
 	private O objetoVazio;
 	private ParseDAO<O> basicoDAO;
-	private ArrayList<O> listaInstancias;
 	private IndicesParse<O> indicesParse;
+	
+	protected ArrayList<O> listaInstancias;
 	
 	public ParseControle(IndicesParse<O> indicesParse, ParseDAO<O> basicoDAO) {
 		this.listaInstancias = new ArrayList<>();
@@ -30,7 +31,13 @@ public abstract class ParseControle<O> {
 				(!this.listaInstancias.contains(objeto)) ) {
 			this.listaInstancias.add(objeto);
 		}
+	}
 
+	public void addInstanciaIgual(String campo[]) {
+		O objeto = fazerNovaInstancia(campo);
+		if( (!iguais(objeto, objetoVazio)) ) {
+			this.listaInstancias.add(objeto);
+		}
 	}
 	
 	public void cadastrarInstancias() throws ParseException {

@@ -70,9 +70,53 @@ public class FornecedorDAO extends BasicoDAO<Fornecedor> implements ParseDAO<For
 		
 	}
 
-	public Fornecedor getPeloNomeOuCpfCnpj(Fornecedor fornecedor) {
-		return null;
+	public Fornecedor getPeloNomeOuCpfCnpj(Fornecedor fornecedor) throws Exception {
+		String comandoSQL = SQL_SELECAO + " WHERE ";
+		if(!fornecedor.getNome().equals(Fornecedor.STRING_VAZIO)){
+			comandoSQL = comandoSQL + NOME + " = " 
+		  + fornecedor.getNome();
+		}
+		else if(!fornecedor.getCpf_cnpj().equals(Fornecedor.STRING_VAZIO)){
+			comandoSQL = comandoSQL + CPF_CNPJ + " = " 
+		  + fornecedor.getCpf_cnpj();
+		}else{
+			throw new Exception();
+		}
+		return buscaBD(comandoSQL).get(0);
 	}
 
+	public ArrayList<Fornecedor> buscaBD(String SQL) throws SQLException {
+
+		ArrayList<Fornecedor> listaFornecedor = new ArrayList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Fornecedor fornecedor = new Fornecedor();
+				
+				fornecedor.setNome(resultadoSQL.getString(NOME));
+				fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ));
+				fornecedor.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
+				fornecedor.setUf(resultadoSQL.getString(UF));
+
+				if (fornecedor != null) listaFornecedor.add(fornecedor);
+			}
+
+		}  catch (SQLException e) {
+			throw new SQLException("FornecedorDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
+
+		return listaFornecedor;
+	}
+	
 }
 

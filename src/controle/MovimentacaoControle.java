@@ -1,6 +1,5 @@
 package controle;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import modelo.beans.Campanha;
@@ -19,29 +18,29 @@ public class MovimentacaoControle {
 		this.receitaDAO = new ReceitaDAO();
 	}
 
-	public List<Receita> getListaReceitas(Campanha campanha) throws SQLException {
+	public List<Receita> getListaReceitas(Campanha campanha) throws Exception {
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
 				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO))
 			return null;
 		else
-			return this.receitaDAO.getPorAnoNumeroCargo(campanha);
+			return this.receitaDAO.getPorAnoNumeroCargoUf(campanha);
 	}
 
-	public List<Despesa> getListaDespesas(Campanha campanha) throws SQLException {
+	public List<Despesa> getListaDespesas(Campanha campanha) throws Exception {
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
 				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO))
 			return null;
 		else
-			return this.despesaDAO.getPorAnoNumeroCargo(campanha);
+			return this.despesaDAO.getPorAnoNumeroCargoUf(campanha);
 	}
 
-	public Receita getReceitaPeloId(int id) throws SQLException {
+	public Receita getReceitaPeloId(int id) throws Exception {
 		return this.receitaDAO.getPeloId(id);
 	}
 
-	public Despesa getDespesaPeloId(int id) throws SQLException {
+	public Despesa getDespesaPeloId(int id) throws Exception {
 		return this.despesaDAO.getPeloId(id);
 	}
 
