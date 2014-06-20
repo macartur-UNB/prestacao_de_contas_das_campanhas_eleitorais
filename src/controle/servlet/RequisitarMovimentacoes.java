@@ -71,13 +71,13 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			List<Receita> listaReceita = null;
 			try {
 				listaReceita = control.getListaReceitas(campanha);
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			List<Despesa> listaDespesa = null;
 			try {
 				listaDespesa = control.getListaDespesas(campanha);
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
