@@ -12,6 +12,7 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
 
@@ -23,13 +24,42 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p>
-					Abaixo a <b>lista de Partidos</b>.
-				</p>
+				<p><center>
+					<h4>Abaixo a <b>lista de Partidos</b>.</h4>
+				</center></p>
 
-				<c:forEach var="partido" items="${listaPartidos}">
-					<table border="2" width="500">
+				<center>
+					<table id="gradient-style" summary="Meeting Results">
+						<thead>
 						<tr>
+        					<th scope="col">Nome</th>
+            				<th scope="col">Sigla</th>
+						</tr>
+						</thead>
+						
+						<c:forEach var="partido" items="${listaPartidos}">
+						<tbody>
+    					<tr>
+        					<td>
+        						<c:url var="url_partido" value="/mvc">
+									<c:param name="logica" value="SelecionarPartido"></c:param>
+									<c:param name="sigla" value="${partido.sigla}"></c:param>
+								</c:url>
+								<a href="${url_partido}" > ${partido.nome} </a>
+        					</td>
+            				<td>${partido.sigla}</td>
+        				</tr>
+        				</tbody>
+						</c:forEach>
+						
+						<tfoot>
+    						<tr>
+        					<td colspan="4">Dados de acordo com os arquivos disponíveis no site: ----</td>
+       						</tr>
+   						</tfoot>
+					</table>
+				</center>
+						<!--  <tr>
 							<td  width="70">
 							Nome:
 							</td>
@@ -47,9 +77,7 @@
 							</td>
 							<td> ${partido.sigla}</td>
 						</tr>
-					</table>
-					<br />
-				</c:forEach>
+					</table> -->
 				<br>
 			</div>
 		</div>

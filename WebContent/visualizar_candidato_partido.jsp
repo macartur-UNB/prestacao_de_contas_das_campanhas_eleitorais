@@ -12,11 +12,13 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css"
+	media="all">
 </head>
 <body>
 
 	<%@include file="imports/cabecalhopartidos.jsp"%>
-	
+
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
 		<div class="titulo_topo">
@@ -25,20 +27,41 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h1>
-					<c:out value="${partido.nome}"/>
+					<c:out value="${partido.nome}" />
 				</h1>
-				<p>Listagem de <b>Candidatos</b>. Clique no candidato desejado para
+				<p>
+					Listagem de <b>Candidatos</b>. Clique no candidato desejado para
 					visualizar mais informações.
 				</p>
 
-				<c:forEach var="campanha" items="${listaCampanhas}">
-					<c:url var="candidatoUrl" value="/mvc">
-						<c:param name="logica" value="SelecionarCandidato"></c:param>
-						<c:param name="tituloEleitoral" value="${campanha.candidato.tituloEleitoral}"></c:param>
-					</c:url>
-					<a href="${candidatoUrl}">${campanha.candidato.nome}</a>
-					<br>
-				</c:forEach>
+				<table id="gradient-style" summary="Meeting Results">
+					<thead>
+						<tr>
+							<th scope="col">Candidato</th>
+						</tr>
+					</thead>
+
+					<c:forEach var="campanha" items="${listaCampanhas}">
+						<tbody>
+							<tr>
+								<td><c:url var="candidatoUrl" value="/mvc">
+										<c:param name="logica" value="SelecionarCandidato"></c:param>
+										<c:param name="tituloEleitoral"
+											value="${campanha.candidato.tituloEleitoral}"></c:param>
+										<a href="${candidatoUrl}">${campanha.candidato.nome}</a>
+										<br>
+									</c:url></td>
+							</tr>
+						</tbody>
+					</c:forEach>
+
+					<tfoot>
+						<tr>
+							<td colspan="4">Dados de acordo com os arquivos disponíveis
+								no site: ----</td>
+						</tr>
+					</tfoot>
+				</table>
 				<br>
 			</div>
 		</div>

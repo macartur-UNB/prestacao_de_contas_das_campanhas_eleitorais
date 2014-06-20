@@ -12,6 +12,8 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css"
+	media="all">
 </head>
 <body>
 
@@ -29,14 +31,32 @@
 					visualizar mais informações.
 				</p>
 
-				<c:forEach var="candidato" items="${listaCandidatos}">
-					<c:url var="candidatoUrl" value="/mvc">
-						<c:param name="logica" value="SelecionarCandidato"></c:param>
-						<c:param name="tituloEleitoral" value="${candidato.tituloEleitoral}"></c:param>
-					</c:url>
-					<a href="${candidatoUrl}">${candidato.nome}</a>
-					<br>
-				</c:forEach>
+				<table id="gradient-style" >
+					<thead>
+						<tr>
+							<th scope="col">Candidato</th>
+						</tr>
+					</thead>
+
+					<c:forEach var="candidato" items="${listaCandidatos}">
+						<tbody>
+							<tr>
+								<td><c:url var="candidatoUrl" value="/mvc">
+										<c:param name="logica" value="SelecionarCandidato"></c:param>
+										<c:param name="tituloEleitoral"
+											value="${candidato.tituloEleitoral}"></c:param>
+									</c:url> <a href="${candidatoUrl}">${candidato.nome}</a> <br></td>
+							</tr>
+						</tbody>
+					</c:forEach>
+
+					<tfoot>
+						<tr>
+							<td colspan="4">Dados de acordo com os arquivos disponíveis
+								no site: ----</td>
+						</tr>
+					</tfoot>
+				</table>
 				<br>
 			</div>
 		</div>
