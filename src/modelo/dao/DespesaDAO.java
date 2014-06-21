@@ -73,6 +73,7 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			instrucaoSQL.setString(12, despesa.getFornecedor().getCpf_cnpj());
 			instrucaoSQL.setString(13, despesa.getCampanha().getCargo().getDescricao());
 			instrucaoSQL.setString(14, despesa.getCampanha().getUf());
+
 			instrucaoSQL.addBatch();
 		}
 		

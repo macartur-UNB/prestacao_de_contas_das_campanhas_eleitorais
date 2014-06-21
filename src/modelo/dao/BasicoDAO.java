@@ -47,17 +47,16 @@ public abstract class BasicoDAO<O> implements ParseDAO<O>{
 	public void cadastrarLista(ArrayList<O> lista) throws SQLException {
 		try {
 			ArrayList<O> listaNaoCadastrados = getListaNaoCadastrados(lista);
+
 			this.conexao = new ConexaoBancoDados().getConexao();
 			this.instrucaoSQL = getInstrucaoSQL(getSqlInsert());
 			this.conexao.setAutoCommit(false);
-			
+	
 			adicionarListaNoBatch(listaNaoCadastrados, instrucaoSQL);
-			
+	
 			this.instrucaoSQL.executeBatch();
 			this.conexao.commit();
-			
-			//System.out.println("CADASTROU!");
-			
+						
 		} catch(Exception e) {
 			throw new SQLException(nomeTabela + " - " + e.getMessage());
 		} finally {
