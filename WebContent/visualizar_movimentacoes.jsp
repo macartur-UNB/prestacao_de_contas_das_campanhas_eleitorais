@@ -147,20 +147,20 @@
 									<td><details> <summary>${despesa.tipoMovimentacao}</summary>
 										<table border="0">
 											<tr>
-												<td colspan="2">Nome do Doador: <c:out
+												<td colspan="2">Nome do Fornecedor: <c:out
 														value="${despesa.fornecedor.nome}" />
 												</td>
 											</tr>
 											<tr>
-												<td colspan="1">CPJ/CNPJ do Doador: <c:out
+												<td colspan="1">CPJ/CNPJ do Fornecedor: <c:out
 														value="${despesa.fornecedor.cpf_cnpj}" />
 												</td>
-												<td colspan="1">UF do Doador: <c:out
+												<td colspan="1">UF do Fornecedor: <c:out
 														value="${despesa.fornecedor.uf}" />
 												</td>
 											</tr>
 											<tr>
-												<td colspan="2">Situação Cadastral do Doador: <c:out
+												<td colspan="2">Situação Cadastral do Fornecedor: <c:out
 														value="${despesa.fornecedor.situacaoCadastral}" />
 												</td>
 											</tr>
