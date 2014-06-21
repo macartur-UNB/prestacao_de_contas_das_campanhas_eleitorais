@@ -14,11 +14,11 @@ public class SelecionarPartido implements Logica {
 			throws Exception {
 		Partido partido = new Partido();
 		PartidoControle partidoControle = new PartidoControle();
-		
+
 		String sigla = req.getParameter("sigla");
 		String siglaComUnder = sigla.replace(" ", "_");
 		siglaComUnder = siglaComUnder.toLowerCase();
-		//System.out.println(siglaComUnder);
+		// System.out.println(siglaComUnder);
 
 		try {
 			int anos[] = { 2010, 2006, 2002 };
@@ -31,21 +31,16 @@ public class SelecionarPartido implements Logica {
 				req.setAttribute("anos", anos);
 				req.setAttribute("linktse", linkTSE);
 				req.setAttribute("siglaUnder", siglaComUnder);
-				
-				
-				
+
 				return "/visualizar_partido.jsp";
 			}
 		} catch (Exception e) {
 			System.out.println("Erro no acesso ao BD");
-			throw new ServletException(e);		
+			throw new ServletException(e);
 		}
-		
-		
 	}
-	
-	public String trocaDeCaracteresEspeciais(Partido partido)
-	{
+
+	public String trocaDeCaracteresEspeciais(Partido partido) {
 		String locallinkTSE = partido.getNome().toLowerCase();
 		locallinkTSE = locallinkTSE.replaceAll(" ", "-");
 		locallinkTSE = locallinkTSE.replaceAll("á", "a");
@@ -55,5 +50,4 @@ public class SelecionarPartido implements Logica {
 		locallinkTSE = locallinkTSE.replaceAll("ç", "c");
 		return locallinkTSE;
 	}
-
 }

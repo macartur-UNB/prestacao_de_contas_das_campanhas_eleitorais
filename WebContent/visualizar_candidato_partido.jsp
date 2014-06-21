@@ -34,24 +34,41 @@
 					visualizar mais informações.
 				</p>
 
-				<table id="gradient-style" summary="Meeting Results">
+				<table id="gradient-style-listaCandidadoPartido" summary="Meeting Results">
 					<thead>
 						<tr>
 							<th scope="col">Candidato</th>
+							<th scope="col">Cargo</th>
+							<th scope="col">Número de Eleição</th>
+							<th scope="col">Ano</th>
+							<th scope="col">Partido</th>
 						</tr>
 					</thead>
 
 					<c:forEach var="campanha" items="${listaCampanhas}">
 						<tbody>
 							<tr>
-								<td><c:url var="candidatoUrl" value="/mvc">
+								<td>
+									<c:url var="candidatoUrl" value="/mvc">
 										<c:param name="logica" value="SelecionarCandidato"></c:param>
 										<c:param name="tituloEleitoral"
 											value="${campanha.candidato.tituloEleitoral}"></c:param>
 									</c:url>
 										<a href="${candidatoUrl}">${campanha.candidato.nome}</a>
 										<br>
-									</td>
+								</td>
+								<td>
+									${campanha.cargo.descricao}
+								</td>
+								<td>
+									${campanha.numeroCandidato}
+								</td>
+								<td>
+									${campanha.ano}
+								</td>
+								<td>
+									${partido.sigla}
+								</td>
 							</tr>
 						</tbody>
 					</c:forEach>
