@@ -48,9 +48,10 @@
 										<c:param name="logica" value="SelecionarCandidato"></c:param>
 										<c:param name="tituloEleitoral"
 											value="${campanha.candidato.tituloEleitoral}"></c:param>
+									</c:url>
 										<a href="${candidatoUrl}">${campanha.candidato.nome}</a>
 										<br>
-									</c:url></td>
+									</td>
 							</tr>
 						</tbody>
 					</c:forEach>

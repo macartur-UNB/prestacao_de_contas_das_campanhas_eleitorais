@@ -14,6 +14,7 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	private int indiceCampanhaAno;
 	private int indiceCampanhaNumero;
 	private int indiceCampanhaCargo;
+	private int indiceCampanhaUf;
 	private int indiceNumeroDocumento;
 	private int indiceData;
 	private int indiceValor;
@@ -26,6 +27,7 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 		this.indiceCampanhaAno = INDICE_INVALIDO;
 		this.indiceCampanhaNumero = INDICE_INVALIDO;
 		this.indiceCampanhaCargo = INDICE_INVALIDO;
+		this.indiceCampanhaUf = INDICE_INVALIDO;
 		this.indiceNumeroDocumento = INDICE_INVALIDO;
 		this.indiceData = INDICE_INVALIDO;
 		this.indiceValor = INDICE_INVALIDO;
@@ -51,6 +53,9 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 			Cargo cargo = new Cargo();
 			cargo.setDescricao(campo[this.indiceCampanhaCargo]);
 			campanha.setCargo(cargo);
+		}
+		if(indiceValido(this.indiceCampanhaUf)) {
+			campanha.setUf(campo[this.indiceCampanhaUf]);
 		}
 		if(indiceValido(this.indiceNumeroDocumento)) {
 			movimentacaoFinanceira.setNumeroDocumento(campo[this.indiceNumeroDocumento]);
@@ -106,6 +111,9 @@ public class MovimentacaoFinanceiraIndicesParse<O> extends IndicesParse<O> {
 	
 	public void setIndiceCampanhaCargo(int indiceCampanhaCargo) {
 		this.indiceCampanhaCargo = indiceCampanhaCargo;
+	}
+	public void setIndiceCampanhaUf(int indiceCampanhaUf) {
+		this.indiceCampanhaUf = indiceCampanhaUf;
 	}
 	public void setIndiceNumeroDocumento(int indiceNumeroDocumento) {
 		this.indiceNumeroDocumento = indiceNumeroDocumento;

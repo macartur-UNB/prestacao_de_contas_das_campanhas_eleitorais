@@ -21,7 +21,8 @@ public class MovimentacaoControle {
 	public List<Receita> getListaReceitas(Campanha campanha) throws Exception {
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
-				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO))
+				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO)
+				|| (campanha.getUf()).equals(Campanha.STRING_VAZIO))
 			return null;
 		else
 			return this.receitaDAO.getPorAnoNumeroCargoUf(campanha);
@@ -30,7 +31,8 @@ public class MovimentacaoControle {
 	public List<Despesa> getListaDespesas(Campanha campanha) throws Exception {
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
-				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO))
+				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO)
+				|| (campanha.getUf()).equals(Campanha.STRING_VAZIO))
 			return null;
 		else
 			return this.despesaDAO.getPorAnoNumeroCargoUf(campanha);

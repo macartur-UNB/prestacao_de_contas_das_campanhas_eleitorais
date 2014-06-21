@@ -87,10 +87,23 @@
 					  </tr>
 					  
 					  <c:forEach var="receita" items="${listaReceitas}">
+					  
+				        <c:url  var="movimentacaoUrl" value="/mvc">
+					       <c:param name="logica" value="VisualizarMovimentacaoEspecifica"></c:param>
+					       <c:param name="movimentacao_tipo" value="receita"></c:param>
+					       <c:param name="movimentacao_id" value="${receita.id}"></c:param>
+					    </c:url>
+					    
 					    <tr>
-					      <td>${receita.data}</td>
-					      <td>${receita.tipoMovimentacao} </td>
-					      <td>R$ ${receita.valor}</td>
+					      <td><a href="${movimentacaoUrl}">
+					      ${receita.data}
+					      </a></td>
+					      <td><a href="${movimentacaoUrl}">
+					      ${receita.tipoMovimentacao}
+					      </a></td>
+					      <td><a href="${movimentacaoUrl}">
+					      R$ ${receita.valor}
+					      </a></td>
 					    </tr>
 					  </c:forEach>
 					  
@@ -118,7 +131,7 @@
 					  <c:forEach var="despesa" items="${listaDespesas}">
 					    
 					    <c:url  var="movimentacaoUrl" value="/mvc">
-					       <c:param name="logica" value="VisualizarMovimentacao"></c:param>
+					       <c:param name="logica" value="VisualizarMovimentacaoEspecifica"></c:param>
 					       <c:param name="movimentacao_tipo" value="despesa"></c:param>
 					       <c:param name="movimentacao_id" value="${despesa.id}"></c:param>
 					    </c:url>
