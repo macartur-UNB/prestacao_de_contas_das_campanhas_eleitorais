@@ -12,7 +12,8 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
-<link href="css/tabelas.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css"
+	media="all">
 </head>
 <body>
 
@@ -24,60 +25,53 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p><center>
-					<h4>Abaixo a <b>lista de Partidos</b></h4>
-				</center></p>
+				<center>
+					<h3>Selecione um Partido abaixo para visitar seu Perfil</h3>
+				</center>
 
 				<center>
+
 					<table id="gradient-style" summary="Meeting Results">
 						<thead>
-						<tr>
-        					<th scope="col">Nome</th>
-            				<th scope="col">Sigla</th>
-						</tr>
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">Sigla</th>
+							</tr>
+
 						</thead>
-						
-						<c:forEach var="partido" items="${listaPartidos}">
-						<tbody>
-    					<tr>
-        					<td>
-        						<c:url var="url_partido" value="/mvc">
-									<c:param name="logica" value="SelecionarPartido"></c:param>
-									<c:param name="sigla" value="${partido.sigla}"></c:param>
-								</c:url>
-								<a href="${url_partido}" > ${partido.nome} </a>
-        					</td>
-            				<td>${partido.sigla}</td>
-        				</tr>
-        				</tbody>
+						<c:forEach var="partido" items="${listaPartidos}"
+							begin="${inicio}" end="${inicio+9}" varStatus="douche">
+							<tbody>
+								<tr>
+									<td><c:url var="url_partido" value="/mvc">
+											<c:param name="logica" value="SelecionarPartido"></c:param>
+											<c:param name="sigla" value="${partido.sigla}"></c:param>
+										</c:url> <a href="${url_partido}"> ${partido.nome} </a></td>
+									<td>${partido.sigla}</td>
+								</tr>
+							</tbody>
 						</c:forEach>
-						
+
 						<tfoot>
-    						<tr>
-        					<td colspan="4">Os nomes e as siglas dos Partidos Políticos estão exibidos da forma em que foram registrados no TSE.</td>
-       						</tr>
-   						</tfoot>
+							<tr>
+								<td colspan="4"><center>
+										Páginas:
+										<c:forEach var="i" begin="1" end="${indice}">
+											<c:url var="url_pag" value="/mvc">
+												<c:param name="logica" value="RequisitarPartido"></c:param>
+												<c:param name="inicio" value="${(i-1)*10}"></c:param>
+											</c:url>
+											<a href="${url_pag}"><c:out value="${i}" /></a>
+										</c:forEach>
+									</center></td>
+							</tr>
+							<tr>
+								<td colspan="4">Os nomes e as siglas dos Partidos Políticos
+									estão exibidos da forma em que foram registrados no TSE.</td>
+							</tr>
+						</tfoot>
 					</table>
 				</center>
-						<!--  <tr>
-							<td  width="70">
-							Nome:
-							</td>
-							<td>							
-								<c:url var="url_partido" value="/mvc">
-									<c:param name="logica" value="SelecionarPartido"></c:param>
-									<c:param name="sigla" value="${partido.sigla}"></c:param>
-								</c:url>
-								<a  href="${url_partido}" > ${partido.nome} </a>
-							</td>
-						</tr>
-						<tr>
-							<td  width="70">
-							Sigla:
-							</td>
-							<td> ${partido.sigla}</td>
-						</tr>
-					</table> -->
 				<br>
 			</div>
 		</div>
