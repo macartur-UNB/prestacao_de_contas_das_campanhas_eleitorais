@@ -16,6 +16,9 @@ public class SelecionarPartido implements Logica {
 		PartidoControle partidoControle = new PartidoControle();
 		
 		String sigla = req.getParameter("sigla");
+		String siglaComUnder = sigla.replace(" ", "_");
+		siglaComUnder = siglaComUnder.toLowerCase();
+		System.out.println(siglaComUnder);
 
 		try {
 			int anos[] = { 2010, 2006, 2002 };
@@ -27,6 +30,7 @@ public class SelecionarPartido implements Logica {
 				req.setAttribute("partido", partido);
 				req.setAttribute("anos", anos);
 				req.setAttribute("linktse", linkTSE);
+				req.setAttribute("siglaUnder", siglaComUnder);
 				
 				
 				

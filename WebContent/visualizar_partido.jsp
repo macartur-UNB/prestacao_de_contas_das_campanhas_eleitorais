@@ -35,7 +35,7 @@
 					<div id="informacoes_partido">
 						<div id="logo_partido">
 							<a href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}" target="_blank">
-							<img src="img/partidos/${partido.numero}.jpg" width="140" height="150" />
+							<img src="img/partidos/${siglaUnder}.jpg" width="140" height="150" />
 							</a>
 						</div>
 						
