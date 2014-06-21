@@ -45,5 +45,25 @@ public class MovimentacaoControle {
 	public Despesa getDespesaPeloId(int id) throws Exception {
 		return this.despesaDAO.getPeloId(id);
 	}
+	
+	public int geraIndiceDaListaR(List<Receita> lista, int divisor) {
+		int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+		return indice;
+	}
+	
+	public int geraIndiceDePaginacaoR(List<Receita> lista) {
+		int indice = (int) Math.floor((double)lista.size()/(double)25);
+		return indice;
+	}
+	
+	public int geraIndiceDaListaD(List<Despesa> lista, int divisor) {
+		int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+		return indice;
+	}
+	
+	public int geraIndiceDePaginacaoD(List<Despesa> lista) {
+		int indice = (int) Math.floor((double)lista.size()/(double)25);
+		return indice;
+	}
 
 }

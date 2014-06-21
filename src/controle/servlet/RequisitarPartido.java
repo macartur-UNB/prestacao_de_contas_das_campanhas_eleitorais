@@ -19,25 +19,29 @@ public class RequisitarPartido implements Logica {
 		PartidoControle control = new PartidoControle();
 		try {
 			List<Partido> listaPartidos = control.getListaPartidos();
-			String inicio = req.getParameter("inicio");
-			int indice = geraIndiceDaLista(listaPartidos);
+			
+			int inicio = Integer.parseInt(req.getParameter("inicio"));
+			int qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
+			boolean verTodos = Boolean.parseBoolean(req.getParameter("verTodos"));
+			
+			int indice = control.geraIndiceDaLista(listaPartidos,qtdPorPagina);
+			int qtdDePP = control.geraIndiceDePaginacao(listaPartidos);
+			
+			System.out.println(qtdDePP);
+			
 			req.setAttribute("listaPartidos", listaPartidos);
-			req.setAttribute("indice", indice);
 			req.setAttribute("inicio", inicio);
+			if(verTodos)
+				qtdPorPagina = listaPartidos.size();
+			req.setAttribute("qtdPorPagina", qtdPorPagina);
+			req.setAttribute("indice", indice);
+			req.setAttribute("qtdDePP", qtdDePP);
+			
 			return "/listar_partidos.jsp";
 		
 		} catch (SQLException e) {
 			System.out.println("Erro no acesso ao BD");
 			throw new ServletException(e);
 		}		
-	}
-	
-	public int geraIndiceDaLista(List<Partido> lista) {
-		int indice = 1;
-		for (int i = 0; i < lista.size(); i++) {
-			indice++;
-		}
-		indice = (int) Math.ceil(indice/10);
-		return indice;
 	}
 }

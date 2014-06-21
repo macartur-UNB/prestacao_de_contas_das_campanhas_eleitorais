@@ -40,7 +40,7 @@
 
 						</thead>
 						<c:forEach var="partido" items="${listaPartidos}"
-							begin="${inicio}" end="${inicio+9}" varStatus="douche">
+							begin="${inicio}" end="${inicio+(qtdPorPagina-1)}" varStatus="douche">
 							<tbody>
 								<tr>
 									<td><c:url var="url_partido" value="/mvc">
@@ -59,10 +59,36 @@
 										<c:forEach var="i" begin="1" end="${indice}">
 											<c:url var="url_pag" value="/mvc">
 												<c:param name="logica" value="RequisitarPartido"></c:param>
-												<c:param name="inicio" value="${(i-1)*10}"></c:param>
+												<c:param name="inicio" value="${(i-1)*qtdPorPagina}"></c:param>
+												<c:param name="qtdPorPagina" value="${qtdPorPagina}"></c:param>
+												<c:param name="verTodos" value="${false}"></c:param>
 											</c:url>
 											<a href="${url_pag}"><c:out value="${i}" /></a>
 										</c:forEach>
+										<br> Partidos por Página:
+										<c:url var="url_tamanhoOriginal" value="/mvc">
+											<c:param name="logica" value="RequisitarPartido"></c:param>
+											<c:param name="inicio" value="${0}"></c:param>
+											<c:param name="qtdPorPagina" value="${10}"></c:param>
+											<c:param name="verTodos" value="${false}"></c:param>
+										</c:url>
+										<a href="${url_tamanhoOriginal}"> ${10}</a>
+										<c:forEach var="i" begin="1" end="${qtdDePP}">
+											<c:url var="url_tamanhos" value="/mvc">
+												<c:param name="logica" value="RequisitarPartido"></c:param>
+												<c:param name="inicio" value="${0}"></c:param>
+												<c:param name="qtdPorPagina" value="${i*25}"></c:param>
+												<c:param name="verTodos" value="${false}"></c:param>
+											</c:url>
+											<a href="${url_tamanhos}"> ${i*25}</a>
+										</c:forEach>
+										<c:url var="url_todos" value="/mvc">
+											<c:param name="logica" value="RequisitarPartido"></c:param>
+											<c:param name="inicio" value="${0}"></c:param>
+											<c:param name="qtdPorPagina" value="${qtdPorPagina}"></c:param>
+											<c:param name="verTodos" value="${true}"></c:param>
+										</c:url>
+										<a href="${url_todos}"> Ver Todos</a>
 									</center></td>
 							</tr>
 							<tr>
