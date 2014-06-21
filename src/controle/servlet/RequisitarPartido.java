@@ -27,7 +27,7 @@ public class RequisitarPartido implements Logica {
 			int indice = control.geraIndiceDaLista(listaPartidos,qtdPorPagina);
 			int qtdDePP = control.geraIndiceDePaginacao(listaPartidos);
 			
-			System.out.println(qtdDePP);
+			//System.out.println(qtdDePP);
 			
 			req.setAttribute("listaPartidos", listaPartidos);
 			req.setAttribute("inicio", inicio);
