@@ -17,6 +17,9 @@
 					<li>
 					<c:url var="url_partido" value="/mvc">
 						<c:param name="logica" value="RequisitarPartido"></c:param>
+						<c:param name="inicio" value="${0}"></c:param>
+						<c:param name="qtdPorPagina" value="${10}"></c:param>
+						<c:param name="verTodos" value="${false}"></c:param>
 					</c:url>
 					<a href="${url_partido}" class="partidos">Partidos</a>
 					</li>
