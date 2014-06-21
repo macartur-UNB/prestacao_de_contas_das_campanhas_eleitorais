@@ -54,7 +54,7 @@
 						
 						<tfoot>
     						<tr>
-        					<td colspan="4">Dados de acordo com os arquivos disponíveis no site: ----</td>
+        					<td colspan="4">Os nomes e as siglas dos Partidos Políticos estão exibidos da forma em que foram registrados no TSE.</td>
        						</tr>
    						</tfoot>
 					</table>

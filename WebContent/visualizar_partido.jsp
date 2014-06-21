@@ -25,66 +25,85 @@
 				<h3>Partido</h3>
 			</center>
 		</div>
+		
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<div id="perfil_partido">
-					<center></center>
-					<br>
+					<center><h1>${partido.nome}</h1></center>
+					<br />
+					
 					<div id="informacoes_partido">
 						<div id="logo_partido">
-							<img src="img/${partido.numero}.jpg" width="140" height="150">
+							<a href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}" target="_blank">
+							<img src="img/${partido.numero}.jpg" width="140" height="150" />
+							</a>
 						</div>
-						<div id="nome_partido">
-							<h3>${partido.nome}</h3>
-						</div>
+						
+						<center>
+
 						<table>
+
 							<tr>
-								<td><b><br>Sigla:</b></td>
-								<td><br>${partido.sigla}</td>
+								<td><b>Sigla:</b></td>
+								<td>${partido.sigla}</td>
 							</tr>
 							<tr>
-								<td><b>Numero:</b></td>
+								<td><b>Número:</b></td>
 								<td>${partido.numero}</td>
 							</tr>
-							<tr>
-								<td><b>Deferimento:</b></td>
-								<td>${partido.deferimento}</td>
-							</tr>
-							<tr>
-								<td><b>Link para o site do TSE:</b></td>
-								<td><a
-									href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
-									target="_blank"> ${partido.nome}</a></td>
-							</tr>
+							
+							<c:choose>
+							<c:when test="${not empty partido.deferimento}">
+								<tr>
+									<td><b>Deferimento:</b></td>
+									<td>${partido.deferimento}</td>
+								</tr>
+								<tr>
+									<td><b>Mais informações:</b></td>
+									<td><a
+										href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
+										target="_blank"> clique aqui</a></td>
+								</tr>
+							</c:when>
+							<c:otherwise>
+								<tr><br /> </tr>
+								<tr><br /> </tr>
+							</c:otherwise>
+							</c:choose>
 						</table>
-						<div id="ano_partido">
-							<h2>Consulta de Candidatos:</h2>
-							Clique em um dos anos para acessar a lista de candidatos deste
-							Partido.
-							<center>
-								<table id="gradient-style1" summary="Meeting Results">
-									<thead>
-										<tr>
-											<th scope="col"><center>Consulta de Candidatos</center></th>
-										</tr>
-									</thead>
+						</center>
+						
+					<div id="ano_partido">
+						<h2 align="center">Consulta de Candidatos</h2>
+							
+						<center>
+						<p><i>Clique em um dos anos para acessar <br/>
+							a lista de candidatos deste Partido. </i></p>
+	
+							
+							<table id="gradient-style1" summary="Meeting Results">
+								<thead>
+									<tr>
+										<th scope="col"><center>Ano</center></th>
+									</tr>
+								</thead>
 
-									<c:forEach var="ano" items="${anos}">
-										<tbody>
-											<tr>
-												<td><c:url var="AnoUrl" value="/mvc">
-														<c:param name="logica" value="VisualizarCandidatosPartido" />
-														<c:param name="sigla" value="${partido.sigla}" />
-														<c:param name="ano" value="${ano}" />
-													</c:url>
-													<center>
-														<a href="${AnoUrl}">${ano}</a>
-													</center></td>
-											</tr>
-										</tbody>
-									</c:forEach>
-								</table>
-							</center>
+								<c:forEach var="ano" items="${anos}">
+									<tbody>
+										<tr>
+											<td><c:url var="AnoUrl" value="/mvc">
+													<c:param name="logica" value="VisualizarCandidatosPartido" />
+													<c:param name="sigla" value="${partido.sigla}" />
+													<c:param name="ano" value="${ano}" />
+												</c:url>
+												<center>
+													<a href="${AnoUrl}">${ano}</a>
+												</center></td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</table>
+						</center>
 						</div>
 					</div>
 				</div>

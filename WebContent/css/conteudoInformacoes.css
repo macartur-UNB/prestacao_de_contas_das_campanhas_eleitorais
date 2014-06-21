@@ -90,6 +90,7 @@ div#perfil_partido{
 div#informacoes_partido{
 	border-right:3px ridge #666;
 	float:left;
+	font-size:130%;
 	width:440px;
 	height:350px;
 	margin:0px 0px 0px 20px;
@@ -97,10 +98,13 @@ div#informacoes_partido{
 
 div#logo_partido{
 	border:thick  groove #666;
-	float:left;
-	width:140px;
+	text-align:center;
+    display:block;	
+    width:140px;
 	height:150px;
-	margin:0px 150px 0px 0px;
+	margin-left:auto;
+    margin-right:auto;
+    margin-bottom:30px;
 }
 
 div#nome_partido{
