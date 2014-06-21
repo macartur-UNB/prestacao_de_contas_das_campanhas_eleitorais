@@ -80,3 +80,79 @@ input.botao:hover{
 	border-top:1px solid #f8f8f8;
 	border-bottom:1px solid #f8f8f8;
 }
+
+div#perfil_partido{
+	/*border:1px solid blue;*/
+	width:900px;
+	height:450px;
+}
+
+div#informacoes_partido{
+	border-right:3px ridge #666;
+	float:left;
+	width:440px;
+	height:350px;
+	margin:0px 0px 0px 20px;
+}
+
+div#logo_partido{
+	border:thick  groove #666;
+	float:left;
+	width:140px;
+	height:150px;
+	margin:0px 150px 0px 0px;
+}
+
+div#nome_partido{
+	/*border:2px solid green;*/
+	float:right;
+	width:270px;
+	height:30px;
+	margin:-120px 0px 0px 0px;
+}
+
+div#ano_partido{
+	/*border:1px solid green;*/
+	float:right;
+	width:450px;
+	height:150px;
+	margin:-325px -475px 0px 0px;
+}
+
+#gradient-style1
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 180px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#gradient-style1 th
+{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#gradient-style1 td
+{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
+}
+#gradient-style1 tbody tr:hover td
+{
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #339;
+}
+#gradient-style1 tbody a
+{
+	text-decoration: none;
+}

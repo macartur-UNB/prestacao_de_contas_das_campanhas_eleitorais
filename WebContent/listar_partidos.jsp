@@ -25,7 +25,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<p><center>
-					<h4>Abaixo a <b>lista de Partidos</b>.</h4>
+					<h4>Abaixo a <b>lista de Partidos</b></h4>
 				</center></p>
 
 				<center>

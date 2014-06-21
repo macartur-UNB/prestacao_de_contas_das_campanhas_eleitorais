@@ -12,6 +12,8 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css"
+	media="all">
 </head>
 <body>
 
@@ -19,65 +21,77 @@
 
 	<div id="pagina">
 		<div class="titulo_topo">
-			<h3>Partido</h3>
+			<center>
+				<h3>Partido</h3>
+			</center>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-			
-				<h1>${partido.nome}</h1>
+				<div id="perfil_partido">
+					<center></center>
+					<br>
+					<div id="informacoes_partido">
+						<div id="logo_partido">
+							<img src="img/${partido.numero}.jpg" width="140" height="150">
+						</div>
+						<div id="nome_partido">
+							<h3>${partido.nome}</h3>
+						</div>
+						<table>
+							<tr>
+								<td><b><br>Sigla:</b></td>
+								<td><br>${partido.sigla}</td>
+							</tr>
+							<tr>
+								<td><b>Numero:</b></td>
+								<td>${partido.numero}</td>
+							</tr>
+							<tr>
+								<td><b>Deferimento:</b></td>
+								<td>${partido.deferimento}</td>
+							</tr>
+							<tr>
+								<td><b>Link para o site do TSE:</b></td>
+								<td><a
+									href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
+									target="_blank"> ${partido.nome}</a></td>
+							</tr>
+						</table>
+						<div id="ano_partido">
+							<h2>Consulta de Candidatos:</h2>
+							Clique em um dos anos para acessar a lista de candidatos deste
+							Partido.
+							<center>
+								<table id="gradient-style1" summary="Meeting Results">
+									<thead>
+										<tr>
+											<th scope="col"><center>Consulta de Candidatos</center></th>
+										</tr>
+									</thead>
 
-				<table>
-					
-					<tr>
-						<td><b>Sigla:</b></td>
-						<td>${partido.sigla}</td>
-					</tr>
-					
-					<tr>
-						<td><b>Numero:</b></td>
-						<td>${partido.numero}</td>
-					</tr>
-					
-					<tr>
-						<td><b>Deferimento:</b></td>
-						<td>${partido.deferimento}</td>
-					</tr>
-					
-					<tr>
-						<td><b>Link para o site do TSE:</b></td>
-						<td> <a href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}" target="_blank">  Link para o site </a>
-						</td>
-						
-						
-						
-						
-					</tr>
-				</table>
-				<br />
-				
-				<h2>Consulta de Candidatos:</h2>
-				<p>Clique em um dos anos para acessar a lista de candidatos deste Partido.</p>
-				
-				<c:forEach var ="ano" items ="${anos}" >
-					<table border="2" width="300">
-					<tr><td>
-						<c:url var="AnoUrl" value="/mvc">
-							<c:param name="logica" value="VisualizarCandidatosPartido" />												
-							<c:param name="sigla" value="${partido.sigla}" />		
-							<c:param name="ano" value="${ano}" />
-						</c:url>
-						<a href="${AnoUrl}">${ano}</a>
-					</td></tr>
-					</table><br />
-				</c:forEach>
-
-				<br>
+									<c:forEach var="ano" items="${anos}">
+										<tbody>
+											<tr>
+												<td><c:url var="AnoUrl" value="/mvc">
+														<c:param name="logica" value="VisualizarCandidatosPartido" />
+														<c:param name="sigla" value="${partido.sigla}" />
+														<c:param name="ano" value="${ano}" />
+													</c:url>
+													<center>
+														<a href="${AnoUrl}">${ano}</a>
+													</center></td>
+											</tr>
+										</tbody>
+									</c:forEach>
+								</table>
+							</center>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<%@include file="imports/rodape.jsp"%>
-
-
 </body>
 </html>
