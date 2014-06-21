@@ -27,21 +27,25 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h1>
-					<c:out value="${partido.nome}" />
+					<c:url var="url_partido" value="/mvc">
+						<c:param name="logica" value="SelecionarPartido"></c:param>
+						<c:param name="sigla" value="${partido.sigla}"></c:param>
+					</c:url><center>
+						<span id="perfilPartido"><a href="${url_partido}">${partido.nome}</a></span>
+					</center>
 				</h1>
-				<p>
-					Listagem de <b>Candidatos</b>. Clique no candidato desejado para
+				<center><p>
+					Listagem de <b>Candidatos</b> do ano de <b>${ano}</b>. Clique no candidato desejado para
 					visualizar mais informações.
-				</p>
-
+				</p></center>
+				<center>
 				<table id="gradient-style-listaCandidadoPartido" summary="Meeting Results">
 					<thead>
 						<tr>
-							<th scope="col">Candidato</th>
-							<th scope="col">Cargo</th>
-							<th scope="col">Número de Eleição</th>
-							<th scope="col">Ano</th>
-							<th scope="col">Partido</th>
+							<th scope="col"><center>Candidato</center></th>
+							<th scope="col"><center>Nome de Urna</center></th>
+							<th scope="col"><center>Cargo</center></th>
+							<th scope="col"><center>Número de Eleição</center></th>
 						</tr>
 					</thead>
 
@@ -58,16 +62,13 @@
 										<br>
 								</td>
 								<td>
-									${campanha.cargo.descricao}
+									<center>${campanha.nomeDeUrna}</center>
 								</td>
 								<td>
-									${campanha.numeroCandidato}
+									<center>${campanha.cargo.descricao}</center>
 								</td>
 								<td>
-									${campanha.ano}
-								</td>
-								<td>
-									${partido.sigla}
+									<center>${campanha.numeroCandidato}</center>
 								</td>
 							</tr>
 						</tbody>
@@ -80,6 +81,7 @@
 						</tr>
 					</tfoot>
 				</table>
+				</center>
 				<br>
 			</div>
 		</div>

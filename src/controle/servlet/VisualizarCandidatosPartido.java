@@ -19,7 +19,7 @@ public class VisualizarCandidatosPartido implements Logica {
 		
 		String sigla = req.getParameter("sigla");
 		String ano =  req.getParameter("ano");
-		int anos[] = { 2010, 2006, 2002 };
+		//int anos[] = { 2010, 2006, 2002 };
 		
 		try {
 
@@ -31,7 +31,7 @@ public class VisualizarCandidatosPartido implements Logica {
 			
 			Partido partido = controle.getPartido(sigla);
 			
-			req.setAttribute("anos", anos);
+			req.setAttribute("ano", ano);
 			req.setAttribute("listaCampanhas", listaCampanhas);
 			req.setAttribute("partido",partido);
 			return "/visualizar_candidato_partido.jsp";
