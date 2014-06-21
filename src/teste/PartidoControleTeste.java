@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import parse.ParseException;
 import controle.PartidoControle;
-import controle.servlet.RequisitarPartido;
 
 public class PartidoControleTeste extends TemplateTeste {
 	
@@ -53,7 +52,7 @@ public class PartidoControleTeste extends TemplateTeste {
 		this.partidoDAO.cadastrarLista(listaPartidosACadastrar);
 		listaPartidosRecuperados = this.partidoDAO.getLista();
 		
-		assertEquals(listaPartidosRecuperados, this.partidoControle.getListaPartidos());
+		assertEquals(listaPartidosRecuperados, this.partidoControle.getListaTodosPartidos());
 		
 	}
 	
@@ -80,7 +79,7 @@ public class PartidoControleTeste extends TemplateTeste {
 		this.partidoDAO.cadastrarLista(listaPartidos);
 		partidoRecuperado = this.partidoDAO.getPelaSigla("PE1");
 		
-		assertEquals(partidoRecuperado, this.partidoControle.getPartido("PE1"));
+		assertEquals(partidoRecuperado, this.partidoControle.getPelaSigla("PE1"));
 	}
 	
 }

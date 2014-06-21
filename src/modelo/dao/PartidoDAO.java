@@ -19,6 +19,8 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido> 
 			}
 		};
 	}
+	
+	private CampanhaDAO campanhaDAO;
 
 	private static final String NOME_TABELA = "partido";
 	private static final String NUMERO = "numero";
@@ -72,30 +74,20 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido> 
 	}
 
 	public Partido getPelaSigla(String sigla) throws SQLException {
-		Partido partido = new Partido();
 		String comandoSQL = SQL_SELECAO
 				+ " WHERE " + SIGLA + " = '" + sigla + "'";
-
-		this.conexao = new ConexaoBancoDados().getConexao();
-
-		this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
-
-		ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-
-		while (resultadoSQL.next()) {
-			partido.setSigla(resultadoSQL.getString(SIGLA));
-			partido.setNome(resultadoSQL.getString(NOME));
-			partido.setDeferimento(resultadoSQL.getString(DEFERIMENTO));
-			partido.setNumero(resultadoSQL.getInt(NUMERO));
-		}
-
-		return partido;
+		return BuscaBD(comandoSQL);
 	}
-
+	
 	public Partido getPeloNumero(String numero) throws SQLException {
+		String comandoSQL = SQL_SELECAO
+				+ " WHERE " + NUMERO + " = '" + numero + "'";
+		return BuscaBD(comandoSQL);	}
+	
+	private Partido BuscaBD(String comandoSQL) throws SQLException{
+		
 		Partido partido = new Partido();
-		String comandoSQL = SQL_SELECAO + " WHERE " + NUMERO + " = '" + numero
-				+ "' ";
+		
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 	
@@ -108,6 +100,7 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido> 
 				partido.setNome(resultadoSQL.getString(NOME));
 				partido.setDeferimento(resultadoSQL.getString(DEFERIMENTO));
 				partido.setNumero(resultadoSQL.getInt(NUMERO));
+				
 			}
 	
 			if(this.instrucaoSQL != null) {

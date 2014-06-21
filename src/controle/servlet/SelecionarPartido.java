@@ -25,7 +25,7 @@ public class SelecionarPartido implements Logica {
 			if (partido.getSigla().equals("0")) {
 				return "/erro_partido_inexistente.jsp";
 			} else {
-				partido = partidoControle.getPartido(sigla);
+				partido = partidoControle.getPelaSigla(sigla);
 				String linkTSE = trocaDeCaracteresEspeciais(partido);
 				req.setAttribute("partido", partido);
 				req.setAttribute("anos", anos);

@@ -18,7 +18,7 @@ public class RequisitarPartido implements Logica {
 		
 		PartidoControle control = new PartidoControle();
 		try {
-			List<Partido> listaPartidos = control.getListaPartidos();
+			List<Partido> listaPartidos = control.getListaTodosPartidos();
 			
 			int inicio = Integer.parseInt(req.getParameter("inicio"));
 			int qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
