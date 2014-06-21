@@ -19,6 +19,10 @@ public class CampanhaControle {
 	}
 	
 	public ArrayList<Campanha> getListaCampanhasPorSiglaPartidoEAno(String sigla, String ano) throws SQLException{
-		return this.campanhaDAO.getCampanhasPorSiglaPartidoEAno(sigla,ano);
+		return this.campanhaDAO.getCampanhasPorSiglaEAno(sigla,ano);
+	}
+
+	public Campanha getPeloAnoNumeroCodCargoEUf(Campanha campanha) throws SQLException {
+		return this.campanhaDAO.getPeloAnoNumeroCodCargoEUf(campanha);
 	}
 }

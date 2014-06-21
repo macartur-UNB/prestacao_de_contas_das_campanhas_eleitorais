@@ -12,9 +12,7 @@ import modelo.beans.Receita;
 import parse.ParseDAO;
 
 public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> {
-		
-	private DoadorDAO doadorDAO;
-		
+				
 	private static final String NOME_TABELA = "receita";
 	private final String ID = "id_receita";
 	private final String CAMPANHA_ANO = "campanha_ano";
@@ -45,7 +43,6 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 
 	public ReceitaDAO() {
 		super(NOME_TABELA, null);
-		this.doadorDAO = new DoadorDAO();
 	}
 
 	@Override
@@ -119,10 +116,11 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
 				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
-				  + " AND " + CAMPANHA_UF + " = " + campanha.getUf()
-				  + " AND " + CAMPANHA_CARGO + " LIKE '%" 
+				  + " AND " + CAMPANHA_UF + " = '" + campanha.getUf()
+				  + "' AND " + CAMPANHA_CARGO + " LIKE '%" 
 				  + campanha.getCargo().getDescricao() 
 				  + "%'";
+		System.out.println(comandoSQL);
 		return buscaBD(comandoSQL);
 	}
 	
@@ -161,7 +159,6 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 				Doador doador = new Doador();
 				doador.setNome(resultadoSQL.getString(NOME_DOADOR));
 				doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_DOADOR));
-				receita.setDoador(doadorDAO.getPeloNomeOuCpfCnpj(doador));
 				receita.setDoador(doador);
 
 				receita.setData(resultadoSQL.getString(DATA));

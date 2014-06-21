@@ -2,7 +2,6 @@ package controle.servlet;
 
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,8 +17,6 @@ public class SelecionarCandidato implements Logica {
 			throws Exception {
 
 		String tituloEleitoral = req.getParameter("tituloEleitoral");
-
-		RequestDispatcher requestDispatcher;
 
 		CandidatoControle candidatoControl = new CandidatoControle();
 		CampanhaControle campanhaControl = new CampanhaControle();

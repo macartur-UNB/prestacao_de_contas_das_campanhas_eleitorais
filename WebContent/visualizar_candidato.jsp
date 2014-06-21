@@ -48,10 +48,12 @@
 						<tbody>
 							<tr>
 								<td width="50" rowspan="2">
-									<c:url var="AnoUrl" value="/requisitarMovimentacoes">
+									<c:url var="AnoUrl" value="/mvc">
+										<c:param name="logica" value="RequisitarMovimentacoes"></c:param>
 										<c:param name="numero_cand" value="${campanha.numeroCandidato}"></c:param>
 										<c:param name="ano" value="${campanha.ano}"></c:param>
 										<c:param name="cargo_cod" value="${campanha.cargo.codigo}"></c:param>
+										<c:param name="uf" value="${campanha.uf}"></c:param>
 									</c:url>
 									<a href="${AnoUrl}">${campanha.ano}</a></td>
 								<td width="250">

@@ -12,8 +12,6 @@ import modelo.beans.Fornecedor;
 import parse.ParseDAO;
 
 public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
-
-	private FornecedorDAO fornecedorDAO;
 		
 	private static final String NOME_TABELA = "despesa";
 	private final String ID = "id_despesa";
@@ -45,7 +43,6 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 
 	public DespesaDAO() {
 		super(NOME_TABELA, null);
-		this.fornecedorDAO = new FornecedorDAO();
 	}
 
 	@Override
@@ -118,8 +115,8 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 		String comandoSQL = SQL_SELECT + " WHERE "
 				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
 				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
-				  + " AND " + CAMPANHA_UF + " = " + campanha.getUf()
-				  + " AND " + CAMPANHA_CARGO 
+				  + " AND " + CAMPANHA_UF + " = '" + campanha.getUf()
+				  + "' AND " + CAMPANHA_CARGO 
 				  + " LIKE '%" + campanha.getCargo().getDescricao()
 				  + "%'";
 		return buscaBD(comandoSQL);
@@ -159,7 +156,6 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 				Fornecedor fornecedor = new Fornecedor();
 				fornecedor.setNome(resultadoSQL.getString(NOME_FORNECEDOR));
 				fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));
-				despesa.setFornecedor(fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor));
 				despesa.setFornecedor(fornecedor);
 
 				despesa.setData(resultadoSQL.getString(DATA));

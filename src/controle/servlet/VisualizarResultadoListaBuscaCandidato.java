@@ -2,7 +2,6 @@ package controle.servlet;
 
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,8 +15,6 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 			throws Exception {
 		
 		String nome = req.getParameter("nome");
-
-		RequestDispatcher requestDispatcher;
 
 		CandidatoControle control = new CandidatoControle();
 		List<Candidato> listaCandidatos = control.getListaCandidatos(nome);

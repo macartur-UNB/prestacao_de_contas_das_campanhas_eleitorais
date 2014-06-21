@@ -38,6 +38,7 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 	@Override
 	protected IndicesParse<Receita> getIndicesParseReceita2002() {
 		ReceitaIndicesParse receitaIndicesParse = new ReceitaIndicesParse(ANO_2002);
+		receitaIndicesParse.setIndiceCampanhaUf(0);
 		receitaIndicesParse.setIndiceCampanhaNumero(4);
 		receitaIndicesParse.setIndiceCampanhaCargo(2);
 		receitaIndicesParse.setIndiceFormaPagamento(10);
@@ -52,6 +53,7 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 	@Override
 	protected IndicesParse<Receita> getIndicesParseReceita2006() {
 		ReceitaIndicesParse receitaIndicesParse = new ReceitaIndicesParse(ANO_2006);
+		receitaIndicesParse.setIndiceCampanhaUf(4);
 		receitaIndicesParse.setIndiceCampanhaNumero(3);
 		receitaIndicesParse.setIndiceCampanhaCargo(1);
 		receitaIndicesParse.setIndiceTipoMovimentacao(11);
@@ -67,6 +69,7 @@ public class CadastroReceitaParse extends CadastroParseReceitasDespesas<Receita>
 	@Override
 	protected IndicesParse<Receita> getIndicesParseReceita2010() {
 		ReceitaIndicesParse receitaIndicesParse = new ReceitaIndicesParse(ANO_2010);
+		receitaIndicesParse.setIndiceCampanhaUf(1);
 		receitaIndicesParse.setIndiceCampanhaNumero(3);
 		receitaIndicesParse.setIndiceCampanhaCargo(4);
 		receitaIndicesParse.setIndiceTipoMovimentacao(14);

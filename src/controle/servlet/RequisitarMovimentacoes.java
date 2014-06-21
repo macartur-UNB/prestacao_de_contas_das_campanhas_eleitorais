@@ -1,41 +1,32 @@
 package controle.servlet;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controle.MovimentacaoControle;
 import modelo.beans.Campanha;
 import modelo.beans.Cargo;
 import modelo.beans.Despesa;
 import modelo.beans.Receita;
-import modelo.dao.CampanhaDAO;
+import controle.CampanhaControle;
+import controle.MovimentacaoControle;
 
-@WebServlet("/requisitarMovimentacoes")
-public class RequisitarMovimentacoes extends HttpServlet {
-
-	private static final long serialVersionUID = 2421786756015460808L;
+public class RequisitarMovimentacoes implements Logica {
 
 	@Override
-	protected void service(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest req, HttpServletResponse res)
+			throws Exception {
 
-		int ano = Integer.parseInt(request.getParameter("ano"));
-		int numero = Integer.parseInt(request.getParameter("numero_cand"));
-		int cargo_cod = Integer.parseInt(request.getParameter("cargo_cod"));
+		int ano = Integer.parseInt(req.getParameter("ano"));
+		int numero = Integer.parseInt(req.getParameter("numero_cand"));
+		int cargo_cod = Integer.parseInt(req.getParameter("cargo_cod"));
+		String uf = req.getParameter("uf");
 		
-		RequestDispatcher requestDispatcher;
-
 		Cargo cargo = new Cargo();
 		cargo.setCodigo(cargo_cod);
 		
@@ -43,19 +34,18 @@ public class RequisitarMovimentacoes extends HttpServlet {
 		campanha.setNumeroCandidato(numero);
 		campanha.setAno(ano);
 		campanha.setCargo(cargo);
+		campanha.setUf(uf);
 		
-		CampanhaDAO dao = new CampanhaDAO();
+		CampanhaControle controle = new CampanhaControle();
 		
 		try {
-			campanha = dao.getPeloAnoNumeroECodCargo(campanha);
+			campanha = controle.getPeloAnoNumeroCodCargoEUf(campanha);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		if (campanha == null) {
-			requestDispatcher = request
-					.getRequestDispatcher("/erro_candidato_inexistente.jsp");
-			requestDispatcher.forward(request, response);
+			return "/erro_candidato_inexistente.jsp";
 		} else {	
 			DecimalFormatSymbols padraoBrasileiro = new DecimalFormatSymbols(Locale.GERMAN);
 			
@@ -63,8 +53,8 @@ public class RequisitarMovimentacoes extends HttpServlet {
 			String despesaTot = df.format(campanha.getDespesaMaxDeclarada());  
 			despesaTot = "R$ " + despesaTot;
 			
-			request.setAttribute("campanha", campanha);
-			request.setAttribute("depesaTot", despesaTot);
+			req.setAttribute("campanha", campanha);
+			req.setAttribute("depesaTot", despesaTot);
 			
 			MovimentacaoControle control = new MovimentacaoControle();
 			
@@ -81,12 +71,11 @@ public class RequisitarMovimentacoes extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			request.setAttribute("listaReceitas", listaReceita);
-			request.setAttribute("listaDespesas", listaDespesa);
+			req.setAttribute("listaReceitas", listaReceita);
+			req.setAttribute("listaDespesas", listaDespesa);
+
 		
-			requestDispatcher = request
-					.getRequestDispatcher("/visualizar_movimentacoes.jsp");
-			requestDispatcher.forward(request, response);
+			return "/visualizar_movimentacoes.jsp";
 		}
 	
 	}
