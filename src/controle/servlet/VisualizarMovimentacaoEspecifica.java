@@ -8,7 +8,7 @@ import modelo.beans.Despesa;
 import modelo.beans.Receita;
 import controle.MovimentacaoControle;
 
-public class VisualizarMovimentacao implements Logica {
+public class VisualizarMovimentacaoEspecifica implements Logica {
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)

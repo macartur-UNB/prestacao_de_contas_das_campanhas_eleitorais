@@ -16,7 +16,7 @@ import modelo.beans.Receita;
 import controle.CampanhaControle;
 import controle.MovimentacaoControle;
 
-public class RequisitarMovimentacoes implements Logica {
+public class RequisitarMovimentacoesDeCandidato implements Logica {
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
@@ -59,14 +59,17 @@ public class RequisitarMovimentacoes implements Logica {
 			MovimentacaoControle control = new MovimentacaoControle();
 			
 			List<Receita> listaReceita = null;
+			List<Despesa> listaDespesa = null;
+
 			try {
 				listaReceita = control.getListaReceitas(campanha);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			List<Despesa> listaDespesa = null;
-			try {
 				listaDespesa = control.getListaDespesas(campanha);
+				
+				if(ano == 2002){
+					for(Receita receita : listaReceita)
+						receita.setTipoMovimentacao("Doação");
+				}
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -49,7 +49,7 @@
 							<tr>
 								<td width="50" rowspan="2">
 									<c:url var="AnoUrl" value="/mvc">
-										<c:param name="logica" value="RequisitarMovimentacoes"></c:param>
+										<c:param name="logica" value="RequisitarMovimentacoesDeCandidato"></c:param>
 										<c:param name="numero_cand" value="${campanha.numeroCandidato}"></c:param>
 										<c:param name="ano" value="${campanha.ano}"></c:param>
 										<c:param name="cargo_cod" value="${campanha.cargo.codigo}"></c:param>

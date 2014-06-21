@@ -120,7 +120,6 @@ public class ReceitaDAO extends BasicoDAO<Receita> implements ParseDAO<Receita> 
 				  + "' AND " + CAMPANHA_CARGO + " LIKE '%" 
 				  + campanha.getCargo().getDescricao() 
 				  + "%'";
-		System.out.println(comandoSQL);
 		return buscaBD(comandoSQL);
 	}
 	
