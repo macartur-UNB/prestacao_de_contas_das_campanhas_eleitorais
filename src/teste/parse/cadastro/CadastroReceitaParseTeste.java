@@ -16,7 +16,7 @@ import teste.TemplateTeste;
 
 public class CadastroReceitaParseTeste extends TemplateTeste {
 
-	private static final String expected = null;
+	//private static final String expected = null;
 	private CadastroReceitaParse cadastro1;
 	private CadastroReceitaParse cadastro2;
 	private CadastroReceitaParse cadastro3;
@@ -48,6 +48,7 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 	@Test
 	public void deveRetornarUmaReceitaCadastradoPara2002() throws ParseException, SQLException {
 		String campo[] = new String[50];
+		campo[0] = "DF";
 		campo[4] = "123";
 		campo[2] = "Cargo";
 		campo[10] = "FormaPag";
@@ -66,6 +67,7 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 	@Test
 	public void deveRetornarUmaReceitaCadastradoPara2006() throws ParseException, SQLException {
 		String campo[] = new String[50];
+		campo[4] = "DF";
 		campo[3] = "123";
 		campo[1] = "Cargo";
 		campo[11] = "TipoPag";
@@ -86,6 +88,7 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 	@Test
 	public void deveRetornarUmaReceitaCadastradoPara2010() throws ParseException, SQLException {
 		String campo[] = new String[50];
+		campo[1] = "DF";
 		campo[3] = "123";
 		campo[4] = "Cargo";
 		campo[14] = "TipoPag";

@@ -28,11 +28,13 @@ public class ConexaoBancoDadosTeste {
 	@Test
 	public void naoDeveLancarExcecaoAoCriarEDeletarOBancoDeTestes() throws IOException, SQLException {
 		String diretorioSQL = new File("./lib/").getCanonicalPath();
-		String arquivoSQL = diretorioSQL + "/MER_Parse_SQL.sql";			
+		String arquivoSQL1 = diretorioSQL + "/mer_campanha.sql";
+		String arquivoSQL2 = diretorioSQL + "/mer_movimentacoes.sql";			
 		this.conexaoBancoDados = new ConexaoBancoDados();
 		this.conexaoBancoDados.criarBanco(NOME_BANCO_TESTES);
 		this.conexaoBancoDados.alterarBanco(NOME_BANCO_TESTES);
-		this.conexaoBancoDados.importarSQL(arquivoSQL);
+		this.conexaoBancoDados.importarSQL(arquivoSQL1);
+		this.conexaoBancoDados.importarSQL(arquivoSQL2);
 		this.conexaoBancoDados.deletarBanco();
 	}
 	
