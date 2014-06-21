@@ -1,5 +1,6 @@
 package controle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import modelo.beans.Campanha;
@@ -19,23 +20,41 @@ public class MovimentacaoControle {
 	}
 
 	public List<Receita> getListaReceitas(Campanha campanha) throws Exception {
+
+		ArrayList<Receita> listaReceita = new ArrayList<>();
+		
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
 				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO)
-				|| (campanha.getUf()).equals(Campanha.STRING_VAZIO))
-			return null;
-		else
-			return this.receitaDAO.getPorAnoNumeroCargoUf(campanha);
+				|| (campanha.getUf()).equals(Campanha.STRING_VAZIO)){
+			listaReceita =  null;
+			
+		}else{
+			listaReceita = this.receitaDAO.getPorAnoNumeroCargoUf(campanha);
+			
+			if(campanha.getAno() == 2002){
+				for(Receita receita : listaReceita)
+					receita.setTipoMovimentacao("Receita");
+			}
+			
+		}
+		
+		return listaReceita;
 	}
 
 	public List<Despesa> getListaDespesas(Campanha campanha) throws Exception {
+		
+		ArrayList<Despesa> listaDespesa = new ArrayList<>();
+		
 		if((campanha.getCargo().getDescricao().equals(Campanha.STRING_VAZIO)) 
 				|| (campanha.getAno().equals(Campanha.INTEGER_VAZIO)) 
 				|| (campanha.getNumeroCandidato()).equals(Campanha.INTEGER_VAZIO)
 				|| (campanha.getUf()).equals(Campanha.STRING_VAZIO))
-			return null;
+			listaDespesa =  null;
 		else
-			return this.despesaDAO.getPorAnoNumeroCargoUf(campanha);
+			listaDespesa =  this.despesaDAO.getPorAnoNumeroCargoUf(campanha);
+		
+		return listaDespesa;
 	}
 
 	public Receita getReceitaPeloId(int id) throws Exception {
