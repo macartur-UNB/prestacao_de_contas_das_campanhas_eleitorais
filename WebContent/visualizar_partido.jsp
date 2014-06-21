@@ -25,85 +25,97 @@
 				<h3>Partido</h3>
 			</center>
 		</div>
-		
+
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<div id="perfil_partido">
-					<center><h1>${partido.nome}</h1></center>
+					<center>
+						<h1>${partido.nome}</h1>
+					</center>
 					<br />
-					
+
 					<div id="informacoes_partido">
 						<div id="logo_partido">
-							<a href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}" target="_blank">
-							<img src="img/partidos/${siglaUnder}.jpg" width="140" height="150" />
+							<a
+								href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
+								target="_blank"> <img src="img/partidos/${siglaUnder}.jpg"
+								width="140" height="150" />
 							</a>
 						</div>
-						
+
 						<center>
 
-						<table>
+							<table>
 
-							<tr>
-								<td><b>Sigla:</b></td>
-								<td>${partido.sigla}</td>
-							</tr>
-							<tr>
-								<td><b>Número:</b></td>
-								<td>${partido.numero}</td>
-							</tr>
-							
-							<c:choose>
-							<c:when test="${not empty partido.deferimento}">
 								<tr>
-									<td><b>Deferimento:</b></td>
-									<td>${partido.deferimento}</td>
+									<td><b>Sigla:</b></td>
+									<td>${partido.sigla}</td>
 								</tr>
 								<tr>
-									<td><b>Mais informações:</b></td>
-									<td><a
-										href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
-										target="_blank"> clique aqui</a></td>
+									<td><b>Número:</b></td>
+									<td>${partido.numero}</td>
 								</tr>
-							</c:when>
-							<c:otherwise>
-								<tr><br /> </tr>
-								<tr><br /> </tr>
-							</c:otherwise>
-							</c:choose>
-						</table>
-						</center>
-						
-					<div id="ano_partido">
-						<h2 align="center">Consulta de Candidatos</h2>
-							
-						<center>
-						<p><i>Clique em um dos anos para acessar <br/>
-							a lista de candidatos deste Partido. </i></p>
-	
-							
-							<table id="gradient-style1" summary="Meeting Results">
-								<thead>
-									<tr>
-										<th scope="col"><center>Ano</center></th>
-									</tr>
-								</thead>
 
-								<c:forEach var="ano" items="${anos}">
-									<tbody>
+								<c:choose>
+									<c:when test="${not empty partido.deferimento}">
 										<tr>
-											<td><c:url var="AnoUrl" value="/mvc">
-													<c:param name="logica" value="VisualizarCandidatosPartido" />
-													<c:param name="sigla" value="${partido.sigla}" />
-													<c:param name="ano" value="${ano}" />
-												</c:url>
-												<center>
-													<a href="${AnoUrl}">${ano}</a>
-												</center></td>
+											<td><b>Deferimento:</b></td>
+											<td>${partido.deferimento}</td>
 										</tr>
-									</tbody>
-								</c:forEach>
+										<tr>
+											<td><b>Mais informações:</b></td>
+											<td><span id="perfilPartido"><a
+													href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
+													target="_blank"> clique aqui</a></span></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<br />
+										</tr>
+										<tr>
+											<br />
+										</tr>
+									</c:otherwise>
+								</c:choose>
 							</table>
 						</center>
+
+						<div id="ano_partido">
+							<h2 align="center">Consulta de Candidatos</h2>
+
+							<center>
+								<p>
+									<i>Clique em um dos anos para acessar <br /> a lista de
+										candidatos deste Partido.
+									</i>
+								</p>
+
+
+								<table id="gradient-style-perfilPartido"
+									summary="Meeting Results">
+									<thead>
+										<tr>
+											<th scope="col"><center>Ano</center></th>
+										</tr>
+									</thead>
+
+									<c:forEach var="ano" items="${anos}">
+										<tbody>
+											<tr>
+												<td><c:url var="AnoUrl" value="/mvc">
+														<c:param name="logica" value="VisualizarCandidatosPartido" />
+														<c:param name="sigla" value="${partido.sigla}" />
+														<c:param name="ano" value="${ano}" />
+													</c:url>
+													<center>
+														<a href="${AnoUrl}">${ano}</a>
+													</center></td>
+											</tr>
+										</tbody>
+									</c:forEach>
+								</table>
+							</center>
 						</div>
 					</div>
 				</div>

@@ -27,9 +27,11 @@ public class VisualizarCandidatosPartido implements Logica {
 			Partido partido = controle.getPelaSigla(sigla);
 
 			ArrayList<Campanha> listaCampanhas = new ArrayList<>();
+
 			listaCampanhas = campanhaControle
-					.getListaCampanhasPorSiglaPartidoEAno(sigla, ano);
+					.getListaCampanhasPorSiglaPartidoEAno(sigla,ano);
 						
+			req.setAttribute("ano", ano);
 			req.setAttribute("listaCampanhas", listaCampanhas);
 			req.setAttribute("partido",partido);
 			return "/visualizar_candidato_partido.jsp";

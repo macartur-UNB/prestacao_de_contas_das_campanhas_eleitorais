@@ -123,8 +123,12 @@ div#ano_partido{
 	margin:-325px -475px 0px 0px;
 }
 
-#gradient-style1
-{
+#perfilPartido a:link {text-decoration: none; color: black;}
+#perfilPartido a:active {text-decoration: none; color: black;}
+#perfilPartido a:visited {text-decoration: none; color: black;}
+#perfilPartido a:hover {text-decoration: none; color: blue;}
+
+#gradient-style-perfilPartido{
 	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
 	font-size: 12px;
 	margin: 45px;
@@ -133,8 +137,7 @@ div#ano_partido{
 	border-collapse: collapse;
 }
 
-#gradient-style1 th
-{
+#gradient-style-perfilPartido th{
 	font-size: 13px;
 	font-weight: normal;
 	padding: 8px;
@@ -143,20 +146,59 @@ div#ano_partido{
 	border-bottom: 1px solid #fff;
 	color: #039;
 }
-#gradient-style1 td
-{
+
+#gradient-style-perfilPartido td{
 	padding: 8px; 
 	border-bottom: 1px solid #fff;
 	color: #669;
 	border-top: 1px solid #fff;
 	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
 }
-#gradient-style1 tbody tr:hover td
-{
+
+#gradient-style-perfilPartido tbody tr:hover td{
 	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
 	color: #339;
 }
-#gradient-style1 tbody a
-{
-	text-decoration: none;
+
+#gradient-style-perfilPartido tbody a:link {text-decoration: none; color: #000099}
+#gradient-style-perfilPartido tbody a:active {text-decoration: none; color: #000099}
+#gradient-style-perfilPartido tbody a:visited {text-decoration: none; color: #000099}
+#gradient-style-perfilPartido tbody a:hover {text-decoration: underline; color: #000099}
+
+
+#gradient-style-listaCandidadoPartido{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 780px;
+	text-align: left;
+	border-collapse: collapse;
 }
+
+#gradient-style-listaCandidadoPartido th{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+
+#gradient-style-listaCandidadoPartido td{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
+}
+
+#gradient-style-listaCandidadoPartido tbody tr:hover td{
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #339;
+}
+
+#gradient-style-listaCandidadoPartido tbody a:link {text-decoration: none; color: #000099}
+#gradient-style-listaCandidadoPartido tbody a:active {text-decoration: none; color: #000099}
+#gradient-style-listaCandidadoPartido tbody a:visited {text-decoration: none; color: #000099}
+#gradient-style-listaCandidadoPartido tbody a:hover {text-decoration: underline; color: #000099}
