@@ -27,7 +27,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h1>
-					<c:out value="${campanha.nomeDeUrna}"/>
+					<c:out value="${campanha.nomeDeUrna}" />
 				</h1>
 
 				<!-- Mostrar na tela os dados do Candidato -->
@@ -35,80 +35,93 @@
 				<table>
 					<tr>
 						<td width="200"><b>Nome do Candidato:</b></td>
-						<td>
-						<c:out value="${campanha.candidato.nome}"/>
-						</td>
+						<td><c:out value="${campanha.candidato.nome}" /></td>
 					</tr>
 					<tr>
 						<td><b>Número do Candidato:</b></td>
-						<td>
-						<c:out value="${campanha.numeroCandidato}"/>
-						</td>
+						<td><c:out value="${campanha.numeroCandidato}" /></td>
 					</tr>
 					<tr>
 						<td><b>Cargo Pleiteado:</b></td>
-						<td>
-						<c:out value="${campanha.cargo.descricao}"/>
-						</td>
+						<td><c:out value="${campanha.cargo.descricao}" /></td>
 					</tr>
 					<tr>
 						<td><b>Ano:</b></td>
-						<td>
-						<c:out value="${campanha.ano}"/>
-						</td>
+						<td><c:out value="${campanha.ano}" /></td>
 					</tr>
 					<tr>
 						<td><b>Resultado:</b></td>
-						<td>
-						<c:out value="${campanha.resultado.descricao}"/>
-						</td>
+						<td><c:out value="${campanha.resultado.descricao}" /></td>
 					</tr>
 					<tr>
 						<td><b>Despesa Máxima Declarada:</b></td>
-						<td>
-						<c:out value="${depesaTot}"/>
-						</td>
+						<td><c:out value="${depesaTot}" /></td>
 					</tr>
 				</table>
-				
+
 				<!-- Tabela de receitas -->
 				<h4>Receitas:</h4>
-				
+
 				<c:choose>
-				  <c:when test="${empty listaReceitas}">
-					  <p> Não há receitas declaradas. </p>
-				  </c:when>
-				  <c:otherwise>
-				    <table border="2" cellpadding="10" align="center">
-					  <tr>
-						<th width="100">Data</th>
-						<th width="600">Tipo de Receita</th>
-						<th width="100">Valor</th>
-					  </tr>
-					  
-					  <c:forEach var="receita" items="${listaReceitas}">
-					  
-				        <c:url  var="movimentacaoUrl" value="/mvc">
-					       <c:param name="logica" value="VisualizarMovimentacaoEspecifica"></c:param>
-					       <c:param name="movimentacao_tipo" value="receita"></c:param>
-					       <c:param name="movimentacao_id" value="${receita.id}"></c:param>
-					    </c:url>
-					    
-					    <tr>
-					      <td><a href="${movimentacaoUrl}">
-					      ${receita.data}
-					      </a></td>
-					      <td><a href="${movimentacaoUrl}">
-					      ${receita.tipoMovimentacao}
-					      </a></td>
-					      <td><a href="${movimentacaoUrl}">
-					      R$ ${receita.valor}
-					      </a></td>
-					    </tr>
-					  </c:forEach>
-					  
-					</table>
-				  </c:otherwise>
+					<c:when test="${empty listaReceitas}">
+						<p>Não há receitas declaradas.</p>
+					</c:when>
+					<c:otherwise>
+						<table border="2" cellpadding="10" align="center">
+							<tr>
+								<th width="100">Data</th>
+								<th width="600">Tipo de Receita</th>
+								<th width="100">Valor</th>
+							</tr>
+
+							<c:forEach var="receita" items="${listaReceitas}">
+								<tr>
+									<td>${receita.data}</td>
+									<td><details> <summary>${receita.tipoMovimentacao}</summary>
+										<table border="0">
+											<tr>
+												<td colspan="2">Nome do Doador: <c:out
+														value="${receita.doador.nome}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="1">CPJ/CNPJ do Doador: <c:out
+														value="${receita.doador.cpf_cnpj}" />
+												</td>
+												<td colspan="1">UF do Doador: <c:out
+														value="${receita.doador.uf}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">Situação Cadastral do Doador: <c:out
+														value="${receita.doador.situacaoCadastral}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">Número do Documento: <c:out
+														value="${receita.numeroDocumento}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="1">Forma de Pagamento: <c:out
+														value="${receita.formaPagamento}" />
+												</td>
+												<td colspan="1">Recibo Eleitoral: <c:out
+														value="${receita.reciboEleitoral}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" width="600" align="justify">Descrição:
+													<c:out value="${receita.descricao}" />
+												</td>
+											</tr>
+										</table>
+										</details></td>
+									<td>R$ ${receita.valor}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:otherwise>
 				</c:choose>
 
 
@@ -116,42 +129,65 @@
 				<h4>Despesas:</h4>
 
 				<c:choose>
-				  <c:when test="${empty listaDespesas}">
-					  <p> Não há despesas declaradas. </p>
-				  </c:when>
-				  <c:otherwise>
-			        <table border="2" cellpadding="10" align="center">
-					  <tr>
-						<th width="100">Data</th>
-						<th width="600">Tipo de Despesa</th>
-						<th width="100">Valor</th>
-					  </tr>
-					  
-					  <!-- Elementos da tabela -->
-					  <c:forEach var="despesa" items="${listaDespesas}">
-					    
-					    <c:url  var="movimentacaoUrl" value="/mvc">
-					       <c:param name="logica" value="VisualizarMovimentacaoEspecifica"></c:param>
-					       <c:param name="movimentacao_tipo" value="despesa"></c:param>
-					       <c:param name="movimentacao_id" value="${despesa.id}"></c:param>
-					    </c:url>
-					    
-					    <tr>
-					      <td><a href="${movimentacaoUrl}">
-					      ${despesa.data}
-					      </a></td>
-					      <td><a href="${movimentacaoUrl}">
-					      ${despesa.tipoMovimentacao}
-					      </a></td>
-					      <td><a href="${movimentacaoUrl}">
-					      R$ ${despesa.valor}
-					      </a></td>
-					    </tr>
-					  </c:forEach>
-					</table>
-				  </c:otherwise>
+					<c:when test="${empty listaDespesas}">
+						<p>Não há despesas declaradas.</p>
+					</c:when>
+					<c:otherwise>
+						<table border="2" cellpadding="10" align="center">
+							<tr>
+								<th width="100">Data</th>
+								<th width="600">Tipo de Despesa</th>
+								<th width="100">Valor</th>
+							</tr>
+
+							<!-- Elementos da tabela -->
+							<c:forEach var="despesa" items="${listaDespesas}">
+								<tr>
+									<td>${despesa.data}</td>
+									<td><details> <summary>${despesa.tipoMovimentacao}</summary>
+										<table border="0">
+											<tr>
+												<td colspan="2">Nome do Doador: <c:out
+														value="${despesa.fornecedor.nome}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="1">CPJ/CNPJ do Doador: <c:out
+														value="${despesa.fornecedor.cpf_cnpj}" />
+												</td>
+												<td colspan="1">UF do Doador: <c:out
+														value="${despesa.fornecedor.uf}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">Situação Cadastral do Doador: <c:out
+														value="${despesa.fornecedor.situacaoCadastral}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">Número do Documento: <c:out
+														value="${despesa.numeroDocumento}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">Forma de Pagamento: <c:out
+														value="${despesa.formaPagamento}" />
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2" width="600" align="justify">Descrição:
+													<c:out value="${despesa.descricao}" />
+												</td>
+											</tr>
+										</table>
+										</details></td>
+									<td>R$ ${despesa.valor}</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</c:otherwise>
 				</c:choose>
-				
+
 			</div>
 		</div>
 	</div>
