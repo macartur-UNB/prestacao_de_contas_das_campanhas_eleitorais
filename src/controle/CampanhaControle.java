@@ -15,7 +15,7 @@ public class CampanhaControle {
 	}
 	
 	public ArrayList<Campanha> getListaCampanhas(Candidato candidato) throws SQLException {
-		return this.campanhaDAO.getCampanhas(candidato);
+		return this.campanhaDAO.getCampanhasPeloTituloEleitoral(candidato);
 	}
 	
 	public ArrayList<Campanha> getListaCampanhasPorSiglaPartidoEAno(String sigla, String ano) throws SQLException{

@@ -122,7 +122,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_CANDIDATO));
 	}
 
-	public ArrayList<Campanha> getCampanhas(Candidato candidato) throws SQLException {
+	public ArrayList<Campanha> getCampanhasPeloTituloEleitoral(Candidato candidato) throws SQLException {
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 		String comandoSQL = SQL_SELECT 
 				+ " USE INDEX (" + INDEX_CANDIDATO + ")"

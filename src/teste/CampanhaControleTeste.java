@@ -9,15 +9,18 @@ import modelo.beans.Cargo;
 import modelo.beans.Partido;
 import modelo.beans.Resultado;
 import modelo.dao.CampanhaDAO;
+import modelo.dao.CandidatoDAO;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-//import controle.CampanhaControle;
+import controle.CampanhaControle;
 
 public class CampanhaControleTeste extends TemplateTeste {
 	
 	private CampanhaDAO campanhaDAO;
-	//private CampanhaControle campanhaControle;
+	private CandidatoDAO candidatoDAO;
+	private CampanhaControle campanhaControle;
 	private Candidato candidato;
 	private Partido partido1;
 	private Campanha campanha1;
@@ -31,7 +34,8 @@ public class CampanhaControleTeste extends TemplateTeste {
 	@Override
 	public void beforeTest() throws Exception {
 		this.campanhaDAO = new CampanhaDAO();
-		//this.campanhaControle = new CampanhaControle();
+		this.candidatoDAO = new CandidatoDAO();
+		this.campanhaControle = new CampanhaControle();
 		this.campanha1 = new Campanha();
 		this.partido1 = new Partido();
 		this.candidato = new Candidato();
@@ -53,12 +57,15 @@ public class CampanhaControleTeste extends TemplateTeste {
 	public void deveRetornarUmaListaDeCampanhasDeUmDeterminadoCandidato() throws SQLException {
 		
 		ArrayList<Campanha> listaCampanhas = new ArrayList<>();
+		ArrayList<Candidato> listaCandidato = new ArrayList<>();
+
 		
 		this.candidato.setNome("CANDIDATO");
 		this.candidato.setTituloEleitoral("5532424149");
+		listaCandidato.add(candidato);
 		
 		this.resultado1.setCodigo(1);
-		this.resultado1.setDescricao("NÃO ELEITO");
+		this.resultado1.setDescricao("NAO ELEITO");
 		this.cargo1.setCodigo(2);
 		this.cargo1.setDescricao("DEPUTADO DISTRITAL");
 		this.partido1.setSigla("SGL");
@@ -98,9 +105,13 @@ public class CampanhaControleTeste extends TemplateTeste {
 		listaCampanhas.add(campanha2);
 		
 		this.campanhaDAO.cadastrarLista(listaCampanhas);
+		this.candidatoDAO.cadastrarLista(listaCandidato);
 		
-		//Assert.assertEquals(this.campanhaDAO.getCampanhas(candidato), this.campanhaControle.getListaCampanhas(candidato));
-		
+		Assert.assertEquals(this.campanhaDAO.getCampanhasPeloTituloEleitoral(candidato), this.campanhaControle.getListaCampanhas(candidato));
+		Assert.assertEquals(this.campanhaDAO.getCampanhasPorSiglaEAno("SGLL", "2006"), this.campanhaControle.getListaCampanhasPorSiglaPartidoEAno("SGLL", "2006"));
+		Assert.assertEquals(this.campanhaDAO.getPeloAnoNumeroCodCargoEUf(campanha1), this.campanhaControle.getPeloAnoNumeroCodCargoEUf(campanha1));
+		Assert.assertNotEquals(this.campanhaDAO.getPeloAnoNumeroCodCargoEUf(campanha1), this.campanhaControle.getPeloAnoNumeroCodCargoEUf(campanha2));
+
 	}
 
 	
