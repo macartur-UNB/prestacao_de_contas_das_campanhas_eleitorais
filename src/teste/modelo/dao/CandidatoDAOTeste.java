@@ -113,7 +113,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	@Test
 	public void testeGetCandidatoComUmTituloVazio() throws Exception{
 		LinkedList<Candidato> LK = null;
-		LK = candidatoDAO.getLista(null);
+		LK = candidatoDAO.getListaPeloNome(null);
 		
 		Assert.assertEquals(0,LK.size());
 	}	

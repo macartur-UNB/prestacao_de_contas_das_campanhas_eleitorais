@@ -48,10 +48,6 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	
 	public CampanhaDAO() {
 		super(NOME_TABELA, null);
-		this.candidatoDAO = new CandidatoDAO();
-		this.cargoDAO = new CargoDAO();
-		this.partidoDAO = new PartidoDAO();
-		this.resultadoDAO = new ResultadoDAO();
 	}
 	
 	@Override
@@ -62,6 +58,11 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	@Override
 	protected String getSqlSelect() {
 		return SQL_SELECT;
+	}
+	
+	public String getSqlSelectNomeUrna(String nome) {
+		return "SELECT " + TITULO_CANDIDATO + " FROM " + NOME_TABELA
+		                 + " WHERE " +  NOME_URNA + " LIKE '%" + nome + "%'";
 	}
 
 	@Override
@@ -133,6 +134,8 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	}
 	
 	public ArrayList<Campanha> getCampanhasPorSiglaEAno(String sigla, String ano) throws SQLException {
+		this.partidoDAO = new PartidoDAO();
+		
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
 		Partido partido = this.partidoDAO.getPelaSigla(sigla);
 		String comandoSQL = SQL_SELECT 
@@ -163,6 +166,10 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	public ArrayList<Campanha> buscaBD(String SQL) throws SQLException {
 
 		ArrayList<Campanha> listaCampanha = new ArrayList<>();
+		this.candidatoDAO = new CandidatoDAO();
+		this.cargoDAO = new CargoDAO();
+		this.partidoDAO = new PartidoDAO();
+		this.resultadoDAO = new ResultadoDAO();
 
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
@@ -190,7 +197,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 						resultadoDAO.getPeloCod(resultadoSQL.getInt(COD_RESULTADO)));
 				campanha.setUf(resultadoSQL.getString(UF));
 				
-				campanha.setCandidato(candidatoDAO.getCandidato(resultadoSQL.getString(TITULO_CANDIDATO)));
+				campanha.setCandidato(candidatoDAO.getCandidatoPeloTitulo(resultadoSQL.getString(TITULO_CANDIDATO)));
 				if (campanha != null) listaCampanha.add(campanha);
 			}
 
@@ -202,7 +209,6 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 
 		return listaCampanha;
 	}
-
 
 		
 }

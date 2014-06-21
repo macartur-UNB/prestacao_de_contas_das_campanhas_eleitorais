@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import modelo.beans.Candidato;
 
 public class CandidatoDAO extends BasicoDAO<Candidato> {
-
+	
 	public enum Comparacao implements Comparator<Candidato> {
 		TITULO_ELEITORAL {
 			@Override
@@ -20,6 +20,8 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 			}
 		};
 	}
+	
+	private CampanhaDAO campanhaDAO;
 
 	private static final String NOME_TABELA = "candidato";
 	private final String TITULO_ELEITORAL = "titulo_eleitoral";
@@ -66,7 +68,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		}
 	}
 
-	public Candidato getCandidato(String tituloEleitoral) {
+	public Candidato getCandidatoPeloTitulo(String tituloEleitoral) {
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 		String comandoSQL = SQL_SELECT + " WHERE " + TITULO_ELEITORAL + " = '"
@@ -83,11 +85,17 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		}
 	}
 
-	public LinkedList<Candidato> getLista(String nome) {
+	public LinkedList<Candidato> getListaPeloNome(String nome) {
+		
+		this.campanhaDAO = new CampanhaDAO();
 
 		LinkedList<Candidato> listaCandidato = new LinkedList<>();
 		String comandoSQL = SQL_SELECT + " USE INDEX (" + INDEX_NOME + ")"
-				+ " WHERE " + NOME + " LIKE '%" + nome + "%' ";
+				+ " WHERE " + NOME + " LIKE '%" + nome + "%' "
+				+ " OR "
+				+ TITULO_ELEITORAL + " IN (" + this.campanhaDAO.getSqlSelectNomeUrna(nome)
+				+ ")";
+		System.out.println(comandoSQL);
 		try {
 			listaCandidato = buscaBD(comandoSQL);
 		} catch (SQLException e) {
