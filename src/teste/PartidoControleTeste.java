@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import parse.ParseException;
 import controle.PartidoControle;
+import controle.servlet.RequisitarPartido;
 
 public class PartidoControleTeste extends TemplateTeste {
 	
@@ -81,4 +82,5 @@ public class PartidoControleTeste extends TemplateTeste {
 		
 		assertEquals(partidoRecuperado, this.partidoControle.getPartido("PE1"));
 	}
+	
 }
