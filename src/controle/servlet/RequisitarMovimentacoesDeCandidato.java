@@ -24,6 +24,14 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 			throws Exception {
 		
 		Campanha campanhaBusca = constroiCampanha(req);
+		
+		int inicioR = Integer.parseInt(req.getParameter("inicioR"));
+		int qtdPorPaginaR = Integer.parseInt(req.getParameter("qtdPorPaginaR"));
+		boolean verTodosR = Boolean.parseBoolean(req.getParameter("verTodosR"));
+		
+		int inicioD = Integer.parseInt(req.getParameter("inicioD"));
+		int qtdPorPaginaD = Integer.parseInt(req.getParameter("qtdPorPaginaD"));
+		boolean verTodosD = Boolean.parseBoolean(req.getParameter("verTodosD"));
 				
 		try {
 			
@@ -43,12 +51,30 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 						movimentacaoControle.getListaReceitas(campanha);
 				List<Despesa> listaDespesa = 
 						movimentacaoControle.getListaDespesas(campanha);
+				int indiceR = movimentacaoControle.geraIndiceDaListaR(listaReceita,qtdPorPaginaR);
+				int qtdDePPR = movimentacaoControle.geraIndiceDePaginacaoR(listaReceita);
+				int indiceD = movimentacaoControle.geraIndiceDaListaD(listaDespesa,qtdPorPaginaD);
+				int qtdDePPD = movimentacaoControle.geraIndiceDePaginacaoD(listaDespesa);
 				
 				req.setAttribute("listaReceitas", listaReceita);
 				req.setAttribute("listaDespesas", listaDespesa);
 				
 				req.setAttribute("campanha", campanha);
 				req.setAttribute("depesaTot", despesaTot);
+				
+				req.setAttribute("inicioR", inicioR);
+				if(verTodosR)
+					qtdPorPaginaR = listaReceita.size();
+				req.setAttribute("qtdPorPaginaR", qtdPorPaginaR);
+				req.setAttribute("indiceR", indiceR);
+				req.setAttribute("qtdDePPR", qtdDePPR);
+				
+				req.setAttribute("inicioD", inicioD);
+				if(verTodosD)
+					qtdPorPaginaD = listaDespesa.size();
+				req.setAttribute("qtdPorPaginaD", qtdPorPaginaD);
+				req.setAttribute("indiceD", indiceD);
+				req.setAttribute("qtdDePPD", qtdDePPD);			
 
 				return "/visualizar_movimentacoes.jsp";
 			}

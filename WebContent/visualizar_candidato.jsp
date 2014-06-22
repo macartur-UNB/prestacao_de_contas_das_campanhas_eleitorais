@@ -38,32 +38,38 @@
 						<td><c:out value="${candidato.tituloEleitoral}" /></td>
 					</tr>
 				</table>
-				<br/>
-				
-				<p>Clique no ano para o qual deseja visualizar a prestação de contas deste candidato:</p>
+				<br />
+
+				<p>Clique no ano para o qual deseja visualizar a prestação de
+					contas deste candidato:</p>
 				<!-- Anos em que ele concorreu -->
 				<c:forEach var="campanha" items="${campanhas}">
 
 					<table border="2">
 						<tbody>
 							<tr>
-								<td width="50" rowspan="2">
-									<c:url var="AnoUrl" value="/mvc">
-										<c:param name="logica" value="RequisitarMovimentacoesDeCandidato"></c:param>
-										<c:param name="numero_cand" value="${campanha.numeroCandidato}"></c:param>
-										<c:param name="ano" value="${campanha.ano}"></c:param>
-										<c:param name="cargo_cod" value="${campanha.cargo.codigo}"></c:param>
-										<c:param name="uf" value="${campanha.uf}"></c:param>
-									</c:url>
-									<a href="${AnoUrl}">${campanha.ano}</a></td>
-								<td width="250">
-									<c:url var="partidoUrl" value="/mvc">
-										<c:param name="logica" value="SelecionarPartido"></c:param>
-										<c:param name="sigla" value="${campanha.partido.sigla}"></c:param>
-									</c:url>
-									<b>Partido:</b> <a href="${partidoUrl}">${campanha.partido.sigla}</a>
+								<td width="50" rowspan="2"><c:url var="AnoUrl" value="/mvc">
+										<c:param name="logica"
+											value="RequisitarMovimentacoesDeCandidato" />
+										<c:param name="numero_cand"
+											value="${campanha.numeroCandidato}" />
+										<c:param name="ano" value="${campanha.ano}" />
+										<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
+										<c:param name="uf" value="${campanha.uf}" />
+										<c:param name="inicioD" value="${0}" />
+										<c:param name="qtdPorPaginaD" value="${10}" />
+										<c:param name="verTodosD" value="${false}" />
+										<c:param name="inicioR" value="${0}" />
+										<c:param name="qtdPorPaginaR" value="${10}" />
+										<c:param name="verTodosR" value="${false}" />
+									</c:url> <a href="${AnoUrl}">${campanha.ano}</a></td>
+								<td width="250"><c:url var="partidoUrl" value="/mvc">
+										<c:param name="logica" value="SelecionarPartido" />
+										<c:param name="sigla" value="${campanha.partido.sigla}" />
+									</c:url> <b>Partido:</b> <a href="${partidoUrl}">${campanha.partido.sigla}</a>
 								</td>
-								<td width="250"><b>Cargo Pleiteado:</b> ${campanha.cargo.descricao}</td>
+								<td width="250"><b>Cargo Pleiteado:</b>
+									${campanha.cargo.descricao}</td>
 							</tr>
 							<tr>
 								<td><b>UF:</b> ${campanha.uf}</td>
