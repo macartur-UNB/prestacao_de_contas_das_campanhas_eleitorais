@@ -22,8 +22,6 @@ public class SelecionarCandidatoTeste extends TemplateTeste {
 		when(req.getParameter("tituloEleitoral")).thenReturn("002143582054");
 		
 		this.selecionarCandidato.executa(req, res);
-		
-		this.conexaoBancoDados.alterarBanco(NOME_BANCO_TESTES);
 	}
 
 	@Override
@@ -38,5 +36,6 @@ public class SelecionarCandidatoTeste extends TemplateTeste {
 
 	@Override
 	public void afterTest() throws Exception {
+		this.conexaoBancoDados.alterarBanco(NOME_BANCO_TESTES);
 	}
 }

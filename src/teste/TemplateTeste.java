@@ -36,11 +36,11 @@ public abstract class TemplateTeste {
 
 	@After
 	public void tearDown() throws Exception {
+		afterTest();
+		
 		if(!this.conexaoBancoDados.getLocalBanco().equals(LOCAL_BANCO_ERROR)) {
 			this.conexaoBancoDados.deletarBanco();
-		}
-		
-		afterTest();
+		}	
 	}
 	
 	public abstract void beforeTest() throws Exception;
