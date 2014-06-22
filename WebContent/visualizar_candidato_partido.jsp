@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Partidos - Campanhas-ON</title>
+<script src="script/sorttable.js"></script>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
@@ -39,7 +40,7 @@
 					visualizar mais informações.
 				</p></center>
 				<center>
-				<table id="gradient-style-listaCandidadoPartido" summary="Meeting Results">
+				<table class="sortable" id="gradient-style-listaCandidadoPartido" summary="Meeting Results">
 					<thead>
 						<tr>
 							<th scope="col"><center>Candidato</center></th>
@@ -50,7 +51,6 @@
 					</thead>
 
 					<c:forEach var="campanha" items="${listaCampanhas}">
-						<tbody>
 							<tr>
 								<td>
 									<c:url var="candidatoUrl" value="/mvc">
@@ -71,7 +71,6 @@
 									<center>${campanha.numeroCandidato}</center>
 								</td>
 							</tr>
-						</tbody>
 					</c:forEach>
 
 					<tfoot>

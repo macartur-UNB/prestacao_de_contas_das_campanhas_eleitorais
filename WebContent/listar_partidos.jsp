@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Partidos - Campanhas-ON</title>
+<script src="script/sorttable.js"></script>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
@@ -31,7 +32,7 @@
 
 				<center>
 
-					<table id="gradient-style" summary="Meeting Results">
+					<table class="sortable" id="gradient-style" summary="Meeting Results">
 						<thead>
 							<tr>
 								<th scope="col">Nome</th>
@@ -41,7 +42,6 @@
 						</thead>
 						<c:forEach var="partido" items="${listaPartidos}"
 							begin="${inicio}" end="${inicio+(qtdPorPagina-1)}" varStatus="douche">
-							<tbody>
 								<tr>
 									<td><c:url var="url_partido" value="/mvc">
 											<c:param name="logica" value="SelecionarPartido"></c:param>
@@ -49,7 +49,6 @@
 										</c:url> <a href="${url_partido}"> ${partido.nome} </a></td>
 									<td>${partido.sigla}</td>
 								</tr>
-							</tbody>
 						</c:forEach>
 
 						<tfoot>
