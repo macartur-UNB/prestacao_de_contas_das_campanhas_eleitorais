@@ -1,7 +1,6 @@
 package controle;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import modelo.beans.Campanha;
 import modelo.beans.Candidato;
@@ -25,20 +24,5 @@ public class CampanhaControle {
 
 	public Campanha getPeloAnoNumeroCodCargoEUf(Campanha campanha) throws SQLException {
 		return this.campanhaDAO.getPeloAnoNumeroCodCargoEUf(campanha);
-	}
-	
-	public int geraIndiceDaLista(List<Campanha> lista, int divisor) {
-		if(divisor!=0)
-		{
-			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
-			return indice;
-		}
-		else
-			return 1;
-	}
-	
-	public int geraIndiceDePaginacao(List<Campanha> lista) {
-		int indice = (int) Math.floor((double)lista.size()/(double)25);
-		return indice;
 	}
 }

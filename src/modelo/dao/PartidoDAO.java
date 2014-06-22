@@ -20,8 +20,6 @@ public class PartidoDAO extends BasicoDAO<Partido> implements ParseDAO<Partido> 
 		};
 	}
 	
-	private CampanhaDAO campanhaDAO;
-
 	private static final String NOME_TABELA = "partido";
 	private static final String NUMERO = "numero";
 	private static final String SIGLA = "sigla";

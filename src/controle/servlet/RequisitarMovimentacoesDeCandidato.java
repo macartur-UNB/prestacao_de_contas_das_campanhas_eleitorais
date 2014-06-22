@@ -51,10 +51,10 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 						movimentacaoControle.getListaReceitas(campanha);
 				List<Despesa> listaDespesa = 
 						movimentacaoControle.getListaDespesas(campanha);
-				int indiceR = movimentacaoControle.geraIndiceDaListaR(listaReceita,qtdPorPaginaR);
-				int qtdDePPR = movimentacaoControle.geraIndiceDePaginacaoR(listaReceita);
-				int indiceD = movimentacaoControle.geraIndiceDaListaD(listaDespesa,qtdPorPaginaD);
-				int qtdDePPD = movimentacaoControle.geraIndiceDePaginacaoD(listaDespesa);
+				int indiceR = geraIndiceDaListaR(listaReceita,qtdPorPaginaR);
+				int qtdDePPR = geraIndiceDePaginacaoR(listaReceita);
+				int indiceD = geraIndiceDaListaD(listaDespesa,qtdPorPaginaD);
+				int qtdDePPD = geraIndiceDePaginacaoD(listaDespesa);
 				
 				req.setAttribute("listaReceitas", listaReceita);
 				req.setAttribute("listaDespesas", listaDespesa);
@@ -115,6 +115,36 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 		campanha.setUf(uf);
 		
 		return campanha;
+	}
+	
+	private int geraIndiceDaListaR(List<Receita> lista, int divisor) {
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
+	}
+	
+	private int geraIndiceDePaginacaoR(List<Receita> lista) {
+		int indice = (int) Math.floor((double)lista.size()/(double)25);
+		return indice;
+	}
+	
+	private int geraIndiceDaListaD(List<Despesa> lista, int divisor) {
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
+	}
+	
+	private int geraIndiceDePaginacaoD(List<Despesa> lista) {
+		int indice = (int) Math.floor((double)lista.size()/(double)25);
+		return indice;
 	}
 
 }

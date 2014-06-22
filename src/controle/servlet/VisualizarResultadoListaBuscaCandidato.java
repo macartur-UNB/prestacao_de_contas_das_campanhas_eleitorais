@@ -30,8 +30,8 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 				return "/erro_candidato_inexistente.jsp";
 			} else {
 
-				int indice = control.geraIndiceDaLista(listaCandidatos,qtdPorPagina);
-				int qtdDePP = control.geraIndiceDePaginacao(listaCandidatos);
+				int indice = geraIndiceDaLista(listaCandidatos,qtdPorPagina);
+				int qtdDePP = geraIndiceDePaginacao(listaCandidatos);
 
 				req.setAttribute("listaCandidatos", listaCandidatos);
 
@@ -49,7 +49,21 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 		catch (Exception e) {
 			System.out.println("Erro no acesso ao BD");
 			throw new ServletException(e);
-		}		
-
+		}
+	}
+	
+	private int geraIndiceDaLista(List<Candidato> lista, int divisor) {
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
+	}
+	
+	private int geraIndiceDePaginacao(List<Candidato> lista) {
+		int indice = (int) Math.floor((double)lista.size()/(double)25);
+		return indice;
 	}
 }
