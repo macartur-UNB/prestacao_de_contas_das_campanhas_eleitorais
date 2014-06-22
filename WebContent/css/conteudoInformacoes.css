@@ -60,9 +60,9 @@ input.botao{
 	width:120px;
 	height:30px;
 	padding:2px;
-	margin:5px;
-	background-color:#034569;
-	color:#CCC;
+	margin:auto;
+	background-color:#CCC;
+	color:#07C985;
 	font-size:18px;
 	border-right:1px solid #CCC;
 	border-top:1px solid #CCC;
@@ -121,6 +121,19 @@ div#ano_partido{
 	width:450px;
 	height:150px;
 	margin:-325px -475px 0px 0px;
+}
+
+div#pesquisaRapida{
+	border:7px groove #269917;
+	float:left;
+	width:800px;
+	height:250px;
+	padding:15px;
+	margin:20px 0px 0px 40px;	
+}
+
+.campoRapido {
+	width:400px;
 }
 
 #perfilPartido a:link {text-decoration: none; color: black;}
@@ -198,7 +211,7 @@ div#ano_partido{
 	color: #339;
 }
 
-#gradient-style-listaCandidadoPartido tbody a:link {text-decoration: none; color: #000099}
-#gradient-style-listaCandidadoPartido tbody a:active {text-decoration: none; color: #000099}
-#gradient-style-listaCandidadoPartido tbody a:visited {text-decoration: none; color: #000099}
-#gradient-style-listaCandidadoPartido tbody a:hover {text-decoration: underline; color: #000099}
+#gradient-style-listaCandidadoPartido a:link {text-decoration: none; color: #000099}
+#gradient-style-listaCandidadoPartido a:active {text-decoration: none; color: #000099}
+#gradient-style-listaCandidadoPartido a:visited {text-decoration: none; color: #000099}
+#gradient-style-listaCandidadoPartido a:hover {text-decoration: underline; color: #000099}
