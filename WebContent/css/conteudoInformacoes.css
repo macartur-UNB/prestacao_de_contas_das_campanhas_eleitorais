@@ -215,3 +215,41 @@ div#pesquisaRapida{
 #gradient-style-listaCandidadoPartido a:active {text-decoration: none; color: #000099}
 #gradient-style-listaCandidadoPartido a:visited {text-decoration: none; color: #000099}
 #gradient-style-listaCandidadoPartido a:hover {text-decoration: underline; color: #000099}
+
+#gradient-style-listaCandidatos{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 280px;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#gradient-style-listaCandidatos th{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+
+#gradient-style-listaCandidatos td{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
+}
+
+#gradient-style-listaCandidatos tbody tr:hover td{
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #339;
+}
+
+#gradient-style-listaCandidatos a:link {text-decoration: none; color: #000099}
+#gradient-style-listaCandidatos a:active {text-decoration: none; color: #000099}
+#gradient-style-listaCandidatos a:visited {text-decoration: none; color: #000099}
+#gradient-style-listaCandidatos a:hover {text-decoration: underline; color: #000099}
+
