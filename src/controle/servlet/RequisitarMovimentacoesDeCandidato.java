@@ -6,6 +6,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,6 +22,57 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
+		
+		Campanha campanhaBusca = constroiCampanha(req);
+				
+		try {
+			
+			CampanhaControle campanhaControle = new CampanhaControle();
+			Campanha campanha = campanhaControle
+					.getPeloAnoNumeroCodCargoEUf(campanhaBusca);
+			MovimentacaoControle movimentacaoControle = new MovimentacaoControle();
+			
+			if (campanha == null) {
+				return "/erro_candidato_inexistente.jsp";
+			} else {
+				
+				String despesaTot = 
+						formataDespesa(campanha.getDespesaMaxDeclarada());
+				
+				List<Receita> listaReceita = 
+						movimentacaoControle.getListaReceitas(campanha);
+				List<Despesa> listaDespesa = 
+						movimentacaoControle.getListaDespesas(campanha);
+				
+				req.setAttribute("listaReceitas", listaReceita);
+				req.setAttribute("listaDespesas", listaDespesa);
+				
+				req.setAttribute("campanha", campanha);
+				req.setAttribute("depesaTot", despesaTot);
+
+				return "/visualizar_movimentacoes.jsp";
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new ServletException(e);
+
+		}
+		
+	}
+
+	private String formataDespesa(Float despesa) {
+		DecimalFormatSymbols padraoBrasileiro = new DecimalFormatSymbols(Locale.GERMAN);
+		
+		DecimalFormat df  = new DecimalFormat("###,###,##0.00",padraoBrasileiro);  
+		String despesaTot = df.format(despesa); 
+	
+		despesaTot = "R$ " + despesaTot;
+		
+		return despesaTot;
+	}
+
+	private Campanha constroiCampanha(HttpServletRequest req) {
 
 		int ano = Integer.parseInt(req.getParameter("ano"));
 		int numero = Integer.parseInt(req.getParameter("numero_cand"));
@@ -36,51 +88,7 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 		campanha.setCargo(cargo);
 		campanha.setUf(uf);
 		
-		CampanhaControle controle = new CampanhaControle();
-		
-		try {
-			campanha = controle.getPeloAnoNumeroCodCargoEUf(campanha);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		if (campanha == null) {
-			return "/erro_candidato_inexistente.jsp";
-		} else {	
-			DecimalFormatSymbols padraoBrasileiro = new DecimalFormatSymbols(Locale.GERMAN);
-			
-			DecimalFormat df  = new DecimalFormat("###,###,##0.00",padraoBrasileiro);  
-			String despesaTot = df.format(campanha.getDespesaMaxDeclarada());  
-			despesaTot = "R$ " + despesaTot;
-			
-			req.setAttribute("campanha", campanha);
-			req.setAttribute("depesaTot", despesaTot);
-			
-			MovimentacaoControle control = new MovimentacaoControle();
-			
-			List<Receita> listaReceita = null;
-			List<Despesa> listaDespesa = null;
-
-			try {
-				listaReceita = control.getListaReceitas(campanha);
-				listaDespesa = control.getListaDespesas(campanha);
-				
-				if(ano == 2002){
-					for(Receita receita : listaReceita)
-						receita.setTipoMovimentacao("Doação");
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			req.setAttribute("listaReceitas", listaReceita);
-			req.setAttribute("listaDespesas", listaDespesa);
-
-		
-			return "/visualizar_movimentacoes.jsp";
-		}
-	
+		return campanha;
 	}
 
 }

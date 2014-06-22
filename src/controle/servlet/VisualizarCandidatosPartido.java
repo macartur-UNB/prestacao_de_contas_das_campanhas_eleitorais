@@ -19,18 +19,18 @@ public class VisualizarCandidatosPartido implements Logica {
 		
 		String sigla = req.getParameter("sigla");
 		String ano =  req.getParameter("ano");
-		//int anos[] = { 2010, 2006, 2002 };
 		
 		try {
-
 			CampanhaControle campanhaControle = new CampanhaControle();
 			PartidoControle controle = new PartidoControle();
+			
+			Partido partido = controle.getPelaSigla(sigla);
 
 			ArrayList<Campanha> listaCampanhas = new ArrayList<>();
-			listaCampanhas = campanhaControle.getListaCampanhasPorSiglaPartidoEAno(sigla,ano);
-			
-			Partido partido = controle.getPartido(sigla);
-			
+
+			listaCampanhas = campanhaControle
+					.getListaCampanhasPorSiglaPartidoEAno(sigla,ano);
+						
 			req.setAttribute("ano", ano);
 			req.setAttribute("listaCampanhas", listaCampanhas);
 			req.setAttribute("partido",partido);

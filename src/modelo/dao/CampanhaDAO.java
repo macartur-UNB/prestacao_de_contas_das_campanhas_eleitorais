@@ -179,7 +179,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
 
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
-
+			
 			while (resultadoSQL.next()) {
 				Campanha campanha = new Campanha();
 				campanha.setAno(resultadoSQL.getInt(ANO));
