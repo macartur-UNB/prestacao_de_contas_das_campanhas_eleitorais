@@ -66,8 +66,13 @@ public class MovimentacaoControle {
 	}
 	
 	public int geraIndiceDaListaR(List<Receita> lista, int divisor) {
-		int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
-		return indice;
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
 	}
 	
 	public int geraIndiceDePaginacaoR(List<Receita> lista) {
@@ -76,8 +81,13 @@ public class MovimentacaoControle {
 	}
 	
 	public int geraIndiceDaListaD(List<Despesa> lista, int divisor) {
-		int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
-		return indice;
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
 	}
 	
 	public int geraIndiceDePaginacaoD(List<Despesa> lista) {

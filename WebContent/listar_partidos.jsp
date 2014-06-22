@@ -41,7 +41,7 @@
 
 						</thead>
 						<c:forEach var="partido" items="${listaPartidos}"
-							begin="${inicio}" end="${inicio+(qtdPorPagina-1)}" varStatus="douche">
+							begin="${inicio}" end="${inicio+(qtdPorPagina-1)}" varStatus="listagem">
 								<tr>
 									<td><c:url var="url_partido" value="/mvc">
 											<c:param name="logica" value="SelecionarPartido"></c:param>
@@ -84,7 +84,7 @@
 										<c:url var="url_todos" value="/mvc">
 											<c:param name="logica" value="RequisitarPartido"></c:param>
 											<c:param name="inicio" value="${0}"></c:param>
-											<c:param name="qtdPorPagina" value="${qtdPorPagina}"></c:param>
+											<c:param name="qtdPorPagina" value="${0}"></c:param>
 											<c:param name="verTodos" value="${true}"></c:param>
 										</c:url>
 										<a href="${url_todos}"> Ver Todos</a>

@@ -2,6 +2,7 @@ package controle.servlet;
 
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,23 +10,46 @@ import modelo.beans.Candidato;
 import controle.CandidatoControle;
 
 public class VisualizarResultadoListaBuscaCandidato implements Logica {
-       
+
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		
+
 		String nome = req.getParameter("nome");
 
-		CandidatoControle control = new CandidatoControle();
-		List<Candidato> listaCandidatos = control.getListaCandidatos(nome);
+		int inicio = Integer.parseInt(req.getParameter("inicio"));
+		int qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
+		boolean verTodos = Boolean.parseBoolean(req.getParameter("verTodos"));
 
-		if (listaCandidatos.isEmpty()) {
-			return "/erro_candidato_inexistente.jsp";
-		} else {
+		try {
+			CandidatoControle control = new CandidatoControle();
 
-			req.setAttribute("listaCandidatos", listaCandidatos);
+			List<Candidato> listaCandidatos = control.getListaCandidatos(nome);
 
-			return "/visualizar_lista_candidatos.jsp";
+			if (listaCandidatos.isEmpty()) {
+				return "/erro_candidato_inexistente.jsp";
+			} else {
+
+				int indice = control.geraIndiceDaLista(listaCandidatos,qtdPorPagina);
+				int qtdDePP = control.geraIndiceDePaginacao(listaCandidatos);
+
+				req.setAttribute("listaCandidatos", listaCandidatos);
+
+				req.setAttribute("nome", nome);
+				req.setAttribute("inicio", inicio);
+				if(verTodos)
+					qtdPorPagina = listaCandidatos.size();
+				req.setAttribute("qtdPorPagina", qtdPorPagina);
+				req.setAttribute("indice", indice);
+				req.setAttribute("qtdDePP", qtdDePP);								
+
+				return "/visualizar_lista_candidatos.jsp";
+			}			
 		}
+		catch (Exception e) {
+			System.out.println("Erro no acesso ao BD");
+			throw new ServletException(e);
+		}		
+
 	}
 }

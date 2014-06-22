@@ -107,6 +107,9 @@
 														<c:param name="logica" value="VisualizarCandidatosPartido" />
 														<c:param name="sigla" value="${partido.sigla}" />
 														<c:param name="ano" value="${ano}" />
+														<c:param name="inicio" value="${0}" />
+														<c:param name="qtdPorPagina" value="${10}" />
+														<c:param name="verTodos" value="${false}" />
 													</c:url>
 													<center>
 														<a href="${AnoUrl}">${ano}</a>

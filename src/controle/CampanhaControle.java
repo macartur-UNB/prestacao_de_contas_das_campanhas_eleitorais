@@ -28,8 +28,13 @@ public class CampanhaControle {
 	}
 	
 	public int geraIndiceDaLista(List<Campanha> lista, int divisor) {
-		int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
-		return indice;
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
 	}
 	
 	public int geraIndiceDePaginacao(List<Campanha> lista) {

@@ -23,8 +23,13 @@ public class CandidatoControle {
 	}
 	
 	public int geraIndiceDaLista(List<Candidato> lista, int divisor) {
-		int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
-		return indice;
+		if(divisor!=0)
+		{
+			int indice = (int) Math.ceil((double)lista.size()/(double)divisor);
+			return indice;
+		}
+		else
+			return 1;
 	}
 	
 	public int geraIndiceDePaginacao(List<Candidato> lista) {

@@ -15,19 +15,17 @@ public class RequisitarPartido implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
+
+		int inicio = Integer.parseInt(req.getParameter("inicio"));
+		int qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
+		boolean verTodos = Boolean.parseBoolean(req.getParameter("verTodos"));
 		
-		PartidoControle control = new PartidoControle();
 		try {
+			PartidoControle control = new PartidoControle();
+			
 			List<Partido> listaPartidos = control.getListaTodosPartidos();
-			
-			int inicio = Integer.parseInt(req.getParameter("inicio"));
-			int qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
-			boolean verTodos = Boolean.parseBoolean(req.getParameter("verTodos"));
-			
 			int indice = control.geraIndiceDaLista(listaPartidos,qtdPorPagina);
 			int qtdDePP = control.geraIndiceDePaginacao(listaPartidos);
-			
-			//System.out.println(qtdDePP);
 			
 			req.setAttribute("listaPartidos", listaPartidos);
 			req.setAttribute("inicio", inicio);

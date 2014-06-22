@@ -31,26 +31,74 @@
 					visualizar mais informações.
 				</p>
 
-				<table id="gradient-style" >
+				<table id="gradient-style">
 					<thead>
 						<tr>
 							<th scope="col">Candidato</th>
 						</tr>
 					</thead>
 
-					<c:forEach var="candidato" items="${listaCandidatos}">
+					<c:forEach var="candidato" items="${listaCandidatos}"
+						begin="${inicio}" end="${inicio+(qtdPorPagina-1)}"
+						varStatus="listagem">
 						<tbody>
 							<tr>
 								<td><c:url var="candidatoUrl" value="/mvc">
-										<c:param name="logica" value="SelecionarCandidato"></c:param>
+										<c:param name="logica" value="SelecionarCandidato" />
 										<c:param name="tituloEleitoral"
-											value="${candidato.tituloEleitoral}"></c:param>
+											value="${candidato.tituloEleitoral}" />
 									</c:url> <a href="${candidatoUrl}">${candidato.nome}</a> <br></td>
 							</tr>
 						</tbody>
 					</c:forEach>
 
 					<tfoot>
+						<tr>
+							<td colspan="4"><center>
+									Páginas:
+									<c:forEach var="i" begin="1" end="${indice}">
+										<c:url var="url_pag" value="/mvc">
+											<c:param name="logica"
+												value="VisualizarResultadoListaBuscaCandidato" />
+											<c:param name="nome" value="${nome}" />
+											<c:param name="inicio" value="${(i-1)*qtdPorPagina}" />
+											<c:param name="qtdPorPagina" value="${qtdPorPagina}" />
+											<c:param name="verTodos" value="${false}" />
+										</c:url>
+										<a href="${url_pag}"><c:out value="${i}" /></a>
+									</c:forEach>
+									<br> Candidatos por Página:
+									<c:url var="url_tamanhoOriginal" value="/mvc">
+										<c:param name="logica"
+											value="VisualizarResultadoListaBuscaCandidato" />
+										<c:param name="nome" value="${nome}" />
+										<c:param name="inicio" value="${0}" />
+										<c:param name="qtdPorPagina" value="${10}" />
+										<c:param name="verTodos" value="${false}" />
+									</c:url>
+									<a href="${url_tamanhoOriginal}"> ${10}</a>
+									<c:forEach var="i" begin="1" end="${qtdDePP}">
+										<c:url var="url_tamanhos" value="/mvc">
+											<c:param name="logica"
+												value="VisualizarResultadoListaBuscaCandidato" />
+											<c:param name="nome" value="${nome}" />
+											<c:param name="inicio" value="${0}" />
+											<c:param name="qtdPorPagina" value="${i*25}" />
+											<c:param name="verTodos" value="${false}" />
+										</c:url>
+										<a href="${url_tamanhos}"> ${i*25}</a>
+									</c:forEach>
+									<c:url var="url_todos" value="/mvc">
+										<c:param name="logica"
+											value="VisualizarResultadoListaBuscaCandidato" />
+										<c:param name="nome" value="${nome}" />
+										<c:param name="inicio" value="${0}" />
+										<c:param name="qtdPorPagina" value="${0}" />
+										<c:param name="verTodos" value="${true}" />
+									</c:url>
+									<a href="${url_todos}"> Ver Todos</a>
+								</center></td>
+						</tr>
 						<tr>
 							<td colspan="4">Dados de acordo com os arquivos disponíveis
 								no site: ----</td>

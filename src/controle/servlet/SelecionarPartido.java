@@ -18,7 +18,6 @@ public class SelecionarPartido implements Logica {
 		String sigla = req.getParameter("sigla");
 		String siglaComUnder = sigla.replace(" ", "_");
 		siglaComUnder = siglaComUnder.toLowerCase();
-		// System.out.println(siglaComUnder);
 
 		try {
 			int anos[] = { 2010, 2006, 2002 };

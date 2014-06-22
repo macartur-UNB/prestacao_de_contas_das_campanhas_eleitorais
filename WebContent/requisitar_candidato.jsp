@@ -31,9 +31,13 @@
 					buscar, e em seguida, click em burcar.
 				</p>
 				<c:url var="link_busca" value="/mvc">
-					<c:param name="logica" value="VisualizarResultadoListaBuscaCandidato"></c:param>
+					<c:param name="logica"
+						value="VisualizarResultadoListaBuscaCandidato"></c:param>
+					<c:param name="inicio" value="${0}"></c:param>
+					<c:param name="qtdPorPagina" value="${10}"></c:param>
+					<c:param name="verTodos" value="${false}"></c:param>
 				</c:url>
-				
+
 				<form action="${link_busca}" method="post">
 					<table>
 						<tr>
@@ -42,7 +46,8 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><br><input type="submit" class="botao" value="Buscar" /></td>
+							<td><br> <input type="submit" class="botao"
+								value="Buscar" /></td>
 						</tr>
 					</table>
 				</form>
