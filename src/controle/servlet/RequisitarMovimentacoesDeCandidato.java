@@ -62,13 +62,13 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 	private void recebeParametros() throws SQLException {
 		this.campanhaBusca = constroiCampanha(this.req);
 
-		this.inicioR = Integer.parseInt(req.getParameter("inicioR"));
-		this.qtdPorPaginaR = Integer.parseInt(req.getParameter("qtdPorPaginaR"));
-		this.verTodosR = Boolean.parseBoolean(req.getParameter("verTodosR"));
+		this.inicioR = Integer.parseInt(this.req.getParameter("inicioR"));
+		this.qtdPorPaginaR = Integer.parseInt(this.req.getParameter("qtdPorPaginaR"));
+		this.verTodosR = Boolean.parseBoolean(this.req.getParameter("verTodosR"));
 
-		this.inicioD = Integer.parseInt(req.getParameter("inicioD"));
-		this.qtdPorPaginaD = Integer.parseInt(req.getParameter("qtdPorPaginaD"));
-		this.verTodosD = Boolean.parseBoolean(req.getParameter("verTodosD"));
+		this.inicioD = Integer.parseInt(this.req.getParameter("inicioD"));
+		this.qtdPorPaginaD = Integer.parseInt(this.req.getParameter("qtdPorPaginaD"));
+		this.verTodosD = Boolean.parseBoolean(this.req.getParameter("verTodosD"));
 
 		this.campanhaControle = new CampanhaControle();
 		this.campanha = this.campanhaControle
