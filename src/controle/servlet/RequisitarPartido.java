@@ -3,7 +3,6 @@ package controle.servlet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,30 +11,28 @@ import controle.PartidoControle;
 
 public class RequisitarPartido implements Logica {
 
-	PartidoControle controle;
-	List<Partido> listaPartidos;
+	private PartidoControle controle;
+	private List<Partido> listaPartidos;
 
-	HttpServletRequest req;
-	HttpServletResponse res;
+	private HttpServletRequest req;
 
-	int inicio;
-	int qtdPorPagina;
-	boolean verTodos;
+	private int inicio;
+	private int qtdPorPagina;
+	private boolean verTodos;
 
-	int indice;
-	int qtdDePP;
+	private int indice;
+	private int qtdDePP;
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 
-		this.res = res;
 		this.req = req;
+		
 		recebeParametrosDeListagem();
-
 		estabeleceParametros();
 		preparaEnvioDeParametros();
-		req = this.req;
+		
 		return "/listar_partidos.jsp";	
 	}
 

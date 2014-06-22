@@ -12,25 +12,30 @@ import controle.CandidatoControle;
 
 public class SelecionarCandidato implements Logica {
 
+	private CandidatoControle candidatoControle;
+	private Candidato candidato;
+	private CampanhaControle campanhaControle;
+	private List<Campanha> listaCampanha;
+
+	private String tituloEleitoral;
+
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 
-		String tituloEleitoral = req.getParameter("tituloEleitoral");
+		
+		this.tituloEleitoral = req.getParameter("tituloEleitoral");
 
-		CandidatoControle candidatoControl = new CandidatoControle();
-		CampanhaControle campanhaControl = new CampanhaControle();
-		Candidato candidato = candidatoControl.getUmCandidato(tituloEleitoral);
+		this.candidatoControle = new CandidatoControle();
+		this.campanhaControle = new CampanhaControle();
+		
+		this.candidato = this.candidatoControle.getUmCandidato(this.tituloEleitoral);
 
-		if (candidato.getTituloEleitoral().equals("-1")) {
-			return "/erro_candidato_inexistente.jsp";
-		} else {
-			List<Campanha> campanhas = campanhaControl.getListaCampanhas(candidato);
-			req.setAttribute("candidato", candidato);
-			req.setAttribute("campanhas", campanhas);
+		this.listaCampanha = this.campanhaControle.getListaCampanhas(this.candidato);
+		req.setAttribute("candidato", this.candidato);
+		req.setAttribute("campanhas", this.listaCampanha);
 
-			return "/visualizar_candidato.jsp";
-		}
+		return "/visualizar_candidato.jsp";
 	}
 
 }

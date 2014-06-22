@@ -1,9 +1,9 @@
 package controle.servlet;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,52 +13,77 @@ import controle.CampanhaControle;
 import controle.PartidoControle;
 
 public class VisualizarCandidatosPartido implements Logica {
-	
+
+	private CampanhaControle campanhaControle;
+	private ArrayList<Campanha> listaCampanhas;
+	private PartidoControle partidoControle;
+	private Partido partido;
+
+	private String sigla;
+	private String ano;
+
+	private HttpServletRequest req;
+
+	private int inicio;
+	private int qtdPorPagina;
+	private boolean verTodos;
+
+	private int indice;
+	private int qtdDePP;
+
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		
-		String sigla = req.getParameter("sigla");
-		String ano =  req.getParameter("ano");
-		
-		int inicio = Integer.parseInt(req.getParameter("inicio"));
-		int qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
-		boolean verTodos = Boolean.parseBoolean(req.getParameter("verTodos"));
-		
-		try {
-			CampanhaControle campanhaControle = new CampanhaControle();
-			PartidoControle controle = new PartidoControle();
-			
-			Partido partido = controle.getPelaSigla(sigla);
 
-			ArrayList<Campanha> listaCampanhas = new ArrayList<>();
+		this.req = req;
 
-			listaCampanhas = campanhaControle
-					.getListaCampanhasPorSiglaPartidoEAno(sigla,ano);
-			
-			int indice = geraIndiceDaLista(listaCampanhas,qtdPorPagina);
-			int qtdDePP = geraIndiceDePaginacao(listaCampanhas);
-						
-			req.setAttribute("ano", ano);
-			req.setAttribute("listaCampanhas", listaCampanhas);
-			req.setAttribute("partido",partido);
-			
-			req.setAttribute("sigla", sigla);
-			
-			req.setAttribute("inicio", inicio);
-			if(verTodos)
-				qtdPorPagina = listaCampanhas.size();
-			req.setAttribute("qtdPorPagina", qtdPorPagina);
-			req.setAttribute("indice", indice);
-			req.setAttribute("qtdDePP", qtdDePP);
-			
-			return "/visualizar_candidato_partido.jsp";
-		} catch (Exception e) {
-			System.out.println("Erro no acesso ao BD");
-			throw new ServletException(e);		
-		}
+		recebeParametros();
+		estabeleceParametros();
+		preparaEnvioDeParametros();
+
+		return "/visualizar_candidato_partido.jsp";
 	}
-	
+
+	private void recebeParametros() {
+		this.sigla = req.getParameter("sigla");
+		this.ano =  req.getParameter("ano");
+
+		this.inicio = Integer.parseInt(req.getParameter("inicio"));
+		this.qtdPorPagina = Integer.parseInt(req.getParameter("qtdPorPagina"));
+		this.verTodos = Boolean.parseBoolean(req.getParameter("verTodos"));
+	}
+
+	private void estabeleceParametros() throws SQLException {
+		this.campanhaControle = new CampanhaControle();
+		this.partidoControle = new PartidoControle();
+
+		this.partido = this.partidoControle.getPelaSigla(this.sigla);
+
+		this.listaCampanhas = new ArrayList<>();
+
+		this.listaCampanhas = this.campanhaControle
+				.getListaCampanhasPorSiglaPartidoEAno(this.sigla,this.ano);
+
+		this.indice = geraIndiceDaLista(this.listaCampanhas,this.qtdPorPagina);
+		this.qtdDePP = geraIndiceDePaginacao(this.listaCampanhas);
+	}
+
+	private void preparaEnvioDeParametros() {
+		this.req.setAttribute("ano", this.ano);
+		this.req.setAttribute("listaCampanhas", this.listaCampanhas);
+		this.req.setAttribute("partido", this.partido);
+
+		this.req.setAttribute("sigla", this.sigla);
+
+		this.req.setAttribute("inicio", this.inicio);
+		if(this.verTodos)
+			this.qtdPorPagina = this.listaCampanhas.size();
+
+		this.req.setAttribute("qtdPorPagina", this.qtdPorPagina);
+		this.req.setAttribute("indice", this.indice);
+		this.req.setAttribute("qtdDePP", this.qtdDePP);
+	}
+
 	private int geraIndiceDaLista(List<Campanha> lista, int divisor) {
 		if(divisor!=0)
 		{
@@ -68,7 +93,7 @@ public class VisualizarCandidatosPartido implements Logica {
 		else
 			return 1;
 	}
-	
+
 	private int geraIndiceDePaginacao(List<Campanha> lista) {
 		int indice = (int) Math.floor((double)lista.size()/(double)25);
 		return indice;
