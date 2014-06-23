@@ -136,6 +136,31 @@ div#pesquisaRapida{
 	width:400px;
 }
 
+div#perfilCandidatoAno{
+	border:7px groove #269917;
+	float:left;
+	width:450px;
+	height:290px;
+	padding:15px;
+	margin:0px 0px 0px 220px;
+	
+}
+
+div#fotoPerfil{
+	border:thick groove #666;
+	text-align:center;
+    display:block;	
+    width:140px;
+	height:150px;
+	margin:0px 0px 0px 0px;
+}
+
+#perfilCandidatoAno h1{
+	float:left;
+	margin:-100px 0px 0px 170px; 	
+}
+
+
 #perfilPartido a:link {text-decoration: none; color: black;}
 #perfilPartido a:active {text-decoration: none; color: black;}
 #perfilPartido a:visited {text-decoration: none; color: black;}
@@ -293,3 +318,42 @@ div#pesquisaRapida{
 #gradient-style-perfilCandidato a:active {text-decoration: none; color: #000099}
 #gradient-style-perfilCandidato a:visited {text-decoration: none; color: #000099}
 #gradient-style-perfilCandidato a:hover {text-decoration: underline; color: #000099}
+
+
+#gradient-style-movimentacao{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 8px;
+	width: 800px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#gradient-style-movimentacao th{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	
+	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+
+#gradient-style-movimentacao td{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
+}
+
+#gradient-style-movimentacao tbody tr:hover td{
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #339;
+}
+
+#gradient-style-movimentacao a:link {text-decoration: none; color: #000099}
+#gradient-style-movimentacao a:active {text-decoration: none; color: #000099}
+#gradient-style-movimentacao a:visited {text-decoration: none; color: #000099}
+#gradient-style-movimentacao a:hover {text-decoration: underline; color: #000099}
