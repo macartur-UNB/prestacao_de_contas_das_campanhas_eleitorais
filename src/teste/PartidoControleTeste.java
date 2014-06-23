@@ -82,4 +82,30 @@ public class PartidoControleTeste extends TemplateTeste {
 		assertEquals(partidoRecuperado, this.partidoControle.getPelaSigla("PE1"));
 	}
 	
+	@Test
+	public void deveRecuperarUmPartidoPeloNumero() throws SQLException {
+		
+		ArrayList<Partido> listaPartidos = new ArrayList<>();
+		Partido partidoRecuperado = new Partido();
+		
+		Partido partido1 = new Partido();
+		partido1.setNome("PARTIDO EXISTENTE 3");
+		partido1.setSigla("PE3");
+		partido1.setNumero(47);
+		partido1.setDeferimento("15.8.1985");
+		listaPartidos.add(partido1);
+		
+		Partido partido2 = new Partido();
+		partido2.setNome("PARTIDO EXISTENTE 4");
+		partido2.setSigla("PE4");
+		partido1.setNumero(78);
+		partido1.setDeferimento("15.5.1996");
+		listaPartidos.add(partido2);
+		
+		this.partidoDAO.cadastrarLista(listaPartidos);
+		partidoRecuperado = this.partidoDAO.getPeloNumero("47");
+		
+		assertEquals(partidoRecuperado, this.partidoControle.getPeloNumero("47"));
+	}
+	
 }

@@ -83,5 +83,32 @@ public class FornecedorDAOTeste extends TemplateTeste {
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
 		Assert.assertEquals(listaFornecedores, this.fornecedorDAO.getLista());
-	}	
+	}
+	
+	@Test
+	public void deveRecuperarUmFornecedorPeloNomeOuCpfCnpj() throws Exception {
+		
+		ArrayList<Fornecedor> listaFornecedoresACadastrar = new ArrayList<>();
+		Fornecedor fornecedorRecuperado;
+		
+		Fornecedor fornecedor1 = new Fornecedor();
+		fornecedor1.setNome("nome");
+		fornecedor1.setCpf_cnpj("123456");
+		fornecedor1.setSituacaoCadastral("REGULAR");
+		fornecedor1.setUf("DF");
+		listaFornecedoresACadastrar.add(fornecedor1);
+		
+		Fornecedor fornecedor2 = new Fornecedor();
+		fornecedor2.setNome("nome2");
+		fornecedor2.setCpf_cnpj("12345678");
+		fornecedor2.setSituacaoCadastral("IRREGULAR");
+		fornecedor2.setUf("DF");
+		listaFornecedoresACadastrar.add(fornecedor2);
+		
+		this.fornecedorDAO.cadastrarLista(listaFornecedoresACadastrar);
+		fornecedorRecuperado = this.fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor1);
+		
+		Assert.assertEquals(fornecedor1, fornecedorRecuperado);
+		
+	}
 }
