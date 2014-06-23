@@ -253,3 +253,43 @@ div#pesquisaRapida{
 #gradient-style-listaCandidatos a:visited {text-decoration: none; color: #000099}
 #gradient-style-listaCandidatos a:hover {text-decoration: underline; color: #000099}
 
+
+
+
+#gradient-style-perfilCandidato{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 8px;
+	width: 400px;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#gradient-style-perfilCandidato th{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	
+	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+
+#gradient-style-perfilCandidato td{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
+}
+
+#gradient-style-perfilCandidato tbody tr:hover td{
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #339;
+}
+
+#gradient-style-perfilCandidato a:link {text-decoration: none; color: #000099}
+#gradient-style-perfilCandidato a:active {text-decoration: none; color: #000099}
+#gradient-style-perfilCandidato a:visited {text-decoration: none; color: #000099}
+#gradient-style-perfilCandidato a:hover {text-decoration: underline; color: #000099}

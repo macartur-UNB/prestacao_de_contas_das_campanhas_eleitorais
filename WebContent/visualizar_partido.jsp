@@ -25,7 +25,6 @@
 				<h3>Partido</h3>
 			</center>
 		</div>
-
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<div id="perfil_partido">
@@ -42,11 +41,8 @@
 								width="140" height="150" />
 							</a>
 						</div>
-
 						<center>
-
 							<table>
-
 								<tr>
 									<td><b>Sigla:</b></td>
 									<td>${partido.sigla}</td>
@@ -55,7 +51,6 @@
 									<td><b>Número:</b></td>
 									<td>${partido.numero}</td>
 								</tr>
-
 								<c:choose>
 									<c:when test="${not empty partido.deferimento}">
 										<tr>
@@ -80,18 +75,14 @@
 								</c:choose>
 							</table>
 						</center>
-
 						<div id="ano_partido">
 							<h2 align="center">Consulta de Candidatos</h2>
-
 							<center>
 								<p>
 									<i>Clique em um dos anos para acessar <br /> a lista de
 										candidatos deste Partido.
 									</i>
 								</p>
-
-
 								<table id="gradient-style-perfilPartido"
 									summary="Meeting Results">
 									<thead>
