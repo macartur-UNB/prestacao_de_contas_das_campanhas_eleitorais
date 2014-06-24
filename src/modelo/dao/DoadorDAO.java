@@ -80,14 +80,11 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
 			String comandoSQL = SQL;
-
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
-
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
 
 			while (resultadoSQL.next()) {
 				Doador doador = new Doador();
-				
 				doador.setNome(resultadoSQL.getString(NOME));
 				doador.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ));
 				doador.setSituacaoCadastral(resultadoSQL.getString(SITUACAO_CADASTRAL));
@@ -95,13 +92,11 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 
 				if (doador != null) listaDoador.add(doador);
 			}
-
 		}  catch (SQLException e) {
 			throw new SQLException("DoadorDAO - " + e.getMessage());
 		} finally {
 			fecharConexao();
 		}
-
 		return listaDoador;
 	}
 	
