@@ -1,15 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="grafs" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", {
+		packages : [ "corechart" ]
+	});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ 'Presidente', 'Despesa Máxima Declarada' ], [ 'Lula', 48000 ], [ 'Serra', 180000],
+				[ 'Dilma', 200000 ] ]);
+
+		var options = {
+			title : 'Despesas Máximas Declaradas - Presidente - 2010',
+			is3D : true,
+		};
+
+		var chart = new google.visualization.PieChart(document
+				.getElementById('piechart_3d'));
+		chart.draw(data, options);
+	}
+</script>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Campanhas-ON</title>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/banner.css" rel="stylesheet" type="text/css" media="all">
-<link href="css/conteudoHome.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/conteudoHome.css" rel="stylesheet" type="text/css"
+	media="all">
 <link href="css/top5.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 </head>
@@ -18,7 +45,7 @@
 	<!--  CABEÇALHO -->
 	<%@include file="imports/cabecalhohome.jsp"%>
 	<!-- FIM CABEÇALHO -->
-	
+
 	<!-- PAGINA CENTRAL, BANNER, INFORMACOES e TOP5 -->
 	<!-- PAGINA CENTRAL -->
 	<div id="pagina">
@@ -88,14 +115,10 @@
 						</h1>
 						<div id="conteudo_box">
 
-							Somos alunos das disciplinas de
-							Métodos de Desenvolvimento de
-							Software e Gestão de Portifólios
-							e Projetos de Software do curso
-							de Engenharia de Software da
-							Universidade de Brasília. Composto
-							por cinco desenvolvedores, dois
-							gestores e dois <i>coaches</i>.
+							Somos alunos das disciplinas de Métodos de Desenvolvimento de
+							Software e Gestão de Portifólios e Projetos de Software do curso
+							de Engenharia de Software da Universidade de Brasília. Composto
+							por cinco desenvolvedores, dois gestores e dois <i>coaches</i>.
 
 						</div>
 						<br>
@@ -112,10 +135,10 @@
 						</h1>
 
 						<div id="conteudo_box">O Campanhas-ON é a materialização da
-							Engenharia de Software no que diz respeito ao nosso curso. Visamos
-							alcançar com esse projeto, todos os cidadãos de bem no qual visam
-							ter conhecimento de seus Candidatos e Partidos, Receitas e
-							Despesas.</div>
+							Engenharia de Software no que diz respeito ao nosso curso.
+							Visamos alcançar com esse projeto, todos os cidadãos de bem no
+							qual visam ter conhecimento de seus Candidatos e Partidos,
+							Receitas e Despesas.</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -126,20 +149,15 @@
 				<div id="box_servicos_3">
 					<div id="efeito_box3">
 						<h1>
-							<center>Como Utilizar o <i>Web Site</i></center>
+							<center>
+								Como Utilizar o <i>Web Site</i>
+							</center>
 						</h1>
-						<div id="conteudo_box">
-							Navegue pelo menu no cabeçalho
-							da página para acessar
-							informações referentes à
-							candidatos e partidos. Tais
-							páginas terão informações
-							complementares que auxiliam no 
-							uso do software. Para pesquisas 
-							avançadas, utilize a seção de
-							pesquisa.
-
-						</div>
+						<div id="conteudo_box">Navegue pelo menu no cabeçalho da
+							página para acessar informações referentes à candidatos e
+							partidos. Tais páginas terão informações complementares que
+							auxiliam no uso do software. Para pesquisas avançadas, utilize a
+							seção de pesquisa.</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -159,7 +177,8 @@
 			<br>
 			<center>
 				<div id="em_construcao">
-					<img src="img/sob_construcao.jpg" alt="">
+				    <grafs:grafico id="teste" />
+					<div id="piechart_3d" style="width: 505px; height: 285px;" ></div>
 				</div>
 			</center>
 		</div>
@@ -167,7 +186,7 @@
 
 	</div>
 	<!-- FIM PAGINA CENTRAL -->
-	
+
 	<!-- RODAPÉ -->
 	<%@include file="imports/rodape.jsp"%>
 	<!-- FIM RODAPÉ -->
