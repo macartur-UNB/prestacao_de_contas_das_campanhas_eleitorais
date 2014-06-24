@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="grafs" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
-<%@ attribute name="nome" required="true" %>
-
-<input id="${nome}" name="${nome}"/>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 	google.load("visualization", "1", {
@@ -15,7 +14,7 @@
 	google.setOnLoadCallback(drawChart);
 	function drawChart() {
 		var data = google.visualization.arrayToDataTable([
-				[ 'Presidente', 'Despesa Máxima Declarada' ], [ "#${nome}", 48000 ], [ 'Serra', 180000],
+				[ 'Presidente', 'Despesa Máxima Declarada' ], [ 'Lula', 48000 ], [ 'Serra', 180000],
 				[ 'Dilma', 200000 ] ]);
 
 		var options = {
@@ -178,6 +177,7 @@
 			<br>
 			<center>
 				<div id="em_construcao">
+				    <grafs:grafico id="teste" />
 					<div id="piechart_3d" style="width: 505px; height: 285px;" ></div>
 				</div>
 			</center>
