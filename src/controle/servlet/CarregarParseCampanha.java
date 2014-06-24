@@ -59,14 +59,6 @@ public class CarregarParseCampanha extends HttpServlet {
 				for(FileItem fileItem : fields) {
 					if(!fileItem.isFormField()) 
 						arquivo = fileItem;
-	
-					/**else {
-						if(fileItem.getFieldName().equals("arquivo_tipo")) {
-						} else if(fileItem.getFieldName().equals("arquivo_linha_inicial")) {
-							linhaInicial = Integer.parseInt(fileItem.getString());
-						} 
-						
-					}*/
 				}
 
 				String divisao = ";";
