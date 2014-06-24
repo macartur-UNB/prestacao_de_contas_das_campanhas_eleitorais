@@ -220,31 +220,22 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 				codigo = 1;
 				break;
 				
-			case "vice-presidente":
-				return null;
-				
 			case "governador": 
 				codigo = 3;
 				break;
 				
-			case "vice-governador": 
-				return null;
-				
 			case "senador": 
 				codigo = 5;
 				break;
-				
-			case "deputado federal": 
-				return null;
-				
-			case "deputado distrital": 
+			
+			default: 
 				return null;
 					
 		}
-		String ComandoSQL = SQL_SELECT + "WHERE " + ANO + " = '" + ano + "' and " 
+		String comandoSQL = SQL_SELECT + " WHERE " + ANO + " = " + ano + " and " 
 		                   +COD_CARGO + " = " + codigo + " ORDER BY " + DESPESA_MAX_DECLARADA
 		                   +" DESC LIMIT 5";
-		return buscaBD(ComandoSQL);
+		return buscaBD(comandoSQL);
 		
 		
 	}
