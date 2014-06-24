@@ -219,5 +219,30 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 
 		return listaCampanha;
 	}
-
+	
+	public ArrayList<Campanha> TopFive (String cargo, Integer ano) throws SQLException {
+		int codigo = 0;
+		switch (cargo.toLowerCase()) {
+		
+			case "presidente": 
+				codigo = 1;
+				break;
+				
+			case "governador": 
+				codigo = 3;
+				break;
+				
+			case "senador": 
+				codigo = 5;
+				break;
+			
+			default: 
+				return null;
+					
+		}
+		String comandoSQL = SQL_SELECT + " WHERE " + ANO + " = " + ano + " and " 
+		                   +COD_CARGO + " = " + codigo + " ORDER BY " + DESPESA_MAX_DECLARADA
+		                   +" DESC LIMIT 5";
+		return buscaBD(comandoSQL);
+	}
 }
