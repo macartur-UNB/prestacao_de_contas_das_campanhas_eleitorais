@@ -44,8 +44,8 @@
 
 						<form action="${link_busca}" method="post">
 							<br> <input class="campoRapido" type="text" name="nome"
-								required> <br> <br> <br> <input type="submit"
-								class="botao" value="Buscar" />
+								required> <br> <br> <br> <input
+								id="botao" type="submit" value="Buscar" />
 						</form>
 					</center>
 				</div>

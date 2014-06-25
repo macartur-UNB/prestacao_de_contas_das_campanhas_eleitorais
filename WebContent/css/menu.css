@@ -55,12 +55,12 @@ ol, ul {
 	background: url(../img/partido_3.png) no-repeat top center;
 }
 
-#menu ul li a.pesquisar {
-	background: url(../img/pesquisar.png) no-repeat top center;
+#menu ul li a.top5 {
+	background: url(../img/movimentacao.png) no-repeat top center;
 }
 
-#menu ul li a.pesquisarstatic {
-	background: url(../img/pesquisar_3.png) no-repeat top center;
+#menu ul li a.top5static {
+	background: url(../img/movimentacao_3.png) no-repeat top center;
 }
 
 #menu ul li a.home:hover{
@@ -90,8 +90,8 @@ ol, ul {
 	color:#FD8711;
 }
 
-#menu ul li a.pesquisar:hover{
-	background:url(../img/pesquisar_2.png) no-repeat top center;
+#menu ul li a.top5:hover{
+	background:url(../img/movimentacao_2.png) no-repeat top center;
 	-webkit-transition:0.5s;
 	-moz-transition:0.5s;
 	-o-transition:0.5s;

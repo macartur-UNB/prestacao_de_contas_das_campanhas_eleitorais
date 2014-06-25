@@ -23,7 +23,7 @@
 					</c:url>
 					<a href="${url_partido}" class="partidos">Partidos</a>
 					</li>
-					<li><a href="top_five.jsp" class="pesquisar">TOP 5</a>
+					<li><a href="top_five.jsp" class="top5">TOP 5</a>
 					</li>
 				</ul>
 			</div>

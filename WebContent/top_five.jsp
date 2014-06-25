@@ -46,7 +46,7 @@
 
 <body>
 
-	<%@include file="imports/cabecalho.jsp"%>
+	<%@include file="imports/cabecalhoTop5.jsp"%>
 
 	<div id="pagina">
 		<div class="titulo_topo">
@@ -58,7 +58,7 @@
 				<c:url var="link_submit" value="/mvc">
 					<c:param name="logica" value="VisualizarTopFive"></c:param>
 				</c:url>
-<br>
+				<br>
 				<form action="${link_submit}" method="post">
 					<div id="primeiroSelect">
 						Ano: <select name="ano">
@@ -78,7 +78,7 @@
 					<br> <br> <input id="botaoTop5" type="submit"
 						value="Gerar Gráfico" />
 				</form>
-				<br> 
+				<br>
 				<div id="chart_div" style="width: 900px; height: 500px;"></div>
 			</div>
 		</div>
