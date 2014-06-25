@@ -20,7 +20,7 @@
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_info">
 			<h3>Informações</h3>
 		</div>
 		<div id="conteudo_informacoes">

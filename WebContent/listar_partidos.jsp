@@ -21,7 +21,7 @@
 	<%@include file="imports/cabecalhopartidos.jsp"%>
 
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_pesquisa">
 			<h3>Listagem</h3>
 		</div>
 		<div id="conteudo_informacoes">

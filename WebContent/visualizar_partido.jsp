@@ -20,7 +20,7 @@
 	<%@include file="imports/cabecalhopartidos.jsp"%>
 
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_partido">
 			<center>
 				<h3>Partido</h3>
 			</center>

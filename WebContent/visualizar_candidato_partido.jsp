@@ -22,7 +22,7 @@
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_partido">
 			<h3>Candidatos</h3>
 		</div>
 		<div id="conteudo_informacoes">
@@ -43,7 +43,7 @@
 					</p>
 				</center>
 				<center>
-					<table class="sortable" id="gradient-style-listaCandidadoPartido"
+					<table class="sortable" id="gradient-style-listaCandidatoPartido"
 						summary="Meeting Results">
 						<thead>
 							<tr>

@@ -15,6 +15,7 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css" media="all">	
 </head>
 
 <body>
@@ -22,8 +23,8 @@
 	<%@include file="imports/cabecalhocandidatos.jsp"%>
 
 	<div id="pagina">
-		<div class="titulo_topo">
-			<h3>Movimentações</h3>
+		<div class="titulo_topo" id="tt_movimentacao">
+			<h3>Movimentação</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
@@ -78,7 +79,7 @@
 							<p>Não há receitas declaradas.</p>
 						</c:when>
 						<c:otherwise>
-							<table class="sortable" id="gradient-style-movimentacao"
+							<table class="sortable" id="gradient-style-movimentacaor"
 								summary="Meeting Results" cellpadding="10" align="center">
 								<tr>
 									<th width="100">Data</th>
@@ -92,7 +93,7 @@
 									<tr>
 										<td>${receita.data}</td>
 										<td><details> <summary>${receita.tipoMovimentacao}</summary>
-											<table border="8">
+											<table border="0">
 												<tr>
 													<td colspan="2">Nome do Doador: <c:out
 															value="${receita.doador.nome}" />
@@ -334,7 +335,7 @@
 							<p>Não há despesas declaradas.</p>
 						</c:when>
 						<c:otherwise>
-							<table class="sortable" id="gradient-style-movimentacao"
+							<table class="sortable" id="gradient-style-movimentacaod"
 								summary="Meeting Results" cellpadding="10" align="center">
 								<tr>
 									<th width="100">Data</th>
@@ -349,7 +350,7 @@
 									<tr>
 										<td>${despesa.data}</td>
 										<td><details> <summary>${despesa.tipoMovimentacao}</summary>
-											<table border="8">
+											<table border="0">
 												<tr>
 													<td colspan="2">Nome do Fornecedor: <c:out
 															value="${despesa.fornecedor.nome}" />

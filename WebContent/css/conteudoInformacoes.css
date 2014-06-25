@@ -2,10 +2,33 @@
 .titulo_topo{
 	width: 188px;
 	height: 65px;
-	background: url(../img/titulo_topo.png) no-repeat;
 	position: relative;
 	z-index: 11;
 	margin-left: 0px;
+}
+
+#tt_info{
+	background: url(../img/titulo_topo_info.png) no-repeat;
+}
+
+#tt_candidato{
+	background: url(../img/titulo_topo_candidato.png) no-repeat;
+}
+
+#tt_general{
+	background: url(../img/titulo_topo_general.png) no-repeat;
+}
+
+#tt_movimentacao{
+	background: url(../img/titulo_topo_movimentacao.png) no-repeat;
+}
+
+#tt_partido{
+	background: url(../img/titulo_topo_partido.png) no-repeat;
+}
+
+#tt_pesquisa{
+	background: url(../img/titulo_topo_pesquisa.png) no-repeat;
 }
 
 .titulo_topo h3{
@@ -170,8 +193,8 @@ div#pesquisaRapida{
 div#perfilCandidatoAno{
 	border:7px groove #269917;
 	float:left;
-	width:450px;
-	height:290px;
+	width:430px;
+	height:400px;
 	padding:15px;
 	margin:0px 0px 0px 220px;
 	
@@ -196,195 +219,3 @@ div#fotoPerfil{
 #perfilPartido a:active {text-decoration: none; color: black;}
 #perfilPartido a:visited {text-decoration: none; color: black;}
 #perfilPartido a:hover {text-decoration: none; color: blue;}
-
-#gradient-style-perfilPartido{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 45px;
-	width: 180px;
-	text-align: left;
-	border-collapse: collapse;
-}
-
-#gradient-style-perfilPartido th{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
-	border-top: 2px solid #d3ddff;
-	border-bottom: 1px solid #fff;
-	color: #039;
-}
-
-#gradient-style-perfilPartido td{
-	padding: 8px; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid #fff;
-	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
-}
-
-#gradient-style-perfilPartido tbody tr:hover td{
-	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	color: #339;
-}
-
-#gradient-style-perfilPartido tbody a:link {text-decoration: none; color: #000099}
-#gradient-style-perfilPartido tbody a:active {text-decoration: none; color: #000099}
-#gradient-style-perfilPartido tbody a:visited {text-decoration: none; color: #000099}
-#gradient-style-perfilPartido tbody a:hover {text-decoration: underline; color: #000099}
-
-
-#gradient-style-listaCandidadoPartido{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 45px;
-	width: 780px;
-	text-align: left;
-	border-collapse: collapse;
-}
-
-#gradient-style-listaCandidadoPartido th{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
-	border-top: 2px solid #d3ddff;
-	border-bottom: 1px solid #fff;
-	color: #039;
-}
-
-#gradient-style-listaCandidadoPartido td{
-	padding: 8px; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid #fff;
-	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
-}
-
-#gradient-style-listaCandidadoPartido tbody tr:hover td{
-	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	color: #339;
-}
-
-#gradient-style-listaCandidadoPartido a:link {text-decoration: none; color: #000099}
-#gradient-style-listaCandidadoPartido a:active {text-decoration: none; color: #000099}
-#gradient-style-listaCandidadoPartido a:visited {text-decoration: none; color: #000099}
-#gradient-style-listaCandidadoPartido a:hover {text-decoration: underline; color: #000099}
-
-#gradient-style-listaCandidatos{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 45px;
-	width: 280px;
-	text-align: left;
-	border-collapse: collapse;
-}
-
-#gradient-style-listaCandidatos th{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
-	border-top: 2px solid #d3ddff;
-	border-bottom: 1px solid #fff;
-	color: #039;
-}
-
-#gradient-style-listaCandidatos td{
-	padding: 8px; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid #fff;
-	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
-}
-
-#gradient-style-listaCandidatos tbody tr:hover td{
-	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	color: #339;
-}
-
-#gradient-style-listaCandidatos a:link {text-decoration: none; color: #000099}
-#gradient-style-listaCandidatos a:active {text-decoration: none; color: #000099}
-#gradient-style-listaCandidatos a:visited {text-decoration: none; color: #000099}
-#gradient-style-listaCandidatos a:hover {text-decoration: underline; color: #000099}
-
-
-
-
-#gradient-style-perfilCandidato{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 8px;
-	width: 400px;
-	text-align: center;
-	border-collapse: collapse;
-}
-
-#gradient-style-perfilCandidato th{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	
-	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
-	border-top: 2px solid #d3ddff;
-	border-bottom: 1px solid #fff;
-	color: #039;
-}
-
-#gradient-style-perfilCandidato td{
-	padding: 8px; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid #fff;
-	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
-}
-
-#gradient-style-perfilCandidato tbody tr:hover td{
-	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	color: #339;
-}
-
-#gradient-style-perfilCandidato a:link {text-decoration: none; color: #000099}
-#gradient-style-perfilCandidato a:active {text-decoration: none; color: #000099}
-#gradient-style-perfilCandidato a:visited {text-decoration: none; color: #000099}
-#gradient-style-perfilCandidato a:hover {text-decoration: underline; color: #000099}
-
-
-#gradient-style-movimentacao{
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-	font-size: 12px;
-	margin: 8px;
-	width: 800px;
-	text-align: center;
-	border-collapse: collapse;
-}
-
-#gradient-style-movimentacao th{
-	font-size: 13px;
-	font-weight: normal;
-	padding: 8px;
-	
-	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
-	border-top: 2px solid #d3ddff;
-	border-bottom: 1px solid #fff;
-	color: #039;
-}
-
-#gradient-style-movimentacao td{
-	padding: 8px; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid #fff;
-	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
-}
-
-#gradient-style-movimentacao tbody tr:hover td{
-	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	color: #339;
-}
-
-#gradient-style-movimentacao a:link {text-decoration: none; color: #000099}
-#gradient-style-movimentacao a:active {text-decoration: none; color: #000099}
-#gradient-style-movimentacao a:visited {text-decoration: none; color: #000099}
-#gradient-style-movimentacao a:hover {text-decoration: underline; color: #000099}

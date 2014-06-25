@@ -20,8 +20,8 @@
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
-		<div class="titulo_topo">
-			<h3>Buscar</h3>
+		<div class="titulo_topo" id="tt_pesquisa">
+			<h3>Pesquisar</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">

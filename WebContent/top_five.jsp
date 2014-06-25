@@ -49,7 +49,7 @@
 	<%@include file="imports/cabecalhoTop5.jsp"%>
 
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_general">
 			<h3>Top Five</h3>
 		</div>
 		<div id="conteudo_informacoes">

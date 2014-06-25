@@ -13,6 +13,7 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css" media="all">	
 <!-- Google Chart -->
 <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -42,7 +43,7 @@
 	<%@include file="imports/cabecalhocandidatos.jsp"%>
 
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_candidato">
 			<h3>Perfil</h3>
 		</div>
 		<div id="conteudo_informacoes">
@@ -82,7 +83,7 @@
 							</center>
 
 							<div id="ano_partido">
-								<h2 align="center">Consulta a Movimentação</h2>
+								<h2 align="center">Consulta à Movimentação</h2>
 								<!-- Anos em que ele concorreu -->
 								<c:forEach var="campanha" items="${campanhas}">
 									<table id="gradient-style-perfilCandidato"
@@ -110,7 +111,7 @@
 														<c:param name="qtdPorPaginaD" value="${10}" />
 														<c:param name="verTodosD" value="${false}" />
 														<c:param name="centroD" value="${1}" />
-													</c:url> <a href="${AnoUrl}"><center>${campanha.ano}</center></a></th>
+													</c:url> <a href="${AnoUrl}"><center>Campanha de ${campanha.ano}</center></a></th>
 											</tr>
 										</thead>
 										<tbody>
