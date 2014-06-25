@@ -14,7 +14,7 @@
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
 <!-- Google Chart -->
-    <script type="text/javascript">
+<script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -93,19 +93,23 @@
 														value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
-														<c:param name="despesaTC" value="${campanha.despesaTotalCalculada}" />
-														<c:param name="receitaTC" value="${campanha.receitaTotalCalculada}" />
+														<c:param name="despesaTC"
+															value="${campanha.despesaTotalCalculada}" />
+														<c:param name="receitaTC"
+															value="${campanha.receitaTotalCalculada}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
 														<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
 														<c:param name="uf" value="${campanha.uf}" />
-														<c:param name="inicioD" value="${0}" />
-														<c:param name="qtdPorPaginaD" value="${10}" />
-														<c:param name="verTodosD" value="${false}" />
 														<c:param name="inicioR" value="${0}" />
 														<c:param name="qtdPorPaginaR" value="${10}" />
 														<c:param name="verTodosR" value="${false}" />
+														<c:param name="centroR" value="${1}" />
+														<c:param name="inicioD" value="${0}" />
+														<c:param name="qtdPorPaginaD" value="${10}" />
+														<c:param name="verTodosD" value="${false}" />
+														<c:param name="centroD" value="${1}" />
 													</c:url> <a href="${AnoUrl}"><center>${campanha.ano}</center></a></th>
 											</tr>
 										</thead>
@@ -129,7 +133,9 @@
 					</div>
 				</div>
 			</div>
-			<center><div id="chart_div" style="width: 900px; height: 500px;"></div></center>
+			<center>
+				<div id="chart_div" style="width: 900px; height: 500px;"></div>
+			</center>
 		</div>
 	</div>
 	<!-- FIM CONTEUDO-->

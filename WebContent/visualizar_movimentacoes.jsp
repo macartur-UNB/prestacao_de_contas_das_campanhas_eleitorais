@@ -70,9 +70,7 @@
 				<!-- Tabela de receitas -->
 				<center>
 					<h4>
-						<br>
-						<br>
-						<br>Receitas:
+						<br> <br> <br>Receitas:
 					</h4>
 
 					<c:choose>
@@ -138,10 +136,36 @@
 									<tr>
 										<td colspan="4"><center>
 												Páginas:
-												<c:forEach var="i" begin="1" end="${indiceR}">
+												<c:url var="url_pagInicialR" value="/mvc">
+													<c:param name="logica"
+														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="numero_cand"
+														value="${campanha.numeroCandidato}" />
+													<c:param name="ano" value="${campanha.ano}" />
+													<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
+													<c:param name="uf" value="${campanha.uf}" />
+													<c:param name="inicioR" value="${0}" />
+													<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
+													<c:param name="verTodosR" value="${false}" />
+													<c:param name="centroR" value="${1}" />
+													<c:param name="inicioD" value="${inicioD}" />
+													<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
+													<c:param name="verTodosD" value="${verTodosD}" />
+													<c:param name="centroD" value="${centroD}" />
+												</c:url>
+												<a href="${url_pagInicialR}"><c:out value="primeira... " /></a>
+												<c:forEach var="i" begin="${minRaioR}" end="${maxRaioR}">
 													<c:url var="url_pagR" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
+														<c:param name="despesaTC"
+															value="${campanha.despesaTotalCalculada}" />
+														<c:param name="receitaTC"
+															value="${campanha.receitaTotalCalculada}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -150,16 +174,50 @@
 														<c:param name="inicioR" value="${(i-1)*qtdPorPaginaR}" />
 														<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
 														<c:param name="verTodosR" value="${false}" />
+														<c:param name="centroR" value="${i}" />
 														<c:param name="inicioD" value="${inicioD}" />
 														<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
 														<c:param name="verTodosD" value="${verTodosD}" />
+														<c:param name="centroD" value="${centroD}" />
 													</c:url>
-													<a href="${url_pagR}"><c:out value="${i}" /></a>
+													<c:choose>
+														<c:when test="${i == centroR}">${i}</c:when>
+														<c:otherwise>
+															<a href="${url_pagR}"><c:out value="${i}" /></a>
+														</c:otherwise>
+													</c:choose>
 												</c:forEach>
+												<c:url var="url_pagFinalR" value="/mvc">
+													<c:param name="logica"
+														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="numero_cand"
+														value="${campanha.numeroCandidato}" />
+													<c:param name="ano" value="${campanha.ano}" />
+													<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
+													<c:param name="uf" value="${campanha.uf}" />
+													<c:param name="inicioR"
+														value="${(indiceR-1)*qtdPorPaginaR}" />
+													<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
+													<c:param name="verTodosR" value="${false}" />
+													<c:param name="centroR" value="${indiceR}" />
+													<c:param name="inicioD" value="${inicioD}" />
+													<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
+													<c:param name="verTodosD" value="${verTodosD}" />
+													<c:param name="centroD" value="${centroD}" />
+												</c:url>
+												<a href="${url_pagFinalR}"><c:out value=" ...última" /></a>
 												<br> Receitas por Página:
 												<c:url var="url_tamanhoOriginalR" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -168,32 +226,76 @@
 													<c:param name="inicioR" value="${0}" />
 													<c:param name="qtdPorPaginaR" value="${10}" />
 													<c:param name="verTodosR" value="${false}" />
+													<c:param name="centroR" value="${1}" />
 													<c:param name="inicioD" value="${inicioD}" />
 													<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
 													<c:param name="verTodosD" value="${verTodosD}" />
+													<c:param name="centroD" value="${centroD}" />
 												</c:url>
 												<a href="${url_tamanhoOriginalR}"> ${10}</a>
 												<c:forEach var="i" begin="1" end="${qtdDePPR}">
 													<c:url var="url_tamanhosR" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
+														<c:param name="despesaTC"
+															value="${campanha.despesaTotalCalculada}" />
+														<c:param name="receitaTC"
+															value="${campanha.receitaTotalCalculada}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
 														<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
 														<c:param name="uf" value="${campanha.uf}" />
 														<c:param name="inicioR" value="${0}" />
-														<c:param name="qtdPorPaginaR" value="${i*25}" />
+														<c:choose>
+															<c:when test="${i == 5}">
+																<c:param name="qtdPorPaginaR" value="${250}" />
+															</c:when>
+															<c:when test="${i == 6 }">
+																<c:param name="qtdPorPaginaR" value="${500}" />
+															</c:when>
+															<c:when test="${i == 7 }">
+																<c:param name="qtdPorPaginaR" value="${1000}" />
+															</c:when>
+															<c:when test="${i == 8 }">
+																<c:param name="qtdPorPaginaR" value="${2000}" />
+															</c:when>
+															<c:otherwise>
+																<c:param name="qtdPorPaginaR" value="${i*25}" />
+															</c:otherwise>
+														</c:choose>
 														<c:param name="verTodosR" value="${false}" />
+														<c:param name="centroR" value="${1}" />
 														<c:param name="inicioD" value="${inicioD}" />
 														<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
 														<c:param name="verTodosD" value="${verTodosD}" />
+														<c:param name="centroD" value="${centroD}" />
 													</c:url>
-													<a href="${url_tamanhosR}"> ${i*25}</a>
+													<a href="${url_tamanhosR}"> <c:choose>
+															<c:when test="${i == 5}">
+																${250}
+															</c:when>
+															<c:when test="${i == 6 }">
+																${500}
+															</c:when>
+															<c:when test="${i == 7 }">
+																${1000}
+															</c:when>
+															<c:when test="${i == 8 }">
+																${2000}
+															</c:when>
+															<c:otherwise>
+																${i*25}
+															</c:otherwise>
+														</c:choose></a>
 												</c:forEach>
 												<c:url var="url_todosR" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -202,9 +304,11 @@
 													<c:param name="inicioR" value="${0}" />
 													<c:param name="qtdPorPaginaR" value="${0}" />
 													<c:param name="verTodosR" value="${true}" />
+													<c:param name="centroR" value="${1}" />
 													<c:param name="inicioD" value="${inicioD}" />
 													<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
 													<c:param name="verTodosD" value="${verTodosD}" />
+													<c:param name="centroD" value="${centroD}" />
 												</c:url>
 												<a href="${url_todosR}"> Ver Todos</a>
 											</center></td>
@@ -222,8 +326,7 @@
 				<!-- Tabela de despesas -->
 				<center>
 					<h4>
-						<br>
-						<br>Despesas:
+						<br> <br>Despesas:
 					</h4>
 
 					<c:choose>
@@ -287,10 +390,36 @@
 									<tr>
 										<td colspan="4"><center>
 												Páginas:
-												<c:forEach var="i" begin="1" end="${indiceD}">
+												<c:url var="url_pagInicialD" value="/mvc">
+													<c:param name="logica"
+														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="numero_cand"
+														value="${campanha.numeroCandidato}" />
+													<c:param name="ano" value="${campanha.ano}" />
+													<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
+													<c:param name="uf" value="${campanha.uf}" />
+													<c:param name="inicioD" value="${0}" />
+													<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
+													<c:param name="verTodosD" value="${false}" />
+													<c:param name="centroD" value="${1}" />
+													<c:param name="inicioR" value="${inicioR}" />
+													<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
+													<c:param name="verTodosR" value="${verTodosR}" />
+													<c:param name="centroR" value="${centroR}" />
+												</c:url>
+												<a href="${url_pagInicialD}"><c:out value="primeira... " /></a>
+												<c:forEach var="i" begin="${minRaioD}" end="${maxRaioD}">
 													<c:url var="url_pagD" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
+														<c:param name="despesaTC"
+															value="${campanha.despesaTotalCalculada}" />
+														<c:param name="receitaTC"
+															value="${campanha.receitaTotalCalculada}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -299,16 +428,50 @@
 														<c:param name="inicioD" value="${(i-1)*qtdPorPaginaD}" />
 														<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
 														<c:param name="verTodosD" value="${false}" />
+														<c:param name="centroD" value="${i}" />
 														<c:param name="inicioR" value="${inicioR}" />
 														<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
 														<c:param name="verTodosR" value="${verTodosR}" />
+														<c:param name="centroR" value="${centroR}" />
 													</c:url>
-													<a href="${url_pagD}"><c:out value="${i}" /></a>
+													<c:choose>
+														<c:when test="${i == centroD}">${i}</c:when>
+														<c:otherwise>
+															<a href="${url_pagD}"><c:out value="${i}" /></a>
+														</c:otherwise>
+													</c:choose>
 												</c:forEach>
+												<c:url var="url_pagFinalD" value="/mvc">
+													<c:param name="logica"
+														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="numero_cand"
+														value="${campanha.numeroCandidato}" />
+													<c:param name="ano" value="${campanha.ano}" />
+													<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
+													<c:param name="uf" value="${campanha.uf}" />
+													<c:param name="inicioD"
+														value="${(indiceD-1)*qtdPorPaginaD}" />
+													<c:param name="qtdPorPaginaD" value="${qtdPorPaginaD}" />
+													<c:param name="verTodosD" value="${false}" />
+													<c:param name="centroD" value="${indiceD}" />
+													<c:param name="inicioR" value="${inicioR}" />
+													<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
+													<c:param name="verTodosR" value="${verTodosR}" />
+													<c:param name="centroR" value="${centroR}" />
+												</c:url>
+												<a href="${url_pagFinalD}"><c:out value=" ...última" /></a>
 												<br> Despesas por Página:
 												<c:url var="url_tamanhoOriginalD" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -317,32 +480,78 @@
 													<c:param name="inicioD" value="${0}" />
 													<c:param name="qtdPorPaginaD" value="${10}" />
 													<c:param name="verTodosD" value="${false}" />
+													<c:param name="centroD" value="${centroD}" />
 													<c:param name="inicioR" value="${inicioR}" />
 													<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
 													<c:param name="verTodosR" value="${verTodosR}" />
+													<c:param name="centroR" value="${centroR}" />
 												</c:url>
 												<a href="${url_tamanhoOriginalD}"> ${10}</a>
 												<c:forEach var="i" begin="1" end="${qtdDePPD}">
 													<c:url var="url_tamanhosD" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
+														<c:param name="logica"
+															value="RequisitarMovimentacoesDeCandidato" />
+														<c:param name="despesaTC"
+															value="${campanha.despesaTotalCalculada}" />
+														<c:param name="receitaTC"
+															value="${campanha.receitaTotalCalculada}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
 														<c:param name="cargo_cod" value="${campanha.cargo.codigo}" />
 														<c:param name="uf" value="${campanha.uf}" />
 														<c:param name="inicioD" value="${0}" />
-														<c:param name="qtdPorPaginaD" value="${i*25}" />
+														<c:choose>
+															<c:when test="${i == 5}">
+																<c:param name="qtdPorPaginaD" value="${250}" />
+															</c:when>
+															<c:when test="${i == 6 }">
+																<c:param name="qtdPorPaginaD" value="${500}" />
+															</c:when>
+															<c:when test="${i == 7 }">
+																<c:param name="qtdPorPaginaD" value="${1000}" />
+															</c:when>
+															<c:when test="${i == 8 }">
+																<c:param name="qtdPorPaginaD" value="${2000}" />
+															</c:when>
+															<c:otherwise>
+																<c:param name="qtdPorPaginaD" value="${i*25}" />
+															</c:otherwise>
+														</c:choose>
 														<c:param name="verTodosD" value="${false}" />
+														<c:param name="centroD" value="${1}" />
 														<c:param name="inicioR" value="${inicioR}" />
 														<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
 														<c:param name="verTodosR" value="${verTodosR}" />
+														<c:param name="centroR" value="${centroR}" />
 													</c:url>
-													<a href="${url_tamanhosD}"> ${i*25}</a>
+													<a href="${url_tamanhosD}"> <c:choose>
+															<c:when test="${i == 5}">
+																${250}
+															</c:when>
+															<c:when test="${i == 6 }">
+																${500}
+															</c:when>
+															<c:when test="${i == 7 }">
+																${1000}
+															</c:when>
+															<c:when test="${i == 8 }">
+																${2000}
+															</c:when>
+															<c:otherwise>
+																${i*25}
+															</c:otherwise>
+														</c:choose></a>
 												</c:forEach>
 												<c:url var="url_todosD" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
+													<c:param name="despesaTC"
+														value="${campanha.despesaTotalCalculada}" />
+													<c:param name="receitaTC"
+														value="${campanha.receitaTotalCalculada}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -351,9 +560,11 @@
 													<c:param name="inicioD" value="${0}" />
 													<c:param name="qtdPorPaginaD" value="${0}" />
 													<c:param name="verTodosD" value="${true}" />
+													<c:param name="centroD" value="${1}" />
 													<c:param name="inicioR" value="${inicioR}" />
 													<c:param name="qtdPorPaginaR" value="${qtdPorPaginaR}" />
 													<c:param name="verTodosR" value="${verTodosR}" />
+													<c:param name="centroR" value="${centroR}" />
 												</c:url>
 												<a href="${url_todosD}"> Ver Todos</a>
 											</center></td>
