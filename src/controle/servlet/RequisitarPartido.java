@@ -19,6 +19,7 @@ public class RequisitarPartido implements Logica {
 	private int inicio;
 	private int qtdPorPagina;
 	private boolean verTodos;
+	private int atual;
 
 	private int indice;
 	private int qtdDePP;
@@ -48,6 +49,8 @@ public class RequisitarPartido implements Logica {
 		this.listaPartidos = controle.getListaTodosPartidos();
 		this.indice = geraIndiceDaLista(this.listaPartidos,this.qtdPorPagina);
 		this.qtdDePP = geraIndiceDePaginacao(this.listaPartidos);
+		
+		this.atual = (int) Math.round((float) this.inicio / (float) this.qtdPorPagina)+1;
 	}
 
 	private void preparaEnvioDeParametros() {
@@ -58,6 +61,8 @@ public class RequisitarPartido implements Logica {
 		this.req.setAttribute("qtdPorPagina", this.qtdPorPagina);
 		this.req.setAttribute("indice", this.indice);
 		this.req.setAttribute("qtdDePP", this.qtdDePP);
+		
+		this.req.setAttribute("atual", this.atual);
 	}
 
 	private int geraIndiceDaLista(List<Partido> lista, int divisor) {

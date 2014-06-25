@@ -63,7 +63,17 @@
 							<tr>
 								<td colspan="4"><center>
 										Páginas:
-										<c:forEach var="i" begin="1" end="${indice}">
+										<c:url var="url_pagInicial" value="/mvc">
+											<c:param name="logica"
+												value="VisualizarResultadoListaBuscaCandidato" />
+											<c:param name="nome" value="${nome}" />
+											<c:param name="inicio" value="${0}" />
+											<c:param name="qtdPorPagina" value="${qtdPorPagina}" />
+											<c:param name="verTodos" value="${false}" />
+											<c:param name="centro" value="${1}" />
+										</c:url>
+										<a href="${url_pagInicial}"><c:out value="primeira... " /></a>
+										<c:forEach var="i" begin="${minRaio}" end="${maxRaio}">
 											<c:url var="url_pag" value="/mvc">
 												<c:param name="logica"
 													value="VisualizarResultadoListaBuscaCandidato" />
@@ -71,10 +81,26 @@
 												<c:param name="inicio" value="${(i-1)*qtdPorPagina}" />
 												<c:param name="qtdPorPagina" value="${qtdPorPagina}" />
 												<c:param name="verTodos" value="${false}" />
+												<c:param name="centro" value="${i}" />
 											</c:url>
-											<a href="${url_pag}"><c:out value="${i}" /></a>
+											<c:choose>
+												<c:when test="${i == centro}">${i}</c:when>
+												<c:otherwise>
+													<a href="${url_pag}"><c:out value="${i}" /></a>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
-										<br> Candidatos por Página:
+										<c:url var="url_pagFinal" value="/mvc">
+											<c:param name="logica"
+												value="VisualizarResultadoListaBuscaCandidato" />
+											<c:param name="nome" value="${nome}" />
+											<c:param name="inicio" value="${(indice-1)*qtdPorPagina}" />
+											<c:param name="qtdPorPagina" value="${qtdPorPagina}" />
+											<c:param name="verTodos" value="${false}" />
+											<c:param name="centro" value="${indice}" />
+										</c:url>
+										<a href="${url_pagFinal}"><c:out value=" ...última" /></a> <br>
+										Candidatos por Página:
 										<c:url var="url_tamanhoOriginal" value="/mvc">
 											<c:param name="logica"
 												value="VisualizarResultadoListaBuscaCandidato" />
@@ -82,6 +108,7 @@
 											<c:param name="inicio" value="${0}" />
 											<c:param name="qtdPorPagina" value="${10}" />
 											<c:param name="verTodos" value="${false}" />
+											<c:param name="centro" value="${1}" />
 										</c:url>
 										<a href="${url_tamanhoOriginal}"> ${10}</a>
 										<c:forEach var="i" begin="1" end="${qtdDePP}">
@@ -90,10 +117,43 @@
 													value="VisualizarResultadoListaBuscaCandidato" />
 												<c:param name="nome" value="${nome}" />
 												<c:param name="inicio" value="${0}" />
-												<c:param name="qtdPorPagina" value="${i*25}" />
+												<c:choose>
+													<c:when test="${i == 5}">
+														<c:param name="qtdPorPagina" value="${250}" />
+													</c:when>
+													<c:when test="${i == 6 }">
+														<c:param name="qtdPorPagina" value="${500}" />
+													</c:when>
+													<c:when test="${i == 7 }">
+														<c:param name="qtdPorPagina" value="${1000}" />
+													</c:when>
+													<c:when test="${i == 8 }">
+														<c:param name="qtdPorPagina" value="${2000}" />
+													</c:when>
+													<c:otherwise>
+														<c:param name="qtdPorPagina" value="${i*25}" />
+													</c:otherwise>
+												</c:choose>
 												<c:param name="verTodos" value="${false}" />
+												<c:param name="centro" value="${1}" />
 											</c:url>
-											<a href="${url_tamanhos}"> ${i*25}</a>
+											<a href="${url_tamanhos}"> <c:choose>
+													<c:when test="${i == 5}">
+																${250}
+													</c:when>
+													<c:when test="${i == 6 }">
+																${500}
+													</c:when>
+													<c:when test="${i == 7 }">
+																${1000}
+													</c:when>
+													<c:when test="${i == 8 }">
+																${2000}
+													</c:when>
+													<c:otherwise>
+																${i*25}
+													</c:otherwise>
+												</c:choose></a>
 										</c:forEach>
 										<c:url var="url_todos" value="/mvc">
 											<c:param name="logica"
@@ -102,6 +162,7 @@
 											<c:param name="inicio" value="${0}" />
 											<c:param name="qtdPorPagina" value="${0}" />
 											<c:param name="verTodos" value="${true}" />
+											<c:param name="centro" value="${1}" />
 										</c:url>
 										<a href="${url_todos}"> Ver Todos</a>
 									</center></td>

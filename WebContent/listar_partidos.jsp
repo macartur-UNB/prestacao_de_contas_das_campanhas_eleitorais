@@ -64,7 +64,12 @@
 												<c:param name="qtdPorPagina" value="${qtdPorPagina}" />
 												<c:param name="verTodos" value="${false}" />
 											</c:url>
-											<a href="${url_pag}"><c:out value="${i}" /></a>
+											<c:choose>
+												<c:when test="${i == atual}">${i}</c:when>
+												<c:otherwise>
+													<a href="${url_pag}"><c:out value="${i}" /></a>
+												</c:otherwise>
+											</c:choose>
 										</c:forEach>
 										<br> Partidos por Página:
 										<c:url var="url_tamanhoOriginal" value="/mvc">

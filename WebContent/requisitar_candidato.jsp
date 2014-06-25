@@ -40,6 +40,7 @@
 							<c:param name="inicio" value="${0}"></c:param>
 							<c:param name="qtdPorPagina" value="${10}"></c:param>
 							<c:param name="verTodos" value="${false}"></c:param>
+							<c:param name="centro" value="${1}"></c:param>
 						</c:url>
 
 						<form action="${link_busca}" method="post">

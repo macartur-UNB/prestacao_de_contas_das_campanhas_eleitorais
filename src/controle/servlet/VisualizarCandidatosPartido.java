@@ -27,6 +27,7 @@ public class VisualizarCandidatosPartido implements Logica {
 	private int inicio;
 	private int qtdPorPagina;
 	private boolean verTodos;
+	private int atual;
 
 	private int indice;
 	private int qtdDePP;
@@ -66,6 +67,8 @@ public class VisualizarCandidatosPartido implements Logica {
 
 		this.indice = geraIndiceDaLista(this.listaCampanhas,this.qtdPorPagina);
 		this.qtdDePP = geraIndiceDePaginacao(this.listaCampanhas);
+		
+		this.atual = (int) Math.round((float) this.inicio / (float) this.qtdPorPagina)+1;
 	}
 
 	private void preparaEnvioDeParametros() {
@@ -82,6 +85,8 @@ public class VisualizarCandidatosPartido implements Logica {
 		this.req.setAttribute("qtdPorPagina", this.qtdPorPagina);
 		this.req.setAttribute("indice", this.indice);
 		this.req.setAttribute("qtdDePP", this.qtdDePP);
+		
+		this.req.setAttribute("atual", this.atual);
 	}
 
 	private int geraIndiceDaLista(List<Campanha> lista, int divisor) {

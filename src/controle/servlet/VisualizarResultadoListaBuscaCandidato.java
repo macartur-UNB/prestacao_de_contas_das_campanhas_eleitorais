@@ -23,6 +23,10 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 	private boolean verTodos;
 	private int indice;
 	private int qtdDePP;
+	
+	private int centro;
+	private int minRaio;
+	private int maxRaio;
 
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
@@ -35,6 +39,7 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 			return "/erro_candidato_inexistente.jsp";
 		} else {
 			estabeleceParametros();
+			estabeleceRaioDePaginacao();
 			preparaEnvioDeParametros();
 
 			return "/visualizar_lista_candidatos.jsp";
@@ -47,6 +52,8 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 		this.inicio = Integer.parseInt(this.req.getParameter("inicio"));
 		this.qtdPorPagina = Integer.parseInt(this.req.getParameter("qtdPorPagina"));
 		this.verTodos = Boolean.parseBoolean(this.req.getParameter("verTodos"));
+		
+		this.centro = Integer.parseInt(this.req.getParameter("centro"));
 
 		this.controle = new CandidatoControle();
 
@@ -58,6 +65,34 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 		this.qtdDePP = geraIndiceDePaginacao(this.listaCandidatos);
 	}
 
+	private void estabeleceRaioDePaginacao() {
+		int cont = 0;
+		if (this.indice > 9)
+			cont = 9;
+		else
+			cont = this.indice - 1;
+
+		int raioMin = this.centro;
+		int raioMax = this.centro;
+		this.minRaio = 0;
+		this.maxRaio = 0;
+		while (cont != 0) {
+			if (raioMin == 1)
+				this.maxRaio++;
+			else if (this.minRaio < 5) {
+				this.minRaio++;
+				raioMin--;
+			} else if (raioMax == this.indice)
+				this.minRaio++;
+			else {
+				this.maxRaio++;
+				raioMax++;
+			}
+			cont--;
+		}
+		this.maxRaio += this.centro;
+		this.minRaio = this.centro - this.minRaio;
+	}
 	private void preparaEnvioDeParametros() {
 		this.req.setAttribute("listaCandidatos", this.listaCandidatos);
 
@@ -68,6 +103,10 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 		this.req.setAttribute("qtdPorPagina", this.qtdPorPagina);
 		this.req.setAttribute("indice", this.indice);
 		this.req.setAttribute("qtdDePP", this.qtdDePP);	
+		
+		this.req.setAttribute("centro", this.centro);
+		this.req.setAttribute("minRaio", this.minRaio);
+		this.req.setAttribute("maxRaio", this.maxRaio);
 	}	
 
 	private int geraIndiceDaLista(List<Candidato> lista, int divisor) {
@@ -81,7 +120,17 @@ public class VisualizarResultadoListaBuscaCandidato implements Logica {
 	}
 
 	private int geraIndiceDePaginacao(List<Candidato> lista) {
-		int indice = (int) Math.floor((double)lista.size()/(double)25);
+		int indice = (int) Math.floor((double) lista.size() / (double) 25);
+		if (indice >= 4 && indice < 10)
+			return 4;
+		else if (indice >= 10 && indice < 20)
+			return 5;
+		else if (indice >= 20 && indice < 40)
+			return 6;
+		else if (indice >= 40 && indice < 80)
+			return 7;
+		else if (indice >= 80)
+			return 8;
 		return indice;
 	}
 }
