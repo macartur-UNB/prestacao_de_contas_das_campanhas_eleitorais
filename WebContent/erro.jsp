@@ -24,11 +24,8 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h4>Um erro ocorreu! Não será possível exibir a Página!</h4>
-				<br>
-				<form name="voltar" action="index.jsp">
-					<input type="submit" class="botao" value="Voltar">
-				</form>
-				<br>
+				<br> <input type="button" class="botao" value="Voltar"
+					onclink="history.go(-1)"> <br>
 			</div>
 		</div>
 		<!-- content  -->
