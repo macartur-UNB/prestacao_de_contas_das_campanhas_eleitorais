@@ -16,10 +16,24 @@ public class SelecionarCandidatoTeste extends TemplateTeste {
 	SelecionarCandidato selecionarCandidato;
 	HttpServletRequest req;
 	HttpServletResponse res;
+	
+	@Test
+	public void simulaServletComAno2002() throws Exception {
+		when(req.getParameter("tituloEleitoral")).thenReturn("001364742003");
+		
+		this.selecionarCandidato.executa(req, res);
+	}
 
 	@Test
-	public void simulaServlet() throws Exception {
+	public void simulaServletComAno2006() throws Exception {
 		when(req.getParameter("tituloEleitoral")).thenReturn("002143582054");
+		
+		this.selecionarCandidato.executa(req, res);
+	}
+	
+	@Test
+	public void simulaServletComAno2010() throws Exception {
+		when(req.getParameter("tituloEleitoral")).thenReturn("007235102003");
 		
 		this.selecionarCandidato.executa(req, res);
 	}
