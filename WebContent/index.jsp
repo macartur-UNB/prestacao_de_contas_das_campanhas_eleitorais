@@ -177,7 +177,6 @@
 			<br>
 			<center>
 				<div id="em_construcao">
-				    <grafs:grafico id="teste" />
 					<div id="piechart_3d" style="width: 505px; height: 285px;" ></div>
 				</div>
 			</center>

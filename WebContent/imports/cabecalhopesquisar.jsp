@@ -22,7 +22,7 @@
 						<c:param name="verTodos" value="${false}"></c:param>
 					</c:url>
 					<a href="${url_partido}" class="partidos">Partidos</a>					</li>
-					<li><a href="erro-404.jsp" class="pesquisarstatic">Pesquisar</a>
+					<li><a href="top_five.jsp" class="pesquisarstatic">TOP 5>Pesquisar</a>
 					</li>
 				</ul>
 			</div>

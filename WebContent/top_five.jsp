@@ -13,21 +13,22 @@
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/top5.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
 <!-- Google Chart -->
-    <script type="text/javascript">
+<script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
     	  
         var data = google.visualization.arrayToDataTable([                                                
           ['Nome do Candidato',	'Despesa Total Declarado'],
-          ["${candidato1.candidato.nome}",	${candidato1.despesaMaxDeclarada}],
-          ["${candidato2.candidato.nome}",	${candidato2.despesaMaxDeclarada}],
-          ["${candidato3.candidato.nome}",	${candidato3.despesaMaxDeclarada}],
-          ["${candidato4.candidato.nome}",	${candidato4.despesaMaxDeclarada}],
-          ["${candidato5.candidato.nome}",	${candidato5.despesaMaxDeclarada}],
+          ["${candidato1.nomeDeUrna}",	${candidato1.despesaMaxDeclarada}],
+          ["${candidato2.nomeDeUrna}",	${candidato2.despesaMaxDeclarada}],
+          ["${candidato3.nomeDeUrna}",	${candidato3.despesaMaxDeclarada}],
+          ["${candidato4.nomeDeUrna}",	${candidato4.despesaMaxDeclarada}],
+          ["${candidato5.nomeDeUrna}",	${candidato5.despesaMaxDeclarada}],
         ]);
 
         var options = {
@@ -39,8 +40,8 @@
         chart.draw(data, options);
       }
     </script>
-<!-- END Google Chart -->	
-	
+<!-- END Google Chart -->
+
 </head>
 
 <body>
@@ -53,34 +54,32 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-			
-			<div id="chart_div" width=900px height=900px></div>
 
 				<c:url var="link_submit" value="/mvc">
-					<c:param name="logica"
-						value="VisualizarTopFive"></c:param>
+					<c:param name="logica" value="VisualizarTopFive"></c:param>
 				</c:url>
-				
-
+<br>
 				<form action="${link_submit}" method="post">
-					Ano:
-					<select name="ano">
-						<option value="2010">2010
-						<option value="2006">2006
-						<option value="2002">2002
-					</select>
-					
-					Cargo:
-					<select name="cargo">
-						<option value="Presidente">Presidente
-						<option value="Governador">Governador
-						<option value="Senador">Senador
-					</select>
-
-					<br><input
-						type="submit" class="botao" value="Gerar Gráfico" />
+					<div id="primeiroSelect">
+						Ano: <select name="ano">
+							<option value="2010">2010
+							<option value="2006">2006
+							<option value="2002">2002
+						</select>
+					</div>
+					<br> <br>
+					<div id="segundoSelect">
+						Cargo: <select name="cargo">
+							<option value="Presidente">Presidente
+							<option value="Governador">Governador
+							<option value="Senador">Senador
+						</select>
+					</div>
+					<br> <br> <input id="botaoTop5" type="submit"
+						value="Gerar Gráfico" />
 				</form>
-
+				<br> 
+				<div id="chart_div" style="width: 900px; height: 500px;"></div>
 			</div>
 		</div>
 	</div>
