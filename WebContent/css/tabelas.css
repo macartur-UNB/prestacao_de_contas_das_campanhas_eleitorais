@@ -26,7 +26,9 @@ body{
 #gradient-style td{
 	padding: 8px; 
 	border-bottom: 1px solid #000;
-	color: #eee;
+	border-left 1px solid #000;
+	border-right 1px solid #000;
+	color: #000;
 	border-top: 1px solid #000;
 	background: #eee repeat-x;
 }
@@ -34,12 +36,12 @@ body{
 #gradient-style tfoot tr td{
 	background: #eee;
 	font-size: 12px;
-	color: #99c;
+	color: #000;
 }
 
 #gradient-style tbody tr:hover td{
 	background: #00ff00 url('../img/table-images/gradhover.png') repeat-x;
-	color: #0f0;
+	color: #000;
 }
 
 #gradient-style a:link {text-decoration: none; color: #000099}
