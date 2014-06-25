@@ -19,7 +19,7 @@
 
 <body>
 
-	<%@include file="imports/cabecalho.jsp"%>
+	<%@include file="imports/cabecalhocandidatos.jsp"%>
 
 	<div id="pagina">
 		<div class="titulo_topo">
@@ -83,7 +83,7 @@
 								<tr>
 									<th width="100">Data</th>
 									<th width="600">Detalhamento da Receita</th>
-									<th width="100">Valor</th>
+									<th width="100">Valor (R$)</th>
 								</tr>
 
 								<c:forEach var="receita" items="${listaReceitas}"
@@ -129,7 +129,7 @@
 												</tr>
 											</table>
 											</details></td>
-										<td>R$ ${receita.valor}</td>
+										<td>${receita.valor}</td>
 									</tr>
 								</c:forEach>
 								<tfoot>
@@ -339,7 +339,7 @@
 								<tr>
 									<th width="100">Data</th>
 									<th width="600">Tipo de Despesa</th>
-									<th width="100">Valor</th>
+									<th width="100">Valor (R$)</th>
 								</tr>
 
 								<!-- Elementos da tabela -->
@@ -383,7 +383,7 @@
 												</tr>
 											</table>
 											</details></td>
-										<td>R$ ${despesa.valor}</td>
+										<td>${despesa.valor}</td>
 									</tr>
 								</c:forEach>
 								<tfoot>
