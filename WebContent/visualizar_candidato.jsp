@@ -6,12 +6,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Candidatos - Campanhas-ON</title>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<!-- Google Chart -->
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+    	  
+        var data = google.visualization.arrayToDataTable([                                                
+          ['Ano',	'Despesa Máxima Declarada', 'Despesa Total Calculada', 'Receita Total Calculada'],
+          ['2002',	${despesa1}, ${despesa01}, ${receita1}],
+          ['2006',	${despesa2}, ${despesa02}, ${receita2}],
+          ['2010',	${despesa3}, ${despesa03}, ${receita3}],
+        ]);
+
+        var options = {
+          title: 'Gráfico de Despesa Máxima Declarada por Campanha Disputada',
+          hAxis: {title: 'Ano'}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+<!-- END Google Chart -->
 </head>
 <body>
 
@@ -69,6 +93,8 @@
 														value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
+														<c:param name="despesaTC" value="${campanha.despesaTotalCalculada}" />
+														<c:param name="receitaTC" value="${campanha.receitaTotalCalculada}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -103,6 +129,7 @@
 					</div>
 				</div>
 			</div>
+			<center><div id="chart_div" style="width: 900px; height: 500px;"></div></center>
 		</div>
 	</div>
 	<!-- FIM CONTEUDO-->

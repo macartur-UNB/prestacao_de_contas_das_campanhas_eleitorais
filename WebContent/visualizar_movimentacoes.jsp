@@ -66,6 +66,7 @@
 					</table>
 				</div>
 
+
 				<!-- Tabela de receitas -->
 				<center>
 					<h4>
@@ -217,7 +218,6 @@
 						</c:otherwise>
 					</c:choose>
 				</center>
-
 
 				<!-- Tabela de despesas -->
 				<center>

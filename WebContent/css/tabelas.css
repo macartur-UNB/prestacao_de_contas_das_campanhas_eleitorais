@@ -15,29 +15,31 @@ body{
 	font-size: 13px;
 	font-weight: normal;
 	padding: 8px;
-	background: #b9c9fe url('../img/table-images/gradhead.png') repeat-x;
-	border-top: 2px solid #d3ddff;
-	border-bottom: 1px solid #fff;
-	color: #039;
+	background: #f68a3b  repeat-x;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
+	color: #000;
 }
 
 #gradient-style td{
 	padding: 8px; 
-	border-bottom: 1px solid #fff;
-	color: #669;
-	border-top: 1px solid #fff;
-	background: #e8edff url('../img/table-images/gradback.png') repeat-x;
+	border-bottom: 1px solid #000;
+	color: #eee;
+	border-top: 1px solid #000;
+	background: #eee repeat-x;
 }
 
 #gradient-style tfoot tr td{
-	background: #e8edff;
+	background: #eee;
 	font-size: 12px;
 	color: #99c;
 }
 
 #gradient-style tbody tr:hover td{
-	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	color: #339;
+	background: #00ff00 url('../img/table-images/gradhover.png') repeat-x;
+	color: #0f0;
 }
 
 #gradient-style a:link {text-decoration: none; color: #000099}

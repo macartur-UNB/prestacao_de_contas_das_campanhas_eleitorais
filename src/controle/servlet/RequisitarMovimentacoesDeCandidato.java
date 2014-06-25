@@ -24,6 +24,10 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 	private MovimentacaoControle movimentacaoControle;
 
 	private String despesaTot;
+	
+	private float despesaTC;
+	private float receitaTC;
+	
 	private List<Receita> listaReceita;
 	private List<Despesa> listaDespesa;
 
@@ -61,6 +65,9 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 
 	private void recebeParametros() throws SQLException {
 		this.campanhaBusca = constroiCampanha(this.req);
+		
+		this.receitaTC = Float.parseFloat(this.req.getParameter("receitaTC"));
+		this.despesaTC = Float.parseFloat(this.req.getParameter("despesaTC"));
 
 		this.inicioR = Integer.parseInt(this.req.getParameter("inicioR"));
 		this.qtdPorPaginaR = Integer.parseInt(this.req.getParameter("qtdPorPaginaR"));
@@ -96,6 +103,9 @@ public class RequisitarMovimentacoesDeCandidato implements Logica {
 
 		this.req.setAttribute("campanha", this.campanha);
 		this.req.setAttribute("depesaTot", this.despesaTot);
+		
+		this.req.setAttribute("despesaTC", despesaTC);
+		this.req.setAttribute("receitaTC", receitaTC);
 
 		this.req.setAttribute("inicioR", this.inicioR);
 		if(this.verTodosR)
