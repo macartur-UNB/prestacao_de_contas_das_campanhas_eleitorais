@@ -243,6 +243,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		String comandoSQL = SQL_SELECT + " WHERE " + ANO + " = " + ano + " and " 
 		                   +COD_CARGO + " = " + codigo + " ORDER BY " + DESPESA_MAX_DECLARADA
 		                   +" DESC LIMIT 5";
+		
 		return buscaBD(comandoSQL);
 	}
 }

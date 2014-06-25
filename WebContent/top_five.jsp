@@ -23,15 +23,15 @@
     	  
         var data = google.visualization.arrayToDataTable([                                                
           ['Nome do Candidato',	'Despesa Total Declarado'],
-          ["${candidato1.candidato.nome}",	"${candidato1.despesaMaxDeclarada}"],
-          ["${candidato2.candidato.nome}",	"${candidato2.despesaMaxDeclarada}"],
-          ["${candidato3.candidato.nome}",	"${candidato3.despesaMaxDeclarada}"],
-          ["${candidato4.candidato.nome}",	"${candidato4.despesaMaxDeclarada}"],
-          ["${candidato5.candidato.nome}",	"${candidato5.despesaMaxDeclarada}"],
+          ["${candidato1.candidato.nome}",	${candidato1.despesaMaxDeclarada}],
+          ["${candidato2.candidato.nome}",	${candidato2.despesaMaxDeclarada}],
+          ["${candidato3.candidato.nome}",	${candidato3.despesaMaxDeclarada}],
+          ["${candidato4.candidato.nome}",	${candidato4.despesaMaxDeclarada}],
+          ["${candidato5.candidato.nome}",	${candidato5.despesaMaxDeclarada}],
         ]);
 
         var options = {
-          title: '5 Maiores Despesas Máximas Declaradas para no ano de',
+          title: '5 Maiores Despesas Máximas Declaradas para no ano de '+${ano}+' : '+"${cargo}",
           hAxis: {title: 'Candidatos'}
         };
 
@@ -54,7 +54,7 @@
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 			
-			<div id="chart_div" width=900px height=500px></div>
+			<div id="chart_div" width=900px height=900px></div>
 
 				<c:url var="link_submit" value="/mvc">
 					<c:param name="logica"
@@ -65,16 +65,16 @@
 				<form action="${link_submit}" method="post">
 					Ano:
 					<select name="ano">
-						<option value="2010" selected>2010
+						<option value="2010">2010
 						<option value="2006">2006
 						<option value="2002">2002
 					</select>
 					
 					Cargo:
 					<select name="cargo">
-						<option value="presidente" selected>Presidente
-						<option value="governador">Governador
-						<option value="senador">Senador
+						<option value="Presidente">Presidente
+						<option value="Governador">Governador
+						<option value="Senador">Senador
 					</select>
 
 					<br><input

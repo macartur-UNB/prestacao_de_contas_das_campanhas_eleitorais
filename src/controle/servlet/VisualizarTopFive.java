@@ -42,7 +42,6 @@ public class VisualizarTopFive implements Logica {
 		this.campanhaControle = new CampanhaControle();
 		this.listaCampanha = new ArrayList<>();
 		this.listaCampanha = this.campanhaControle.topFivePorCargoEAno(this.cargo, this.ano);
-		System.out.println(listaCampanha.size());
 	}
 	
 	private void preparaEnvioDeParametros() {
