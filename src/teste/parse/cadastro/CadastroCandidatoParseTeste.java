@@ -22,8 +22,8 @@ public class CadastroCandidatoParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro = 
-				new CadastroCandidatoParse(this.tipoArquivo, this.ano);	
+		
+		this.cadastro = new CadastroCandidatoParse(this.tipoArquivo, this.ano);	
 		this.candidatoDAO = new CandidatoDAO();
 	}
 
@@ -34,6 +34,7 @@ public class CadastroCandidatoParseTeste extends TemplateTeste {
 
 	@Test
 	public void deveRetornarUmCandidatoCadastrado() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[10] = "CANDIDATO TESTE";
 		campo[26] = "55325424149";
@@ -42,7 +43,6 @@ public class CadastroCandidatoParseTeste extends TemplateTeste {
 		
 		Candidato candidato = this.candidatoDAO.getCandidatoPeloTitulo("55325424149");
 		assertEquals(candidato.getTituloEleitoral(), "55325424149");
-		
 	}
 
 }

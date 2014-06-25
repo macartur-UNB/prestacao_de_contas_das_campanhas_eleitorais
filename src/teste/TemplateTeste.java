@@ -19,6 +19,7 @@ public abstract class TemplateTeste {
 	
 	@Before
 	public void setUp() throws Exception {
+		
 		String diretorioSQL = new File("./lib/").getCanonicalPath();
 		String arquivoSQL1 = diretorioSQL + "/mer_campanha.sql";	
 		String arquivoSQL2 = diretorioSQL + "/mer_movimentacoes.sql";		
@@ -30,7 +31,6 @@ public abstract class TemplateTeste {
 		this.conexaoBancoDados.importarSQL(arquivoSQL1);
 		this.conexaoBancoDados.importarSQL(arquivoSQL2);
 
-		
 		beforeTest();
 	}
 

@@ -53,7 +53,6 @@ public class DespesaParseControleTeste extends TemplateTeste {
 		Assert.assertEquals(this.campo[NOME],
 				despesaCadastrado.getFornecedor().getNome());
 		Assert.assertEquals(this.campo[CPF_CNPJ], despesaCadastrado.getFornecedor().getCpf_cnpj());
-
 	}
 
 	private void iniciarIndices() {
@@ -68,7 +67,6 @@ public class DespesaParseControleTeste extends TemplateTeste {
 		this.campo[NOME] = "NOME TESTE";
 		this.campo[CPF_CNPJ] = "123456";
 		this.campo[TIPODOCUMENTO] = "BOLETO";
-
 	}
 
 }

@@ -6,13 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Fornecedor;
-import modelo.dao.DespesaDAO;
 import modelo.dao.FornecedorDAO;
 
 import org.junit.Test;
 
 import parse.ParseException;
-import parse.cadastro.receita_despesa.CadastroDespesaParse;
 import parse.cadastro.receita_despesa.CadastroFornecedorParse;
 import teste.TemplateTeste;
 
@@ -29,12 +27,10 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro1 = 
-				new CadastroFornecedorParse(this.tipoArquivo, this.ano1);
-		this.cadastro2 = 
-				new CadastroFornecedorParse(this.tipoArquivo, this.ano2);
-		this.cadastro3 = 
-				new CadastroFornecedorParse(this.tipoArquivo, this.ano3);
+		
+		this.cadastro1 = new CadastroFornecedorParse(this.tipoArquivo, this.ano1);
+		this.cadastro2 = new CadastroFornecedorParse(this.tipoArquivo, this.ano2);
+		this.cadastro3 = new CadastroFornecedorParse(this.tipoArquivo, this.ano3);
 		this.fornecedorDAO = new FornecedorDAO();
 	}
 
@@ -45,6 +41,7 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRetornarUmFornecedorCadastradoPara2006() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[19] = "123";
 		campo[18] = "NOME";
@@ -54,13 +51,12 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 		cadastro1.cadastrarInstancias();
 		
 		ArrayList<Fornecedor> listaFornecedores = fornecedorDAO.getLista();
-		System.out.println(listaFornecedores.get(0).getCpf_cnpj());
 		assertEquals(listaFornecedores.get(0).getCpf_cnpj(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmFornecedorCadastradoPara2002() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[6] = "12345";
 		campo[8] = "NOME";
@@ -69,13 +65,12 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 		cadastro2.cadastrarInstancias();
 		
 		ArrayList<Fornecedor> listaFornecedores = fornecedorDAO.getLista();
-		System.out.println(listaFornecedores.get(0).getCpf_cnpj());
 		assertEquals(listaFornecedores.get(0).getCpf_cnpj(), "12345");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmFornecedorCadastradoPara2010() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[10] = "12345";
 		campo[11] = "NOME";
@@ -83,9 +78,7 @@ public class CadastroFornecedorParseTeste extends TemplateTeste {
 		cadastro3.cadastrarInstancias();
 		
 		ArrayList<Fornecedor> listaFornecedores = fornecedorDAO.getLista();
-		System.out.println(listaFornecedores.get(0).getCpf_cnpj());
 		assertEquals(listaFornecedores.get(0).getCpf_cnpj(), "12345");
-		
 	}
 
 }

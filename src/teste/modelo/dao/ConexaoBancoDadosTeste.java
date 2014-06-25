@@ -20,6 +20,7 @@ public class ConexaoBancoDadosTeste {
 	
 	@Before
 	public void setUp() {
+		
 		this.conexaoBancoDados = new ConexaoBancoDados();
 		this.conexaoBancoDados.alterarBanco(NOME_BANCO_OFICIAL);
 		this.conexaoBancoDados.setLocalBanco(LOCAL_BANCO_OFICIAL);
@@ -27,6 +28,7 @@ public class ConexaoBancoDadosTeste {
 
 	@Test
 	public void naoDeveLancarExcecaoAoCriarEDeletarOBancoDeTestes() throws IOException, SQLException {
+		
 		String diretorioSQL = new File("./lib/").getCanonicalPath();
 		String arquivoSQL1 = diretorioSQL + "/mer_campanha.sql";
 		String arquivoSQL2 = diretorioSQL + "/mer_movimentacoes.sql";			
@@ -40,6 +42,7 @@ public class ConexaoBancoDadosTeste {
 	
 	@Test(expected = SQLException.class)
 	public void deveLancarExcecaoAoCriarUmBancoDeTestesComLocalInvalido() throws IOException, SQLException {
+		
 		String localInvalido = "Local Invalido";
 		this.conexaoBancoDados = new ConexaoBancoDados();
 		this.conexaoBancoDados.setLocalBanco(localInvalido);
@@ -49,6 +52,7 @@ public class ConexaoBancoDadosTeste {
 	
 	@Test(expected = SQLException.class)
 	public void deveLancarExcecaoAoCriarUmBancoDeTestesComArquivoInvalido() throws IOException, SQLException {
+		
 		String diretorioSQL = new File("./lib/").getCanonicalPath();
 		String arquivoSQL = diretorioSQL + "/Arquivo_Invalido.sql";			
 		this.conexaoBancoDados = new ConexaoBancoDados();
@@ -60,6 +64,7 @@ public class ConexaoBancoDadosTeste {
 	
 	@Test(expected = SQLException.class)
 	public void deveLancarExcecaoAoDeletarUmBancoDeTestesComLocalInvalido() throws IOException, SQLException {
+		
 		String localInvalido = "Local Invalido";
 		this.conexaoBancoDados = new ConexaoBancoDados();
 		this.conexaoBancoDados.criarBanco(NOME_BANCO_TESTES);

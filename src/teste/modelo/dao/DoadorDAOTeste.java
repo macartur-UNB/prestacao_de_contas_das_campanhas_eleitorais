@@ -16,6 +16,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.doadorDAO = new DoadorDAO();
 	}
 
@@ -40,6 +41,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmDoadorInexistente() throws Exception {
+		
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
 		
 		Doador doador = new Doador();
@@ -51,6 +53,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void naoDeveCadastrarUmDoadorJaExistente() throws Exception {
+		
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
 		
 		Doador doador = new Doador();
@@ -65,6 +68,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRecuperarUmaListaComOsDoadoresCadastrados() throws Exception {
+		
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
 		
 		Doador doador = new Doador();
@@ -109,8 +113,6 @@ public class DoadorDAOTeste extends TemplateTeste {
 		doadorRecuperado = this.doadorDAO.getPeloNomeOuCpfCnpj(doador1);
 		
 		Assert.assertEquals(doador1, doadorRecuperado);
-		
 	}
 	
-
 }

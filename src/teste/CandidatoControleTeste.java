@@ -19,9 +19,9 @@ public class CandidatoControleTeste extends TemplateTeste {
 
 	@Override 
 	public void beforeTest() throws Exception {
+		
 		this.candidatoDAO = new CandidatoDAO();
 		this.candidatoControle = new CandidatoControle();
-
 	}
 
 	@Override
@@ -55,7 +55,6 @@ public class CandidatoControleTeste extends TemplateTeste {
 		this.candidatoControle.getListaCandidatos("INEXISTENTE");
 		
 		Assert.assertEquals(listaCandidatosNomeComum, this.candidatoControle.getListaCandidatos("INEXISTENTE"));
-		
 	}
 	
 	@Test
@@ -79,9 +78,6 @@ public class CandidatoControleTeste extends TemplateTeste {
 		this.candidatoControle.getUmCandidato("000000");
 		
 		Assert.assertEquals(candidatoRecuperado, this.candidatoControle.getUmCandidato("000000"));
-		
 	}
 	
-	
-
 }

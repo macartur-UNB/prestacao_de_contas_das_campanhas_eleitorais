@@ -6,13 +6,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import modelo.beans.Doador;
-import modelo.dao.DespesaDAO;
 import modelo.dao.DoadorDAO;
 
 import org.junit.Test;
 
 import parse.ParseException;
-import parse.cadastro.receita_despesa.CadastroDespesaParse;
 import parse.cadastro.receita_despesa.CadastroDoadorParse;
 import teste.TemplateTeste;
 
@@ -29,12 +27,10 @@ public class CadastroDoadorParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro1 = 
-				new CadastroDoadorParse(this.tipoArquivo, this.ano1);
-		this.cadastro2 = 
-				new CadastroDoadorParse(this.tipoArquivo, this.ano2);
-		this.cadastro3 = 
-				new CadastroDoadorParse(this.tipoArquivo, this.ano3);
+		
+		this.cadastro1 = new CadastroDoadorParse(this.tipoArquivo, this.ano1);
+		this.cadastro2 = new CadastroDoadorParse(this.tipoArquivo, this.ano2);
+		this.cadastro3 = new CadastroDoadorParse(this.tipoArquivo, this.ano3);
 		this.doadorDAO = new DoadorDAO();
 	}
 
@@ -45,6 +41,7 @@ public class CadastroDoadorParseTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRetornarUmDoadorCadastradoPara2006() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[16] = "123";
 		campo[15] = "NOME";
@@ -54,13 +51,12 @@ public class CadastroDoadorParseTeste extends TemplateTeste {
 		cadastro1.cadastrarInstancias();
 		
 		ArrayList<Doador> listaDoadores = doadorDAO.getLista();
-		System.out.println(listaDoadores.get(0).getCpf_cnpj());
 		assertEquals(listaDoadores.get(0).getCpf_cnpj(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmDoadorCadastradoPara2002() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[6] = "12345";
 		campo[8] = "NOME NOME";
@@ -69,13 +65,12 @@ public class CadastroDoadorParseTeste extends TemplateTeste {
 		cadastro2.cadastrarInstancias();
 		
 		ArrayList<Doador> listaDoadores = doadorDAO.getLista();
-		System.out.println(listaDoadores.get(0).getCpf_cnpj());
 		assertEquals(listaDoadores.get(0).getCpf_cnpj(), "12345");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmDoadorCadastradoPara2010() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[10] = "12345";
 		campo[11] = "NOME NOME";
@@ -83,9 +78,7 @@ public class CadastroDoadorParseTeste extends TemplateTeste {
 		cadastro3.cadastrarInstancias();
 		
 		ArrayList<Doador> listaDoadores = doadorDAO.getLista();
-		System.out.println(listaDoadores.get(0).getCpf_cnpj());
 		assertEquals(listaDoadores.get(0).getCpf_cnpj(), "12345");
-		
 	}
 
 }

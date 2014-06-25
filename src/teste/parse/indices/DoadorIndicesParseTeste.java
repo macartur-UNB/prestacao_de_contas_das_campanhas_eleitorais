@@ -15,6 +15,7 @@ public class DoadorIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.doadorIndicesParse = new DoadorIndicesParse();
 		this.campo = new String[4];
 		
@@ -24,6 +25,7 @@ public class DoadorIndicesParseTeste {
 	
 	@Test
 	public void iniciarUmDoadorComIndicesValidos() throws Exception {
+		
 		Doador doador = new Doador();
 		this.doadorIndicesParse.iniciarInstancia(doador, campo);
 		Assert.assertEquals(this.campo[0], doador.getCpf_cnpj().toString());
@@ -34,6 +36,7 @@ public class DoadorIndicesParseTeste {
 	
 	@Test
 	public void iniciarUmDoadorComIndicesInvalidos() {
+		
 		this.doadorIndicesParse = new DoadorIndicesParse();
 		Doador doador = new Doador();
 		this.doadorIndicesParse.iniciarInstancia(doador, campo);
@@ -44,6 +47,7 @@ public class DoadorIndicesParseTeste {
 	}
 	
 	private void iniciarIndices() {
+		
 		this.doadorIndicesParse.setIndiceCpf_Cnpj(0);
 		this.doadorIndicesParse.setIndiceNome(1);
 		this.doadorIndicesParse.setIndiceUf(2);
@@ -51,6 +55,7 @@ public class DoadorIndicesParseTeste {
 	}
 	
 	private void iniciarCampos() {
+		
 		this.campo[0] = "55325424149";
 		this.campo[1] = "VANDERLEI";
 		this.campo[2] = "DF";

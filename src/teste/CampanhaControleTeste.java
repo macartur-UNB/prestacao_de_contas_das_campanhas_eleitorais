@@ -33,6 +33,7 @@ public class CampanhaControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campanhaDAO = new CampanhaDAO();
 		this.candidatoDAO = new CandidatoDAO();
 		this.campanhaControle = new CampanhaControle();
@@ -45,7 +46,6 @@ public class CampanhaControleTeste extends TemplateTeste {
 		this.cargo2 = new Cargo();
 		this.campanha2 = new Campanha();
 		this.partido2 = new Partido();
-		
 	}
 
 	@Override
@@ -111,9 +111,6 @@ public class CampanhaControleTeste extends TemplateTeste {
 		Assert.assertEquals(this.campanhaDAO.getCampanhasPorSiglaEAno("SGLL", "2006"), this.campanhaControle.getListaCampanhasPorSiglaPartidoEAno("SGLL", "2006"));
 		Assert.assertEquals(this.campanhaDAO.getPeloAnoNumeroCodCargoEUf(campanha1), this.campanhaControle.getPeloAnoNumeroCodCargoEUf(campanha1));
 		Assert.assertNotEquals(this.campanhaDAO.getPeloAnoNumeroCodCargoEUf(campanha1), this.campanhaControle.getPeloAnoNumeroCodCargoEUf(campanha2));
-
 	}
-
-	
 
 }

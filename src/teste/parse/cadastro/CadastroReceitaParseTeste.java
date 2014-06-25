@@ -16,7 +16,6 @@ import teste.TemplateTeste;
 
 public class CadastroReceitaParseTeste extends TemplateTeste {
 
-	//private static final String expected = null;
 	private CadastroReceitaParse cadastro1;
 	private CadastroReceitaParse cadastro2;
 	private CadastroReceitaParse cadastro3;
@@ -31,12 +30,10 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro1 = 
-				new CadastroReceitaParse(this.tipoArquivo, this.ano1);
-		this.cadastro2 = 
-				new CadastroReceitaParse(this.tipoArquivo, this.ano2);
-		this.cadastro3 = 
-				new CadastroReceitaParse(this.tipoArquivo, this.ano3);
+		
+		this.cadastro1 = new CadastroReceitaParse(this.tipoArquivo, this.ano1);
+		this.cadastro2 = new CadastroReceitaParse(this.tipoArquivo, this.ano2);
+		this.cadastro3 = new CadastroReceitaParse(this.tipoArquivo, this.ano3);
 		this.receitaDAO = new ReceitaDAO();
 	}
 
@@ -47,6 +44,7 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRetornarUmaReceitaCadastradoPara2002() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[0] = "DF";
 		campo[4] = "123";
@@ -60,12 +58,12 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 		cadastro1.cadastrarInstancias();
 		
 		ArrayList<Receita> listaReceita = receitaDAO.getLista();
-		System.out.println(listaReceita.get(0).getDoador().getCpf_cnpj());
 		assertEquals(listaReceita.get(0).getDoador().getCpf_cnpj(), "1234");	
 	}
 	
 	@Test
 	public void deveRetornarUmaReceitaCadastradoPara2006() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[4] = "DF";
 		campo[3] = "123";
@@ -80,13 +78,12 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 		cadastro2.cadastrarInstancias();
 		
 		ArrayList<Receita> listaReceita = receitaDAO.getLista();
-		System.out.println(listaReceita.get(0).getDoador().getCpf_cnpj());
 		assertEquals(listaReceita.get(0).getDoador().getCpf_cnpj(), "1234");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmaReceitaCadastradoPara2010() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[1] = "DF";
 		campo[3] = "123";
@@ -104,24 +101,7 @@ public class CadastroReceitaParseTeste extends TemplateTeste {
 		cadastro3.cadastrarInstancias();
 		
 		ArrayList<Receita> listaReceita = receitaDAO.getLista();
-		System.out.println(listaReceita.get(0).getDoador().getCpf_cnpj());
 		assertEquals(listaReceita.get(0).getDoador().getCpf_cnpj(), "12345");
 	}
-	
-	/*@Test (expected = ParseException.class)
-	public void deveLancarUmaExcecaoAoTentarCarregarUmTipoDeArquivoDiferente() throws ParseException, SQLException {
-		CadastroDespesaParse cadastro4;
-		
-		cadastro4 = new CadastroDespesaParse(this.tipoArquivoErrado, this.ano3);
-		this.despesaDAO = new DespesaDAO();
-	}
-	
-	@Test (expected = ParseException.class)
-	public void deveLancarUmaExcecaoAoTentarCarregarUmAnoInvalido() throws ParseException, SQLException {
-		CadastroDespesaParse cadastro4;
-		
-		cadastro4 = new CadastroDespesaParse(this.tipoArquivo, this.AnoInvalido);
-		this.despesaDAO = new DespesaDAO();
-	}*/
 
 }

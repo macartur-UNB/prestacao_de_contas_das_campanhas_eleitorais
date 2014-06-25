@@ -16,7 +16,6 @@ import teste.TemplateTeste;
 
 public class CadastroDespesaParseTeste extends TemplateTeste {
 
-	//private static final String expected = null;
 	private CadastroDespesaParse cadastro1;
 	private CadastroDespesaParse cadastro2;
 	private CadastroDespesaParse cadastro3;
@@ -28,15 +27,12 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 	String  tipoArquivoErrado = "ArquivoErrado";
 	String  AnoInvalido = "2050";
 	
-	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro1 = 
-				new CadastroDespesaParse(this.tipoArquivo, this.ano1);
-		this.cadastro2 = 
-				new CadastroDespesaParse(this.tipoArquivo, this.ano2);
-		this.cadastro3 = 
-				new CadastroDespesaParse(this.tipoArquivo, this.ano3);
+		
+		this.cadastro1 = new CadastroDespesaParse(this.tipoArquivo, this.ano1);
+		this.cadastro2 = new CadastroDespesaParse(this.tipoArquivo, this.ano2);
+		this.cadastro3 = new CadastroDespesaParse(this.tipoArquivo, this.ano3);
 		this.despesaDAO = new DespesaDAO();
 	}
 
@@ -47,6 +43,7 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRetornarUmaDespesaCadastradoPara2006() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[4] = "DF";
 		campo[3] = "123";
@@ -63,13 +60,12 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 		cadastro1.cadastrarInstancias();
 		
 		ArrayList<Despesa> listaDespesa = despesaDAO.getLista();
-		System.out.println(listaDespesa.get(0).getTipoMovimentacao());
 		assertEquals(listaDespesa.get(0).getTipoMovimentacao(), "TipoMov");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmaDespesaCadastradoPara2002() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[0] = "DF";
 		campo[4] = "123";
@@ -83,13 +79,12 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 		cadastro2.cadastrarInstancias();
 		
 		ArrayList<Despesa> listaDespesa = despesaDAO.getLista();
-		System.out.println(listaDespesa.get(0).getTipoMovimentacao());
 		assertEquals(listaDespesa.get(0).getTipoMovimentacao(), "TipoMov");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmaDespesaCadastradoPara2010() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[1] = "DF";
 		campo[3] = "123";
@@ -104,34 +99,11 @@ public class CadastroDespesaParseTeste extends TemplateTeste {
 		campo[13] = "123456";
 		campo[17] = "Descricao";
 		
-		/* //Indices não utilizados em 2010
-		Integer ano;
-		campo[25] = "ano";
-		campo[26] = "2010";
-		*/
-		
 		cadastro3.executarLinhaDoArquivo(campo);
 		cadastro3.cadastrarInstancias();
 		
 		ArrayList<Despesa> listaDespesa = despesaDAO.getLista();
-		System.out.println(listaDespesa.get(0).getTipoMovimentacao());
 		assertEquals(listaDespesa.get(0).getTipoMovimentacao(), "TipoMov");
 	}
-	
-	/*@Test (expected = ParseException.class)
-	public void deveLancarUmaExcecaoAoTentarCarregarUmTipoDeArquivoDiferente() throws ParseException, SQLException {
-		CadastroDespesaParse cadastro4;
-		
-		cadastro4 = new CadastroDespesaParse(this.tipoArquivoErrado, this.ano3);
-		this.despesaDAO = new DespesaDAO();
-	}
-	
-	@Test (expected = ParseException.class)
-	public void deveLancarUmaExcecaoAoTentarCarregarUmAnoInvalido() throws ParseException, SQLException {
-		CadastroDespesaParse cadastro4;
-		
-		cadastro4 = new CadastroDespesaParse(this.tipoArquivo, this.AnoInvalido);
-		this.despesaDAO = new DespesaDAO();
-	}*/
 
 }

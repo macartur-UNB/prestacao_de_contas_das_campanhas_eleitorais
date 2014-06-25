@@ -15,6 +15,7 @@ public class CargoIndicesParseTeste {
 	
 	@Before
 	public void setUp() throws Exception {
+		
 		this.cargoIndicesParse = new CargoIndicesParse();
 		this.campo = new String[2];
 		
@@ -29,7 +30,6 @@ public class CargoIndicesParseTeste {
 		this.cargoIndicesParse.iniciarInstancia(cargo, campo);
 		Assert.assertEquals(this.campo[0], cargo.getCodigo().toString());
 		Assert.assertEquals(this.campo[1], cargo.getDescricao());
-		
 	}
 	
 	@Test
@@ -40,21 +40,18 @@ public class CargoIndicesParseTeste {
 		this.cargoIndicesParse.iniciarInstancia(cargo, campo);
 		Assert.assertNotEquals(this.campo[0], cargo.getCodigo().toString());
 		Assert.assertNotEquals(this.campo[1], cargo.getDescricao());
-		
 	}
 	
 	private void iniciarIndices() {
 		
 		this.cargoIndicesParse.setIndiceCodigo(0);
 		this.cargoIndicesParse.setIndiceDescricao(1);
-
 	}
 	
 	private void iniciarCampos() {
 		
 		this.campo[0] = "123";
 		this.campo[1] = "CARGO INEXISTENTE";
-		
 	}
 	
 }

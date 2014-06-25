@@ -31,6 +31,7 @@ public class CampanhaDAOTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campanhaDAO = new CampanhaDAO();
 		this.candidatoDAO = new CandidatoDAO();
 		this.resultado1 = new Resultado();
@@ -42,7 +43,6 @@ public class CampanhaDAOTeste extends TemplateTeste {
 		this.candidato2 = new Candidato();
 		this.listaCampanhas = new ArrayList<>();
 
-		
 		cadastraNoBanco();
 	}
 
@@ -51,7 +51,7 @@ public class CampanhaDAOTeste extends TemplateTeste {
 		
 	}
 	
-	private void cadastraNoBanco() throws SQLException{
+	private void cadastraNoBanco() throws SQLException {
 
 		ArrayList<Candidato> listaCandidato = new ArrayList<>();
 		
@@ -96,17 +96,17 @@ public class CampanhaDAOTeste extends TemplateTeste {
 		
 		this.candidatoDAO.cadastrarLista(listaCandidato);				
 		this.campanhaDAO.cadastrarLista(listaCampanhas);
-
 	}
 	
 	@Test
-	public void deveVerificarSeOTopFiveEstaOrdenado() throws SQLException {		
-		Assert.assertEquals(listaCampanhas, this.campanhaDAO.getLista());
+	public void deveVerificarSeOTopFiveEstaOrdenado() throws SQLException {	
 		
+		Assert.assertEquals(listaCampanhas, this.campanhaDAO.getLista());
 	}
 	
 	@Test
 	public void deveListarCandidatosPorOrdemDeDespesa() throws Exception {
+		
 		ArrayList<Campanha> listaTop1= this.campanhaDAO.TopFive("presidente",2006);
 		Assert.assertTrue(listaTop1.get(0).getDespesaMaxDeclarada() >= listaTop1.get(1).getDespesaMaxDeclarada());
 		
@@ -115,9 +115,6 @@ public class CampanhaDAOTeste extends TemplateTeste {
 		
 		//ArrayList<Campanha> listaTop3 = this.campanhaDAO.TopFive("governador",2002);
 		//Assert.assertTrue(listaTop3.get(0).getDespesaMaxDeclarada() >= listaTop3.get(1).getDespesaMaxDeclarada());
-		
 	}
-
-	
 
 }

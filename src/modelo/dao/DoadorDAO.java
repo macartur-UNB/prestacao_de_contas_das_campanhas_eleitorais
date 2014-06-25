@@ -75,7 +75,7 @@ public class DoadorDAO extends BasicoDAO<Doador> implements ParseDAO<Doador> {
 	public ArrayList<Doador> buscaBD(String SQL) throws SQLException {
 
 		ArrayList<Doador> listaDoador = new ArrayList<>();
-
+		
 		try {
 			this.conexao = new ConexaoBancoDados().getConexao();
 

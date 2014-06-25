@@ -24,6 +24,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campo = new String[4];
 		this.partidoDAO = new PartidoDAO();
 		this.partidoIndicesParse = new PartidoIndicesParse();
@@ -80,4 +81,5 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		this.campo[DEFERIMENTO] = "11.9.1986";
 		this.campo[NOME] = "DEMOCRATAS";
 	}
+	
 }

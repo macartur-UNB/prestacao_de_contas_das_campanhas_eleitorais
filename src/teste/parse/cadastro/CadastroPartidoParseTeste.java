@@ -28,10 +28,9 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro3 = 
-				new CadastroPartidoParse(this.tipoArquivoC, this.ano1);
-		this.partidoDAO = new PartidoDAO();
 		
+		this.cadastro3 = new CadastroPartidoParse(this.tipoArquivoC, this.ano1);
+		this.partidoDAO = new PartidoDAO();
 	}
 
 	@Override
@@ -42,8 +41,7 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 	@Test
 	public void deveRetornarUmPartidoCadastradoPara2002PorPartido() throws ParseException, SQLException {
 		
-		this.cadastro1 = 
-				new CadastroPartidoParse(this.tipoArquivoA, this.ano1);
+		this.cadastro1 = new CadastroPartidoParse(this.tipoArquivoA, this.ano1);
 		
 		String campo[] = new String[50];
 		campo[2] = "Nome";
@@ -61,8 +59,7 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 	@Test
 	public void deveRetornarUmPartidoCadastradoPara2002PorCampanha() throws ParseException, SQLException {
 		
-		this.cadastro2 = 
-				new CadastroPartidoParse(this.tipoArquivoB, this.ano1);
+		this.cadastro2 = new CadastroPartidoParse(this.tipoArquivoB, this.ano1);
 		
 		String campo[] = new String[50];
 		campo[18] = "Nome";
@@ -73,14 +70,12 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 		
 		Partido partido = this.partidoDAO.getPeloNumero("123");
 		assertEquals(partido.getNumero().toString(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmPartidoCadastradoPara2006PorPartido() throws ParseException, SQLException {
 		
-		this.cadastro1 = 
-				new CadastroPartidoParse(this.tipoArquivoA, this.ano2);
+		this.cadastro1 = new CadastroPartidoParse(this.tipoArquivoA, this.ano2);
 		
 		String campo[] = new String[50];
 		campo[2] = "Nome";
@@ -92,14 +87,12 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 		
 		Partido partido = this.partidoDAO.getPeloNumero("123");
 		assertEquals(partido.getNumero().toString(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmPartidoCadastradoPara2006PorCampanha() throws ParseException, SQLException {
 		
-		this.cadastro2 = 
-				new CadastroPartidoParse(this.tipoArquivoB, this.ano2);
+		this.cadastro2 = new CadastroPartidoParse(this.tipoArquivoB, this.ano2);
 		
 		String campo[] = new String[50];
 		campo[18] = "Nome";
@@ -110,14 +103,12 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 		
 		Partido partido = this.partidoDAO.getPeloNumero("123");
 		assertEquals(partido.getNumero().toString(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmPartidoCadastradoPara2010PorPartido() throws ParseException, SQLException {
 		
-		this.cadastro1 = 
-				new CadastroPartidoParse(this.tipoArquivoA, this.ano3);
+		this.cadastro1 = new CadastroPartidoParse(this.tipoArquivoA, this.ano3);
 		
 		String campo[] = new String[50];
 		campo[2] = "Nome";
@@ -129,14 +120,12 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 		
 		Partido partido = this.partidoDAO.getPeloNumero("123");
 		assertEquals(partido.getNumero().toString(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmPartidoCadastradoPara2010PorCampanha() throws ParseException, SQLException {
 		
-		this.cadastro2 = 
-				new CadastroPartidoParse(this.tipoArquivoB, this.ano3);
+		this.cadastro2 = new CadastroPartidoParse(this.tipoArquivoB, this.ano3);
 		
 		String campo[] = new String[50];
 		campo[18] = "Nome";
@@ -147,11 +136,11 @@ public class CadastroPartidoParseTeste extends TemplateTeste {
 		
 		Partido partido = this.partidoDAO.getPeloNumero("123");
 		assertEquals(partido.getNumero().toString(), "123");
-		
 	}
 	
 	@Test
 	public void deveRetornarUmPartidoIndicesParseVazioQuandoPassadoUmArquivoComNomeInvalido() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		cadastro3.executarLinhaDoArquivo(campo);
 		cadastro3.cadastrarInstancias();

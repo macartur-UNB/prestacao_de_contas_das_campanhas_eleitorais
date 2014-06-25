@@ -17,11 +17,13 @@ public class CargoDAOTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.cargoDAO = new CargoDAO();
 	}
 
 	@Override
 	public void afterTest() throws Exception {
+		
 	}
 
 	@Test
@@ -44,7 +46,6 @@ public class CargoDAOTeste extends TemplateTeste {
 
 		cargoRecuperado = this.cargoDAO.getPeloCod(1);
 		Assert.assertEquals(c1, cargoRecuperado);
-
 	}
 	
 	@Test
@@ -67,7 +68,6 @@ public class CargoDAOTeste extends TemplateTeste {
 
 		cargoRecuperado = this.cargoDAO.getPelaDescricao("CARGO UM");
 		Assert.assertEquals(c1, cargoRecuperado);
-
 	}
 	
 	@Test
@@ -95,7 +95,6 @@ public class CargoDAOTeste extends TemplateTeste {
 		listaRecuperada = this.cargoDAO.getLista();
 		
 		Assert.assertEquals(listaRecuperada, this.cargoDAO.getLista());
-		
 	}
 
 	@Test
@@ -110,7 +109,6 @@ public class CargoDAOTeste extends TemplateTeste {
 		resultado = CargoDAO.Comparacao.CODIGO.compare(c1, c2);
 
 		Assert.assertNotEquals(0, resultado);
-
 	}
 
 }

@@ -37,7 +37,6 @@ public class CampanhaParseControle extends ParseControle<Campanha>{
 				continue;
 			}
 			
-			
 			for(int j = i; j < this.listaInstancias.size(); j++) {
 				if(this.listaInstancias.get(i).getNomeDeUrna().equalsIgnoreCase(this.listaInstancias.get(j).getNomeDeUrna())) {
 					if(this.listaInstancias.get(j).getResultado().getCodigo() == 1 ||
@@ -57,8 +56,6 @@ public class CampanhaParseControle extends ParseControle<Campanha>{
 		}
 		
 		this.listaInstancias = new ArrayList<>(listaCampanhas);
-		System.out.println("SIZE - Depois: " + listaCampanhas.size());
-		
 		super.cadastrarInstancias();
 	}
 

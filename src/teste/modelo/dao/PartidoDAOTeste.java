@@ -17,6 +17,7 @@ public class PartidoDAOTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.partidoDAO = new PartidoDAO();
 	}
 
@@ -37,12 +38,10 @@ public class PartidoDAOTeste extends TemplateTeste {
 		resultado = PartidoDAO.Comparacao.SIGLA.compare(P1, P2);
 
 		Assert.assertEquals(0, resultado);
-
 	}
 
 	@Test
-	public void naoDeveLancarExcecaoAoCadastrarUmPartidoInexistente()
-			throws Exception {
+	public void naoDeveLancarExcecaoAoCadastrarUmPartidoInexistente() throws Exception {
 
 		ArrayList<Partido> listaPartidos = new ArrayList<>();
 
@@ -54,7 +53,6 @@ public class PartidoDAOTeste extends TemplateTeste {
 		listaPartidos.add(partido);
 
 		this.partidoDAO.cadastrarLista(listaPartidos);
-		
 	}
 
 	@Test
@@ -102,14 +100,12 @@ public class PartidoDAOTeste extends TemplateTeste {
 		partidoRecuperado = this.partidoDAO.getPelaSigla("PI1");
 		
 		Assert.assertEquals(p1, partidoRecuperado);
-		
 	}
 
 	@Test
 	public void deveRecuperarUmPartidoPeloNumero() throws SQLException {
-		partidoDAO.getPeloNumero(null);
 		
+		partidoDAO.getPeloNumero(null);
 	}
-
-
+	
 }

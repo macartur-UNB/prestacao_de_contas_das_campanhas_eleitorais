@@ -85,8 +85,7 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 	}
 
 	@Override
-	protected void adicionarResultSetNaLista(ArrayList<Campanha> lista,
-			ResultSet resultadoSQL) throws SQLException {
+	protected void adicionarResultSetNaLista(ArrayList<Campanha> lista, ResultSet resultadoSQL) throws SQLException {
 		while (resultadoSQL.next()) {
 			Cargo cargo = new Cargo();
 			Resultado resultado = new Resultado();
@@ -105,16 +104,12 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			campanha.setNumeroCandidato(resultadoSQL.getInt(NUM_CANDIDATO));
 			campanha.setNomeDeUrna(resultadoSQL.getString(NOME_URNA));
 			campanha.setUf(resultadoSQL.getString(UF));
-			campanha.setDespesaMaxDeclarada(resultadoSQL
-					.getFloat(DESPESA_MAX_DECLARADA));
-			campanha.setDespesaTotalCalculada(resultadoSQL
-					.getFloat(DESPESA_MAX_CALCULADA));
-			campanha.setReceitaTotalCalculada(resultadoSQL
-					.getFloat(RECEITA_MAX_CALCULADA));
+			campanha.setDespesaMaxDeclarada(resultadoSQL.getFloat(DESPESA_MAX_DECLARADA));
+			campanha.setDespesaTotalCalculada(resultadoSQL.getFloat(DESPESA_MAX_CALCULADA));
+			campanha.setReceitaTotalCalculada(resultadoSQL.getFloat(RECEITA_MAX_CALCULADA));
 
 			lista.add(campanha);
 		}
-
 	}
 
 	private void PreparaCamposCargoEResultado(Cargo cargo, Resultado resultado,
@@ -179,44 +174,30 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
 			String comandoSQL = SQL;
-
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
-
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
 
 			while (resultadoSQL.next()) {
 				Campanha campanha = new Campanha();
 				campanha.setAno(resultadoSQL.getInt(ANO));
-				campanha.setCargo(cargoDAO.getPeloCod(resultadoSQL
-						.getInt(COD_CARGO)));
-				campanha.setDespesaMaxDeclarada(resultadoSQL
-						.getFloat(DESPESA_MAX_DECLARADA));
-				campanha.setDespesaTotalCalculada(resultadoSQL
-						.getFloat(DESPESA_MAX_CALCULADA));
+				campanha.setCargo(cargoDAO.getPeloCod(resultadoSQL.getInt(COD_CARGO)));
+				campanha.setDespesaMaxDeclarada(resultadoSQL.getFloat(DESPESA_MAX_DECLARADA));
+				campanha.setDespesaTotalCalculada(resultadoSQL.getFloat(DESPESA_MAX_CALCULADA));
 				campanha.setNomeDeUrna(resultadoSQL.getString(NOME_URNA));
 				campanha.setNumeroCandidato(resultadoSQL.getInt(NUM_CANDIDATO));
-				campanha.setPartido(partidoDAO.getPeloNumero(resultadoSQL
-						.getString(NUMERO_PARTIDO)));
-
-				campanha.setReceitaTotalCalculada(resultadoSQL
-						.getFloat(RECEITA_MAX_CALCULADA));
-				campanha.setResultado(resultadoDAO.getPeloCod(resultadoSQL
-						.getInt(COD_RESULTADO)));
+				campanha.setPartido(partidoDAO.getPeloNumero(resultadoSQL.getString(NUMERO_PARTIDO)));
+				campanha.setReceitaTotalCalculada(resultadoSQL.getFloat(RECEITA_MAX_CALCULADA));
+				campanha.setResultado(resultadoDAO.getPeloCod(resultadoSQL.getInt(COD_RESULTADO)));
 				campanha.setUf(resultadoSQL.getString(UF));
-
-				campanha.setCandidato(candidatoDAO
-						.getCandidatoPeloTitulo(resultadoSQL
-								.getString(TITULO_CANDIDATO)));
+				campanha.setCandidato(candidatoDAO.getCandidatoPeloTitulo(resultadoSQL.getString(TITULO_CANDIDATO)));
 				if (campanha != null)
 					listaCampanha.add(campanha);
 			}
-
 		} catch (SQLException e) {
 			throw new SQLException("CampanhaDAO - " + e.getMessage());
 		} finally {
 			fecharConexao();
 		}
-
 		return listaCampanha;
 	}
 	
@@ -225,17 +206,11 @@ public class CampanhaDAO extends BasicoDAO<Campanha> {
 		switch (cargo.toLowerCase()) {
 		
 			case "presidente": 
-				codigo = 1;
-				break;
-				
+				codigo = 1; break;
 			case "governador": 
-				codigo = 3;
-				break;
-				
+				codigo = 3; break;
 			case "senador": 
-				codigo = 5;
-				break;
-			
+				codigo = 5; break;
 			default: 
 				return null;
 					

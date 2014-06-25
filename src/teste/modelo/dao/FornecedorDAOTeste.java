@@ -16,6 +16,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.fornecedorDAO = new FornecedorDAO();
 	}
 
@@ -40,6 +41,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmFornecedorInexistente() throws Exception {
+		
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -51,6 +53,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void naoDeveCadastrarUmFornecedorJaExistente() throws Exception {
+		
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -65,6 +68,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRecuperarUmaListaComOsFornecedoresCadastrados() throws Exception {
+		
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -109,6 +113,6 @@ public class FornecedorDAOTeste extends TemplateTeste {
 		fornecedorRecuperado = this.fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor1);
 		
 		Assert.assertEquals(fornecedor1, fornecedorRecuperado);
-		
 	}
+	
 }

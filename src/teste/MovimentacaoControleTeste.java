@@ -35,6 +35,7 @@ public class MovimentacaoControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.despesaDAO = new DespesaDAO();
 		this.receitaDAO = new ReceitaDAO();
 		this.movimentacaoControle = new MovimentacaoControle();
@@ -80,8 +81,6 @@ public class MovimentacaoControleTeste extends TemplateTeste {
 		
 		this.despesaDAO.cadastrarLista(listaDespesa);
 		this.receitaDAO.cadastrarLista(listaReceita);
-		
-		
 	}
 
 	@Override
@@ -94,12 +93,12 @@ public class MovimentacaoControleTeste extends TemplateTeste {
 		
 		Assert.assertEquals(this.receitaDAO.getPeloId(3).getValor(), this.movimentacaoControle.getReceitaPeloId(3).getValor());
 		Assert.assertEquals(this.despesaDAO.getPeloId(5).getValor(), this.movimentacaoControle.getDespesaPeloId(5).getValor());
-
 	}
 	
 	
 	@Test
-	public void deveRecuperarMovimentacoesDeUmaCampanha() throws Exception{
+	public void deveRecuperarMovimentacoesDeUmaCampanha() throws Exception {
+		
 		Campanha campanhaTeste = new Campanha();
 		Assert.assertNull(this.movimentacaoControle.getListaDespesas(campanhaTeste));
 		Assert.assertNull(this.movimentacaoControle.getListaReceitas(campanhaTeste));
@@ -116,15 +115,9 @@ public class MovimentacaoControleTeste extends TemplateTeste {
 		Assert.assertNull(this.movimentacaoControle.getListaDespesas(campanhaTeste));
 		Assert.assertNull(this.movimentacaoControle.getListaReceitas(campanhaTeste));
 		
-		// OBS: Este teste pode ser melhorado se a .equals() de movimentacao for revista
-		
 		campanhaTeste.setUf(this.uf);
 		Assert.assertEquals(this.despesaDAO.getPorAnoNumeroCargoUf(campanhaTeste).size(),this.movimentacaoControle.getListaDespesas(campanhaTeste).size());
 		Assert.assertEquals(this.receitaDAO.getPorAnoNumeroCargoUf(campanhaTeste).size(),this.movimentacaoControle.getListaReceitas(campanhaTeste).size());
-		
-		
-		
 	}
-
 
 }

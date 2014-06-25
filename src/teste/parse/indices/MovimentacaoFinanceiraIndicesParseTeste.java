@@ -17,6 +17,7 @@ public class MovimentacaoFinanceiraIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.movimentacaoFinanceiraIndicesParse = new MovimentacaoFinanceiraIndicesParse<>(ano);
 		this.campo = new String[9];
 		
@@ -55,7 +56,6 @@ public class MovimentacaoFinanceiraIndicesParseTeste {
 		Assert.assertNotEquals(this.campo[6], movimentacaoFinanceira.getTipoMovimentacao());
 		Assert.assertNotEquals(this.campo[7], movimentacaoFinanceira.getFormaPagamento());
 		Assert.assertNotEquals(this.campo[8], movimentacaoFinanceira.getDescricao());
-		
 	}
 	
 	private void iniciarIndices() {
@@ -69,7 +69,6 @@ public class MovimentacaoFinanceiraIndicesParseTeste {
 		this.movimentacaoFinanceiraIndicesParse.setIndiceTipoMovimentacao(6);
 		this.movimentacaoFinanceiraIndicesParse.setIndiceFormaPagamento(7);
 		this.movimentacaoFinanceiraIndicesParse.setIndiceDescricao(8);
-		
 	}
 	
 	private void iniciarCampos() {
@@ -83,7 +82,6 @@ public class MovimentacaoFinanceiraIndicesParseTeste {
 		this.campo[6] = "TIPO MOVIMENTACAO";
 		this.campo[7] = "FORMA PAGAMENTO";
 		this.campo[8] = "DESCRICAO";
-		
 	}
 
 }

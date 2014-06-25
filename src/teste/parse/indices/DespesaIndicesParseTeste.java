@@ -16,6 +16,7 @@ public class DespesaIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.despesaIndicesParse = new DespesaIndicesParse(ano);
 		this.campo = new String[3];
 		
@@ -25,6 +26,7 @@ public class DespesaIndicesParseTeste {
 	
 	@Test
 	public void iniciarUmaDespesaComIndicesValidos() throws Exception {
+		
 		Despesa despesa = new Despesa();
 		this.despesaIndicesParse.iniciarInstancia(despesa, campo);
 		Assert.assertEquals(this.campo[0], despesa.getFornecedor().getNome());
@@ -34,6 +36,7 @@ public class DespesaIndicesParseTeste {
 	
 	@Test
 	public void iniciarUmaDespesaComIndicesInvalidos() {
+		
 		this.despesaIndicesParse = new DespesaIndicesParse(ano);
 		Despesa despesa = new Despesa();
 		this.despesaIndicesParse.iniciarInstancia(despesa, campo);
@@ -44,10 +47,12 @@ public class DespesaIndicesParseTeste {
 	
 	@Test
 	public void deveRetornarOhAnoCadastrado() {
+		
 		despesaIndicesParse.setAno(2010);
 	}
 	
 	private void iniciarIndices() {
+		
 		this.despesaIndicesParse.setIndiceFornecedorNome(0);
 		this.despesaIndicesParse.setIndiceFornecedorCpfCnpj(1);
 		this.despesaIndicesParse.setIndiceTipoDocumento(2);

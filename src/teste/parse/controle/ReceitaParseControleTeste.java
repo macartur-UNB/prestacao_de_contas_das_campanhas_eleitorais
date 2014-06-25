@@ -24,6 +24,7 @@ public class ReceitaParseControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campo = new String[3];
 		this.receitaDAO = new ReceitaDAO();
 		this.receitaIndicesParse = new ReceitaIndicesParse(ANO);
@@ -53,7 +54,6 @@ public class ReceitaParseControleTeste extends TemplateTeste {
 				getDoador().getNome());
 		Assert.assertEquals(this.campo[CPF_CNPJ], receitaCadastrado.
 				getDoador().getCpf_cnpj());
-
 	}
 
 	private void iniciarIndices() {
@@ -68,8 +68,6 @@ public class ReceitaParseControleTeste extends TemplateTeste {
 		this.campo[RECIBO] = "RECIBOELEITORAL";
 		this.campo[NOME] = "NOME";
 		this.campo[CPF_CNPJ] = "123";
-
 	}
-
 
 }

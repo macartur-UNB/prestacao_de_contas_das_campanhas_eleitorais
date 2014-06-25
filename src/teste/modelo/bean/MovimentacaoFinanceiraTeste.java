@@ -26,7 +26,8 @@ public class MovimentacaoFinanceiraTeste {
 	Receita receita2;
 	
 	@Before
-	public void SetUp(){
+	public void SetUp() {
+		
 		this.despesa = instanciarDespesa();
 		this.receita = instanciarReceita();
 		this.despesa2 = instanciarDespesa();
@@ -38,10 +39,8 @@ public class MovimentacaoFinanceiraTeste {
 
 		Assert.assertFalse(despesa.equals(receita));
 		Assert.assertFalse(receita.equals(despesa));
-		
 		Assert.assertEquals(BeanTeste.STRING_TESTE, despesa.getTipoDocumento());
 		Assert.assertEquals(instanciarFornecedor(), despesa.getFornecedor());
-		
 		Assert.assertEquals(BeanTeste.STRING_TESTE, receita.getReciboEleitoral());
 		Assert.assertEquals(instanciarDoador(), receita.getDoador());
 	}
@@ -57,8 +56,7 @@ public class MovimentacaoFinanceiraTeste {
 	}
 	
 	@Test
-	public void equalsDeveRetornarFalsoParaOutrosCasos()
-	{
+	public void equalsDeveRetornarFalsoParaOutrosCasos() {
 		Doador doador2 = instanciarDoador();
 		doador2.setCpf_cnpj(BeanTeste.STRING_TESTE_2);
 		
@@ -73,9 +71,9 @@ public class MovimentacaoFinanceiraTeste {
 		
 	}
 	
-	
 	@Test
 	public void equalsDeveRetornarVerdadeiroSeForemMovimentacoesFinanceiraIguais() {
+		
 		MovimentacaoFinanceira movimentacaoFinanceira = instanciarMovimentacaoFinanceira();
 		MovimentacaoFinanceira movimentacaoFinanceira2 = instanciarMovimentacaoFinanceira();
 		Assert.assertFalse(movimentacaoFinanceira.equals(movimentacaoFinanceira2));
@@ -83,6 +81,7 @@ public class MovimentacaoFinanceiraTeste {
 	
 	@Test
 	public void equalsDeveRetornarFalsoSeForemMovimentacoesFinancierasDiferentes() {
+		
 		MovimentacaoFinanceira movimentacaoFinanceira = instanciarMovimentacaoFinanceira();
 		MovimentacaoFinanceira movimentacaoFinanceira2 = instanciarMovimentacaoFinanceira();
 		Campanha campanha = instanciarCampanha();

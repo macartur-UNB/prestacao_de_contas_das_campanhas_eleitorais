@@ -95,7 +95,6 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 				+ " OR "
 				+ TITULO_ELEITORAL + " IN (" + this.campanhaDAO.getSqlSelectNomeUrna(nome)
 				+ ")";
-		System.out.println(comandoSQL);
 		try {
 			listaCandidato = buscaBD(comandoSQL);
 		} catch (SQLException e) {
@@ -112,16 +111,13 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 			this.conexao = new ConexaoBancoDados().getConexao();
 
 			String comandoSQL = SQL;
-
 			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
-
 			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
 
 			while (resultadoSQL.next()) {
 				Candidato candidato = new Candidato();
 				candidato.setNome(resultadoSQL.getString(NOME));
-				candidato.setTituloEleitoral(resultadoSQL
-						.getString(TITULO_ELEITORAL));
+				candidato.setTituloEleitoral(resultadoSQL.getString(TITULO_ELEITORAL));
 
 				if (candidato != null)
 					listaCandidato.add(candidato);
@@ -131,8 +127,7 @@ public class CandidatoDAO extends BasicoDAO<Candidato> {
 		} finally {
 			fecharConexao();
 		}
-
-		
 		return listaCandidato;
 	}
+	
 }

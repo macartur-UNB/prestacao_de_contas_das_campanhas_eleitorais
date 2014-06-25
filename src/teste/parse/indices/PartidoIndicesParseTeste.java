@@ -15,6 +15,7 @@ public class PartidoIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.partidoIndicesParse = new PartidoIndicesParse();
 		this.campo = new String[4];
 		
@@ -46,6 +47,7 @@ public class PartidoIndicesParseTeste {
 	}
 	
 	private void iniciarIndices() {
+		
 		this.partidoIndicesParse.setIndiceSigla(0);
 		this.partidoIndicesParse.setIndiceNumero(1);
 		this.partidoIndicesParse.setIndiceDeferimento(2);
@@ -53,6 +55,7 @@ public class PartidoIndicesParseTeste {
 	}
 	
 	private void iniciarCampos() {
+		
 		this.campo[0] = "DEM";
 		this.campo[1] = "25";
 		this.campo[2] = "11.9.1986";

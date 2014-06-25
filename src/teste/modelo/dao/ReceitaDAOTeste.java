@@ -27,6 +27,7 @@ public class ReceitaDAOTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.receitaDAO = new ReceitaDAO();
 		this.campanha1 = new Campanha();
 		this.doador1 = new Doador();
@@ -36,7 +37,6 @@ public class ReceitaDAOTeste extends TemplateTeste {
 		this.campanha2 = new Campanha();
 		this.doador2 = new Doador();
 		this.cargo2 = new Cargo();
-		
 	}
 
 	@Override
@@ -87,10 +87,6 @@ public class ReceitaDAOTeste extends TemplateTeste {
 		
 		this.receitaDAO.cadastrarLista(listaReceitas);
 		this.receitaDAO.getLista();
-		
-		
 	}
-
-	
 
 }

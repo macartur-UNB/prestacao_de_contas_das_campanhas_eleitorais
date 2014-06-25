@@ -22,8 +22,8 @@ public class CadastroCargoParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro = 
-				new CadastroCargoParse(this.tipoArquivo, this.ano);	
+		
+		this.cadastro = new CadastroCargoParse(this.tipoArquivo, this.ano);	
 		this.cargoDAO = new CargoDAO();
 	}
 
@@ -34,6 +34,7 @@ public class CadastroCargoParseTeste extends TemplateTeste {
 
 	@Test
 	public void deveRetornarUmCandidatoCadastrado() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[8] = "1";
 		campo[9] = "CARGO TESTE";
@@ -42,7 +43,6 @@ public class CadastroCargoParseTeste extends TemplateTeste {
 		
 		Cargo cargo = this.cargoDAO.getPeloCod(1);
 		assertEquals(cargo.getCodigo().toString(), "1");
-		
 	}
 
 }

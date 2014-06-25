@@ -20,6 +20,7 @@ public class PartidoControleTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.partidoControle = new PartidoControle();
 		this.partidoDAO = new PartidoDAO();
 	}
@@ -53,7 +54,6 @@ public class PartidoControleTeste extends TemplateTeste {
 		listaPartidosRecuperados = this.partidoDAO.getLista();
 		
 		assertEquals(listaPartidosRecuperados, this.partidoControle.getListaTodosPartidos());
-		
 	}
 	
 	@Test

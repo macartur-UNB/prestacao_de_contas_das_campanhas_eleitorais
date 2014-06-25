@@ -16,8 +16,8 @@ public class CadastroCampanhaParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro = 
-				new CadastroCampanhaParse(this.tipoArquivo, this.ano);	
+		
+		this.cadastro = new CadastroCampanhaParse(this.tipoArquivo, this.ano);	
 	}
 
 	@Override
@@ -40,7 +40,6 @@ public class CadastroCampanhaParseTeste extends TemplateTeste {
 		campo[39] = "450000.0";
 		cadastro.executarLinhaDoArquivo(campo);
 		cadastro.cadastrarInstancias();
-		
 	}
 
 }
