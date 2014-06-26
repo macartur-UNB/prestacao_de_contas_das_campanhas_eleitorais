@@ -14,10 +14,10 @@ public class CandidatoControle {
 	}
 	
 	public LinkedList<Candidato> getListaCandidatos(String nome) {
-		return this.candidatoDAO.getLista(nome);
+		return this.candidatoDAO.getListaPeloNome(nome);
 	}
 
 	public Candidato getUmCandidato(String tituloEleitoral) {
-		return this.candidatoDAO.getCandidato(tituloEleitoral);
+		return this.candidatoDAO.getCandidatoPeloTitulo(tituloEleitoral);
 	}
 }

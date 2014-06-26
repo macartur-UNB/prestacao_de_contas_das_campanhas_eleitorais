@@ -15,6 +15,7 @@ public class PartidoValidacaoTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.partidoValidacao = new PartidoValidacao();
 		this.partidoExcecao = new PartidoExcecao();
 		this.partido = new Partido();
@@ -28,53 +29,40 @@ public class PartidoValidacaoTeste extends TemplateTeste {
 	
 	@Test
 	public void naoLancaExcecaoSeSiglaNaoEhNula() throws PartidoExcecao {
-		this.partido.setSigla("PT");
 		
+		this.partido.setSigla("PT");
 		this.partidoValidacao.siglaNaoNula(partido);
 	}
 	
 	@Test
 	public void naoLancaExcecaoSeSiglaNaoEhNula2() throws PartidoExcecao {
+		
 		this.partido.setSigla("PT");
-		
 		this.partidoValidacao.numeroNaoNulo(partido);
 	}
-	
-	
-	@Test (expected = PartidoExcecao.class)
-	public void lancaExcecaoSeNumeroPartidoEhNulo() throws PartidoExcecao {
-		this.partido.setNumero(null);
-		
-		this.partidoValidacao.numeroNaoNulo(partido);
-	}
-	
-	@Test (expected = PartidoExcecao.class)
-	public void lancaExcecaoSeSiglaPartidoEhNulo() throws PartidoExcecao {
-		this.partido.setSigla(null);
-		
-		this.partidoValidacao.siglaNaoNula(partido);
-	}
-	
 	
 	@Test
 	public void naoLancaExcecaoSeNumeroPartidoNaoEhNulo() throws PartidoExcecao {
-		this.partido.setNumero(13);
 		
+		this.partido.setNumero(13);
 		this.partidoValidacao.numeroNaoNulo(partido);
 	}
 	
 	@Test
 	public void testeMetodoEqualsParteI() throws PartidoExcecao {
+		
 		partido.equals(null);
 	}
 
 	@Test
 	public void testeMetodoEqualsParteII() throws PartidoExcecao {
+		
 		partido.equals(partido);
 	}
 	
 	@Test
 	public void testeMetodoEqualsParteIII() throws PartidoExcecao {
+		
 		partido.equals(candidato);
 	}
 }

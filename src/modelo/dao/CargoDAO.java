@@ -65,18 +65,18 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 		}
 	}
 	
-	public Cargo getPeloCod(Integer codigo) {
+	public Cargo getPeloCod(Integer codigo) throws SQLException {
 		String comandoSQL = SQL_SELECAO + " WHERE " + CODIGO +" = "+codigo+" ";
 		return buscaBD(comandoSQL);
 	}
 	
-	public Cargo getPelaDescricao(String descricao) {
+	public Cargo getPelaDescricao(String descricao) throws SQLException {
 		String comandoSQL = SQL_SELECAO + " WHERE "
 						  + DESCRICAO +" like '%"+descricao+"%' ";
 		return buscaBD(comandoSQL);
 	}
 	
-	public Cargo buscaBD(String SQL) {
+	public Cargo buscaBD(String SQL) throws SQLException {
 		Cargo cargo = new Cargo();
 		String comandoSQL = SQL;
 		
@@ -93,9 +93,10 @@ public class CargoDAO extends BasicoDAO<Cargo> implements ParseDAO<Cargo> {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Um erro aconteceu.");
-			e.getMessage();
-		} 
+			throw new SQLException("CargoDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
 		return cargo;
 	}
 }

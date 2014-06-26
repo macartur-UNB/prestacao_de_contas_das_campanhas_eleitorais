@@ -16,39 +16,69 @@ import teste.TemplateTeste;
 
 public class CadastroFornecedorParseTeste extends TemplateTeste {
 
-	private CadastroFornecedorParse cadastro;
-	private FornecedorDAO dao;
-	String  tipoArquivo = "campanha";
-	String  ano         = "2006";
+	private CadastroFornecedorParse cadastro1;
+	private CadastroFornecedorParse cadastro2;
+	private CadastroFornecedorParse cadastro3;
+	private FornecedorDAO fornecedorDAO;
+	String  tipoArquivo = "despesa";
+	String  ano1         = "2006";
+	String  ano2         = "2002";
+	String  ano3         = "2010";
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro = 
-				new CadastroFornecedorParse(this.tipoArquivo, this.ano);	
-		this.dao = new FornecedorDAO();
+		
+		this.cadastro1 = new CadastroFornecedorParse(this.tipoArquivo, this.ano1);
+		this.cadastro2 = new CadastroFornecedorParse(this.tipoArquivo, this.ano2);
+		this.cadastro3 = new CadastroFornecedorParse(this.tipoArquivo, this.ano3);
+		this.fornecedorDAO = new FornecedorDAO();
 	}
 
 	@Override
 	public void afterTest() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	@Test
-	public void deveRetornarUmFornecedorCadastrado() throws ParseException, SQLException {
+	public void deveRetornarUmFornecedorCadastradoPara2006() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[19] = "123";
 		campo[18] = "NOME";
 		campo[20] = "UF";
-		campo[21] = "SITUACAO";
-		cadastro.executarLinhaDoArquivo(campo);
-		cadastro.cadastrarInstancias();
+		campo[21] = "SITUACAO";		
+		cadastro1.executarLinhaDoArquivo(campo);
+		cadastro1.cadastrarInstancias();
 		
-		ArrayList<Fornecedor> fornecedor = dao.getLista();
-		assertEquals(fornecedor.get(0).getNome(), "NOME");
-		
+		ArrayList<Fornecedor> listaFornecedores = fornecedorDAO.getLista();
+		assertEquals(listaFornecedores.get(0).getCpf_cnpj(), "123");
 	}
-
-
+	
+	@Test
+	public void deveRetornarUmFornecedorCadastradoPara2002() throws ParseException, SQLException {
+		
+		String campo[] = new String[50];
+		campo[6] = "12345";
+		campo[8] = "NOME";
+		campo[7] = "UF";
+		cadastro2.executarLinhaDoArquivo(campo);
+		cadastro2.cadastrarInstancias();
+		
+		ArrayList<Fornecedor> listaFornecedores = fornecedorDAO.getLista();
+		assertEquals(listaFornecedores.get(0).getCpf_cnpj(), "12345");
+	}
+	
+	@Test
+	public void deveRetornarUmFornecedorCadastradoPara2010() throws ParseException, SQLException {
+		
+		String campo[] = new String[50];
+		campo[10] = "12345";
+		campo[11] = "NOME";
+		cadastro3.executarLinhaDoArquivo(campo);
+		cadastro3.cadastrarInstancias();
+		
+		ArrayList<Fornecedor> listaFornecedores = fornecedorDAO.getLista();
+		assertEquals(listaFornecedores.get(0).getCpf_cnpj(), "12345");
+	}
 
 }

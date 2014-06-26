@@ -15,6 +15,7 @@ public class PartidoIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.partidoIndicesParse = new PartidoIndicesParse();
 		this.campo = new String[4];
 		
@@ -28,7 +29,7 @@ public class PartidoIndicesParseTeste {
 		Partido partido = new Partido();
 		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		Assert.assertEquals(this.campo[0], partido.getSigla());
-		Assert.assertEquals(this.campo[1], partido.getNumero());
+		Assert.assertEquals(this.campo[1], partido.getNumero().toString());
 		Assert.assertEquals(this.campo[2], partido.getDeferimento());
 		Assert.assertEquals(this.campo[3], partido.getNome());
 	}
@@ -40,12 +41,13 @@ public class PartidoIndicesParseTeste {
 		Partido partido = new Partido();
 		this.partidoIndicesParse.iniciarInstancia(partido, campo);
 		Assert.assertNotEquals(this.campo[0], partido.getSigla());
-		Assert.assertNotEquals(this.campo[1], partido.getNumero());
+		Assert.assertNotEquals(this.campo[1], partido.getNumero().toString());
 		Assert.assertNotEquals(this.campo[2], partido.getDeferimento());
 		Assert.assertNotEquals(this.campo[3], partido.getNome());
 	}
 	
 	private void iniciarIndices() {
+		
 		this.partidoIndicesParse.setIndiceSigla(0);
 		this.partidoIndicesParse.setIndiceNumero(1);
 		this.partidoIndicesParse.setIndiceDeferimento(2);
@@ -53,6 +55,7 @@ public class PartidoIndicesParseTeste {
 	}
 	
 	private void iniciarCampos() {
+		
 		this.campo[0] = "DEM";
 		this.campo[1] = "25";
 		this.campo[2] = "11.9.1986";

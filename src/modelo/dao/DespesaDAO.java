@@ -12,9 +12,6 @@ import modelo.beans.Fornecedor;
 import parse.ParseDAO;
 
 public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
-
-	private CampanhaDAO campanhaDAO;
-	private FornecedorDAO fornecedorDAO;
 		
 	private static final String NOME_TABELA = "despesa";
 	private final String ID = "id_despesa";
@@ -27,8 +24,10 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 	private final String TIPO_MOVIMENTACAO = "tipo_movimentacao";
 	private final String TIPO_DOCUMENTO = "tipo_documento";
 	private final String NUMERO_DOCUMENTO = "numero_documento";
-	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj_fornecedor";
-	private final String CARGO = "cargo";
+	private final String NOME_FORNECEDOR = "fornecedor_nome";
+	private final String CPF_CNPJ_FORNECEDOR = "fornecedor_cpf_cnpj";
+	private final String CAMPANHA_CARGO = "cargo";
+	private final String CAMPANHA_UF = "campanha_uf";
 	
 	private final String SQL_SELECT = "SELECT * FROM " + NOME_TABELA;
 	private final String SQL_INSERT = "INSERT INTO "
@@ -37,14 +36,13 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 					   + FORMA_PAGAMENTO + ", " + DESCRICAO + ", " + DATA
 					   + ", " + TIPO_MOVIMENTACAO + ", " + TIPO_DOCUMENTO 
 					   + ", " + NUMERO_DOCUMENTO + ", " 
-					   + CPF_CNPJ_FORNECEDOR 
-					   + ", " + CARGO + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					   + NOME_FORNECEDOR + ", " + CPF_CNPJ_FORNECEDOR + ", " 
+					   + CAMPANHA_CARGO + ", " + CAMPANHA_UF
+					   + ") VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	
 
 	public DespesaDAO() {
 		super(NOME_TABELA, null);
-		this.campanhaDAO = new CampanhaDAO();
-		this.fornecedorDAO = new FornecedorDAO();
 	}
 
 	@Override
@@ -71,8 +69,11 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 			instrucaoSQL.setString(8, despesa.getTipoMovimentacao());
 			instrucaoSQL.setString(9, despesa.getTipoDocumento());
 			instrucaoSQL.setString(10, despesa.getNumeroDocumento());
-			instrucaoSQL.setString(11, despesa.getFornecedor().getCpf_cnpj());
-			instrucaoSQL.setString(12, despesa.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.setString(11, despesa.getFornecedor().getNome());
+			instrucaoSQL.setString(12, despesa.getFornecedor().getCpf_cnpj());
+			instrucaoSQL.setString(13, despesa.getCampanha().getCargo().getDescricao());
+			instrucaoSQL.setString(14, despesa.getCampanha().getUf());
+
 			instrucaoSQL.addBatch();
 		}
 		
@@ -84,13 +85,15 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 		while (resultadoSQL.next()) {
 			Campanha campanha = new Campanha();
 			Cargo cargo = new Cargo();
-			cargo.setDescricao(resultadoSQL.getString(CARGO));
+			cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
 			campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
 			campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
+			campanha.setUf(resultadoSQL.getString(CAMPANHA_UF));
 			campanha.setCargo(cargo);
 
 			Fornecedor fornecedor = new Fornecedor();
 			fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));
+			fornecedor.setNome(resultadoSQL.getString(NOME_FORNECEDOR));
 
 			Despesa despesa = new Despesa();
 			despesa.setId(resultadoSQL.getInt(ID));			
@@ -108,5 +111,74 @@ public class DespesaDAO extends BasicoDAO<Despesa> implements ParseDAO<Despesa>{
 
 		}
 	}
+
+	public ArrayList<Despesa> getPorAnoNumeroCargoUf(Campanha campanha) throws Exception {
+		String comandoSQL = SQL_SELECT + " WHERE "
+				  + CAMPANHA_ANO + " = " + campanha.getAno() + " AND "
+				  + CAMPANHA_NUMERO + " = " + campanha.getNumeroCandidato()
+				  + " AND " + CAMPANHA_UF + " = '" + campanha.getUf()
+				  + "' AND " + CAMPANHA_CARGO 
+				  + " LIKE '%" + campanha.getCargo().getDescricao()
+				  + "%'";
+		return buscaBD(comandoSQL);
+	}
+	
+	public Despesa getPeloId(int id) throws Exception {
+			String comandoSQL = SQL_SELECT + " WHERE "
+					  + ID + " = " + id;
+			return buscaBD(comandoSQL).get(0);
+	}
+	
+	public ArrayList<Despesa> buscaBD(String SQL) throws Exception {
+
+		ArrayList<Despesa> listaDespesa = new ArrayList<>();
+
+		try {
+			this.conexao = new ConexaoBancoDados().getConexao();
+
+			String comandoSQL = SQL;
+
+			this.instrucaoSQL = this.conexao.prepareStatement(comandoSQL);
+
+			ResultSet resultadoSQL = (ResultSet) instrucaoSQL.executeQuery();
+
+			while (resultadoSQL.next()) {
+				Despesa despesa = new Despesa();
+				
+				Cargo cargo = new Cargo();
+				cargo.setDescricao(resultadoSQL.getString(CAMPANHA_CARGO));
+
+				Campanha campanha = new Campanha();
+				campanha.setAno(resultadoSQL.getInt(CAMPANHA_ANO));
+				campanha.setNumeroCandidato(resultadoSQL.getInt(CAMPANHA_NUMERO));
+				campanha.setCargo(cargo);
+				despesa.setCampanha(campanha);
+				
+				Fornecedor fornecedor = new Fornecedor();
+				fornecedor.setNome(resultadoSQL.getString(NOME_FORNECEDOR));
+				fornecedor.setCpf_cnpj(resultadoSQL.getString(CPF_CNPJ_FORNECEDOR));
+				despesa.setFornecedor(fornecedor);
+
+				despesa.setData(resultadoSQL.getString(DATA));
+				despesa.setDescricao(resultadoSQL.getString(DESCRICAO));
+				despesa.setFormaPagamento(resultadoSQL.getString(FORMA_PAGAMENTO));
+				despesa.setId(resultadoSQL.getInt(ID));
+				despesa.setNumeroDocumento(resultadoSQL.getString(NUMERO_DOCUMENTO));
+				despesa.setTipoDocumento(resultadoSQL.getString(TIPO_DOCUMENTO));
+				despesa.setTipoMovimentacao(resultadoSQL.getString(TIPO_MOVIMENTACAO));
+				despesa.setValor(resultadoSQL.getFloat(VALOR));
+				
+				if (despesa != null) listaDespesa.add(despesa);
+			}
+
+		}  catch (SQLException e) {
+			throw new SQLException("DespesaDAO - " + e.getMessage());
+		} finally {
+			fecharConexao();
+		}
+
+		return listaDespesa;
+	}
+
 	
 }

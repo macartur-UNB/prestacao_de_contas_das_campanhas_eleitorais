@@ -12,6 +12,7 @@ public class CandidatoTeste {
 
 	@Test
 	public void equalsDeveRetornarVerdadeiroSeForemCandidatosIguais() {
+		
 		Candidato candidato = instanciarCandidato();
 		Candidato candidato2 = instanciarCandidato();
 		Assert.assertTrue(candidato.equals(candidato2));
@@ -19,6 +20,7 @@ public class CandidatoTeste {
 	
 	@Test
 	public void equalsDeveRetornarFalsoSeForemCandidatosDiferentes() {
+		
 		Candidato candidato = instanciarCandidato();
 		Candidato candidato2 = instanciarCandidato();
 		candidato2.setTituloEleitoral(BeanTeste.STRING_TESTE_2);
@@ -27,6 +29,7 @@ public class CandidatoTeste {
 	
 	@Test
 	public void equalsDeveRetornarFalsoSeNaoCompararComCandidato() {
+		
 		Candidato candidato = instanciarCandidato();
 		Partido partido = instanciarPartido();
 		Assert.assertFalse(candidato.equals(partido));

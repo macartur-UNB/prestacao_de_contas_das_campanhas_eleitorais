@@ -13,22 +13,19 @@
 	type="text/css" media="all">
 </head>
 <body>
-	
+
 	<%@include file="imports/cabecalho.jsp"%>
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
-		<div class="titulo_topo">
+		<div class="titulo_topo" id="tt_info">
 			<h3>Erro!</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 				<h4>Um erro ocorreu! O partido não existe!</h4>
-				<br>
-				<form name="voltar" action="index.jsp">
-					<input type="submit" class="botao" value="Voltar">
-				</form>
-				<br>
+				<br> <input type="button" class="botao" value="Voltar"
+					onclick="history.go(-1)"> <br>
 			</div>
 		</div>
 	</div>

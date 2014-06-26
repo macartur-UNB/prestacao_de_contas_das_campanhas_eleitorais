@@ -15,7 +15,7 @@ public class Resultado {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Resultado) || object == null )
+		if( !(object instanceof Resultado))
 			return false;
 		
 		Resultado outroResultado = (Resultado) object;

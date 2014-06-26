@@ -1,11 +1,8 @@
 package teste.modelo.dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.beans.Despesa;
 import modelo.beans.Doador;
-import modelo.dao.DespesaDAO;
 import modelo.dao.DoadorDAO;
 
 import org.junit.Assert;
@@ -19,6 +16,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.doadorDAO = new DoadorDAO();
 	}
 
@@ -29,37 +27,21 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void valoresComparacaoParteI() throws Exception {
-		//DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
 		
 		Doador D1 = new Doador();
 		Doador D2 = new Doador();
-		D1.setCpf_cnpj("123");
-		D2.setCpf_cnpj("123");
+		D1.setCpf_cnpj("1234567");
+		D2.setCpf_cnpj("1234567");
 		int resultado;
 
-		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
+		resultado = DoadorDAO.Comparacao.NOME.compare(D1, D2);
 		
 		Assert.assertEquals(0,resultado);
-	}
-	
-	@Test
-	public void valoresComparacaoParteII() throws Exception {
-		//DoadorDAO.Comparacao.valueOf(DoadorDAO.Comparacao.NOME.toString());
-		
-		Doador D1 = new Doador();
-		Doador D2 = new Doador();
-		D1.setCpf_cnpj("124");
-		D2.setCpf_cnpj("125");
-		int resultado;
-
-		resultado = DoadorDAO.Comparacao.CPF_CNPJ.compare(D1, D2);
-		
-		Assert.assertEquals(-1,resultado);
-		
 	}
 
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmDoadorInexistente() throws Exception {
+		
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
 		
 		Doador doador = new Doador();
@@ -71,6 +53,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void naoDeveCadastrarUmDoadorJaExistente() throws Exception {
+		
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
 		
 		Doador doador = new Doador();
@@ -85,6 +68,7 @@ public class DoadorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRecuperarUmaListaComOsDoadoresCadastrados() throws Exception {
+		
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
 		
 		Doador doador = new Doador();
@@ -105,5 +89,30 @@ public class DoadorDAOTeste extends TemplateTeste {
 		Assert.assertEquals(listaDoadores, this.doadorDAO.getLista());
 	}
 	
-
+	@Test
+	public void deveRecuperarUmDoadorPeloNomeOuCpfCnpj() throws Exception {
+		
+		ArrayList<Doador> listaDoadoresACadastrar = new ArrayList<>();
+		Doador doadorRecuperado;
+		
+		Doador doador1 = new Doador();
+		doador1.setNome("nome");
+		doador1.setCpf_cnpj("123456");
+		doador1.setSituacaoCadastral("REGULAR");
+		doador1.setUf("DF");
+		listaDoadoresACadastrar.add(doador1);
+		
+		Doador doador2 = new Doador();
+		doador2.setNome("nome2");
+		doador2.setCpf_cnpj("12345678");
+		doador2.setSituacaoCadastral("IRREGULAR");
+		doador2.setUf("DF");
+		listaDoadoresACadastrar.add(doador2);
+		
+		this.doadorDAO.cadastrarLista(listaDoadoresACadastrar);
+		doadorRecuperado = this.doadorDAO.getPeloNomeOuCpfCnpj(doador1);
+		
+		Assert.assertEquals(doador1, doadorRecuperado);
+	}
+	
 }

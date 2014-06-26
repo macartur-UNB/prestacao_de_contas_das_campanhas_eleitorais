@@ -20,33 +20,36 @@
 
 	<!-- CONTEUDO DA PAGINA DE INFORMAÇÕES -->
 	<div id="pagina">
-		<div class="titulo_topo">
-			<h3>Buscar</h3>
+		<div class="titulo_topo" id="tt_pesquisa">
+			<h3>Pesquisar</h3>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
 
-				<p>
-					Entre com o uma parte do nome do <b>Candidato</b> que deseja
-					buscar, e em seguida, click em burcar.
-				</p>
-				<c:url var="link_busca" value="/mvc">
-					<c:param name="logica" value="VisualizarResultadoListaBuscaCandidato"></c:param>
-				</c:url>
-				
-				<form action="${link_busca}" method="post">
-					<table>
-						<tr>
-							<td>Nome:</td>
-							<td><input type="text" name="nome" /></td>
-						</tr>
-						<tr>
-							<td></td>
-							<td><br><input type="submit" class="botao" value="Buscar" /></td>
-						</tr>
-					</table>
-				</form>
-				<br>
+				<div id="pesquisaRapida">
+					<center>
+						<h4>Busca Rápida</h4>
+						<p>
+							Entre com uma parte do nome do <b>Candidato</b> ou nome de urna
+							que deseja buscar, e em seguida, clique em buscar.
+						</p>
+
+						<c:url var="link_busca" value="/mvc">
+							<c:param name="logica"
+								value="VisualizarResultadoListaBuscaCandidato"></c:param>
+							<c:param name="inicio" value="${0}"></c:param>
+							<c:param name="qtdPorPagina" value="${10}"></c:param>
+							<c:param name="verTodos" value="${false}"></c:param>
+							<c:param name="centro" value="${1}"></c:param>
+						</c:url>
+
+						<form action="${link_busca}" method="post">
+							<br> <input class="campoRapido" type="text" name="nome"
+								required> <br> <br> <br> <input
+								id="botao" type="submit" value="Buscar" />
+						</form>
+					</center>
+				</div>
 			</div>
 		</div>
 	</div>

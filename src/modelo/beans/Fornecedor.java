@@ -19,11 +19,12 @@ public class Fornecedor {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Fornecedor) || object == null )
+		if( !(object instanceof Fornecedor))
 			return false;
 		
 		Fornecedor outroFornecedor = (Fornecedor) object;
-		return this.getCpf_cnpj().equals(outroFornecedor.getCpf_cnpj());
+		return this.getNome().equalsIgnoreCase(outroFornecedor.getNome()) &&
+			   this.getCpf_cnpj().equalsIgnoreCase(outroFornecedor.getCpf_cnpj()) ;
 	}
 	
 	public String getCpf_cnpj() {

@@ -15,6 +15,7 @@ public class ResultadoIndicesParseTeste {
 	
 	@Before
 	public void setUp() throws Exception {
+		
 		this.resultadoIndicesParse = new ResultadoIndicesParse();
 		this.campo = new String[2];
 		
@@ -29,7 +30,6 @@ public class ResultadoIndicesParseTeste {
 		this.resultadoIndicesParse.iniciarInstancia(resultado, campo);
 		Assert.assertEquals(this.campo[0], resultado.getCodigo().toString());
 		Assert.assertEquals(this.campo[1], resultado.getDescricao());
-		
 	}
 	
 	@Test
@@ -40,21 +40,18 @@ public class ResultadoIndicesParseTeste {
 		this.resultadoIndicesParse.iniciarInstancia(resultado, campo);
 		Assert.assertNotEquals(this.campo[0], resultado.getCodigo().toString());
 		Assert.assertNotEquals(this.campo[1], resultado.getDescricao());
-		
 	}
 	
 	private void iniciarIndices() {
 		
 		this.resultadoIndicesParse.setIndiceCodigo(0);
 		this.resultadoIndicesParse.setIndiceDescricao(1);
-
 	}
 	
 	private void iniciarCampos() {
 		
 		this.campo[0] = "123";
 		this.campo[1] = "RESULTADO INEXISTENTE";
-		
 	}
 
 }

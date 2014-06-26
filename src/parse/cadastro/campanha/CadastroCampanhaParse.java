@@ -13,6 +13,8 @@ public class CadastroCampanhaParse extends CadastroParse<Campanha> {
 	public CadastroCampanhaParse(String tipoArquivo, String ano)
 			throws ParseException {
 		super(tipoArquivo, ano);
+		
+		setLinhasParaFazerCadastro(100000);
 	}
 
 	@Override
@@ -40,6 +42,15 @@ public class CadastroCampanhaParse extends CadastroParse<Campanha> {
 		campanhaIndicesParse.setIndiceDespesaMaxDeclarada(39);
 	
 		return campanhaIndicesParse;
+	}
+	
+	@Override
+	public void executarLinhaDoArquivo(String[] campo) throws ParseException {
+		this.parseControle.addInstanciaIgual(campo);
+		this.linhasLidas++;
+		if(this.linhasLidas >= this.linhasParaFazerCadastro) {
+			cadastrarInstancias();
+		}
 	}
 
 }

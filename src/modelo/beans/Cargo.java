@@ -16,7 +16,7 @@ public class Cargo {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Cargo) || object == null )
+		if( !(object instanceof Cargo))
 			return false;
 		
 		Cargo outroCargo = (Cargo) object;

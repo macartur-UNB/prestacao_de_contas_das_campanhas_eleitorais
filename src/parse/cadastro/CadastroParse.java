@@ -6,15 +6,15 @@ import parse.indices.IndicesParse;
 
 public abstract class CadastroParse<O> {
 
-	public static final Integer LINHAS_PARA_FAZER_CADASTRO = 10000;
+	protected int linhasLidas;
+	protected int linhasParaFazerCadastro;
 	
-	private int linhasLidas;
-	
-	private IndicesParse<O> indicesParse;
-	private ParseControle<O> parseControle;
+	protected IndicesParse<O> indicesParse;
+	protected ParseControle<O> parseControle;
 	
 	public CadastroParse(String tipoArquivo, String ano) throws ParseException {
 		this.linhasLidas = 0;
+		this.linhasParaFazerCadastro = 1500;
 		
 		this.indicesParse = getIndicesParse(tipoArquivo, ano);
 		this.parseControle = novaInstancia(this.indicesParse);
@@ -23,7 +23,7 @@ public abstract class CadastroParse<O> {
 	public void executarLinhaDoArquivo(String campo[]) throws ParseException {
 		this.parseControle.addInstancia(campo);
 		this.linhasLidas++;
-		if(this.linhasLidas >= LINHAS_PARA_FAZER_CADASTRO) {
+		if(this.linhasLidas >= this.linhasParaFazerCadastro) {
 			cadastrarInstancias();
 		}
 	}
@@ -37,6 +37,14 @@ public abstract class CadastroParse<O> {
 	public abstract ParseControle<O> novaInstancia(IndicesParse<O> indicesParse);
 	
 	protected abstract IndicesParse<O> getIndicesParse(String tipoArquivo, String ano) throws ParseException;
+
+	public int getLinhasParaFazerCadastro() {
+		return linhasParaFazerCadastro;
+	}
+
+	public void setLinhasParaFazerCadastro(int linhasParaFazerCadastro) {
+		this.linhasParaFazerCadastro = linhasParaFazerCadastro;
+	}
 	
 }
 

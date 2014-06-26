@@ -30,6 +30,7 @@ public class LeitorCSVTest {
 	
 	@Before
 	public void setUp() throws IOException {
+		
 		initFileItem();
 		
 		this.executorLeitorCSV = new ExecutorLeitorCSVObservador() {
@@ -44,28 +45,33 @@ public class LeitorCSVTest {
 	
 	@Test
 	public void numeroDeLinhasDeveSerIgualAoNumeroDeLinhasDoArquivo() throws Exception {
+		
 		int numeroLinhas = this.leitorCSV.getNumeroLinhas(this.fileItem);
 		Assert.assertEquals(NUMERO_LINHAS_ARQUIVO, numeroLinhas);
 	}
 
 	@Test
 	public void deveExecutarMetodoPorLinhaLidaSemLancarExcecao() throws Exception {
+		
 		this.leitorCSV.executarMetodoPorLinhaLida(this.fileItem, ";", 1);
 	}
 	
 	@Test
 	public void deveExecutarMetodoPorLinhaLidaApartirDaLinha10000SemLancarExcecao() throws Exception {
+		
 		this.leitorCSV.executarMetodoPorLinhaLida(this.fileItem, ";", 10000);
 	}
 	
 	
 	private InputStream getNewInputStream() throws FileNotFoundException {
+		
 		String diretorio = new File("").getAbsolutePath();
 		String caminhoArquivo = diretorio + NOME_ARQUIVO;
 		return new FileInputStream(new File(caminhoArquivo));
 	}
 	
 	private void initFileItem() {
+		
 		this.fileItem = new FileItem() {
 			
 			@Override
@@ -174,21 +180,5 @@ public class LeitorCSVTest {
 			}
 		};
 	}
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

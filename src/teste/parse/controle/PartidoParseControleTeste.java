@@ -24,6 +24,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campo = new String[4];
 		this.partidoDAO = new PartidoDAO();
 		this.partidoIndicesParse = new PartidoIndicesParse();
@@ -48,7 +49,7 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		Partido partidoCadastrado = this.partidoDAO.getLista().get(0);
 				
 		Assert.assertEquals(this.campo[SIGLA], partidoCadastrado.getSigla());
-		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumero());
+		Assert.assertEquals(this.campo[NUMERO], partidoCadastrado.getNumero().toString());
 		Assert.assertEquals(this.campo[DEFERIMENTO], partidoCadastrado.getDeferimento());
 		Assert.assertEquals(this.campo[NOME], partidoCadastrado.getNome());
 	}
@@ -80,4 +81,5 @@ public class PartidoParseControleTeste extends TemplateTeste {
 		this.campo[DEFERIMENTO] = "11.9.1986";
 		this.campo[NOME] = "DEMOCRATAS";
 	}
+	
 }

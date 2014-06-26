@@ -17,11 +17,13 @@ public class ResultadoDAOTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.dao = new ResultadoDAO();
 	}
 
 	@Override
-	public void afterTest() throws Exception {		
+	public void afterTest() throws Exception {
+		
 	}
 	
 	@Test
@@ -44,7 +46,6 @@ public class ResultadoDAOTeste extends TemplateTeste {
 		Resultado r3 = new Resultado();
 		r3 = this.dao.getPeloCod(1);
 		Assert.assertEquals(r1, r3);
-		
 	}
 	
 	@Test
@@ -67,7 +68,6 @@ public class ResultadoDAOTeste extends TemplateTeste {
 		Resultado r3 = new Resultado();
 		r3 = this.dao.getPeloCod(5);
 		Assert.assertNotEquals(r1, r3);
-		
 	}
 	
 	@Test
@@ -82,7 +82,6 @@ public class ResultadoDAOTeste extends TemplateTeste {
 		resultado = ResultadoDAO.Comparacao.CODIGO.compare(r1, r2);
 		
 		Assert.assertNotEquals(0,resultado);
-		
 	}
 
 }

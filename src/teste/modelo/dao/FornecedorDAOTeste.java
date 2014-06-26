@@ -1,11 +1,8 @@
 package teste.modelo.dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-import modelo.beans.Doador;
 import modelo.beans.Fornecedor;
-import modelo.dao.DoadorDAO;
 import modelo.dao.FornecedorDAO;
 
 import org.junit.Assert;
@@ -19,6 +16,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.fornecedorDAO = new FornecedorDAO();
 	}
 
@@ -29,38 +27,21 @@ public class FornecedorDAOTeste extends TemplateTeste {
 
 	@Test
 	public void valoresComparacao() throws Exception {
-		//FornecedorDAO.Comparacao.valueOf(FornecedorDAO.Comparacao.NOME.toString());
 		
 		Fornecedor F1 = new Fornecedor();
 		Fornecedor F2 = new Fornecedor();
-		F1.setCpf_cnpj("123");
-		F2.setCpf_cnpj("123");
+		F1.setNome("FORNECEDOR UM");
+		F2.setNome("FORNECEDOR UM");
 		int resultado;
 
-		resultado = FornecedorDAO.Comparacao.CPF_CNPJ.compare(F1, F2);
+		resultado = FornecedorDAO.Comparacao.NOME.compare(F1, F2);
 		
 		Assert.assertEquals(0,resultado);
 	}
 	
-
-	@Test
-	public void valoresComparacaoParteII() throws Exception {
-		//FornecedorDAO.Comparacao.valueOf(FornecedorDAO.Comparacao.NOME.toString());
-		
-		Fornecedor F1 = new Fornecedor();
-		Fornecedor F2 = new Fornecedor();
-		F1.setCpf_cnpj("124");
-		F2.setCpf_cnpj("125");
-		int resultado;
-
-		resultado = FornecedorDAO.Comparacao.CPF_CNPJ.compare(F1, F2);
-		
-		Assert.assertEquals(-1,resultado);
-		
-	}
-	
 	@Test
 	public void naoDeveLancarExcecaoAoCadastrarUmFornecedorInexistente() throws Exception {
+		
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -72,6 +53,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void naoDeveCadastrarUmFornecedorJaExistente() throws Exception {
+		
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -86,6 +68,7 @@ public class FornecedorDAOTeste extends TemplateTeste {
 	
 	@Test
 	public void deveRecuperarUmaListaComOsFornecedoresCadastrados() throws Exception {
+		
 		ArrayList<Fornecedor> listaFornecedores = new ArrayList<>();
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -104,5 +87,32 @@ public class FornecedorDAOTeste extends TemplateTeste {
 
 		this.fornecedorDAO.cadastrarLista(listaFornecedores);
 		Assert.assertEquals(listaFornecedores, this.fornecedorDAO.getLista());
-	}	
+	}
+	
+	@Test
+	public void deveRecuperarUmFornecedorPeloNomeOuCpfCnpj() throws Exception {
+		
+		ArrayList<Fornecedor> listaFornecedoresACadastrar = new ArrayList<>();
+		Fornecedor fornecedorRecuperado;
+		
+		Fornecedor fornecedor1 = new Fornecedor();
+		fornecedor1.setNome("nome");
+		fornecedor1.setCpf_cnpj("123456");
+		fornecedor1.setSituacaoCadastral("REGULAR");
+		fornecedor1.setUf("DF");
+		listaFornecedoresACadastrar.add(fornecedor1);
+		
+		Fornecedor fornecedor2 = new Fornecedor();
+		fornecedor2.setNome("nome2");
+		fornecedor2.setCpf_cnpj("12345678");
+		fornecedor2.setSituacaoCadastral("IRREGULAR");
+		fornecedor2.setUf("DF");
+		listaFornecedoresACadastrar.add(fornecedor2);
+		
+		this.fornecedorDAO.cadastrarLista(listaFornecedoresACadastrar);
+		fornecedorRecuperado = this.fornecedorDAO.getPeloNomeOuCpfCnpj(fornecedor1);
+		
+		Assert.assertEquals(fornecedor1, fornecedorRecuperado);
+	}
+	
 }

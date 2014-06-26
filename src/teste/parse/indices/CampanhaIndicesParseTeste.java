@@ -15,6 +15,7 @@ public class CampanhaIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.campanhaIndicesParse = new CampanhaIndicesParse();
 		this.campo = new String[11];
 		
@@ -36,8 +37,6 @@ public class CampanhaIndicesParseTeste {
 		Assert.assertEquals(this.campo[6], campanha.getNomeDeUrna());
 		Assert.assertEquals(this.campo[7], campanha.getUf());
 		Assert.assertEquals(this.campo[8], campanha.getDespesaMaxDeclarada().toString());
-		Assert.assertEquals(this.campo[9], campanha.getDespesaTotalCalculada().toString());
-		Assert.assertEquals(this.campo[10], campanha.getReceitaTotalCalculada().toString());
 	}
 	
 	@Test
@@ -55,9 +54,6 @@ public class CampanhaIndicesParseTeste {
 		Assert.assertNotEquals(this.campo[6], campanha.getNomeDeUrna());
 		Assert.assertNotEquals(this.campo[7], campanha.getUf());
 		Assert.assertNotEquals(this.campo[8], campanha.getDespesaMaxDeclarada().toString());
-		Assert.assertNotEquals(this.campo[9], campanha.getDespesaTotalCalculada().toString());
-		Assert.assertNotEquals(this.campo[10], campanha.getReceitaTotalCalculada().toString());
-		
 	}
 	
 	private void iniciarIndices() {
@@ -71,12 +67,10 @@ public class CampanhaIndicesParseTeste {
 		this.campanhaIndicesParse.setIndiceNomeDeUrna(6);
 		this.campanhaIndicesParse.setIndiceUf(7);
 		this.campanhaIndicesParse.setIndiceDespesaMaxDeclarada(8);
-		this.campanhaIndicesParse.setIndiceDespesaTotalCalculada(9);
-		this.campanhaIndicesParse.setIndiceReceitaTotalCalculada(10);
-		
 	}
 	
 	private void iniciarCampos() {
+		
 		this.campo[0] = "1";
 		this.campo[1] = "6";
 		this.campo[2] = "13";
@@ -86,9 +80,6 @@ public class CampanhaIndicesParseTeste {
 		this.campo[6] = "SOARES";
 		this.campo[7] = "DF";
 		this.campo[8] = "450000.0";
-		this.campo[9] = "450000.0";
-		this.campo[10] = "451000.0";
-		
 	}
 
 }

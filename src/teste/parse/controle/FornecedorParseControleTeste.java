@@ -22,6 +22,7 @@ public class FornecedorParseControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campo = new String[2];
 		this.fornecedorDAO = new FornecedorDAO();
 		this.fornecedorIndicesParse = new FornecedorIndicesParse();
@@ -37,7 +38,7 @@ public class FornecedorParseControleTeste extends TemplateTeste {
 	}
 
 	@Test
-	public void cadastrarFornecedores() throws Exception {
+	public void cadastrarFornecedor() throws Exception {
 
 		this.fornecedorParseControle.addInstancia(campo);
 		this.fornecedorParseControle.cadastrarInstancias();
@@ -49,7 +50,6 @@ public class FornecedorParseControleTeste extends TemplateTeste {
 				.toString());
 		Assert.assertEquals(this.campo[NOME],
 				fornecedorCadastrado.getNome());
-
 	}
 
 	@Test
@@ -76,7 +76,6 @@ public class FornecedorParseControleTeste extends TemplateTeste {
 
 		this.campo[CPF_CNPJ] = "125";
 		this.campo[NOME] = "NOME TESTE";
-
 	}
 
 }

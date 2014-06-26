@@ -20,11 +20,11 @@ public class Partido {
 	
 	@Override
 	public boolean equals(Object object) {
-		if( !(object instanceof Partido) || object == null )
+		if( !(object instanceof Partido))
 			return false;
 		
 		Partido outroPartido = (Partido) object;
-		return this.numero.equals(outroPartido.getNumero());
+		return this.sigla.equals(outroPartido.getSigla());
 	}
 	
 	public Integer getNumero() {

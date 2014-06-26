@@ -15,6 +15,7 @@ public class CandidatoIndicesParseTeste {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.candidatoIndicesParse = new CandidatoIndicesParse();
 		this.campo = new String[2];
 		iniciarCampos();
@@ -49,4 +50,5 @@ public class CandidatoIndicesParseTeste {
 		this.campo[0] = "LUCIA HELENA DE CARVALHO";
 		this.campo[1] = "123456";
 	}
+	
 }

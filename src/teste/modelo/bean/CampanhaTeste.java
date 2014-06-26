@@ -16,6 +16,7 @@ public class CampanhaTeste {
 	
 	@Test
 	public void equalsDeveRetornarVerdadeiroSeForemCampanhasIguais() {
+		
 		Campanha campanha = instanciarCampanha();
 		Campanha campanha2 = instanciarCampanha();
 		Assert.assertTrue(campanha.equals(campanha2));
@@ -23,6 +24,7 @@ public class CampanhaTeste {
 	
 	@Test
 	public void equalsDeveRetornarFalsoSeForemCampanhasDiferentes() {
+		
 		Campanha campanha = instanciarCampanha();
 		Campanha campanha2 = instanciarCampanha();
 		campanha2.setAno(BeanTeste.INT_TESTE_2);
@@ -42,11 +44,12 @@ public class CampanhaTeste {
 	
 	@Test
 	public void equalsDeveRetornarFalsoSeNaoCompararComCampanha() {
+		
 		Campanha campanha = instanciarCampanha();
 		Resultado resultado = instanciarResultado();
+		
 		Assert.assertFalse(campanha.equals(resultado));
 		Assert.assertFalse(resultado.equals(campanha));
-		
 		Assert.assertEquals(resultado,campanha.getResultado());
 		Assert.assertEquals(BeanTeste.INT_TESTE,campanha.getId());
 		Assert.assertEquals(instanciarPartido(),campanha.getPartido());
@@ -55,7 +58,7 @@ public class CampanhaTeste {
 		Assert.assertEquals(BeanTeste.FLOAT_TESTE,campanha.getDespesaMaxDeclarada(),0);
 		Assert.assertEquals(BeanTeste.FLOAT_TESTE,campanha.getDespesaTotalCalculada(),0);
 		Assert.assertEquals(BeanTeste.FLOAT_TESTE,campanha.getReceitaTotalCalculada(),0);
-		
 		Assert.assertEquals(BeanTeste.INT_TESTE,resultado.getCodigo());
 	}
+	
 }

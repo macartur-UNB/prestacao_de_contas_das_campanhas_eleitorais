@@ -1,0 +1,468 @@
+body {
+	line-height: 1.6em;
+}
+
+/* INICIO Lista Partidos e Pesquisa Candidatos */
+#gradient-style {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ffba77;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style tfoot tr td {
+	background: #fff;
+	font-size: 11px;
+	color: #000;
+}
+
+#gradient-style tbody tr:hover td {
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #000;
+}
+
+#gradient-style a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+/* FIM Lista Partidos e Pesquisa Candidatos */
+
+/* INICIO Anos Partido */
+#gradient-style-perfilPartido {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 180px;
+	text-align: left;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style-perfilPartido th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ffba77;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style-perfilPartido td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-perfilPartido tbody tr:hover td {
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #000;
+}
+
+table tbody tr td a {
+    display: inline-block;
+    height:100%;
+    width:100%;
+}
+
+#gradient-style-perfilPartido tbody a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-perfilPartido tbody a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-perfilPartido tbody a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style-perfilPartido tbody a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+/* FIM Anos Partido */
+
+/* INICIO Candidatos Partido */
+#gradient-style-listaCandidatoPartido {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 780px;
+	text-align: left;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style-listaCandidatoPartido th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ffba77;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style-listaCandidatoPartido td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-listaCandidatoPartido tfoot tr td {
+	background: #fff;
+	font-size: 11px;
+	color: #000;
+}
+
+#gradient-style-listaCandidatoPartido tbody tr:hover td {
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #000;
+}
+
+#gradient-style-listaCandidatoPartido a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-listaCandidatoPartido a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-listaCandidatoPartido a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style-listaCandidatoPartido a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+/* FIM Candidatos Partido */
+
+/* Inicio Lista Candidatos */
+#gradient-style-listaCandidatos {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;
+	width: 400px;
+	text-align: left;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style-listaCandidatos th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ffba77;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style-listaCandidatos td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-listaCandidatos tfoot tr td {
+	background: #fff;
+	font-size: 11px;
+	color: #000;
+}
+
+#gradient-style-listaCandidatos tbody tr:hover td {
+	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
+	color: #000;
+}
+
+#gradient-style-listaCandidatos a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-listaCandidatos a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-listaCandidatos a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style-listaCandidatos a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+/* FIM Lista Candidatos */
+
+/* INICIO Perfil Candidato */
+#gradient-style-perfilCandidato {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 8px;
+	width: 400px;
+	text-align: center;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style-perfilCandidato th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ffba77;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style-perfilCandidato td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-perfilCandidato tr:hover th {
+	background: #79c977;
+	color: #000;
+}
+
+#gradient-style-perfilCandidato a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-perfilCandidato a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-perfilCandidato a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style-perfilCandidato a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+/* FIM Perfil Candidato */
+
+/* INICIO Movimentacao Receita */
+#gradient-style-movimentacaor {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 8px;
+	width: 800px;
+	text-align: center;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style-movimentacaor th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ccffdd;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style-movimentacaor td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-movimentacaor tfoot tr td {
+	background: #fff;
+	font-size: 11px;
+	color: #000;
+}
+
+#gradient-style-movimentacaor tbody tr:hover td {
+	padding: 8px;
+	background: #e2e2e2;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-movimentacaor a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-movimentacaor a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-movimentacaor a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style-movimentacaor a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}
+/* FIM Movimentacao Receita */
+
+/* INICIO Movimentacao Despesa */
+#gradient-style-movimentacaod {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 8px;
+	width: 800px;
+	text-align: center;
+	border-collapse: collapse;
+	box-shadow: 6px 6px 5px #888888;
+}
+
+#gradient-style-movimentacaod th {
+	font-size: 14px;
+	font-weight: normal;
+	padding: 8px;
+	background: #ffcc88;
+	border-top: 1px solid #555;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-left: 1px solid #555;
+	color: #000;
+}
+
+#gradient-style-movimentacaod td {
+	padding: 8px;
+	background: #e9e9e9;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-movimentacaod tfoot tr td {
+	background: #fff;
+	font-size: 11px;
+	color: #000;
+}
+
+#gradient-style-movimentacaod tbody tr:hover td {
+	padding: 8px;
+	background: #e2e2e2;
+	border-top: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	color: #000;
+}
+
+#gradient-style-movimentacaod a:link {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-movimentacaod a:active {
+	text-decoration: none;
+	color: #042;
+}
+
+#gradient-style-movimentacaod a:visited {
+	text-decoration: none;
+	color: #420;
+}
+
+#gradient-style-movimentacaor a:hover {
+	text-decoration: underline;
+	color: #000;
+	font-weight: bold;
+}

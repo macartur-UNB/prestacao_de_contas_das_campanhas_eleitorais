@@ -1,15 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+	google.load("visualization", "1", {
+		packages : [ "corechart" ]
+	});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+				[ 'Presidente', 'Despesa Máxima Declarada' ],
+				[ 'José Serra', 180000000 ], [ 'Dilma', 176000000 ],
+				[ 'Marina Silva', 90000000 ], [ 'Eymael', 25000000 ],
+				[ 'Levy Fidelix', 10000000 ] ]);
+
+		var options = {
+			title : 'Despesas Máximas Declaradas - Presidente - 2010',
+			hAxis : {
+				title : 'Candidatos'
+			}
+		};
+
+		var chart = new google.visualization.ColumnChart(document
+				.getElementById('chart_div'));
+		chart.draw(data, options);
+	}
+</script>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Campanhas-ON</title>
 <link rel="shortcut icon" href=img/favicon.ico type="image/x-icon" />
 <link href="css/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/banner.css" rel="stylesheet" type="text/css" media="all">
-<link href="css/conteudoHome.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/conteudoHome.css" rel="stylesheet" type="text/css"
+	media="all">
 <link href="css/top5.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 </head>
@@ -18,7 +48,7 @@
 	<!--  CABEÇALHO -->
 	<%@include file="imports/cabecalhohome.jsp"%>
 	<!-- FIM CABEÇALHO -->
-	
+
 	<!-- PAGINA CENTRAL, BANNER, INFORMACOES e TOP5 -->
 	<!-- PAGINA CENTRAL -->
 	<div id="pagina">
@@ -37,7 +67,7 @@
 							<div class="conteudo_banner">
 								<div class="texto_banner">
 									<h2>
-										<b>Campanhas-ON</b>
+										<b> Bem-Vindo ao Campanhas-ON</b>
 									</h2>
 									<p></p>
 									<p>
@@ -49,17 +79,13 @@
 										</span>
 									</p>
 									<p>
-										<span>É aqui onde VOCÊ poderá verificar as receitas e
-											despesas de partidos e candidatos. Com apenas alguns <i>clicks</i>
-											será possível acessar a um universo de informação.&nbsp;
-										</span> Para navegar pelas informações de seus <b>CANDIDATOS</b>
-										entre no <b>MENU</b> Candidatos ou para acessar informações
-										acerca dos <b>PARTIDOS</b> de sua preferência entre no <b>MENU</b>
-										Partidos.
-									</p>
-									<p class="mais_banner">
-										<a href="informacoes.jsp">Clique aqui para obter mais
-											informações</a>
+										<span>É aqui onde VOCÊ poderá verificar a prestação de contas de campanhas eleitorais 
+											dos candidatos do Distrito Federal, incluindo a Presidência da República. 
+											Com apenas alguns <i>clicks</i> será possível acessar um universo de informações.&nbsp;
+										</span> Para navegar pelas informações de <b>CANDIDATOS</b>
+										entre no <b>MENU Candidatos</b>. Para acessar informações
+										acerca dos <b>PARTIDOS</b> de sua preferência, entre no <b>MENU Partidos</b>.
+										
 									</p>
 								</div>
 								<div class="eleicoes_banner">
@@ -88,14 +114,10 @@
 						</h1>
 						<div id="conteudo_box">
 
-							Somos alunos das disciplinas de
-							Métodos de Desenvolvimento de
-							Software e Gestão de Portifólios
-							e Projetos de Software do curso
-							de Engenharia de Software da
-							Universidade de Brasília. Composto
-							por cinco desenvolvedores, dois
-							gestores e dois <i>coaches</i>.
+							Alunos das disciplinas de Métodos de Desenvolvimento de
+							Software e Gestão de Portifólios e Projetos de Software do curso
+							de Engenharia de Software da Universidade de Brasília. O time de
+							desenvolvimento é composto por nove pessoas.
 
 						</div>
 						<br>
@@ -111,11 +133,10 @@
 							<center>O que é o Projeto</center>
 						</h1>
 
-						<div id="conteudo_box">O Campanhas-ON é a materialização da
-							Engenharia de Software no que diz respeito ao nosso curso. Visamos
-							alcançar com esse projeto, todos os cidadãos de bem no qual visam
-							ter conhecimento de seus Candidatos e Partidos, Receitas e
-							Despesas.</div>
+						<div id="conteudo_box">Parte do objetivo das disciplinas está voltado para
+							o desenvolvimento de um Software que exibe dados abertos, oferecidos pelo Governo, de maneira inteligível.
+							O <b>Campanhas-On</b> é fruto da proposta das disciplinas. 
+							</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -126,20 +147,15 @@
 				<div id="box_servicos_3">
 					<div id="efeito_box3">
 						<h1>
-							<center>Como Utilizar o <i>Web Site</i></center>
+							<center>
+								Como Utilizar o <i>Web Site</i>
+							</center>
 						</h1>
-						<div id="conteudo_box">
-							Navegue pelo menu no cabeçalho
-							da página para acessar
-							informações referentes à
-							candidatos e partidos. Tais
-							páginas terão informações
-							complementares que auxiliam no 
-							uso do software. Para pesquisas 
-							avançadas, utilize a seção de
-							pesquisa.
-
-						</div>
+						<div id="conteudo_box">Navegue pelo menu no cabeçalho da
+							página para acessar informações referentes à candidatos e
+							partidos. Tais páginas terão informações complementares que
+							auxiliarão no uso do software.
+							</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -159,7 +175,7 @@
 			<br>
 			<center>
 				<div id="em_construcao">
-					<img src="img/sob_construcao.jpg" alt="">
+					<div id="chart_div" style="width: 505px; height: 285px;"></div>
 				</div>
 			</center>
 		</div>
@@ -167,7 +183,7 @@
 
 	</div>
 	<!-- FIM PAGINA CENTRAL -->
-	
+
 	<!-- RODAPÉ -->
 	<%@include file="imports/rodape.jsp"%>
 	<!-- FIM RODAPÉ -->

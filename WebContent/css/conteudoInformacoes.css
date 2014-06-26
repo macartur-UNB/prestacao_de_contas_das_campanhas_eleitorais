@@ -2,10 +2,33 @@
 .titulo_topo{
 	width: 188px;
 	height: 65px;
-	background: url(../img/titulo_topo.png) no-repeat;
 	position: relative;
 	z-index: 11;
 	margin-left: 0px;
+}
+
+#tt_info{
+	background: url(../img/titulo_topo_info.png) no-repeat;
+}
+
+#tt_candidato{
+	background: url(../img/titulo_topo_candidato.png) no-repeat;
+}
+
+#tt_general{
+	background: url(../img/titulo_topo_general.png) no-repeat;
+}
+
+#tt_movimentacao{
+	background: url(../img/titulo_topo_movimentacao.png) no-repeat;
+}
+
+#tt_partido{
+	background: url(../img/titulo_topo_partido.png) no-repeat;
+}
+
+#tt_pesquisa{
+	background: url(../img/titulo_topo_pesquisa.png) no-repeat;
 }
 
 .titulo_topo h3{
@@ -56,27 +79,143 @@
 	clear:both;
 }
 
-input.botao{
+#botao{
 	width:120px;
 	height:30px;
-	padding:2px;
-	margin:5px;
-	background-color:#034569;
-	color:#CCC;
-	font-size:18px;
-	border-right:1px solid #CCC;
-	border-top:1px solid #CCC;
-	border-bottom:1px solid #CCC;
+	margin:auto;
+	margin-left: 25px;
+	font-weight: bold;
+	line-height: 1;
+	padding: 6px 10px;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 -1px 1px #64799e;
+	/* Background gradient */
+	background: #a5b8da;
+	background: -moz-linear-gradient(top, #a5b8da 0%, #7089b3 100%);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a5b8da),
+		to(#7089b3));
+	/* Border style */
+	border: 1px solid #5c6f91;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	/* Box shadow */
+	-moz-box-shadow: inset 0 1px 0 0 #aec3e5;
+	-webkit-box-shadow: inset 0 1px 0 0 #aec3e5;
+	box-shadow: inset 0 1px 0 0 #aec3e5;
 }
 
-input.botao:hover{
+#botao:hover{
 	width:120px;
 	height:30px;
-	padding:2px;
-	margin:5px;
-	background-color:#CCC;
-	color:#024a68;
-	border-right:1px solid #f8f8f8;
-	border-top:1px solid #f8f8f8;
-	border-bottom:1px solid #f8f8f8;
+	margin:2px -2px 0px 0px;
+	margin-left: 25px;
+	font-weight: bold;
+	line-height: 1;
+	padding: 6px 10px;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	text-shadow: 0 -1px 1px #64799e;
+	/* Background gradient */
+	background: #a5b8da;
+	background: -moz-linear-gradient(top, #a5b8da 0%, #7089b3 100%);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a5b8da),
+		to(#7089b3));
+	/* Border style */
+	border: 1px solid #5c6f91;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	/* Box shadow */
+	-moz-box-shadow: inset 0 1px 0 0 #aec3e5;
+	-webkit-box-shadow: inset 0 1px 0 0 #aec3e5;
+	box-shadow: inset 0 1px 0 0 #aec3e5;
 }
+
+div#perfil_partido{
+	/*border:1px solid blue;*/
+	width:900px;
+	height:450px;
+}
+
+div#informacoes_partido{
+	border-right:3px ridge #666;
+	float:left;
+	font-size:130%;
+	width:440px;
+	height:350px;
+	margin:0px 0px 0px 20px;
+}
+
+div#logo_partido{
+	border:thick  groove #666;
+	text-align:center;
+    display:block;	
+    width:140px;
+	height:150px;
+	margin-left:auto;
+    margin-right:auto;
+    margin-bottom:30px;
+}
+
+div#nome_partido{
+	/*border:2px solid green;*/
+	float:right;
+	width:270px;
+	height:30px;
+	margin:-120px 0px 0px 0px;
+}
+
+div#ano_partido{
+	/*border:1px solid green;*/
+	float:right;
+	width:450px;
+	height:150px;
+	margin:-325px -475px 0px 0px;
+}
+
+div#pesquisaRapida{
+	border:7px groove #269917;
+	float:left;
+	width:800px;
+	height:250px;
+	padding:15px;
+	margin:20px 0px 0px 40px;	
+}
+
+.campoRapido {
+	width:400px;
+}
+
+div#perfilCandidatoAno{
+	border:7px groove #269917;
+	float:left;
+	width:430px;
+	height:400px;
+	padding:15px;
+	margin:0px 0px 0px 220px;
+	
+}
+
+div#fotoPerfil{
+	border:thick groove #666;
+	text-align:center;
+    display:block;	
+    width:140px;
+	height:150px;
+	margin:0px 0px 0px 0px;
+}
+
+#perfilCandidatoAno h1{
+	float:left;
+	margin:-100px 0px 0px 170px; 	
+}
+
+
+#perfilPartido a:link {text-decoration: none; color: black;}
+#perfilPartido a:active {text-decoration: none; color: black;}
+#perfilPartido a:visited {text-decoration: none; color: black;}
+#perfilPartido a:hover {text-decoration: none; color: blue;}

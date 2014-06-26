@@ -36,13 +36,6 @@ public class CarregarParseMovimentacoes extends HttpServlet {
 
 		PrintWriter saida = response.getWriter();
 
-		/**Part part = request.getPart("arquivo_linha_inicial");
-		if(part != null) {
-			Scanner scanner = new Scanner(part.getInputStream());
-			saida.println("linha inicial: " + scanner.nextLine());
-			scanner.close();
-		}*/
-
 		try {
 			boolean isMultpart = ServletFileUpload.isMultipartContent(request);			
 			if(isMultpart) {

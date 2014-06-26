@@ -17,6 +17,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.candidatoDAO = new CandidatoDAO();
 	}
 
@@ -82,7 +83,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	}
 
 	@Test
-	public void deveLancarFalsoSeUmCandidatoNaoExiste() throws Exception{
+	public void deveLancarFalsoSeUmCandidatoNaoExiste() throws Exception {
 		
 		Candidato candidato = new Candidato();
 		candidato.setNome("FULANO");
@@ -96,7 +97,7 @@ public class CandidatoDAOTeste extends TemplateTeste {
 	}
 	
 	@Test
-	public void deveReturnaFalseDuranteAhComparacao() throws Exception{
+	public void deveRetornarFalseDuranteAhComparacao() throws Exception {
 		
 		CandidatoDAO.Comparacao.valueOf(CandidatoDAO.Comparacao.TITULO_ELEITORAL.toString());
 		
@@ -109,15 +110,11 @@ public class CandidatoDAOTeste extends TemplateTeste {
 		Assert.assertEquals(0,resultado);
 	}
 	
-	@Test
-	public void testeGetListaComUmTituloVazio() throws Exception{
-		candidatoDAO.getCandidato(null);
-	}
 	
 	@Test
-	public void testeGetCandidatoComUmTituloVazio() throws Exception{
+	public void testeGetCandidatoComUmTituloVazio() throws Exception {
 		LinkedList<Candidato> LK = null;
-		LK = candidatoDAO.getLista(null);
+		LK = candidatoDAO.getListaPeloNome(null);
 		
 		Assert.assertEquals(0,LK.size());
 	}	

@@ -19,9 +19,9 @@ public class CandidatoControleTeste extends TemplateTeste {
 
 	@Override 
 	public void beforeTest() throws Exception {
+		
 		this.candidatoDAO = new CandidatoDAO();
 		this.candidatoControle = new CandidatoControle();
-
 	}
 
 	@Override
@@ -52,11 +52,10 @@ public class CandidatoControleTeste extends TemplateTeste {
 		listaCandidatos.add(candidato3);
 
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
-		listaCandidatosNomeComum = this.candidatoDAO.getLista("INEXISTENTE");
+		listaCandidatosNomeComum = this.candidatoDAO.getListaPeloNome("INEXISTENTE");
 		this.candidatoControle.getListaCandidatos("INEXISTENTE");
 		
 		Assert.assertEquals(listaCandidatosNomeComum, this.candidatoControle.getListaCandidatos("INEXISTENTE"));
-		
 	}
 	
 	@Test
@@ -76,13 +75,10 @@ public class CandidatoControleTeste extends TemplateTeste {
 		listaCandidatos.add(candidato2);
 		
 		this.candidatoDAO.cadastrarLista(listaCandidatos);
-		candidatoRecuperado = this.candidatoDAO.getCandidato("000000");
+		candidatoRecuperado = this.candidatoDAO.getCandidatoPeloTitulo("000000");
 		this.candidatoControle.getUmCandidato("000000");
 		
 		Assert.assertEquals(candidatoRecuperado, this.candidatoControle.getUmCandidato("000000"));
-		
 	}
 	
-	
-
 }

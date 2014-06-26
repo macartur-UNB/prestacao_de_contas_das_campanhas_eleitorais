@@ -12,64 +12,111 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
+<link href="css/tabelas.css" rel="stylesheet" type="text/css"
+	media="all">
 </head>
 <body>
 
 	<%@include file="imports/cabecalhopartidos.jsp"%>
 
 	<div id="pagina">
-		<div class="titulo_topo">
-			<h3>Perfil</h3>
+		<div class="titulo_topo" id="tt_partido">
+			<center>
+				<h3>Partido</h3>
+			</center>
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-				<p>
-					Abaixo o Perfil do <b>Partido</b> selecionado.
-				</p>
+				<div id="perfil_partido">
+					<center>
+						<h1>${partido.nome}</h1>
+					</center>
+					<br />
 
-				<table>
-					<tr>
-						<td>Nome: </td>
-						<td>${partido.nome}</td>
-					</tr>
-					
-					<tr>
-						<td>Sigla:</td>
-						<td>${partido.sigla}</td>
-					</tr>
-					
-					<tr>
-						<td>Numero:</td>
-						<td>${partido.numero}</td>
-					</tr>
-					
-					<tr>
-						<td>Deferimento:</td>
-						<td>${partido.deferimento}</td>
-					</tr>
-				</table>
-				<br />
-				
-				<c:forEach var ="ano" items ="${anos}" >
-					<table border="2" width="300">
-					<tr><td>
-						<c:url var="AnoUrl" value="/mvc">
-							<c:param name="logica" value="VisualizarCandidatosPartido" />												
-							<c:param name="sigla" value="${partido.sigla}" />						
-							<c:param name="ano" value="${ano}" />
-						</c:url>
-						<a href="${AnoUrl}">${ano}</a>
-					</td></tr>
-					</table><br />
-				</c:forEach>
+					<div id="informacoes_partido">
+						<div id="logo_partido">
+							<a
+								href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
+								target="_blank"> <img src="img/partidos/${siglaUnder}.jpg"
+								width="140" height="150" />
+							</a>
+						</div>
+						<center>
+							<table>
+								<tr>
+									<td><b>Sigla:</b></td>
+									<td>${partido.sigla}</td>
+								</tr>
+								<tr>
+									<td><b>Número:</b></td>
+									<td>${partido.numero}</td>
+								</tr>
+								<c:choose>
+									<c:when test="${not empty partido.deferimento}">
+										<tr>
+											<td><b>Deferimento:</b></td>
+											<td>${partido.deferimento}</td>
+										</tr>
+										<tr>
+											<td><b>Mais informações:</b></td>
+											<td><span id="perfilPartido"><a
+													href="http://www.tse.jus.br/partidos/partidos-politicos/${linktse}"
+													target="_blank"> clique aqui</a></span></td>
+										</tr>
+									</c:when>
+									<c:otherwise>
+										<tr>
+											<br />
+										</tr>
+										<tr>
+											<br />
+										</tr>
+									</c:otherwise>
+								</c:choose>
+							</table>
+						</center>
+						<div id="ano_partido">
+							<h2 align="center">Consulta de Candidatos</h2>
+							<center>
+								<p>
+									<i>Clique em um dos anos para acessar <br /> a lista de
+										candidatos deste Partido.
+									</i>
+								</p>
+								<table id="gradient-style-perfilPartido"
+									summary="Meeting Results">
+									<thead>
+										<tr>
+											<th scope="col"><center>Ano</center></th>
+										</tr>
+									</thead>
 
-				<br>
+									<c:forEach var="ano" items="${anos}">
+										<tbody>
+											<tr>
+												<td><c:url var="AnoUrl" value="/mvc">
+														<c:param name="logica" value="VisualizarCandidatosPartido" />
+														<c:param name="sigla" value="${partido.sigla}" />
+														<c:param name="ano" value="${ano}" />
+														<c:param name="inicio" value="${0}" />
+														<c:param name="qtdPorPagina" value="${10}" />
+														<c:param name="verTodos" value="${false}" />
+													</c:url>
+													<center>
+														<a href="${AnoUrl}">${ano}</a>
+													</center></td>
+											</tr>
+										</tbody>
+									</c:forEach>
+								</table>
+							</center>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
 	<%@include file="imports/rodape.jsp"%>
-
-
 </body>
 </html>

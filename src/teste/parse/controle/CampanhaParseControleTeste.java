@@ -21,8 +21,6 @@ public class CampanhaParseControleTeste extends TemplateTeste {
 	public static final int NOME_URNA = 6;
 	public static final int UF = 7;
 	public static final int DESPESA_MAX = 8;
-	public static final int DESPESA_TOTAL = 9;
-	public static final int RECEITA_TOTAL = 10;
 	
 	private String campo[];
 	private CampanhaDAO campanhaDAO;
@@ -31,6 +29,7 @@ public class CampanhaParseControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campo = new String[11];
 		this.campanhaDAO = new CampanhaDAO();
 		this.campanhaIndicesParse = new CampanhaIndicesParse();
@@ -63,9 +62,6 @@ public class CampanhaParseControleTeste extends TemplateTeste {
 		Assert.assertEquals(this.campo[NOME_URNA], campanhaCadastrada.getNomeDeUrna());
 		Assert.assertEquals(this.campo[UF], campanhaCadastrada.getUf());
 		Assert.assertEquals(this.campo[DESPESA_MAX], campanhaCadastrada.getDespesaMaxDeclarada().toString());
-		Assert.assertEquals(this.campo[DESPESA_TOTAL], campanhaCadastrada.getDespesaTotalCalculada().toString());
-		Assert.assertEquals(this.campo[RECEITA_TOTAL], campanhaCadastrada.getReceitaTotalCalculada().toString());
-		
 	}
 	
 	@Test
@@ -92,9 +88,6 @@ public class CampanhaParseControleTeste extends TemplateTeste {
 		this.campanhaIndicesParse.setIndiceNomeDeUrna(NOME_URNA);
 		this.campanhaIndicesParse.setIndiceUf(UF);
 		this.campanhaIndicesParse.setIndiceDespesaMaxDeclarada(DESPESA_MAX);
-		this.campanhaIndicesParse.setIndiceDespesaTotalCalculada(DESPESA_TOTAL);
-		this.campanhaIndicesParse.setIndiceReceitaTotalCalculada(RECEITA_TOTAL);
-		
 	}
 	
 	private void iniciarCampos() {
@@ -108,9 +101,6 @@ public class CampanhaParseControleTeste extends TemplateTeste {
 		this.campo[NOME_URNA] = "SOARES";
 		this.campo[UF] = "DF";
 		this.campo[DESPESA_MAX] = "450000.0";
-		this.campo[DESPESA_TOTAL] = "450000.0";
-		this.campo[RECEITA_TOTAL] = "451000.0";
-		
 	}
 
 }

@@ -22,19 +22,19 @@ public class CadastroResultadoParseTeste extends TemplateTeste {
 	
 	@Override
 	public void beforeTest() throws Exception {
-		this.cadastro = 
-				new CadastroResultadoParse(this.tipoArquivo, this.ano);	
+		
+		this.cadastro = new CadastroResultadoParse(this.tipoArquivo, this.ano);	
 		this.dao = new ResultadoDAO();
 	}
 
 	@Override
 	public void afterTest() throws Exception {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Test
 	public void deveRetornarUmResultadoCadastrado() throws ParseException, SQLException {
+		
 		String campo[] = new String[50];
 		campo[40] = "25";
 		campo[41] = "Resultado 25";
@@ -43,9 +43,6 @@ public class CadastroResultadoParseTeste extends TemplateTeste {
 		
 		Resultado resultado = dao.getPeloCod(25);
 		assertEquals(resultado.getDescricao(), "Resultado 25");
-		
 	}
-
-
 
 }

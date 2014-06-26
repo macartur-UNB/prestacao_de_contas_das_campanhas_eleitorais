@@ -15,6 +15,7 @@ public class FornecedorIndicesParseTestes {
 
 	@Before
 	public void setUp() throws Exception {
+		
 		this.fornecedorIndicesParse = new FornecedorIndicesParse();
 		this.campo = new String[4];
 		
@@ -24,6 +25,7 @@ public class FornecedorIndicesParseTestes {
 	
 	@Test
 	public void iniciarUmFornecedorComIndicesValidos() throws Exception {
+		
 		Fornecedor fornecedor = new Fornecedor();
 		this.fornecedorIndicesParse.iniciarInstancia(fornecedor, campo);
 		Assert.assertEquals(this.campo[0], fornecedor.getCpf_cnpj().toString());
@@ -34,6 +36,7 @@ public class FornecedorIndicesParseTestes {
 	
 	@Test
 	public void iniciarUmFornecedorComIndicesInvalidos() {
+		
 		this.fornecedorIndicesParse = new FornecedorIndicesParse();
 		Fornecedor fornecedor = new Fornecedor();
 		this.fornecedorIndicesParse.iniciarInstancia(fornecedor, campo);
@@ -44,6 +47,7 @@ public class FornecedorIndicesParseTestes {
 	}
 	
 	private void iniciarIndices() {
+		
 		this.fornecedorIndicesParse.setIndiceCpf_Cnpj(0);
 		this.fornecedorIndicesParse.setIndiceNome(1);
 		this.fornecedorIndicesParse.setIndiceUf(2);
@@ -51,6 +55,7 @@ public class FornecedorIndicesParseTestes {
 	}
 	
 	private void iniciarCampos() {
+		
 		this.campo[0] = "55325424149";
 		this.campo[1] = "VANDERLEI";
 		this.campo[2] = "DF";

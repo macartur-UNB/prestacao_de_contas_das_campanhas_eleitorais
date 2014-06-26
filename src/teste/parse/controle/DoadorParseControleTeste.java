@@ -24,6 +24,7 @@ public class DoadorParseControleTeste extends TemplateTeste {
 
 	@Override
 	public void beforeTest() throws Exception {
+		
 		this.campo = new String[4];
 		this.doadorDAO = new DoadorDAO();
 		this.doadorIndicesParse = new DoadorIndicesParse();
@@ -51,7 +52,6 @@ public class DoadorParseControleTeste extends TemplateTeste {
 		Assert.assertEquals(this.campo[NOME], doadorCadastrado.getNome());
 		Assert.assertEquals(this.campo[UF], doadorCadastrado.getUf());
 		Assert.assertEquals(this.campo[SITUACAO_CADASTRAL], doadorCadastrado.getSituacaoCadastral());
-		
 	}
 	
 	@Test
@@ -73,7 +73,6 @@ public class DoadorParseControleTeste extends TemplateTeste {
 		this.doadorIndicesParse.setIndiceNome(NOME);
 		this.doadorIndicesParse.setIndiceUf(UF);
 		this.doadorIndicesParse.setIndiceSituacaoCadastral(SITUACAO_CADASTRAL);
-		
 	}
 	
 	private void iniciarCampos() {
@@ -82,7 +81,6 @@ public class DoadorParseControleTeste extends TemplateTeste {
 		this.campo[NOME] = "DOADOR INEXISTENTE";
 		this.campo[UF] = "DF";
 		this.campo[SITUACAO_CADASTRAL] = "REGULAR";
-		
 	}
 
 }

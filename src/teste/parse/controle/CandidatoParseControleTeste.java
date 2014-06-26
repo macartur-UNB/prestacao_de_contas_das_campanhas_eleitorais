@@ -74,4 +74,5 @@ public class CandidatoParseControleTeste extends TemplateTeste {
 		this.campo[NOME] = "LUCIA HELENA DE CARVALHO";
 		this.campo[TITULO_ELEITORAL] = "123456";
 	}
+	
 }
