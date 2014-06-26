@@ -67,7 +67,7 @@
 							<div class="conteudo_banner">
 								<div class="texto_banner">
 									<h2>
-										<b>Campanhas-ON</b>
+										<b> Bem-Vindo ao Campanhas-ON</b>
 									</h2>
 									<p></p>
 									<p>
@@ -79,17 +79,13 @@
 										</span>
 									</p>
 									<p>
-										<span>É aqui onde VOCÊ poderá verificar as receitas e
-											despesas de partidos e candidatos. Com apenas alguns <i>clicks</i>
-											será possível acessar a um universo de informação.&nbsp;
-										</span> Para navegar pelas informações de seus <b>CANDIDATOS</b>
-										entre no <b>MENU</b> Candidatos ou para acessar informações
-										acerca dos <b>PARTIDOS</b> de sua preferência entre no <b>MENU</b>
-										Partidos.
-									</p>
-									<p class="mais_banner">
-										<a href="informacoes.jsp">Clique aqui para obter mais
-											informações</a>
+										<span>É aqui onde VOCÊ poderá verificar a prestação de contas de campanhas eleitorais 
+											dos candidatos do Distrito Federal, incluindo a Presidência da República. 
+											Com apenas alguns <i>clicks</i> será possível acessar um universo de informações.&nbsp;
+										</span> Para navegar pelas informações de <b>CANDIDATOS</b>
+										entre no <b>MENU Candidatos</b>. Para acessar informações
+										acerca dos <b>PARTIDOS</b> de sua preferência, entre no <b>MENU Partidos</b>.
+										
 									</p>
 								</div>
 								<div class="eleicoes_banner">
@@ -118,10 +114,10 @@
 						</h1>
 						<div id="conteudo_box">
 
-							Somos alunos das disciplinas de Métodos de Desenvolvimento de
+							Alunos das disciplinas de Métodos de Desenvolvimento de
 							Software e Gestão de Portifólios e Projetos de Software do curso
-							de Engenharia de Software da Universidade de Brasília. Composto
-							por cinco desenvolvedores, dois gestores e dois <i>coaches</i>.
+							de Engenharia de Software da Universidade de Brasília. O time de
+							desenvolvimento é composto por nove pessoas.
 
 						</div>
 						<br>
@@ -137,11 +133,10 @@
 							<center>O que é o Projeto</center>
 						</h1>
 
-						<div id="conteudo_box">O Campanhas-ON é a materialização da
-							Engenharia de Software no que diz respeito ao nosso curso.
-							Visamos alcançar com esse projeto, todos os cidadãos de bem no
-							qual visam ter conhecimento de seus Candidatos e Partidos,
-							Receitas e Despesas.</div>
+						<div id="conteudo_box">Parte do objetivo das disciplinas está voltado para
+							o desenvolvimento de um Software que exibe dados abertos, oferecidos pelo Governo, de maneira inteligível.
+							O <b>Campanhas-On</b> é fruto da proposta das disciplinas. 
+							</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
@@ -159,8 +154,8 @@
 						<div id="conteudo_box">Navegue pelo menu no cabeçalho da
 							página para acessar informações referentes à candidatos e
 							partidos. Tais páginas terão informações complementares que
-							auxiliam no uso do software. Para pesquisas avançadas, utilize a
-							seção de pesquisa.</div>
+							auxiliarão no uso do software.
+							</div>
 						<br>
 						<div id="saiba_mais_box">
 							<a href="informacoes.jsp">Clique aqui para saber mais (+)</a>
