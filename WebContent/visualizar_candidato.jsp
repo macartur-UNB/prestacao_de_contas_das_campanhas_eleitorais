@@ -89,7 +89,7 @@
 									<table id="gradient-style-perfilCandidato"
 										summary="Meeting Results">
 										<thead>
-											<tr onclick="window.document.location=${AnoUrl};">
+											<tr>
 												<th scope="col" colspan="4"><c:url var="AnoUrl"
 														value="/mvc">
 														<c:param name="logica"

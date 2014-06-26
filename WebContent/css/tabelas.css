@@ -106,6 +106,12 @@ body {
 	color: #000;
 }
 
+table tbody tr td a {
+    display: inline-block;
+    height:100%;
+    width:100%;
+}
+
 #gradient-style-perfilPartido tbody a:link {
 	text-decoration: none;
 	color: #042;
