@@ -15,7 +15,8 @@
 <link href="css/rodape.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/conteudoInformacoes.css" rel="stylesheet"
 	type="text/css" media="all">
-<link href="css/tabelas.css" rel="stylesheet" type="text/css" media="all">	
+<link href="css/tabelas.css" rel="stylesheet" type="text/css"
+	media="all">
 </head>
 
 <body>
@@ -63,6 +64,10 @@
 						<tr>
 							<td><b>Despesa Máxima Declarada:</b></td>
 							<td><c:out value="${depesaTot}" /></td>
+						</tr>
+						<tr>
+							<td><b>Saldo da Campanha:</b></td>
+							<td><c:out value="${receitaTC - despesaTC}" /></td>
 						</tr>
 					</table>
 				</div>
@@ -133,6 +138,11 @@
 										<td>${receita.valor}</td>
 									</tr>
 								</c:forEach>
+								<tr>
+									<td colspan="2" align="right">Receita Total Calculada:</td>
+									<td>${receitaTC}</td>
+								</tr>
+
 								<tfoot>
 									<tr>
 										<td colspan="4"><center>
@@ -140,10 +150,8 @@
 												<c:url var="url_pagInicialR" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -163,10 +171,8 @@
 													<c:url var="url_pagR" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
-														<c:param name="despesaTC"
-															value="${campanha.despesaTotalCalculada}" />
-														<c:param name="receitaTC"
-															value="${campanha.receitaTotalCalculada}" />
+														<c:param name="despesaTC" value="${despesaTC}" />
+														<c:param name="receitaTC" value="${receitaTC}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -191,10 +197,8 @@
 												<c:url var="url_pagFinalR" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -215,10 +219,8 @@
 												<c:url var="url_tamanhoOriginalR" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -238,10 +240,8 @@
 													<c:url var="url_tamanhosR" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
-														<c:param name="despesaTC"
-															value="${campanha.despesaTotalCalculada}" />
-														<c:param name="receitaTC"
-															value="${campanha.receitaTotalCalculada}" />
+														<c:param name="despesaTC" value="${despesaTC}" />
+														<c:param name="receitaTC" value="${receitaTC}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -293,10 +293,8 @@
 												<c:url var="url_todosR" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -387,6 +385,10 @@
 										<td>${despesa.valor}</td>
 									</tr>
 								</c:forEach>
+								<tr>
+									<td colspan="2" align="right">Despesa Total Calculada:</td>
+									<td>${despesaTC}</td>
+								</tr>
 								<tfoot>
 									<tr>
 										<td colspan="4"><center>
@@ -394,10 +396,8 @@
 												<c:url var="url_pagInicialD" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -417,10 +417,8 @@
 													<c:url var="url_pagD" value="/mvc">
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
-														<c:param name="despesaTC"
-															value="${campanha.despesaTotalCalculada}" />
-														<c:param name="receitaTC"
-															value="${campanha.receitaTotalCalculada}" />
+														<c:param name="despesaTC" value="${despesaTC}" />
+														<c:param name="receitaTC" value="${receitaTC}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -445,10 +443,8 @@
 												<c:url var="url_pagFinalD" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />
@@ -494,10 +490,8 @@
 															value="RequisitarMovimentacoesDeCandidato" />
 														<c:param name="logica"
 															value="RequisitarMovimentacoesDeCandidato" />
-														<c:param name="despesaTC"
-															value="${campanha.despesaTotalCalculada}" />
-														<c:param name="receitaTC"
-															value="${campanha.receitaTotalCalculada}" />
+														<c:param name="despesaTC" value="${despesaTC}" />
+														<c:param name="receitaTC" value="${receitaTC}" />
 														<c:param name="numero_cand"
 															value="${campanha.numeroCandidato}" />
 														<c:param name="ano" value="${campanha.ano}" />
@@ -549,10 +543,8 @@
 												<c:url var="url_todosD" value="/mvc">
 													<c:param name="logica"
 														value="RequisitarMovimentacoesDeCandidato" />
-													<c:param name="despesaTC"
-														value="${campanha.despesaTotalCalculada}" />
-													<c:param name="receitaTC"
-														value="${campanha.receitaTotalCalculada}" />
+													<c:param name="despesaTC" value="${despesaTC}" />
+													<c:param name="receitaTC" value="${receitaTC}" />
 													<c:param name="numero_cand"
 														value="${campanha.numeroCandidato}" />
 													<c:param name="ano" value="${campanha.ano}" />

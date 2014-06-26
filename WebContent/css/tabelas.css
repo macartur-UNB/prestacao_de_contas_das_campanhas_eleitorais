@@ -43,7 +43,6 @@ body {
 
 #gradient-style tbody tr:hover td {
 	background: #d0dafd url('../img/table-images/gradhover.png') repeat-x;
-	/*79ff97*/
 	color: #000;
 }
 

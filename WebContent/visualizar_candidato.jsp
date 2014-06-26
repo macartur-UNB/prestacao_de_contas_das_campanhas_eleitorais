@@ -89,7 +89,7 @@
 									<table id="gradient-style-perfilCandidato"
 										summary="Meeting Results">
 										<thead>
-											<tr>
+											<tr onclick="window.document.location=${AnoUrl};">
 												<th scope="col" colspan="4"><c:url var="AnoUrl"
 														value="/mvc">
 														<c:param name="logica"
@@ -134,7 +134,7 @@
 					</div>
 				</div>
 			</div>
-			<br><br><br>
+			<br><br><br><br><br>
 			<center>
 				<div id="chart_div" style="width: 900px; height: 500px;"></div>
 			</center>
