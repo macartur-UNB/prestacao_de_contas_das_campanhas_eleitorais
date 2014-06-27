@@ -188,7 +188,7 @@
 														<c:param name="centroD" value="${centroD}" />
 													</c:url>
 													<c:choose>
-														<c:when test="${i == centroR}">${i}</c:when>
+														<c:when test="${i == centroR}">[ ${i} ]</c:when>
 														<c:otherwise>
 															<a href="${url_pagR}"><c:out value="${i}" /></a>
 														</c:otherwise>
@@ -313,8 +313,11 @@
 											</center></td>
 									</tr>
 									<tr>
-										<td colspan="4">INSERIR INFORMAÇÕES A RESPEITO DOS DADOS
-											DE RECEITA.</td>
+										<td colspan="4">Dados de acordo com os arquivos
+											disponíveis no site de <a
+											href="http://dados.gov.br/dataset/prestacao-de-contas-das-campanhas-eleitorais"
+											target="_blank"> Dados Abertos do Governo Federal</a>
+										</td>
 									</tr>
 								</tfoot>
 							</table>
@@ -434,7 +437,7 @@
 														<c:param name="centroR" value="${centroR}" />
 													</c:url>
 													<c:choose>
-														<c:when test="${i == centroD}">${i}</c:when>
+														<c:when test="${i == centroD}">[ ${i} ]</c:when>
 														<c:otherwise>
 															<a href="${url_pagD}"><c:out value="${i}" /></a>
 														</c:otherwise>
@@ -563,8 +566,11 @@
 											</center></td>
 									</tr>
 									<tr>
-										<td colspan="4">INSERIR INFORMAÇÕES A RESPEITO DOS DADOS
-											DE DESPESA.</td>
+										<td colspan="4">Dados de acordo com os arquivos
+											disponíveis no site de <a
+											href="http://dados.gov.br/dataset/prestacao-de-contas-das-campanhas-eleitorais"
+											target="_blank"> Dados Abertos do Governo Federal</a>
+										</td>
 									</tr>
 								</tfoot>
 							</table>

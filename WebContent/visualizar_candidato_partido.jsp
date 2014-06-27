@@ -90,7 +90,7 @@
 												<c:param name="verTodos" value="${false}"></c:param>
 											</c:url>
 											<c:choose>
-												<c:when test="${i == atual}">${i}</c:when>
+												<c:when test="${i == atual}">[ ${i} ]</c:when>
 												<c:otherwise>
 													<a href="${url_pag}"><c:out value="${i}" /></a>
 												</c:otherwise>
@@ -130,7 +130,10 @@
 							</tr>
 							<tr>
 								<td colspan="4">Dados de acordo com os arquivos disponíveis
-									no site de <a href="http://dados.gov.br/dataset/prestacao-de-contas-das-campanhas-eleitorais" target="_blank"> Dados Abertos do Governo Federal</a> </td>
+									no site de <a
+									href="http://dados.gov.br/dataset/prestacao-de-contas-das-campanhas-eleitorais"
+									target="_blank"> Dados Abertos do Governo Federal</a>
+								</td>
 							</tr>
 						</tfoot>
 					</table>

@@ -54,7 +54,17 @@
 		</div>
 		<div id="conteudo_informacoes">
 			<div class="informacoes">
-
+			
+				<div>
+					<center>
+						<h4>Top Five de Despesas Máximas Declaradas</h4>
+						
+						Para visualizar o gráfico com as cinco maiores despesas máximas declaradas
+						<br>de uma campanha de um determinado pleito e ano basta selecionar as opções
+						<br>desejadas nos filtros e clicar em <b>Gerar Gráfico</b>.
+					</center>
+				</div>
+				<p>
 				<c:url var="link_submit" value="/mvc">
 					<c:param name="logica" value="VisualizarTopFive"></c:param>
 				</c:url>
@@ -75,8 +85,9 @@
 							<option value="Senador">Senador
 						</select>
 					</div>
-					<br> <br> <input id="botaoTop5" type="submit"
-						value="Gerar Gráfico" />
+					<br><p>
+					<input id="botaoTop5" type="submit"
+						value="Gerar Gráfico"/>
 				</form>
 				<br>
 				<div id="chart_div" style="width: 900px; height: 500px;"></div>

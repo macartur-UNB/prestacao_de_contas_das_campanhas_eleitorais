@@ -84,7 +84,7 @@
 												<c:param name="centro" value="${i}" />
 											</c:url>
 											<c:choose>
-												<c:when test="${i == centro}">${i}</c:when>
+												<c:when test="${i == centro}">[ ${i} ]</c:when>
 												<c:otherwise>
 													<a href="${url_pag}"><c:out value="${i}" /></a>
 												</c:otherwise>

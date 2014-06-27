@@ -65,7 +65,7 @@
 												<c:param name="verTodos" value="${false}" />
 											</c:url>
 											<c:choose>
-												<c:when test="${i == atual}">${i}</c:when>
+												<c:when test="${i == atual}">[ ${i} ]</c:when>
 												<c:otherwise>
 													<a href="${url_pag}"><c:out value="${i}" /></a>
 												</c:otherwise>
